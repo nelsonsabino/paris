@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronologia da Viagem a Paris</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+        }
+        /* Custom styles for the timeline */
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+            padding-left: 2.5rem; /* space for icon */
+        }
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+        /* The vertical line */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 1rem;
+            top: 0.5rem;
+            height: 100%;
+            width: 2px;
+            background-color: #cbd5e1; /* slate-300 */
+        }
+        .timeline-item:last-child::before {
+            height: 0.5rem;
+        }
+        /* The circle/icon on the line */
+        .timeline-icon {
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 9999px;
+            background-color: #f8fafc; /* slate-50 */
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-slate-900 mb-2">Cronologia da Viagem a Paris</h1>
+            <p class="text-lg text-slate-600">O seu itinerário de 5 dias pela cidade da luz.</p>
+        </header>
+
+        <!-- Day 1 -->
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6 pb-2 border-b-2 border-slate-200">
+                Dia 1: Sexta, 19/Set - Chegada e Magia da Torre Eiffel
+            </h2>
+            <div class="relative">
+                <div class="timeline-item">
+                    <div class="timeline-icon">✈️</div>
+                    <p class="font-semibold text-slate-600">8:50</p>
+                    <h3 class="font-bold text-lg">Descolagem de Lisboa</h3>
+                    <p class="text-slate-600">Início da aventura!</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">🛬</div>
+                    <p class="font-semibold text-slate-600">12:20</p>
+                    <h3 class="font-bold text-lg">Aterragem em Paris (Orly)</h3>
+                    <p class="text-slate-600">Bienvenue à Paris! Almoço rápido no aeroporto.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">🏠</div>
+                    <p class="font-semibold text-slate-600">~16:10</p>
+                    <h3 class="font-bold text-lg">Check-in na Acomodação</h3>
+                    <p class="text-slate-600">13 Rue Claude Decaen. Tempo para se instalar.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">🗼</div>
+                    <p class="font-semibold text-slate-600">18:30 - 21:30</p>
+                    <h3 class="font-bold text-lg">Explorar a Zona da Torre Eiffel</h3>
+                    <p class="text-slate-600">Passeio pelo Champ-de-Mars, subida à Torre, vista dos Jardins do Trocadéro e caminhada pela Ponte Alexandre III.</p>
+                </div>
+                 <div class="timeline-item">
+                    <div class="timeline-icon">🌙</div>
+                    <p class="font-semibold text-slate-600">22:15</p>
+                    <h3 class="font-bold text-lg">Regresso a Casa</h3>
+                    <p class="text-slate-600">Descanso após o primeiro dia.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 2 -->
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6 pb-2 border-b-2 border-slate-200">
+                Dia 2: Sábado, 20/Set - Coração de Paris
+            </h2>
+            <div class="relative">
+                <div class="timeline-item">
+                    <div class="timeline-icon">📍</div>
+                    <p class="font-semibold text-slate-600">9:00 - 12:00</p>
+                    <h3 class="font-bold text-lg">Île de la Cité</h3>
+                    <p class="text-slate-600">Visita ao exterior de Notre-Dame, Sainte-Chapelle, Mercado das Flores e Place Dauphine.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">🍽️</div>
+                    <p class="font-semibold text-slate-600">~13:30</p>
+                    <h3 class="font-bold text-lg">Almoço no Marché des Enfants Rouges</h3>
+                    <p class="text-slate-600">Experiência gastronómica no mercado mais antigo de Paris.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">🏛️</div>
+                    <p class="font-semibold text-slate-600">14:45 - 19:00+</p>
+                    <h3 class="font-bold text-lg">Marais, Tulherias e Arco do Triunfo</h3>
+                    <p class="text-slate-600">Passeio pela Place des Vosges, Jardim das Tulherias, Champs-Élysées e subida ao Arco do Triunfo ao entardecer.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 3 -->
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6 pb-2 border-b-2 border-slate-200">
+                Dia 3: Domingo, 21/Set - Esplendor Real em Versalhes
+            </h2>
+            <div class="relative">
+                <div class="timeline-item">
+                    <div class="timeline-icon">🚆</div>
+                    <p class="font-semibold text-slate-600">~9:00</p>
+                    <h3 class="font-bold text-lg">Partida para Versalhes</h3>
+                    <p class="text-slate-600">Viagem de RER C para um dia na realeza.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">🏰</div>
+                    <p class="font-semibold text-slate-600">Dia Inteiro</p>
+                    <h3 class="font-bold text-lg">Palácio e Jardins de Versalhes</h3>
+                    <p class="text-slate-600">Explorar o Palácio, a Galeria dos Espelhos, os vastos Jardins, os Trianons e o Domínio de Maria Antonieta.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">🌃</div>
+                    <p class="font-semibold text-slate-600">~17:00/18:00</p>
+                    <h3 class="font-bold text-lg">Regresso a Paris</h3>
+                    <p class="text-slate-600">Fim de um dia opulento e regresso para um jantar tranquilo.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 4 -->
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6 pb-2 border-b-2 border-slate-200">
+                Dia 4: Segunda, 22/Set - Arte, Cultura e Vistas de Paris
+            </h2>
+            <div class="relative">
+                <div class="timeline-item">
+                    <div class="timeline-icon">🖼️</div>
+                    <p class="font-semibold text-slate-600">Manhã</p>
+                    <h3 class="font-bold text-lg">Museu do Louvre</h3>
+                    <p class="text-slate-600">Encontro com obras-primas como a Mona Lisa e a Vénus de Milo.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">🎭</div>
+                    <p class="font-semibold text-slate-600">Tarde</p>
+                    <h3 class="font-bold text-lg">Ópera Garnier e Compras</h3>
+                    <p class="text-slate-600">Visita ao Palais Royal, à deslumbrante Ópera Garnier e ao terraço das Galerias Lafayette.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">🎨</div>
+                    <p class="font-semibold text-slate-600">Fim de Tarde/Noite</p>
+                    <h3 class="font-bold text-lg">Charme Boémio de Montmartre</h3>
+                    <p class="text-slate-600">Pôr do sol na Sacré-Cœur, passeio pela Place du Tertre e vista do Moulin Rouge.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 5 -->
+        <div>
+            <h2 class="text-2xl font-bold text-slate-800 mb-6 pb-2 border-b-2 border-slate-200">
+                Dia 5: Terça, 23/Set - Despedida de Paris
+            </h2>
+            <div class="relative">
+                <div class="timeline-item">
+                    <div class="timeline-icon">🥐</div>
+                    <p class="font-semibold text-slate-600">Manhã</p>
+                    <h3 class="font-bold text-lg">Manhã Livre</h3>
+                    <p class="text-slate-600">Tempo para um último croissant, compras ou um passeio relaxante pela Promenade Plantée.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">🛫</div>
+                    <p class="font-semibold text-slate-600">~13:00</p>
+                    <h3 class="font-bold text-lg">Viagem de Regresso</h3>
+                    <p class="text-slate-600">Partida para o Aeroporto de Orly para o voo das 16:40. Au revoir!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
