@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt" style="scroll-behavior: smooth;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -72,17 +72,60 @@
             margin-top: 0.75rem;
             border-radius: 0.25rem;
         }
+        /* Sticky Navigation Styling */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 50; /* Ensure it stays on top of other content */
+            background-color: #ffffff; /* White background */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+        .sticky-nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sticky-nav li {
+            margin: 0 1rem;
+        }
+        .sticky-nav a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+        .sticky-nav a:hover {
+            background-color: #e2e8f0;
+        }
     </style>
 </head>
 <body class="text-gray-800">
+    <nav class="sticky-nav">
+        <div class="container mx-auto max-w-5xl">
+            <ul>
+                <li><a href="#day1">Dia 1</a></li>
+                <li><a href="#day2">Dia 2</a></li>
+                <li><a href="#day3">Dia 3</a></li>
+                <li><a href="#day4">Dia 4</a></li>
+                <li><a href="#day5">Dia 5</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container mx-auto p-4 md:p-8 max-w-5xl">
         <header class="text-center mb-16">
             <h1 class="font-display text-5xl md:text-6xl text-gray-900 mb-4">O Seu Guia Hora a Hora para Paris</h1>
             <p class="text-lg text-gray-600">Um roteiro detalhado para uma aventura inesquecível.</p>
         </header>
 
-        <!-- Dia 1: Sexta, 19/Set -->
-        <section class="day-section mb-12">
+        <section id="day1" class="day-section mb-12">
+            <img src="https://via.placeholder.com/1000x300?text=Paris+Day+1" alt="Imagem do Dia 1 em Paris" class="w-full h-auto rounded-lg mb-8">
             <h2 class="font-display text-3xl text-gray-900 mb-6">Dia 1: Chegada e a Magia da Torre Eiffel</h2>
             <div class="relative timeline-container">
                 <div class="timeline-item">
@@ -107,8 +150,8 @@
                     <h3 class="font-semibold text-lg">Champ-de-Mars</h3>
                     <p class="text-gray-600">Passeio pelo grande parque que serve de "tapete" para a Torre Eiffel.</p>
                      <div class="info-box">
-                        <p class="text-sm text-gray-700"><strong>Dica:</strong> É o local perfeito para um piquenique improvisado com uma vista incrível. É um ótimo sítio para as primeiras fotos icónicas da torre.</p>
-                    </div>
+                         <p class="text-sm text-gray-700"><strong>Dica:</strong> É o local perfeito para um piquenique improvisado com uma vista incrível. É um ótimo sítio para as primeiras fotos icónicas da torre.</p>
+                     </div>
                 </div>
                  <div class="timeline-item">
                     <p class="timeline-time">18:30</p>
@@ -122,8 +165,8 @@
                     <h3 class="font-semibold text-lg">Jardim do Trocadéro</h3>
                     <p class="text-gray-600">A melhor vista panorâmica para ver a torre iluminar-se.</p>
                      <div class="info-box">
-                        <p class="text-sm text-gray-700"><strong>Curiosidade:</strong> A torre brilha com 20.000 lâmpadas. Ao início de cada hora, durante 5 minutos, ela pisca. Estejam a postos!</p>
-                    </div>
+                         <p class="text-sm text-gray-700"><strong>Curiosidade:</strong> A torre brilha com 20.000 lâmpadas. Ao início de cada hora, durante 5 minutos, ela pisca. Estejam a postos!</p>
+                     </div>
                 </div>
                 <div class="timeline-item">
                     <p class="timeline-time">21:30</p>
@@ -131,7 +174,7 @@
                     <h3 class="font-semibold text-lg">Ponte Alexandre III</h3>
                     <p class="text-gray-600">Atravessar a ponte mais ornamentada de Paris.</p>
                     <div class="info-box">
-                        <p class="text-sm text-gray-700"><strong>Curiosidade:</strong> Repare nas estátuas douradas dos cavalos alados (Pégasos) nas extremidades. Representam as Artes, as Ciências, o Comércio e a Indústria.</p>
+                         <p class="text-sm text-gray-700"><strong>Curiosidade:</strong> Repare nas estátuas douradas dos cavalos alados (Pégasos) nas extremidades. Representam as Artes, as Ciências, o Comércio e a Indústria.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -142,8 +185,8 @@
             </div>
         </section>
 
-        <!-- Dia 2: Sábado, 20/Set -->
-        <section class="day-section mb-12">
+        <section id="day2" class="day-section mb-12">
+            <img src="https://via.placeholder.com/1000x300?text=Paris+Day+2" alt="Imagem do Dia 2 em Paris" class="w-full h-auto rounded-lg mb-8">
             <h2 class="font-display text-3xl text-gray-900 mb-6">Dia 2: Coração Histórico e Grandes Avenidas</h2>
             <div class="relative timeline-container">
                 <div class="timeline-item">
@@ -158,7 +201,7 @@
                     <h3 class="font-semibold text-lg">Sainte-Chapelle</h3>
                     <p class="text-gray-600">Visita à capela gótica com os seus vitrais deslumbrantes.</p>
                     <div class="info-box">
-                        <p class="text-sm text-gray-700"><strong>Dica:</strong> Visite num dia de sol. A luz que atravessa os 1.113 painéis de vitrais transforma o interior num caleidoscópio de cores. É uma experiência inesquecível.</p>
+                         <p class="text-sm text-gray-700"><strong>Dica:</strong> Visite num dia de sol. A luz que atravessa os 1.113 painéis de vitrais transforma o interior num caleidoscópio de cores. É uma experiência inesquecível.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -172,7 +215,7 @@
                     <div class="timeline-icon"><i class="fa-solid fa-utensils text-xs"></i></div>
                     <h3 class="font-semibold text-lg">Almoço: Marché des Enfants Rouges</h3>
                     <div class="info-box">
-                        <p class="text-sm text-gray-700"><strong>Dica:</strong> É o mercado coberto mais antigo de Paris. Dê uma volta por todas as bancas antes de decidir. Há opções fantásticas de comida marroquina, italiana, japonesa e, claro, francesa.</p>
+                         <p class="text-sm text-gray-700"><strong>Dica:</strong> É o mercado coberto mais antigo de Paris. Dê uma volta por todas as bancas antes de decidir. Há opções fantásticas de comida marroquina, italiana, japonesa e, claro, francesa.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -180,7 +223,7 @@
                     <div class="timeline-icon"><i class="fa-solid fa-square-full text-xs"></i></div>
                     <h3 class="font-semibold text-lg">Place des Vosges</h3>
                      <div class="info-box">
-                        <p class="text-sm text-gray-700"><strong>Curiosidade:</strong> A praça mais antiga e, para muitos, a mais bonita de Paris. É perfeitamente simétrica, com 36 pavilhões de tijolo vermelho. Victor Hugo viveu no número 6.</p>
+                         <p class="text-sm text-gray-700"><strong>Curiosidade:</strong> A praça mais antiga e, para muitos, a mais bonita de Paris. É perfeitamente simétrica, com 36 pavilhões de tijolo vermelho. Victor Hugo viveu no número 6.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -198,14 +241,14 @@
                     <div class="timeline-icon"><i class="fa-solid fa-landmark text-xs"></i></div>
                     <h3 class="font-semibold text-lg">Petit Palais/Grand Palais (Exterior)</h3>
                      <div class="info-box">
-                        <p class="text-sm text-gray-700"><strong>Dica:</strong> O Petit Palais alberga o Museu de Belas Artes da Cidade de Paris e a sua entrada é gratuita para a coleção permanente. Tem um pátio interior encantador, ideal para uma pausa.</p>
+                         <p class="text-sm text-gray-700"><strong>Dica:</strong> O Petit Palais alberga o Museu de Belas Artes da Cidade de Paris e a sua entrada é gratuita para a coleção permanente. Tem um pátio interior encantador, ideal para uma pausa.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Dia 3: Domingo, 21/Set -->
-         <section class="day-section mb-12">
+        <section id="day3" class="day-section mb-12">
+            <img src="https://via.placeholder.com/1000x300?text=Paris+Day+3" alt="Imagem do Dia 3 em Paris" class="w-full h-auto rounded-lg mb-8">
             <h2 class="font-display text-3xl text-gray-900 mb-6">Dia 3: Realeza, Arte Boémia e Vistas Icónicas</h2>
             <div class="relative timeline-container">
                 <div class="timeline-item">
@@ -214,7 +257,7 @@
                     <h3 class="font-semibold text-lg">Palácio de Versalhes</h3>
                     <p class="text-gray-600">Visita à opulenta residência dos reis de França.</p>
                     <div class="info-box">
-                        <p class="text-sm text-gray-700"><strong>Curiosidade:</strong> A famosa Galeria dos Espelhos contém 357 espelhos. Na época, os espelhos eram um dos bens mais caros que se podiam possuir, tornando esta sala uma demonstração de poder e riqueza sem precedentes.</p>
+                         <p class="text-sm text-gray-700"><strong>Curiosidade:</strong> A famosa Galeria dos Espelhos contém 357 espelhos. Na época, os espelhos eram um dos bens mais caros que se podiam possuir, tornando esta sala uma demonstração de poder e riqueza sem precedentes.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -238,7 +281,7 @@
                     <div class="timeline-icon"><i class="fa-solid fa-palette text-xs"></i></div>
                     <h3 class="font-semibold text-lg">Place du Tertre</h3>
                      <div class="info-box">
-                        <p class="text-sm text-gray-700"><strong>Dica:</strong> É um ótimo lugar para observar os artistas a trabalhar, mas se quiser comprar uma pintura ou pedir um retrato, os preços podem ser elevados. É perfeitamente aceitável apenas passear e absorver o ambiente.</p>
+                         <p class="text-sm text-gray-700"><strong>Dica:</strong> É um ótimo lugar para observar os artistas a trabalhar, mas se quiser comprar uma pintura ou pedir um retrato, os preços podem ser elevados. É perfeitamente aceitável apenas passear e absorver o ambiente.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -246,7 +289,7 @@
                     <div class="timeline-icon"><i class="fa-solid fa-mug-hot text-xs"></i></div>
                     <h3 class="font-semibold text-lg">Café des Deux Moulins</h3>
                      <div class="info-box">
-                        <p class="text-sm text-gray-700"><strong>Curiosidade:</strong> O famoso café do filme "O Fabuloso Destino de Amélie Poulain". Peça o "Crème brûlée d'Amélie" e parta a crosta com uma colher, tal como ela fazia!</p>
+                         <p class="text-sm text-gray-700"><strong>Curiosidade:</strong> O famoso café do filme "O Fabuloso Destino de Amélie Poulain". Peça o "Crème brûlée d'Amélie" e parta a crosta com uma colher, tal como ela fazia!</p>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -259,14 +302,14 @@
                     <div class="timeline-icon"><i class="fa-solid fa-archway text-xs"></i></div>
                     <h3 class="font-semibold text-lg">Arco do Triunfo</h3>
                      <div class="info-box">
-                        <p class="text-sm text-gray-700"><strong>Dica:</strong> A subida ao topo ao anoitecer oferece uma vista espetacular das 12 avenidas a irradiar da praça, incluindo os Campos Elísios iluminados. Utilize a passagem subterrânea para chegar ao arco.</p>
+                         <p class="text-sm text-gray-700"><strong>Dica:</strong> A subida ao topo ao anoitecer oferece uma vista espetacular das 12 avenidas a irradiar da praça, incluindo os Campos Elísios iluminados. Utilize a passagem subterrânea para chegar ao arco.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Dia 4: Segunda, 22/Set -->
-         <section class="day-section mb-12">
+        <section id="day4" class="day-section mb-12">
+            <img src="https://via.placeholder.com/1000x300?text=Paris+Day+4" alt="Imagem do Dia 4 em Paris" class="w-full h-auto rounded-lg mb-8">
             <h2 class="font-display text-3xl text-gray-900 mb-6">Dia 4: Imersão em Arte e Charme Parisiense</h2>
             <div class="relative timeline-container">
                  <div class="timeline-item">
@@ -274,7 +317,7 @@
                     <div class="timeline-icon"><i class="fa-solid fa-landmark-dome text-xs"></i></div>
                     <h3 class="font-semibold text-lg">Museu do Louvre</h3>
                      <div class="info-box">
-                        <p class="text-sm text-gray-700"><strong>Dica:</strong> Com bilhetes pré-comprados, experimente a entrada "Porte des Lions" (se estiver aberta) ou a do "Carrousel du Louvre" para evitar as filas da pirâmide. O museu é gigantesco; escolha 2-3 alas para explorar.</p>
+                         <p class="text-sm text-gray-700"><strong>Dica:</strong> Com bilhetes pré-comprados, experimente a entrada "Porte des Lions" (se estiver aberta) ou a do "Carrousel du Louvre" para evitar as filas da pirâmide. O museu é gigantesco; escolha 2-3 alas para explorar.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -287,7 +330,7 @@
                     <div class="timeline-icon"><i class="fa-solid fa-masks-theater text-xs"></i></div>
                     <h3 class="font-semibold text-lg">Ópera Garnier</h3>
                     <div class="info-box">
-                        <p class="text-sm text-gray-700"><strong>Curiosidade:</strong> A sua opulência inspirou a história do "Fantasma da Ópera". Não perca a Grande Escadaria e o teto da sala principal, pintado por Marc Chagall.</p>
+                         <p class="text-sm text-gray-700"><strong>Curiosidade:</strong> A sua opulência inspirou a história do "Fantasma da Ópera". Não perca a Grande Escadaria e o teto da sala principal, pintado por Marc Chagall.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -304,8 +347,8 @@
             </div>
         </section>
 
-        <!-- Dia 5: Terça, 23/Set -->
-         <section class="day-section mb-12">
+        <section id="day5" class="day-section mb-12">
+            <img src="https://via.placeholder.com/1000x300?text=Paris+Day+5" alt="Imagem do Dia 5 em Paris" class="w-full h-auto rounded-lg mb-8">
             <h2 class="font-display text-3xl text-gray-900 mb-6">Dia 5: Despedida no Bairro Latino</h2>
              <div class="relative timeline-container">
                  <div class="timeline-item">
@@ -319,7 +362,7 @@
                     <div class="timeline-icon"><i class="fa-solid fa-monument text-xs"></i></div>
                     <h3 class="font-semibold text-lg">Saint-Étienne-du-Mont</h3>
                      <div class="info-box">
-                        <p class="text-sm text-gray-700"><strong>Curiosidade:</strong> É uma das igrejas mais fascinantes de Paris, com uma mistura de estilos gótico e renascentista. Abriga o único "jubé" (tribuna elevada em pedra) que resta na cidade e o túmulo do filósofo Blaise Pascal.</p>
+                         <p class="text-sm text-gray-700"><strong>Curiosidade:</strong> É uma das igrejas mais fascinantes de Paris, com uma mistura de estilos gótico e renascentista. Abriga o único "jubé" (tribuna elevada em pedra) que resta na cidade e o túmulo do filósofo Blaise Pascal.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -339,4 +382,3 @@
     </div>
 </body>
 </html>
-
