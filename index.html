@@ -1,204 +1,296 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt" style="scroll-behavior: smooth;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cronologia da Viagem a Paris</title>
+    <title>Guia de Viagem: Paris</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* slate-50 */
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
         }
-        /* Custom styles for the timeline */
-        .timeline-item {
-            position: relative;
-            padding-bottom: 2rem;
-            padding-left: 2.5rem; /* space for icon */
+        .font-display {
+            font-family: 'Playfair Display', serif;
         }
-        .timeline-item:last-child {
-            padding-bottom: 0;
+        .info-box {
+            background-color: #f1f5f9;
+            border-left: 4px solid #606c38;
+            padding: 0.75rem 1rem;
+            margin-top: 1rem;
+            border-radius: 0 0.5rem 0.5rem 0;
         }
-        /* The vertical line */
-        .timeline-item::before {
+        .timeline-container::before {
             content: '';
             position: absolute;
-            left: 1rem;
-            top: 0.5rem;
-            height: 100%;
+            left: 12px;
+            top: 2rem;
+            bottom: 2rem;
             width: 2px;
-            background-color: #cbd5e1; /* slate-300 */
+            background-color: #e5e7eb;
+            z-index: 0;
         }
-        .timeline-item:last-child::before {
-            height: 0.5rem;
+        .timeline-item {
+            position: relative;
+            padding-left: 2.5rem;
+            padding-bottom: 2.5rem;
         }
-        /* The circle/icon on the line */
+        .timeline-item:last-child {
+            padding-bottom: 0.5rem;
+        }
         .timeline-icon {
             position: absolute;
             left: 0;
-            top: 0.5rem;
-            transform: translateY(-50%);
+            top: 0.25rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 2rem;
-            height: 2rem;
-            border-radius: 9999px;
-            background-color: #f8fafc; /* slate-50 */
-            z-index: 10;
+            width: 24px;
+            height: 24px;
+            background-color: #606c38;
+            color: white;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        /* Estilos para o menu fixo */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 50; /* Garante que o menu fica acima de outros elementos */
+            background-color: #ffffff; /* Fundo branco */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra suave */
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+        .sticky-nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sticky-nav li {
+            margin: 0 1rem;
+        }
+        .sticky-nav a {
+            text-decoration: none;
+            color: #4a5568; /* Cor do texto dos links */
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .sticky-nav a:hover {
+            background-color: #e2e8f0; /* Fundo cinza claro ao passar o mouse */
+            color: #2d3748; /* Cor do texto mais escura ao passar o mouse */
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
-    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
-        <header class="text-center mb-12">
-            <h1 class="text-4xl font-bold text-slate-900 mb-2">Cronologia da Viagem a Paris</h1>
-            <p class="text-lg text-slate-600">O seu itinerário de 5 dias pela cidade da luz.</p>
+<body class="text-gray-700">
+    <nav class="sticky-nav">
+        <div class="container mx-auto max-w-5xl">
+            <ul>
+                <li><a href="#day1">Dia 1</a></li>
+                <li><a href="#day2">Dia 2</a></li>
+                <li><a href="#day3">Dia 3</a></li>
+                <li><a href="#day4">Dia 4</a></li>
+                <li><a href="#day5">Dia 5</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+        <header class="text-center mb-16">
+            <h1 class="font-display text-5xl md:text-6xl text-gray-800 mb-4">Guia Detalhado: Paris</h1>
+            <p class="text-lg text-gray-500">Uma viagem de 5 dias pela cultura, história e magia da capital francesa.</p>
         </header>
 
-        <!-- Day 1 -->
-        <div class="mb-12">
-            <h2 class="text-2xl font-bold text-slate-800 mb-6 pb-2 border-b-2 border-slate-200">
-                Dia 1: Sexta, 19/Set - Chegada e Magia da Torre Eiffel
-            </h2>
-            <div class="relative">
+        <section id="day1" class="bg-white p-6 md:p-8 rounded-2xl shadow-lg mb-12">
+            <img src="https://via.placeholder.com/1000x300?text=Paris+Dia+1" alt="Imagem ilustrativa do Dia 1 em Paris" class="w-full h-auto rounded-lg mb-6">
+            <h2 class="font-display text-3xl text-gray-800 mb-2">Dia 1: Chegada e a Luz da Torre Eiffel</h2>
+            <p class="text-gray-500 mb-6">Sexta-feira, 19 de Setembro</p>
+            <div class="relative timeline-container">
                 <div class="timeline-item">
-                    <div class="timeline-icon">✈️</div>
-                    <p class="font-semibold text-slate-600">8:50</p>
-                    <h3 class="font-bold text-lg">Descolagem de Lisboa</h3>
-                    <p class="text-slate-600">Início da aventura!</p>
+                    <div class="timeline-icon"><i class="fa-solid fa-plane-departure text-xs"></i></div>
+                    <p class="font-semibold text-sm text-green-800">Manhã (6:00 - 12:20)</p>
+                    <h3 class="font-semibold text-lg text-gray-800 mt-1">De Alenquer a Paris</h3>
+                    <p class="text-gray-600">O início da jornada, desde a saída de casa até à aterragem no Aeroporto de Orly.</p>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-icon">🛬</div>
-                    <p class="font-semibold text-slate-600">12:20</p>
-                    <h3 class="font-bold text-lg">Aterragem em Paris (Orly)</h3>
-                    <p class="text-slate-600">Bienvenue à Paris! Almoço rápido no aeroporto.</p>
+                    <div class="timeline-icon"><i class="fa-solid fa-house-user text-xs"></i></div>
+                    <p class="font-semibold text-sm text-green-800">Tarde (12:30 - 17:30)</p>
+                    <h3 class="font-semibold text-lg text-gray-800 mt-1">Instalação e Primeiros Passos</h3>
+                    <p class="text-gray-600">Almoço rápido e viagem de metro até à vossa base em Paris, na Rue Claude Decaen.</p>
+                    <div class="info-box">
+                        <p class="font-semibold text-sm text-gray-700"><i class="fa-solid fa-circle-info mr-2"></i>Dica de Transporte</p>
+                        <p class="text-sm text-gray-600 mt-1">A linha 14 do metro, que apanham em Orly, é totalmente automatizada e uma das mais rápidas da cidade, ligando o aeroporto ao centro de forma muito eficiente.</p>
+                    </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-icon">🏠</div>
-                    <p class="font-semibold text-slate-600">~16:10</p>
-                    <h3 class="font-bold text-lg">Check-in na Acomodação</h3>
-                    <p class="text-slate-600">13 Rue Claude Decaen. Tempo para se instalar.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-icon">🗼</div>
-                    <p class="font-semibold text-slate-600">18:30 - 21:30</p>
-                    <h3 class="font-bold text-lg">Explorar a Zona da Torre Eiffel</h3>
-                    <p class="text-slate-600">Passeio pelo Champ-de-Mars, subida à Torre, vista dos Jardins do Trocadéro e caminhada pela Ponte Alexandre III.</p>
-                </div>
-                 <div class="timeline-item">
-                    <div class="timeline-icon">🌙</div>
-                    <p class="font-semibold text-slate-600">22:15</p>
-                    <h3 class="font-bold text-lg">Regresso a Casa</h3>
-                    <p class="text-slate-600">Descanso após o primeiro dia.</p>
+                    <div class="timeline-icon"><i class="fa-solid fa-tower-eiffel text-xs"></i></div>
+                    <p class="font-semibold text-sm text-green-800">Noite (18:04 - 22:15)</p>
+                    <h3 class="font-semibold text-lg text-gray-800 mt-1">Noite Mágica na Torre Eiffel</h3>
+                    <p class="text-gray-600">Passeio pelo Champ-de-Mars, subida à Torre, vista dos Jardins do Trocadéro e caminhada pela Ponte Alexandre III.</p>
+                    <div class="info-box">
+                        <p class="font-semibold text-sm text-gray-700"><i class="fa-solid fa-star mr-2"></i>Curiosidades</p>
+                        <ul class="list-disc list-inside text-sm text-gray-600 mt-1 space-y-1">
+                            <li><strong>Torre Eiffel:</strong> Ao início de cada hora, após o pôr-do-sol, a torre pisca durante 5 minutos. O Trocadéro é o local perfeito para ver este espetáculo.</li>
+                            <li><strong>Ponte Alexandre III:</strong> É considerada a ponte mais ornamentada e extravagante de Paris. Foi construída para a Exposição Universal de 1900 e simboliza a aliança Franco-Russa.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Day 2 -->
-        <div class="mb-12">
-            <h2 class="text-2xl font-bold text-slate-800 mb-6 pb-2 border-b-2 border-slate-200">
-                Dia 2: Sábado, 20/Set - Coração de Paris
-            </h2>
-            <div class="relative">
+        <section id="day2" class="bg-white p-6 md:p-8 rounded-2xl shadow-lg mb-12">
+            <img src="https://via.placeholder.com/1000x300?text=Paris+Dia+2" alt="Imagem ilustrativa do Dia 2 em Paris" class="w-full h-auto rounded-lg mb-6">
+            <h2 class="font-display text-3xl text-gray-800 mb-2">Dia 2: Coração Histórico e Charme Parisiense</h2>
+            <p class="text-gray-500 mb-6">Sábado, 20 de Setembro</p>
+            <div class="relative timeline-container">
                 <div class="timeline-item">
-                    <div class="timeline-icon">📍</div>
-                    <p class="font-semibold text-slate-600">9:00 - 12:00</p>
-                    <h3 class="font-bold text-lg">Île de la Cité</h3>
-                    <p class="text-slate-600">Visita ao exterior de Notre-Dame, Sainte-Chapelle, Mercado das Flores e Place Dauphine.</p>
+                    <div class="timeline-icon"><i class="fa-solid fa-landmark text-xs"></i></div>
+                    <p class="font-semibold text-sm text-green-800">Manhã (8:26 - 12:45)</p>
+                    <h3 class="font-semibold text-lg text-gray-800 mt-1">Manhã na Île de la Cité</h3>
+                    <p class="text-gray-600">Exploração do berço de Paris, desde a majestosa Notre-Dame (exterior) à joia gótica que é a Sainte-Chapelle, terminando na Pont des Arts.</p>
+                    <div class="info-box">
+                        <p class="font-semibold text-sm text-gray-700"><i class="fa-solid fa-star mr-2"></i>Curiosidades</p>
+                        <ul class="list-disc list-inside text-sm text-gray-600 mt-1 space-y-1">
+                            <li><strong>Ponto Zero:</strong> Em frente a Notre-Dame, procure no chão uma placa de bronze. É o "Point Zéro des routes de France", o centro geográfico a partir do qual todas as distâncias em França são medidas.</li>
+                            <li><strong>Sainte-Chapelle:</strong> Possui 1.113 painéis de vitrais deslumbrantes. Foi construída para guardar relíquias preciosas, como a Coroa de Espinhos de Cristo.</li>
+                            <li><strong>Pont Neuf:</strong> Apesar do nome ("Ponte Nova"), é na verdade a ponte de pedra mais antiga de Paris.</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-icon">🍽️</div>
-                    <p class="font-semibold text-slate-600">~13:30</p>
-                    <h3 class="font-bold text-lg">Almoço no Marché des Enfants Rouges</h3>
-                    <p class="text-slate-600">Experiência gastronómica no mercado mais antigo de Paris.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-icon">🏛️</div>
-                    <p class="font-semibold text-slate-600">14:45 - 19:00+</p>
-                    <h3 class="font-bold text-lg">Marais, Tulherias e Arco do Triunfo</h3>
-                    <p class="text-slate-600">Passeio pela Place des Vosges, Jardim das Tulherias, Champs-Élysées e subida ao Arco do Triunfo ao entardecer.</p>
+                    <div class="timeline-icon"><i class="fa-solid fa-utensils text-xs"></i></div>
+                    <p class="font-semibold text-sm text-green-800">Tarde (13:30 - 20:09)</p>
+                    <h3 class="font-semibold text-lg text-gray-800 mt-1">Tarde de Mercados, Praças e Palácios</h3>
+                    <p class="text-gray-600">Almoço no vibrante Marché des Enfants Rouges, passeio pela elegante Place des Vosges, passagem pelo moderno Centre Pompidou, relaxamento no Jardim das Tulherias e admiração do Petit e Grand Palais.</p>
+                    <div class="info-box">
+                        <p class="font-semibold text-sm text-gray-700"><i class="fa-solid fa-star mr-2"></i>Curiosidades</p>
+                        <ul class="list-disc list-inside text-sm text-gray-600 mt-1 space-y-1">
+                            <li><strong>Marché des Enfants Rouges:</strong> É o mercado coberto mais antigo de Paris, fundado em 1628. O nome vem de um antigo orfanato onde as crianças usavam uniformes vermelhos.</li>
+                            <li><strong>Place des Vosges:</strong> Foi a primeira praça planeada da cidade. Victor Hugo viveu no número 6, hoje um museu.</li>
+                            <li><strong>Centre Pompidou:</strong> O seu design "de dentro para fora", com tubos e escadas rolantes no exterior, foi revolucionário e muito controverso quando inaugurado em 1977.</li>
+                            <li><strong>Place de la Concorde:</strong> Durante a Revolução Francesa, a guilhotina esteve aqui instalada. O obelisco egípcio no centro tem mais de 3.000 anos.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Day 3 -->
-        <div class="mb-12">
-            <h2 class="text-2xl font-bold text-slate-800 mb-6 pb-2 border-b-2 border-slate-200">
-                Dia 3: Domingo, 21/Set - Esplendor Real em Versalhes
-            </h2>
-            <div class="relative">
+        <section id="day3" class="bg-white p-6 md:p-8 rounded-2xl shadow-lg mb-12">
+            <img src="https://via.placeholder.com/1000x300?text=Paris+Dia+3" alt="Imagem ilustrativa do Dia 3 em Paris" class="w-full h-auto rounded-lg mb-6">
+            <h2 class="font-display text-3xl text-gray-800 mb-2">Dia 3: Realeza, Arte Boémia e Vistas Icónicas</h2>
+            <p class="text-gray-500 mb-6">Domingo, 21 de Setembro</p>
+            <div class="relative timeline-container">
                 <div class="timeline-item">
-                    <div class="timeline-icon">🚆</div>
-                    <p class="font-semibold text-slate-600">~9:00</p>
-                    <h3 class="font-bold text-lg">Partida para Versalhes</h3>
-                    <p class="text-slate-600">Viagem de RER C para um dia na realeza.</p>
+                    <div class="timeline-icon"><i class="fa-solid fa-crown text-xs"></i></div>
+                    <p class="font-semibold text-sm text-green-800">Manhã (8:00 - 13:30)</p>
+                    <h3 class="font-semibold text-lg text-gray-800 mt-1">Esplendor em Versalhes</h3>
+                    <p class="text-gray-600">Viagem de RER para um mergulho na opulência da monarquia francesa, com visita ao Palácio e aos seus vastos jardins.</p>
+                    <div class="info-box">
+                        <p class="font-semibold text-sm text-gray-700"><i class="fa-solid fa-circle-info mr-2"></i>Dica & Curiosidade</p>
+                        <ul class="list-disc list-inside text-sm text-gray-600 mt-1 space-y-1">
+                            <li><strong>Jardins:</strong> São enormes! Considerem alugar um carrinho de golfe ou um barco no Grande Canal para os explorar sem se cansarem demasiado.</li>
+                            <li><strong>Galeria dos Espelhos:</strong> Além da sua beleza, foi aqui que o Tratado de Versalhes foi assinado em 1919, pondo fim à Primeira Guerra Mundial.</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-icon">🏰</div>
-                    <p class="font-semibold text-slate-600">Dia Inteiro</p>
-                    <h3 class="font-bold text-lg">Palácio e Jardins de Versalhes</h3>
-                    <p class="text-slate-600">Explorar o Palácio, a Galeria dos Espelhos, os vastos Jardins, os Trianons e o Domínio de Maria Antonieta.</p>
+                    <div class="timeline-icon"><i class="fa-solid fa-palette text-xs"></i></div>
+                    <p class="font-semibold text-sm text-green-800">Tarde (14:40 - 18:15)</p>
+                    <h3 class="font-semibold text-lg text-gray-800 mt-1">Tarde Boémia em Montmartre</h3>
+                    <p class="text-gray-600">Subida à colina para ver o "Muro do Eu Te Amo", a Sacré-Cœur, os artistas na Place du Tertre e sentir a atmosfera do filme Amélie.</p>
+                    <div class="info-box">
+                        <p class="font-semibold text-sm text-gray-700"><i class="fa-solid fa-star mr-2"></i>Curiosidades</p>
+                        <ul class="list-disc list-inside text-sm text-gray-600 mt-1 space-y-1">
+                            <li><strong>Estação Abbesses:</strong> A estação de metro onde saem é uma das mais profundas de Paris, e as suas escadas em espiral estão decoradas com murais.</li>
+                            <li><strong>Place du Tertre:</strong> É um dos poucos locais em Paris onde os artistas precisam de uma licença para pintar. A lista de espera pode durar anos!</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-icon">🌃</div>
-                    <p class="font-semibold text-slate-600">~17:00/18:00</p>
-                    <h3 class="font-bold text-lg">Regresso a Paris</h3>
-                    <p class="text-slate-600">Fim de um dia opulento e regresso para um jantar tranquilo.</p>
+                    <div class="timeline-icon"><i class="fa-solid fa-archway text-xs"></i></div>
+                    <p class="font-semibold text-sm text-green-800">Noite (19:03 - 20:39)</p>
+                    <h3 class="font-semibold text-lg text-gray-800 mt-1">Noite no Arco do Triunfo</h3>
+                    <p class="text-gray-600">Visita ao monumento que celebra as vitórias francesas, com uma vista deslumbrante sobre os Campos Elísios.</p>
+                    <div class="info-box">
+                        <p class="font-semibold text-sm text-gray-700"><i class="fa-solid fa-circle-info mr-2"></i>Dica & Curiosidade</p>
+                        <p class="text-sm text-gray-600 mt-1">Sob o arco, arde a Chama Eterna no Túmulo do Soldado Desconhecido, acesa todos os dias às 18:30 desde 1923. Para chegar ao arco, utilize as passagens subterrâneas; não tente atravessar a rotunda!</p>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Day 4 -->
-        <div class="mb-12">
-            <h2 class="text-2xl font-bold text-slate-800 mb-6 pb-2 border-b-2 border-slate-200">
-                Dia 4: Segunda, 22/Set - Arte, Cultura e Vistas de Paris
-            </h2>
-            <div class="relative">
+        <section id="day4" class="bg-white p-6 md:p-8 rounded-2xl shadow-lg mb-12">
+            <img src="https://via.placeholder.com/1000x300?text=Paris+Dia+4" alt="Imagem ilustrativa do Dia 4 em Paris" class="w-full h-auto rounded-lg mb-6">
+            <h2 class="font-display text-3xl text-gray-800 mb-2">Dia 4: Imersão em Arte e Charme Parisiense</h2>
+            <p class="text-gray-500 mb-6">Segunda-feira, 22 de Setembro</p>
+            <div class="relative timeline-container">
                 <div class="timeline-item">
-                    <div class="timeline-icon">🖼️</div>
-                    <p class="font-semibold text-slate-600">Manhã</p>
-                    <h3 class="font-bold text-lg">Museu do Louvre</h3>
-                    <p class="text-slate-600">Encontro com obras-primas como a Mona Lisa e a Vénus de Milo.</p>
+                    <div class="timeline-icon"><i class="fa-solid fa-landmark-dome text-xs"></i></div>
+                    <p class="font-semibold text-sm text-green-800">Manhã (8:33 - 13:00)</p>
+                    <h3 class="font-semibold text-lg text-gray-800 mt-1">Manhã de Obras-Primas no Louvre</h3>
+                    <p class="text-gray-600">Visita ao maior e mais famoso museu do mundo, antigo palácio real.</p>
+                    <div class="info-box">
+                        <p class="font-semibold text-sm text-gray-700"><i class="fa-solid fa-shoe-prints mr-2"></i>Dica de Navegação</p>
+                        <p class="text-sm text-gray-600 mt-1">O Louvre é imenso. Escolham 2 ou 3 alas que realmente querem ver para não se sentirem sobrecarregados. Além da Mona Lisa, não percam a Vitória de Samotrácia e os Apartamentos de Napoleão III.</p>
+                    </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-icon">🎭</div>
-                    <p class="font-semibold text-slate-600">Tarde</p>
-                    <h3 class="font-bold text-lg">Ópera Garnier e Compras</h3>
-                    <p class="text-slate-600">Visita ao Palais Royal, à deslumbrante Ópera Garnier e ao terraço das Galerias Lafayette.</p>
+                    <div class="timeline-icon"><i class="fa-solid fa-masks-theater text-xs"></i></div>
+                    <p class="font-semibold text-sm text-green-800">Tarde (14:00 - 16:45)</p>
+                    <h3 class="font-semibold text-lg text-gray-800 mt-1">Tarde Cultural e Panorâmica</h3>
+                    <p class="text-gray-600">Exploração do Palais Royal, da deslumbrante Ópera Garnier e do terraço das Galerias Lafayette.</p>
+                    <div class="info-box">
+                        <p class="font-semibold text-sm text-gray-700"><i class="fa-solid fa-star mr-2"></i>Curiosidades</p>
+                        <ul class="list-disc list-inside text-sm text-gray-600 mt-1 space-y-1">
+                            <li><strong>Colunas de Buren:</strong> As colunas listradas no pátio do Palais Royal são uma instalação de arte moderno que causou grande polémica na sua inauguração em 1986.</li>
+                            <li><strong>Ópera Garnier:</strong> O teto da sala principal foi pintado por Marc Chagall em 1964. Diz-se que a Ópera tem um lago subterrâneo que inspirou a história do "Fantasma da Ópera".</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-icon">🎨</div>
-                    <p class="font-semibold text-slate-600">Fim de Tarde/Noite</p>
-                    <h3 class="font-bold text-lg">Charme Boémio de Montmartre</h3>
-                    <p class="text-slate-600">Pôr do sol na Sacré-Cœur, passeio pela Place du Tertre e vista do Moulin Rouge.</p>
+                    <div class="timeline-icon"><i class="fa-solid fa-map-pin text-xs"></i></div>
+                    <p class="font-semibold text-sm text-green-800">Fim de Tarde (17:02 - 20:27)</p>
+                    <h3 class="font-semibold text-lg text-gray-800 mt-1">Passeio pelo Marais</h3>
+                    <p class="text-gray-600">Passeio leve por um dos bairros mais charmosos e históricos de Paris, conhecido pelas suas mansões, lojas e pelo antigo bairro judeu.</p>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Day 5 -->
-        <div>
-            <h2 class="text-2xl font-bold text-slate-800 mb-6 pb-2 border-b-2 border-slate-200">
-                Dia 5: Terça, 23/Set - Despedida de Paris
-            </h2>
-            <div class="relative">
+        <section id="day5" class="bg-white p-6 md:p-8 rounded-2xl shadow-lg mb-12">
+            <img src="https://via.placeholder.com/1000x300?text=Paris+Dia+5" alt="Imagem ilustrativa do Dia 5 em Paris" class="w-full h-auto rounded-lg mb-6">
+            <h2 class="font-display text-3xl text-gray-800 mb-2">Dia 5: Despedida no Bairro Latino</h2>
+            <p class="text-gray-500 mb-6">Terça-feira, 23 de Setembro</p>
+            <div class="relative timeline-container">
                 <div class="timeline-item">
-                    <div class="timeline-icon">🥐</div>
-                    <p class="font-semibold text-slate-600">Manhã</p>
-                    <h3 class="font-bold text-lg">Manhã Livre</h3>
-                    <p class="text-slate-600">Tempo para um último croissant, compras ou um passeio relaxante pela Promenade Plantée.</p>
+                    <div class="timeline-icon"><i class="fa-solid fa-book-atlas text-xs"></i></div>
+                    <p class="font-semibold text-sm text-green-800">Manhã (9:30 - 13:00)</p>
+                    <h3 class="font-semibold text-lg text-gray-800 mt-1">Manhã no Quartier Latin</h3>
+                    <p class="text-gray-600">Após guardar as malas, exploração do bairro dos estudantes, da Sorbonne, do Panthéon e relaxamento no Jardim do Luxemburgo.</p>
+                    <div class="info-box">
+                        <p class="font-semibold text-sm text-gray-700"><i class="fa-solid fa-star mr-2"></i>Curiosidades</p>
+                        <ul class="list-disc list-inside text-sm text-gray-600 mt-1 space-y-1">
+                            <li><strong>Quartier Latin:</strong> O nome vem do facto de o latim ter sido a língua falada na Universidade de Sorbonne durante a Idade Média.</li>
+                            <li><strong>Saint-Étienne-du-Mont:</strong> Esta igreja abriga o único "jubé" (tribuna elevada) que resta em Paris e o santuário de Santa Genoveva, a padroeira da cidade.</li>
+                            <li><strong>Jardim do Luxemburgo:</strong> Criado a pedido de Maria de Médicis, que queria um jardim que a fizesse lembrar do seu Palácio Pitti em Florença. As cadeiras verdes são um ícone parisiense.</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-icon">🛫</div>
-                    <p class="font-semibold text-slate-600">~13:00</p>
-                    <h3 class="font-bold text-lg">Viagem de Regresso</h3>
-                    <p class="text-slate-600">Partida para o Aeroporto de Orly para o voo das 16:40. Au revoir!</p>
+                    <div class="timeline-icon"><i class="fa-solid fa-plane-departure text-xs"></i></div>
+                    <p class="font-semibold text-sm text-green-800">Tarde (13:00 - 16:45)</p>
+                    <h3 class="font-semibold text-lg text-gray-800 mt-1">Au Revoir, Paris!</h3>
+                    <p class="text-gray-600">Recolha das malas e viagem de metro para o Aeroporto de Orly para o voo de regresso.</p>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
 </body>
 </html>
