@@ -20,9 +20,14 @@
         .day-section {
             border: 1px solid #e2e8f0;
             border-radius: 1rem;
-            padding: 1.5rem 2rem;
+            padding: 1.5rem; /* Padding ajustado para mobile */
             background-color: white;
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        @media (min-width: 768px) { /* Em ecrãs maiores, volta ao padding original */
+            .day-section {
+                padding: 1.5rem 2rem;
+            }
         }
         .timeline-container::before {
             content: '';
@@ -78,33 +83,9 @@
             z-index: 50;
             background-color: #ffffff;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            padding: 1rem 0;
-            margin-bottom: 2rem;
         }
-        .sticky-nav ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .sticky-nav li {
-            margin: 0 1rem;
-        }
-        .sticky-nav a {
-            text-decoration: none;
-            color: #2c3e50;
-            font-weight: 600;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            transition: background-color 0.3s ease;
-        }
-        .sticky-nav a:hover {
-            background-color: #e2e8f0;
-        }
-        /* Nova classe para estilizar os títulos das rotas */
         .route-title {
-            color: #2563eb; /* Azul */
+            color: #2563eb;
             text-decoration: none;
         }
         .route-title:hover {
@@ -113,30 +94,54 @@
     </style>
 </head>
 <body class="text-gray-800">
+
+    <!-- NAV BAR ATUALIZADA PARA SER RESPONSIVA -->
     <nav class="sticky-nav">
-        <div class="container mx-auto max-w-5xl">
-            <ul>
-                <li><a href="#day1">Dia 1</a></li>
-                <li><a href="#day2">Dia 2</a></li>
-                <li><a href="#day3">Dia 3</a></li>
-                <li><a href="#day4">Dia 4</a></li>
-                <li><a href="#day5">Dia 5</a></li>
-                <li><a href="#">GUIA</a></li> <!-- Link para o topo da página -->
-            </ul>
+        <div class="container mx-auto max-w-5xl px-4">
+            <div class="flex justify-between items-center py-3">
+                <a href="#" class="font-display text-xl text-gray-800">Roteiro Paris</a>
+
+                <!-- Links para Desktop (visíveis em ecrãs médios e maiores) -->
+                <div class="hidden md:flex items-center space-x-2">
+                    <a href="#day1" class="text-gray-700 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 1</a>
+                    <a href="#day2" class="text-gray-700 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 2</a>
+                    <a href="#day3" class="text-gray-700 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 3</a>
+                    <a href="#day4" class="text-gray-700 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 4</a>
+                    <a href="#day5" class="text-gray-700 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 5</a>
+                    <a href="index.html" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded-md transition hover:bg-blue-500">GUIA</a>
+                </div>
+
+                <!-- Botão Hamburger (visível apenas em ecrãs pequenos) -->
+                <div class="md:hidden">
+                    <button id="menu-btn" class="text-gray-700 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Mobile (escondido por defeito) -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200">
+            <a href="#day1" class="block py-3 px-4 text-sm font-medium text-gray-700 hover:bg-gray-100">Dia 1</a>
+            <a href="#day2" class="block py-3 px-4 text-sm font-medium text-gray-700 hover:bg-gray-100">Dia 2</a>
+            <a href="#day3" class="block py-3 px-4 text-sm font-medium text-gray-700 hover:bg-gray-100">Dia 3</a>
+            <a href="#day4" class="block py-3 px-4 text-sm font-medium text-gray-700 hover:bg-gray-100">Dia 4</a>
+            <a href="#day5" class="block py-3 px-4 text-sm font-medium text-gray-700 hover:bg-gray-100">Dia 5</a>
+            <a href="index.html" class="block py-3 px-4 text-sm font-medium text-white bg-blue-600 hover:bg-blue-500">GUIA</a>
         </div>
     </nav>
 
     <div class="container mx-auto p-4 md:p-8 max-w-5xl">
-        <header class="text-center mb-16">
-            <h1 class="font-display text-5xl md:text-6xl text-gray-900 mb-4">O Seu Guia Hora a Hora para Paris</h1>
-            <p class="text-lg text-gray-600">Um roteiro detalhado para uma aventura inesquecível.</p>
+        <header class="text-center mb-12 md:mb-16">
+            <h1 class="font-display text-4xl md:text-6xl text-gray-900 mb-4">O Seu Guia Hora a Hora para Paris</h1>
+            <p class="text-base md:text-lg text-gray-600">Um roteiro detalhado para uma aventura inesquecível.</p>
         </header>
 
         <section id="day1" class="day-section mb-12">
             <img src="https://via.placeholder.com/1000x300?text=Paris+Day+1" alt="Imagem do Dia 1 em Paris" class="w-full h-auto rounded-lg mb-8">
-            <h2 class="font-display text-3xl text-gray-900 mb-6">Dia 1: Chegada e a Magia da Torre Eiffel</h2>
+            <h2 class="font-display text-2xl md:text-3xl text-gray-900 mb-6">Dia 1: Chegada e a Magia da Torre Eiffel</h2>
 
-            <h3 class="font-display text-2xl text-gray-900 mb-4"><span class="route-title">ALENQUER → TERMINAL 2</span></h3>
+            <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4"><span class="route-title">ALENQUER → TERMINAL 2</span></h3>
             <div class="relative timeline-container">
                 <div class="timeline-item">
                     <p class="timeline-time">6:00</p>
@@ -169,7 +174,7 @@
                 </div>
             </div>
 
-            <h3 class="font-display text-2xl text-gray-900 mb-4 mt-8"><span class="route-title">METRO ORLY → CASA PARIS</span></h3>
+            <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4 mt-8"><span class="route-title">METRO ORLY → CASA PARIS</span></h3>
             <div class="relative timeline-container">
                 <div class="timeline-item">
                     <p class="timeline-time">12:30</p>
@@ -213,7 +218,7 @@
                 </div>
             </div>
 
-            <h3 class="font-display text-2xl text-gray-900 mb-4 mt-8"><span class="route-title">CASA → ÉCOLE MILITAIRE</span></h3>
+            <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4 mt-8"><span class="route-title">CASA → ÉCOLE MILITAIRE</span></h3>
             <div class="relative timeline-container">
                 <div class="timeline-item">
                     <p class="timeline-time">17:30</p>
@@ -234,7 +239,7 @@
                 </div>
             </div>
 
-            <h3 class="font-display text-2xl text-gray-900 mb-4 mt-8"><span class="route-title">CHAMP-DE-MARS → TOUR EIFFEL → INVALIDES</span></h3>
+            <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4 mt-8"><span class="route-title">CHAMP-DE-MARS → TOUR EIFFEL → INVALIDES</span></h3>
             <div class="relative timeline-container">
                 <div class="timeline-item">
                     <p class="timeline-time">18:04</p>
@@ -293,7 +298,7 @@
                 </div>
             </div>
 
-            <h3 class="font-display text-2xl text-gray-900 mb-4 mt-8">Comida nas Proximidades</h3>
+            <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4 mt-8">Comida nas Proximidades</h3>
             <div class="info-box">
                 <p class="text-sm text-gray-700"><strong>Maison Bergeron</strong>: Padaria local.</p>
                 <p class="text-sm text-gray-700"><strong>Pret A Manger</strong>: Loja de sanduíches.</p>
@@ -303,9 +308,9 @@
 
         <section id="day2" class="day-section mb-12">
             <img src="https://via.placeholder.com/1000x300?text=Paris+Day+2" alt="Imagem do Dia 2 em Paris" class="w-full h-auto rounded-lg mb-8">
-            <h2 class="font-display text-3xl text-gray-900 mb-6">Dia 2: Coração Histórico e Grandes Avenidas</h2>
+            <h2 class="font-display text-2xl md:text-3xl text-gray-900 mb-6">Dia 2: Coração Histórico e Grandes Avenidas</h2>
 
-            <h3 class="font-display text-2xl text-gray-900 mb-4"><span class="route-title">CASA → ÎLE DE LA CITÉ</span></h3>
+            <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4"><span class="route-title">CASA → ÎLE DE LA CITÉ</span></h3>
             <div class="relative timeline-container">
                 <div class="timeline-item">
                     <p class="timeline-time">8:26</p>
@@ -343,7 +348,7 @@
                 </div>
             </div>
 
-            <h3 class="font-display text-2xl text-gray-900 mb-4 mt-8"><span class="route-title">ÎLE DE LA CITÉ → PONT DES ARTS</span></h3>
+            <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4 mt-8"><span class="route-title">ÎLE DE LA CITÉ → PONT DES ARTS</span></h3>
             <div class="relative timeline-container">
                 <div class="timeline-item">
                     <p class="timeline-time">9:10</p>
@@ -389,7 +394,7 @@
                 </div>
             </div>
 
-            <h3 class="font-display text-2xl text-gray-900 mb-4 mt-8"><span class="route-title">PONT DES ARTS → LE PETIT PALAIS</span></h3>
+            <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4 mt-8"><span class="route-title">PONT DES ARTS → LE PETIT PALAIS</span></h3>
             <div class="relative timeline-container">
                 <div class="timeline-item">
                     <p class="timeline-time">12:45</p>
@@ -462,9 +467,9 @@
 
         <section id="day3" class="day-section mb-12">
             <img src="https://via.placeholder.com/1000x300?text=Paris+Day+3" alt="Imagem do Dia 3 em Paris" class="w-full h-auto rounded-lg mb-8">
-            <h2 class="font-display text-3xl text-gray-900 mb-6">Dia 3: Realeza, Arte Boémia e Vistas Icónicas</h2>
+            <h2 class="font-display text-2xl md:text-3xl text-gray-900 mb-6">Dia 3: Realeza, Arte Boémia e Vistas Icónicas</h2>
 
-            <h3 class="font-display text-2xl text-gray-900 mb-4"><span class="route-title">CASA → VERSALHES</span></h3>
+            <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4"><span class="route-title">CASA → VERSALHES</span></h3>
             <div class="relative timeline-container">
                 <div class="timeline-item">
                     <p class="timeline-time">8:00</p>
@@ -517,7 +522,7 @@
                 </div>
             </div>
 
-            <h3 class="font-display text-2xl text-gray-900 mb-4 mt-8"><span class="route-title">VERSALHES → MONTMARTRE</span></h3>
+            <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4 mt-8"><span class="route-title">VERSALHES → MONTMARTRE</span></h3>
             <div class="relative timeline-container">
                 <div class="timeline-item">
                     <p class="timeline-time">14:40</p>
@@ -543,7 +548,7 @@
                 </div>
             </div>
 
-            <h3 class="font-display text-2xl text-gray-900 mb-4 mt-8"><span class="route-title">MONTMARTRE → MOULIN ROUGE</span></h3>
+            <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4 mt-8"><span class="route-title">MONTMARTRE → MOULIN ROUGE</span></h3>
             <div class="relative timeline-container">
                 <div class="timeline-item">
                     <p class="timeline-time">15:34</p>
@@ -592,7 +597,7 @@
                 </div>
             </div>
 
-            <h3 class="font-display text-2xl text-gray-900 mb-4 mt-8"><span class="route-title">MOULIN ROUGE → ARCO DO TRIUNFO</span></h3>
+            <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4 mt-8"><span class="route-title">MOULIN ROUGE → ARCO DO TRIUNFO</span></h3>
             <div class="relative timeline-container">
                 <div class="timeline-item">
                     <p class="timeline-time">19:03</p>
@@ -647,9 +652,9 @@
 
         <section id="day4" class="day-section mb-12">
             <img src="https://via.placeholder.com/1000x300?text=Paris+Day+4" alt="Imagem do Dia 4 em Paris" class="w-full h-auto rounded-lg mb-8">
-            <h2 class="font-display text-3xl text-gray-900 mb-6">Dia 4: Imersão em Arte e Charme Parisiense</h2>
+            <h2 class="font-display text-2xl md:text-3xl text-gray-900 mb-6">Dia 4: Imersão em Arte e Charme Parisiense</h2>
 
-            <h3 class="font-display text-2xl text-gray-900 mb-4"><span class="route-title">CASA → MUSEU DO LOUVRE</span></h3>
+            <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4"><span class="route-title">CASA → MUSEU DO LOUVRE</span></h3>
             <div class="relative timeline-container">
                 <div class="timeline-item">
                     <p class="timeline-time">8:33</p>
@@ -696,7 +701,7 @@
                 </div>
             </div>
 
-            <h3 class="font-display text-2xl text-gray-900 mb-4 mt-8"><span class="route-title">PALAIS ROYAL → ÓPERA & GALERIES LAFAYETTE</span></h3>
+            <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4 mt-8"><span class="route-title">PALAIS ROYAL → ÓPERA & GALERIES LAFAYETTE</span></h3>
             <div class="relative timeline-container">
                 <div class="timeline-item">
                     <p class="timeline-time">14:00</p>
@@ -727,7 +732,7 @@
                 </div>
             </div>
 
-            <h3 class="font-display text-2xl text-gray-900 mb-4 mt-8"><span class="route-title">GALERIES LAFAYETTE → MARAIS → CASA</span></h3>
+            <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4 mt-8"><span class="route-title">GALERIES LAFAYETTE → MARAIS → CASA</span></h3>
             <div class="relative timeline-container">
                 <div class="timeline-item">
                     <p class="timeline-time">17:30</p>
@@ -737,7 +742,7 @@
                 </div>
                  <div class="timeline-item">
                     <p class="timeline-time">18:00</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-person-walking-text-xs"></i></div>
+                    <div class="timeline-icon"><i class="fa-solid fa-person-walking text-xs"></i></div>
                     <h3 class="font-semibold text-lg">Explorar o Marais</h3>
                     <p class="text-gray-600">Passeio livre pelas ruas charmosas, lojas e galerias de arte.</p>
                 </div>
@@ -764,9 +769,9 @@
 
         <section id="day5" class="day-section mb-12">
             <img src="https://via.placeholder.com/1000x300?text=Paris+Day+5" alt="Imagem do Dia 5 em Paris" class="w-full h-auto rounded-lg mb-8">
-            <h2 class="font-display text-3xl text-gray-900 mb-6">Dia 5: Despedida com Charme e Regresso</h2>
+            <h2 class="font-display text-2xl md:text-3xl text-gray-900 mb-6">Dia 5: Despedida com Charme e Regresso</h2>
 
-            <h3 class="font-display text-2xl text-gray-900 mb-4"><span class="route-title">CASA → CACIFO DE MALAS</span></h3>
+            <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4"><span class="route-title">CASA → CACIFO DE MALAS</span></h3>
             <div class="relative timeline-container">
                 <div class="timeline-item">
                     <p class="timeline-time">9:30</p>
@@ -804,7 +809,7 @@
                 </div>
             </div>
 
-            <h3 class="font-display text-2xl text-gray-900 mb-4 mt-8"><span class="route-title">CACIFO DE MALAS → QUARTIER LATIN</span></h3>
+            <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4 mt-8"><span class="route-title">CACIFO DE MALAS → QUARTIER LATIN</span></h3>
             <div class="relative timeline-container">
                 <div class="timeline-item">
                     <p class="timeline-time">10:00</p>
@@ -843,7 +848,7 @@
                 </div>
             </div>
 
-            <h3 class="font-display text-2xl text-gray-900 mb-4 mt-8"><span class="route-title">RUE DE LA HUCHETTE → CACIFO DE MALAS</span></h3>
+            <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4 mt-8"><span class="route-title">RUE DE LA HUCHETTE → CACIFO DE MALAS</span></h3>
             <div class="relative timeline-container">
                 <div class="timeline-item">
                     <p class="timeline-time">13:00</p>
@@ -864,7 +869,7 @@
                 </div>
             </div>
 
-            <h3 class="font-display text-2xl text-gray-900 mb-4 mt-8"><span class="route-title">CACIFO DE MALAS → AEROPORTO ORLY</span></h3>
+            <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4 mt-8"><span class="route-title">CACIFO DE MALAS → AEROPORTO ORLY</span></h3>
             <div class="relative timeline-container">
                 <div class="timeline-item">
                     <p class="timeline-time">13:16</p>
@@ -891,5 +896,24 @@
             </div>
         </section>
     </div>
+
+    <!-- SCRIPT PARA O MENU HAMBURGER -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                }, 100);
+            });
+        });
+    </script>
 </body>
 </html>
