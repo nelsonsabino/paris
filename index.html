@@ -247,20 +247,19 @@
     <h2 class="text-3xl font-bold text-gray-800 mb-2 text-center">Orçamento da Viagem</h2>
     <p class="text-center text-gray-600 mb-6">Uma estimativa dos custos com as principais atividades.</p>
 
-    <!-- NOVOS VISORES DE CUSTO (LADO A LADO) -->
-    <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-8">
-        <!-- CUSTO TOTAL PREVISTO -->
-        <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
-            <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Custo Total Previsto</h3>
-            <p id="total-cost" class="text-4xl md:text-5xl font-bold text-green-600 mt-2">0.00 €</p>
-        </div>
-        <!-- NOVO: CUSTO POR ADULTO 
-        <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
-            <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Custo Total (Adultos)</h3>
-            <p id="adult-cost" class="text-4xl md:text-5xl font-bold text-blue-600 mt-2">0.00 €</p>
-        </div>
-        -->
+<!-- VISORES DE CUSTO (VERSÃO CORRIGIDA) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+    <!-- CUSTO TOTAL PREVISTO -->
+    <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
+        <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Custo Total Previsto</h3>
+        <p id="total-cost" class="text-4xl md:text-5xl font-bold text-green-600 mt-2">0.00 €</p>
     </div>
+    <!-- NOVO: CUSTO POR ADULTO -->
+    <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
+        <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Custo por Adulto</h3>
+        <p id="per-adult-cost" class="text-4xl md:text-5xl font-bold text-blue-600 mt-2">0.00 €</p>
+    </div>
+</div>
 
     <div class="grid grid-cols-1 md:grid-cols-1 gap-8">
         <!-- CARD TORRE EIFFEL -->
@@ -558,45 +557,42 @@
 
 
 
-  <!-- SCRIPT DA CALCULADORA DE ORÇAMENTO (COM CUSTO POR ADULTO) -->
+<!-- SCRIPT DA CALCULADORA DE ORÇAMENTO (COM CUSTO DINÂMICO POR ADULTO) -->
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // A ligação ao Firebase já foi inicializada
         const database = firebase.database();
         const budgetRef = database.ref('budget');
 
         const totalCostElement = document.getElementById('total-cost');
-        const adultCostElement = document.getElementById('adult-cost'); // NOVO: Referência para o total de adulto
-        const costCards = document.querySelectorAll('.cost-card');
+        const perAdultCostElement = document.getElementById('per-adult-cost');
         const costDropdowns = document.querySelectorAll('.cost-dropdown');
 
-        function updateTotals() {
+        function updateAllCalculations() {
             let grandTotal = 0;
-            let adultTotal = 0; // NOVO: Variável para o total de adulto
+            let perAdultTotal = 0;
 
-            costCards.forEach(card => {
-                let cardSubtotal = 0;
-                card.querySelectorAll('.cost-dropdown').forEach(dropdown => {
-                    const quantity = parseInt(dropdown.value, 10);
-                    const costPerItem = parseFloat(dropdown.dataset.cost);
-                    const itemTotalCost = quantity * costPerItem;
-                    
-                    cardSubtotal += itemTotalCost;
-
-                    // NOVO: Verifica se o dropdown é para um adulto
-                    if (dropdown.classList.contains('cost-adult')) {
-                        adultTotal += itemTotalCost;
-                    }
-                });
+            // Percorre TODOS os dropdowns para calcular os totais
+            costDropdowns.forEach(dropdown => {
+                const quantity = parseInt(dropdown.value, 10);
+                const costPerItem = parseFloat(dropdown.dataset.cost);
                 
-                card.querySelector('.subtotal').textContent = `${cardSubtotal.toFixed(2)} €`;
-                grandTotal += cardSubtotal;
-            });
+                // 1. CALCULAR O CUSTO TOTAL PREVISTO (sempre)
+                grandTotal += quantity * costPerItem;
 
-            // Atualiza ambos os totais no ecrã
+                // 2. CALCULAR O CUSTO POR ADULTO (condicional)
+                // Verifica se tem a etiqueta de adulto E se a quantidade é maior que 0
+                if (dropdown.classList.contains('cost-adult') && quantity > 0) {
+                    // Adiciona o custo de APENAS UM bilhete a este total
+                    perAdultTotal += costPerItem;
+                }
+            });
+            
+            // Atualiza os visores no ecrã
             totalCostElement.textContent = `${grandTotal.toFixed(2)} €`;
-            adultCostElement.textContent = `${adultTotal.toFixed(2)} €`; // NOVO: Atualiza o total de adulto
+            perAdultCostElement.textContent = `${perAdultTotal.toFixed(2)} €`;
         }
+        
+        // --- LÓGICA DE SINCRONIZAÇÃO COM FIREBASE ---
 
         // 1. OUVIR POR DADOS DO FIREBASE E ATUALIZAR A PÁGINA
         budgetRef.on('value', (snapshot) => {
@@ -608,7 +604,8 @@
                     }
                 });
             }
-            updateTotals(); // Recalcula tudo depois de receber os dados
+            // Depois de receber os dados, recalcula tudo
+            updateAllCalculations();
         });
 
         // 2. OUVIR POR MUDANÇAS NOS DROPDOWNS E GUARDAR NO FIREBASE
@@ -617,11 +614,18 @@
                 const dropdownId = e.target.id;
                 const selectedQuantity = parseInt(e.target.value, 10);
                 budgetRef.child(dropdownId).set(selectedQuantity);
+                // NOTA: A atualização dos totais é feita automaticamente pelo 'listener' do Firebase,
+                // mas podemos chamar a função aqui para uma resposta visual imediata, se quisermos.
+                // updateAllCalculations(); // Descomentar para resposta instantânea sem esperar pelo Firebase
             });
         });
+
+        // --- CÁLCULO INICIAL ---
+        // A função updateAllCalculations será chamada automaticamente quando os dados do Firebase carregarem.
+        // Se não houver dados no Firebase, podemos chamar uma vez para garantir que os valores são '0.00 €'.
+        updateAllCalculations();
     });
-</script>
-    
+</script>   
     
     
     
