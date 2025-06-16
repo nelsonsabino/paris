@@ -235,7 +235,7 @@
 
 
 
- <!-- SECÇÃO ORÇAMENTO DA VIAGEM (VERSÃO FIREBASE) -->
+ <!-- SECÇÃO ORÇAMENTO DA VIAGEM (COM DROPDOWNS) -->
         <section class="mb-12">
             <h2 class="text-3xl font-bold text-gray-800 mb-2 text-center">Orçamento da Viagem</h2>
             <p class="text-center text-gray-600 mb-6">Uma estimativa dos custos com as principais atividades.</p>
@@ -247,24 +247,42 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- CARD TORRE EIFFEL -->
-                <div class="cost-card bg-white p-6 rounded-2xl shadow-lg">
+                <div class="cost-card bg-white p-6 rounded-2xl shadow-lg flex flex-col">
                     <h3 class="text-xl font-bold text-gray-800 mb-4"><i class="fa-solid fa-tower-eiffel mr-2 text-gray-400"></i>Torre Eiffel</h3>
                     
-                    <div class="mb-4">
-                        <h4 class="font-semibold">Escadas + Elevador (Topo)</h4>
-                        <p class="text-sm text-gray-500">22,40 € por pessoa</p>
-                        <div class="flex flex-wrap gap-x-4 gap-y-2 mt-2">
-                            <label for="budget-eiffel-stairs-p1" class="flex items-center"><input type="checkbox" id="budget-eiffel-stairs-p1" class="cost-checkbox mr-2" data-cost="22.40">Pessoa 1</label>
-                            <label for="budget-eiffel-stairs-p2" class="flex items-center"><input type="checkbox" id="budget-eiffel-stairs-p2" class="cost-checkbox mr-2" data-cost="22.40">Pessoa 2</label>
+                    <div class="space-y-4 flex-grow">
+                        <!-- Opção 1: Escadas + Elevador Topo -->
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h4 class="font-semibold">Escadas + Elevador (Topo)</h4>
+                                <p class="text-sm text-gray-500">22,40 € por pessoa</p>
+                            </div>
+                            <select id="budget-eiffel-stairs-qty" data-cost="22.40" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
                         </div>
-                    </div>
 
-                    <div>
-                        <h4 class="font-semibold">Elevador (Topo)</h4>
-                        <p class="text-sm text-gray-500">29,40 € por pessoa</p>
-                        <div class="flex flex-wrap gap-x-4 gap-y-2 mt-2">
-                            <label for="budget-eiffel-lift-p3" class="flex items-center"><input type="checkbox" id="budget-eiffel-lift-p3" class="cost-checkbox mr-2" data-cost="29.40">Pessoa 3</label>
-                            <label for="budget-eiffel-lift-p4" class="flex items-center"><input type="checkbox" id="budget-eiffel-lift-p4" class="cost-checkbox mr-2" data-cost="29.40">Pessoa 4</label>
+                        <!-- Opção 2: Elevador Topo -->
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h4 class="font-semibold">Elevador (Topo)</h4>
+                                <p class="text-sm text-gray-500">29,40 € por pessoa</p>
+                            </div>
+                            <select id="budget-eiffel-lift-qty" data-cost="29.40" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
                         </div>
                     </div>
 
@@ -273,17 +291,25 @@
                 </div>
 
                 <!-- CARD MUSEU DO LOUVRE -->
-                <div class="cost-card bg-white p-6 rounded-2xl shadow-lg">
+                <div class="cost-card bg-white p-6 rounded-2xl shadow-lg flex flex-col">
                     <h3 class="text-xl font-bold text-gray-800 mb-4"><i class="fa-solid fa-landmark-dome mr-2 text-gray-400"></i>Museu do Louvre</h3>
                     
-                    <div>
-                        <h4 class="font-semibold">Bilhete Geral</h4>
-                        <p class="text-sm text-gray-500">22,00 € por pessoa</p>
-                        <div class="flex flex-wrap gap-x-4 gap-y-2 mt-2">
-                            <label for="budget-louvre-p1" class="flex items-center"><input type="checkbox" id="budget-louvre-p1" class="cost-checkbox mr-2" data-cost="22.00">Pessoa 1</label>
-                            <label for="budget-louvre-p2" class="flex items-center"><input type="checkbox" id="budget-louvre-p2" class="cost-checkbox mr-2" data-cost="22.00">Pessoa 2</label>
-                            <label for="budget-louvre-p3" class="flex items-center"><input type="checkbox" id="budget-louvre-p3" class="cost-checkbox mr-2" data-cost="22.00">Pessoa 3</label>
-                            <label for="budget-louvre-p4" class="flex items-center"><input type="checkbox" id="budget-louvre-p4" class="cost-checkbox mr-2" data-cost="22.00">Pessoa 4</label>
+                    <div class="space-y-4 flex-grow">
+                        <!-- Opção Única -->
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h4 class="font-semibold">Bilhete Geral</h4>
+                                <p class="text-sm text-gray-500">22,00 € por pessoa</p>
+                            </div>
+                            <select id="budget-louvre-general-qty" data-cost="22.00" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
                         </div>
                     </div>
                     
@@ -380,53 +406,57 @@
 
 
 
-  <!-- SCRIPT DA CALCULADORA DE ORÇAMENTO (COM FIREBASE) -->
+  <!-- SCRIPT DA CALCULADORA DE ORÇAMENTO (COM DROPDOWNS E FIREBASE) -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // A ligação ao Firebase já foi inicializada pelo script da checklist
+            // A ligação ao Firebase já foi inicializada
             const database = firebase.database();
             const budgetRef = database.ref('budget');
 
             const totalCostElement = document.getElementById('total-cost');
             const costCards = document.querySelectorAll('.cost-card');
-            const costCheckboxes = document.querySelectorAll('.cost-checkbox');
+            const costDropdowns = document.querySelectorAll('.cost-dropdown');
 
             function updateTotals() {
                 let grandTotal = 0;
                 costCards.forEach(card => {
                     let cardSubtotal = 0;
-                    card.querySelectorAll('.cost-checkbox').forEach(checkbox => {
-                        if (checkbox.checked) {
-                            cardSubtotal += parseFloat(checkbox.dataset.cost);
-                        }
+                    // Agora iteramos pelos dropdowns dentro de cada card
+                    card.querySelectorAll('.cost-dropdown').forEach(dropdown => {
+                        const quantity = parseInt(dropdown.value, 10);
+                        const costPerItem = parseFloat(dropdown.dataset.cost);
+                        cardSubtotal += quantity * costPerItem;
                     });
+                    
                     card.querySelector('.subtotal').textContent = `${cardSubtotal.toFixed(2)} €`;
                     grandTotal += cardSubtotal;
                 });
                 totalCostElement.textContent = `${grandTotal.toFixed(2)} €`;
             }
 
-            // 1. OUVIR POR DADOS DO FIREBASE E ATUALIZAR A PÁGINA
+            // 1. OUVIR POR DADOS DO FIREBASE E ATUALIZAR OS DROPDOWNS
             budgetRef.on('value', (snapshot) => {
                 const data = snapshot.val();
                 if (data) {
-                    costCheckboxes.forEach(checkbox => {
-                        if (data[checkbox.id] !== undefined) {
-                            checkbox.checked = data[checkbox.id];
+                    costDropdowns.forEach(dropdown => {
+                        // Verifica se há um valor guardado para este dropdown
+                        if (data[dropdown.id] !== undefined) {
+                            dropdown.value = data[dropdown.id];
                         }
                     });
                 }
-                // Depois de atualizar as checkboxes, recalcula todos os totais
+                // Depois de definir os valores, calcula os totais
                 updateTotals();
             });
 
-            // 2. OUVIR POR CLIQUES E GUARDAR NO FIREBASE
-            costCheckboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', (e) => {
-                    const checkboxId = e.target.id;
-                    const isChecked = e.target.checked;
-                    // Guarda o estado (true/false) desta checkbox específica no Firebase
-                    budgetRef.child(checkboxId).set(isChecked);
+            // 2. OUVIR POR MUDANÇAS NOS DROPDOWNS E GUARDAR NO FIREBASE
+            costDropdowns.forEach(dropdown => {
+                dropdown.addEventListener('change', (e) => {
+                    const dropdownId = e.target.id;
+                    const selectedQuantity = parseInt(e.target.value, 10);
+                    
+                    // Guarda a quantidade selecionada no Firebase
+                    budgetRef.child(dropdownId).set(selectedQuantity);
                 });
             });
         });
