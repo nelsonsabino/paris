@@ -230,6 +230,14 @@
                         <span class="text-lg">Preparar as malas</span>
                     </label>
                 </div>
+                <!-- Item da Checklist -->
+                <div class="checklist-item flex items-center">
+                    <input type="checkbox" id="check-transportes" class="hidden">
+                    <label for="check-transportes" class="flex items-center cursor-pointer w-full">
+                        <span class="icon-box w-8 h-8 mr-4 flex items-center justify-center border-2 border-gray-300 rounded-md transition-colors"><i class="fa-solid fa-check"></i></span>
+                        <span class="text-lg">Bilhetes transportes públicos</span>
+                    </label>
+                </div>
             </div>
         </section>
 
@@ -316,6 +324,52 @@
                     <hr class="my-4">
                     <div class="text-right"><span class="text-sm text-gray-500">Subtotal:</span><span class="subtotal font-bold text-lg ml-2">0.00 €</span></div>
                 </div>
+                
+                
+                <!-- CARD TRANSPORTES PUBLICOS -->
+                <div class="cost-card bg-white p-6 rounded-2xl shadow-lg flex flex-col">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4"><i class="fa-solid fa-tower-eiffel mr-2 text-gray-400"></i>Transporte Públicos</h3>
+                    
+                    <div class="space-y-4 flex-grow">
+                        <!-- Navigo Easy travel pass -->
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h4 class="font-semibold">Navigo Easy travel pass</h4>
+                                <p class="text-sm text-gray-500">2,00 € por pessoa</p>
+                            </div>
+                            <select id="budget-eiffel-stairs-qty" data-cost="2.00" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
+                        </div>
+
+                        <!-- Forfait Paris Visit 5 dias -->
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h4 class="font-semibold">Forfait Paris Visit 5 dias</h4>
+                                <p class="text-sm text-gray-500">76,25 € por pessoa</p>
+                            </div>
+                            <select id="budget-eiffel-lift-qty" data-cost="76.25" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+                    <div class="text-right"><span class="text-sm text-gray-500">Subtotal:</span><span class="subtotal font-bold text-lg ml-2">0.00 €</span></div>
+                </div>                
+                
             </div>
         </section>
 
@@ -472,4 +526,3 @@
 
 </body>
 </html>
-
