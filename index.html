@@ -196,77 +196,54 @@
         }, 1000);
     </script>
 
-    <!-- SCRIPT DA CHECKLIST COM FIREBASE (VERSÃO SEGURA - MÉTODO CORRETO) -->
+    <!-- SCRIPT DA CHECKLIST COM FIREBASE - A VERSÃO MAIS SIMPLES E FIÁVEL -->
     <!-- Importar os scripts do Firebase -->
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-database-compat.js"></script>
     
     <script>
-        // COLE A SUA CONFIGURAÇÃO DO FIREBASE AQUI
+        // 1. COLE A SUA CONFIGURAÇÃO DO FIREBASE AQUI
         const firebaseConfig = {
-            apiKey: "AIza...",
-            authDomain: "seu-projeto.firebaseapp.com",
-            databaseURL: "https://seu-projeto-default-rtdb.europe-west1.firebasedatabase.app",
-            // ... o resto da sua configuração
-        };
+  apiKey: "AIzaSyAt7jAk5r2tqSdyTf2m7MUebd_t7bbDTJk",
+  authDomain: "planeamento-viagem-paris.firebaseapp.com",
+  databaseURL: "https://planeamento-viagem-paris-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "planeamento-viagem-paris",
+  storageBucket: "planeamento-viagem-paris.firebasestorage.app",
+  messagingSenderId: "121000897121",
+  appId: "1:121000897121:web:75662c01dc56926bf61820"
+};
 
-        // Inicializar o Firebase
+        // 2. COLOQUE A SUA CHAVE SECRETA AQUI
+        const secretKey = 'segredo-da-viagem-paris-2025';
+        
+        // Adiciona a chave secreta ao URL da base de dados para autenticação
+        firebaseConfig.databaseURL = `${firebaseConfig.databaseURL}?auth=${secretKey}`;
+
+        // Inicializar o Firebase com a configuração modificada
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
         
-        // MODIFICAÇÃO IMPORTANTE: Vamos construir o URL com a chave de autenticação
-        const dbUrl = firebaseConfig.databaseURL;
-        const secretKey = 'segredo-da-viagem-paris-2025';
-
         document.addEventListener('DOMContentLoaded', () => {
             const checklistItems = document.querySelectorAll('.checklist-item input[type="checkbox"]');
-            
-            // 1. LER os dados iniciais da base de dados
-            fetch(`${dbUrl}/checklist.json?auth=${secretKey}`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data) {
-                        checklistItems.forEach(item => {
-                            if (data[item.id] !== undefined) {
-                                item.checked = data[item.id];
-                            }
-                        });
-                    }
-                });
+            const checklistRef = database.ref('checklist');
 
-            // 2. OUVIR por cliques e ATUALIZAR a base de dados
-            checklistItems.forEach(item => {
-                item.addEventListener('change', (e) => {
-                    const itemId = e.target.id;
-                    const isChecked = e.target.checked;
-
-                    fetch(`${dbUrl}/checklist/${itemId}.json?auth=${secretKey}`, {
-                        method: 'PUT',
-                        body: JSON.stringify(isChecked),
-                        headers: { 'Content-Type': 'application/json' }
-                    });
-                });
-            });
-
-            // 3. OUVIR em tempo real (opcional mas recomendado)
-            const eventSource = new EventSource(`${dbUrl}/checklist.json?auth=${secretKey}`);
-            eventSource.addEventListener('put', (e) => {
-                const eventData = JSON.parse(e.data);
-                if(eventData.path === "/") { // Se a checklist inteira for atualizada
-                    const allData = eventData.data;
+            // OUVIR POR MUDANÇAS E ATUALIZAR
+            checklistRef.on('value', (snapshot) => {
+                const data = snapshot.val();
+                if (data) {
                     checklistItems.forEach(item => {
-                        if (allData[item.id] !== undefined) {
-                            item.checked = allData[item.id];
+                        if (data[item.id] !== undefined) {
+                            item.checked = data[item.id];
                         }
                     });
-                } else { // Se um item individual for atualizado
-                    const itemId = eventData.path.replace('/', '');
-                    const isChecked = eventData.data;
-                    const checkbox = document.getElementById(itemId);
-                    if(checkbox) {
-                        checkbox.checked = isChecked;
-                    }
                 }
+            });
+
+            // GUARDAR MUDANÇAS QUANDO UM ITEM É CLICADO
+            checklistItems.forEach(item => {
+                item.addEventListener('change', (e) => {
+                    checklistRef.child(e.target.id).set(e.target.checked);
+                });
             });
         });
     </script>
