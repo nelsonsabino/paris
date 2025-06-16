@@ -168,12 +168,13 @@
 
     </div>
 
-    <!-- SCRIPT DO CONTADOR -->
+     <!-- ... o resto do seu HTML fica aqui ... -->
+
+    <!-- SCRIPT DO CONTADOR (mantém-se igual) -->
     <script>
         // --- PARA PERSONALIZAR: ALTERE A DATA ALVO AQUI ---
-        // Formato: Ano, Mês (0=Jan, 1=Fev, ...), Dia, Hora, Minuto, Segundo
         const countdownDate = new Date(2025, 8, 19, 6, 0, 0).getTime();
-
+        // ... (o resto do script do contador continua aqui) ...
         const x = setInterval(function() {
             const now = new Date().getTime();
             const distance = countdownDate - now;
@@ -194,37 +195,59 @@
             }
         }, 1000);
     </script>
-        <!-- SCRIPT DA CHECKLIST INTERATIVA -->
+
+    <!-- SCRIPT DA CHECKLIST COM FIREBASE (NOVO!) -->
+    <!-- Importar os scripts do Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-database-compat.js"></script>
+    
     <script>
+        // COLE A SUA CONFIGURAÇÃO DO FIREBASE AQUI
+        const firebaseConfig = {
+            apiKey: "AIza...",
+            authDomain: "seu-projeto.firebaseapp.com",
+            databaseURL: "https://seu-projeto-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "seu-projeto",
+            storageBucket: "seu-projeto.appspot.com",
+            messagingSenderId: "...",
+            appId: "..."
+        };
+
+        // Inicializar o Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
         document.addEventListener('DOMContentLoaded', (event) => {
             const checklistItems = document.querySelectorAll('.checklist-item input[type="checkbox"]');
+            const checklistRef = database.ref('checklist');
 
-            // Função para guardar o estado de um item
-            function saveState(id, isChecked) {
-                localStorage.setItem(id, isChecked);
-            }
-
-            // Função para carregar os estados guardados
-            function loadStates() {
-                checklistItems.forEach(item => {
-                    const savedState = localStorage.getItem(item.id);
-                    if (savedState !== null) {
-                        item.checked = (savedState === 'true');
-                    }
-                });
-            }
-
-            // Adiciona um 'ouvinte' a cada item da checklist
-            checklistItems.forEach(item => {
-                item.addEventListener('change', (e) => {
-                    saveState(e.target.id, e.target.checked);
-                });
+            // 1. OUVIR POR MUDANÇAS NA BASE DE DADOS E ATUALIZAR A PÁGINA
+            checklistRef.on('value', (snapshot) => {
+                const data = snapshot.val();
+                if (data) {
+                    checklistItems.forEach(item => {
+                        // Atualiza o estado da checkbox se existir na base de dados
+                        if (data[item.id] !== undefined) {
+                            item.checked = data[item.id];
+                        }
+                    });
+                }
             });
 
-            // Carrega os estados assim que a página estiver pronta
-            loadStates();
+            // 2. GUARDAR MUDANÇAS NA BASE DE DADOS QUANDO UM ITEM É CLICADO
+            checklistItems.forEach(item => {
+                item.addEventListener('change', (e) => {
+                    const itemId = e.target.id;
+                    const isChecked = e.target.checked;
+                    // Envia o novo estado para a base de dados
+                    database.ref('checklist/' + itemId).set(isChecked);
+                });
+            });
         });
     </script>
+
+</body>
+</html>
 
 </body>
 </html>
