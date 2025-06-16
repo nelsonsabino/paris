@@ -242,51 +242,65 @@
         </section>
 
 
-  <!-- ORÇAMENTO DA VIAGEM -->
+<!-- SECÇÃO ORÇAMENTO DA VIAGEM (COM CUSTO POR ADULTO) -->
 <section class="mb-12">
-            <h2 class="text-3xl font-bold text-gray-800 mb-2 text-center">Orçamento da Viagem</h2>
-            <p class="text-center text-gray-600 mb-6">Uma estimativa dos custos com as principais atividades.</p>
+    <h2 class="text-3xl font-bold text-gray-800 mb-2 text-center">Orçamento da Viagem</h2>
+    <p class="text-center text-gray-600 mb-6">Uma estimativa dos custos com as principais atividades.</p>
 
-            <!-- CUSTO TOTAL PREVISTO -->
-            <div class="bg-white p-6 rounded-2xl shadow-lg mb-8 text-center">
-                <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Custo Total Previsto</h3>
-                <p id="total-cost" class="text-4xl md:text-5xl font-bold text-green-600 mt-2">0.00 €</p>
-            </div>
+    <!-- NOVOS VISORES DE CUSTO (LADO A LADO) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        <!-- CUSTO TOTAL PREVISTO -->
+        <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
+            <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Custo Total Previsto</h3>
+            <p id="total-cost" class="text-4xl md:text-5xl font-bold text-green-600 mt-2">0.00 €</p>
+        </div>
+        <!-- NOVO: CUSTO POR ADULTO -->
+        <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
+            <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Custo Total (Adultos)</h3>
+            <p id="adult-cost" class="text-4xl md:text-5xl font-bold text-blue-600 mt-2">0.00 €</p>
+        </div>
+    </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-              
-<!-- CARD TORRE EIFFEL -->
-<div class="cost-card bg-white p-6 rounded-2xl shadow-lg flex flex-col">
-    <h3 class="text-xl font-bold text-gray-800 mb-4"><i class="fa-solid fa-tower-observation mr-2 text-gray-400"></i>Torre Eiffel</h3>
-    
-    <div class="space-y-4 flex-grow">
-        <!-- Opção 1: 2º Andar pelas Escadas (Adultos)-->
-        <div class="flex items-center justify-between">
-            <div>
-                <h4 class="font-semibold">2º Andar pelas Escadas (Adultos)</h4>
-                <p class="text-sm text-gray-500">14,50 € por pessoa</p>
-            </div>
-            <select id="budget-eiffel-stairs2-adult-qty" data-cost="14.50" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-            </select>
-        </div>
-        
-        <!-- Opção 2: 2º Andar pelas Escadas (Jovens)-->
-        <div class="flex items-center justify-between">
-            <div>
-                <h4 class="font-semibold">2º Andar pelas Escadas (Jovens)</h4>
-                <p class="text-sm text-gray-500">7,30 € por pessoa</p>
-            </div>
-            <select id="budget-eiffel-stairs2-jovem-qty" data-cost="7.30" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-            </select>
-        </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- CARD TORRE EIFFEL -->
+        <div class="cost-card bg-white p-6 rounded-2xl shadow-lg flex flex-col">
+            <h3 class="text-xl font-bold text-gray-800 mb-4"><i class="fa-solid fa-tower-observation mr-2 text-gray-400"></i>Torre Eiffel</h3>
+            
+            <div class="space-y-4 flex-grow">
+                <!-- Opção 1: 2º Andar pelas Escadas (Adultos)-->
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h4 class="font-semibold">2º Andar pelas Escadas (Adultos)</h4>
+                        <p class="text-sm text-gray-500">14,50 € por pessoa</p>
+                    </div>
+                    <!-- Adicionada a classe 'cost-adult' -->
+                    <select id="budget-eiffel-stairs2-adult-qty" data-cost="14.50" class="cost-dropdown cost-adult border-gray-300 rounded-md w-20 text-center">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </div>
+                
+                <!-- Opção 2: 2º Andar pelas Escadas (Jovens) - SEM a classe 'cost-adult' -->
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h4 class="font-semibold">2º Andar pelas Escadas (Jovens)</h4>
+                        <p class="text-sm text-gray-500">7,30 € por pessoa</p>
+                    </div>
+                    <select id="budget-eiffel-stairs2-jovem-qty" data-cost="7.30" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </div>
 
         <!-- Opção 3: Elevador 2º Andar (Adultos) -->
         <div class="flex items-center justify-between">
@@ -294,7 +308,7 @@
                 <h4 class="font-semibold">Elevador 2º Andar (Adultos)</h4>
                 <p class="text-sm text-gray-500">23,10 € por pessoa</p>
             </div>
-            <select id="budget-eiffel-lift2-adult-qty" data-cost="23.10" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
+            <select id="budget-eiffel-lift2-adult-qty" data-cost="23.10" class="cost-dropdown cost-adult border-gray-300 rounded-md w-20 text-center">
                 <option value="0">0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -322,7 +336,7 @@
                 <h4 class="font-semibold">Escadas + Elevador Topo (Adultos)</h4>
                 <p class="text-sm text-gray-500">27,50 € por pessoa</p>
             </div>
-            <select id="budget-eiffel-stairs-topo-adult-qty" data-cost="27.50" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
+            <select id="budget-eiffel-stairs-topo-adult-qty" data-cost="27.50" class="cost-dropdown cost-adult border-gray-300 rounded-md w-20 text-center">
                 <option value="0">0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -350,7 +364,7 @@
                 <h4 class="font-semibold">Elevador Topo (Adultos)</h4>
                 <p class="text-sm text-gray-500">36,10 € por pessoa</p>
             </div>
-            <select id="budget-eiffel-lift-topo-adult-qty" data-cost="36.10" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
+            <select id="budget-eiffel-lift-topo-adult-qty" data-cost="36.10" class="cost-dropdown cost-adult border-gray-300 rounded-md w-20 text-center">
                 <option value="0">0</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -392,7 +406,7 @@
                                 <h4 class="font-semibold">Bilhete Geral</h4>
                                 <p class="text-sm text-gray-500">22,00 € por pessoa</p>
                             </div>
-                            <select id="budget-louvre-general-qty" data-cost="22.00" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
+                            <select id="budget-louvre-general-qty" data-cost="22.00" class="cost-dropdown cost-adult border-gray-300 rounded-md w-20 text-center">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -420,7 +434,7 @@
                                 <h4 class="font-semibold">Navigo Easy travel pass</h4>
                                 <p class="text-sm text-gray-500">2,00 € por pessoa</p>
                             </div>
-                            <select id="budget-transports-easy-qty" data-cost="2.00" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
+                            <select id="budget-transports-easy-qty" data-cost="2.00" class="cost-dropdown cost-adult border-gray-300 rounded-md w-20 text-center">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -437,7 +451,7 @@
                                 <h4 class="font-semibold">Forfait Paris Visit 5 dias</h4>
                                 <p class="text-sm text-gray-500">76,25 € por pessoa</p>
                             </div>
-                            <select id="budget-transports-visit-qty" data-cost="76.25" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
+                            <select id="budget-transports-visit-qty" data-cost="76.25" class="cost-dropdown cost-adult border-gray-300 rounded-md w-20 text-center">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -543,61 +557,69 @@
 
 
 
-  <!-- SCRIPT DA CALCULADORA DE ORÇAMENTO (COM DROPDOWNS E FIREBASE) -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // A ligação ao Firebase já foi inicializada
-            const database = firebase.database();
-            const budgetRef = database.ref('budget');
+  <!-- SCRIPT DA CALCULADORA DE ORÇAMENTO (COM CUSTO POR ADULTO) -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // A ligação ao Firebase já foi inicializada
+        const database = firebase.database();
+        const budgetRef = database.ref('budget');
 
-            const totalCostElement = document.getElementById('total-cost');
-            const costCards = document.querySelectorAll('.cost-card');
-            const costDropdowns = document.querySelectorAll('.cost-dropdown');
+        const totalCostElement = document.getElementById('total-cost');
+        const adultCostElement = document.getElementById('adult-cost'); // NOVO: Referência para o total de adulto
+        const costCards = document.querySelectorAll('.cost-card');
+        const costDropdowns = document.querySelectorAll('.cost-dropdown');
 
-            function updateTotals() {
-                let grandTotal = 0;
-                costCards.forEach(card => {
-                    let cardSubtotal = 0;
-                    // Agora iteramos pelos dropdowns dentro de cada card
-                    card.querySelectorAll('.cost-dropdown').forEach(dropdown => {
-                        const quantity = parseInt(dropdown.value, 10);
-                        const costPerItem = parseFloat(dropdown.dataset.cost);
-                        cardSubtotal += quantity * costPerItem;
-                    });
+        function updateTotals() {
+            let grandTotal = 0;
+            let adultTotal = 0; // NOVO: Variável para o total de adulto
+
+            costCards.forEach(card => {
+                let cardSubtotal = 0;
+                card.querySelectorAll('.cost-dropdown').forEach(dropdown => {
+                    const quantity = parseInt(dropdown.value, 10);
+                    const costPerItem = parseFloat(dropdown.dataset.cost);
+                    const itemTotalCost = quantity * costPerItem;
                     
-                    card.querySelector('.subtotal').textContent = `${cardSubtotal.toFixed(2)} €`;
-                    grandTotal += cardSubtotal;
-                });
-                totalCostElement.textContent = `${grandTotal.toFixed(2)} €`;
-            }
+                    cardSubtotal += itemTotalCost;
 
-            // 1. OUVIR POR DADOS DO FIREBASE E ATUALIZAR OS DROPDOWNS
-            budgetRef.on('value', (snapshot) => {
-                const data = snapshot.val();
-                if (data) {
-                    costDropdowns.forEach(dropdown => {
-                        // Verifica se há um valor guardado para este dropdown
-                        if (data[dropdown.id] !== undefined) {
-                            dropdown.value = data[dropdown.id];
-                        }
-                    });
-                }
-                // Depois de definir os valores, calcula os totais
-                updateTotals();
+                    // NOVO: Verifica se o dropdown é para um adulto
+                    if (dropdown.classList.contains('cost-adult')) {
+                        adultTotal += itemTotalCost;
+                    }
+                });
+                
+                card.querySelector('.subtotal').textContent = `${cardSubtotal.toFixed(2)} €`;
+                grandTotal += cardSubtotal;
             });
 
-            // 2. OUVIR POR MUDANÇAS NOS DROPDOWNS E GUARDAR NO FIREBASE
-            costDropdowns.forEach(dropdown => {
-                dropdown.addEventListener('change', (e) => {
-                    const dropdownId = e.target.id;
-                    const selectedQuantity = parseInt(e.target.value, 10);
-                    
-                    // Guarda a quantidade selecionada no Firebase
-                    budgetRef.child(dropdownId).set(selectedQuantity);
+            // Atualiza ambos os totais no ecrã
+            totalCostElement.textContent = `${grandTotal.toFixed(2)} €`;
+            adultCostElement.textContent = `${adultTotal.toFixed(2)} €`; // NOVO: Atualiza o total de adulto
+        }
+
+        // 1. OUVIR POR DADOS DO FIREBASE E ATUALIZAR A PÁGINA
+        budgetRef.on('value', (snapshot) => {
+            const data = snapshot.val();
+            if (data) {
+                costDropdowns.forEach(dropdown => {
+                    if (data[dropdown.id] !== undefined) {
+                        dropdown.value = data[dropdown.id];
+                    }
                 });
+            }
+            updateTotals(); // Recalcula tudo depois de receber os dados
+        });
+
+        // 2. OUVIR POR MUDANÇAS NOS DROPDOWNS E GUARDAR NO FIREBASE
+        costDropdowns.forEach(dropdown => {
+            dropdown.addEventListener('change', (e) => {
+                const dropdownId = e.target.id;
+                const selectedQuantity = parseInt(e.target.value, 10);
+                budgetRef.child(dropdownId).set(selectedQuantity);
             });
         });
-    </script>
+    });
+</script>
     
     
     
