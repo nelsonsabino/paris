@@ -196,63 +196,51 @@
         }, 1000);
     </script>
 
-    <!-- SCRIPT DA CHECKLIST COM FIREBASE (VERSÃO FINAL COM DIAGNÓSTICO) -->
-    <!-- Importar os scripts do Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-database-compat.js"></script>
+  <!-- SCRIPT DA CHECKLIST COM FIREBASE (VERSÃO FINAL SIMPLES) -->
+<!-- Importar os scripts do Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-database-compat.js"></script>
+
+<script>
+    // A SUA CONFIGURAÇÃO NORMAL DO FIREBASE
+    const firebaseConfig = {
+      apiKey: "AIzaSyAt7jAk5r2tqSdyTf2m7MUebd_t7bbDTJk",
+      authDomain: "planeamento-viagem-paris.firebaseapp.com",
+      databaseURL: "https://planeamento-viagem-paris-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "planeamento-viagem-paris",
+      storageBucket: "planeamento-viagem-paris.firebasestorage.app",
+      messagingSenderId: "121000897121",
+      appId: "1:121000897121:web:75662c01dc56926bf61820"
+    };
+
+    // Inicializar o Firebase (sem chaves secretas)
+    firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
     
-    <script>
-        // 1. A SUA CONFIGURAÇÃO DO FIREBASE (já está correta no seu ficheiro)
-        const firebaseConfig = {
-          apiKey: "AIzaSyAt7jAk5r2tqSdyTf2m7MUebd_t7bbDTJk",
-          authDomain: "planeamento-viagem-paris.firebaseapp.com",
-          databaseURL: "https://planeamento-viagem-paris-default-rtdb.europe-west1.firebasedatabase.app",
-          projectId: "planeamento-viagem-paris",
-          storageBucket: "planeamento-viagem-paris.firebasestorage.app",
-          messagingSenderId: "121000897121",
-          appId: "1:121000897121:web:75662c01dc56926bf61820"
-        };
+    document.addEventListener('DOMContentLoaded', () => {
+        const checklistItems = document.querySelectorAll('.checklist-item input[type="checkbox"]');
+        const checklistRef = database.ref('checklist');
 
-        // 2. A SUA CHAVE SECRETA (verifique se não há nenhum erro de digitação)
-        const secretKey = 'segredo-da-viagem-paris-2025';
-        
-        // Adiciona a chave secreta ao URL da base de dados para autenticação
-        // Esta linha é a "chave" que abre a porta do Firebase
-        firebaseConfig.databaseURL = `${firebaseConfig.databaseURL}?auth=${secretKey}`;
-
-        // Inicializar o Firebase com a configuração já autenticada
-        firebase.initializeApp(firebaseConfig);
-        const database = firebase.database();
-        
-        document.addEventListener('DOMContentLoaded', () => {
-            const checklistItems = document.querySelectorAll('.checklist-item input[type="checkbox"]');
-            const checklistRef = database.ref('checklist');
-
-            // OUVIR POR MUDANÇAS E ATUALIZAR
-            checklistRef.on('value', (snapshot) => {
-                console.log("Ligação ao Firebase bem-sucedida! Dados recebidos.");
-                const data = snapshot.val();
-                if (data) {
-                    checklistItems.forEach(item => {
-                        if (data[item.id] !== undefined) {
-                            item.checked = data[item.id];
-                        }
-                    });
-                }
-            }, (error) => {
-                // ESTA PARTE É NOVA E VAI AJUDAR-NOS!
-                console.error("ERRO DE PERMISSÃO DO FIREBASE:", error);
-                alert("Falha na ligação à base de dados! Verifique se a 'secretKey' no código é igual à das regras no site do Firebase. (Pressione F12 para ver detalhes do erro na consola).");
-            });
-
-            // GUARDAR MUDANÇAS QUANDO UM ITEM É CLICADO
-            checklistItems.forEach(item => {
-                item.addEventListener('change', (e) => {
-                    checklistRef.child(e.target.id).set(e.target.checked);
+        // OUVIR POR MUDANÇAS E ATUALIZAR
+        checklistRef.on('value', (snapshot) => {
+            const data = snapshot.val();
+            if (data) {
+                checklistItems.forEach(item => {
+                    if (data[item.id] !== undefined) {
+                        item.checked = data[item.id];
+                    }
                 });
+            }
+        });
+
+        // GUARDAR MUDANÇAS QUANDO UM ITEM É CLICADO
+        checklistItems.forEach(item => {
+            item.addEventListener('change', (e) => {
+                checklistRef.child(e.target.id).set(e.target.checked);
             });
         });
-    </script>
+    });
+</script>
 
 </body>
 </html>
