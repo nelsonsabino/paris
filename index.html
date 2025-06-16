@@ -243,163 +243,155 @@
 
 
 
- <!-- SECÇÃO ORÇAMENTO DA VIAGEM (COM DROPDOWNS) -->
-        <section class="mb-12">
-            <h2 class="text-3xl font-bold text-gray-800 mb-2 text-center">Orçamento da Viagem</h2>
-            <p class="text-center text-gray-600 mb-6">Uma estimativa dos custos com as principais atividades.</p>
-
-            <div class="bg-white p-6 rounded-2xl shadow-lg mb-8 text-center">
-                <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Custo Total Previsto</h3>
-                <p id="total-cost" class="text-4xl md:text-5xl font-bold text-green-600 mt-2">0.00 €</p>
+<!-- CARD TORRE EIFFEL (COM IDs ÚNICOS CORRIGIDOS) -->
+<div class="cost-card bg-white p-6 rounded-2xl shadow-lg flex flex-col">
+    <h3 class="text-xl font-bold text-gray-800 mb-4"><i class="fa-solid fa-tower-observation mr-2 text-gray-400"></i>Torre Eiffel</h3>
+    
+    <div class="space-y-4 flex-grow">
+        <!-- Opção 1: 2º Andar pelas Escadas (Adultos)-->
+        <div class="flex items-center justify-between">
+            <div>
+                <h4 class="font-semibold">2º Andar pelas Escadas (Adultos)</h4>
+                <p class="text-sm text-gray-500">14,50 € por pessoa</p>
             </div>
+            <select id="budget-eiffel-stairs2-adult-qty" data-cost="14.50" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+        </div>
+        
+        <!-- Opção 2: 2º Andar pelas Escadas (Jovens)-->
+        <div class="flex items-center justify-between">
+            <div>
+                <h4 class="font-semibold">2º Andar pelas Escadas (Jovens)</h4>
+                <p class="text-sm text-gray-500">7,30 € por pessoa</p>
+            </div>
+            <select id="budget-eiffel-stairs2-jovem-qty" data-cost="7.30" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+        </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- CARD TORRE EIFFEL -->
-                <div class="cost-card bg-white p-6 rounded-2xl shadow-lg flex flex-col">
-                    <h3 class="text-xl font-bold text-gray-800 mb-4"><i class="fa-solid fa-tower-observation mr-2 text-gray-400"></i>Torre Eiffel</h3>
-                    
-                    <div class="space-y-4 flex-grow">
-                        <!-- Opção 1: 2º Andar pelas Escadas (Adultos)-->
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <h4 class="font-semibold">2º Andar pelas Escadas (Adultos)</h4>
-                                <p class="text-sm text-gray-500">14,50 € por pessoa</p>
-                            </div>
-                            <select id="budget-eiffel-stairs-qty" data-cost="14.50" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                            </select>
-                        </div>
-                        
-                        <!-- Opção 2: 2º Andar pelas Escadas (Jovens)-->
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <h4 class="font-semibold">2º Andar pelas Escadas (Jovens)</h4>
-                                <p class="text-sm text-gray-500">7,30 € por pessoa</p>
-                            </div>
-                            <select id="budget-eiffel-stairs-qty" data-cost="7.30" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                            </select>
-                        </div>
+        <!-- Opção 3: Elevador 2º Andar (Adultos) -->
+        <div class="flex items-center justify-between">
+            <div>
+                <h4 class="font-semibold">Elevador 2º Andar (Adultos)</h4>
+                <p class="text-sm text-gray-500">23,10 € por pessoa</p>
+            </div>
+            <select id="budget-eiffel-lift2-adult-qty" data-cost="23.10" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+        </div>
 
-                        <!-- Opção 3: Elevador 2º Andar (Adultos) -->
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <h4 class="font-semibold">Elevador 2º Andar (Adultos)</h4>
-                                <p class="text-sm text-gray-500">23,10 € por pessoa</p>
-                            </div>
-                            <select id="budget-eiffel-stairs-qty" data-cost="23.10" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                            </select>
-                        </div>
+        <!-- Opção 4: Elevador 2º Andar (Jovens) -->
+        <div class="flex items-center justify-between">
+            <div>
+                <h4 class="font-semibold">Elevador 2º Andar (Jovens)</h4>
+                <p class="text-sm text-gray-500">11,60 € por pessoa</p>
+            </div>
+            <select id="budget-eiffel-lift2-jovem-qty" data-cost="11.60" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+        </div>
 
-                        <!-- Opção 4: Elevador 2º Andar (Jovens) -->
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <h4 class="font-semibold">Elevador 2º Andar (Jovens)</h4>
-                                <p class="text-sm text-gray-500">11,60 € por pessoa</p>
-                            </div>
-                            <select id="budget-eiffel-stairs-qty" data-cost="11.60" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                            </select>
-                        </div>
+        <!-- Opção 5: Escadas + Elevador Topo (Adultos) -->
+        <div class="flex items-center justify-between">
+            <div>
+                <h4 class="font-semibold">Escadas + Elevador Topo (Adultos)</h4>
+                <p class="text-sm text-gray-500">27,50 € por pessoa</p>
+            </div>
+            <select id="budget-eiffel-stairs-topo-adult-qty" data-cost="27.50" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+        </div>
+        
+        <!-- Opção 6: Escadas + Elevador Topo (Jovens) -->
+        <div class="flex items-center justify-between">
+            <div>
+                <h4 class="font-semibold">Escadas + Elevador Topo (Jovens)</h4>
+                <p class="text-sm text-gray-500">13,80 € por pessoa</p>
+            </div>
+            <select id="budget-eiffel-stairs-topo-jovem-qty" data-cost="13.80" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+        </div>                        
+        
+        <!-- Opção 7: Elevador Topo (Adultos) -->
+        <div class="flex items-center justify-between">
+            <div>
+                <h4 class="font-semibold">Elevador Topo (Adultos)</h4>
+                <p class="text-sm text-gray-500">36,10 € por pessoa</p>
+            </div>
+            <select id="budget-eiffel-lift-topo-adult-qty" data-cost="36.10" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+        </div>
+        
+        <!-- Opção 8: Elevador Topo (Jovens) -->
+        <div class="flex items-center justify-between">
+            <div>
+                <h4 class="font-semibold">Elevador Topo (Jovens)</h4>
+                <p class="text-sm text-gray-500">18,10 € por pessoa</p>
+            </div>
+            <select id="budget-eiffel-lift-topo-jovem-qty" data-cost="18.10" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+        </div>                        
+        
+    </div>
 
-                        <!-- Opção 5: Escadas + Elevador Topo (Adultos) -->
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <h4 class="font-semibold">Escadas + Elevador Topo (Adultos)</h4>
-                                <p class="text-sm text-gray-500">27,50 € por pessoa</p>
-                            </div>
-                            <select id="budget-eiffel-lift-qty" data-cost="27.50" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                            </select>
-                        </div>
-                        
-                        <!-- Opção 6: Escadas + Elevador Topo (Jovens) -->
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <h4 class="font-semibold">Escadas + Elevador Topo (Jovens)</h4>
-                                <p class="text-sm text-gray-500">13,80 € por pessoa</p>
-                            </div>
-                            <select id="budget-eiffel-lift-qty" data-cost="13.80" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                            </select>
-                        </div>                        
-                        
-                        <!-- Opção 7: Elevador Topo (Adultos) -->
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <h4 class="font-semibold">Elevador Topo (Adultos)</h4>
-                                <p class="text-sm text-gray-500">36,10 € por pessoa</p>
-                            </div>
-                            <select id="budget-eiffel-lift-qty" data-cost="36.10" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                            </select>
-                        </div>
-                        
-                        <!-- Opção 8: Elevador Topo (Jovens) -->
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <h4 class="font-semibold">Elevador Topo (Jovens)</h4>
-                                <p class="text-sm text-gray-500">18,10 € por pessoa</p>
-                            </div>
-                            <select id="budget-eiffel-lift-qty" data-cost="18.10" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                            </select>
-                        </div>                        
-                        
-                    </div>
+    <hr class="my-4">
+    <div class="text-right"><span class="text-sm text-gray-500">Subtotal:</span><span class="subtotal font-bold text-lg ml-2">0.00 €</span></div>
+</div>
 
-                    <hr class="my-4">
-                    <div class="text-right"><span class="text-sm text-gray-500">Subtotal:</span><span class="subtotal font-bold text-lg ml-2">0.00 €</span></div>
-                </div>
+
+
 
                 <!-- CARD MUSEU DO LOUVRE -->
                 <div class="cost-card bg-white p-6 rounded-2xl shadow-lg flex flex-col">
