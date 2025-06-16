@@ -557,37 +557,49 @@
 
 
 
-<!-- SCRIPT DA CALCULADORA DE ORÇAMENTO (COM CUSTO DINÂMICO POR ADULTO) -->
+<!-- SCRIPT DA CALCULADORA DE ORÇAMENTO (COM SUBTOTAIS CORRIGIDOS) -->
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+        // A ligação ao Firebase já foi inicializada pelos scripts anteriores
         const database = firebase.database();
         const budgetRef = database.ref('budget');
 
         const totalCostElement = document.getElementById('total-cost');
         const perAdultCostElement = document.getElementById('per-adult-cost');
+        const costCards = document.querySelectorAll('.cost-card'); // Vamos precisar disto
         const costDropdowns = document.querySelectorAll('.cost-dropdown');
 
         function updateAllCalculations() {
             let grandTotal = 0;
             let perAdultTotal = 0;
 
-            // Percorre TODOS os dropdowns para calcular os totais
-            costDropdowns.forEach(dropdown => {
-                const quantity = parseInt(dropdown.value, 10);
-                const costPerItem = parseFloat(dropdown.dataset.cost);
-                
-                // 1. CALCULAR O CUSTO TOTAL PREVISTO (sempre)
-                grandTotal += quantity * costPerItem;
+            // NOVO: Percorre cada CARD individualmente para calcular o seu subtotal
+            costCards.forEach(card => {
+                let cardSubtotal = 0;
 
-                // 2. CALCULAR O CUSTO POR ADULTO (condicional)
-                // Verifica se tem a etiqueta de adulto E se a quantidade é maior que 0
-                if (dropdown.classList.contains('cost-adult') && quantity > 0) {
-                    // Adiciona o custo de APENAS UM bilhete a este total
-                    perAdultTotal += costPerItem;
+                // Percorre os dropdowns DENTRO deste card específico
+                card.querySelectorAll('.cost-dropdown').forEach(dropdown => {
+                    const quantity = parseInt(dropdown.value, 10);
+                    const costPerItem = parseFloat(dropdown.dataset.cost);
+                    const itemTotalCost = quantity * costPerItem;
+
+                    cardSubtotal += itemTotalCost;
+                    grandTotal += itemTotalCost;
+
+                    // A lógica do Custo por Adulto continua igual
+                    if (dropdown.classList.contains('cost-adult') && quantity > 0) {
+                        perAdultTotal += costPerItem;
+                    }
+                });
+
+                // ATUALIZA O SUBTOTAL DESTE CARD ESPECÍFICO
+                const subtotalElement = card.querySelector('.subtotal');
+                if (subtotalElement) {
+                    subtotalElement.textContent = `${cardSubtotal.toFixed(2)} €`;
                 }
             });
             
-            // Atualiza os visores no ecrã
+            // Atualiza os visores GERAIS no ecrã
             totalCostElement.textContent = `${grandTotal.toFixed(2)} €`;
             perAdultCostElement.textContent = `${perAdultTotal.toFixed(2)} €`;
         }
@@ -604,7 +616,6 @@
                     }
                 });
             }
-            // Depois de receber os dados, recalcula tudo
             updateAllCalculations();
         });
 
@@ -614,18 +625,13 @@
                 const dropdownId = e.target.id;
                 const selectedQuantity = parseInt(e.target.value, 10);
                 budgetRef.child(dropdownId).set(selectedQuantity);
-                // NOTA: A atualização dos totais é feita automaticamente pelo 'listener' do Firebase,
-                // mas podemos chamar a função aqui para uma resposta visual imediata, se quisermos.
-                // updateAllCalculations(); // Descomentar para resposta instantânea sem esperar pelo Firebase
             });
         });
 
         // --- CÁLCULO INICIAL ---
-        // A função updateAllCalculations será chamada automaticamente quando os dados do Firebase carregarem.
-        // Se não houver dados no Firebase, podemos chamar uma vez para garantir que os valores são '0.00 €'.
         updateAllCalculations();
     });
-</script>   
+</script>
     
     
     
