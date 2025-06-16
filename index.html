@@ -196,30 +196,31 @@
         }, 1000);
     </script>
 
-    <!-- SCRIPT DA CHECKLIST COM FIREBASE - A VERSÃO MAIS SIMPLES E FIÁVEL -->
+    <!-- SCRIPT DA CHECKLIST COM FIREBASE (VERSÃO FINAL COM DIAGNÓSTICO) -->
     <!-- Importar os scripts do Firebase -->
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-database-compat.js"></script>
     
     <script>
-        // 1. COLE A SUA CONFIGURAÇÃO DO FIREBASE AQUI
+        // 1. A SUA CONFIGURAÇÃO DO FIREBASE (já está correta no seu ficheiro)
         const firebaseConfig = {
-  apiKey: "AIzaSyAt7jAk5r2tqSdyTf2m7MUebd_t7bbDTJk",
-  authDomain: "planeamento-viagem-paris.firebaseapp.com",
-  databaseURL: "https://planeamento-viagem-paris-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "planeamento-viagem-paris",
-  storageBucket: "planeamento-viagem-paris.firebasestorage.app",
-  messagingSenderId: "121000897121",
-  appId: "1:121000897121:web:75662c01dc56926bf61820"
-};
+          apiKey: "AIzaSyAt7jAk5r2tqSdyTf2m7MUebd_t7bbDTJk",
+          authDomain: "planeamento-viagem-paris.firebaseapp.com",
+          databaseURL: "https://planeamento-viagem-paris-default-rtdb.europe-west1.firebasedatabase.app",
+          projectId: "planeamento-viagem-paris",
+          storageBucket: "planeamento-viagem-paris.firebasestorage.app",
+          messagingSenderId: "121000897121",
+          appId: "1:121000897121:web:75662c01dc56926bf61820"
+        };
 
-        // 2. COLOQUE A SUA CHAVE SECRETA AQUI
+        // 2. A SUA CHAVE SECRETA (verifique se não há nenhum erro de digitação)
         const secretKey = 'segredo-da-viagem-paris-2025';
         
         // Adiciona a chave secreta ao URL da base de dados para autenticação
+        // Esta linha é a "chave" que abre a porta do Firebase
         firebaseConfig.databaseURL = `${firebaseConfig.databaseURL}?auth=${secretKey}`;
 
-        // Inicializar o Firebase com a configuração modificada
+        // Inicializar o Firebase com a configuração já autenticada
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
         
@@ -229,6 +230,7 @@
 
             // OUVIR POR MUDANÇAS E ATUALIZAR
             checklistRef.on('value', (snapshot) => {
+                console.log("Ligação ao Firebase bem-sucedida! Dados recebidos.");
                 const data = snapshot.val();
                 if (data) {
                     checklistItems.forEach(item => {
@@ -237,6 +239,10 @@
                         }
                     });
                 }
+            }, (error) => {
+                // ESTA PARTE É NOVA E VAI AJUDAR-NOS!
+                console.error("ERRO DE PERMISSÃO DO FIREBASE:", error);
+                alert("Falha na ligação à base de dados! Verifique se a 'secretKey' no código é igual à das regras no site do Firebase. (Pressione F12 para ver detalhes do erro na consola).");
             });
 
             // GUARDAR MUDANÇAS QUANDO UM ITEM É CLICADO
