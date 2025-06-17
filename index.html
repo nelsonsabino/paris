@@ -504,7 +504,12 @@
 
     </div>
 
-    
+<!-- NOVA SECÇÃO: TIMELINE DE BILHETES -->
+<section class="mb-12">
+    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Resumo de Bilhetes por Dia</h2>
+    <!-- O JavaScript vai inserir a timeline aqui -->
+    <div id="ticket-timeline-container" class="space-y-6"></div>
+</section>    
     
     
     <!---------------------------------------------------------------------------------------------------------------------->
@@ -670,22 +675,24 @@
     
     
     
-<!-- SCRIPT DINÂMICO PARA TIMELINE E CALENDÁRIO -->
+
+
+
+ 
+
+
+<!-- SCRIPT DINÂMICO PARA TIMELINES E CALENDÁRIO -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
 
+    // ==========================================================
+    // 1. FONTE ÚNICA DE DADOS (É SÓ AQUI QUE PRECISA DE EDITAR!)
+    // ==========================================================
 
-
-
-
-
-
-    // ====================================================================================================================
-    // 1. A NOSSA FONTE ÚNICA DE DADOS (É SÓ AQUI QUE PRECISA DE MEXER!)
-    // ====================================================================================================================
+    // Lista para a timeline de "Próximos Passos" e para o Calendário
     const planningEvents = [
 
-        {
+       {
             title: 'Comprar bilhetes para o Museu do Louvre',
             date: '2025-06-18',
             description: 'Comprar para o dia 22 de Setembro (Segunda-feira).',
@@ -735,7 +742,7 @@ document.addEventListener('DOMContentLoaded', function() {
             color: '#ea580c'
         },        
         {
-            title: 'VIAGEM A PARIS!',
+            title: 'INÍCIO DA VIAGEM!',
             date: '2025-09-19',
             endDate: '2025-09-24', // Data de fim para o calendário
             description: 'De 19 a 23 de Setembro.',
@@ -743,119 +750,111 @@ document.addEventListener('DOMContentLoaded', function() {
             color: '#16a34a'
         }
     ];
+    
 
-
-
-
+    // Lista para a timeline de "Resumo de Bilhetes"
+    const tripItinerary = [
+        {
+            day: 'Dia 1',
+            date: '19/09',
+            theme: 'Chegada e Torre Eiffel',
+            ticketedVenues: [
+                { name: 'Torre Eiffel', icon: 'fa-tower-observation' }
+            ]
+        },
+        {
+            day: 'Dia 2',
+            date: '20/09',
+            theme: 'Coração Histórico',
+            ticketedVenues: [
+                { name: 'Sainte-Chapelle', icon: 'fa-gem' }
+            ]
+        },
+        {
+            day: 'Dia 3',
+            date: '21/09',
+            theme: 'Realeza e Arte Boémia',
+            ticketedVenues: [
+                { name: 'Palácio de Versalhes', icon: 'fa-crown' },
+                { name: 'Arco do Triunfo (subida)', icon: 'fa-archway' }
+            ]
+        },
+        {
+            day: 'Dia 4',
+            date: '22/09',
+            theme: 'Imersão em Arte',
+            ticketedVenues: [
+                { name: 'Museu do Louvre', icon: 'fa-landmark-dome' },
+                { name: 'Ópera Garnier', icon: 'fa-masks-theater' }
+            ]
+        },
+        {
+            day: 'Dia 5',
+            date: '23/09',
+            theme: 'Despedida e Regresso',
+            ticketedVenues: []
+        }
+    ];
 
     // ==========================================================
-    // 2. FUNÇÃO PARA GERAR A TIMELINE
+    // 2. FUNÇÕES DE RENDERIZAÇÃO (NÃO PRECISA DE MEXER AQUI)
     // ==========================================================
+
+    // Função para gerar a timeline de "Próximos Passos"
     function renderTimeline() {
         const timelineContainer = document.getElementById('timeline-container');
-        if (!timelineContainer) return; // Se o contentor não existir, não faz nada
-        
-        timelineContainer.innerHTML = ''; // Limpa a timeline antes de a redesenhar
-
+        if (!timelineContainer) return;
+        timelineContainer.innerHTML = '';
         planningEvents.forEach(event => {
-            // Ignora o evento da viagem para não o mostrar na lista de tarefas
-            if (event.title === 'VIAGEM A PARIS!') return;
-
-            const eventDate = new Date(event.date + 'T00:00:00'); // Adiciona T00:00:00 para evitar problemas de fuso horário
+            if (event.title === 'INÍCIO DA VIAGEM!') return;
+            const eventDate = new Date(event.date + 'T00:00:00');
             const month = eventDate.toLocaleString('pt-PT', { month: 'short' }).toUpperCase().replace('.', '');
             const day = eventDate.getDate();
-
             const isComplete = event.status === 'complete';
-            
-            const itemHTML = `
-                <div class="flex items-start space-x-4 ${isComplete ? 'opacity-60' : ''}">
-                    <div class="flex flex-col items-center">
-                        <span class="text-lg font-semibold ${isComplete ? 'text-gray-500' : 'text-green-700'}">${month}</span>
-                        <span class="text-2xl font-bold ${isComplete ? 'text-gray-500' : 'text-green-700'}">${day}</span>
-                    </div>
-                    <div class="bg-white p-4 rounded-lg shadow-md flex-1">
-                        <h3 class="font-semibold text-lg ${isComplete ? 'line-through' : ''}">${event.title}</h3>
-                        <p class="text-sm text-gray-600">${event.description}</p>
-                        <div class="mt-2 text-sm font-medium ${isComplete ? 'text-green-600' : 'text-yellow-600'}">
-                            <i class="fa-solid ${isComplete ? 'fa-check-circle' : 'fa-hourglass-half'} mr-2"></i>
-                            ${isComplete ? 'Concluído' : 'Pendente'}
-                        </div>
-                    </div>
-                </div>
-            `;
+            const itemHTML = `<div class="flex items-start space-x-4 ${isComplete ? 'opacity-60' : ''}"><div class="flex flex-col items-center"><span class="text-lg font-semibold ${isComplete ? 'text-gray-500' : 'text-green-700'}">${month}</span><span class="text-2xl font-bold ${isComplete ? 'text-gray-500' : 'text-green-700'}">${day}</span></div><div class="bg-white p-4 rounded-lg shadow-md flex-1"><h3 class="font-semibold text-lg ${isComplete ? 'line-through' : ''}">${event.title}</h3><p class="text-sm text-gray-600">${event.description}</p><div class="mt-2 text-sm font-medium ${isComplete ? 'text-green-600' : 'text-yellow-600'}"><i class="fa-solid ${isComplete ? 'fa-check-circle' : 'fa-hourglass-half'} mr-2"></i>${isComplete ? 'Concluído' : 'Pendente'}</div></div></div>`;
             timelineContainer.innerHTML += itemHTML;
         });
     }
 
-    // ==========================================================
-    // 3. FUNÇÃO PARA GERAR O CALENDÁRIO
-    // ==========================================================
-     function renderCalendar() {
+    // Função para gerar o Calendário interativo
+    function renderCalendar() {
         const calendarEl = document.getElementById('calendar');
         if (!calendarEl) return;
-
-        // NOVO: Referências aos elementos do popup
         const modal = document.getElementById('event-modal');
         const modalTitle = document.getElementById('modal-title');
         const modalDescription = document.getElementById('modal-description');
         const modalCloseBtn = document.getElementById('modal-close-btn');
-
-        // Formata os eventos, adicionando a descrição nas 'extendedProps'
-        const calendarEvents = planningEvents.map(event => ({
-            title: event.title,
-            start: event.date,
-            end: event.endDate,
-            backgroundColor: event.color,
-            borderColor: event.color,
-            allDay: true,
-            extendedProps: { // Guarda dados extra aqui
-                description: event.description || 'Não há detalhes adicionais.'
-            }
-        }));
-        
-        const calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'dayGridMonth',
-            locale: 'pt-br',
-            headerToolbar: {
-                left: 'prev,next today',
-                center: 'title',
-                right: ''
-            },
-            events: calendarEvents,
-            
-            // NOVO: AÇÃO DE CLIQUE NO EVENTO
-            eventClick: function(info) {
-                // Previne qualquer comportamento padrão do navegador
-                info.jsEvent.preventDefault();
-                
-                // Preenche o popup com os dados do evento clicado
-                modalTitle.textContent = info.event.title;
-                modalDescription.textContent = info.event.extendedProps.description;
-                
-                // Mostra o popup
-                modal.classList.remove('hidden');
-            }
-        });
-
-        // NOVO: LÓGICA PARA FECHAR O POPUP
-        function closeModal() {
-            modal.classList.add('hidden');
-        }
-        
+        const calendarEvents = planningEvents.map(event => ({ title: event.title, start: event.date, end: event.endDate, backgroundColor: event.color, borderColor: event.color, allDay: true, extendedProps: { description: event.description || 'Não há detalhes adicionais.' } }));
+        const calendar = new FullCalendar.Calendar(calendarEl, { initialView: 'dayGridMonth', locale: 'pt-br', headerToolbar: { left: 'prev,next today', center: 'title', right: '' }, events: calendarEvents, eventClick: function(info) { info.jsEvent.preventDefault(); modalTitle.textContent = info.event.title; modalDescription.textContent = info.event.extendedProps.description; modal.classList.remove('hidden'); } });
+        function closeModal() { modal.classList.add('hidden'); }
         modalCloseBtn.addEventListener('click', closeModal);
-        // Fecha também se clicar fora do popup (no fundo escuro)
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
-
+        modal.addEventListener('click', function(e) { if (e.target === modal) { closeModal(); } });
         calendar.render();
     }
 
-    // --- 4. CHAMAR AS FUNÇÕES (NÃO MUDA) ---
+    // Função para gerar a timeline de "Resumo de Bilhetes"
+    function renderTicketTimeline() {
+        const container = document.getElementById('ticket-timeline-container');
+        if (!container) return;
+        container.innerHTML = '';
+        tripItinerary.forEach(day => {
+            let venuesHTML = '';
+            if (day.ticketedVenues.length > 0) {
+                venuesHTML = `<ul class="mt-2 space-y-2">` + day.ticketedVenues.map(venue => `<li class="flex items-center text-gray-700"><i class="fa-solid ${venue.icon} w-6 text-center mr-2 text-blue-500"></i><span>${venue.name}</span></li>`).join('') + `</ul>`;
+            } else {
+                venuesHTML = `<p class="mt-2 text-gray-500 italic">Nenhum bilhete necessário para este dia.</p>`;
+            }
+            const dayHTML = `<div class="bg-white p-6 rounded-2xl shadow-lg flex items-start space-x-4"><div class="text-center border-r pr-4"><p class="text-lg font-bold text-gray-800">${day.day}</p><p class="text-sm text-gray-500">${day.date}</p></div><div class="flex-grow"><h4 class="font-semibold text-lg text-gray-900">${day.theme}</h4>${venuesHTML}</div></div>`;
+            container.innerHTML += dayHTML;
+        });
+    }
+
+    // ==========================================================
+    // 3. CHAMADAS INICIAIS (EXECUTAR TUDO)
+    // ==========================================================
     renderTimeline();
     renderCalendar();
+    renderTicketTimeline();
 });
 </script>
 
