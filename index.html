@@ -631,9 +631,14 @@
 document.addEventListener('DOMContentLoaded', function() {
 
 
-    // ==========================================================
+
+
+
+
+
+    // ====================================================================================================================
     // 1. A NOSSA FONTE ÚNICA DE DADOS (É SÓ AQUI QUE PRECISA DE MEXER!)
-    // ==========================================================
+    // ====================================================================================================================
     const planningEvents = [
         {
             title: 'Comprar bilhetes para Versailles',
@@ -678,7 +683,7 @@ document.addEventListener('DOMContentLoaded', function() {
             color: '#ea580c'
         },        
         {
-            title: 'INÍCIO DA VIAGEM!',
+            title: 'VIAGEM A PARIS!',
             date: '2025-09-19',
             endDate: '2025-09-24', // Data de fim para o calendário
             description: 'De 19 a 23 de Setembro.',
@@ -686,6 +691,10 @@ document.addEventListener('DOMContentLoaded', function() {
             color: '#16a34a'
         }
     ];
+
+
+
+
 
     // ==========================================================
     // 2. FUNÇÃO PARA GERAR A TIMELINE
@@ -698,7 +707,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         planningEvents.forEach(event => {
             // Ignora o evento da viagem para não o mostrar na lista de tarefas
-            if (event.title === 'INÍCIO DA VIAGEM!') return;
+            if (event.title === 'VIAGEM A PARIS!') return;
 
             const eventDate = new Date(event.date + 'T00:00:00'); // Adiciona T00:00:00 para evitar problemas de fuso horário
             const month = eventDate.toLocaleString('pt-PT', { month: 'short' }).toUpperCase().replace('.', '');
