@@ -120,9 +120,6 @@
                     </div>
                 </div>
 -->
-
-
-
                 <!-- Item -->
                 <div class="flex items-start space-x-4">
                     <div class="flex flex-col items-center">
@@ -205,6 +202,21 @@
                  
             </div>
         </section>
+
+
+
+
+
+
+<!-- SECÇÃO DO CALENDÁRIO -->
+<section class="mb-12">
+    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Calendário</h2>
+    <div class="bg-white p-4 md:p-6 rounded-2xl shadow-lg">
+        <div id='calendar'></div>
+    </div>
+</section>
+
+
 
 
 
@@ -721,7 +733,59 @@
     
     
     
-
+<!-- SCRIPT PARA O CALENDÁRIO -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const calendarEl = document.getElementById('calendar');
+        
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+            // --- CONFIGURAÇÕES BÁSICAS ---
+            initialView: 'dayGridMonth', // Vista de mês
+            locale: 'pt-br',             // Idioma
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: '' // Deixamos a direita vazia para um look mais limpo
+            },
+            
+            // --- EVENTOS (AQUI VAI A SUA LISTA DE TAREFAS) ---
+            // Adicione ou edite os seus "Próximos Passos" aqui.
+            // O formato da data é 'ANO-MÊS-DIA'
+            events: [
+                {
+                    title: 'Comprar bilhetes para a Torre Eiffel',
+                    start: '2025-07-18',
+                    backgroundColor: '#dc2626', // Vermelho para tarefas importantes
+                    borderColor: '#dc2626'
+                },
+                {
+                    title: 'Comprar bilhetes para o Museu do Louvre',
+                    start: '2025-07-25'
+                },
+                {
+                    title: 'Comprar bilhetes para a Sainte-Chapelle',
+                    start: '2025-08-15'
+                },
+                {
+                    title: 'Fazer pagamento da casa de Paris',
+                    start: '2025-08-25',
+                    backgroundColor: '#ea580c', // Laranja para pagamentos
+                    borderColor: '#ea580c'
+                },
+                {
+                    title: 'INÍCIO DA VIAGEM!',
+                    start: '2025-09-19',
+                    end: '2025-09-24', // Adicionamos uma data de fim para o evento durar vários dias
+                    backgroundColor: '#16a34a', // Verde para o evento principal
+                    borderColor: '#16a34a',
+                    allDay: true
+                }
+            ]
+        });
+        
+        calendar.render();
+    });
+</script>
 
 
 
