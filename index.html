@@ -200,6 +200,8 @@
 </div>
 
     <div class="grid grid-cols-1 md:grid-cols-1 gap-8">
+      
+      
         <!-- CARD TORRE EIFFEL -->
         <div class="cost-card bg-white p-6 rounded-2xl shadow-lg flex flex-col">
             <h3 class="text-xl font-bold text-gray-800 mb-4"><i class="fa-solid fa-tower-observation mr-2 text-gray-400"></i>Torre Eiffel</h3>
@@ -331,9 +333,6 @@
 </div>
 
 
-
-
-
                 <!-- CARD SAINTE-CHAPELLE -->
                 <div class="cost-card bg-white p-6 rounded-2xl shadow-lg flex flex-col">
                     <h3 class="text-xl font-bold text-gray-800 mb-4"><i class="fa-solid fa-church mr-2 text-gray-400"></i>Sainte-Chapelle</h3>
@@ -413,6 +412,51 @@
                     <hr class="my-4">
                     <div class="text-right"><span class="text-sm text-gray-500">Subtotal:</span><span class="subtotal font-bold text-lg ml-2">0.00 €</span></div>
                 </div>
+
+
+
+
+        <!-- CARD Palais Garnier -->
+        <div class="cost-card bg-white p-6 rounded-2xl shadow-lg flex flex-col">
+            <h3 class="text-xl font-bold text-gray-800 mb-4"><i class="fa-solid fa-tower-observation mr-2 text-gray-400"></i>Palais Garnier</h3>
+            
+            <div class="space-y-4 flex-grow">
+
+
+        <!-- Opção 1: (Adultos) -->
+        <div class="flex items-center justify-between">
+            <div>
+                <h4 class="font-semibold">Bilhete Adultos</h4>
+                <p class="text-sm text-gray-500">15,00 € por pessoa</p>
+            </div>
+            <select id="budget-Garnier-lift2-adult-qty" data-cost="15.00" class="cost-dropdown cost-adult border-gray-300 rounded-md w-20 text-center">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+        </div>
+
+        <!-- Opção 1: (Jovens) -->
+        <div class="flex items-center justify-between">
+            <div>
+                <h4 class="font-semibold">Bilhete Jovens</h4>
+                <p class="text-sm text-gray-500">10,00 € por pessoa</p>
+            </div>
+            <select id="budget-Garnier-lift2-jovem-qty" data-cost="10.00" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select>
+        </div>
+
+    </div>
+
+    <hr class="my-4">
+    <div class="text-right"><span class="text-sm text-gray-500">Subtotal:</span><span class="subtotal font-bold text-lg ml-2">0.00 €</span></div>
+</div>
+
                 
                 
                 <!-- CARD TRANSPORTES PUBLICOS -->
