@@ -630,6 +630,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
 
+
     // ==========================================================
     // 1. A NOSSA FONTE ÚNICA DE DADOS (É SÓ AQUI QUE PRECISA DE MEXER!)
     // ==========================================================
@@ -728,18 +729,27 @@ document.addEventListener('DOMContentLoaded', function() {
     // ==========================================================
     // 3. FUNÇÃO PARA GERAR O CALENDÁRIO
     // ==========================================================
-    function renderCalendar() {
+     function renderCalendar() {
         const calendarEl = document.getElementById('calendar');
         if (!calendarEl) return;
 
-        // Formata os nossos eventos para o formato que o FullCalendar entende
+        // NOVO: Referências aos elementos do popup
+        const modal = document.getElementById('event-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDescription = document.getElementById('modal-description');
+        const modalCloseBtn = document.getElementById('modal-close-btn');
+
+        // Formata os eventos, adicionando a descrição nas 'extendedProps'
         const calendarEvents = planningEvents.map(event => ({
             title: event.title,
             start: event.date,
-            end: event.endDate, // Será 'undefined' se não existir, o que é correto
+            end: event.endDate,
             backgroundColor: event.color,
             borderColor: event.color,
-            allDay: true
+            allDay: true,
+            extendedProps: { // Guarda dados extra aqui
+                description: event.description || 'Não há detalhes adicionais.'
+            }
         }));
         
         const calendar = new FullCalendar.Calendar(calendarEl, {
@@ -750,19 +760,63 @@ document.addEventListener('DOMContentLoaded', function() {
                 center: 'title',
                 right: ''
             },
-            events: calendarEvents
+            events: calendarEvents,
+            
+            // NOVO: AÇÃO DE CLIQUE NO EVENTO
+            eventClick: function(info) {
+                // Previne qualquer comportamento padrão do navegador
+                info.jsEvent.preventDefault();
+                
+                // Preenche o popup com os dados do evento clicado
+                modalTitle.textContent = info.event.title;
+                modalDescription.textContent = info.event.extendedProps.description;
+                
+                // Mostra o popup
+                modal.classList.remove('hidden');
+            }
         });
+
+        // NOVO: LÓGICA PARA FECHAR O POPUP
+        function closeModal() {
+            modal.classList.add('hidden');
+        }
         
+        modalCloseBtn.addEventListener('click', closeModal);
+        // Fecha também se clicar fora do popup (no fundo escuro)
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
         calendar.render();
     }
 
-    // ==========================================================
-    // 4. CHAMAR AS FUNÇÕES PARA DESENHAR TUDO
-    // ==========================================================
+    // --- 4. CHAMAR AS FUNÇÕES (NÃO MUDA) ---
     renderTimeline();
     renderCalendar();
 });
 </script>
+
+
+
+<!-- ESTRUTURA DO POPUP/MODAL (ESCONDIDO POR DEFEITO) -->
+<div id="event-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+    <!-- O popup em si -->
+    <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 w-full max-w-md relative">
+        <!-- Botão para fechar -->
+        <button id="modal-close-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 transition">
+            <i class="fa-solid fa-xmark fa-2x"></i>
+        </button>
+
+        <!-- Conteúdo do popup (será preenchido pelo JavaScript) -->
+        <h3 id="modal-title" class="text-2xl font-bold text-gray-800 mb-4">Título do Evento</h3>
+        <p id="modal-description" class="text-gray-600">Descrição detalhada do evento irá aparecer aqui.</p>
+    </div>
+</div>
+
+</body>
+</html>
 
 
 
