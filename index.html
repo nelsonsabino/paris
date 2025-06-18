@@ -548,7 +548,10 @@
         }, 1000);
     </script>
 
-    <!-- SCRIPT GERAL UNIFICADO PARA TODAS AS FUNCIONALIDADES (VERSÃO FINAL CORRIGIDA) -->
+
+
+
+    <!-- SCRIPT GERAL UNIFICADO PARA TODAS AS FUNCIONALIDADES  -->
     <!-- Importar os scripts do Firebase -->
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-database-compat.js"></script>
@@ -636,31 +639,36 @@
         // ==========================================================
         
         
-        const tripItinerary = [
-            { day: 'Dia 1', date: '19/09', 
-            theme: 'Chegada e Torre Eiffel', 
-            ticketedVenues: [
-            { name: 'Torre Eiffel', icon: 'fa-tower-observation' }] },
-            
-            { day: 'Dia 2', date: '20/09', 
-            theme: 'Coração Histórico', 
-            ticketedVenues: [
-            { name: 'Sainte-Chapelle', icon: 'fa-gem' }] },
-            
-            { day: 'Dia 3', date: '21/09', 
-            theme: 'Realeza e Arte Boémia', 
-            ticketedVenues: [
-            { name: 'Palácio de Versalhes', icon: 'fa-crown' }, 
-            { name: 'Arco do Triunfo (subida)', icon: 'fa-archway' }] },
-            
-            { day: 'Dia 4', date: '22/09', 
-            theme: 'Imersão em Arte', 
-            ticketedVenues: [
-            { name: 'Museu do Louvre', icon: 'fa-landmark-dome' }, 
-            { name: 'Ópera Garnier', icon: 'fa-masks-theater' }] },
-            
-            { day: 'Dia 5', date: '23/09', theme: 'Despedida e Regresso', ticketedVenues: [] }
-        ];
+const tripItinerary = [
+    {
+        day: 'Dia 1', date: '19/09', theme: 'Chegada e Torre Eiffel',
+        ticketedVenues: [
+            { name: 'Torre Eiffel', icon: 'fa-tower-observation', status: 'pending', openingHours: '09:00 - 23:45', openDays: 'Todos os dias' }
+        ]
+    },
+    {
+        day: 'Dia 2', date: '20/09', theme: 'Coração Histórico',
+        ticketedVenues: [
+            { name: 'Sainte-Chapelle', icon: 'fa-gem', status: 'pending', openingHours: '09:00 - 17:00', openDays: 'Todos os dias (verificar feriados)' }
+        ]
+    },
+    {
+        day: 'Dia 3', date: '21/09', theme: 'Realeza e Arte Boémia',
+        ticketedVenues: [
+            { name: 'Palácio de Versalhes', icon: 'fa-crown', status: 'pending', openingHours: '09:00 - 18:30 (Palácio)', openDays: 'Fecha às Segundas' },
+            { name: 'Arco do Triunfo (subida)', icon: 'fa-archway', status: 'pending', openingHours: '10:00 - 23:00', openDays: 'Todos os dias' }
+        ]
+    },
+    {
+        day: 'Dia 4', date: '22/09', theme: 'Imersão em Arte',
+        ticketedVenues: [
+            { name: 'Museu do Louvre', icon: 'fa-landmark-dome', status: 'pending', openingHours: '09:00 - 18:00', openDays: 'Fecha às Terças' },
+            { name: 'Ópera Garnier', icon: 'fa-masks-theater', status: 'pending', openingHours: '10:00 - 17:00', openDays: 'Todos os dias (pode fechar para eventos)' }
+        ]
+    },
+    {
+        day: 'Dia 5', date: '23/09', theme: 'Despedida e Regresso', ticketedVenues: [] }
+];
 
         // ==========================================================
         // 3. DEFINIÇÃO DAS FUNÇÕES
@@ -737,21 +745,74 @@
             calendar.render();
         }
 
-        function renderTicketTimeline() {
-            const container = document.getElementById('ticket-timeline-container');
-            if (!container) return;
-            container.innerHTML = '';
-            tripItinerary.forEach(day => {
-                let venuesHTML = '';
-                if (day.ticketedVenues.length > 0) {
-                    venuesHTML = `<ul class="mt-2 space-y-2">` + day.ticketedVenues.map(venue => `<li class="flex items-center text-gray-700"><i class="fa-solid ${venue.icon} w-6 text-center mr-2 text-blue-500"></i><span>${venue.name}</span></li>`).join('') + `</ul>`;
-                } else {
-                    venuesHTML = `<p class="mt-2 text-gray-500 italic">Nenhum bilhete necessário para este dia.</p>`;
-                }
-                const dayHTML = `<div class="bg-white p-6 rounded-2xl shadow-lg flex items-start space-x-4"><div class="text-center border-r pr-4"><p class="text-lg font-bold text-gray-800">${day.day}</p><p class="text-sm text-gray-500">${day.date}</p></div><div class="flex-grow"><h4 class="font-semibold text-lg text-gray-900">${day.theme}</h4>${venuesHTML}</div></div>`;
-                container.innerHTML += dayHTML;
-            });
+
+
+
+
+
+function renderTicketTimeline() {
+    const container = document.getElementById('ticket-timeline-container');
+    if (!container) return;
+    container.innerHTML = '';
+
+    tripItinerary.forEach(day => {
+        let venuesHTML = '';
+        if (day.ticketedVenues.length > 0) {
+            venuesHTML = `<ul class="mt-3 space-y-4">` +
+                day.ticketedVenues.map(venue => {
+                    const isComplete = venue.status === 'complete';
+                    
+                    return `
+                        <li class="p-4 bg-gray-50 rounded-lg">
+                            <div class="flex items-center justify-between">
+                                <!-- Nome e status -->
+                                <div class="flex items-center">
+                                    <i class="fa-solid ${isComplete ? 'fa-check-circle text-green-500' : 'fa-hourglass-half text-yellow-500'} w-6 text-center mr-3"></i>
+                                    <span class="font-semibold ${isComplete ? 'line-through text-gray-400' : 'text-gray-800'}">${venue.name}</span>
+                                </div>
+                                <!-- Ícone do local -->
+                                <i class="fa-solid ${venue.icon} text-xl text-gray-400"></i>
+                            </div>
+                            <!-- Detalhes de funcionamento -->
+                            <div class="mt-2 pl-9 text-sm text-gray-600 space-y-1">
+                                <!-- Linha dos dias de funcionamento -->
+                                <div class="flex items-start">
+                                    <i class="fa-regular fa-calendar-days w-6 text-center mr-1 pt-1"></i>
+                                    <span>${venue.openDays || 'Não especificado'}</span>
+                                </div>
+                                <!-- Linha do horário -->
+                                <div class="flex items-start">
+                                    <i class="fa-regular fa-clock w-6 text-center mr-1 pt-1"></i>
+                                    <span>${venue.openingHours || 'Não especificado'}</span>
+                                </div>
+                            </div>
+                        </li>
+                    `;
+                }).join('') +
+            `</ul>`;
+        } else {
+            venuesHTML = `<p class="mt-2 text-gray-500 italic">Nenhum bilhete a comprar para este dia.</p>`;
         }
+
+        const dayHTML = `
+            <div class="bg-white p-6 rounded-2xl shadow-lg">
+                <div class="flex items-center border-b pb-3">
+                    <div class="text-center w-16">
+                        <p class="text-xl font-bold text-gray-800">${day.day}</p>
+                        <p class="text-sm text-gray-500">${day.date}</p>
+                    </div>
+                    <div class="pl-4 border-l ml-4">
+                        <h4 class="font-semibold text-lg text-gray-900">${day.theme}</h4>
+                    </div>
+                </div>
+                ${venuesHTML}
+            </div>
+        `;
+        container.innerHTML += dayHTML;
+    });
+}
+
+
 
         // ==========================================================
         // 4. OUVINTE PRINCIPAL (EXECUTA TUDO QUANDO A PÁGINA ESTÁ PRONTA)
