@@ -502,39 +502,45 @@
             </div>
         </section>
 
-    </div>
 
 <!-- NOVA SECÇÃO: TIMELINE DE BILHETES -->
 <section class="mb-12">
     <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Resumo de Bilhetes por Dia</h2>
     <!-- O JavaScript vai inserir a timeline aqui -->
     <div id="ticket-timeline-container" class="space-y-6"></div>
-</section>    
+</section>
+
+
+    </div>
+
     
     
+
+
+
+
+
+
+
+
+
     <!---------------------------------------------------------------------------------------------------------------------->
     <!-- SCRIPTS -->
   
-    
-    <!-- SCRIPT DO CONTADOR (mantém-se igual) -->
+    <!-- SCRIPT DO CONTADOR -->
     <script>
-        // --- PARA PERSONALIZAR: ALTERE A DATA ALVO AQUI ---
         const countdownDate = new Date(2025, 8, 19, 6, 0, 0).getTime();
-        // ... (o resto do script do contador continua aqui) ...
         const x = setInterval(function() {
             const now = new Date().getTime();
             const distance = countdownDate - now;
-
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
             document.getElementById("days").innerText = days.toString().padStart(2, '0');
             document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
             document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
             document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
-
             if (distance < 0) {
                 clearInterval(x);
                 document.getElementById("countdown").innerHTML = "<div class='text-center w-full'><p class='text-2xl font-bold'>A VIAGEM COMEÇOU! BON VOYAGE!</p></div>";
@@ -542,338 +548,200 @@
         }, 1000);
     </script>
 
+    <!-- SCRIPT GERAL UNIFICADO PARA TODAS AS FUNCIONALIDADES (VERSÃO FINAL CORRIGIDA) -->
+    <!-- Importar os scripts do Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-database-compat.js"></script>
 
-
-
-  <!-- SCRIPT DA CHECKLIST COM FIREBASE (VERSÃO FINAL SIMPLES) -->
-<!-- Importar os scripts do Firebase -->
-<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-database-compat.js"></script>
-
-<script>
-    // A SUA CONFIGURAÇÃO NORMAL DO FIREBASE
-    const firebaseConfig = {
-      apiKey: "AIzaSyAt7jAk5r2tqSdyTf2m7MUebd_t7bbDTJk",
-      authDomain: "planeamento-viagem-paris.firebaseapp.com",
-      databaseURL: "https://planeamento-viagem-paris-default-rtdb.europe-west1.firebasedatabase.app",
-      projectId: "planeamento-viagem-paris",
-      storageBucket: "planeamento-viagem-paris.firebasestorage.app",
-      messagingSenderId: "121000897121",
-      appId: "1:121000897121:web:75662c01dc56926bf61820"
-    };
-
-    // Inicializar o Firebase (sem chaves secretas)
-    firebase.initializeApp(firebaseConfig);
-    const database = firebase.database();
-    
-    document.addEventListener('DOMContentLoaded', () => {
-        const checklistItems = document.querySelectorAll('.checklist-item input[type="checkbox"]');
-        const checklistRef = database.ref('checklist');
-
-        // OUVIR POR MUDANÇAS E ATUALIZAR
-        checklistRef.on('value', (snapshot) => {
-            const data = snapshot.val();
-            if (data) {
-                checklistItems.forEach(item => {
-                    if (data[item.id] !== undefined) {
-                        item.checked = data[item.id];
-                    }
-                });
-            }
-        });
-
-        // GUARDAR MUDANÇAS QUANDO UM ITEM É CLICADO
-        checklistItems.forEach(item => {
-            item.addEventListener('change', (e) => {
-                checklistRef.child(e.target.id).set(e.target.checked);
-            });
-        });
-    });
-</script>
-
-
-
-
-
-<!-- SCRIPT DA CALCULADORA DE ORÇAMENTO (COM SUBTOTAIS CORRIGIDOS) -->
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // A ligação ao Firebase já foi inicializada pelos scripts anteriores
+    <script>
+        // ==========================================================
+        // 1. CONFIGURAÇÃO GERAL E INICIALIZAÇÃO
+        // ==========================================================
+        const firebaseConfig = {
+          apiKey: "AIzaSyAt7jAk5r2tqSdyTf2m7MUebd_t7bbDTJk",
+          authDomain: "planeamento-viagem-paris.firebaseapp.com",
+          databaseURL: "https://planeamento-viagem-paris-default-rtdb.europe-west1.firebasedatabase.app",
+          projectId: "planeamento-viagem-paris",
+          storageBucket: "planeamento-viagem-paris.firebasestorage.app",
+          messagingSenderId: "121000897121",
+          appId: "1:121000897121:web:75662c01dc56926bf61820"
+        };
+        firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
-        const budgetRef = database.ref('budget');
 
-        const totalCostElement = document.getElementById('total-cost');
-        const perAdultCostElement = document.getElementById('per-adult-cost');
-        const costCards = document.querySelectorAll('.cost-card'); // Vamos precisar disto
-        const costDropdowns = document.querySelectorAll('.cost-dropdown');
-
-        function updateAllCalculations() {
-            let grandTotal = 0;
-            let perAdultTotal = 0;
-
-            // NOVO: Percorre cada CARD individualmente para calcular o seu subtotal
-            costCards.forEach(card => {
-                let cardSubtotal = 0;
-
-                // Percorre os dropdowns DENTRO deste card específico
-                card.querySelectorAll('.cost-dropdown').forEach(dropdown => {
-                    const quantity = parseInt(dropdown.value, 10);
-                    const costPerItem = parseFloat(dropdown.dataset.cost);
-                    const itemTotalCost = quantity * costPerItem;
-
-                    cardSubtotal += itemTotalCost;
-                    grandTotal += itemTotalCost;
-
-                    // A lógica do Custo por Adulto continua igual
-                    if (dropdown.classList.contains('cost-adult') && quantity > 0) {
-                        perAdultTotal += costPerItem;
-                    }
-                });
-
-                // ATUALIZA O SUBTOTAL DESTE CARD ESPECÍFICO
-                const subtotalElement = card.querySelector('.subtotal');
-                if (subtotalElement) {
-                    subtotalElement.textContent = `${cardSubtotal.toFixed(2)} €`;
-                }
-            });
+        // ==========================================================
+        // 2. FONTES DE DADOS (É SÓ AQUI QUE PRECISA DE EDITAR!)
+        // ==========================================================
+        const planningEvents = [
+            { title: 'Comprar bilhetes para o Museu do Louvre', 
+            date: '2025-06-18', 
+            description: 'Comprar para o dia 22 de Setembro (Segunda-feira).', 
+            status: 'pending', 
+            color: '#dc2626' },
             
-            // Atualiza os visores GERAIS no ecrã
-            totalCostElement.textContent = `${grandTotal.toFixed(2)} €`;
-            perAdultCostElement.textContent = `${perAdultTotal.toFixed(2)} €`;
-        }
-        
-        // --- LÓGICA DE SINCRONIZAÇÃO COM FIREBASE ---
-
-        // 1. OUVIR POR DADOS DO FIREBASE E ATUALIZAR A PÁGINA
-        budgetRef.on('value', (snapshot) => {
-            const data = snapshot.val();
-            if (data) {
-                costDropdowns.forEach(dropdown => {
-                    if (data[dropdown.id] !== undefined) {
-                        dropdown.value = data[dropdown.id];
-                    }
-                });
-            }
-            updateAllCalculations();
-        });
-
-        // 2. OUVIR POR MUDANÇAS NOS DROPDOWNS E GUARDAR NO FIREBASE
-        costDropdowns.forEach(dropdown => {
-            dropdown.addEventListener('change', (e) => {
-                const dropdownId = e.target.id;
-                const selectedQuantity = parseInt(e.target.value, 10);
-                budgetRef.child(dropdownId).set(selectedQuantity);
-            });
-        });
-
-        // --- CÁLCULO INICIAL ---
-        updateAllCalculations();
-    });
-</script>
-    
-    
-    
-    
-    
-
-
-
- 
-
-
-<!-- SCRIPT DINÂMICO PARA TIMELINES E CALENDÁRIO -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-
-    // ==========================================================
-    // 1. FONTE ÚNICA DE DADOS (É SÓ AQUI QUE PRECISA DE EDITAR!)
-    // ==========================================================
-
-    // Lista para a timeline de "Próximos Passos" e para o Calendário
-    const planningEvents = [
-
-       {
-            title: 'Comprar bilhetes para o Museu do Louvre',
-            date: '2025-06-18',
-            description: 'Comprar para o dia 22 de Setembro (Segunda-feira).',
-            status: 'pending',
-            color: '#dc2626'
-        },
-        {
-            title: 'Comprar bilhetes para Versailles',
-            date: '2025-06-23',
-            description: 'A partir desta data já é possivel comprar para o dia 21 de setembro.',
-            status: 'pending', // 'pending' ou 'complete'
-            color: '#dc2626'  // Cor para o calendário (opcional)
-        },
-        {
-            title: 'Comprar bilhetes para a Sainte-Chapelle',
-            date: '2025-07-01',
-            description: 'Em principio em julho já é possivel comprar os bilhetes. Verificar disponibilidade.',
-            status: 'pending', // 'pending' ou 'complete'
-            color: '#dc2626'  // Cor para o calendário (opcional)
-        },      
-        {
-            title: 'Comprar bilhetes para a Torre Eiffel',
-            date: '2025-07-18',
-            description: 'Os bilhetes ficam disponíveis com 2 meses de antecedência. Comprar para o dia 19 de Setembro (Sexta-feira).',
-            status: 'pending', // 'pending' ou 'complete'
-            color: '#dc2626'  // Cor para o calendário (opcional)
-        },
-        {
-            title: 'Comprar bilhetes para o Palais Garnier',
-            date: '2025-07-22',
-            description: 'Comprar para o dia 22 de Setembro (Segunda-feira).',
-            status: 'pending',
-            color: '#dc2626'
-        },
-        {
-            title: 'Fazer pagamento da casa de Paris',
-            date: '2025-08-25',
-            description: 'Fazer o pagamento final da reserva.',
-            status: 'pending',
-            color: '#ea580c'
-        },
-        {
-            title: 'Reserva para entrada sem filas na Notre-Dame',
-            date: '2025-09-19',
-            description: 'A reserva só pode ser feita umas horas antes. Irá ser dificil apanhar um slot disponível.',
-            status: 'pending',
-            color: '#ea580c'
-        },        
-        {
-            title: 'INÍCIO DA VIAGEM!',
-            date: '2025-09-19',
-            endDate: '2025-09-24', // Data de fim para o calendário
-            description: 'De 19 a 23 de Setembro.',
+            { title: 'Comprar bilhetes para Versailles', 
+            date: '2025-06-23', description: 'A partir desta data já é possivel comprar para o dia 21 de setembro.', 
+            status: 'pending', 
+            color: '#dc2626' },
+            
+            { title: 'Comprar bilhetes para a Sainte-Chapelle', 
+            date: '2025-07-01', description: 'Em principio em julho já é possivel comprar os bilhetes. Verificar disponibilidade.', 
+            status: 'pending', 
+            color: '#dc2626' },
+            
+            { title: 'Comprar bilhetes para a Torre Eiffel', 
+            date: '2025-07-18', 
+            description: 'Os bilhetes ficam disponíveis com 2 meses de antecedência. Comprar para o dia 19 de Setembro (Sexta-feira).', 
+            status: 'pending', 
+            color: '#dc2626' },
+            
+            { title: 'Comprar bilhetes para o Palais Garnier', 
+            date: '2025-07-22', 
+            description: 'Comprar para o dia 22 de Setembro (Segunda-feira).', 
+            status: 'pending', 
+            color: '#dc2626' },
+            
+            { title: 'Fazer pagamento da casa de Paris', 
+            date: '2025-08-25', 
+            description: 'Fazer o pagamento final da reserva.', 
+            status: 'pending', 
+            color: '#ea580c' },
+            
+            { title: 'Reserva para entrada sem filas na Notre-Dame', 
+            date: '2025-09-19', 
+            description: 'A reserva só pode ser feita umas horas antes. Irá ser dificil apanhar um slot disponível.', 
+            status: 'pending', 
+            color: '#ea580c' },
+            
+            { title: 'VIAGEM!', 
+            date: '2025-09-19', 
+            endDate: '2025-09-24', 
+            description: 'De 19 a 23 de Setembro.', 
             status: 'complete', 
-            color: '#16a34a'
+            color: '#16a34a' }
+        ];
+        
+        const tripItinerary = [
+            { day: 'Dia 1', date: '19/09', theme: 'Chegada e Torre Eiffel', ticketedVenues: [{ name: 'Torre Eiffel', icon: 'fa-tower-observation' }] },
+            { day: 'Dia 2', date: '20/09', theme: 'Coração Histórico', ticketedVenues: [{ name: 'Sainte-Chapelle', icon: 'fa-gem' }] },
+            { day: 'Dia 3', date: '21/09', theme: 'Realeza e Arte Boémia', ticketedVenues: [{ name: 'Palácio de Versalhes', icon: 'fa-crown' }, { name: 'Arco do Triunfo (subida)', icon: 'fa-archway' }] },
+            { day: 'Dia 4', date: '22/09', theme: 'Imersão em Arte', ticketedVenues: [{ name: 'Museu do Louvre', icon: 'fa-landmark-dome' }, { name: 'Ópera Garnier', icon: 'fa-masks-theater' }] },
+            { day: 'Dia 5', date: '23/09', theme: 'Despedida e Regresso', ticketedVenues: [] }
+        ];
+
+        // ==========================================================
+        // 3. DEFINIÇÃO DAS FUNÇÕES
+        // ==========================================================
+
+        function setupChecklist() {
+            const checklistItems = document.querySelectorAll('.checklist-item input[type="checkbox"]');
+            const checklistRef = database.ref('checklist');
+            checklistRef.on('value', (snapshot) => {
+                const data = snapshot.val();
+                if (data) { checklistItems.forEach(item => { if (data[item.id] !== undefined) { item.checked = data[item.id]; } }); }
+            });
+            checklistItems.forEach(item => { item.addEventListener('change', (e) => { checklistRef.child(e.target.id).set(e.target.checked); }); });
         }
-    ];
-    
 
-    // Lista para a timeline de "Resumo de Bilhetes"
-    const tripItinerary = [
-        {
-            day: 'Dia 1',
-            date: '19/09',
-            theme: 'Chegada e Torre Eiffel',
-            ticketedVenues: [
-                { name: 'Torre Eiffel', icon: 'fa-tower-observation' }
-            ]
-        },
-        {
-            day: 'Dia 2',
-            date: '20/09',
-            theme: 'Coração Histórico',
-            ticketedVenues: [
-                { name: 'Sainte-Chapelle', icon: 'fa-gem' }
-            ]
-        },
-        {
-            day: 'Dia 3',
-            date: '21/09',
-            theme: 'Realeza e Arte Boémia',
-            ticketedVenues: [
-                { name: 'Palácio de Versalhes', icon: 'fa-crown' },
-                { name: 'Arco do Triunfo (subida)', icon: 'fa-archway' }
-            ]
-        },
-        {
-            day: 'Dia 4',
-            date: '22/09',
-            theme: 'Imersão em Arte',
-            ticketedVenues: [
-                { name: 'Museu do Louvre', icon: 'fa-landmark-dome' },
-                { name: 'Ópera Garnier', icon: 'fa-masks-theater' }
-            ]
-        },
-        {
-            day: 'Dia 5',
-            date: '23/09',
-            theme: 'Despedida e Regresso',
-            ticketedVenues: []
-        }
-    ];
-
-    // ==========================================================
-    // 2. FUNÇÕES DE RENDERIZAÇÃO (NÃO PRECISA DE MEXER AQUI)
-    // ==========================================================
-
-    // Função para gerar a timeline de "Próximos Passos"
-    function renderTimeline() {
-        const timelineContainer = document.getElementById('timeline-container');
-        if (!timelineContainer) return;
-        timelineContainer.innerHTML = '';
-        planningEvents.forEach(event => {
-            if (event.title === 'INÍCIO DA VIAGEM!') return;
-            const eventDate = new Date(event.date + 'T00:00:00');
-            const month = eventDate.toLocaleString('pt-PT', { month: 'short' }).toUpperCase().replace('.', '');
-            const day = eventDate.getDate();
-            const isComplete = event.status === 'complete';
-            const itemHTML = `<div class="flex items-start space-x-4 ${isComplete ? 'opacity-60' : ''}"><div class="flex flex-col items-center"><span class="text-lg font-semibold ${isComplete ? 'text-gray-500' : 'text-green-700'}">${month}</span><span class="text-2xl font-bold ${isComplete ? 'text-gray-500' : 'text-green-700'}">${day}</span></div><div class="bg-white p-4 rounded-lg shadow-md flex-1"><h3 class="font-semibold text-lg ${isComplete ? 'line-through' : ''}">${event.title}</h3><p class="text-sm text-gray-600">${event.description}</p><div class="mt-2 text-sm font-medium ${isComplete ? 'text-green-600' : 'text-yellow-600'}"><i class="fa-solid ${isComplete ? 'fa-check-circle' : 'fa-hourglass-half'} mr-2"></i>${isComplete ? 'Concluído' : 'Pendente'}</div></div></div>`;
-            timelineContainer.innerHTML += itemHTML;
-        });
-    }
-
-    // Função para gerar o Calendário interativo
-    function renderCalendar() {
-        const calendarEl = document.getElementById('calendar');
-        if (!calendarEl) return;
-        const modal = document.getElementById('event-modal');
-        const modalTitle = document.getElementById('modal-title');
-        const modalDescription = document.getElementById('modal-description');
-        const modalCloseBtn = document.getElementById('modal-close-btn');
-        const calendarEvents = planningEvents.map(event => ({ title: event.title, start: event.date, end: event.endDate, backgroundColor: event.color, borderColor: event.color, allDay: true, extendedProps: { description: event.description || 'Não há detalhes adicionais.' } }));
-        const calendar = new FullCalendar.Calendar(calendarEl, { initialView: 'dayGridMonth', locale: 'pt-br', headerToolbar: { left: 'prev,next today', center: 'title', right: '' }, events: calendarEvents, eventClick: function(info) { info.jsEvent.preventDefault(); modalTitle.textContent = info.event.title; modalDescription.textContent = info.event.extendedProps.description; modal.classList.remove('hidden'); } });
-        function closeModal() { modal.classList.add('hidden'); }
-        modalCloseBtn.addEventListener('click', closeModal);
-        modal.addEventListener('click', function(e) { if (e.target === modal) { closeModal(); } });
-        calendar.render();
-    }
-
-    // Função para gerar a timeline de "Resumo de Bilhetes"
-    function renderTicketTimeline() {
-        const container = document.getElementById('ticket-timeline-container');
-        if (!container) return;
-        container.innerHTML = '';
-        tripItinerary.forEach(day => {
-            let venuesHTML = '';
-            if (day.ticketedVenues.length > 0) {
-                venuesHTML = `<ul class="mt-2 space-y-2">` + day.ticketedVenues.map(venue => `<li class="flex items-center text-gray-700"><i class="fa-solid ${venue.icon} w-6 text-center mr-2 text-blue-500"></i><span>${venue.name}</span></li>`).join('') + `</ul>`;
-            } else {
-                venuesHTML = `<p class="mt-2 text-gray-500 italic">Nenhum bilhete necessário para este dia.</p>`;
+        function setupBudgetCalculator() {
+            const budgetRef = database.ref('budget');
+            const costDropdowns = document.querySelectorAll('.cost-dropdown');
+            function updateAllCalculations() {
+                let grandTotal = 0, perAdultTotal = 0;
+                const costCards = document.querySelectorAll('.cost-card');
+                costCards.forEach(card => {
+                    let cardSubtotal = 0;
+                    card.querySelectorAll('.cost-dropdown').forEach(dropdown => {
+                        const quantity = parseInt(dropdown.value, 10);
+                        const costPerItem = parseFloat(dropdown.dataset.cost);
+                        const itemTotalCost = quantity * costPerItem;
+                        cardSubtotal += itemTotalCost;
+                        grandTotal += itemTotalCost;
+                        if (dropdown.classList.contains('cost-adult') && quantity > 0) { perAdultTotal += costPerItem; }
+                    });
+                    const subtotalElement = card.querySelector('.subtotal');
+                    if (subtotalElement) { subtotalElement.textContent = `${cardSubtotal.toFixed(2)} €`; }
+                });
+                document.getElementById('total-cost').textContent = `${grandTotal.toFixed(2)} €`;
+                document.getElementById('per-adult-cost').textContent = `${perAdultTotal.toFixed(2)} €`;
             }
-            const dayHTML = `<div class="bg-white p-6 rounded-2xl shadow-lg flex items-start space-x-4"><div class="text-center border-r pr-4"><p class="text-lg font-bold text-gray-800">${day.day}</p><p class="text-sm text-gray-500">${day.date}</p></div><div class="flex-grow"><h4 class="font-semibold text-lg text-gray-900">${day.theme}</h4>${venuesHTML}</div></div>`;
-            container.innerHTML += dayHTML;
+            budgetRef.on('value', (snapshot) => {
+                const data = snapshot.val();
+                if (data) { costDropdowns.forEach(dropdown => { if (data[dropdown.id] !== undefined) { dropdown.value = data[dropdown.id]; } }); }
+                updateAllCalculations();
+            });
+            costDropdowns.forEach(dropdown => { dropdown.addEventListener('change', (e) => { budgetRef.child(e.target.id).set(parseInt(e.target.value, 10)); }); });
+            updateAllCalculations();
+        }
+
+        function renderTimeline() {
+            const timelineContainer = document.getElementById('timeline-container');
+            if (!timelineContainer) return;
+            timelineContainer.innerHTML = '';
+            planningEvents.forEach(event => {
+                if (event.title === 'VIAGEM!') return;
+                const eventDate = new Date(event.date + 'T00:00:00');
+                const month = eventDate.toLocaleString('pt-PT', { month: 'short' }).toUpperCase().replace('.', '');
+                const day = eventDate.getDate();
+                const isComplete = event.status === 'complete';
+                const itemHTML = `<div class="flex items-start space-x-4 ${isComplete ? 'opacity-60' : ''}"><div class="flex flex-col items-center"><span class="text-lg font-semibold ${isComplete ? 'text-gray-500' : 'text-green-700'}">${month}</span><span class="text-2xl font-bold ${isComplete ? 'text-gray-500' : 'text-green-700'}">${day}</span></div><div class="bg-white p-4 rounded-lg shadow-md flex-1"><h3 class="font-semibold text-lg ${isComplete ? 'line-through' : ''}">${event.title}</h3><p class="text-sm text-gray-600">${event.description}</p><div class="mt-2 text-sm font-medium ${isComplete ? 'text-green-600' : 'text-yellow-600'}"><i class="fa-solid ${isComplete ? 'fa-check-circle' : 'fa-hourglass-half'} mr-2"></i>${isComplete ? 'Concluído' : 'Pendente'}</div></div></div>`;
+                timelineContainer.innerHTML += itemHTML;
+            });
+        }
+
+        function renderCalendar() {
+            const calendarEl = document.getElementById('calendar');
+            if (!calendarEl) return;
+            const modal = document.getElementById('event-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalDescription = document.getElementById('modal-description');
+            const modalCloseBtn = document.getElementById('modal-close-btn');
+            const calendarEvents = planningEvents.map(event => ({ title: event.title, start: event.date, end: event.endDate, backgroundColor: event.color, borderColor: event.color, allDay: true, extendedProps: { description: event.description || 'Não há detalhes adicionais.' } }));
+            const calendar = new FullCalendar.Calendar(calendarEl, { initialView: 'dayGridMonth', locale: 'pt-br', headerToolbar: { left: 'prev,next today', center: 'title', right: '' }, events: calendarEvents, eventClick: function(info) { info.jsEvent.preventDefault(); modalTitle.textContent = info.event.title; modalDescription.textContent = info.event.extendedProps.description; modal.classList.remove('hidden'); } });
+            function closeModal() { modal.classList.add('hidden'); }
+            modalCloseBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', function(e) { if (e.target === modal) { closeModal(); } });
+            calendar.render();
+        }
+
+        function renderTicketTimeline() {
+            const container = document.getElementById('ticket-timeline-container');
+            if (!container) return;
+            container.innerHTML = '';
+            tripItinerary.forEach(day => {
+                let venuesHTML = '';
+                if (day.ticketedVenues.length > 0) {
+                    venuesHTML = `<ul class="mt-2 space-y-2">` + day.ticketedVenues.map(venue => `<li class="flex items-center text-gray-700"><i class="fa-solid ${venue.icon} w-6 text-center mr-2 text-blue-500"></i><span>${venue.name}</span></li>`).join('') + `</ul>`;
+                } else {
+                    venuesHTML = `<p class="mt-2 text-gray-500 italic">Nenhum bilhete necessário para este dia.</p>`;
+                }
+                const dayHTML = `<div class="bg-white p-6 rounded-2xl shadow-lg flex items-start space-x-4"><div class="text-center border-r pr-4"><p class="text-lg font-bold text-gray-800">${day.day}</p><p class="text-sm text-gray-500">${day.date}</p></div><div class="flex-grow"><h4 class="font-semibold text-lg text-gray-900">${day.theme}</h4>${venuesHTML}</div></div>`;
+                container.innerHTML += dayHTML;
+            });
+        }
+
+        // ==========================================================
+        // 4. OUVINTE PRINCIPAL (EXECUTA TUDO QUANDO A PÁGINA ESTÁ PRONTA)
+        // ==========================================================
+        document.addEventListener('DOMContentLoaded', () => {
+            setupChecklist();
+            setupBudgetCalculator();
+            renderTimeline();
+            renderCalendar();
+            renderTicketTimeline();
         });
-    }
+    </script>
 
-    // ==========================================================
-    // 3. CHAMADAS INICIAIS (EXECUTAR TUDO)
-    // ==========================================================
-    renderTimeline();
-    renderCalendar();
-    renderTicketTimeline();
-});
-</script>
-
-
-
-<!-- ESTRUTURA DO POPUP/MODAL (ESCONDIDO POR DEFEITO) -->
-<div id="event-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-    <!-- O popup em si -->
-    <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 w-full max-w-md relative">
-        <!-- Botão para fechar -->
-        <button id="modal-close-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 transition">
-            <i class="fa-solid fa-xmark fa-2x"></i>
-        </button>
-
-        <!-- Conteúdo do popup (será preenchido pelo JavaScript) -->
-        <h3 id="modal-title" class="text-2xl font-bold text-gray-800 mb-4">Título do Evento</h3>
-        <p id="modal-description" class="text-gray-600">Descrição detalhada do evento irá aparecer aqui.</p>
+    <!-- ESTRUTURA DO POPUP/MODAL -->
+    <div id="event-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 w-full max-w-md relative">
+            <button id="modal-close-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 transition">
+                <i class="fa-solid fa-xmark fa-2x"></i>
+            </button>
+            <h3 id="modal-title" class="text-2xl font-bold text-gray-800 mb-4">Título do Evento</h3>
+            <p id="modal-description" class="text-gray-600">Descrição detalhada do evento irá aparecer aqui.</p>
+        </div>
     </div>
-</div>
 
 </body>
 </html>
