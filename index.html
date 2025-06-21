@@ -13,19 +13,9 @@
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
     <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/core/locales/pt-br.global.min.js'></script>
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f0f4f8; /* Um azul-acinzentado muito claro */
-        }
-        /* Efeito de "check" na checklist */
-        .checklist-item input:checked + label {
-            text-decoration: line-through;
-            color: #9ca3af; /* Cinza claro */
-        }
-        .checklist-item input:checked + label .icon-box {
-            background-color: #16a34a; /* Verde quando selecionado */
-            color: white;
-        }
+        body { font-family: 'Poppins', sans-serif; background-color: #f0f4f8; }
+        .checklist-item input:checked + label { text-decoration: line-through; color: #9ca3af; }
+        .checklist-item input:checked + label .icon-box { background-color: #16a34a; color: white; }
     </style>
 </head>
 <body class="text-gray-800">
@@ -33,502 +23,79 @@
     <div class="container mx-auto p-4 md:p-8 max-w-5xl">
 
         <!-- CABEÇALHO E CONTADOR -->
-       <header class="text-center py-12 rounded-2xl shadow-lg mb-12 bg-cover bg-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGFyaXN8ZW58MHx8MHx8fDA%3D');">
-    <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Rumo a Paris!</h1>
-    <p class="text-lg text-gray-200 mb-6">A nossa aventura aproxima-se...</p>
-    <div id="countdown" class="flex justify-center space-x-4 md:space-x-8 text-white">
-                <div>
-                    <span id="days" class="text-4xl font-bold">00</span>
-                    <span class="block text-sm">Dias</span>
-                </div>
-                <div>
-                    <span id="hours" class="text-4xl font-bold">00</span>
-                    <span class="block text-sm">Horas</span>
-                </div>
-                <div>
-                    <span id="minutes" class="text-4xl font-bold">00</span>
-                    <span class="block text-sm">Minutos</span>
-                </div>
-                <div>
-                    <span id="seconds" class="text-4xl font-bold">00</span>
-                    <span class="block text-sm">Segundos</span>
-                </div>
+        <header class="text-center py-12 rounded-2xl shadow-lg mb-12 bg-cover bg-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGFyaXN8ZW58MHx8MHx8fDA%3D');">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Rumo a Paris!</h1>
+            <p class="text-lg text-gray-200 mb-6">A nossa aventura aproxima-se...</p>
+            <div id="countdown" class="flex justify-center space-x-4 md:space-x-8 text-white">
+                <div><span id="days" class="text-4xl font-bold">00</span><span class="block text-sm">Dias</span></div>
+                <div><span id="hours" class="text-4xl font-bold">00</span><span class="block text-sm">Horas</span></div>
+                <div><span id="minutes" class="text-4xl font-bold">00</span><span class="block text-sm">Minutos</span></div>
+                <div><span id="seconds" class="text-4xl font-bold">00</span><span class="block text-sm">Segundos</span></div>
             </div>
         </header>
 
-
-
-
-
-        <!-- ACESSO AOS GUIAS -->
-        <section>
-<!--             <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Guias</h2> -->
-             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- ACESSO AOS GUIAS E ORÇAMENTO -->
+        <section class="mb-12">
+             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Card Guia Visual -->
                 <a href="guia.html" class="block bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-transform duration-300">
-                    <div class="flex items-center text-green-800 mb-3">
-                        <i class="fa-solid fa-map-location-dot text-2xl mr-3"></i>
-                        <h3 class="text-xl font-bold">Guia Visual Resumido</h3>
-                    </div>
-                    <p class="text-gray-600">O nosso plano de viagem com imagens, curiosidades e destaques de cada dia. Ideal para inspiração e consulta rápida.</p>
+                    <div class="flex items-center text-green-800 mb-3"><i class="fa-solid fa-map-location-dot text-2xl mr-3"></i><h3 class="text-xl font-bold">Guia Visual</h3></div>
+                    <p class="text-gray-600">O nosso plano com imagens, curiosidades e destaques.</p>
                 </a>
                 <!-- Card Roteiro Detalhado -->
                 <a href="roteiro.html" class="block bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-transform duration-300">
-                     <div class="flex items-center text-blue-800 mb-3">
-                        <i class="fa-solid fa-list-ol text-2xl mr-3"></i>
-                        <h3 class="text-xl font-bold">Roteiro Hora a Hora</h3>
-                    </div>
-                    <p class="text-gray-600">A versão super detalhada com horários, transportes e todas as informações práticas para nos mantermos no caminho certo.</p>
+                     <div class="flex items-center text-blue-800 mb-3"><i class="fa-solid fa-list-ol text-2xl mr-3"></i><h3 class="text-xl font-bold">Roteiro Detalhado</h3></div>
+                    <p class="text-gray-600">A versão com horários, transportes e todas as informações.</p>
                 </a>
-                <p></p>
+                <!-- NOVO CARD: Orçamento -->
+                <a href="orcamento.html" class="block bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-transform duration-300">
+                     <div class="flex items-center text-red-800 mb-3"><i class="fa-solid fa-euro-sign text-2xl mr-3"></i><h3 class="text-xl font-bold">Orçamento Detalhado</h3></div>
+                    <p class="text-gray-600">Consulta os custos estimados por grupo e bilhetes.</p>
+                </a>
              </div>
         </section>
 
+        <!-- TIMELINE DE PRÓXIMOS PASSOS (DINÂMICA) -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Próximos Passos</h2>
+            <div id="timeline-container" class="space-y-8"></div>
+        </section>
 
-
-
-
-<!-- TIMELINE DE PRÓXIMOS PASSOS (DINÂMICA) -->
-<section class="mb-12">
-    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Próximos Passos</h2>
-    <!-- O JavaScript vai inserir os itens da timeline aqui -->
-    <div id="timeline-container" class="space-y-8"></div>
-</section>
-
-
-
-
-<!-- SECÇÃO DO CALENDÁRIO -->
-<section class="mb-12">
-    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Calendário</h2>
-    <div class="bg-white p-4 md:p-6 rounded-2xl shadow-lg">
-        <div id='calendar'></div>
-    </div>
-</section>
-
-
-
-
-
+        <!-- SECÇÃO DO CALENDÁRIO -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Calendário</h2>
+            <div class="bg-white p-4 md:p-6 rounded-2xl shadow-lg">
+                <div id='calendar'></div>
+            </div>
+        </section>
 
         <!-- CHECKLIST -->
         <section class="mb-12">
             <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Checklist de Preparação</h2>
             <div class="bg-white p-6 rounded-2xl shadow-lg space-y-4">
-                <!-- Item da Checklist -->
-                <div class="checklist-item flex items-center">
-                    <input type="checkbox" id="check-aviao" class="hidden">
-                    <label for="check-aviao" class="flex items-center cursor-pointer w-full">
-                        <span class="icon-box w-8 h-8 mr-4 flex items-center justify-center border-2 border-gray-300 rounded-md transition-colors"><i class="fa-solid fa-check"></i></span>
-                        <span class="text-lg">Reservar voos</span>
-                    </label>
-                </div>
-                <!-- Item da Checklist -->
-                <div class="checklist-item flex items-center">
-                    <input type="checkbox" id="check-alojamento" class="hidden">
-                    <label for="check-alojamento" class="flex items-center cursor-pointer w-full">
-                        <span class="icon-box w-8 h-8 mr-4 flex items-center justify-center border-2 border-gray-300 rounded-md transition-colors"><i class="fa-solid fa-check"></i></span>
-                        <span class="text-lg">Reservar alojamento</span>
-                    </label>
-                </div>
-                 <!-- Item da Checklist -->
-                <div class="checklist-item flex items-center">
-                    <input type="checkbox" id="check-mochilas" class="hidden">
-                    <label for="check-mochilas" class="flex items-center cursor-pointer w-full">
-                        <span class="icon-box w-8 h-8 mr-4 flex items-center justify-center border-2 border-gray-300 rounded-md transition-colors"><i class="fa-solid fa-check"></i></span>
-                        <span class="text-lg">Compra de mochilas</span>
-                    </label>
-                </div>
-
-                 <!-- Item da Checklist -->
-                <div class="checklist-item flex items-center">
-                    <input type="checkbox" id="check-seguro" class="hidden">
-                    <label for="check-seguro" class="flex items-center cursor-pointer w-full">
-                        <span class="icon-box w-8 h-8 mr-4 flex items-center justify-center border-2 border-gray-300 rounded-md transition-colors"><i class="fa-solid fa-check"></i></span>
-                        <span class="text-lg">Todos têm cartões de saúde europeus?</span>
-                    </label>
-                </div>
-                <!-- Item da Checklist -->
-                <div class="checklist-item flex items-center">
-                    <input type="checkbox" id="check-cartoes" class="hidden">
-                    <label for="check-cartoes" class="flex items-center cursor-pointer w-full">
-                        <span class="icon-box w-8 h-8 mr-4 flex items-center justify-center border-2 border-gray-300 rounded-md transition-colors"><i class="fa-solid fa-check"></i></span>
-                        <span class="text-lg">Verificar cartões (Revolut, etc.)</span>
-                    </label>
-                </div>
-                <!-- Item da Checklist -->
-                <div class="checklist-item flex items-center">
-                    <input type="checkbox" id="check-malas" class="hidden">
-                    <label for="check-malas" class="flex items-center cursor-pointer w-full">
-                        <span class="icon-box w-8 h-8 mr-4 flex items-center justify-center border-2 border-gray-300 rounded-md transition-colors"><i class="fa-solid fa-check"></i></span>
-                        <span class="text-lg">Preparar as malas</span>
-                    </label>
-                </div>
-                <!-- Item da Checklist -->
-                <div class="checklist-item flex items-center">
-                    <input type="checkbox" id="check-transportes" class="hidden">
-                    <label for="check-transportes" class="flex items-center cursor-pointer w-full">
-                        <span class="icon-box w-8 h-8 mr-4 flex items-center justify-center border-2 border-gray-300 rounded-md transition-colors"><i class="fa-solid fa-check"></i></span>
-                        <span class="text-lg">Bilhetes transportes públicos</span>
-                    </label>
-                </div>
+                <div class="checklist-item flex items-center"><input type="checkbox" id="check-aviao" class="hidden"><label for="check-aviao" class="flex items-center cursor-pointer w-full"><span class="icon-box w-8 h-8 mr-4 flex items-center justify-center border-2 border-gray-300 rounded-md transition-colors"><i class="fa-solid fa-check"></i></span><span class="text-lg">Reservar voos</span></label></div>
+                <div class="checklist-item flex items-center"><input type="checkbox" id="check-alojamento" class="hidden"><label for="check-alojamento" class="flex items-center cursor-pointer w-full"><span class="icon-box w-8 h-8 mr-4 flex items-center justify-center border-2 border-gray-300 rounded-md transition-colors"><i class="fa-solid fa-check"></i></span><span class="text-lg">Reservar alojamento</span></label></div>
+                <div class="checklist-item flex items-center"><input type="checkbox" id="check-mochilas" class="hidden"><label for="check-mochilas" class="flex items-center cursor-pointer w-full"><span class="icon-box w-8 h-8 mr-4 flex items-center justify-center border-2 border-gray-300 rounded-md transition-colors"><i class="fa-solid fa-check"></i></span><span class="text-lg">Compra de mochilas</span></label></div>
+                <div class="checklist-item flex items-center"><input type="checkbox" id="check-seguro" class="hidden"><label for="check-seguro" class="flex items-center cursor-pointer w-full"><span class="icon-box w-8 h-8 mr-4 flex items-center justify-center border-2 border-gray-300 rounded-md transition-colors"><i class="fa-solid fa-check"></i></span><span class="text-lg">Todos têm cartões de saúde europeus?</span></label></div>
+                <div class="checklist-item flex items-center"><input type="checkbox" id="check-cartoes" class="hidden"><label for="check-cartoes" class="flex items-center cursor-pointer w-full"><span class="icon-box w-8 h-8 mr-4 flex items-center justify-center border-2 border-gray-300 rounded-md transition-colors"><i class="fa-solid fa-check"></i></span><span class="text-lg">Verificar cartões (Revolut, etc.)</span></label></div>
+                <div class="checklist-item flex items-center"><input type="checkbox" id="check-malas" class="hidden"><label for="check-malas" class="flex items-center cursor-pointer w-full"><span class="icon-box w-8 h-8 mr-4 flex items-center justify-center border-2 border-gray-300 rounded-md transition-colors"><i class="fa-solid fa-check"></i></span><span class="text-lg">Preparar as malas</span></label></div>
+                <div class="checklist-item flex items-center"><input type="checkbox" id="check-transportes" class="hidden"><label for="check-transportes" class="flex items-center cursor-pointer w-full"><span class="icon-box w-8 h-8 mr-4 flex items-center justify-center border-2 border-gray-300 rounded-md transition-colors"><i class="fa-solid fa-check"></i></span><span class="text-lg">Bilhetes transportes públicos</span></label></div>
             </div>
         </section>
 
-
-
-
-
-
-<!-- SECÇÃO ORÇAMENTO DA VIAGEM (COM CUSTO POR ADULTO) -->
-<section class="mb-12">
-    <h2 class="text-3xl font-bold text-gray-800 mb-2 text-center">Orçamento da Viagem</h2>
-    <p class="text-center text-gray-600 mb-6">Uma estimativa dos custos com as principais atividades.</p>
-
-<!-- VISORES DE CUSTO (VERSÃO CORRIGIDA) -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-    <!-- CUSTO TOTAL PREVISTO -->
-    <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
-        <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Custo Total Previsto</h3>
-        <p id="total-cost" class="text-4xl md:text-5xl font-bold text-green-600 mt-2">0.00 €</p>
-    </div>
-    <!-- NOVO: CUSTO POR ADULTO -->
-    <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
-        <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Custo Aprox.por Adulto</h3>
-        <p id="per-adult-cost" class="text-4xl md:text-5xl font-bold text-blue-600 mt-2">0.00 €</p>
-    </div>
-</div>
-
-    <div class="grid grid-cols-1 md:grid-cols-1 gap-8">
-      
-      
-        <!-- CARD TORRE EIFFEL -->
-        <div class="cost-card bg-white p-6 rounded-2xl shadow-lg flex flex-col">
-            <h3 class="text-xl font-bold text-gray-800 mb-4"><i class="fa-solid fa-tower-observation mr-2 text-gray-400"></i>Torre Eiffel</h3>
-            
-            <div class="space-y-4 flex-grow">
-                <!-- Opção 1: 2º Andar pelas Escadas (Adultos)-->
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h4 class="font-semibold">2º Andar pelas Escadas (Adultos)</h4>
-                        <p class="text-sm text-gray-500">14,50 € por pessoa</p>
-                    </div>
-                    <!-- Adicionada a classe 'cost-adult' -->
-                    <select id="budget-eiffel-stairs2-adult-qty" data-cost="14.50" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                    </select>
-                </div>
-                
-                <!-- Opção 2: 2º Andar pelas Escadas (Jovens) - SEM a classe 'cost-adult' -->
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h4 class="font-semibold">2º Andar pelas Escadas (Jovens)</h4>
-                        <p class="text-sm text-gray-500">7,30 € por pessoa</p>
-                    </div>
-                    <select id="budget-eiffel-stairs2-jovem-qty" data-cost="7.30" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                    </select>
-                </div>
-
-        <!-- Opção 3: Elevador 2º Andar (Adultos) -->
-        <div class="flex items-center justify-between">
-            <div>
-                <h4 class="font-semibold">Elevador 2º Andar (Adultos)</h4>
-                <p class="text-sm text-gray-500">23,10 € por pessoa</p>
-            </div>
-            <select id="budget-eiffel-lift2-adult-qty" data-cost="23.10" class="cost-dropdown cost-adult border-gray-300 rounded-md w-20 text-center">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-            </select>
-        </div>
-
-        <!-- Opção 4: Elevador 2º Andar (Jovens) -->
-        <div class="flex items-center justify-between">
-            <div>
-                <h4 class="font-semibold">Elevador 2º Andar (Jovens)</h4>
-                <p class="text-sm text-gray-500">11,60 € por pessoa</p>
-            </div>
-            <select id="budget-eiffel-lift2-jovem-qty" data-cost="11.60" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-            </select>
-        </div>
-
-        <!-- Opção 5: Escadas + Elevador Topo (Adultos) -->
-        <div class="flex items-center justify-between">
-            <div>
-                <h4 class="font-semibold">Escadas + Elevador Topo (Adultos)</h4>
-                <p class="text-sm text-gray-500">27,50 € por pessoa</p>
-            </div>
-            <select id="budget-eiffel-stairs-topo-adult-qty" data-cost="27.50" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-            </select>
-        </div>
-        
-        <!-- Opção 6: Escadas + Elevador Topo (Jovens) -->
-        <div class="flex items-center justify-between">
-            <div>
-                <h4 class="font-semibold">Escadas + Elevador Topo (Jovens)</h4>
-                <p class="text-sm text-gray-500">13,80 € por pessoa</p>
-            </div>
-            <select id="budget-eiffel-stairs-topo-jovem-qty" data-cost="13.80" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-            </select>
-        </div>                        
-        
-        <!-- Opção 7: Elevador Topo (Adultos) -->
-        <div class="flex items-center justify-between">
-            <div>
-                <h4 class="font-semibold">Elevador Topo (Adultos)</h4>
-                <p class="text-sm text-gray-500">36,10 € por pessoa</p>
-            </div>
-            <select id="budget-eiffel-lift-topo-adult-qty" data-cost="36.10" class="cost-dropdown cost-adult border-gray-300 rounded-md w-20 text-center">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-            </select>
-        </div>
-        
-        <!-- Opção 8: Elevador Topo (Jovens) -->
-        <div class="flex items-center justify-between">
-            <div>
-                <h4 class="font-semibold">Elevador Topo (Jovens)</h4>
-                <p class="text-sm text-gray-500">18,10 € por pessoa</p>
-            </div>
-            <select id="budget-eiffel-lift-topo-jovem-qty" data-cost="18.10" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-            </select>
-        </div>                        
-        
-    </div>
-
-    <hr class="my-4">
-    <div class="text-right"><span class="text-sm text-gray-500">Subtotal:</span><span class="subtotal font-bold text-lg ml-2">0.00 €</span></div>
-</div>
-
-
-                <!-- CARD SAINTE-CHAPELLE -->
-                <div class="cost-card bg-white p-6 rounded-2xl shadow-lg flex flex-col">
-                    <h3 class="text-xl font-bold text-gray-800 mb-4"><i class="fa-solid fa-church mr-2 text-gray-400"></i>Sainte-Chapelle</h3>
-                    
-                    <div class="space-y-4 flex-grow">
-                        <!-- Opção Única -->
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <h4 class="font-semibold">Bilhete Geral</h4>
-                                <p class="text-sm text-gray-500">19,00 € por adulto</p>
-                            </div>
-                            <select id="budget-saintechappele-general-qty" data-cost="19.00" class="cost-dropdown cost-adult border-gray-300 rounded-md w-20 text-center">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <hr class="my-4">
-                    <div class="text-right"><span class="text-sm text-gray-500">Subtotal:</span><span class="subtotal font-bold text-lg ml-2">0.00 €</span></div>
-                </div>
-
-
-                <!-- CARD VERSAILLES -->
-                <div class="cost-card bg-white p-6 rounded-2xl shadow-lg flex flex-col">
-                    <h3 class="text-xl font-bold text-gray-800 mb-4"><i class="fa-solid fa-landmark-dome mr-2 text-gray-400"></i>Versailles</h3>
-                    
-                    <div class="space-y-4 flex-grow">
-                        <!-- Opção Única -->
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <h4 class="font-semibold">Bilhete Geral</h4>
-                                <p class="text-sm text-gray-500">32,00 € por pessoa</p>
-                            </div>
-                            <select id="budget-Versailles-general-qty" data-cost="32.00" class="cost-dropdown cost-adult border-gray-300 rounded-md w-20 text-center">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <hr class="my-4">
-                    <div class="text-right"><span class="text-sm text-gray-500">Subtotal:</span><span class="subtotal font-bold text-lg ml-2">0.00 €</span></div>
-                </div>
-
-
-
-                <!-- CARD MUSEU DO LOUVRE -->
-                <div class="cost-card bg-white p-6 rounded-2xl shadow-lg flex flex-col">
-                    <h3 class="text-xl font-bold text-gray-800 mb-4"><i class="fa-solid fa-landmark-dome mr-2 text-gray-400"></i>Musée d'Orsay</h3>
-                    
-                    <div class="space-y-4 flex-grow">
-                        <!-- Opção Única -->
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <h4 class="font-semibold">Bilhete Geral</h4>
-                                <p class="text-sm text-gray-500">16,00 € por pessoa</p>
-                            </div>
-                            <select id="budget-orsay-general-qty" data-cost="16.00" class="cost-dropdown cost-adult border-gray-300 rounded-md w-20 text-center">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <hr class="my-4">
-                    <div class="text-right"><span class="text-sm text-gray-500">Subtotal:</span><span class="subtotal font-bold text-lg ml-2">0.00 €</span></div>
-                </div>
-
-
-        <!-- CARD Ópera Garnier -->
-        <div class="cost-card bg-white p-6 rounded-2xl shadow-lg flex flex-col">
-            <h3 class="text-xl font-bold text-gray-800 mb-4"><i class="fa-solid fa-masks-theater" mr-2 text-gray-400"></i> Ópera Garnier</h3>
-            
-            <div class="space-y-4 flex-grow">
-
-
-        <!-- Opção 1: (Adultos) -->
-        <div class="flex items-center justify-between">
-            <div>
-                <h4 class="font-semibold">Bilhete Adultos</h4>
-                <p class="text-sm text-gray-500">15,00 € por pessoa</p>
-            </div>
-            <select id="budget-Garnier-lift2-adult-qty" data-cost="15.00" class="cost-dropdown cost-adult border-gray-300 rounded-md w-20 text-center">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-            </select>
-        </div>
-
-        <!-- Opção 1: (Jovens) -->
-        <div class="flex items-center justify-between">
-            <div>
-                <h4 class="font-semibold">Bilhete Jovens</h4>
-                <p class="text-sm text-gray-500">10,00 € por pessoa</p>
-            </div>
-            <select id="budget-Garnier-lift2-jovem-qty" data-cost="10.00" class="cost-dropdown border-gray-300 rounded-md w-20 text-center">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-            </select>
-        </div>
-
-    </div>
-
-    <hr class="my-4">
-    <div class="text-right"><span class="text-sm text-gray-500">Subtotal:</span><span class="subtotal font-bold text-lg ml-2">0.00 €</span></div>
-</div>
-
-                
-                
-                <!-- CARD TRANSPORTES PUBLICOS -->
-                <div class="cost-card bg-white p-6 rounded-2xl shadow-lg flex flex-col">
-                    <h3 class="text-xl font-bold text-gray-800 mb-4"><i class="fa-solid fa-train-subway mr-2 text-gray-400"></i>Transporte Públicos</h3>
-                    
-                    <div class="space-y-4 flex-grow">
-                        <!-- Navigo Easy travel pass -->
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <h4 class="font-semibold">Navigo Easy travel pass</h4>
-                                <p class="text-sm text-gray-500">2,00 € por pessoa</p>
-                            </div>
-                            <select id="budget-transports-easy-qty" data-cost="2.00" class="cost-dropdown cost-adult border-gray-300 rounded-md w-20 text-center">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                            </select>
-                        </div>
-
-                        <!-- Forfait Paris Visit 5 dias -->
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <h4 class="font-semibold">Forfait Paris Visit 5 dias</h4>
-                                <p class="text-sm text-gray-500">76,25 € por pessoa</p>
-                            </div>
-                            <select id="budget-transports-visit-qty" data-cost="76.25" class="cost-dropdown cost-adult border-gray-300 rounded-md w-20 text-center">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <hr class="my-4">
-                    <div class="text-right"><span class="text-sm text-gray-500">Subtotal:</span><span class="subtotal font-bold text-lg ml-2">0.00 €</span></div>
-                </div>                
-                
-            </div>
+        <!-- NOVA SECÇÃO: TIMELINE DE BILHETES -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Resumo de Bilhetes a comprar</h2>
+            <div id="ticket-timeline-container" class="space-y-6"></div>
         </section>
-
-
-<!-- NOVA SECÇÃO: TIMELINE DE BILHETES -->
-<section class="mb-12">
-    <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Resumo de Bilhetes a comprar</h2>
-    <!-- O JavaScript vai inserir a timeline aqui -->
-    <div id="ticket-timeline-container" class="space-y-6"></div>
-</section>
-
-
     </div>
 
-    
-    
+    <!-- SCRIPTS PARA A PÁGINA PRINCIPAL -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-database-compat.js"></script>
 
-
-
-
-
-
-
-
-
-    <!---------------------------------------------------------------------------------------------------------------------->
-    <!-- SCRIPTS -->
-  
-    <!-- SCRIPT DO CONTADOR -->
     <script>
+        // SCRIPT DO CONTADOR
         const countdownDate = new Date(2025, 8, 19, 6, 0, 0).getTime();
         const x = setInterval(function() {
             const now = new Date().getTime();
@@ -537,148 +104,55 @@
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            document.getElementById("days").innerText = days.toString().padStart(2, '0');
-            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
-            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
-            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+            if (document.getElementById("days")) {
+                document.getElementById("days").innerText = days.toString().padStart(2, '0');
+                document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+                document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+                document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+            }
             if (distance < 0) {
                 clearInterval(x);
-                document.getElementById("countdown").innerHTML = "<div class='text-center w-full'><p class='text-2xl font-bold'>A VIAGEM COMEÇOU! BON VOYAGE!</p></div>";
+                if (document.getElementById("countdown")) {
+                    document.getElementById("countdown").innerHTML = "<div class='text-center w-full'><p class='text-2xl font-bold'>A VIAGEM COMEÇOU! BON VOYAGE!</p></div>";
+                }
             }
         }, 1000);
-    </script>
-
-
-
-
-    <!-- SCRIPT GERAL UNIFICADO PARA TODAS AS FUNCIONALIDADES  -->
-    <!-- Importar os scripts do Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-database-compat.js"></script>
-
-    <script>
-        // ==========================================================
-        // 1. CONFIGURAÇÃO GERAL E INICIALIZAÇÃO
-        // ==========================================================
+        
+        // --- SCRIPT PARA ESTA PÁGINA ---
         const firebaseConfig = {
           apiKey: "AIzaSyAt7jAk5r2tqSdyTf2m7MUebd_t7bbDTJk",
           authDomain: "planeamento-viagem-paris.firebaseapp.com",
           databaseURL: "https://planeamento-viagem-paris-default-rtdb.europe-west1.firebasedatabase.app",
           projectId: "planeamento-viagem-paris",
-          storageBucket: "planeamento-viagem-paris.firebasestorage.app",
+          storageBucket: "planeamento-viagem-paris.appspot.com",
           messagingSenderId: "121000897121",
           appId: "1:121000897121:web:75662c01dc56926bf61820"
         };
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
-
-
-
-
-
-
-
-        // ==========================================================
-        // 2. FONTES DE DADOS (É SÓ AQUI QUE PRECISA DE EDITAR!)
-        // ==========================================================
+        
+        // FONTES DE DADOS
         const planningEvents = [
-            { title: 'Comprar bilhetes para o Museu do Louvre', 
-            date: '2025-06-18', 
-            description: 'Comprar para o dia 22 de Setembro (Segunda-feira).', 
-            status: 'complete', 
-            color: '#16a34a' },
-
-            { title: 'Comprar bilhetes para a Museu D Orsay', 
-            date: '2025-06-21', description: 'Em principio em julho já é possivel comprar os bilhetes. Verificar disponibilidade.', 
-            status: 'pending', 
-            color: '#dc2626' },
-            
-            { title: 'Comprar bilhetes para Versailles', 
-            date: '2025-06-23', description: 'A partir desta data já é possivel comprar para o dia 21 de setembro.', 
-            status: 'pending', 
-            color: '#dc2626' },
-            
-            { title: 'Comprar bilhetes para a Sainte-Chapelle', 
-            date: '2025-07-01', description: 'Em principio em julho já é possivel comprar os bilhetes. Verificar disponibilidade.', 
-            status: 'pending', 
-            color: '#dc2626' },
-            
-            { title: 'Comprar bilhetes para a Torre Eiffel', 
-            date: '2025-07-20', 
-            description: 'Comprar ás 23h!! (0.00h em Paris) Os bilhetes ficam disponíveis 60 dias antes. Comprar para o dia 19 de Setembro (Sexta-feira).', 
-            status: 'pending', 
-            color: '#dc2626' },
-            
-            { title: 'Comprar bilhetes para a Ópera Garnier', 
-            date: '2025-07-23', 
-            description: 'Fazer a compra ás 23h!! Comprar para o dia 22 de Setembro (Segunda-feira).', 
-            status: 'pending', 
-            color: '#dc2626' },
-            
-            { title: 'Fazer pagamento da casa de Paris', 
-            date: '2025-08-25', 
-            description: 'Fazer o pagamento final da reserva.', 
-            status: 'pending', 
-            color: '#ea580c' },
-            
-            { title: 'Reserva para entrada sem filas na Notre-Dame', 
-            date: '2025-09-19', 
-            description: 'A reserva só pode ser feita umas horas antes. Irá ser dificil apanhar um slot disponível.', 
-            status: 'pending', 
-            color: '#ea580c' },
-            
-            { title: 'VIAGEM!', 
-            date: '2025-09-19', 
-            endDate: '2025-09-24', 
-            description: 'De 19 a 23 de Setembro.', 
-            status: 'complete', 
-            color: '#16a34a' }
+            { title: 'Comprar bilhetes para o Museu do Louvre', date: '2025-06-18', description: 'Comprar para o dia 22 de Setembro (Segunda-feira).', status: 'complete', color: '#16a34a' },
+            { title: 'Comprar bilhetes para a Museu D Orsay', date: '2025-06-21', description: 'Em principio em julho já é possivel comprar os bilhetes. Verificar disponibilidade.', status: 'pending', color: '#dc2626' },
+            { title: 'Comprar bilhetes para Versailles', date: '2025-06-23', description: 'A partir desta data já é possivel comprar para o dia 21 de setembro.', status: 'pending', color: '#dc2626' },
+            { title: 'Comprar bilhetes para a Sainte-Chapelle', date: '2025-07-01', description: 'Em principio em julho já é possivel comprar os bilhetes. Verificar disponibilidade.', status: 'pending', color: '#dc2626' },
+            { title: 'Comprar bilhetes para a Torre Eiffel', date: '2025-07-20', description: 'Comprar ás 23h!! (0.00h em Paris) Os bilhetes ficam disponíveis 60 dias antes. Comprar para o dia 19 de Setembro (Sexta-feira).', status: 'pending', color: '#dc2626' },
+            { title: 'Comprar bilhetes para a Ópera Garnier', date: '2025-07-23', description: 'Fazer a compra ás 23h!! Comprar para o dia 22 de Setembro (Segunda-feira).', status: 'pending', color: '#dc2626' },
+            { title: 'Fazer pagamento da casa de Paris', date: '2025-08-25', description: 'Fazer o pagamento final da reserva.', status: 'pending', color: '#ea580c' },
+            { title: 'Reserva para entrada sem filas na Notre-Dame', date: '2025-09-19', description: 'A reserva só pode ser feita umas horas antes. Irá ser dificil apanhar um slot disponível.', status: 'pending', color: '#ea580c' },
+            { title: 'VIAGEM!', date: '2025-09-19', endDate: '2025-09-24', description: 'De 19 a 23 de Setembro.', status: 'complete', color: '#16a34a' }
         ];
         
-        
-        
-        
-        
-        // ===============================================================================================================
-        // RESUMO DE BILHETES A COMPRAR
-        // ===============================================================================================================
-        
-        
-const tripItinerary = [
-    {
-        day: 'Dia 1', date: '19/09', theme: 'Chegada e Torre Eiffel',
-        ticketedVenues: [
-            { name: 'Torre Eiffel', icon: 'fa-tower-observation', status: 'pending', openingHours: '09:00 - 23:45', openDays: 'Todos os dias' }
-        ]
-    },
-    {
-        day: 'Dia 2', date: '20/09', theme: 'Coração Histórico',
-        ticketedVenues: [
-            { name: 'Sainte-Chapelle', icon: 'fa-gem', status: 'pending', openingHours: '09:00 - 17:00', openDays: 'Todos os dias (verificar feriados)' },
-            { name: 'Musée dOrsay', icon: 'fa-gem', status: 'pending', openingHours: '09:00 - 17:00', openDays: 'Todos os dias (verificar feriados)' }
-        ]
-    },
-    {
-        day: 'Dia 3', date: '21/09', theme: 'Realeza e Arte Boémia',
-        ticketedVenues: [
-            { name: 'Palácio de Versalhes', icon: 'fa-crown', status: 'pending', openingHours: '09:00 - 18:30 (Palácio)', openDays: 'Fecha às Segundas' },
-        ]
-    },
-    {
-        day: 'Dia 4', date: '22/09', theme: 'Imersão em Arte',
-        ticketedVenues: [
-            { name: 'Museu do Louvre', icon: 'fa-landmark-dome', status: 'complete', openingHours: '09:00 - 18:00', openDays: 'Fecha às Terças' },
-            { name: 'Ópera Garnier', icon: 'fa-masks-theater', status: 'pending', openingHours: '10:00 - 17:00', openDays: 'Todos os dias (pode fechar para eventos)' }
-        ]
-    },
-    {
-        day: 'Dia 5', date: '23/09', theme: 'Despedida e Regresso', ticketedVenues: [] }
-];
+        const tripItinerary = [
+            { day: 'Dia 1', date: '19/09', theme: 'Chegada e Torre Eiffel', ticketedVenues: [{ name: 'Torre Eiffel', icon: 'fa-tower-observation', status: 'pending', openingHours: '09:00 - 23:45', openDays: 'Todos os dias' }] },
+            { day: 'Dia 2', date: '20/09', theme: 'Coração Histórico', ticketedVenues: [{ name: 'Sainte-Chapelle', icon: 'fa-gem', status: 'pending', openingHours: '09:00 - 17:00', openDays: 'Todos os dias (verificar feriados)' }, { name: 'Musée dOrsay', icon: 'fa-gem', status: 'pending', openingHours: '09:00 - 17:00', openDays: 'Todos os dias (verificar feriados)' }] },
+            { day: 'Dia 3', date: '21/09', theme: 'Realeza e Arte Boémia', ticketedVenues: [{ name: 'Palácio de Versalhes', icon: 'fa-crown', status: 'pending', openingHours: '09:00 - 18:30 (Palácio)', openDays: 'Fecha às Segundas' }] },
+            { day: 'Dia 4', date: '22/09', theme: 'Imersão em Arte', ticketedVenues: [{ name: 'Museu do Louvre', icon: 'fa-landmark-dome', status: 'complete', openingHours: '09:00 - 18:00', openDays: 'Fecha às Terças' }, { name: 'Ópera Garnier', icon: 'fa-masks-theater', status: 'pending', openingHours: '10:00 - 17:00', openDays: 'Todos os dias (pode fechar para eventos)' }] },
+            { day: 'Dia 5', date: '23/09', theme: 'Despedida e Regresso', ticketedVenues: [] }
+        ];
 
-        // ==========================================================
-        // 3. DEFINIÇÃO DAS FUNÇÕES
-        // ==========================================================
-
+        // FUNÇÕES PARA ESTA PÁGINA
         function setupChecklist() {
             const checklistItems = document.querySelectorAll('.checklist-item input[type="checkbox"]');
             const checklistRef = database.ref('checklist');
@@ -688,38 +162,7 @@ const tripItinerary = [
             });
             checklistItems.forEach(item => { item.addEventListener('change', (e) => { checklistRef.child(e.target.id).set(e.target.checked); }); });
         }
-
-        function setupBudgetCalculator() {
-            const budgetRef = database.ref('budget');
-            const costDropdowns = document.querySelectorAll('.cost-dropdown');
-            function updateAllCalculations() {
-                let grandTotal = 0, perAdultTotal = 0;
-                const costCards = document.querySelectorAll('.cost-card');
-                costCards.forEach(card => {
-                    let cardSubtotal = 0;
-                    card.querySelectorAll('.cost-dropdown').forEach(dropdown => {
-                        const quantity = parseInt(dropdown.value, 10);
-                        const costPerItem = parseFloat(dropdown.dataset.cost);
-                        const itemTotalCost = quantity * costPerItem;
-                        cardSubtotal += itemTotalCost;
-                        grandTotal += itemTotalCost;
-                        if (dropdown.classList.contains('cost-adult') && quantity > 0) { perAdultTotal += costPerItem; }
-                    });
-                    const subtotalElement = card.querySelector('.subtotal');
-                    if (subtotalElement) { subtotalElement.textContent = `${cardSubtotal.toFixed(2)} €`; }
-                });
-                document.getElementById('total-cost').textContent = `${grandTotal.toFixed(2)} €`;
-                document.getElementById('per-adult-cost').textContent = `${perAdultTotal.toFixed(2)} €`;
-            }
-            budgetRef.on('value', (snapshot) => {
-                const data = snapshot.val();
-                if (data) { costDropdowns.forEach(dropdown => { if (data[dropdown.id] !== undefined) { dropdown.value = data[dropdown.id]; } }); }
-                updateAllCalculations();
-            });
-            costDropdowns.forEach(dropdown => { dropdown.addEventListener('change', (e) => { budgetRef.child(e.target.id).set(parseInt(e.target.value, 10)); }); });
-            updateAllCalculations();
-        }
-
+        
         function renderTimeline() {
             const timelineContainer = document.getElementById('timeline-container');
             if (!timelineContainer) return;
@@ -743,95 +186,62 @@ const tripItinerary = [
             const modalDescription = document.getElementById('modal-description');
             const modalCloseBtn = document.getElementById('modal-close-btn');
             const calendarEvents = planningEvents.map(event => ({ title: event.title, start: event.date, end: event.endDate, backgroundColor: event.color, borderColor: event.color, allDay: true, extendedProps: { description: event.description || 'Não há detalhes adicionais.' } }));
-            const calendar = new FullCalendar.Calendar(calendarEl, { initialView: 'dayGridMonth', locale: 'pt-br', headerToolbar: { left: 'prev,next today', center: 'title', right: '' }, events: calendarEvents, eventClick: function(info) { info.jsEvent.preventDefault(); modalTitle.textContent = info.event.title; modalDescription.textContent = info.event.extendedProps.description; modal.classList.remove('hidden'); } });
-            function closeModal() { modal.classList.add('hidden'); }
-            modalCloseBtn.addEventListener('click', closeModal);
-            modal.addEventListener('click', function(e) { if (e.target === modal) { closeModal(); } });
+            const calendar = new FullCalendar.Calendar(calendarEl, { initialView: 'dayGridMonth', locale: 'pt-br', headerToolbar: { left: 'prev,next today', center: 'title', right: '' }, events: calendarEvents, eventClick: function(info) { info.jsEvent.preventDefault(); if(modal) { modalTitle.textContent = info.event.title; modalDescription.textContent = info.event.extendedProps.description; modal.classList.remove('hidden');} } });
+            function closeModal() { if(modal) modal.classList.add('hidden'); }
+            if(modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+            if(modal) modal.addEventListener('click', function(e) { if (e.target === modal) { closeModal(); } });
             calendar.render();
         }
 
-
-
-
-
-
-function renderTicketTimeline() {
-    const container = document.getElementById('ticket-timeline-container');
-    if (!container) return;
-    container.innerHTML = '';
-
-    tripItinerary.forEach(day => {
-        let venuesHTML = '';
-        if (day.ticketedVenues.length > 0) {
-            venuesHTML = `<ul class="mt-3 space-y-4">` +
-                day.ticketedVenues.map(venue => {
-                    const isComplete = venue.status === 'complete';
-                    
-                    return `
+        function renderTicketTimeline() {
+            const container = document.getElementById('ticket-timeline-container');
+            if (!container) return;
+            container.innerHTML = '';
+            tripItinerary.forEach(day => {
+                let venuesHTML = '';
+                if (day.ticketedVenues.length > 0) {
+                    venuesHTML = `<ul class="mt-3 space-y-4">` + day.ticketedVenues.map(venue => {
+                        const isComplete = venue.status === 'complete';
+                        return `
                         <li class="p-4 bg-gray-50 rounded-lg">
                             <div class="flex items-center justify-between">
-                                <!-- Nome e status -->
                                 <div class="flex items-center">
                                     <i class="fa-solid ${isComplete ? 'fa-check-circle text-green-500' : 'fa-hourglass-half text-yellow-500'} w-6 text-center mr-3"></i>
                                     <span class="font-semibold ${isComplete ? 'line-through text-gray-400' : 'text-gray-800'}">${venue.name}</span>
                                 </div>
-                                <!-- Ícone do local -->
                                 <i class="fa-solid ${venue.icon} text-xl text-gray-400"></i>
                             </div>
-                            <!-- Detalhes de funcionamento -->
                             <div class="mt-2 pl-9 text-sm text-gray-600 space-y-1">
-                                <!-- Linha dos dias de funcionamento -->
-                                <div class="flex items-start">
-                                    <i class="fa-regular fa-calendar-days w-6 text-center mr-1 pt-1"></i>
-                                    <span>${venue.openDays || 'Não especificado'}</span>
-                                </div>
-                                <!-- Linha do horário -->
-                                <div class="flex items-start">
-                                    <i class="fa-regular fa-clock w-6 text-center mr-1 pt-1"></i>
-                                    <span>${venue.openingHours || 'Não especificado'}</span>
-                                </div>
+                                <div class="flex items-start"><i class="fa-regular fa-calendar-days w-6 text-center mr-1 pt-1"></i><span>${venue.openDays || 'Não especificado'}</span></div>
+                                <div class="flex items-start"><i class="fa-regular fa-clock w-6 text-center mr-1 pt-1"></i><span>${venue.openingHours || 'Não especificado'}</span></div>
                             </div>
-                        </li>
-                    `;
-                }).join('') +
-            `</ul>`;
-        } else {
-            venuesHTML = `<p class="mt-2 text-gray-500 italic">Nenhum bilhete a comprar para este dia.</p>`;
+                        </li>`;
+                    }).join('') + `</ul>`;
+                } else {
+                    venuesHTML = `<p class="mt-2 text-gray-500 italic">Nenhum bilhete a comprar para este dia.</p>`;
+                }
+                const dayHTML = `
+                    <div class="bg-white p-6 rounded-2xl shadow-lg">
+                        <div class="flex items-center border-b pb-3">
+                            <div class="text-center w-16"><p class="text-xl font-bold text-gray-800">${day.day}</p><p class="text-sm text-gray-500">${day.date}</p></div>
+                            <div class="pl-4 border-l ml-4"><h4 class="font-semibold text-lg text-gray-900">${day.theme}</h4></div>
+                        </div>
+                        ${venuesHTML}
+                    </div>`;
+                container.innerHTML += dayHTML;
+            });
         }
 
-        const dayHTML = `
-            <div class="bg-white p-6 rounded-2xl shadow-lg">
-                <div class="flex items-center border-b pb-3">
-                    <div class="text-center w-16">
-                        <p class="text-xl font-bold text-gray-800">${day.day}</p>
-                        <p class="text-sm text-gray-500">${day.date}</p>
-                    </div>
-                    <div class="pl-4 border-l ml-4">
-                        <h4 class="font-semibold text-lg text-gray-900">${day.theme}</h4>
-                    </div>
-                </div>
-                ${venuesHTML}
-            </div>
-        `;
-        container.innerHTML += dayHTML;
-    });
-}
-
-
-
-        // ==========================================================
-        // 4. OUVINTE PRINCIPAL (EXECUTA TUDO QUANDO A PÁGINA ESTÁ PRONTA)
-        // ==========================================================
+        // OUVINTE PRINCIPAL
         document.addEventListener('DOMContentLoaded', () => {
             setupChecklist();
-            setupBudgetCalculator();
             renderTimeline();
             renderCalendar();
             renderTicketTimeline();
         });
     </script>
-
-    <!-- ESTRUTURA DO POPUP/MODAL -->
+    
+    <!-- ESTRUTURA DO POPUP/MODAL PARA O CALENDÁRIO -->
     <div id="event-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
         <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 w-full max-w-md relative">
             <button id="modal-close-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 transition">
@@ -841,6 +251,5 @@ function renderTicketTimeline() {
             <p id="modal-description" class="text-gray-600">Descrição detalhada do evento irá aparecer aqui.</p>
         </div>
     </div>
-
 </body>
 </html>
