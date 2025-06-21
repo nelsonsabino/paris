@@ -50,30 +50,32 @@
                 </div>
             </div>
 
-            <!-- FORMULÁRIO PARA ADICIONAR MOVIMENTOS -->
+            <!-- FORMULÁRIO PARA ADICIONAR MOVIMENTOS (CORRIGIDO) -->
             <div class="bg-white p-6 rounded-2xl shadow-lg mt-8">
                 <h3 class="text-xl font-bold text-gray-800 mb-4">Adicionar Novo Movimento</h3>
-                <form id="add-movement-form" class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
-                    <div class="md:col-span-1">
-                        <label for="mov-description" class="block text-sm font-medium text-gray-700">Descrição</label>
-                        <input type="text" id="mov-description" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                <form id="add-movement-form">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
+                        <div class="md:col-span-1">
+                            <label for="mov-description" class="block text-sm font-medium text-gray-700">Descrição</label>
+                            <input type="text" id="mov-description" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+                        </div>
+                        <div>
+                            <label for="mov-sogra" class="block text-sm font-medium text-gray-700">Sogra</label>
+                            <input type="number" id="mov-sogra" step="0.01" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="0.00">
+                        </div>
+                        <div>
+                            <label for="mov-sogro" class="block text-sm font-medium text-gray-700">Sogro</label>
+                            <input type="number" id="mov-sogro" step="0.01" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="0.00">
+                        </div>
+                         <div>
+                            <label for="mov-nos" class="block text-sm font-medium text-gray-700">Nós</label>
+                            <input type="number" id="mov-nos" step="0.01" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="0.00">
+                        </div>
                     </div>
-                    <div>
-                        <label for="mov-sogra" class="block text-sm font-medium text-gray-700">Sogra</label>
-                        <input type="number" id="mov-sogra" step="0.01" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="0.00">
-                    </div>
-                    <div>
-                        <label for="mov-sogro" class="block text-sm font-medium text-gray-700">Sogro</label>
-                        <input type="number" id="mov-sogro" step="0.01" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="0.00">
-                    </div>
-                     <div>
-                        <label for="mov-nos" class="block text-sm font-medium text-gray-700">Nós</label>
-                        <input type="number" id="mov-nos" step="0.01" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="0.00">
-                    </div>
+                     <button type="submit" class="w-full mt-4 bg-green-600 text-white font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-green-700 transition-colors">
+                        <i class="fa-solid fa-plus mr-2"></i>Adicionar
+                    </button>
                 </form>
-                 <button type="submit" form="add-movement-form" class="w-full mt-4 bg-green-600 text-white font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-green-700 transition-colors">
-                    <i class="fa-solid fa-plus mr-2"></i>Adicionar
-                </button>
             </div>
         </section>
 
@@ -92,17 +94,13 @@
                 </div>
             </div>
             <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center mt-12">Detalhe do Orçamento Restante</h3>
-            <div id="budget-cards-container" class="grid grid-cols-1 md:grid-cols-1 gap-8">
-                <!-- O JavaScript vai preencher os cards de detalhe do orçamento aqui -->
-            </div>
+            <div id="budget-cards-container" class="grid grid-cols-1 md:grid-cols-1 gap-8"></div>
         </section>
 
         <!-- SECÇÃO: COMPRAS CONCLUÍDAS -->
         <section class="mb-12">
              <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Resumo de Compras Concluídas</h2>
-             <div id="completed-purchases-container" class="bg-white p-6 rounded-2xl shadow-lg space-y-4">
-                 <!-- O JavaScript vai preencher esta área -->
-             </div>
+             <div id="completed-purchases-container" class="bg-white p-6 rounded-2xl shadow-lg space-y-4"></div>
         </section>
 
     </div>
@@ -111,9 +109,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-database-compat.js"></script>
     <script>
-        // ==========================================================
-        // 1. CONFIGURAÇÃO E FONTES DE DADOS
-        // ==========================================================
+        // ... (o seu JavaScript completo e correto vai aqui)
         const firebaseConfig = {
           apiKey: "AIzaSyAt7jAk5r2tqSdyTf2m7MUebd_t7bbDTJk",
           authDomain: "planeamento-viagem-paris.firebaseapp.com",
@@ -128,48 +124,14 @@
         const movimentosRef = database.ref('movimentos');
 
         const budgetConfiguration = {
-            louvre: {
-                title: "Museu do Louvre", icon: "fa-landmark-dome",
-                tickets: [ { name: 'Bilhete Geral', cost: 22.00, type: 'adult' } ]
-            },
-            eiffel: {
-                title: "Torre Eiffel", icon: "fa-tower-observation",
-                tickets: [
-                    { name: 'Escadas + Elevador Topo (Adultos)', cost: 27.50 }, 
-                    { name: 'Elevador Topo (Adultos)', cost: 36.10, type: 'adult' },
-                    { name: 'Escadas + Elevador Topo (Jovens)', cost: 13.80, type: 'young' }
-                ]
-            },
-            saintechapelle: {
-                title: "Sainte-Chapelle", icon: "fa-church",
-                tickets: [ { name: 'Bilhete Geral', cost: 19.00, type: 'adult' } ]
-            },
-            versailles: {
-                title: "Versailles", icon: "fa-landmark-dome",
-                tickets: [ { name: 'Bilhete Geral', cost: 32.00, type: 'adult' } ]
-            },
-            orsay: {
-                title: "Musée d'Orsay", icon: "fa-landmark-dome",
-                tickets: [ { name: 'Bilhete Geral', cost: 16.00, type: 'adult' } ]
-            },
-            garnier: {
-                title: "Ópera Garnier", icon: "fa-masks-theater",
-                tickets: [
-                    { name: 'Bilhete Adulto', cost: 15.00, type: 'adult' },
-                    { name: 'Bilhete Jovem', cost: 10.00, type: 'young' }
-                ]
-            },
-            transports: {
-                title: "Transportes Públicos", icon: "fa-train-subway",
-                tickets: [
-                    { name: 'Navigo Easy travel pass', cost: 2.00, type: 'adult' },
-                    { name: 'Forfait Paris Visit 5 dias', cost: 76.25, type: 'adult' },
-                    { name: 'Navigo Easy travel pass jovem', cost: 2.00, type: 'young' },
-                    { name: 'Forfait Paris Visit 5 dias jovem', cost: 76.25, type: 'young' }
-                ]
-            }
+            louvre: { title: "Museu do Louvre", icon: "fa-landmark-dome", tickets: [ { name: 'Bilhete Geral', cost: 22.00, type: 'adult' } ] },
+            eiffel: { title: "Torre Eiffel", icon: "fa-tower-observation", tickets: [ { name: 'Escadas + Elevador Topo (Adultos)', cost: 27.50 }, { name: 'Elevador Topo (Adultos)', cost: 36.10, type: 'adult' }, { name: 'Escadas + Elevador Topo (Jovens)', cost: 13.80, type: 'young' } ] },
+            saintechapelle: { title: "Sainte-Chapelle", icon: "fa-church", tickets: [ { name: 'Bilhete Geral', cost: 19.00, type: 'adult' } ] },
+            versailles: { title: "Versailles", icon: "fa-landmark-dome", tickets: [ { name: 'Bilhete Geral', cost: 32.00, type: 'adult' } ] },
+            orsay: { title: "Musée d'Orsay", icon: "fa-landmark-dome", tickets: [ { name: 'Bilhete Geral', cost: 16.00, type: 'adult' } ] },
+            garnier: { title: "Ópera Garnier", icon: "fa-masks-theater", tickets: [ { name: 'Bilhete Adulto', cost: 15.00, type: 'adult' }, { name: 'Bilhete Jovem', cost: 10.00, type: 'young' } ] },
+            transports: { title: "Transportes Públicos", icon: "fa-train-subway", tickets: [ { name: 'Navigo Easy travel pass', cost: 2.00, type: 'adult' }, { name: 'Forfait Paris Visit 5 dias', cost: 76.25, type: 'adult' }, { name: 'Navigo Easy travel pass jovem', cost: 2.00, type: 'young' }, { name: 'Forfait Paris Visit 5 dias jovem', cost: 76.25, type: 'young' } ] }
         };
-
         const planningEvents = [
             { title: 'Comprar bilhetes para o Museu do Louvre', status: 'complete', budgetKey: 'louvre' },
             { title: 'Comprar bilhetes para a Museu D Orsay', status: 'pending', budgetKey: 'orsay' },
@@ -177,62 +139,36 @@
             { title: 'VIAGEM!', status: 'complete' }
         ];
 
-        // ==========================================================
-        // 2. DEFINIÇÃO DAS FUNÇÕES
-        // ==========================================================
-
         function formatCurrency(value) {
-            if (typeof value !== 'number' || isNaN(value) || value === 0) {
-                return '-';
-            }
+            if (typeof value !== 'number' || isNaN(value)) { return '-'; }
             return `${value.toFixed(2).replace('.', ',')} €`;
         }
-        
         function renderMovementsTable() {
             const table = document.getElementById('movements-table');
             const tbody = table.querySelector('tbody');
             const tfoot = table.querySelector('tfoot');
-
             movimentosRef.on('value', (snapshot) => {
                 const movements = snapshot.val();
                 tbody.innerHTML = '';
                 tfoot.innerHTML = '';
-                
                 let sumSogra = 0, sumSogro = 0, sumNos = 0;
-
                 if (movements) {
                     for (const key in movements) {
                         const mov = movements[key];
                         const sograVal = mov.sogra || 0;
                         const sogroVal = mov.sogro || 0;
                         const nosVal = mov.nos || 0;
-
-                        sumSogra += sograVal;
-                        sumSogro += sogroVal;
-                        sumNos += nosVal;
-
+                        sumSogra += sograVal; sumSogro += sogroVal; sumNos += nosVal;
                         const row = document.createElement('tr');
-                        row.innerHTML = `
-                            <td class="p-4">${mov.description}</td>
-                            <td class="p-4 text-right font-mono ${sograVal >= 0 ? 'text-green-600' : 'text-red-600'}">${formatCurrency(sograVal)}</td>
-                            <td class="p-4 text-right font-mono ${sogroVal >= 0 ? 'text-green-600' : 'text-red-600'}">${formatCurrency(sogroVal)}</td>
-                            <td class="p-4 text-right font-mono ${nosVal >= 0 ? 'text-green-600' : 'text-red-600'}">${formatCurrency(nosVal)}</td>
-                        `;
+                        row.innerHTML = `<td class="p-4">${mov.description}</td><td class="p-4 text-right font-mono ${sograVal >= 0 ? 'text-green-600' : 'text-red-600'}">${formatCurrency(sograVal)}</td><td class="p-4 text-right font-mono ${sogroVal >= 0 ? 'text-green-600' : 'text-red-600'}">${formatCurrency(sogroVal)}</td><td class="p-4 text-right font-mono ${nosVal >= 0 ? 'text-green-600' : 'text-red-600'}">${formatCurrency(nosVal)}</td>`;
                         tbody.appendChild(row);
                     }
                 }
-
                 const balanceRow = document.createElement('tr');
-                balanceRow.innerHTML = `
-                    <td class="p-4 text-xl">Saldo</td>
-                    <td class="p-4 text-right text-xl">${formatCurrency(sumSogra)}</td>
-                    <td class="p-4 text-right text-xl">${formatCurrency(sumSogro)}</td>
-                    <td class="p-4 text-right text-xl">${formatCurrency(sumNos)}</td>
-                `;
+                balanceRow.innerHTML = `<td class="p-4 text-xl">Saldo</td><td class="p-4 text-right text-xl">${formatCurrency(sumSogra)}</td><td class="p-4 text-right text-xl">${formatCurrency(sumSogro)}</td><td class="p-4 text-right text-xl">${formatCurrency(sumNos)}</td>`;
                 tfoot.appendChild(balanceRow);
             });
         }
-        
         function setupMovementsForm() {
             const form = document.getElementById('add-movement-form');
             form.addEventListener('submit', (e) => {
@@ -241,49 +177,35 @@
                 const sogra = parseFloat(document.getElementById('mov-sogra').value) || 0;
                 const sogro = parseFloat(document.getElementById('mov-sogro').value) || 0;
                 const nos = parseFloat(document.getElementById('mov-nos').value) || 0;
-
-                const newMovement = {
-                    description: description,
-                    sogra: sogra,
-                    sogro: sogro,
-                    nos: nos
-                };
-
-                movimentosRef.push(newMovement);
+                movimentosRef.push({ description, sogra, sogro, nos });
                 form.reset();
             });
         }
-
         function processAndDisplayRemainingBudget() {
             let remainingAdultCostPerPerson = 0;
             let remainingYoungCostPerPerson = 0;
-            const completedKeys = planningEvents.filter(event => event.status === 'complete' && event.budgetKey).map(event => event.budgetKey);
-
-            for (const categoryKey in budgetConfiguration) {
-                if (completedKeys.includes(categoryKey)) continue;
-                const category = budgetConfiguration[categoryKey];
+            const completedKeys = planningEvents.filter(e => e.status === 'complete' && e.budgetKey).map(e => e.budgetKey);
+            for (const key in budgetConfiguration) {
+                if (completedKeys.includes(key)) continue;
+                const category = budgetConfiguration[key];
                 category.tickets.forEach(ticket => {
                     if (ticket.type === 'adult') { remainingAdultCostPerPerson += ticket.cost; }
                     else if (ticket.type === 'young') { remainingYoungCostPerPerson += ticket.cost; }
                 });
             }
-
             const sogrosRemainingCost = remainingAdultCostPerPerson;
             const familiaRemainingCost = (remainingAdultCostPerPerson * 2) + (remainingYoungCostPerPerson * 2);
-
             document.getElementById('sogros-cost').textContent = `${sogrosRemainingCost.toFixed(2)} €`;
             document.getElementById('familia-cost').textContent = `${familiaRemainingCost.toFixed(2)} €`;
         }
-        
         function renderRemainingBudgetCards() {
             const budgetContainer = document.getElementById('budget-cards-container');
-            const completedKeys = planningEvents.filter(event => event.status === 'complete' && event.budgetKey).map(event => event.budgetKey);
+            const completedKeys = planningEvents.filter(e => e.status === 'complete' && e.budgetKey).map(e => e.budgetKey);
             if (!budgetContainer) return;
-            budgetContainer.innerHTML = ''; 
-
-            for (const categoryKey in budgetConfiguration) {
-                if (completedKeys.includes(categoryKey)) continue;
-                const category = budgetConfiguration[categoryKey];
+            budgetContainer.innerHTML = '';
+            for (const key in budgetConfiguration) {
+                if (completedKeys.includes(key)) continue;
+                const category = budgetConfiguration[key];
                 let itemsHTML = category.tickets.map(ticket => {
                     const isCalculated = ticket.type === 'adult' || ticket.type === 'young';
                     const containerClass = isCalculated ? 'bg-green-50' : 'bg-gray-100';
@@ -294,41 +216,26 @@
                 budgetContainer.innerHTML += cardHTML;
             }
         }
-        
         function renderCompletedPurchases() {
             const container = document.getElementById('completed-purchases-container');
-            const completedItems = planningEvents.filter(event => event.status === 'complete' && event.title !== 'VIAGEM!');
-
+            const completedItems = planningEvents.filter(e => e.status === 'complete' && e.title !== 'VIAGEM!');
             if (completedItems.length === 0) {
-                container.innerHTML = `<p class="text-gray-500 italic text-center">Nenhuma compra concluída ainda.</p>`;
-                return;
+                container.innerHTML = `<p class="text-gray-500 italic text-center">Nenhuma compra concluída ainda.</p>`; return;
             }
-
             const itemsHTML = completedItems.map(item => {
                 let costHTML = '';
                 if (item.budgetKey && budgetConfiguration[item.budgetKey]) {
-                    let purchaseCostPerAdult = 0;
-                    budgetConfiguration[item.budgetKey].tickets.forEach(ticket => {
-                        if (ticket.type === 'adult') { purchaseCostPerAdult += ticket.cost; }
-                    });
-                    if (purchaseCostPerAdult > 0) {
-                        costHTML = `<span class="ml-auto pl-4 font-semibold text-gray-700">${purchaseCostPerAdult.toFixed(2)} € / pessoa</span>`;
-                    }
+                    let cost = 0;
+                    budgetConfiguration[item.budgetKey].tickets.forEach(ticket => { if (ticket.type === 'adult') cost += ticket.cost; });
+                    if (cost > 0) costHTML = `<span class="ml-auto pl-4 font-semibold text-gray-700">${cost.toFixed(2)} € / pessoa</span>`;
                 }
                 return `<div class="flex items-center text-lg p-2 border-b border-gray-100"><i class="fa-solid fa-check-circle text-green-500 mr-4 text-xl"></i><span class="flex-grow">${item.title}</span>${costHTML}</div>`;
             }).join('');
             container.innerHTML = itemsHTML;
         }
-
-        // ==========================================================
-        // 3. OUVINTE PRINCIPAL
-        // ==========================================================
         document.addEventListener('DOMContentLoaded', () => {
-            // Funções para a folha de movimentos
             renderMovementsTable();
             setupMovementsForm();
-
-            // Funções para o orçamento restante e compras concluídas
             processAndDisplayRemainingBudget();
             renderRemainingBudgetCards();
             renderCompletedPurchases();
