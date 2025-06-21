@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orçamento: Viagem a Paris 2025</title>
-    <!-- O cabeçalho é idêntico para manter o design -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,42 +19,57 @@
 
         <!-- CABEÇALHO DA PÁGINA DE ORÇAMENTO -->
         <header class="mb-12 flex justify-between items-center">
-            <h1 class="text-4xl font-bold text-gray-800">Orçamento Detalhado</h1>
+            <h1 class="text-4xl font-bold text-gray-800">Orçamento Restante</h1>
             <a href="index.html" class="bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-colors">
                 <i class="fa-solid fa-arrow-left mr-2"></i>
                 Voltar ao Painel
             </a>
         </header>
 
-        <!-- SECÇÃO ORÇAMENTO DA VIAGEM -->
+        <!-- SECÇÃO ORÇAMENTO DA VIAGEM - VERSÃO CORRIGIDA -->
         <section class="mb-12">
-            <p class="text-center text-gray-600 mb-8 -mt-6">Estimativa de custos com base nos bilhetes definidos no código.</p>
+            <p class="text-center text-gray-600 mb-8 -mt-6">Custo estimado do que ainda falta comprar.</p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                 <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
-                    <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Custo por Pessoa (Sogros)</h3>
+                    <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Valor em Falta (por Sogro)</h3>
                     <p id="sogros-cost" class="text-4xl md:text-5xl font-bold text-green-600 mt-2">0.00 €</p>
                 </div>
                 <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
-                    <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Custo Total (Nossa Família)</h3>
+                    <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Valor em Falta (Nossa Família)</h3>
                     <p id="familia-cost" class="text-4xl md:text-5xl font-bold text-blue-600 mt-2">0.00 €</p>
                 </div>
             </div>
 
+            <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center mt-12">Detalhe do Orçamento Restante</h3>
             <div id="budget-cards-container" class="grid grid-cols-1 md:grid-cols-1 gap-8">
-                <!-- O JavaScript vai preencher esta área -->
+                <!-- O JavaScript vai preencher os cards de detalhe do orçamento aqui -->
             </div>
+        </section>
+
+        <!-- SECÇÃO: COMPRAS CONCLUÍDAS -->
+        <section class="mb-12">
+             <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Resumo de Compras Concluídas</h2>
+             <div id="completed-purchases-container" class="bg-white p-6 rounded-2xl shadow-lg space-y-4">
+                 <!-- O JavaScript vai preencher esta área -->
+             </div>
         </section>
 
     </div>
 
     <!-- SCRIPT APENAS PARA A PÁGINA DE ORÇAMENTO -->
     <script>
-        // FONTES DE DADOS DO ORÇAMENTO
+        // ==========================================================
+        // 1. FONTES DE DADOS
+        // ==========================================================
+        
         const budgetConfiguration = {
+            louvre: {
+                title: "Museu do Louvre", icon: "fa-landmark-dome",
+                tickets: [ { name: 'Bilhete Geral', cost: 22.00, type: 'adult' } ]
+            },
             eiffel: {
-                title: "Torre Eiffel",
-                icon: "fa-tower-observation",
+                title: "Torre Eiffel", icon: "fa-tower-observation",
                 tickets: [
                     { name: 'Escadas + Elevador Topo (Adultos)', cost: 27.50 }, 
                     { name: 'Elevador Topo (Adultos)', cost: 36.10, type: 'adult' },
@@ -63,37 +77,26 @@
                 ]
             },
             saintechapelle: {
-                title: "Sainte-Chapelle",
-                icon: "fa-church",
-                tickets: [
-                    { name: 'Bilhete Geral', cost: 19.00, type: 'adult' }
-                ]
+                title: "Sainte-Chapelle", icon: "fa-church",
+                tickets: [ { name: 'Bilhete Geral', cost: 19.00, type: 'adult' } ]
             },
             versailles: {
-                title: "Versailles",
-                icon: "fa-landmark-dome",
-                tickets: [
-                    { name: 'Bilhete Geral', cost: 32.00, type: 'adult' }
-                ]
+                title: "Versailles", icon: "fa-landmark-dome",
+                tickets: [ { name: 'Bilhete Geral', cost: 32.00, type: 'adult' } ]
             },
             orsay: {
-                title: "Musée d'Orsay",
-                icon: "fa-landmark-dome",
-                tickets: [
-                    { name: 'Bilhete Geral', cost: 16.00, type: 'adult' }
-                ]
+                title: "Musée d'Orsay", icon: "fa-landmark-dome",
+                tickets: [ { name: 'Bilhete Geral', cost: 16.00, type: 'adult' } ]
             },
             garnier: {
-                title: "Ópera Garnier",
-                icon: "fa-masks-theater",
+                title: "Ópera Garnier", icon: "fa-masks-theater",
                 tickets: [
                     { name: 'Bilhete Adulto', cost: 15.00, type: 'adult' },
                     { name: 'Bilhete Jovem', cost: 10.00, type: 'young' }
                 ]
             },
             transports: {
-                title: "Transportes Públicos",
-                icon: "fa-train-subway",
+                title: "Transportes Públicos", icon: "fa-train-subway",
                 tickets: [
                     { name: 'Navigo Easy travel pass', cost: 2.00, type: 'adult' },
                     { name: 'Forfait Paris Visit 5 dias', cost: 76.25, type: 'adult' },
@@ -103,22 +106,65 @@
             }
         };
 
-        // FUNÇÃO DE CÁLCULO
-        function processAndDisplayBudget() {
-            let totalAdultCostPerPerson = 0;
-            let totalYoungCostPerPerson = 0;
+        const planningEvents = [
+            { title: 'Comprar bilhetes para o Museu do Louvre', status: 'complete', budgetKey: 'louvre' },
+            { title: 'Comprar bilhetes para a Museu D Orsay', status: 'pending', budgetKey: 'orsay' },
+            { title: 'Comprar bilhetes para Versailles', status: 'pending', budgetKey: 'versailles' },
+            { title: 'VIAGEM!', status: 'complete' }
+        ];
+
+        // ==========================================================
+        // 2. DEFINIÇÃO DAS FUNÇÕES
+        // ==========================================================
+
+        function processAndDisplayRemainingBudget() {
+            let remainingAdultCostPerPerson = 0;
+            let remainingYoungCostPerPerson = 0;
+
+            // Passo 1: Identificar as chaves dos itens já concluídos
+            const completedKeys = planningEvents
+                .filter(event => event.status === 'complete' && event.budgetKey)
+                .map(event => event.budgetKey);
+
+            // Passo 2: Calcular o custo restante, ignorando os itens concluídos
+            for (const categoryKey in budgetConfiguration) {
+                // Se a chave da categoria está na lista de concluídas, salta para a próxima
+                if (completedKeys.includes(categoryKey)) {
+                    continue;
+                }
+
+                const category = budgetConfiguration[categoryKey];
+                category.tickets.forEach(ticket => {
+                    if (ticket.type === 'adult') { remainingAdultCostPerPerson += ticket.cost; }
+                    else if (ticket.type === 'young') { remainingYoungCostPerPerson += ticket.cost; }
+                });
+            }
+
+            // Passo 3: Calcular os totais para os grupos com base no custo restante
+            const sogrosRemainingCost = remainingAdultCostPerPerson;
+            const familiaRemainingCost = (remainingAdultCostPerPerson * 2) + (remainingYoungCostPerPerson * 2);
+
+            // Passo 4: Atualizar os visores principais com os valores em falta
+            document.getElementById('sogros-cost').textContent = `${sogrosRemainingCost.toFixed(2)} €`;
+            document.getElementById('familia-cost').textContent = `${familiaRemainingCost.toFixed(2)} €`;
+        }
+        
+        function renderRemainingBudgetCards() {
             const budgetContainer = document.getElementById('budget-cards-container');
+            const completedKeys = planningEvents
+                .filter(event => event.status === 'complete' && event.budgetKey)
+                .map(event => event.budgetKey);
+                
             if (!budgetContainer) return;
             budgetContainer.innerHTML = ''; 
 
             for (const categoryKey in budgetConfiguration) {
+                 // Se a chave da categoria está na lista de concluídas, não renderiza o card
+                if (completedKeys.includes(categoryKey)) {
+                    continue;
+                }
+
                 const category = budgetConfiguration[categoryKey];
-                
-                category.tickets.forEach(ticket => {
-                    if (ticket.type === 'adult') { totalAdultCostPerPerson += ticket.cost; }
-                    else if (ticket.type === 'young') { totalYoungCostPerPerson += ticket.cost; }
-                });
-                
                 let itemsHTML = category.tickets.map(ticket => {
                     const isCalculated = ticket.type === 'adult' || ticket.type === 'young';
                     const containerClass = isCalculated ? 'bg-green-50' : 'bg-gray-100';
@@ -129,17 +175,43 @@
                 const cardHTML = `<div class="bg-white p-6 rounded-2xl shadow-lg flex flex-col"><h3 class="text-xl font-bold text-gray-800 mb-4"><i class="fa-solid ${category.icon} mr-2 text-gray-400"></i>${category.title}</h3><div class="space-y-2">${itemsHTML}</div></div>`;
                 budgetContainer.innerHTML += cardHTML;
             }
+        }
+        
+        function renderCompletedPurchases() {
+            const container = document.getElementById('completed-purchases-container');
+            const completedItems = planningEvents.filter(event => event.status === 'complete' && event.title !== 'VIAGEM!');
 
-            const sogrosIndividualCost = totalAdultCostPerPerson;
-            const familiaTotalCost = (totalAdultCostPerPerson * 2) + (totalYoungCostPerPerson * 2);
+            if (completedItems.length === 0) {
+                container.innerHTML = `<p class="text-gray-500 italic text-center">Nenhuma compra concluída ainda.</p>`;
+                return;
+            }
 
-            if(document.getElementById('sogros-cost')) { document.getElementById('sogros-cost').textContent = `${sogrosIndividualCost.toFixed(2)} €`; }
-            if(document.getElementById('familia-cost')) { document.getElementById('familia-cost').textContent = `${familiaTotalCost.toFixed(2)} €`; }
+            const itemsHTML = completedItems.map(item => {
+                let costHTML = '';
+                if (item.budgetKey && budgetConfiguration[item.budgetKey]) {
+                    let purchaseCostPerAdult = 0;
+                    budgetConfiguration[item.budgetKey].tickets.forEach(ticket => {
+                        if (ticket.type === 'adult') {
+                            purchaseCostPerAdult += ticket.cost;
+                        }
+                    });
+                    
+                    if (purchaseCostPerAdult > 0) {
+                        costHTML = `<span class="ml-auto pl-4 font-semibold text-gray-700">${purchaseCostPerAdult.toFixed(2)} € / pessoa</span>`;
+                    }
+                }
+                return `<div class="flex items-center text-lg p-2 border-b border-gray-100"><i class="fa-solid fa-check-circle text-green-500 mr-4 text-xl"></i><span class="flex-grow">${item.title}</span>${costHTML}</div>`;
+            }).join('');
+            container.innerHTML = itemsHTML;
         }
 
-        // OUVINTE QUE EXECUTA A FUNÇÃO QUANDO A PÁGINA CARREGA
+        // ==========================================================
+        // 3. OUVINTE PRINCIPAL
+        // ==========================================================
         document.addEventListener('DOMContentLoaded', () => {
-            processAndDisplayBudget();
+            processAndDisplayRemainingBudget();
+            renderRemainingBudgetCards();
+            renderCompletedPurchases();
         });
     </script>
 
