@@ -50,26 +50,12 @@
                 <h3 class="text-xl font-bold text-gray-800 mb-4">Adicionar Novo Movimento</h3>
                 <form id="add-movement-form">
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
-                        <div class="md:col-span-1">
-                            <label for="mov-description" class="block text-sm font-medium text-gray-700">Descrição</label>
-                            <input type="text" id="mov-description" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-                        </div>
-                        <div>
-                            <label for="mov-sogra" class="block text-sm font-medium text-gray-700">Sogra</label>
-                            <input type="number" id="mov-sogra" step="0.01" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="0.00">
-                        </div>
-                        <div>
-                            <label for="mov-sogro" class="block text-sm font-medium text-gray-700">Sogro</label>
-                            <input type="number" id="mov-sogro" step="0.01" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="0.00">
-                        </div>
-                         <div>
-                            <label for="mov-nos" class="block text-sm font-medium text-gray-700">Nós</label>
-                            <input type="number" id="mov-nos" step="0.01" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="0.00">
-                        </div>
+                        <div class="md:col-span-1"><label for="mov-description" class="block text-sm font-medium text-gray-700">Descrição</label><input type="text" id="mov-description" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required></div>
+                        <div><label for="mov-sogra" class="block text-sm font-medium text-gray-700">Sogra</label><input type="number" id="mov-sogra" step="0.01" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="0.00"></div>
+                        <div><label for="mov-sogro" class="block text-sm font-medium text-gray-700">Sogro</label><input type="number" id="mov-sogro" step="0.01" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="0.00"></div>
+                        <div><label for="mov-nos" class="block text-sm font-medium text-gray-700">Nós</label><input type="number" id="mov-nos" step="0.01" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="0.00"></div>
                     </div>
-                     <button type="submit" class="w-full mt-4 bg-green-600 text-white font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-green-700 transition-colors">
-                        <i class="fa-solid fa-plus mr-2"></i>Adicionar
-                    </button>
+                    <button type="submit" class="w-full mt-4 bg-green-600 text-white font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-green-700 transition-colors"><i class="fa-solid fa-plus mr-2"></i>Adicionar</button>
                 </form>
             </div>
         </section>
@@ -119,21 +105,12 @@
         const database = firebase.database();
         const movimentosRef = database.ref('movimentos');
 
-        const budgetConfiguration = {
-            louvre: { title: "Museu do Louvre", icon: "fa-landmark-dome", tickets: [ { name: 'Bilhete Geral', cost: 22.00, type: 'adult' } ] },
-            eiffel: { title: "Torre Eiffel", icon: "fa-tower-observation", tickets: [ { name: 'Escadas + Elevador Topo (Adultos)', cost: 27.50 }, { name: 'Elevador Topo (Adultos)', cost: 36.10, type: 'adult' }, { name: 'Escadas + Elevador Topo (Jovens)', cost: 13.80, type: 'young' } ] },
-            saintechapelle: { title: "Sainte-Chapelle", icon: "fa-church", tickets: [ { name: 'Bilhete Geral', cost: 19.00, type: 'adult' } ] },
-            versailles: { title: "Versailles", icon: "fa-landmark-dome", tickets: [ { name: 'Bilhete Geral', cost: 32.00, type: 'adult' } ] },
-            orsay: { title: "Musée d'Orsay", icon: "fa-landmark-dome", tickets: [ { name: 'Bilhete Geral', cost: 16.00, type: 'adult' } ] },
-            garnier: { title: "Ópera Garnier", icon: "fa-masks-theater", tickets: [ { name: 'Bilhete Adulto', cost: 15.00, type: 'adult' }, { name: 'Bilhete Jovem', cost: 10.00, type: 'young' } ] },
-            transports: { title: "Transportes Públicos", icon: "fa-train-subway", tickets: [ { name: 'Navigo Easy travel pass', cost: 2.00, type: 'adult' }, { name: 'Forfait Paris Visit 5 dias', cost: 76.25, type: 'adult' }, { name: 'Navigo Easy travel pass jovem', cost: 2.00, type: 'young' }, { name: 'Forfait Paris Visit 5 dias jovem', cost: 76.25, type: 'young' } ] }
-        };
-        const planningEvents = [
-            { title: 'Comprar bilhetes para o Museu do Louvre', status: 'complete', budgetKey: 'louvre' },
-            { title: 'Comprar bilhetes para a Museu D Orsay', status: 'pending', budgetKey: 'orsay' },
-            { title: 'Comprar bilhetes para Versailles', status: 'pending', budgetKey: 'versailles' },
-            { title: 'VIAGEM!', status: 'complete' }
-        ];
+        const budgetConfiguration = { /* ...Sua config de orçamento aqui... */ };
+        const planningEvents = [ /* ...Sua lista de eventos aqui... */ ];
+        
+        // Variáveis partilhadas para o cálculo da diferença
+        let sogrosRemainingCost = 0;
+        let familiaRemainingCost = 0;
 
         // ==========================================================
         // 2. DEFINIÇÃO DAS FUNÇÕES
@@ -145,47 +122,113 @@
         }
         
         function renderMovementsTable() {
-            const tbody = document.querySelector('#movements-table tbody');
             const tfoot = document.querySelector('#movements-table tfoot');
             movimentosRef.on('value', (snapshot) => {
                 const movements = snapshot.val();
+                const tbody = document.querySelector('#movements-table tbody');
                 tbody.innerHTML = '';
                 tfoot.innerHTML = '';
+                
                 let sumSogra = 0, sumSogro = 0, sumNos = 0;
                 if (movements) {
                     for (const key in movements) {
                         const mov = movements[key];
-                        const sograVal = mov.sogra || 0;
-                        const sogroVal = mov.sogro || 0;
-                        const nosVal = mov.nos || 0;
-                        sumSogra += sograVal; sumSogro += sogroVal; sumNos += nosVal;
+                        sumSogra += mov.sogra || 0;
+                        sumSogro += mov.sogro || 0;
+                        sumNos += mov.nos || 0;
                         const row = document.createElement('tr');
                         row.innerHTML = `
                             <td class="p-4">${mov.description}</td>
-                            <td class="p-4 text-right font-mono ${sograVal >= 0 ? 'text-green-600' : 'text-red-600'}">${formatCurrency(sograVal)}</td>
-                            <td class="p-4 text-right font-mono ${sogroVal >= 0 ? 'text-green-600' : 'text-red-600'}">${formatCurrency(sogroVal)}</td>
-                            <td class="p-4 text-right font-mono ${nosVal >= 0 ? 'text-green-600' : 'text-red-600'}">${formatCurrency(nosVal)}</td>
-                            <td class="p-4 text-center">
-                                <button class="delete-btn text-gray-400 hover:text-red-600 transition-colors" data-key="${key}" title="Apagar movimento">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </button>
-                            </td>
-                        `;
+                            <td class="p-4 text-right font-mono ${ (mov.sogra||0) >= 0 ? 'text-green-600' : 'text-red-600'}">${formatCurrency(mov.sogra)}</td>
+                            <td class="p-4 text-right font-mono ${ (mov.sogro||0) >= 0 ? 'text-green-600' : 'text-red-600'}">${formatCurrency(mov.sogro)}</td>
+                            <td class="p-4 text-right font-mono ${ (mov.nos||0) >= 0 ? 'text-green-600' : 'text-red-600'}">${formatCurrency(mov.nos)}</td>
+                            <td class="p-4 text-center"><button class="delete-btn text-gray-400 hover:text-red-600" data-key="${key}" title="Apagar"><i class="fa-solid fa-trash-can"></i></button></td>`;
                         tbody.appendChild(row);
                     }
                 }
+                // Linha do Saldo
                 const balanceRow = document.createElement('tr');
                 balanceRow.innerHTML = `
                     <td class="p-4 text-xl">Saldo</td>
                     <td class="p-4 text-right text-xl">${formatCurrency(sumSogra)}</td>
                     <td class="p-4 text-right text-xl">${formatCurrency(sumSogro)}</td>
                     <td class="p-4 text-right text-xl">${formatCurrency(sumNos)}</td>
-                    <td></td>
-                `;
+                    <td></td>`;
                 tfoot.appendChild(balanceRow);
+
+                // NOVA LINHA: Diferença (Saldo - Falta)
+                const diffSogra = sumSogra - sogrosRemainingCost;
+                const diffSogro = sumSogro - sogrosRemainingCost;
+                const diffNos = sumNos - familiaRemainingCost;
+                const diffRow = document.createElement('tr');
+                diffRow.innerHTML = `
+                    <td class="p-4 text-xl text-blue-700">Diferença</td>
+                    <td class="p-4 text-right text-xl ${diffSogra >= 0 ? 'text-green-700' : 'text-red-700'}">${formatCurrency(diffSogra)}</td>
+                    <td class="p-4 text-right text-xl ${diffSogro >= 0 ? 'text-green-700' : 'text-red-700'}">${formatCurrency(diffSogro)}</td>
+                    <td class="p-4 text-right text-xl ${diffNos >= 0 ? 'text-green-700' : 'text-red-700'}">${formatCurrency(diffNos)}</td>
+                    <td></td>`;
+                tfoot.appendChild(diffRow);
             });
         }
         
+        function setupMovementsForm() { /* ... (código existente) ... */ }
+        function setupDeleteFunctionality() { /* ... (código existente) ... */ }
+        function processAndDisplayRemainingBudget() {
+            let remainingAdultCostPerPerson = 0, remainingYoungCostPerPerson = 0;
+            const completedKeys = planningEvents.filter(e => e.status === 'complete' && e.budgetKey).map(e => e.budgetKey);
+            for (const key in budgetConfiguration) {
+                if (completedKeys.includes(key)) continue;
+                const category = budgetConfiguration[key];
+                category.tickets.forEach(ticket => {
+                    if (ticket.type === 'adult') { remainingAdultCostPerPerson += ticket.cost; }
+                    else if (ticket.type === 'young') { remainingYoungCostPerPerson += ticket.cost; }
+                });
+            }
+            // Atualiza as variáveis partilhadas
+            sogrosRemainingCost = remainingAdultCostPerPerson;
+            familiaRemainingCost = (remainingAdultCostPerPerson * 2) + (remainingYoungCostPerPerson * 2);
+            // Atualiza os visores
+            document.getElementById('sogros-cost').textContent = `${sogrosRemainingCost.toFixed(2)} €`;
+            document.getElementById('familia-cost').textContent = `${familiaRemainingCost.toFixed(2)} €`;
+        }
+        function renderRemainingBudgetCards() { /* ... (código existente) ... */ }
+        function renderCompletedPurchases() { /* ... (código existente) ... */ }
+        
+        // ==========================================================
+        // 3. OUVINTE PRINCIPAL
+        // ==========================================================
+        document.addEventListener('DOMContentLoaded', () => {
+            // Preencher os dados estáticos
+            Object.assign(budgetConfiguration, { /* ... (configuração completa) ... */ });
+            Object.assign(planningEvents, [ /* ... (configuração completa) ... */ ]);
+
+            // Executar todas as funções
+            processAndDisplayRemainingBudget(); // Importante executar esta primeiro para ter os valores em falta
+            renderMovementsTable();
+            setupMovementsForm();
+            setupDeleteFunctionality();
+            renderRemainingBudgetCards();
+            renderCompletedPurchases();
+        });
+
+        // Cole aqui as suas definições completas de budgetConfiguration e planningEvents para garantir
+        Object.assign(budgetConfiguration, {
+            louvre: { title: "Museu do Louvre", icon: "fa-landmark-dome", tickets: [ { name: 'Bilhete Geral', cost: 22.00, type: 'adult' } ] },
+            eiffel: { title: "Torre Eiffel", icon: "fa-tower-observation", tickets: [ { name: 'Escadas + Elevador Topo (Adultos)', cost: 27.50 }, { name: 'Elevador Topo (Adultos)', cost: 36.10, type: 'adult' }, { name: 'Escadas + Elevador Topo (Jovens)', cost: 13.80, type: 'young' } ] },
+            saintechapelle: { title: "Sainte-Chapelle", icon: "fa-church", tickets: [ { name: 'Bilhete Geral', cost: 19.00, type: 'adult' } ] },
+            versailles: { title: "Versailles", icon: "fa-landmark-dome", tickets: [ { name: 'Bilhete Geral', cost: 32.00, type: 'adult' } ] },
+            orsay: { title: "Musée d'Orsay", icon: "fa-landmark-dome", tickets: [ { name: 'Bilhete Geral', cost: 16.00, type: 'adult' } ] },
+            garnier: { title: "Ópera Garnier", icon: "fa-masks-theater", tickets: [ { name: 'Bilhete Adulto', cost: 15.00, type: 'adult' }, { name: 'Bilhete Jovem', cost: 10.00, type: 'young' } ] },
+            transports: { title: "Transportes Públicos", icon: "fa-train-subway", tickets: [ { name: 'Navigo Easy travel pass', cost: 2.00, type: 'adult' }, { name: 'Forfait Paris Visit 5 dias', cost: 76.25, type: 'adult' }, { name: 'Navigo Easy travel pass jovem', cost: 2.00, type: 'young' }, { name: 'Forfait Paris Visit 5 dias jovem', cost: 76.25, type: 'young' } ] }
+        });
+        Object.assign(planningEvents, [
+            { title: 'Comprar bilhetes para o Museu do Louvre', status: 'complete', budgetKey: 'louvre' },
+            { title: 'Comprar bilhetes para a Museu D Orsay', status: 'pending', budgetKey: 'orsay' },
+            { title: 'Comprar bilhetes para Versailles', status: 'pending', budgetKey: 'versailles' },
+            { title: 'VIAGEM!', status: 'complete' }
+        ]);
+
+        // Cole aqui o corpo completo das outras funções para garantir que não falta nada
         function setupMovementsForm() {
             const form = document.getElementById('add-movement-form');
             form.addEventListener('submit', (e) => {
@@ -200,7 +243,6 @@
                 form.reset();
             });
         }
-
         function setupDeleteFunctionality() {
             const table = document.getElementById('movements-table');
             table.addEventListener('click', (e) => {
@@ -213,25 +255,6 @@
                 }
             });
         }
-
-        function processAndDisplayRemainingBudget() {
-            let remainingAdultCostPerPerson = 0;
-            let remainingYoungCostPerPerson = 0;
-            const completedKeys = planningEvents.filter(e => e.status === 'complete' && e.budgetKey).map(e => e.budgetKey);
-            for (const key in budgetConfiguration) {
-                if (completedKeys.includes(key)) continue;
-                const category = budgetConfiguration[key];
-                category.tickets.forEach(ticket => {
-                    if (ticket.type === 'adult') { remainingAdultCostPerPerson += ticket.cost; }
-                    else if (ticket.type === 'young') { remainingYoungCostPerPerson += ticket.cost; }
-                });
-            }
-            const sogrosRemainingCost = remainingAdultCostPerPerson;
-            const familiaRemainingCost = (remainingAdultCostPerPerson * 2) + (remainingYoungCostPerPerson * 2);
-            document.getElementById('sogros-cost').textContent = `${sogrosRemainingCost.toFixed(2)} €`;
-            document.getElementById('familia-cost').textContent = `${familiaRemainingCost.toFixed(2)} €`;
-        }
-        
         function renderRemainingBudgetCards() {
             const budgetContainer = document.getElementById('budget-cards-container');
             const completedKeys = planningEvents.filter(e => e.status === 'complete' && e.budgetKey).map(e => e.budgetKey);
@@ -250,7 +273,6 @@
                 budgetContainer.innerHTML += cardHTML;
             }
         }
-        
         function renderCompletedPurchases() {
             const container = document.getElementById('completed-purchases-container');
             const completedItems = planningEvents.filter(e => e.status === 'complete' && e.title !== 'VIAGEM!');
@@ -270,20 +292,6 @@
             container.innerHTML = itemsHTML;
         }
 
-        // ==========================================================
-        // 3. OUVINTE PRINCIPAL
-        // ==========================================================
-        document.addEventListener('DOMContentLoaded', () => {
-            // Funções para a folha de movimentos
-            renderMovementsTable();
-            setupMovementsForm();
-            setupDeleteFunctionality();
-
-            // Funções para o orçamento restante e compras concluídas
-            processAndDisplayRemainingBudget();
-            renderRemainingBudgetCards();
-            renderCompletedPurchases();
-        });
     </script>
 </body>
 </html>
