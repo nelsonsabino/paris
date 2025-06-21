@@ -10,25 +10,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
     <style>
-        body { font-family: 'Poppins', sans-serif; background-color: #f0f4f8; }
+        body { font-family: 'Poppins', sans-serif; background-color: #f0f4f8; font-size: 14px; }
+        .main-title { font-size: 1.875rem; line-height: 2.25rem; }
+        .section-title { font-size: 1.5rem; line-height: 2rem; }
+        .display-cost { font-size: 2.25rem; line-height: 2.5rem; }
+        @media (min-width: 768px) {
+            body { font-size: 16px; }
+            .main-title { font-size: 2.25rem; line-height: 2.5rem; }
+            .section-title { font-size: 1.875rem; line-height: 2.25rem; }
+            .display-cost { font-size: 3rem; line-height: 1; }
+        }
     </style>
 </head>
 <body class="text-gray-800">
 
     <div class="container mx-auto p-4 md:p-8 max-w-5xl">
 
-        <!-- CABEÇALHO DA PÁGINA -->
-        <header class="mb-12 flex justify-between items-center">
-            <h1 class="text-4xl font-bold text-gray-800">Orçamento e Finanças</h1>
-            <a href="index.html" class="bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-colors">
+        <header class="mb-12 flex flex-col md:flex-row justify-between items-center gap-4">
+            <h1 class="main-title font-bold text-gray-800 text-center md:text-left">Orçamento e Finanças</h1>
+            <a href="index.html" class="bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-colors w-full md:w-auto text-center">
                 <i class="fa-solid fa-arrow-left mr-2"></i>
                 Voltar ao Painel
             </a>
         </header>
 
-        <!-- SECÇÃO FOLHA DE MOVIMENTOS -->
         <section class="mb-12">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Folha de Movimentos</h2>
+            <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Folha de Movimentos</h2>
             <div class="bg-white p-6 rounded-2xl shadow-lg">
                 <div class="overflow-x-auto">
                     <table class="w-full text-left" id="movements-table">
@@ -60,38 +67,32 @@
             </div>
         </section>
 
-        <!-- SECÇÃO ORÇAMENTO RESTANTE -->
         <section class="mb-12">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Orçamento Restante</h2>
+            <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Orçamento Restante</h2>
             <p class="text-center text-gray-600 mb-8 -mt-6">Custo estimado do que ainda falta comprar.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                 <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
-                    <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Valor em Falta (Sogros)</h3>
-                    <p id="sogros-cost" class="text-4xl md:text-5xl font-bold text-green-600 mt-2">0.00 €</p>
+                    <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Valor em Falta (por Sogro)</h3>
+                    <p id="sogros-cost" class="display-cost font-bold text-green-600 mt-2">0.00 €</p>
                 </div>
                 <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
                     <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Valor em Falta (Nossa Família)</h3>
-                    <p id="familia-cost" class="text-4xl md:text-5xl font-bold text-blue-600 mt-2">0.00 €</p>
+                    <p id="familia-cost" class="display-cost font-bold text-blue-600 mt-2">0.00 €</p>
                 </div>
             </div>
             <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center mt-12">Detalhe do Orçamento Restante</h3>
             <div id="budget-cards-container" class="grid grid-cols-1 md:grid-cols-1 gap-8"></div>
         </section>
 
-        <!-- SECÇÃO: COMPRAS CONCLUÍDAS -->
         <section class="mb-12">
-             <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Resumo de Compras Concluídas</h2>
+             <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Resumo de Compras Concluídas</h2>
              <div id="completed-purchases-container" class="bg-white p-6 rounded-2xl shadow-lg space-y-4"></div>
         </section>
     </div>
 
-    <!-- SCRIPT APENAS PARA A PÁGINA DE ORÇAMENTO -->
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-database-compat.js"></script>
     <script>
-        // ==========================================================
-        // 1. CONFIGURAÇÃO E FONTES DE DADOS
-        // ==========================================================
         const firebaseConfig = {
           apiKey: "AIzaSyAt7jAk5r2tqSdyTf2m7MUebd_t7bbDTJk",
           authDomain: "planeamento-viagem-paris.firebaseapp.com",
@@ -105,22 +106,30 @@
         const database = firebase.database();
         const movimentosRef = database.ref('movimentos');
 
-        const budgetConfiguration = { /* ...Sua config de orçamento aqui... */ };
-        const planningEvents = [ /* ...Sua lista de eventos aqui... */ ];
-        
-        // Variáveis partilhadas para o cálculo da diferença
+        const budgetConfiguration = {
+            louvre: { title: "Museu do Louvre", icon: "fa-landmark-dome", tickets: [ { name: 'Bilhete Geral', cost: 22.00, type: 'adult' } ] },
+            eiffel: { title: "Torre Eiffel", icon: "fa-tower-observation", tickets: [ { name: 'Escadas + Elevador Topo (Adultos)', cost: 27.50 }, { name: 'Elevador Topo (Adultos)', cost: 36.10, type: 'adult' }, { name: 'Escadas + Elevador Topo (Jovens)', cost: 13.80, type: 'young' } ] },
+            saintechapelle: { title: "Sainte-Chapelle", icon: "fa-church", tickets: [ { name: 'Bilhete Geral', cost: 19.00, type: 'adult' } ] },
+            versailles: { title: "Versailles", icon: "fa-landmark-dome", tickets: [ { name: 'Bilhete Geral', cost: 32.00, type: 'adult' } ] },
+            orsay: { title: "Musée d'Orsay", icon: "fa-landmark-dome", tickets: [ { name: 'Bilhete Geral', cost: 16.00, type: 'adult' } ] },
+            garnier: { title: "Ópera Garnier", icon: "fa-masks-theater", tickets: [ { name: 'Bilhete Adulto', cost: 15.00, type: 'adult' }, { name: 'Bilhete Jovem', cost: 10.00, type: 'young' } ] },
+            transports: { title: "Transportes Públicos", icon: "fa-train-subway", tickets: [ { name: 'Navigo Easy travel pass', cost: 2.00, type: 'adult' }, { name: 'Forfait Paris Visit 5 dias', cost: 76.25, type: 'adult' }, { name: 'Navigo Easy travel pass jovem', cost: 2.00, type: 'young' }, { name: 'Forfait Paris Visit 5 dias jovem', cost: 76.25, type: 'young' } ] }
+        };
+        const planningEvents = [
+            { title: 'Comprar bilhetes para o Museu do Louvre', status: 'complete', budgetKey: 'louvre' },
+            { title: 'Comprar bilhetes para a Museu D Orsay', status: 'pending', budgetKey: 'orsay' },
+            { title: 'Comprar bilhetes para Versailles', status: 'pending', budgetKey: 'versailles' },
+            { title: 'VIAGEM!', status: 'complete' }
+        ];
+
         let sogrosRemainingCost = 0;
         let familiaRemainingCost = 0;
-
-        // ==========================================================
-        // 2. DEFINIÇÃO DAS FUNÇÕES
-        // ==========================================================
 
         function formatCurrency(value) {
             if (typeof value !== 'number' || isNaN(value)) { return '-'; }
             return `${value.toFixed(2).replace('.', ',')} €`;
         }
-        
+
         function renderMovementsTable() {
             const tfoot = document.querySelector('#movements-table tfoot');
             movimentosRef.on('value', (snapshot) => {
@@ -128,7 +137,6 @@
                 const tbody = document.querySelector('#movements-table tbody');
                 tbody.innerHTML = '';
                 tfoot.innerHTML = '';
-                
                 let sumSogra = 0, sumSogro = 0, sumNos = 0;
                 if (movements) {
                     for (const key in movements) {
@@ -139,14 +147,13 @@
                         const row = document.createElement('tr');
                         row.innerHTML = `
                             <td class="p-4">${mov.description}</td>
-                            <td class="p-4 text-right font-mono ${ (mov.sogra||0) >= 0 ? 'text-green-600' : 'text-red-600'}">${formatCurrency(mov.sogra)}</td>
-                            <td class="p-4 text-right font-mono ${ (mov.sogro||0) >= 0 ? 'text-green-600' : 'text-red-600'}">${formatCurrency(mov.sogro)}</td>
-                            <td class="p-4 text-right font-mono ${ (mov.nos||0) >= 0 ? 'text-green-600' : 'text-red-600'}">${formatCurrency(mov.nos)}</td>
+                            <td class="p-4 text-right font-mono ${(mov.sogra||0) >= 0 ? 'text-green-600' : 'text-red-600'}">${formatCurrency(mov.sogra)}</td>
+                            <td class="p-4 text-right font-mono ${(mov.sogro||0) >= 0 ? 'text-green-600' : 'text-red-600'}">${formatCurrency(mov.sogro)}</td>
+                            <td class="p-4 text-right font-mono ${(mov.nos||0) >= 0 ? 'text-green-600' : 'text-red-600'}">${formatCurrency(mov.nos)}</td>
                             <td class="p-4 text-center"><button class="delete-btn text-gray-400 hover:text-red-600" data-key="${key}" title="Apagar"><i class="fa-solid fa-trash-can"></i></button></td>`;
                         tbody.appendChild(row);
                     }
                 }
-                // Linha do Saldo
                 const balanceRow = document.createElement('tr');
                 balanceRow.innerHTML = `
                     <td class="p-4 text-xl">Saldo</td>
@@ -156,7 +163,6 @@
                     <td></td>`;
                 tfoot.appendChild(balanceRow);
 
-                // NOVA LINHA: Diferença (Saldo - Falta)
                 const diffSogra = sumSogra - sogrosRemainingCost;
                 const diffSogro = sumSogro - sogrosRemainingCost;
                 const diffNos = sumNos - familiaRemainingCost;
@@ -170,103 +176,7 @@
                 tfoot.appendChild(diffRow);
             });
         }
-        
-        function setupMovementsForm() { /* ... (código existente) ... */ }
-        function setupDeleteFunctionality() { /* ... (código existente) ... */ }
-        function processAndDisplayRemainingBudget() {
-            let remainingAdultCostPerPerson = 0, remainingYoungCostPerPerson = 0;
-            const completedKeys = planningEvents.filter(e => e.status === 'complete' && e.budgetKey).map(e => e.budgetKey);
-            for (const key in budgetConfiguration) {
-                if (completedKeys.includes(key)) continue;
-                const category = budgetConfiguration[key];
-                category.tickets.forEach(ticket => {
-                    if (ticket.type === 'adult') { remainingAdultCostPerPerson += ticket.cost; }
-                    else if (ticket.type === 'young') { remainingYoungCostPerPerson += ticket.cost; }
-                });
-            }
-            // Atualiza as variáveis partilhadas
-            sogrosRemainingCost = remainingAdultCostPerPerson;
-            familiaRemainingCost = (remainingAdultCostPerPerson * 2) + (remainingYoungCostPerPerson * 2);
-            // Atualiza os visores
-            document.getElementById('sogros-cost').textContent = `${sogrosRemainingCost.toFixed(2)} €`;
-            document.getElementById('familia-cost').textContent = `${familiaRemainingCost.toFixed(2)} €`;
-        }
-        function renderRemainingBudgetCards() { /* ... (código existente) ... */ }
-        function renderCompletedPurchases() { /* ... (código existente) ... */ }
-        
-        // ==========================================================
-        // 3. OUVINTE PRINCIPAL
-        // ==========================================================
-        document.addEventListener('DOMContentLoaded', () => {
-            // Preencher os dados estáticos
-            Object.assign(budgetConfiguration, { /* ... (configuração completa) ... */ });
-            Object.assign(planningEvents, [ /* ... (configuração completa) ... */ ]);
 
-            // Executar todas as funções
-            processAndDisplayRemainingBudget(); // Importante executar esta primeiro para ter os valores em falta
-            renderMovementsTable();
-            setupMovementsForm();
-            setupDeleteFunctionality();
-            renderRemainingBudgetCards();
-            renderCompletedPurchases();
-        });
-
-
-
-
-        // Cole aqui as suas definições completas de budgetConfiguration e planningEvents para garantir
-        Object.assign(budgetConfiguration, {
-            louvre: { title: "Museu do Louvre", icon: "fa-landmark-dome", 
-            tickets: [ 
-              { name: 'Bilhete Geral', cost: 22.00, type: 'adult' }
-              ] },
-            
-            eiffel: { title: "Torre Eiffel", icon: "fa-tower-observation", 
-            tickets: [ 
-              { name: 'Escadas + Elevador Topo (Adultos)', cost: 27.50 }, 
-              { name: 'Elevador Topo (Adultos)', cost: 36.10, type: 'adult' }, 
-              { name: 'Escadas + Elevador Topo (Jovens)', cost: 13.80, type: 'young' }
-              ] },
-            
-            saintechapelle: { title: "Sainte-Chapelle", icon: "fa-church", 
-            tickets: [ { name: 'Bilhete Geral', cost: 19.00, type: 'adult' }
-            ] },
-            
-            versailles: { title: "Versailles", icon: "fa-landmark-dome", 
-            tickets: [ { name: 'Bilhete Geral', cost: 32.00, type: 'adult' }
-            ] },
-            
-            orsay: { title: "Musée d'Orsay", icon: "fa-landmark-dome", 
-            tickets: [ { name: 'Bilhete Geral', cost: 16.00, type: 'adult' }
-            ] },
-            
-            garnier: { title: "Ópera Garnier", icon: "fa-masks-theater",
-            tickets: [ 
-              { name: 'Bilhete Adulto', cost: 15.00, type: 'adult' }, 
-              { name: 'Bilhete Jovem', cost: 10.00, type: 'young' }
-              ] },
-            
-            transports: { title: "Transportes Públicos", icon: "fa-train-subway", 
-            tickets: [ { name: 'Navigo Easy travel pass', cost: 2.00, type: 'adult' }, 
-            { name: 'Forfait Paris Visit 5 dias', cost: 76.25, type: 'adult' }, 
-            { name: 'Navigo Easy travel pass jovem', cost: 2.00, type: 'young' }, 
-            { name: 'Forfait Paris Visit 5 dias jovem', cost: 76.25, type: 'young' }
-            ] },
-            
-        });
-        
-        
-        Object.assign(planningEvents, [
-            { title: 'Comprar bilhetes para o Museu do Louvre', status: 'complete', budgetKey: 'louvre' },
-            { title: 'Comprar bilhetes para a Museu D Orsay', status: 'pending', budgetKey: 'orsay' },
-            { title: 'Comprar bilhetes para Versailles', status: 'pending', budgetKey: 'versailles' },
-            { title: 'VIAGEM!', status: 'complete' }
-        ]);
-
-
-
-
-        // Cole aqui o corpo completo das outras funções para garantir que não falta nada
         function setupMovementsForm() {
             const form = document.getElementById('add-movement-form');
             form.addEventListener('submit', (e) => {
@@ -281,6 +191,7 @@
                 form.reset();
             });
         }
+
         function setupDeleteFunctionality() {
             const table = document.getElementById('movements-table');
             table.addEventListener('click', (e) => {
@@ -293,11 +204,32 @@
                 }
             });
         }
+
+        function processAndDisplayRemainingBudget() {
+            let remainingAdultCost = 0;
+            let remainingYoungCost = 0;
+            const completedKeys = planningEvents.filter(e => e.status === 'complete' && e.budgetKey).map(e => e.budgetKey);
+
+            for (const key in budgetConfiguration) {
+                if (completedKeys.includes(key)) continue;
+                const category = budgetConfiguration[key];
+                category.tickets.forEach(ticket => {
+                    if (ticket.type === 'adult') { remainingAdultCost += ticket.cost; }
+                    else if (ticket.type === 'young') { remainingYoungCost += ticket.cost; }
+                });
+            }
+            sogrosRemainingCost = remainingAdultCost;
+            familiaRemainingCost = (remainingAdultCost * 2) + (remainingYoungCost * 2);
+            document.getElementById('sogros-cost').textContent = `${sogrosRemainingCost.toFixed(2)} €`;
+            document.getElementById('familia-cost').textContent = `${familiaRemainingCost.toFixed(2)} €`;
+        }
+
         function renderRemainingBudgetCards() {
             const budgetContainer = document.getElementById('budget-cards-container');
             const completedKeys = planningEvents.filter(e => e.status === 'complete' && e.budgetKey).map(e => e.budgetKey);
             if (!budgetContainer) return;
             budgetContainer.innerHTML = '';
+
             for (const key in budgetConfiguration) {
                 if (completedKeys.includes(key)) continue;
                 const category = budgetConfiguration[key];
@@ -311,11 +243,12 @@
                 budgetContainer.innerHTML += cardHTML;
             }
         }
+
         function renderCompletedPurchases() {
             const container = document.getElementById('completed-purchases-container');
             const completedItems = planningEvents.filter(e => e.status === 'complete' && e.title !== 'VIAGEM!');
             if (!container || completedItems.length === 0) {
-                if(container) container.innerHTML = `<p class="text-gray-500 italic text-center">Nenhuma compra concluída ainda.</p>`;
+                if (container) container.innerHTML = `<p class="text-gray-500 italic text-center">Nenhuma compra concluída ainda.</p>`;
                 return;
             }
             const itemsHTML = completedItems.map(item => {
@@ -330,6 +263,14 @@
             container.innerHTML = itemsHTML;
         }
 
+        document.addEventListener('DOMContentLoaded', () => {
+            processAndDisplayRemainingBudget();
+            renderMovementsTable();
+            setupMovementsForm();
+            setupDeleteFunctionality();
+            renderRemainingBudgetCards();
+            renderCompletedPurchases();
+        });
     </script>
 </body>
 </html>
