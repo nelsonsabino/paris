@@ -88,13 +88,6 @@
         background-color: #ffffff;
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-    .route-title {
-        color: #2563eb;
-        text-decoration: none;
-    }
-    .route-title:hover {
-        text-decoration: underline;
-    }
     .metro-line {
         display: inline-block;
         color: white;
@@ -151,357 +144,133 @@
             <h2 class="font-display text-2xl md:text-3xl text-gray-900 mb-1 font-bold">Dia 1: Chegada e a Magia da Torre Eiffel</h2>
             <p class="text-gray-500 mb-6">Sexta-feira, 19 de Setembro</p>
            
-  <!-- Gatilho para o Modal -->
-    <div class="cursor-pointer" onclick="openModal('https://nelsonsabino.github.io/paris/Dia1b.png')">
-        <img src="https://nelsonsabino.github.io/paris/Dia1b.png" alt="Mapa do percurso do Dia 1 em Paris" class="w-full aspect-[5/2] object-cover rounded-lg mb-6">
-    </div>
-    
+            <div class="cursor-pointer" onclick="openModal('https://nelsonsabino.github.io/paris/Dia1b.png')">
+                <img src="https://nelsonsabino.github.io/paris/Dia1b.png" alt="Mapa do percurso do Dia 1 em Paris" class="w-full aspect-[5/2] object-cover rounded-lg mb-6">
+            </div>
+            
             <!-- INICIO: ALENQUER -> TERMINAL 2 -->
-<!-- INICIO: ALENQUER -> TERMINAL 2 -->
-<a href="https://maps.app.goo.gl/UDWRJ6vJieWfL2G19" target="_blank" class="block p-3 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-colors duration-200 mb-4">
-    <div class="flex items-center justify-between">
-        <div class="flex items-center">
-            <i class="fas fa-map-location-dot text-blue-600 text-xl mr-3"></i>
-            <h3 class="font-display text-lg md:text-xl font-bold text-gray-800">ALENQUER → TERMINAL 2</h3>
-        </div>
-        <span class="text-sm font-semibold text-blue-500 hidden md:block">Ver no Mapa <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></span>
-    </div>
-</a>            <div class="relative timeline-container">
-                <div class="timeline-item">
-                    <p class="timeline-time">6:00</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-car text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Saída de Casa</h3>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">6:45</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-plane text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Chegada ao Aeroporto</h3>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">8:00</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-ticket text-xs"></i></div>
-                    <h3 class="font-semibold text-xl">Fecho do Embarque T2</h3>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">8:50</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-plane-departure text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Descolagem</h3>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">12:20</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-plane-arrival text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Chegada a Paris</h3>
-                </div>
+            <a href="https://maps.app.goo.gl/UDWRJ6vJieWfL2G19" target="_blank" class="block p-3 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-colors duration-200 mb-4">
+                <div class="flex items-center justify-between"><div class="flex items-center"><i class="fas fa-map-location-dot text-blue-600 text-xl mr-3"></i><h3 class="font-display text-lg md:text-xl font-bold text-gray-800">ALENQUER → TERMINAL 2</h3></div><span class="text-sm font-semibold text-blue-500 hidden md:block">Ver no Mapa <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></span></div>
+            </a>
+            <div class="relative timeline-container">
+                <div class="timeline-item"><p class="timeline-time">6:00</p><div class="timeline-icon"><i class="fa-solid fa-car text-xs"></i></div><h3 class="font-semibold text-lg">Saída de Casa</h3></div>
+                <div class="timeline-item"><p class="timeline-time">6:45</p><div class="timeline-icon"><i class="fa-solid fa-plane text-xs"></i></div><h3 class="font-semibold text-lg">Chegada ao Aeroporto</h3></div>
+                <div class="timeline-item"><p class="timeline-time">8:00</p><div class="timeline-icon"><i class="fa-solid fa-ticket text-xs"></i></div><h3 class="font-semibold text-xl">Fecho do Embarque T2</h3></div>
+                <div class="timeline-item"><p class="timeline-time">8:50</p><div class="timeline-icon"><i class="fa-solid fa-plane-departure text-xs"></i></div><h3 class="font-semibold text-lg">Descolagem</h3></div>
+                <div class="timeline-item"><p class="timeline-time">12:20</p><div class="timeline-icon"><i class="fa-solid fa-plane-arrival text-xs"></i></div><h3 class="font-semibold text-lg">Chegada a Paris</h3></div>
             </div>
             <!-- FIM: ALENQUER -> TERMINAL 2 -->
 
             <!-- INICIO: METRO ORLY -> CASA PARIS -->
-            <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4 mt-8"><a href="https://maps.app.goo.gl/JCjyHWMVRRKshoWn6" target="_blank"   class="route-title">METRO ORLY → CASA PARIS</a></h3>
+            <a href="https://maps.app.goo.gl/JCjyHWMVRRKshoWn6" target="_blank" class="block p-3 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-colors duration-200 mt-8 mb-4">
+                <div class="flex items-center justify-between"><div class="flex items-center"><i class="fas fa-map-location-dot text-blue-600 text-xl mr-3"></i><h3 class="font-display text-lg md:text-xl font-bold text-gray-800">METRO ORLY → CASA PARIS</h3></div><span class="text-sm font-semibold text-blue-500 hidden md:block">Ver no Mapa <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></span></div>
+            </a>
             <div class="relative timeline-container">
-                <div class="timeline-item">
-                    <p class="timeline-time">12:30</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-utensils text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Pausa para Almoço e WC</h3>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">15:34</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-route text-xs"></i></div>
-                    <div>
-                        <button class="accordion-toggle w-full text-left">
-                            <h3 class="font-semibold text-lg flex justify-between items-center">
-                                <span>Percurso: Aeroporto d'Orly → Casa</span>
-                                <i class="fas fa-chevron-down text-sm"></i>
-                            </h3>
-                            <p class="text-gray-600">Duração total: ~36 min. Clica para ver os detalhes.</p>
-                        </button>
-                        <div class="accordion-content hidden mt-4 pl-4 border-l-2 border-gray-300">
-                            <div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">15:34: Apanhar Metro <span class="metro-line" style="background-color: #62259d;">14</span></p><p class="text-gray-600 text-sm ml-1">Da estação <strong>Aéroport d'Orly</strong>, direção Saint-Denis.</p></div>
-                            <div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">15:48: Trocar em Maison Blanche</p><p class="text-gray-600 text-sm ml-1">Sair do metro e seguir para a paragem do elétrico (Tram).</p></div>
-                            <div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">15:54: Apanhar Tram <span class="metro-line" style="background-color: #ff7e2e; color: black;">T3a</span></p><p class="text-gray-600 text-sm ml-1">Da paragem <strong>Porte d'Italie</strong>, direção Porte de Vincennes.</p></div>
-                            <div class="relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">16:04: Sair em Porte de Charenton</p><p class="text-gray-600 text-sm ml-1">Saída final. Caminhar até casa.</p></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">16:10</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-house-chimney text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Chegada a Casa</h3>
-                </div>
+                <div class="timeline-item"><p class="timeline-time">12:30</p><div class="timeline-icon"><i class="fa-solid fa-utensils text-xs"></i></div><h3 class="font-semibold text-lg">Pausa para Almoço e WC</h3></div>
+                <div class="timeline-item"><p class="timeline-time">15:34</p><div class="timeline-icon"><i class="fa-solid fa-route text-xs"></i></div><div><button class="accordion-toggle w-full text-left"><h3 class="font-semibold text-lg flex justify-between items-center"><span>Percurso: Aeroporto d'Orly → Casa</span><i class="fas fa-chevron-down text-sm"></i></h3><p class="text-gray-600">Duração total: ~36 min. Clica para ver os detalhes.</p></button><div class="accordion-content hidden mt-4 pl-4 border-l-2 border-gray-300"><div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">15:34: Apanhar Metro <span class="metro-line" style="background-color: #62259d;">14</span></p><p class="text-gray-600 text-sm ml-1">Da estação <strong>Aéroport d'Orly</strong>, direção Saint-Denis.</p></div><div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">15:48: Trocar em Maison Blanche</p><p class="text-gray-600 text-sm ml-1">Sair do metro e seguir para a paragem do elétrico (Tram).</p></div><div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">15:54: Apanhar Tram <span class="metro-line" style="background-color: #ff7e2e; color: black;">T3a</span></p><p class="text-gray-600 text-sm ml-1">Da paragem <strong>Porte d'Italie</strong>, direção Porte de Vincennes.</p></div><div class="relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">16:04: Sair em Porte de Charenton</p><p class="text-gray-600 text-sm ml-1">Saída final. Caminhar até casa.</p></div></div></div></div>
+                <div class="timeline-item"><p class="timeline-time">16:10</p><div class="timeline-icon"><i class="fa-solid fa-house-chimney text-xs"></i></div><h3 class="font-semibold text-lg">Chegada a Casa</h3></div>
             </div>
             <!-- FIM: METRO ORLY -> CASA PARIS -->
 
             <!-- INICIO: CASA -> ÉCOLE MILITAIRE -->
-            <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4 mt-8"><a href="https://maps.app.goo.gl/znDu1A42wkG3wrpT8" target="_blank"   class="route-title">CASA → ÉCOLE MILITAIRE</a></h3>
+            <a href="https://maps.app.goo.gl/znDu1A42wkG3wrpT8" target="_blank" class="block p-3 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-colors duration-200 mt-8 mb-4">
+                <div class="flex items-center justify-between"><div class="flex items-center"><i class="fas fa-map-location-dot text-blue-600 text-xl mr-3"></i><h3 class="font-display text-lg md:text-xl font-bold text-gray-800">CASA → ÉCOLE MILITAIRE</h3></div><span class="text-sm font-semibold text-blue-500 hidden md:block">Ver no Mapa <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></span></div>
+            </a>
             <div class="relative timeline-container">
-                <div class="timeline-item">
-                    <p class="timeline-time">17:30</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-house-chimney text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Saída de Casa</h3>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">17:35</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-route text-xs"></i></div>
-                    <div>
-                        <button class="accordion-toggle w-full text-left">
-                            <h3 class="font-semibold text-lg flex justify-between items-center"><span>Percurso: Casa → École Militaire</span><i class="fas fa-chevron-down text-sm"></i></h3>
-                            <p class="text-gray-600">Duração total: ~29 min. Clica para ver os detalhes.</p>
-                        </button>
-                        <div class="accordion-content hidden mt-4 pl-4 border-l-2 border-gray-300">
-                            <div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">17:35: Apanhar Metro <span class="metro-line" style="background-color: #ceadd2; color: black;">8</span></p><p class="text-gray-600 text-sm ml-1">Da estação <strong>Porte de Charenton</strong>, direção Balard.</p></div>
-                            <div class="relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">18:04: Sair em École Militaire</p></div>
-                        </div>
-                    </div>
-                </div>
+                <div class="timeline-item"><p class="timeline-time">17:30</p><div class="timeline-icon"><i class="fa-solid fa-house-chimney text-xs"></i></div><h3 class="font-semibold text-lg">Saída de Casa</h3></div>
+                <div class="timeline-item"><p class="timeline-time">17:35</p><div class="timeline-icon"><i class="fa-solid fa-route text-xs"></i></div><div><button class="accordion-toggle w-full text-left"><h3 class="font-semibold text-lg flex justify-between items-center"><span>Percurso: Casa → École Militaire</span><i class="fas fa-chevron-down text-sm"></i></h3><p class="text-gray-600">Duração total: ~29 min. Clica para ver os detalhes.</p></button><div class="accordion-content hidden mt-4 pl-4 border-l-2 border-gray-300"><div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">17:35: Apanhar Metro <span class="metro-line" style="background-color: #ceadd2; color: black;">8</span></p><p class="text-gray-600 text-sm ml-1">Da estação <strong>Porte de Charenton</strong>, direção Balard.</p></div><div class="relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">18:04: Sair em École Militaire</p></div></div></div></div>
             </div>
             <!-- FIM: CASA -> ÉCOLE MILITAIRE -->
             
             <!-- INICIO: CHAMP-DE-MARS -> TOUR EIFFEL -> INVALIDES -->
-            <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4 mt-8"><a href="https://maps.app.goo.gl/wk2BZeg63ai2gVXUA" target="_blank"   class="route-title">CHAMP-DE-MARS → TOUR EIFFEL → INVALIDES</a></h3>
+            <a href="https://maps.app.goo.gl/wk2BZeg63ai2gVXUA" target="_blank" class="block p-3 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-colors duration-200 mt-8 mb-4">
+                <div class="flex items-center justify-between"><div class="flex items-center"><i class="fas fa-map-location-dot text-blue-600 text-xl mr-3"></i><h3 class="font-display text-lg md:text-xl font-bold text-gray-800">CHAMP-DE-MARS → TOUR EIFFEL → INVALIDES</h3></div><span class="text-sm font-semibold text-blue-500 hidden md:block">Ver no Mapa <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></span></div>
+            </a>
             <div class="relative timeline-container">
-                <div class="timeline-item">
-                    <p class="timeline-time">18:10</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-store text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Rue Cler</h3>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">18:25</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-leaf text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Champ-de-Mars</h3>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">18:40</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-tower-eiffel text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Torre Eiffel <i class="fa-solid fa-ticket ml-2 text-blue-600" title="Necessita de Bilhete para subir"></i></h3>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">20:10</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-camera-retro text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Jardim do Trocadéro</h3>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">20:30</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-bridge text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Ponte Alexandre III</h3>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">21:00</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-landmark-dome text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Hôtel des Invalides (Vista Exterior)</h3>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">21:46</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-route text-xs"></i></div>
-                     <div>
-                        <button class="accordion-toggle w-full text-left">
-                            <h3 class="font-semibold text-lg flex justify-between items-center"><span>Percurso: Invalides → Casa</span><i class="fas fa-chevron-down text-sm"></i></h3>
-                            <p class="text-gray-600">Duração total: ~29 min. Clica para ver os detalhes.</p>
-                        </button>
-                        <div class="accordion-content hidden mt-4 pl-4 border-l-2 border-gray-300">
-                            <div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">21:46: Apanhar Metro <span class="metro-line" style="background-color: #ceadd2; color: black;">8</span></p><p class="text-gray-600 text-sm ml-1">Da estação <strong>Invalides</strong>, direção Créteil-Pointe du Lac.</p></div>
-                            <div class="relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">22:11: Sair em Porte de Charenton</p></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">22:15</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-bed text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Regresso a Casa</h3>
-                </div>
+                <div class="timeline-item"><p class="timeline-time">18:10</p><div class="timeline-icon"><i class="fa-solid fa-store text-xs"></i></div><h3 class="font-semibold text-lg">Rue Cler</h3></div>
+                <div class="timeline-item"><p class="timeline-time">18:25</p><div class="timeline-icon"><i class="fa-solid fa-leaf text-xs"></i></div><h3 class="font-semibold text-lg">Champ-de-Mars</h3></div>
+                <div class="timeline-item"><p class="timeline-time">18:40</p><div class="timeline-icon"><i class="fa-solid fa-tower-eiffel text-xs"></i></div><h3 class="font-semibold text-lg">Torre Eiffel <i class="fa-solid fa-ticket ml-2 text-blue-600" title="Necessita de Bilhete para subir"></i></h3></div>
+                <div class="timeline-item"><p class="timeline-time">20:10</p><div class="timeline-icon"><i class="fa-solid fa-camera-retro text-xs"></i></div><h3 class="font-semibold text-lg">Jardim do Trocadéro</h3></div>
+                <div class="timeline-item"><p class="timeline-time">20:30</p><div class="timeline-icon"><i class="fa-solid fa-bridge text-xs"></i></div><h3 class="font-semibold text-lg">Ponte Alexandre III</h3></div>
+                <div class="timeline-item"><p class="timeline-time">21:00</p><div class="timeline-icon"><i class="fa-solid fa-landmark-dome text-xs"></i></div><h3 class="font-semibold text-lg">Hôtel des Invalides (Vista Exterior)</h3></div>
+                <div class="timeline-item"><p class="timeline-time">21:46</p><div class="timeline-icon"><i class="fa-solid fa-route text-xs"></i></div><div><button class="accordion-toggle w-full text-left"><h3 class="font-semibold text-lg flex justify-between items-center"><span>Percurso: Invalides → Casa</span><i class="fas fa-chevron-down text-sm"></i></h3><p class="text-gray-600">Duração total: ~29 min. Clica para ver os detalhes.</p></button><div class="accordion-content hidden mt-4 pl-4 border-l-2 border-gray-300"><div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">21:46: Apanhar Metro <span class="metro-line" style="background-color: #ceadd2; color: black;">8</span></p><p class="text-gray-600 text-sm ml-1">Da estação <strong>Invalides</strong>, direção Créteil-Pointe du Lac.</p></div><div class="relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">22:11: Sair em Porte de Charenton</p></div></div></div></div>
+                <div class="timeline-item"><p class="timeline-time">22:15</p><div class="timeline-icon"><i class="fa-solid fa-bed text-xs"></i></div><h3 class="font-semibold text-lg">Regresso a Casa</h3></div>
             </div>
             <!-- FIM: CHAMP-DE-MARS -> TOUR EIFFEL -> INVALIDES -->
         </section>
         
-<!-- =================================================================== -->
-<!-- ===================== DIA 2: SÁBADO 20/SET ====================== -->
-<!-- =================================================================== -->
-<section id="day2" class="day-section mb-12">
-    <h2 class="font-display text-2xl md:text-3xl text-gray-900 mb-1 font-bold">Dia 2: Coração Histórico e Grandes Avenidas</h2>
-    <p class="text-gray-500 mb-6">Sábado, 20 de Setembro</p>
+        <!-- =================================================================== -->
+        <!-- ===================== DIA 2: SÁBADO 20/SET ====================== -->
+        <!-- =================================================================== -->
+        <section id="day2" class="day-section mb-12">
+            <h2 class="font-display text-2xl md:text-3xl text-gray-900 mb-1 font-bold">Dia 2: Coração Histórico e Grandes Avenidas</h2>
+            <p class="text-gray-500 mb-6">Sábado, 20 de Setembro</p>
+            <div class="cursor-pointer" onclick="openModal('https://nelsonsabino.github.io/paris/Dia2b.png')"><img src="https://nelsonsabino.github.io/paris/Dia2b.png" alt="Mapa do percurso do Dia 2 em Paris" class="w-full aspect-[5/2] object-cover rounded-lg mb-6"></div>
 
-    <img src="https://nelsonsabino.github.io/paris/Dia2b.png" alt="Mapa do percurso do Dia 2 em Paris" class="w-full aspect-[5/2] object-cover rounded-lg mb-6">
-
-    <!-- INICIO: CASA -> ÎLE DE LA CITÉ   -->
-    <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4"><a href="https://maps.app.goo.gl/v5BUzJtit2LJrWhr9" target="_blank"   class="route-title">CASA → ÎLE DE LA CITÉ</a></h3>
-    <div class="relative timeline-container">
-        <div class="timeline-item">
-            <p class="timeline-time">8:26</p>
-            <div class="timeline-icon"><i class="fa-solid fa-house-chimney text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Saída de Casa</h3>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">8:29</p>
-            <div class="timeline-icon"><i class="fa-solid fa-route text-xs"></i></div>
-            <div>
-                <button class="accordion-toggle w-full text-left">
-                    <h3 class="font-semibold text-lg flex justify-between items-center"><span>Percurso: Casa → Hôtel de Ville</span><i class="fas fa-chevron-down text-sm"></i></h3>
-                    <p class="text-gray-600">Duração total: ~22 min. Clica para ver os detalhes.</p>
-                </button>
-                <div class="accordion-content hidden mt-4 pl-4 border-l-2 border-gray-300">
-                    <div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">8:29: Apanhar Metro <span class="metro-line" style="background-color: #ceadd2; color: black;">8</span></p><p class="text-gray-600 text-sm ml-1">Da estação <strong>Porte de Charenton</strong>, direção Balard.</p></div>
-                    <div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">8:39: Trocar em Bastille</p><p class="text-gray-600 text-sm ml-1">Sair do metro e seguir para a Linha 1.</p></div>
-                    <div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">8:42: Apanhar Metro <span class="metro-line" style="background-color: #ffcd00; color: black;">1</span></p><p class="text-gray-600 text-sm ml-1">Direção La Défense.</p></div>
-                    <div class="relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">8:51: Sair em Hôtel de Ville</p></div>
-                </div>
+            <!-- INICIO: CASA -> ÎLE DE LA CITÉ -->
+            <a href="https://maps.app.goo.gl/v5BUzJtit2LJrWhr9" target="_blank" class="block p-3 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-colors duration-200 mb-4">
+                <div class="flex items-center justify-between"><div class="flex items-center"><i class="fas fa-map-location-dot text-blue-600 text-xl mr-3"></i><h3 class="font-display text-lg md:text-xl font-bold text-gray-800">CASA → ÎLE DE LA CITÉ</h3></div><span class="text-sm font-semibold text-blue-500 hidden md:block">Ver no Mapa <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></span></div>
+            </a>
+            <div class="relative timeline-container">
+                <div class="timeline-item"><p class="timeline-time">8:26</p><div class="timeline-icon"><i class="fa-solid fa-house-chimney text-xs"></i></div><h3 class="font-semibold text-lg">Saída de Casa</h3></div>
+                <div class="timeline-item"><p class="timeline-time">8:29</p><div class="timeline-icon"><i class="fa-solid fa-route text-xs"></i></div><div><button class="accordion-toggle w-full text-left"><h3 class="font-semibold text-lg flex justify-between items-center"><span>Percurso: Casa → Hôtel de Ville</span><i class="fas fa-chevron-down text-sm"></i></h3><p class="text-gray-600">Duração total: ~22 min. Clica para ver os detalhes.</p></button><div class="accordion-content hidden mt-4 pl-4 border-l-2 border-gray-300"><div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">8:29: Apanhar Metro <span class="metro-line" style="background-color: #ceadd2; color: black;">8</span></p><p class="text-gray-600 text-sm ml-1">Da estação <strong>Porte de Charenton</strong>, direção Balard.</p></div><div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">8:39: Trocar em Bastille</p><p class="text-gray-600 text-sm ml-1">Sair do metro e seguir para a Linha 1.</p></div><div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">8:42: Apanhar Metro <span class="metro-line" style="background-color: #ffcd00; color: black;">1</span></p><p class="text-gray-600 text-sm ml-1">Direção La Défense.</p></div><div class="relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">8:51: Sair em Hôtel de Ville</p></div></div></div></div>
             </div>
-        </div>
-    </div>
-    <!-- FIM: CASA -> ÎLE DE LA CITÉ -->
+            <!-- FIM: CASA -> ÎLE DE LA CITÉ -->
 
-    <!-- INICIO: ÎLE DE LA CITÉ -> SQUARE DU VERT-GALANT -->
-    <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4 mt-8"><a href="[LINK_PARA_NOVO_PERCURSO]" target="_blank"   class="route-title">ÎLE DE LA CITÉ → SQUARE DU VERT-GALANT</a></h3>
-    <div class="relative timeline-container">
-         <div class="timeline-item">
-            <p class="timeline-time">8:57</p>
-            <div class="timeline-icon"><i class="fa-solid fa-coffee text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Au Vieux Paris d'Arcole</h3>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">9:10</p>
-            <div class="timeline-icon"><i class="fa-solid fa-church text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Catedral de Notre-Dame & Point Zéro <i class="fa-solid fa-ticket ml-2 text-blue-600" title="Necessita de Bilhete"></i></h3>
-            <p class="text-gray-600">Visita interior (~30-45min.)</p>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">10:15</p>
-            <div class="timeline-icon"><i class="fa-solid fa-book text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Shakespeare and Company</h3>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">10:25</p>
-            <div class="timeline-icon"><i class="fa-solid fa-church text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Igreja de São Severino</h3>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">10:45</p>
-            <div class="timeline-icon"><i class="fa-solid fa-person-walking text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Rue de la Huchette</h3>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">11:00</p>
-            <div class="timeline-icon"><i class="fa-solid fa-fountain text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Fontaine Saint-Michel</h3>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">11:15</p>
-            <div class="timeline-icon"><i class="fa-solid fa-flower text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Mercado das Flores Rainha Elizabeth II</h3>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">11:30</p>
-            <div class="timeline-icon"><i class="fa-solid fa-gem text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Sainte-Chapelle <i class="fa-solid fa-ticket ml-2 text-blue-600" title="Necessita de Bilhete"></i></h3>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">12:30</p>
-            <div class="timeline-icon"><i class="fa-solid fa-tree-city text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Place Dauphine</h3>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">12:45</p>
-            <div class="timeline-icon"><i class="fa-solid fa-tree text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Square du Vert-Galant</h3>
-        </div>
-    </div>
-    <!-- FIM: ÎLE DE LA CITÉ -> SQUARE DU VERT-GALANT -->
-
-    <!-- INICIO: SQUARE DU VERT-GALANT -> LE PETIT PALAIS -->
-    <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4 mt-8"><a href="[LINK_PARA_NOVO_PERCURSO]" target="_blank"   class="route-title">SQUARE DU VERT-GALANT → LE PETIT PALAIS</a></h3>
-    <div class="relative timeline-container">
-        <div class="timeline-item">
-            <p class="timeline-time">13:15</p>
-            <div class="timeline-icon"><i class="fa-solid fa-bridge text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Pont Neuf</h3>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">13:30</p>
-            <div class="timeline-icon"><i class="fa-solid fa-bridge text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Pont des Arts</h3>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">13:45</p>
-            <div class="timeline-icon"><i class="fa-solid fa-archway text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Arco do Triunfo do Carrossel</h3>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">14:15</p>
-            <div class="timeline-icon"><i class="fa-solid fa-fountain text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Jardim das Tulherias</h3>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">15:15</p>
-            <div class="timeline-icon"><i class="fa-solid fa-square-full text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Place de la Concorde</h3>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">15:30</p>
-            <div class="timeline-icon"><i class="fa-solid fa-building-columns text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Musée d'Orsay <i class="fa-solid fa-ticket ml-2 text-blue-600" title="Necessita de Bilhete"></i></h3>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">18:00</p>
-            <div class="timeline-icon"><i class="fa-solid fa-landmark text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Petit Palais/Grand Palais (Exterior)</h3>
-        </div>
-    </div>
-    <!-- FIM: SQUARE DU VERT-GALANT -> LE PETIT PALAIS -->
-
-    <!-- INICIO: METRO ATÉ ARCO DO TRIUNFO -->
-    <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4 mt-8"><a href="[LINK_PARA_NOVO_PERCURSO]" target="_blank" class="route-title">METRO ATÉ ARCO DO TRIUNFO</a></h3>
-    <div class="relative timeline-container">
-        <div class="timeline-item">
-            <p class="timeline-time">18:07</p>
-            <div class="timeline-icon"><i class="fa-solid fa-route text-xs"></i></div>
-             <div>
-                <button class="accordion-toggle w-full text-left">
-                    <h3 class="font-semibold text-lg flex justify-between items-center"><span>Percurso: Clemenceau → Arco do Triunfo</span><i class="fas fa-chevron-down text-sm"></i></h3>
-                    <p class="text-gray-600">Duração total: ~7 min. Clica para ver os detalhes.</p>
-                </button>
-                <div class="accordion-content hidden mt-4 pl-4 border-l-2 border-gray-300">
-                    <div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">18:07: Apanhar Metro <span class="metro-line" style="background-color: #ffcd00; color: black;">1</span></p><p class="text-gray-600 text-sm ml-1">Da estação <strong>Champs-Élysées - Clemenceau</strong>, direção La Défense.</p></div>
-                    <div class="relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">18:10: Sair em Charles de Gaulle – Étoile</p></div>
-                </div>
+            <!-- INICIO: ÎLE DE LA CITÉ -> SQUARE DU VERT-GALANT -->
+            <a href="https://maps.app.goo.gl/uXpLgW1m27q1mY2G7" target="_blank" class="block p-3 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-colors duration-200 mt-8 mb-4">
+                <div class="flex items-center justify-between"><div class="flex items-center"><i class="fas fa-map-location-dot text-blue-600 text-xl mr-3"></i><h3 class="font-display text-lg md:text-xl font-bold text-gray-800">ÎLE DE LA CITÉ → SQUARE DU VERT-GALANT</h3></div><span class="text-sm font-semibold text-blue-500 hidden md:block">Ver no Mapa <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></span></div>
+            </a>
+            <div class="relative timeline-container">
+                <div class="timeline-item"><p class="timeline-time">8:57</p><div class="timeline-icon"><i class="fa-solid fa-coffee text-xs"></i></div><h3 class="font-semibold text-lg">Au Vieux Paris d'Arcole</h3></div>
+                <div class="timeline-item"><p class="timeline-time">9:10</p><div class="timeline-icon"><i class="fa-solid fa-church text-xs"></i></div><h3 class="font-semibold text-lg">Catedral de Notre-Dame & Point Zéro <i class="fa-solid fa-ticket ml-2 text-blue-600" title="Necessita de Bilhete"></i></h3><p class="text-gray-600">Visita interior (~30-45min.)</p></div>
+                <div class="timeline-item"><p class="timeline-time">10:15</p><div class="timeline-icon"><i class="fa-solid fa-book text-xs"></i></div><h3 class="font-semibold text-lg">Shakespeare and Company</h3></div>
+                <div class="timeline-item"><p class="timeline-time">10:25</p><div class="timeline-icon"><i class="fa-solid fa-church text-xs"></i></div><h3 class="font-semibold text-lg">Igreja de São Severino</h3></div>
+                <div class="timeline-item"><p class="timeline-time">10:45</p><div class="timeline-icon"><i class="fa-solid fa-person-walking text-xs"></i></div><h3 class="font-semibold text-lg">Rue de la Huchette</h3></div>
+                <div class="timeline-item"><p class="timeline-time">11:00</p><div class="timeline-icon"><i class="fa-solid fa-fountain text-xs"></i></div><h3 class="font-semibold text-lg">Fontaine Saint-Michel</h3></div>
+                <div class="timeline-item"><p class="timeline-time">11:15</p><div class="timeline-icon"><i class="fa-solid fa-flower text-xs"></i></div><h3 class="font-semibold text-lg">Mercado das Flores Rainha Elizabeth II</h3></div>
+                <div class="timeline-item"><p class="timeline-time">11:30</p><div class="timeline-icon"><i class="fa-solid fa-gem text-xs"></i></div><h3 class="font-semibold text-lg">Sainte-Chapelle <i class="fa-solid fa-ticket ml-2 text-blue-600" title="Necessita de Bilhete"></i></h3></div>
+                <div class="timeline-item"><p class="timeline-time">12:30</p><div class="timeline-icon"><i class="fa-solid fa-tree-city text-xs"></i></div><h3 class="font-semibold text-lg">Place Dauphine</h3></div>
+                <div class="timeline-item"><p class="timeline-time">12:45</p><div class="timeline-icon"><i class="fa-solid fa-tree text-xs"></i></div><h3 class="font-semibold text-lg">Square du Vert-Galant</h3></div>
             </div>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">18:14</p>
-            <div class="timeline-icon"><i class="fa-solid fa-archway text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Arco do Triunfo </h3>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">18:45</p>
-            <div class="timeline-icon"><i class="fa-solid fa-road text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Champs-Élysées</h3>
-        </div>
-    </div>
-    <!-- FIM: METRO ATÉ ARCO DO TRIUNFO -->
-    
-    <!-- Esta secção de regresso a casa foi movida do dia 3 para aqui, para completar o dia 2, como parecia ser a tua intenção. -->
-    <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4 mt-8"><a href="[LINK_DO_GOOGLE_MAPS_AQUI]" target="_blank" class="route-title">CHAMPS-ÉLYSÉES → CASA</a></h3>
-    <div class="relative timeline-container">
-        <div class="timeline-item">
-            <p class="timeline-time">20:37</p>
-            <div class="timeline-icon"><i class="fa-solid fa-route text-xs"></i></div>
-             <div>
-                <button class="accordion-toggle w-full text-left">
-                    <h3 class="font-semibold text-lg flex justify-between items-center"><span>Percurso: Champs-Élysées → Casa</span><i class="fas fa-chevron-down text-sm"></i></h3>
-                    <p class="text-gray-600">Duração total: ~31 min. Clica para ver os detalhes.</p>
-                </button>
-                <div class="accordion-content hidden mt-4 pl-4 border-l-2 border-gray-300">
-                    <div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">20:37: Apanhar Metro <span class="metro-line" style="background-color: #ffcd00; color: black;">1</span></p><p class="text-gray-600 text-sm ml-1">Da estação <strong>George V</strong>, direção Château de Vincennes.</p></div>
-                    <div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">20:55: Trocar em Reuilly - Diderot</p><p class="text-gray-600 text-sm ml-1">Sair do metro e seguir para a Linha 8.</p></div>
-                    <div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">20:59: Apanhar Metro <span class="metro-line" style="background-color: #ceadd2; color: black;">8</span></p><p class="text-gray-600 text-sm ml-1">Direção Créteil-Pointe du Lac.</p></div>
-                    <div class="relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">21:05: Sair em Porte de Charenton</p></div>
-                </div>
-            </div>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">21:08</p>
-            <div class="timeline-icon"><i class="fa-solid fa-bed text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Regresso a Casa</h3>
-        </div>
-    </div>
-</section>
+            <!-- FIM: ÎLE DE LA CITÉ -> SQUARE DU VERT-GALANT -->
 
+            <!-- INICIO: SQUARE DU VERT-GALANT -> LE PETIT PALAIS -->
+            <a href="https://maps.app.goo.gl/95c5D8637oW9yNf38" target="_blank" class="block p-3 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-colors duration-200 mt-8 mb-4">
+                <div class="flex items-center justify-between"><div class="flex items-center"><i class="fas fa-map-location-dot text-blue-600 text-xl mr-3"></i><h3 class="font-display text-lg md:text-xl font-bold text-gray-800">SQUARE DU VERT-GALANT → LE PETIT PALAIS</h3></div><span class="text-sm font-semibold text-blue-500 hidden md:block">Ver no Mapa <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></span></div>
+            </a>
+            <div class="relative timeline-container">
+                <div class="timeline-item"><p class="timeline-time">13:15</p><div class="timeline-icon"><i class="fa-solid fa-bridge text-xs"></i></div><h3 class="font-semibold text-lg">Pont Neuf</h3></div>
+                <div class="timeline-item"><p class="timeline-time">13:30</p><div class="timeline-icon"><i class="fa-solid fa-bridge text-xs"></i></div><h3 class="font-semibold text-lg">Pont des Arts</h3></div>
+                <div class="timeline-item"><p class="timeline-time">13:45</p><div class="timeline-icon"><i class="fa-solid fa-archway text-xs"></i></div><h3 class="font-semibold text-lg">Arco do Triunfo do Carrossel</h3></div>
+                <div class="timeline-item"><p class="timeline-time">14:15</p><div class="timeline-icon"><i class="fa-solid fa-fountain text-xs"></i></div><h3 class="font-semibold text-lg">Jardim das Tulherias</h3></div>
+                <div class="timeline-item"><p class="timeline-time">15:15</p><div class="timeline-icon"><i class="fa-solid fa-square-full text-xs"></i></div><h3 class="font-semibold text-lg">Place de la Concorde</h3></div>
+                <div class="timeline-item"><p class="timeline-time">15:30</p><div class="timeline-icon"><i class="fa-solid fa-building-columns text-xs"></i></div><h3 class="font-semibold text-lg">Musée d'Orsay <i class="fa-solid fa-ticket ml-2 text-blue-600" title="Necessita de Bilhete"></i></h3></div>
+                <div class="timeline-item"><p class="timeline-time">18:00</p><div class="timeline-icon"><i class="fa-solid fa-landmark text-xs"></i></div><h3 class="font-semibold text-lg">Petit Palais/Grand Palais (Exterior)</h3></div>
+            </div>
+            <!-- FIM: SQUARE DU VERT-GALANT -> LE PETIT PALAIS -->
+
+            <!-- INICIO: METRO ATÉ ARCO DO TRIUNFO -->
+            <a href="https://maps.app.goo.gl/sM1X415zK5h6uS3o6" target="_blank" class="block p-3 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-colors duration-200 mt-8 mb-4">
+                <div class="flex items-center justify-between"><div class="flex items-center"><i class="fas fa-map-location-dot text-blue-600 text-xl mr-3"></i><h3 class="font-display text-lg md:text-xl font-bold text-gray-800">METRO ATÉ ARCO DO TRIUNFO</h3></div><span class="text-sm font-semibold text-blue-500 hidden md:block">Ver no Mapa <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></span></div>
+            </a>
+            <div class="relative timeline-container">
+                <div class="timeline-item"><p class="timeline-time">18:07</p><div class="timeline-icon"><i class="fa-solid fa-route text-xs"></i></div><div><button class="accordion-toggle w-full text-left"><h3 class="font-semibold text-lg flex justify-between items-center"><span>Percurso: Clemenceau → Arco do Triunfo</span><i class="fas fa-chevron-down text-sm"></i></h3><p class="text-gray-600">Duração total: ~7 min. Clica para ver os detalhes.</p></button><div class="accordion-content hidden mt-4 pl-4 border-l-2 border-gray-300"><div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">18:07: Apanhar Metro <span class="metro-line" style="background-color: #ffcd00; color: black;">1</span></p><p class="text-gray-600 text-sm ml-1">Da estação <strong>Champs-Élysées - Clemenceau</strong>, direção La Défense.</p></div><div class="relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">18:10: Sair em Charles de Gaulle – Étoile</p></div></div></div></div>
+                <div class="timeline-item"><p class="timeline-time">18:14</p><div class="timeline-icon"><i class="fa-solid fa-archway text-xs"></i></div><h3 class="font-semibold text-lg">Arco do Triunfo </h3></div>
+                <div class="timeline-item"><p class="timeline-time">18:45</p><div class="timeline-icon"><i class="fa-solid fa-road text-xs"></i></div><h3 class="font-semibold text-lg">Champs-Élysées</h3></div>
+            </div>
+            <!-- FIM: METRO ATÉ ARCO DO TRIUNFO -->
+            
+            <!-- INICIO: CHAMPS-ÉLYSÉES → CASA -->
+            <a href="https://maps.app.goo.gl/r6f2yvD8XmD8gN3s6" target="_blank" class="block p-3 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-colors duration-200 mt-8 mb-4">
+                <div class="flex items-center justify-between"><div class="flex items-center"><i class="fas fa-map-location-dot text-blue-600 text-xl mr-3"></i><h3 class="font-display text-lg md:text-xl font-bold text-gray-800">CHAMPS-ÉLYSÉES → CASA</h3></div><span class="text-sm font-semibold text-blue-500 hidden md:block">Ver no Mapa <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></span></div>
+            </a>
+            <div class="relative timeline-container">
+                <div class="timeline-item"><p class="timeline-time">20:37</p><div class="timeline-icon"><i class="fa-solid fa-route text-xs"></i></div><div><button class="accordion-toggle w-full text-left"><h3 class="font-semibold text-lg flex justify-between items-center"><span>Percurso: Champs-Élysées → Casa</span><i class="fas fa-chevron-down text-sm"></i></h3><p class="text-gray-600">Duração total: ~31 min. Clica para ver os detalhes.</p></button><div class="accordion-content hidden mt-4 pl-4 border-l-2 border-gray-300"><div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">20:37: Apanhar Metro <span class="metro-line" style="background-color: #ffcd00; color: black;">1</span></p><p class="text-gray-600 text-sm ml-1">Da estação <strong>George V</strong>, direção Château de Vincennes.</p></div><div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">20:55: Trocar em Reuilly - Diderot</p><p class="text-gray-600 text-sm ml-1">Sair do metro e seguir para a Linha 8.</p></div><div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">20:59: Apanhar Metro <span class="metro-line" style="background-color: #ceadd2; color: black;">8</span></p><p class="text-gray-600 text-sm ml-1">Direção Créteil-Pointe du Lac.</p></div><div class="relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">21:05: Sair em Porte de Charenton</p></div></div></div></div>
+                <div class="timeline-item"><p class="timeline-time">21:08</p><div class="timeline-icon"><i class="fa-solid fa-bed text-xs"></i></div><h3 class="font-semibold text-lg">Regresso a Casa</h3></div>
+            </div>
+            <!-- FIM: CHAMPS-ÉLYSÉES → CASA -->
+        </section>
 
         <!-- =================================================================== -->
         <!-- ==================== DIA 3: DOMINGO 21/SET ==================== -->
@@ -509,458 +278,185 @@
         <section id="day3" class="day-section mb-12">
             <h2 class="font-display text-2xl md:text-3xl text-gray-900 mb-1 font-bold">Dia 3: Realeza, Arte Boémia e Vistas Icónicas</h2>
             <p class="text-gray-500 mb-6">Domingo, 21 de Setembro</p>       
-            
-    <!-- Gatilho para o Modal -->
-    <div class="cursor-pointer" onclick="openModal('https://nelsonsabino.github.io/paris/Dia3a.png')">
-        <img src="https://nelsonsabino.github.io/paris/Dia3a.png" alt="Mapa do percurso do Dia 3 em Paris" class="w-full aspect-[5/2] object-cover rounded-lg mb-6">
-    </div>
+            <div class="cursor-pointer" onclick="openModal('https://nelsonsabino.github.io/paris/Dia3a.png')"><img src="https://nelsonsabino.github.io/paris/Dia3a.png" alt="Mapa do percurso do Dia 3 em Paris" class="w-full aspect-[5/2] object-cover rounded-lg mb-6"></div>
     
             <!-- INICIO: CASA -> VERSALHES -->
-            <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4"><a href="https://maps.app.goo.gl/iaVo5sGmpP3SerWF6" target="_blank"   class="route-title">CASA → VERSALHES</a></h3>
+            <a href="https://maps.app.goo.gl/iaVo5sGmpP3SerWF6" target="_blank" class="block p-3 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-colors duration-200 mb-4">
+                <div class="flex items-center justify-between"><div class="flex items-center"><i class="fas fa-map-location-dot text-blue-600 text-xl mr-3"></i><h3 class="font-display text-lg md:text-xl font-bold text-gray-800">CASA → VERSALHES</h3></div><span class="text-sm font-semibold text-blue-500 hidden md:block">Ver no Mapa <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></span></div>
+            </a>
             <div class="relative timeline-container">
-                <div class="timeline-item">
-                    <p class="timeline-time">8:00</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-house-chimney text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Saída de Casa</h3>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">8:07</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-route text-xs"></i></div>
-                     <div>
-                        <button class="accordion-toggle w-full text-left">
-                            <h3 class="font-semibold text-lg flex justify-between items-center"><span>Percurso: Casa → Versailles</span><i class="fas fa-chevron-down text-sm"></i></h3>
-                            <p class="text-gray-600">Duração total: ~58 min. Clica para ver os detalhes.</p>
-                        </button>
-                        <div class="accordion-content hidden mt-4 pl-4 border-l-2 border-gray-300">
-                            <div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">8:07: Apanhar Metro <span class="metro-line" style="background-color: #ceadd2; color: black;">8</span></p><p class="text-gray-600 text-sm ml-1">Da estação <strong>Michel Bizot</strong>, direção Balard.</p></div>
-                            <div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">8:30: Trocar em Invalides</p><p class="text-gray-600 text-sm ml-1">Sair do metro e seguir para o RER C.</p></div>
-                            <div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">8:34: Apanhar RER <span class="metro-line" style="background-color: #f3d311; color: black;">C</span></p><p class="text-gray-600 text-sm ml-1">Direção Versailles Château Rive Gauche.</p></div>
-                            <div class="relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">9:05: Sair em Versailles</p></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">9:21</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-crown text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Palácio de Versalhes <i class="fa-solid fa-ticket ml-2 text-blue-600" title="Necessita de Bilhete"></i></h3>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">11:30</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-tree text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Jardins de Versalhes <i class="fa-solid fa-ticket ml-2 text-blue-600" title="Necessita de Bilhete em dias de espetáculo das fontes"></i></h3>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">13:30</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-utensils text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Almoço nas Proximidades</h3>
-                </div>
+                <div class="timeline-item"><p class="timeline-time">8:00</p><div class="timeline-icon"><i class="fa-solid fa-house-chimney text-xs"></i></div><h3 class="font-semibold text-lg">Saída de Casa</h3></div>
+                <div class="timeline-item"><p class="timeline-time">8:07</p><div class="timeline-icon"><i class="fa-solid fa-route text-xs"></i></div><div><button class="accordion-toggle w-full text-left"><h3 class="font-semibold text-lg flex justify-between items-center"><span>Percurso: Casa → Versailles</span><i class="fas fa-chevron-down text-sm"></i></h3><p class="text-gray-600">Duração total: ~58 min. Clica para ver os detalhes.</p></button><div class="accordion-content hidden mt-4 pl-4 border-l-2 border-gray-300"><div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">8:07: Apanhar Metro <span class="metro-line" style="background-color: #ceadd2; color: black;">8</span></p><p class="text-gray-600 text-sm ml-1">Da estação <strong>Michel Bizot</strong>, direção Balard.</p></div><div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">8:30: Trocar em Invalides</p><p class="text-gray-600 text-sm ml-1">Sair do metro e seguir para o RER C.</p></div><div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">8:34: Apanhar RER <span class="metro-line" style="background-color: #f3d311; color: black;">C</span></p><p class="text-gray-600 text-sm ml-1">Direção Versailles Château Rive Gauche.</p></div><div class="relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">9:05: Sair em Versailles</p></div></div></div></div>
+                <div class="timeline-item"><p class="timeline-time">9:21</p><div class="timeline-icon"><i class="fa-solid fa-crown text-xs"></i></div><h3 class="font-semibold text-lg">Palácio de Versalhes <i class="fa-solid fa-ticket ml-2 text-blue-600" title="Necessita de Bilhete"></i></h3></div>
+                <div class="timeline-item"><p class="timeline-time">11:30</p><div class="timeline-icon"><i class="fa-solid fa-tree text-xs"></i></div><h3 class="font-semibold text-lg">Jardins de Versalhes <i class="fa-solid fa-ticket ml-2 text-blue-600" title="Necessita de Bilhete em dias de espetáculo das fontes"></i></h3></div>
+                <div class="timeline-item"><p class="timeline-time">13:30</p><div class="timeline-icon"><i class="fa-solid fa-utensils text-xs"></i></div><h3 class="font-semibold text-lg">Almoço nas Proximidades</h3></div>
             </div>
             <!-- FIM: CASA -> VERSALHES -->
 
             <!-- INICIO: VERSALHES -> MONTMARTRE -->
-            <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4 mt-8"><a href="https://maps.app.goo.gl/9PTbkngBqnhKFAp3A" target="_blank"   class="route-title">VERSALHES → MONTMARTRE</a></h3>
+            <a href="https://maps.app.goo.gl/9PTbkngBqnhKFAp3A" target="_blank" class="block p-3 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-colors duration-200 mt-8 mb-4">
+                <div class="flex items-center justify-between"><div class="flex items-center"><i class="fas fa-map-location-dot text-blue-600 text-xl mr-3"></i><h3 class="font-display text-lg md:text-xl font-bold text-gray-800">VERSALHES → MONTMARTRE</h3></div><span class="text-sm font-semibold text-blue-500 hidden md:block">Ver no Mapa <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></span></div>
+            </a>
             <div class="relative timeline-container">
-                <div class="timeline-item">
-                    <p class="timeline-time">14:40</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-route text-xs"></i></div>
-                     <div>
-                        <button class="accordion-toggle w-full text-left">
-                            <h3 class="font-semibold text-lg flex justify-between items-center"><span>Percurso: Versailles → Montmartre</span><i class="fas fa-chevron-down text-sm"></i></h3>
-                            <p class="text-gray-600">Duração total: ~54 min. Clica para ver os detalhes.</p>
-                        </button>
-                        <div class="accordion-content hidden mt-4 pl-4 border-l-2 border-gray-300">
-                            <div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">14:40: Apanhar RER <span class="metro-line" style="background-color: #f3d311; color: black;">C</span></p><p class="text-gray-600 text-sm ml-1">Da estação <strong>Versailles Château Rive Gauche</strong>.</p></div>
-                            <div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">15:12: Paragem no Musée d'Orsay</p></div>
-                            <div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">15:22: Apanhar Metro <span class="metro-line" style="background-color: #007852;">12</span></p><p class="text-gray-600 text-sm ml-1">Da estação <strong>Solférino/Assemblée Nationale</strong>, direção Mairie D'aubervilliers.</p></div>
-                            <div class="relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">15:34: Sair em Abbesses</p></div>
-                        </div>
-                    </div>
-                </div>
+                <div class="timeline-item"><p class="timeline-time">14:40</p><div class="timeline-icon"><i class="fa-solid fa-route text-xs"></i></div><div><button class="accordion-toggle w-full text-left"><h3 class="font-semibold text-lg flex justify-between items-center"><span>Percurso: Versailles → Montmartre</span><i class="fas fa-chevron-down text-sm"></i></h3><p class="text-gray-600">Duração total: ~54 min. Clica para ver os detalhes.</p></button><div class="accordion-content hidden mt-4 pl-4 border-l-2 border-gray-300"><div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">14:40: Apanhar RER <span class="metro-line" style="background-color: #f3d311; color: black;">C</span></p><p class="text-gray-600 text-sm ml-1">Da estação <strong>Versailles Château Rive Gauche</strong>.</p></div><div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">15:12: Paragem no Musée d'Orsay</p></div><div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">15:22: Apanhar Metro <span class="metro-line" style="background-color: #007852;">12</span></p><p class="text-gray-600 text-sm ml-1">Da estação <strong>Solférino/Assemblée Nationale</strong>, direção Mairie D'aubervilliers.</p></div><div class="relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">15:34: Sair em Abbesses</p></div></div></div></div>
             </div>
             <!-- FIM: VERSALHES -> MONTMARTRE -->
 
             <!-- INICIO: MONTMARTRE -> MOULIN ROUGE -->
-            <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4 mt-8"><a href="https://maps.app.goo.gl/DBCJQ62qSGpKDVL28" target="_blank"   class="route-title">MONTMARTRE → MOULIN ROUGE</a></h3>
+            <a href="https://maps.app.goo.gl/DBCJQ62qSGpKDVL28" target="_blank" class="block p-3 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-colors duration-200 mt-8 mb-4">
+                <div class="flex items-center justify-between"><div class="flex items-center"><i class="fas fa-map-location-dot text-blue-600 text-xl mr-3"></i><h3 class="font-display text-lg md:text-xl font-bold text-gray-800">MONTMARTRE → MOULIN ROUGE</h3></div><span class="text-sm font-semibold text-blue-500 hidden md:block">Ver no Mapa <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></span></div>
+            </a>
             <div class="relative timeline-container">
-                <div class="timeline-item">
-                    <p class="timeline-time">15:34</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-heart text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Muro do Eu Te Amo (Le Mur des Je t'aime)</h3>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">16:00</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-tree text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Square Louise Michel</h3>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">16:30</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-place-of-worship text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Basílica de Sacré Cœur</h3>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">17:15</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-palette text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Place du Tertre</h3>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">17:25</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-utensils text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Le Consulat & La Maison Rose</h3>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">17:45</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-windmill text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Moulin Radet</h3>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">18:00</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-mug-hot text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Café des Deux Moulins</h3>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">18:15</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-wind text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Moulin Rouge</h3>
-                </div>
+                <div class="timeline-item"><p class="timeline-time">15:34</p><div class="timeline-icon"><i class="fa-solid fa-heart text-xs"></i></div><h3 class="font-semibold text-lg">Muro do Eu Te Amo (Le Mur des Je t'aime)</h3></div>
+                <div class="timeline-item"><p class="timeline-time">16:00</p><div class="timeline-icon"><i class="fa-solid fa-tree text-xs"></i></div><h3 class="font-semibold text-lg">Square Louise Michel</h3></div>
+                <div class="timeline-item"><p class="timeline-time">16:30</p><div class="timeline-icon"><i class="fa-solid fa-place-of-worship text-xs"></i></div><h3 class="font-semibold text-lg">Basílica de Sacré Cœur</h3></div>
+                <div class="timeline-item"><p class="timeline-time">17:15</p><div class="timeline-icon"><i class="fa-solid fa-palette text-xs"></i></div><h3 class="font-semibold text-lg">Place du Tertre</h3></div>
+                <div class="timeline-item"><p class="timeline-time">17:25</p><div class="timeline-icon"><i class="fa-solid fa-utensils text-xs"></i></div><h3 class="font-semibold text-lg">Le Consulat & La Maison Rose</h3></div>
+                <div class="timeline-item"><p class="timeline-time">17:45</p><div class="timeline-icon"><i class="fa-solid fa-windmill text-xs"></i></div><h3 class="font-semibold text-lg">Moulin Radet</h3></div>
+                <div class="timeline-item"><p class="timeline-time">18:00</p><div class="timeline-icon"><i class="fa-solid fa-mug-hot text-xs"></i></div><h3 class="font-semibold text-lg">Café des Deux Moulins</h3></div>
+                <div class="timeline-item"><p class="timeline-time">18:15</p><div class="timeline-icon"><i class="fa-solid fa-wind text-xs"></i></div><h3 class="font-semibold text-lg">Moulin Rouge</h3></div>
             </div>
             <!-- FIM: MONTMARTRE -> MOULIN ROUGE -->
-
-
         </section>
 
+        <!-- =================================================================== -->
+        <!-- =================== DIA 4: SEGUNDA-FEIRA 22/SET =================== -->
+        <!-- =================================================================== -->
+        <section id="day4" class="day-section mb-12">
+            <h2 class="font-display text-2xl md:text-3xl text-gray-900 mb-1 font-bold">Dia 4: Imersão em Arte e Charme Parisiense</h2>
+            <p class="text-gray-500 mb-6">Segunda-Feira, 22 de Setembro</p>            
+            <div class="cursor-pointer" onclick="openModal('https://nelsonsabino.github.io/paris/Dia4a.png')"><img src="https://nelsonsabino.github.io/paris/Dia4a.png" alt="Mapa do percurso do Dia 4 em Paris" class="w-full aspect-[5/2] object-cover rounded-lg mb-6"></div>
 
-
-<!-- =================================================================== -->
-<!-- =================== DIA 4: SEGUNDA-FEIRA 22/SET =================== -->
-<!-- =================================================================== -->
-<section id="day4" class="day-section mb-12">
-    <h2 class="font-display text-2xl md:text-3xl text-gray-900 mb-1 font-bold">Dia 4: Imersão em Arte e Charme Parisiense</h2>
-    <p class="text-gray-500 mb-6">Segunda-Feira, 22 de Setembro</p>            
-    
-    <!-- Imagem do mapa para o Dia 4 -->
-    <div class="cursor-pointer" onclick="openModal('https://nelsonsabino.github.io/paris/Dia4a.png')">
-        <img src="https://nelsonsabino.github.io/paris/Dia4a.png" alt="Mapa do percurso do Dia 4 em Paris" class="w-full aspect-[5/2] object-cover rounded-lg mb-6">
-    </div>
-
-    <!-- INICIO: CASA -> MUSEU DO LOUVRE (Esta secção não foi alterada) -->
-    <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4"><a href="https://maps.app.goo.gl/47SoBmDnHjDh9bUi7" target="_blank"   class="route-title">CASA → MUSEU DO LOUVRE</a></h3>
-    <div class="relative timeline-container">
-        <div class="timeline-item">
-            <p class="timeline-time">8:33</p>
-            <div class="timeline-icon"><i class="fa-solid fa-house-chimney text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Saída de Casa</h3>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">8:38</p>
-            <div class="timeline-icon"><i class="fa-solid fa-route text-xs"></i></div>
-            <div>
-                <button class="accordion-toggle w-full text-left">
-                    <h3 class="font-semibold text-lg flex justify-between items-center"><span>Percurso: Casa → Louvre</span><i class="fas fa-chevron-down text-sm"></i></h3>
-                    <p class="text-gray-600">Duração total: ~20 min. Clica para ver os detalhes.</p>
-                </button>
-                <div class="accordion-content hidden mt-4 pl-4 border-l-2 border-gray-300">
-                    <div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">8:38: Apanhar Metro <span class="metro-line" style="background-color: #ceadd2; color: black;">8</span></p><p class="text-gray-600 text-sm ml-1">Da estação <strong>Porte de Charenton</strong>, direção Balard.</p></div>
-                    <div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">8:48: Trocar em Bastille</p><p class="text-gray-600 text-sm ml-1">Sair do metro e seguir para a Linha 1.</p></div>
-                    <div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">8:51: Apanhar Metro <span class="metro-line" style="background-color: #ffcd00; color: black;">1</span></p><p class="text-gray-600 text-sm ml-1">Direção La Défense.</p></div>
-                    <div class="relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">8:58: Sair em Palais Royal - Musée du Louvre</p></div>
-                </div>
+            <!-- INICIO: CASA -> MUSEU DO LOUVRE -->
+            <a href="https://maps.app.goo.gl/47SoBmDnHjDh9bUi7" target="_blank" class="block p-3 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-colors duration-200 mb-4">
+                <div class="flex items-center justify-between"><div class="flex items-center"><i class="fas fa-map-location-dot text-blue-600 text-xl mr-3"></i><h3 class="font-display text-lg md:text-xl font-bold text-gray-800">CASA → MUSEU DO LOUVRE</h3></div><span class="text-sm font-semibold text-blue-500 hidden md:block">Ver no Mapa <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></span></div>
+            </a>
+            <div class="relative timeline-container">
+                <div class="timeline-item"><p class="timeline-time">8:33</p><div class="timeline-icon"><i class="fa-solid fa-house-chimney text-xs"></i></div><h3 class="font-semibold text-lg">Saída de Casa</h3></div>
+                <div class="timeline-item"><p class="timeline-time">8:38</p><div class="timeline-icon"><i class="fa-solid fa-route text-xs"></i></div><div><button class="accordion-toggle w-full text-left"><h3 class="font-semibold text-lg flex justify-between items-center"><span>Percurso: Casa → Louvre</span><i class="fas fa-chevron-down text-sm"></i></h3><p class="text-gray-600">Duração total: ~20 min. Clica para ver os detalhes.</p></button><div class="accordion-content hidden mt-4 pl-4 border-l-2 border-gray-300"><div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">8:38: Apanhar Metro <span class="metro-line" style="background-color: #ceadd2; color: black;">8</span></p><p class="text-gray-600 text-sm ml-1">Da estação <strong>Porte de Charenton</strong>, direção Balard.</p></div><div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">8:48: Trocar em Bastille</p><p class="text-gray-600 text-sm ml-1">Sair do metro e seguir para a Linha 1.</p></div><div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">8:51: Apanhar Metro <span class="metro-line" style="background-color: #ffcd00; color: black;">1</span></p><p class="text-gray-600 text-sm ml-1">Direção La Défense.</p></div><div class="relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">8:58: Sair em Palais Royal - Musée du Louvre</p></div></div></div></div>
+                <div class="timeline-item"><p class="timeline-time">9:00</p><div class="timeline-icon"><i class="fa-solid fa-landmark-dome text-xs"></i></div><h3 class="font-semibold text-lg">Museu do Louvre <i class="fa-solid fa-ticket ml-2 text-blue-600" title="Necessita de Bilhete"></i></h3></div>
+                <div class="timeline-item"><p class="timeline-time">13:00</p><div class="timeline-icon"><i class="fa-solid fa-utensils text-xs"></i></div><h3 class="font-semibold text-lg">Almoço nas Proximidades do Louvre</h3></div>
             </div>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">9:00</p>
-            <div class="timeline-icon"><i class="fa-solid fa-landmark-dome text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Museu do Louvre <i class="fa-solid fa-ticket ml-2 text-blue-600" title="Necessita de Bilhete"></i></h3>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">13:00</p>
-            <div class="timeline-icon"><i class="fa-solid fa-utensils text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Almoço nas Proximidades do Louvre</h3>
-        </div>
-    </div>
-    <!-- FIM: CASA -> MUSEU DO LOUVRE -->
+            <!-- FIM: CASA -> MUSEU DO LOUVRE -->
 
-    <!-- INICIO: PALAIS ROYAL -> ÓPERA & GALERIES LAFAYETTE -->
-    <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4 mt-8"><a href="https://maps.app.goo.gl/PDr1QqRANoiuuEJv8" target="_blank"  class="route-title">PALAIS ROYAL → ÓPERA & GALERIES LAFAYETTE</a></h3>
-    <div class="relative timeline-container">
-        <div class="timeline-item">
-            <p class="timeline-time">14:00</p>
-            <div class="timeline-icon"><i class="fa-solid fa-chess-board text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Palais Royal (Jardins e Colunas de Buren)</h3>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">14:30</p>
-            <div class="timeline-icon"><i class="fa-solid fa-archway text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Galerie Vivienne</h3>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">14:50</p>
-            <div class="timeline-icon"><i class="fa-solid fa-gem text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Place Vendôme</h3>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">15:30</p>
-            <div class="timeline-icon"><i class="fa-solid fa-masks-theater text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Ópera Garnier <i class="fa-solid fa-ticket ml-2 text-blue-600" title="Necessita de Bilhete para visita interior"></i></h3>
-            <p class="text-gray-600">Visita interior (~1h)</p>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">17:00</p>
-            <div class="timeline-icon"><i class="fa-solid fa-store text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Galeries Lafayette</h3>
-            <p class="text-gray-600">Visita ao terraço para vista (~45min)</p>
-        </div>
-    </div>
-    <!-- FIM: PALAIS ROYAL -> ÓPERA & GALERIES LAFAYETTE -->
-
-    <!-- INICIO: GALERIES LAFAYETTE -> FILLES DU CALVAIRE -->
-    <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4 mt-8"><a href="[LINK_PARA_NOVO_PERCURSO]" target="_blank"  class="route-title">GALERIES LAFAYETTE → FILLES DU CALVAIRE</a></h3>
-    <div class="relative timeline-container">
-        <div class="timeline-item">
-            <p class="timeline-time">18:15</p>
-            <div class="timeline-icon"><i class="fa-solid fa-store text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Saída das Galeries Lafayette</h3>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">18:30</p>
-            <div class="timeline-icon"><i class="fa-solid fa-route text-xs"></i></div>
-            <div>
-                <button class="accordion-toggle w-full text-left">
-                    <h3 class="font-semibold text-lg flex justify-between items-center"><span>Percurso: Opéra → Filles du Calvaire</span><i class="fas fa-chevron-down text-sm"></i></h3>
-                    <p class="text-gray-600">Duração total: ~8 min. Clica para ver os detalhes.</p>
-                </button>
-                <div class="accordion-content hidden mt-4 pl-4 border-l-2 border-gray-300">
-                    <div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">18:30: Apanhar Metro <span class="metro-line" style="background-color: #ceadd2; color: black;">8</span></p><p class="text-gray-600 text-sm ml-1">Da estação <strong>Opéra</strong>, direção Créteil-Pointe du Lac.</p></div>
-                    <div class="relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">18:38: Sair em Filles du Calvaire</p></div>
-                </div>
+            <!-- INICIO: PALAIS ROYAL -> ÓPERA & GALERIES LAFAYETTE -->
+            <a href="https://maps.app.goo.gl/PDr1QqRANoiuuEJv8" target="_blank" class="block p-3 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-colors duration-200 mt-8 mb-4">
+                <div class="flex items-center justify-between"><div class="flex items-center"><i class="fas fa-map-location-dot text-blue-600 text-xl mr-3"></i><h3 class="font-display text-lg md:text-xl font-bold text-gray-800">PALAIS ROYAL → ÓPERA & GALERIES LAFAYETTE</h3></div><span class="text-sm font-semibold text-blue-500 hidden md:block">Ver no Mapa <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></span></div>
+            </a>
+            <div class="relative timeline-container">
+                <div class="timeline-item"><p class="timeline-time">14:00</p><div class="timeline-icon"><i class="fa-solid fa-chess-board text-xs"></i></div><h3 class="font-semibold text-lg">Palais Royal (Jardins e Colunas de Buren)</h3></div>
+                <div class="timeline-item"><p class="timeline-time">14:30</p><div class="timeline-icon"><i class="fa-solid fa-archway text-xs"></i></div><h3 class="font-semibold text-lg">Galerie Vivienne</h3></div>
+                <div class="timeline-item"><p class="timeline-time">14:50</p><div class="timeline-icon"><i class="fa-solid fa-gem text-xs"></i></div><h3 class="font-semibold text-lg">Place Vendôme</h3></div>
+                <div class="timeline-item"><p class="timeline-time">15:30</p><div class="timeline-icon"><i class="fa-solid fa-masks-theater text-xs"></i></div><h3 class="font-semibold text-lg">Ópera Garnier <i class="fa-solid fa-ticket ml-2 text-blue-600" title="Necessita de Bilhete para visita interior"></i></h3><p class="text-gray-600">Visita interior (~1h)</p></div>
+                <div class="timeline-item"><p class="timeline-time">17:00</p><div class="timeline-icon"><i class="fa-solid fa-store text-xs"></i></div><h3 class="font-semibold text-lg">Galeries Lafayette</h3><p class="text-gray-600">Visita ao terraço para vista (~45min)</p></div>
             </div>
-        </div>
-    </div>
-    <!-- FIM: GALERIES LAFAYETTE -> FILLES DU CALVAIRE -->
+            <!-- FIM: PALAIS ROYAL -> ÓPERA & GALERIES LAFAYETTE -->
 
-    <!-- INICIO: FILLES DU CALVAIRE -> PRAÇA DES VOSGES -->
-    <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4 mt-8"><a href="[LINK_PARA_NOVO_PERCURSO]" target="_blank"  class="route-title">FILLES DU CALVAIRE → PRAÇA DES VOSGES</a></h3>
-    <div class="relative timeline-container">
-        <div class="timeline-item">
-            <p class="timeline-time">18:45</p>
-            <div class="timeline-icon"><i class="fa-solid fa-utensils text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Marché des Enfants Rouges</h3>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">19:15</p>
-            <div class="timeline-icon"><i class="fa-solid fa-person-walking text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Explorar o Marais</h3>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">19:30</p>
-            <div class="timeline-icon"><i class="fa-solid fa-road text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Rue Vieille-du-Temple</h3>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">19:45</p>
-            <div class="timeline-icon"><i class="fa-solid fa-road text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Rue des Rosiers</h3>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">20:00</p>
-            <div class="timeline-icon"><i class="fa-solid fa-square-full text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Praça des Vosges</h3>
-        </div>
-    </div>
-    <!-- FIM: FILLES DU CALVAIRE -> PRAÇA DES VOSGES -->
-
-    <!-- A secção de regresso a casa foi movida do roteiro antigo para aqui, para completar o dia -->
-    <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4 mt-8"><a href="[LINK_DO_GOOGLE_MAPS_AQUI]" target="_blank"  class="route-title">MARAIS → CASA</a></h3>
-    <div class="relative timeline-container">
-         <div class="timeline-item">
-            <p class="timeline-time">20:12</p>
-            <div class="timeline-icon"><i class="fa-solid fa-route text-xs"></i></div>
-            <div>
-                <button class="accordion-toggle w-full text-left">
-                    <h3 class="font-semibold text-lg flex justify-between items-center"><span>Percurso: Le Marais → Casa</span><i class="fas fa-chevron-down text-sm"></i></h3>
-                    <p class="text-gray-600">Duração total: ~15 min. Clica para ver os detalhes.</p>
-                </button>
-                <div class="accordion-content hidden mt-4 pl-4 border-l-2 border-gray-300">
-                    <div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">20:12: Apanhar Metro <span class="metro-line" style="background-color: #ceadd2; color: black;">8</span></p><p class="text-gray-600 text-sm ml-1">Da estação <strong>Saint-Sébastien - Froissart</strong>, direção Créteil-Pointe du Lac.</p></div>
-                    <div class="relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">20:24: Sair em Porte de Charenton</p></div>
-                </div>
+            <!-- INICIO: GALERIES LAFAYETTE -> FILLES DU CALVAIRE -->
+            <a href="https://maps.app.goo.gl/B46z672uQjS8UqKk7" target="_blank" class="block p-3 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-colors duration-200 mt-8 mb-4">
+                <div class="flex items-center justify-between"><div class="flex items-center"><i class="fas fa-map-location-dot text-blue-600 text-xl mr-3"></i><h3 class="font-display text-lg md:text-xl font-bold text-gray-800">GALERIES LAFAYETTE → FILLES DU CALVAIRE</h3></div><span class="text-sm font-semibold text-blue-500 hidden md:block">Ver no Mapa <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></span></div>
+            </a>
+            <div class="relative timeline-container">
+                <div class="timeline-item"><p class="timeline-time">18:15</p><div class="timeline-icon"><i class="fa-solid fa-store text-xs"></i></div><h3 class="font-semibold text-lg">Saída das Galeries Lafayette</h3></div>
+                <div class="timeline-item"><p class="timeline-time">18:30</p><div class="timeline-icon"><i class="fa-solid fa-route text-xs"></i></div><div><button class="accordion-toggle w-full text-left"><h3 class="font-semibold text-lg flex justify-between items-center"><span>Percurso: Opéra → Filles du Calvaire</span><i class="fas fa-chevron-down text-sm"></i></h3><p class="text-gray-600">Duração total: ~8 min. Clica para ver os detalhes.</p></button><div class="accordion-content hidden mt-4 pl-4 border-l-2 border-gray-300"><div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">18:30: Apanhar Metro <span class="metro-line" style="background-color: #ceadd2; color: black;">8</span></p><p class="text-gray-600 text-sm ml-1">Da estação <strong>Opéra</strong>, direção Créteil-Pointe du Lac.</p></div><div class="relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">18:38: Sair em Filles du Calvaire</p></div></div></div></div>
             </div>
-        </div>
-        <div class="timeline-item">
-            <p class="timeline-time">20:27</p>
-            <div class="timeline-icon"><i class="fa-solid fa-bed text-xs"></i></div>
-            <h3 class="font-semibold text-lg">Regresso a Casa</h3>
-        </div>
-    </div>
-</section>
+            <!-- FIM: GALERIES LAFAYETTE -> FILLES DU CALVAIRE -->
 
+            <!-- INICIO: FILLES DU CALVAIRE -> PRAÇA DES VOSGES -->
+            <a href="https://maps.app.goo.gl/3Y9V6XW3iV4o4k9p8" target="_blank" class="block p-3 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-colors duration-200 mt-8 mb-4">
+                <div class="flex items-center justify-between"><div class="flex items-center"><i class="fas fa-map-location-dot text-blue-600 text-xl mr-3"></i><h3 class="font-display text-lg md:text-xl font-bold text-gray-800">FILLES DU CALVAIRE → PRAÇA DES VOSGES</h3></div><span class="text-sm font-semibold text-blue-500 hidden md:block">Ver no Mapa <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></span></div>
+            </a>
+            <div class="relative timeline-container">
+                <div class="timeline-item"><p class="timeline-time">18:45</p><div class="timeline-icon"><i class="fa-solid fa-utensils text-xs"></i></div><h3 class="font-semibold text-lg">Marché des Enfants Rouges</h3></div>
+                <div class="timeline-item"><p class="timeline-time">19:15</p><div class="timeline-icon"><i class="fa-solid fa-person-walking text-xs"></i></div><h3 class="font-semibold text-lg">Explorar o Marais</h3></div>
+                <div class="timeline-item"><p class="timeline-time">19:30</p><div class="timeline-icon"><i class="fa-solid fa-road text-xs"></i></div><h3 class="font-semibold text-lg">Rue Vieille-du-Temple</h3></div>
+                <div class="timeline-item"><p class="timeline-time">19:45</p><div class="timeline-icon"><i class="fa-solid fa-road text-xs"></i></div><h3 class="font-semibold text-lg">Rue des Rosiers</h3></div>
+                <div class="timeline-item"><p class="timeline-time">20:00</p><div class="timeline-icon"><i class="fa-solid fa-square-full text-xs"></i></div><h3 class="font-semibold text-lg">Praça des Vosges</h3></div>
+            </div>
+            <!-- FIM: FILLES DU CALVAIRE -> PRAÇA DES VOSGES -->
 
+            <!-- INICIO: MARAIS -> CASA -->
+            <a href="https://maps.app.goo.gl/uyArri1RERoQpNEV9" target="_blank" class="block p-3 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-colors duration-200 mt-8 mb-4">
+                <div class="flex items-center justify-between"><div class="flex items-center"><i class="fas fa-map-location-dot text-blue-600 text-xl mr-3"></i><h3 class="font-display text-lg md:text-xl font-bold text-gray-800">MARAIS → CASA</h3></div><span class="text-sm font-semibold text-blue-500 hidden md:block">Ver no Mapa <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></span></div>
+            </a>
+            <div class="relative timeline-container">
+                 <div class="timeline-item"><p class="timeline-time">20:12</p><div class="timeline-icon"><i class="fa-solid fa-route text-xs"></i></div><div><button class="accordion-toggle w-full text-left"><h3 class="font-semibold text-lg flex justify-between items-center"><span>Percurso: Le Marais → Casa</span><i class="fas fa-chevron-down text-sm"></i></h3><p class="text-gray-600">Duração total: ~15 min. Clica para ver os detalhes.</p></button><div class="accordion-content hidden mt-4 pl-4 border-l-2 border-gray-300"><div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">20:12: Apanhar Metro <span class="metro-line" style="background-color: #ceadd2; color: black;">8</span></p><p class="text-gray-600 text-sm ml-1">Da estação <strong>Saint-Sébastien - Froissart</strong>, direção Créteil-Pointe du Lac.</p></div><div class="relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">20:24: Sair em Porte de Charenton</p></div></div></div></div>
+                <div class="timeline-item"><p class="timeline-time">20:27</p><div class="timeline-icon"><i class="fa-solid fa-bed text-xs"></i></div><h3 class="font-semibold text-lg">Regresso a Casa</h3></div>
+            </div>
+            <!-- FIM: MARAIS -> CASA -->
+        </section>
 
         <!-- =================================================================== -->
         <!-- ===================== DIA 5: TERÇA-FEIRA 23/SET =================== -->
         <!-- =================================================================== -->
         <section id="day5" class="day-section mb-12">
             <h2 class="font-display text-2xl md:text-3xl text-gray-900 mb-1 font-bold">Dia 5: Despedida com Charme e Regresso</h2>
-            <p class="text-gray-500 mb-6">Terça-Feira, 23 de Setembro</p>    
-            
-    <!-- Gatilho para o Modal -->
-    <div class="cursor-pointer" onclick="openModal('https://nelsonsabino.github.io/paris/Dia5a.png')">
-        <img src="https://nelsonsabino.github.io/paris/Dia5a.png" alt="Mapa do percurso do Dia 5 em Paris" class="w-full aspect-[5/2] object-cover rounded-lg mb-6">
-    </div>
+            <p class="text-gray-500 mb-6">Terça-Feira, 23 de Setembro</p>                        
+            <div class="cursor-pointer" onclick="openModal('https://nelsonsabino.github.io/paris/Dia5a.png')"><img src="https://nelsonsabino.github.io/paris/Dia5a.png" alt="Mapa do percurso do Dia 5 em Paris" class="w-full aspect-[5/2] object-cover rounded-lg mb-6"></div>
     
             <!-- INICIO: CASA -> CACIFO DE MALAS -->
-            <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4"><a href="https://maps.app.goo.gl/pVkksRx7rUYsGtRk8" target="_blank"  class="route-title">CASA → CACIFO DE MALAS</a></h3>
+            <a href="https://maps.app.goo.gl/pVkksRx7rUYsGtRk8" target="_blank" class="block p-3 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-colors duration-200 mb-4">
+                <div class="flex items-center justify-between"><div class="flex items-center"><i class="fas fa-map-location-dot text-blue-600 text-xl mr-3"></i><h3 class="font-display text-lg md:text-xl font-bold text-gray-800">CASA → CACIFO DE MALAS</h3></div><span class="text-sm font-semibold text-blue-500 hidden md:block">Ver no Mapa <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></span></div>
+            </a>
             <div class="relative timeline-container">
-                <div class="timeline-item">
-                    <p class="timeline-time">9:30</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-house-chimney text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Saída de Casa</h3>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">9:35</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-route text-xs"></i></div>
-                    <div>
-                        <button class="accordion-toggle w-full text-left">
-                            <h3 class="font-semibold text-lg flex justify-between items-center"><span>Percurso: Casa → Cacifo</span><i class="fas fa-chevron-down text-sm"></i></h3>
-                            <p class="text-gray-600">Duração total: ~25 min. Clica para ver os detalhes.</p>
-                        </button>
-                        <div class="accordion-content hidden mt-4 pl-4 border-l-2 border-gray-300">
-                            <div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">9:35: Apanhar Metro <span class="metro-line" style="background-color: #ceadd2; color: black;">8</span></p><p class="text-gray-600 text-sm ml-1">Da estação <strong>Porte de Charenton</strong>, direção Balard.</p></div>
-                            <div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">9:42: Trocar em Reuilly - Diderot</p><p class="text-gray-600 text-sm ml-1">Sair do metro e seguir para a Linha 1.</p></div>
-                            <div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">9:45: Apanhar Metro <span class="metro-line" style="background-color: #ffcd00; color: black;">1</span></p><p class="text-gray-600 text-sm ml-1">Direção La Défense.</p></div>
-                            <div class="relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">9:55: Sair em Louvre - Rivoli</p></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">10:00</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-suitcase text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Bounce Luggage Storage - Louvre</h3>
-                </div>
+                <div class="timeline-item"><p class="timeline-time">9:30</p><div class="timeline-icon"><i class="fa-solid fa-house-chimney text-xs"></i></div><h3 class="font-semibold text-lg">Saída de Casa</h3></div>
+                <div class="timeline-item"><p class="timeline-time">9:35</p><div class="timeline-icon"><i class="fa-solid fa-route text-xs"></i></div><div><button class="accordion-toggle w-full text-left"><h3 class="font-semibold text-lg flex justify-between items-center"><span>Percurso: Casa → Cacifo</span><i class="fas fa-chevron-down text-sm"></i></h3><p class="text-gray-600">Duração total: ~25 min. Clica para ver os detalhes.</p></button><div class="accordion-content hidden mt-4 pl-4 border-l-2 border-gray-300"><div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">9:35: Apanhar Metro <span class="metro-line" style="background-color: #ceadd2; color: black;">8</span></p><p class="text-gray-600 text-sm ml-1">Da estação <strong>Porte de Charenton</strong>, direção Balard.</p></div><div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">9:42: Trocar em Reuilly - Diderot</p><p class="text-gray-600 text-sm ml-1">Sair do metro e seguir para a Linha 1.</p></div><div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">9:45: Apanhar Metro <span class="metro-line" style="background-color: #ffcd00; color: black;">1</span></p><p class="text-gray-600 text-sm ml-1">Direção La Défense.</p></div><div class="relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">9:55: Sair em Louvre - Rivoli</p></div></div></div></div>
+                <div class="timeline-item"><p class="timeline-time">10:00</p><div class="timeline-icon"><i class="fa-solid fa-suitcase text-xs"></i></div><h3 class="font-semibold text-lg">Bounce Luggage Storage - Louvre</h3></div>
             </div>
             <!-- FIM: CASA -> CACIFO DE MALAS -->
 
             <!-- INICIO: CACIFO DE MALAS -> QUARTIER LATIN -->
-            <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4 mt-8"><a href="https://maps.app.goo.gl/17j6Gfbow5yVpNmEA" target="_blank"  class="route-title">CACIFO DE MALAS → QUARTIER LATIN</a></h3>
+            <a href="https://maps.app.goo.gl/17j6Gfbow5yVpNmEA" target="_blank" class="block p-3 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-colors duration-200 mt-8 mb-4">
+                <div class="flex items-center justify-between"><div class="flex items-center"><i class="fas fa-map-location-dot text-blue-600 text-xl mr-3"></i><h3 class="font-display text-lg md:text-xl font-bold text-gray-800">CACIFO DE MALAS → QUARTIER LATIN</h3></div><span class="text-sm font-semibold text-blue-500 hidden md:block">Ver no Mapa <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></span></div>
+            </a>
             <div class="relative timeline-container">
-                <div class="timeline-item">
-                    <p class="timeline-time">10:20</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-person-walking text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Rue de la Huchette</h3>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">10:45</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-church text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Igreja de São Severino</h3>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">11:10</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-monument text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Saint-Étienne-du-Mont</h3>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">11:40</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-landmark-dome text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Panteão (Vista Exterior)</h3>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">12:00</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-seedling text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Jardim do Luxemburgo</h3>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">13:00</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-person-walking text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Ida para o Metro Saint-Sulpice</h3>
-                </div>
+                <div class="timeline-item"><p class="timeline-time">10:20</p><div class="timeline-icon"><i class="fa-solid fa-person-walking text-xs"></i></div><h3 class="font-semibold text-lg">Rue de la Huchette</h3></div>
+                <div class="timeline-item"><p class="timeline-time">10:45</p><div class="timeline-icon"><i class="fa-solid fa-church text-xs"></i></div><h3 class="font-semibold text-lg">Igreja de São Severino</h3></div>
+                <div class="timeline-item"><p class="timeline-time">11:10</p><div class="timeline-icon"><i class="fa-solid fa-monument text-xs"></i></div><h3 class="font-semibold text-lg">Saint-Étienne-du-Mont</h3></div>
+                <div class="timeline-item"><p class="timeline-time">11:40</p><div class="timeline-icon"><i class="fa-solid fa-landmark-dome text-xs"></i></div><h3 class="font-semibold text-lg">Panteão (Vista Exterior)</h3></div>
+                <div class="timeline-item"><p class="timeline-time">12:00</p><div class="timeline-icon"><i class="fa-solid fa-seedling text-xs"></i></div><h3 class="font-semibold text-lg">Jardim do Luxemburgo</h3></div>
+                <div class="timeline-item"><p class="timeline-time">13:00</p><div class="timeline-icon"><i class="fa-solid fa-person-walking text-xs"></i></div><h3 class="font-semibold text-lg">Ida para o Metro Saint-Sulpice</h3></div>
             </div>
             <!-- FIM: CACIFO DE MALAS -> QUARTIER LATIN -->
 
             <!-- INICIO: SAINT-SULPICE -> CACIFO DE MALAS -->
-            <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4 mt-8"><a href="https://maps.app.goo.gl/P5shdcrXpkbLhBHy8" target="_blank"  class="route-title">SAINT-SULPICE → CACIFO DE MALAS</a></h3>
+            <a href="https://maps.app.goo.gl/P5shdcrXpkbLhBHy8" target="_blank" class="block p-3 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-colors duration-200 mt-8 mb-4">
+                <div class="flex items-center justify-between"><div class="flex items-center"><i class="fas fa-map-location-dot text-blue-600 text-xl mr-3"></i><h3 class="font-display text-lg md:text-xl font-bold text-gray-800">SAINT-SULPICE → CACIFO DE MALAS</h3></div><span class="text-sm font-semibold text-blue-500 hidden md:block">Ver no Mapa <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></span></div>
+            </a>
             <div class="relative timeline-container">
-                <div class="timeline-item">
-                    <p class="timeline-time">13:00</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-route text-xs"></i></div>
-                     <div>
-                        <button class="accordion-toggle w-full text-left">
-                            <h3 class="font-semibold text-lg flex justify-between items-center"><span>Percurso: Saint-Sulpice → Cacifo</span><i class="fas fa-chevron-down text-sm"></i></h3>
-                            <p class="text-gray-600">Duração total: ~13 min. Clica para ver os detalhes.</p>
-                        </button>
-                        <div class="accordion-content hidden mt-4 pl-4 border-l-2 border-gray-300">
-                            <div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">13:00: Apanhar Metro <span class="metro-line" style="background-color: #cf009e;">4</span></p><p class="text-gray-600 text-sm ml-1">Da estação <strong>Saint-Sulpice</strong>, direção Porte de Clignancourt.</p></div>
-                            <div class="relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">13:05: Sair em Châtelet e caminhar até ao cacifo</p></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">13:13</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-suitcase text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Recolher Malas no Cacifo</h3>
-                </div>
+                <div class="timeline-item"><p class="timeline-time">13:00</p><div class="timeline-icon"><i class="fa-solid fa-route text-xs"></i></div><div><button class="accordion-toggle w-full text-left"><h3 class="font-semibold text-lg flex justify-between items-center"><span>Percurso: Saint-Sulpice → Cacifo</span><i class="fas fa-chevron-down text-sm"></i></h3><p class="text-gray-600">Duração total: ~13 min. Clica para ver os detalhes.</p></button><div class="accordion-content hidden mt-4 pl-4 border-l-2 border-gray-300"><div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">13:00: Apanhar Metro <span class="metro-line" style="background-color: #cf009e;">4</span></p><p class="text-gray-600 text-sm ml-1">Da estação <strong>Saint-Sulpice</strong>, direção Porte de Clignancourt.</p></div><div class="relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">13:05: Sair em Châtelet e caminhar até ao cacifo</p></div></div></div></div>
+                <div class="timeline-item"><p class="timeline-time">13:13</p><div class="timeline-icon"><i class="fa-solid fa-suitcase text-xs"></i></div><h3 class="font-semibold text-lg">Recolher Malas no Cacifo</h3></div>
             </div>
             <!-- FIM: RUE DE LA HUCHETTE -> CACIFO DE MALAS -->
 
             <!-- INICIO: CACIFO DE MALAS -> AEROPORTO ORLY -->
-            <h3 class="font-display text-xl md:text-2xl text-gray-900 mb-4 mt-8"><a href="https://maps.app.goo.gl/7tcmShAnygi9SJUA7" target="_blank"  class="route-title">CACIFO DE MALAS → AEROPORTO ORLY</a></h3>
+            <a href="https://maps.app.goo.gl/7tcmShAnygi9SJUA7" target="_blank" class="block p-3 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-colors duration-200 mt-8 mb-4">
+                <div class="flex items-center justify-between"><div class="flex items-center"><i class="fas fa-map-location-dot text-blue-600 text-xl mr-3"></i><h3 class="font-display text-lg md:text-xl font-bold text-gray-800">CACIFO DE MALAS → AEROPORTO ORLY</h3></div><span class="text-sm font-semibold text-blue-500 hidden md:block">Ver no Mapa <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></span></div>
+            </a>
             <div class="relative timeline-container">
-                 <div class="timeline-item">
-                    <p class="timeline-time">13:25</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-route text-xs"></i></div>
-                     <div>
-                        <button class="accordion-toggle w-full text-left">
-                            <h3 class="font-semibold text-lg flex justify-between items-center"><span>Percurso: Cacifo → Aeroporto Orly</span><i class="fas fa-chevron-down text-sm"></i></h3>
-                            <p class="text-gray-600">Duração total: ~30 min. Clica para ver os detalhes.</p>
-                        </button>
-                        <div class="accordion-content hidden mt-4 pl-4 border-l-2 border-gray-300">
-                            <div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">13:25: Apanhar Metro <span class="metro-line" style="background-color: #62259d;">14</span></p><p class="text-gray-600 text-sm ml-1">Da estação <strong>Châtelet</strong>, direção Aéroport d'Orly.</p></div>
-                            <div class="relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">13:51: Sair em Aéroport d'Orly</p></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <p class="timeline-time">13:55</p>
-                    <div class="timeline-icon"><i class="fa-solid fa-plane-departure text-xs"></i></div>
-                    <h3 class="font-semibold text-lg">Chegada ao Aeroporto Orly T1</h3>
-                </div>
+                 <div class="timeline-item"><p class="timeline-time">13:25</p><div class="timeline-icon"><i class="fa-solid fa-route text-xs"></i></div><div><button class="accordion-toggle w-full text-left"><h3 class="font-semibold text-lg flex justify-between items-center"><span>Percurso: Cacifo → Aeroporto Orly</span><i class="fas fa-chevron-down text-sm"></i></h3><p class="text-gray-600">Duração total: ~30 min. Clica para ver os detalhes.</p></button><div class="accordion-content hidden mt-4 pl-4 border-l-2 border-gray-300"><div class="mb-4 relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">13:25: Apanhar Metro <span class="metro-line" style="background-color: #62259d;">14</span></p><p class="text-gray-600 text-sm ml-1">Da estação <strong>Châtelet</strong>, direção Aéroport d'Orly.</p></div><div class="relative"><div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div><p class="font-semibold">13:51: Sair em Aéroport d'Orly</p></div></div></div></div>
+                <div class="timeline-item"><p class="timeline-time">13:55</p><div class="timeline-icon"><i class="fa-solid fa-plane-departure text-xs"></i></div><h3 class="font-semibold text-lg">Chegada ao Aeroporto Orly T1</h3></div>
             </div>
             <!-- FIM: CACIFO DE MALAS -> AEROPORTO ORLY -->
         </section>
     </div>
 
-
-
-<!-- =================================================================== -->
-<!-- =================== MODAL DA IMAGEM  =================== -->
-<!-- =================================================================== -->
-<div id="imageModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 z-50 hidden">
-    <!-- O contentor agora não tem limite de largura, adapta-se à imagem -->
-    <div class="relative">
-        <!-- A imagem agora tem um limite de largura e altura baseado no ecrã -->
-        <img id="modalImage" src="" alt="Mapa em tamanho grande" class="block h-auto max-w-[95vw] max-h-[90vh] rounded-lg">
-        <button id="closeModal" class="absolute -top-4 -right-4 h-10 w-10 bg-white text-black rounded-full text-2xl font-bold leading-none flex items-center justify-center">×</button>
+    <!-- =================================================================== -->
+    <!-- =================== MODAL DA IMAGEM  =================== -->
+    <!-- =================================================================== -->
+    <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 z-50 hidden">
+        <div class="relative"><img id="modalImage" src="" alt="Mapa em tamanho grande" class="block h-auto max-w-[95vw] max-h-[90vh] rounded-lg"><button id="closeModal" class="absolute -top-4 -right-4 h-10 w-10 bg-white text-black rounded-full text-2xl font-bold leading-none flex items-center justify-center">×</button></div>
     </div>
-</div>
-
-
-
-
+    
     <!-- =================================================================== -->
     <!-- ======================= SCRIPT DO MENU HAMBURGER ====================== -->
     <!-- =================================================================== -->
     <script>
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        menuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
         const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                setTimeout(() => {
-                    mobileMenu.classList.add('hidden');
-                }, 100);
-            });
-        });
+        mobileLinks.forEach(link => { link.addEventListener('click', () => { setTimeout(() => { mobileMenu.classList.add('hidden'); }, 100); }); });
     </script>
     
     <!-- =================================================================== -->
@@ -983,8 +479,7 @@
             });
         });
     </script>
-    
-    
+        
     <!-- =================================================================== -->
     <!-- ======================= SCRIPT DO MODAL ========================= -->
     <!-- =================================================================== -->
@@ -992,36 +487,12 @@
         const imageModal = document.getElementById('imageModal');
         const modalImage = document.getElementById('modalImage');
         const closeModalBtn = document.getElementById('closeModal');
-
-        // Função para abrir o modal
-        function openModal(imageUrl) {
-            modalImage.src = imageUrl;
-            imageModal.classList.remove('hidden');
-        }
-
-        // Função para fechar o modal
-        function closeModal() {
-            imageModal.classList.add('hidden');
-            modalImage.src = ""; // Limpa a imagem para não carregar em fundo
-        }
-
-        // Eventos para fechar
+        function openModal(imageUrl) { modalImage.src = imageUrl; imageModal.classList.remove('hidden'); }
+        function closeModal() { imageModal.classList.add('hidden'); modalImage.src = ""; }
         closeModalBtn.addEventListener('click', closeModal);
-        imageModal.addEventListener('click', (e) => {
-            // Fecha se clicar no fundo preto (fora da imagem)
-            if (e.target.id === 'imageModal') {
-                closeModal();
-            }
-        });
-        
-        // Fecha com a tecla "Escape"
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !imageModal.classList.contains('hidden')) {
-                closeModal();
-            }
-        });
+        imageModal.addEventListener('click', (e) => { if (e.target.id === 'imageModal') { closeModal(); } });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !imageModal.classList.contains('hidden')) { closeModal(); } });
     </script>    
-    
     
 </body>
 </html>
