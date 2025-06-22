@@ -152,7 +152,6 @@
         <!-- O JavaScript vai colocar o texto aqui -->
     </div>
 
-    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
         <!-- O resto do teu conteúdo começa aqui... -->
 
     <div class="container mx-auto p-4 md:p-8 max-w-5xl">
@@ -536,7 +535,7 @@
             const observerOptions = {
                 root: null, // usa o viewport como referência
                 rootMargin: '0px',
-                threshold: 0.4 // A secção tem de estar 40% visível
+                threshold: 0.2 // A secção tem de estar 20% visível
             };
 
             const observer = new IntersectionObserver((entries, observer) => {
