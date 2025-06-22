@@ -98,6 +98,22 @@
         margin: 0 4px;
         line-height: 1.2;
     }
+
+    /* Estilo para o link ativo no menu do desktop */
+    .active-day-link {
+        background-color: #eef2ff; /* Um azul muito claro */
+        color: #312e81; /* Um azul escuro */
+        font-weight: 700; /* Negrito */
+    }
+
+    /* Estilo para o cabeçalho fixo no telemóvel */
+    .mobile-day-header {
+        position: sticky;
+        top: 60px; /* Altura da tua barra de navegação */
+        z-index: 40; /* Abaixo da nav, mas acima do resto */
+    }
+</style>
+
 </style>
 </head>
 <body class="text-gray-800">
@@ -130,6 +146,14 @@
         </div>
     </nav>
     <!-- FIM NAV BAR -->
+
+    <!-- CABEÇALHO DO DIA ATUAL PARA TELEMÓVEL (ESCONDIDO POR DEFEITO) -->
+    <div id="mobile-day-header" class="mobile-day-header hidden md:hidden bg-white text-center py-2 font-semibold text-gray-700 shadow-md">
+        <!-- O JavaScript vai colocar o texto aqui -->
+    </div>
+
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+        <!-- O resto do teu conteúdo começa aqui... -->
 
     <div class="container mx-auto p-4 md:p-8 max-w-5xl">
         <header class="text-center mb-12 md:mb-16">
@@ -448,51 +472,100 @@
         <div class="relative"><img id="modalImage" src="" alt="Mapa em tamanho grande" class="block h-auto max-w-[95vw] max-h-[90vh] rounded-lg"><button id="closeModal" class="absolute -top-4 -right-4 h-10 w-10 bg-white text-black rounded-full text-2xl font-bold leading-none flex items-center justify-center">×</button></div>
     </div>
     
+ 
+        
     <!-- =================================================================== -->
-    <!-- ======================= SCRIPT DO MENU HAMBURGER ====================== -->
-    <!-- =================================================================== -->
-    <script>
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        menuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => { link.addEventListener('click', () => { setTimeout(() => { mobileMenu.classList.add('hidden'); }, 100); }); });
-    </script>
-    
-    <!-- =================================================================== -->
-    <!-- ======================= SCRIPT DO ACORDEÃO ====================== -->
+    <!-- ======================= SCRIPTS DA PÁGINA ======================= -->
     <!-- =================================================================== -->
     <script>
-        const accordionToggles = document.querySelectorAll('.accordion-toggle');
-        accordionToggles.forEach(button => {
-            button.addEventListener('click', () => {
-                const content = button.nextElementSibling;
-                const icon = button.querySelector('i.fas');
-                content.classList.toggle('hidden');
-                if (content.classList.contains('hidden')) {
-                    icon.classList.remove('fa-chevron-up');
-                    icon.classList.add('fa-chevron-down');
-                } else {
-                    icon.classList.remove('fa-chevron-down');
-                    icon.classList.add('fa-chevron-up');
-                }
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Lógica para o menu hamburger ---
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (menuBtn) {
+                menuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+                const mobileLinks = mobileMenu.querySelectorAll('a');
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        setTimeout(() => { mobileMenu.classList.add('hidden'); }, 100);
+                    });
+                });
+            }
+
+            // --- Lógica para o acordeão ---
+            const accordionToggles = document.querySelectorAll('.accordion-toggle');
+            accordionToggles.forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const icon = button.querySelector('i.fas');
+                    content.classList.toggle('hidden');
+                    if (content.classList.contains('hidden')) {
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                    } else {
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                    }
+                });
+            });
+
+            // --- Lógica para o pop-up de imagem (modal) ---
+            const imageModal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const closeModalBtn = document.getElementById('closeModal');
+            function openModal(imageUrl) { modalImage.src = imageUrl; imageModal.classList.remove('hidden'); }
+            function closeModal() { imageModal.classList.add('hidden'); modalImage.src = ""; }
+            if (imageModal) {
+                const imageTriggers = document.querySelectorAll('.cursor-pointer[onclick]');
+                imageTriggers.forEach(trigger => {
+                    trigger.addEventListener('click', () => openModal(trigger.getAttribute('onclick').match(/'([^']+)'/)[1]));
+                });
+                closeModalBtn.addEventListener('click', closeModal);
+                imageModal.addEventListener('click', (e) => { if (e.target.id === 'imageModal') closeModal(); });
+                document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !imageModal.classList.contains('hidden')) closeModal(); });
+            }
+
+            // --- LÓGICA PARA HIGHLIGHT DO MENU NO SCROLL ---
+            const sections = document.querySelectorAll('section[id^="day"]');
+            const navLinks = document.querySelectorAll('.sticky-nav a[href^="#day"]');
+            const mobileDayHeader = document.getElementById('mobile-day-header');
+
+            const observerOptions = {
+                root: null, // usa o viewport como referência
+                rootMargin: '0px',
+                threshold: 0.4 // A secção tem de estar 40% visível
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Atualiza o menu do desktop
+                        navLinks.forEach(link => {
+                            link.classList.remove('active-day-link');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active-day-link');
+                            }
+                        });
+
+                        // Atualiza o cabeçalho do telemóvel
+                        if (mobileDayHeader) {
+                            const title = entry.target.querySelector('h2').textContent.split(':')[0]; // Pega só o "Dia X"
+                            mobileDayHeader.textContent = `A navegar: ${title}`;
+                            mobileDayHeader.classList.remove('hidden');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
             });
         });
     </script>
-        
-    <!-- =================================================================== -->
-    <!-- ======================= SCRIPT DO MODAL ========================= -->
-    <!-- =================================================================== -->
-    <script>
-        const imageModal = document.getElementById('imageModal');
-        const modalImage = document.getElementById('modalImage');
-        const closeModalBtn = document.getElementById('closeModal');
-        function openModal(imageUrl) { modalImage.src = imageUrl; imageModal.classList.remove('hidden'); }
-        function closeModal() { imageModal.classList.add('hidden'); modalImage.src = ""; }
-        closeModalBtn.addEventListener('click', closeModal);
-        imageModal.addEventListener('click', (e) => { if (e.target.id === 'imageModal') { closeModal(); } });
-        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !imageModal.classList.contains('hidden')) { closeModal(); } });
-    </script>    
+
     
 </body>
 </html>
