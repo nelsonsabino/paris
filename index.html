@@ -226,12 +226,36 @@
             { title: 'Reserva para entrada sem filas na Notre-Dame', date: '2025-09-19', description: 'A reserva só pode ser feita umas horas antes. Irá ser dificil apanhar um slot disponível.', status: 'pending', color: '#ea580c' },
             { title: 'VIAGEM!', date: '2025-09-19', endDate: '2025-09-24', description: 'De 19 a 23 de Setembro.', status: 'complete', color: '#16a34a' }
         ];
+
+
+        <!-- ============================================================================ -->
+        <!-- =================== Resumo de Bilhetes a comprar  ========================== -->
+        <!-- ============================================================================ -->
+
         
         const tripItinerary = [
-            { day: 'Dia 1', date: '19/09', theme: 'Chegada e Torre Eiffel', ticketedVenues: [{ name: 'Torre Eiffel', icon: 'fa-tower-observation', status: 'pending', openingHours: '09:00 - 23:45', openDays: 'Todos os dias' }] },
-            { day: 'Dia 2', date: '20/09', theme: 'Coração Histórico', ticketedVenues: [{ name: 'Sainte-Chapelle', icon: 'fa-gem', status: 'pending', openingHours: '09:00 - 17:00', openDays: 'Todos os dias (verificar feriados)' }, { name: 'Musée dOrsay', icon: 'fa-gem', status: 'pending', openingHours: '09:00 - 17:00', openDays: 'Todos os dias (verificar feriados)' }] },
-            { day: 'Dia 3', date: '21/09', theme: 'Realeza e Arte Boémia', ticketedVenues: [{ name: 'Palácio de Versalhes', icon: 'fa-crown', status: 'pending', openingHours: '09:00 - 18:30 (Palácio)', openDays: 'Fecha às Segundas' }] },
-            { day: 'Dia 4', date: '22/09', theme: 'Imersão em Arte', ticketedVenues: [{ name: 'Museu do Louvre', icon: 'fa-landmark-dome', status: 'complete', openingHours: '09:00 - 18:00', openDays: 'Fecha às Terças' }, { name: 'Ópera Garnier', icon: 'fa-masks-theater', status: 'pending', openingHours: '10:00 - 17:00', openDays: 'Todos os dias (pode fechar para eventos)' }] },
+            { day: 'Dia 1', date: '19/09', theme: 'Chegada e Torre Eiffel', ticketedVenues: [
+                { name: 'Torre Eiffel', icon: 'fa-tower-observation', 
+                 status: 'pending', openingHours: '09:00 - 23:45', openDays: 'Todos os dias' }] },
+            
+            { day: 'Dia 2', date: '20/09', theme: 'Coração Histórico', ticketedVenues: [
+                { name: 'Sainte-Chapelle', icon: 'fa-gem', 
+                status: 'pending', openingHours: '09:00 - 17:00', openDays: 'Todos os dias (verificar feriados)' }, 
+                
+                { name: 'Musée dOrsay', icon: 'fa-gem', 
+                 status: 'complete', openingHours: '09:00 - 17:00', openDays: 'Todos os dias (verificar feriados)' }] },
+            
+            { day: 'Dia 3', date: '21/09', theme: 'Realeza e Arte Boémia', ticketedVenues: [
+                { name: 'Palácio de Versalhes', icon: 'fa-crown', 
+                 status: 'pending', openingHours: '09:00 - 18:30 (Palácio)', openDays: 'Fecha às Segundas' }] },
+            
+            { day: 'Dia 4', date: '22/09', theme: 'Imersão em Arte', ticketedVenues: [
+                { name: 'Museu do Louvre', icon: 'fa-landmark-dome', 
+                 status: 'complete', openingHours: '09:00 - 18:00', openDays: 'Fecha às Terças' }, 
+                
+                { name: 'Ópera Garnier', icon: 'fa-masks-theater', 
+                 status: 'pending', openingHours: '10:00 - 17:00', openDays: 'Todos os dias (pode fechar para eventos)' }] },
+            
             { day: 'Dia 5', date: '23/09', theme: 'Despedida e Regresso', ticketedVenues: [] }
         ];
 
