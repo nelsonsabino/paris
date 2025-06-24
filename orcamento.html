@@ -259,16 +259,53 @@
             container.innerHTML = itemsHTML;
         }
 
+
+/* ---------------------------------------------------------------------------------------------------  */
+/* ---------------------------------- Detalhe do Orçamento Restante ----------------------------------  */
+/* ---------------------------------------------------------------------------------------------------  */
+
         document.addEventListener('DOMContentLoaded', () => {
             Object.assign(budgetConfiguration, {
-                louvre: { title: "Museu do Louvre", icon: "fa-landmark-dome", tickets: [ { name: 'Bilhete Geral', cost: 22.00, type: 'adult' } ] },
-                eiffel: { title: "Torre Eiffel", icon: "fa-tower-observation", tickets: [ { name: 'Escadas + Elevador Topo (Adultos)', cost: 27.50 }, { name: 'Elevador Topo (Adultos)', cost: 36.10, type: 'adult' }, { name: 'Escadas + Elevador Topo (Jovens)', cost: 13.80, type: 'young' } ] },
-                saintechapelle: { title: "Sainte-Chapelle", icon: "fa-church", tickets: [ { name: 'Bilhete Geral', cost: 19.00, type: 'adult' } ] },
-                versailles: { title: "Versailles", icon: "fa-landmark-dome", tickets: [ { name: 'Bilhete Geral', cost: 32.00, type: 'adult' } ] },
-                orsay: { title: "Musée d'Orsay", icon: "fa-landmark-dome", tickets: [ { name: 'Bilhete Geral', cost: 16.00, type: 'adult' } ] },
-                garnier: { title: "Ópera Garnier", icon: "fa-masks-theater", tickets: [ { name: 'Bilhete Adulto', cost: 15.00, type: 'adult' }, { name: 'Bilhete Jovem', cost: 10.00, type: 'young' } ] },
-                transports: { title: "Transportes Públicos", icon: "fa-train-subway", tickets: [ { name: 'Navigo Easy travel pass', cost: 2.00, type: 'adult' }, { name: 'Forfait Paris Visit 5 dias', cost: 76.25, type: 'adult' }, { name: 'Navigo Easy travel pass jovem', cost: 2.00, type: 'young' }, { name: 'Forfait Paris Visit 5 dias jovem', cost: 76.25, type: 'young' } ] }
+                louvre: { title: "Museu do Louvre", icon: "fa-landmark-dome", tickets: [ 
+                  { name: 'Bilhete Geral', cost: 22.00, type: 'adult' } ] },
+                  
+                eiffel: { title: "Torre Eiffel", icon: "fa-tower-observation", tickets: [ 
+                  { name: 'Escadas + Elevador Topo (Adultos)', cost: 27.50 }, 
+                  { name: 'Elevador Topo (Adultos)', cost: 36.10, type: 'adult' }, 
+                  { name: 'Escadas + Elevador Topo (-18)', cost: 13.80, type: 'young' }
+                  ] },
+                  
+                saintechapelle: { title: "Sainte-Chapelle", icon: "fa-church", tickets: [ 
+                  { name: 'Bilhete Geral', cost: 19.00, type: 'adult' }
+                  ] },
+                  
+                versailles: { title: "Versailles", icon: "fa-landmark-dome", tickets: [ 
+                  { name: 'Bilhete Geral', cost: 32.00, type: 'adult' },
+                  { name: 'Bilhete -18', cost: 10.00, type: 'young' }
+                  ] },
+
+                orsay: { title: "Musée d'Orsay", icon: "fa-landmark-dome", tickets: [ 
+                  { name: 'Bilhete Geral', cost: 16.00, type: 'adult' } 
+                  ] },
+                
+                garnier: { title: "Ópera Garnier", icon: "fa-masks-theater", tickets: [ 
+                  { name: 'Bilhete Adulto', cost: 15.00, type: 'adult' }, 
+                  { name: 'Bilhete -18', cost: 10.00, type: 'young' } 
+                  ] },
+                
+                transports: { title: "Transportes Públicos", icon: "fa-train-subway", tickets: [ 
+                  { name: 'Navigo Easy travel pass', cost: 2.00, type: 'adult' }, 
+                  { name: 'Forfait Paris Visit 5 dias', cost: 76.25, type: 'adult' }, 
+                  { name: 'Navigo Easy travel pass jovem', cost: 2.00, type: 'young' }, 
+                  { name: 'Forfait Paris Visit 5 dias jovem', cost: 76.25, type: 'young' } 
+                  ] }
             });
+            
+            
+/* ---------------------------------------------------------------------------------------------------  */
+/* ---------------------------------- Resumo de Compras Concluídas -----------------------------------  */
+/* ---------------------------------------------------------------------------------------------------  */    
+            
             Object.assign(planningEvents, [
                 { title: 'Comprar bilhetes para o Museu do Louvre', status: 'complete', budgetKey: 'louvre' },
                 { title: 'Comprar bilhetes para a Museu D Orsay', status: 'complete', budgetKey: 'orsay' },
