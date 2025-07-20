@@ -238,7 +238,7 @@
             
             { title: 'Comprar bilhetes para a Sainte-Chapelle', date: '2025-07-01', 
             description: 'Em principio em julho já é possivel comprar os bilhetes. Verificar disponibilidade.', 
-            status: 'pending', color: '#dc2626' },
+            status: 'complete', color: '#16a34a' },
             
             { title: 'Comprar bilhetes para a Torre Eiffel', date: '2025-07-20', 
             description: 'Comprar ás 23h!! (0.00h em Paris) Os bilhetes ficam disponíveis 60 dias antes. Comprar para o dia 19 de Setembro (Sexta-feira).', 
@@ -273,8 +273,7 @@
                  status: 'pending', openingHours: '09:00 - 23:45', openDays: 'Todos os dias' }] },
             
             { day: 'Dia 2', date: '20/09', theme: 'Coração Histórico', ticketedVenues: [
-                { name: 'Sainte-Chapelle', icon: 'fa-gem', 
-                status: 'pending', openingHours: '09:00 - 17:00', openDays: 'Todos os dias (verificar feriados)' }, 
+               
                 
                 { name: 'Musée dOrsay', icon: 'fa-gem', 
                  status: 'complete', openingHours: '09:00 - 17:00', openDays: 'Todos os dias (verificar feriados)' }] },
@@ -290,7 +289,11 @@
                 { name: 'Ópera Garnier', icon: 'fa-masks-theater', 
                  status: 'pending', openingHours: '10:00 - 17:00', openDays: 'Todos os dias (pode fechar para eventos)' }] },
             
-            { day: 'Dia 5', date: '23/09', theme: 'Despedida e Regresso', ticketedVenues: [] }
+            { day: 'Dia 5', date: '23/09', theme: 'Despedida e Regresso', ticketedVenues: [
+                 { name: 'Sainte-Chapelle', icon: 'fa-gem', 
+                status: 'complete', openingHours: '09:00 - 17:00', openDays: 'Todos os dias (verificar feriados)' } 
+                
+            ] }
         ];
 
         function setupChecklist() {
