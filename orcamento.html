@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orçamento: Viagem a Paris 2025</title>
@@ -13,6 +9,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <!-- Fim Favicon -->
+
     <style>
         /* Estilos base (para telemóveis) */
         body { font-family: 'Poppins', sans-serif; background-color: #f0f4f8; font-size: 14px; }
@@ -121,10 +125,11 @@
         const database = firebase.database();
         const movimentosRef = database.ref('movimentos');
 
-        const budgetConfiguration = {}; // Definido e preenchido em DOMContentLoaded
-        let planningEvents = []; // Definido e preenchido em DOMContentLoaded
+        const budgetConfiguration = {};
+        let planningEvents = [];
         
         let sogrosRemainingCost = 0;
+        let nosRemainingCost = 0;
         let familiaRemainingCost = 0;
 
         function formatCurrency(value) {
@@ -157,6 +162,7 @@
                         tbody.appendChild(row);
                     }
                 }
+
                 const balanceRow = document.createElement('tr');
                 balanceRow.innerHTML = `
                     <td class="p-3 md:p-4 table-footer-text">Saldo</td>
@@ -166,9 +172,18 @@
                     <td></td>`;
                 tfoot.appendChild(balanceRow);
 
+                const remainingCostsRow = document.createElement('tr');
+                remainingCostsRow.innerHTML = `
+                    <td class="p-3 md:p-4 table-footer-text text-red-700">Custos Restantes</td>
+                    <td class="p-3 md:p-4 table-footer-text text-right text-red-700 font-mono">- ${formatCurrency(sogrosRemainingCost)}</td>
+                    <td class="p-3 md:p-4 table-footer-text text-right text-red-700 font-mono">- ${formatCurrency(sogrosRemainingCost)}</td>
+                    <td class="p-3 md:p-4 table-footer-text text-right text-red-700 font-mono">- ${formatCurrency(nosRemainingCost)}</td>
+                    <td></td>`;
+                tfoot.appendChild(remainingCostsRow);
+
                 const diffSogra = sumSogra - sogrosRemainingCost;
                 const diffSogro = sumSogro - sogrosRemainingCost;
-                const diffNos = sumNos - familiaRemainingCost;
+                const diffNos = sumNos - nosRemainingCost;
                 const diffRow = document.createElement('tr');
                 diffRow.innerHTML = `
                     <td class="p-3 md:p-4 table-footer-text text-blue-700">Diferença</td>
@@ -215,15 +230,16 @@
             const completedKeys = planningEvents.filter(e => e.status === 'complete' && e.budgetKey).map(e => e.budgetKey);
             
             for (const key in budgetConfiguration) {
-                if (completedKeys.includes(key)) continue; // Se o bilhete já foi "comprado", ignorar para o cálculo do "Restante"
+                if (completedKeys.includes(key)) continue;
                 const category = budgetConfiguration[key];
                 category.tickets.forEach(ticket => {
                     if (ticket.type === 'adult') { remainingAdultCost += ticket.cost; }
                     else if (ticket.type === 'young') { remainingYoungCost += ticket.cost; }
                 });
             }
-            sogrosRemainingCost = remainingAdultCost; // Um dos sogros (adulto)
-            familiaRemainingCost = (remainingAdultCost * 2) + (remainingYoungCost * 2); // Os 4 (2 adultos + 2 jovens)
+            sogrosRemainingCost = remainingAdultCost;
+            nosRemainingCost = remainingYoungCost * 2;
+            familiaRemainingCost = (remainingAdultCost * 2) + nosRemainingCost;
 
             document.getElementById('sogros-cost').textContent = `${sogrosRemainingCost.toFixed(2)} €`;
             document.getElementById('familia-cost').textContent = `${familiaRemainingCost.toFixed(2)} €`;
@@ -235,7 +251,7 @@
             if (!budgetContainer) return;
             budgetContainer.innerHTML = '';
             for (const key in budgetConfiguration) {
-                if (completedKeys.includes(key)) continue; // Se o bilhete já foi "comprado", não mostrar aqui
+                if (completedKeys.includes(key)) continue;
                 const category = budgetConfiguration[key];
                 let itemsHTML = category.tickets.map(ticket => {
                     const isCalculated = ticket.type === 'adult' || ticket.type === 'young';
@@ -256,68 +272,43 @@
                 return;
             }
             const itemsHTML = completedItems.map(item => {
-                // Removido o cálculo e exibição de custo, conforme solicitado.
                 return `<div class="flex items-center completed-item-text p-2 border-b border-gray-100"><i class="fa-solid fa-check-circle text-green-500 mr-4 text-xl"></i><span class="flex-grow">${item.title}</span></div>`;
             }).join('');
             container.innerHTML = itemsHTML;
         }
 
-
-/* ---------------------------------------------------------------------------------------------------  */
-/* ---------------------------------- Detalhe do Orçamento Restante ----------------------------------  */
-/* ---------------------------------------------------------------------------------------------------  */
-
         document.addEventListener('DOMContentLoaded', () => {
-            // Re-definir budgetConfiguration e planningEvents dentro do DOMContentLoaded
-            // para garantir que estão sempre atualizados quando a página carrega.
             Object.assign(budgetConfiguration, {
                 louvre: { title: "Museu do Louvre", icon: "fa-landmark-dome", tickets: [ 
                   { name: 'Bilhete Geral', cost: 22.00, type: 'adult' } ] },
-                  
                 eiffel: { title: "Torre Eiffel", icon: "fa-tower-observation", tickets: [ 
                   { name: 'Elevador Topo (Adultos)', cost: 36.10, type: 'adult' }, 
-                  { name: 'Elevador Topo (-18)', cost: 18.10, type: 'young' }
-                  ] },
-                  
+                  { name: 'Elevador Topo (-18)', cost: 18.10, type: 'young' } ] },
                 saintechapelle: { title: "Sainte-Chapelle", icon: "fa-church", tickets: [ 
-                  { name: 'Bilhete Geral', cost: 19.00, type: 'adult' }
-                  ] },
-                  
+                  { name: 'Bilhete Geral', cost: 19.00, type: 'adult' } ] },
                 versailles: { title: "Versailles", icon: "fa-landmark-dome", tickets: [ 
-                  { name: 'Bilhete Geral', cost: 21.00, type: 'adult' }
-                  ] },
-
+                  { name: 'Bilhete Geral', cost: 21.00, type: 'adult' } ] },
                 orsay: { title: "Musée d'Orsay", icon: "fa-landmark-dome", tickets: [ 
-                  { name: 'Bilhete Geral', cost: 16.00, type: 'adult' } 
-                  ] },
-                
+                  { name: 'Bilhete Geral', cost: 16.00, type: 'adult' } ] },
                 garnier: { title: "Ópera Garnier", icon: "fa-masks-theater", tickets: [ 
                   { name: 'Bilhete Adulto', cost: 15.00, type: 'adult' }, 
-                  { name: 'Bilhete -18', cost: 10.00, type: 'young' } 
-                  ] },
-                
+                  { name: 'Bilhete -18', cost: 10.00, type: 'young' } ] },
                 transports: { title: "Transportes Públicos", icon: "fa-train-subway", tickets: [ 
                   { name: 'Navigo Easy travel pass', cost: 2.00, type: 'adult' }, 
                   { name: 'Forfait Paris Visit 5 dias', cost: 76.25, type: 'adult' }, 
                   { name: 'Navigo Easy travel pass jovem', cost: 2.00, type: 'young' }, 
-                  { name: 'Forfait Paris Visit 5 dias jovem', cost: 76.25, type: 'young' } 
-                  ] }
+                  { name: 'Forfait Paris Visit 5 dias jovem', cost: 76.25, type: 'young' } ] }
             });
-            
-            
-/* ---------------------------------------------------------------------------------------------------  */
-/* ---------------------------------- Resumo de Compras Concluídas -----------------------------------  */
-/* ---------------------------------------------------------------------------------------------------  */    
             
             planningEvents = [
                 { title: 'Comprar bilhetes para o Museu do Louvre', status: 'complete', budgetKey: 'louvre' },
                 { title: 'Comprar bilhetes para a Museu D Orsay', status: 'complete', budgetKey: 'orsay' },
                 { title: 'Comprar bilhetes para Versailles', status: 'complete', budgetKey: 'versailles' },
-                { title: 'Comprar bilhetes para a Sainte-Chapelle', status: 'complete', budgetKey: 'saintechapelle' }, // Foi adicionado um budgetKey
-                { title: 'Comprar bilhetes para a Torre Eiffel', status: 'complete', budgetKey: 'eiffel' }, // Adicionado budgetKey e status completo
-                { title: 'Comprar bilhetes para a Ópera Garnier', status: 'pending', budgetKey: 'garnier' }, // Foi adicionado um budgetKey
-                { title: 'Fazer pagamento da casa de Paris', status: 'pending', budgetKey: '' }, // Não tem um custo direto de bilhete
-                { title: 'Reserva para entrada sem filas na Notre-Dame', status: 'pending', budgetKey: '' }, // Não tem um custo direto de bilhete
+                { title: 'Comprar bilhetes para a Sainte-Chapelle', status: 'complete', budgetKey: 'saintechapelle' },
+                { title: 'Comprar bilhetes para a Torre Eiffel', status: 'complete', budgetKey: 'eiffel' },
+                { title: 'Comprar bilhetes para a Ópera Garnier', status: 'pending', budgetKey: 'garnier' },
+                { title: 'Fazer pagamento da casa de Paris', status: 'pending', budgetKey: '' },
+                { title: 'Reserva para entrada sem filas na Notre-Dame', status: 'pending', budgetKey: '' },
                 { title: 'VIAGEM!', status: 'complete' }
             ];
 
