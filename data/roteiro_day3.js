@@ -1,5 +1,5 @@
 // data/roteiro_day3.js
-const day3Data = {
+export const day3Data = {
     id: "day3",
     title: "Dia 3: Realeza, Arte Boémia e Vistas Icónicas",
     date: "Domingo, 21 de Setembro",
