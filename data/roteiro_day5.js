@@ -1,5 +1,5 @@
 // data/roteiro_day5.js
-const day5Data = {
+export const day5Data = {
     id: "day5",
     title: "Dia 5: Despedida com Charme e Regresso",
     date: "Terça-Feira, 23 de Setembro",
