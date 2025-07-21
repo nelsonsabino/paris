@@ -16,13 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    // Keep the header, so insert after it.
     const header = mainContentArea.querySelector('header');
-    let targetNode = header; // Element after which to insert day sections
+    let targetNode = header;
 
-    // Remove any existing dynamic content sections to prevent duplicates on re-render (if applicable)
+    // Remove old content if any
     let currentElement = header.nextElementSibling;
-    while (currentElement && !currentElement.id.startsWith('imageModal')) { // Stop before the modal div
+    while (currentElement && !currentElement.id.startsWith('imageModal')) {
         const nextElement = currentElement.nextElementSibling;
         currentElement.remove();
         currentElement = nextElement;
@@ -62,7 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             sectionBlock.timeline.forEach(item => {
                 const hasTime = item.time ? `<p class="timeline-time">${item.time}</p>` : '';
-                // No need to explicitly add ticket icon here, as it's part of the item.title string
                 
                 let itemBody = `<h3 class="font-semibold text-lg">${item.title}</h3>`;
                 if (item.description) {
@@ -97,10 +95,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 `;
             });
-            htmlContent += `</div>`; // Close timeline-container
+            htmlContent += `</div>`;
         });
-        targetNode.parentNode.insertBefore(section, targetNode.nextSibling); // Insert after header or previous section
-        targetNode = section; // Update targetNode for next insertion
+        section.innerHTML = htmlContent;
+        targetNode.parentNode.insertBefore(section, targetNode.nextSibling);
+        targetNode = section;
     });
 
     // --- Lógica para o menu hamburger ---
@@ -118,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Lógica para o acordeão (agora que o conteúdo foi adicionado dinamicamente) ---
+    // --- Lógica para o acordeão ---
     const accordionToggles = document.querySelectorAll('.accordion-toggle');
     accordionToggles.forEach(button => {
         button.addEventListener('click', () => {
@@ -140,7 +139,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalImage = document.getElementById('modalImage');
     const closeModalBtn = document.getElementById('closeModal');
 
-    // Make openModal and closeModal global for onclick attribute in HTML
     window.openModal = function(imageUrl) {
         modalImage.src = imageUrl;
         imageModal.classList.remove('hidden');
@@ -160,21 +158,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- LÓGICA PARA HIGHLIGHT DO MENU NO SCROLL (agora que o conteúdo foi adicionado) ---
+    // --- LÓGICA PARA HIGHLIGHT DO MENU NO SCROLL ---
     const sections = document.querySelectorAll('section[id^="day"]');
     const navLinks = document.querySelectorAll('.sticky-nav a[href^="#day"]');
     const mobileDayHeader = document.getElementById('mobile-day-header');
 
     const observerOptions = {
-        root: null, // usa o viewport como referência
+        root: null,
         rootMargin: '0px',
-        threshold: 0.2 // A secção tem de estar 20% visível
+        threshold: 0.2
     };
 
-    const observer = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Atualiza o menu do desktop
                 navLinks.forEach(link => {
                     link.classList.remove('active-day-link');
                     if (link.getAttribute('href').substring(1) === entry.target.id) {
@@ -182,11 +179,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
 
-                // Atualiza o cabeçalho do telemóvel
                 if (mobileDayHeader) {
-                    const title = entry.target.querySelector('h2').textContent.split(':')[0]; // Pega só o "Dia X"
-                    mobileDayHeader.textContent = `A navegar: ${title}`;
-                    mobileDayHeader.classList.remove('hidden');
+                    const titleElement = entry.target.querySelector('h2'); // Encontra o H2
+                    // ===== INÍCIO DA CORREÇÃO =====
+                    if (titleElement) { // Verifica se o H2 existe antes de o usar
+                        const title = titleElement.textContent.split(':')[0];
+                        mobileDayHeader.textContent = `A navegar: ${title}`;
+                        mobileDayHeader.classList.remove('hidden');
+                    }
+                    // ===== FIM DA CORREÇÃO =====
                 }
             }
         });
