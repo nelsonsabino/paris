@@ -1,5 +1,5 @@
 // data/roteiro_day4.js
-const day4Data = {
+export const day4Data = {
     id: "day4",
     title: "Dia 4: Imersão em Arte e Charme Parisiense",
     date: "Segunda-Feira, 22 de Setembro",
