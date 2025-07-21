@@ -1,11 +1,11 @@
-// js/roteiro_renderer.js
+// data/roteiro_renderer.js
 
-// Importar os dados de cada dia
-import { day1Data } from '../data/roteiro_day1.js';
-import { day2Data } from '../data/roteiro_day2.js';
-import { day3Data } from '../data/roteiro_day3.js';
-import { day4Data } from '../data/roteiro_day4.js';
-import { day5Data } from '../data/roteiro_day5.js';
+// Importar os dados de cada dia (caminhos ajustados para './' assumindo que estão na mesma pasta 'data/')
+import { day1Data } from './roteiro_day1.js';
+import { day2Data } from './roteiro_day2.js';
+import { day3Data } from './roteiro_day3.js';
+import { day4Data } from './roteiro_day4.js';
+import { day5Data } from './roteiro_day5.js';
 
 const allDaysData = [day1Data, day2Data, day3Data, day4Data, day5Data];
 
@@ -16,18 +16,18 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    // Clear existing content if any (header might be there)
     // Keep the header, so insert after it.
     const header = mainContentArea.querySelector('header');
+    let targetNode = header; // Element after which to insert day sections
+
+    // Remove any existing dynamic content sections to prevent duplicates on re-render (if applicable)
     let currentElement = header.nextElementSibling;
-    while (currentElement && currentElement.tagName !== 'SCRIPT') { // Stop before the script tag
+    while (currentElement && !currentElement.id.startsWith('imageModal')) { // Stop before the modal div
         const nextElement = currentElement.nextElementSibling;
         currentElement.remove();
         currentElement = nextElement;
     }
     
-    const targetNode = header; // Element after which to insert day sections
-
     allDaysData.forEach(dayData => {
         const section = document.createElement('section');
         section.id = dayData.id;
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             sectionBlock.timeline.forEach(item => {
                 const hasTime = item.time ? `<p class="timeline-time">${item.time}</p>` : '';
-                const ticketIcon = item.title.includes('Necessita de Bilhete') ? '' : ''; // Keep existing ticket icon in title string
+                // No need to explicitly add ticket icon here, as it's part of the item.title string
                 
                 let itemBody = `<h3 class="font-semibold text-lg">${item.title}</h3>`;
                 if (item.description) {
@@ -99,8 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             htmlContent += `</div>`; // Close timeline-container
         });
-        section.innerHTML = htmlContent;
-        targetNode.parentNode.insertBefore(section, targetNode.nextSibling); // Insert after header
+        targetNode.parentNode.insertBefore(section, targetNode.nextSibling); // Insert after header or previous section
         targetNode = section; // Update targetNode for next insertion
     });
 
