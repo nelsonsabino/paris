@@ -1,5 +1,5 @@
 // data/roteiro_day1.js
-const day1Data = {
+export const day1Data = {
     id: "day1",
     title: "Dia 1: Chegada e a Magia da Torre Eiffel",
     date: "Sexta-feira, 19 de Setembro",
