@@ -129,7 +129,6 @@
         let planningEvents = [];
         
         let sogrosRemainingCost = 0;
-        let nosRemainingCost = 0;
         let familiaRemainingCost = 0;
 
         function formatCurrency(value) {
@@ -177,13 +176,13 @@
                     <td class="p-3 md:p-4 table-footer-text text-red-700">Custos Restantes</td>
                     <td class="p-3 md:p-4 table-footer-text text-right text-red-700 font-mono">- ${formatCurrency(sogrosRemainingCost)}</td>
                     <td class="p-3 md:p-4 table-footer-text text-right text-red-700 font-mono">- ${formatCurrency(sogrosRemainingCost)}</td>
-                    <td class="p-3 md:p-4 table-footer-text text-right text-red-700 font-mono">- ${formatCurrency(nosRemainingCost)}</td>
+                    <td class="p-3 md:p-4 table-footer-text text-right text-red-700 font-mono">- ${formatCurrency(familiaRemainingCost)}</td>
                     <td></td>`;
                 tfoot.appendChild(remainingCostsRow);
 
                 const diffSogra = sumSogra - sogrosRemainingCost;
                 const diffSogro = sumSogro - sogrosRemainingCost;
-                const diffNos = sumNos - nosRemainingCost;
+                const diffNos = sumNos - familiaRemainingCost;
                 const diffRow = document.createElement('tr');
                 diffRow.innerHTML = `
                     <td class="p-3 md:p-4 table-footer-text text-blue-700">Diferença</td>
@@ -238,8 +237,7 @@
                 });
             }
             sogrosRemainingCost = remainingAdultCost;
-            nosRemainingCost = remainingYoungCost * 2;
-            familiaRemainingCost = (remainingAdultCost * 2) + nosRemainingCost;
+            familiaRemainingCost = (remainingAdultCost * 2) + (remainingYoungCost * 2);
 
             document.getElementById('sogros-cost').textContent = `${sogrosRemainingCost.toFixed(2)} €`;
             document.getElementById('familia-cost').textContent = `${familiaRemainingCost.toFixed(2)} €`;
