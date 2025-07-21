@@ -252,33 +252,8 @@
                 return;
             }
             const itemsHTML = completedItems.map(item => {
-                let costHTML = '';
-                if (item.budgetKey && budgetConfiguration[item.budgetKey]) {
-                    let cost = 0;
-                    // Sum cost for 2 adults (sogros) + 2 young (nós). Assuming `adult` type for sogros.
-                    budgetConfiguration[item.budgetKey].tickets.forEach(ticket => {
-                        if (ticket.type === 'adult') cost += ticket.cost;
-                        else if (ticket.type === 'young') cost += ticket.cost; // Adiciona para os jovens também se houver.
-                    });
-                    
-                    // Ajusta para o total da família, se for relevante, ou mantém por pessoa.
-                    // Para o resumo de compras concluídas, vamos assumir o custo por pessoa, para simplificar.
-                    // Se precisar do custo total da família aqui, a lógica precisaria de ser mais específica (x2 adultos, x2 jovens).
-                    // Para já, mostraremos o custo por pessoa, se for relevante.
-                    // Ou podemos simplesmente mostrar o custo total da categoria, se a lógica for por categoria de bilhete.
-
-                    // Vamos mostrar o custo por pessoa para bilhos de "adult" type, o que se aplica aos sogros
-                    // e um custo total para "nós".
-                    let totalCostForFamily = 0;
-                    budgetConfiguration[item.budgetKey].tickets.forEach(ticket => {
-                        if (ticket.type === 'adult') totalCostForFamily += (ticket.cost * 2); // 2 adultos
-                        else if (ticket.type === 'young') totalCostForFamily += (ticket.cost * 2); // 2 jovens
-                    });
-
-
-                    if (totalCostForFamily > 0) costHTML = `<span class="ml-auto pl-4 font-semibold text-gray-700">Custo Total: ${totalCostForFamily.toFixed(2)} €</span>`;
-                }
-                return `<div class="flex items-center completed-item-text p-2 border-b border-gray-100"><i class="fa-solid fa-check-circle text-green-500 mr-4 text-xl"></i><span class="flex-grow">${item.title}</span>${costHTML}</div>`;
+                // Removido o cálculo e exibição de custo, conforme solicitado.
+                return `<div class="flex items-center completed-item-text p-2 border-b border-gray-100"><i class="fa-solid fa-check-circle text-green-500 mr-4 text-xl"></i><span class="flex-grow">${item.title}</span></div>`;
             }).join('');
             container.innerHTML = itemsHTML;
         }
