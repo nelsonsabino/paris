@@ -1,5 +1,5 @@
 // data/roteiro_day2.js
-const day2Data = {
+export const day2Data = {
     id: "day2",
     title: "Dia 2: Coração Histórico e Grandes Avenidas",
     date: "Sábado, 20 de Setembro",
