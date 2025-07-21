@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planeamento: Viagem a Paris 2025</title>
@@ -15,16 +11,22 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
     <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/core/locales/pt-br.global.min.js'></script>
-    <style>
     
-            /* CSS para a Galeria de Destaques */
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <!-- Fim Favicon -->
+
+    <style>
+        /* CSS para a Galeria de Destaques */
         .highlight-card {
             aspect-ratio: 1 / 1; /* Proporção quadrada por defeito */
         }
         .highlight-card.col-span-2 {
             aspect-ratio: 2 / 1; /* Proporção retangular para os cartões duplos */
         }
-    
     
         /* Estilos base (para telemóveis) */
         body { font-family: 'Poppins', sans-serif; background-color: #f0f4f8; font-size: 14px; }
@@ -76,87 +78,61 @@
             <div id="timeline-container" class="space-y-8"></div>
         </section>
         
-
-        <!-- =================================================================== -->
-        <!-- =================== DESTAQUES DA VIAGEM (VERSÃO MELHORADA) ===================== -->
-        <!-- =================================================================== -->
         <section class="mb-12">
             <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Destaques da Nossa Viagem</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-
-                <!-- Cartão 1: Torre Eiffel (Grande) -->
                 <a href="guia.html#day1" class="highlight-card group block relative rounded-2xl overflow-hidden shadow-lg col-span-2 aspect-w-2 aspect-h-1">
                     <img src="https://res.cloudinary.com/dtljonz0f/image/upload/f_auto/q_auto/v1/gc-v1/paris/3%20giorni%20a%20Parigi%20Tour%20Eiffel?_a=BAVAZGE70" alt="Torre Eiffel" class="absolute w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                     <h3 class="absolute bottom-4 left-4 text-white text-xl font-bold">Torre Eiffel</h3>
                 </a>
-
-                <!-- Cartão 2: Louvre -->
                 <a href="guia.html#day4" class="highlight-card group block relative rounded-2xl overflow-hidden shadow-lg aspect-w-1 aspect-h-1">
                     <img src="https://www.relaisdulouvre.com/wp-content/uploads/2024/03/Louvre1-1024x682.jpg" alt="Museu do Louvre" class="absolute w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                     <h3 class="absolute bottom-4 left-4 text-white text-lg font-bold">Museu do Louvre</h3>
                 </a>
-
-                <!-- Cartão 3: Versalhes -->
                 <a href="guia.html#day3" class="highlight-card group block relative rounded-2xl overflow-hidden shadow-lg aspect-w-1 aspect-h-1">
                     <img src="https://paisageiro.com/wp-content/uploads/2023/03/organizacao-jardins-de-versalhes1-1024x683.jpg" alt="Palácio de Versalhes" class="absolute w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                     <h3 class="absolute bottom-4 left-4 text-white text-lg font-bold">Palácio de Versalhes</h3>
                 </a>
-
-                <!-- Cartão 4: Notre-Dame (Grande) -->
                 <a href="guia.html#day2" class="highlight-card group block relative rounded-2xl overflow-hidden shadow-lg col-span-2 aspect-w-2 aspect-h-1">
                     <img src="https://images.adsttc.com/media/images/671f/6aa2/3dfd/b479/8aac/78a7/large_jpg/notre-dame-de-paris-announces-reopening-date-and-proposes-constroversial-entrance-fee_2.jpg?1730112234" alt="Catedral de Notre-Dame" class="absolute w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                     <h3 class="absolute bottom-4 left-4 text-white text-xl font-bold">Catedral de Notre-Dame</h3>
                 </a>
-
-                <!-- Cartão 5: Sainte-Chapelle -->
-                <a href="guia.html#day2" class="highlight-card group block relative rounded-2xl overflow-hidden shadow-lg aspect-w-1 aspect-h-1">
+                <a href="guia.html#day5" class="highlight-card group block relative rounded-2xl overflow-hidden shadow-lg aspect-w-1 aspect-h-1">
                     <img src="https://www.timographie360.fr/photos/realisations/sliders/hd/visite-virtuelle-sainte-chapelle-02_518.jpg" alt="Sainte-Chapelle" class="absolute w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                     <h3 class="absolute bottom-4 left-4 text-white text-lg font-bold">Sainte-Chapelle</h3>
                 </a>
-
-                <!-- Cartão 6: Montmartre -->
                 <a href="guia.html#day3" class="highlight-card group block relative rounded-2xl overflow-hidden shadow-lg aspect-w-1 aspect-h-1">
                     <img src="https://www.civitatis.com/f/francia/paris/free-tour-montmartre-589x392.jpg" alt="Montmartre" class="absolute w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                     <h3 class="absolute bottom-4 left-4 text-white text-lg font-bold">Montmartre</h3>
                 </a>
-                
-                <!-- Cartão 7: Musée d'Orsay -->
                 <a href="guia.html#day2" class="highlight-card group block relative rounded-2xl overflow-hidden shadow-lg aspect-w-1 aspect-h-1">
                     <img src="https://officiel-galeries-musees.fr/wp-content/uploads/2020/08/orsay-musee.jpg" alt="Musée d'Orsay" class="absolute w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                     <h3 class="absolute bottom-4 left-4 text-white text-lg font-bold">Musée d'Orsay</h3>
                 </a>
-
-                <!-- Cartão 8: Champs-Élysées -->
                 <a href="guia.html#day2" class="highlight-card group block relative rounded-2xl overflow-hidden shadow-lg aspect-w-1 aspect-h-1">
                     <img src="https://www.tudosobreparis.com/f/francia/paris/guia/campos-eliseos-m.jpg" alt="Champs-Élysées" class="absolute w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                     <h3 class="absolute bottom-4 left-4 text-white text-lg font-bold">Champs-Élysées</h3>
                 </a>
-
-                <!-- Cartão 9: Galeries Lafayette -->
-                 <a href="guia.html#day4" class="highlight-card group block relative rounded-2xl overflow-hidden shadow-lg aspect-w-1 aspect-h-1">
+                <a href="guia.html#day4" class="highlight-card group block relative rounded-2xl overflow-hidden shadow-lg aspect-w-1 aspect-h-1">
                     <img src="https://www.franceguide.info/wp-content/uploads/sites/18/paris-galeries-lafayette.jpg" alt="Galeries Lafayette" class="absolute w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                     <h3 class="absolute bottom-4 left-4 text-white text-lg font-bold">Galeries Lafayette</h3>
                 </a>
-
-                <!-- Cartão 10: Quartier Latin -->
                 <a href="guia.html#day5" class="highlight-card group block relative rounded-2xl overflow-hidden shadow-lg aspect-w-1 aspect-h-1">
                     <img src="https://midias-turismo.eurodicas.com.br/wp-content/uploads/2025/02/quartier-latin-1-1200x800.jpg.webp" alt="Quartier Latin" class="absolute w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                     <h3 class="absolute bottom-4 left-4 text-white text-lg font-bold">Quartier Latin</h3>
                 </a>
-
             </div>
         </section>        
-        
         
         <section class="mb-12">
             <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Calendário</h2>
@@ -218,86 +194,31 @@
         };
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
-
-
-
-        <!-- ============================================================================ -->
-        <!-- =================== Bilhetes  ========================== -->
-        <!-- ============================================================================ -->
-
-
         
         const planningEvents = [
-            { title: 'Comprar bilhetes para o Museu do Louvre', date: '2025-06-18', 
-            description: 'Comprar para o dia 22 de Setembro (Segunda-feira).', 
-            status: 'complete', color: '#16a34a' },
-            
-            { title: 'Comprar bilhetes para a Museu D Orsay', date: '2025-06-21', 
-            description: 'Em principio em julho já é possivel comprar os bilhetes. Verificar disponibilidade.', 
-            status: 'complete', color: '#16a34a' },
-            
-            { title: 'Comprar bilhetes para Versailles', date: '2025-06-23', 
-            description: 'A partir desta data já é possivel comprar para o dia 21 de setembro.', 
-            status: 'complete', color: '#16a34a' },
-            
-            { title: 'Comprar bilhetes para a Sainte-Chapelle', date: '2025-07-01', 
-            description: 'Em principio em julho já é possivel comprar os bilhetes. Verificar disponibilidade.', 
-            status: 'complete', color: '#16a34a' },
-            
-            { title: 'Comprar bilhetes para a Torre Eiffel', date: '2025-07-20', 
-            description: 'Comprar ás 23h!! (0.00h em Paris) Os bilhetes ficam disponíveis 60 dias antes. Comprar para o dia 19 de Setembro (Sexta-feira).', 
-            status: 'complete', color: '#16a34a' },
-            
-            { title: 'Comprar bilhetes para a Ópera Garnier', date: '2025-07-23', 
-            description: 'Fazer a compra ás 23h!! Comprar para o dia 22 de Setembro (Segunda-feira).', 
-            status: 'pending', color: '#dc2626' },
-            
-            { title: 'Fazer pagamento da casa de Paris', date: '2025-08-25', 
-            description: 'Fazer o pagamento final da reserva.', 
-            status: 'pending', color: '#ea580c' },
-            
-            { title: 'Reserva para entrada sem filas na Notre-Dame', date: '2025-09-19', 
-            description: 'A reserva só pode ser feita umas horas antes. Irá ser dificil apanhar um slot disponível.', 
-            status: 'pending', color: '#ea580c' },
-            
-            { title: 'VIAGEM!', date: '2025-09-19', endDate: '2025-09-24', 
-            description: 'De 19 a 23 de Setembro.', 
-            status: 'complete', color: '#16a34a' }
+            { title: 'Comprar bilhetes para o Museu do Louvre', date: '2025-06-18', description: 'Comprar para o dia 22 de Setembro (Segunda-feira).', status: 'complete', color: '#16a34a' },
+            { title: 'Comprar bilhetes para a Museu D Orsay', date: '2025-06-21', description: 'Em principio em julho já é possivel comprar os bilhetes. Verificar disponibilidade.', status: 'complete', color: '#16a34a' },
+            { title: 'Comprar bilhetes para Versailles', date: '2025-06-23', description: 'A partir desta data já é possivel comprar para o dia 21 de setembro.', status: 'complete', color: '#16a34a' },
+            { title: 'Comprar bilhetes para a Sainte-Chapelle', date: '2025-07-01', description: 'Em principio em julho já é possivel comprar os bilhetes. Verificar disponibilidade.', status: 'complete', color: '#16a34a' },
+            { title: 'Comprar bilhetes para a Torre Eiffel', date: '2025-07-20', description: 'Comprar ás 23h!! (0.00h em Paris) Os bilhetes ficam disponíveis 60 dias antes. Comprar para o dia 19 de Setembro (Sexta-feira).', status: 'complete', color: '#16a34a' },
+            { title: 'Comprar bilhetes para a Ópera Garnier', date: '2025-07-23', description: 'Fazer a compra ás 23h!! Comprar para o dia 22 de Setembro (Segunda-feira).', status: 'pending', color: '#dc2626' },
+            { title: 'Fazer pagamento da casa de Paris', date: '2025-08-25', description: 'Fazer o pagamento final da reserva.', status: 'pending', color: '#ea580c' },
+            { title: 'Reserva para entrada sem filas na Notre-Dame', date: '2025-09-19', description: 'A reserva só pode ser feita umas horas antes. Irá ser dificil apanhar um slot disponível.', status: 'pending', color: '#ea580c' },
+            { title: 'VIAGEM!', date: '2025-09-19', endDate: '2025-09-24', description: 'De 19 a 23 de Setembro.', status: 'complete', color: '#16a34a' }
         ];
-
-
-        <!-- ============================================================================ -->
-        <!-- =================== Resumo de Bilhetes a comprar  ========================== -->
-        <!-- ============================================================================ -->
-
         
         const tripItinerary = [
             { day: 'Dia 1', date: '19/09', theme: 'Chegada e Torre Eiffel', ticketedVenues: [
-                { name: 'Torre Eiffel', icon: 'fa-tower-observation', 
-                 status: 'complete', openingHours: '09:00 - 23:45', openDays: 'Todos os dias' }] },
-            
+                { name: 'Torre Eiffel', icon: 'fa-tower-observation', status: 'complete', openingHours: '09:00 - 23:45', openDays: 'Todos os dias' }] },
             { day: 'Dia 2', date: '20/09', theme: 'Coração Histórico', ticketedVenues: [
-               
-                
-                { name: 'Musée dOrsay', icon: 'fa-gem', 
-                 status: 'complete', openingHours: '09:00 - 17:00', openDays: 'Todos os dias (verificar feriados)' }] },
-            
+                { name: 'Musée dOrsay', icon: 'fa-gem', status: 'complete', openingHours: '09:00 - 17:00', openDays: 'Todos os dias (verificar feriados)' }] },
             { day: 'Dia 3', date: '21/09', theme: 'Realeza e Arte Boémia', ticketedVenues: [
-                { name: 'Palácio de Versalhes', icon: 'fa-crown', 
-                 status: 'complete', openingHours: '09:00 - 18:30 (Palácio)', openDays: 'Fecha às Segundas' }] },
-            
+                { name: 'Palácio de Versalhes', icon: 'fa-crown', status: 'complete', openingHours: '09:00 - 18:30 (Palácio)', openDays: 'Fecha às Segundas' }] },
             { day: 'Dia 4', date: '22/09', theme: 'Imersão em Arte', ticketedVenues: [
-                { name: 'Museu do Louvre', icon: 'fa-landmark-dome', 
-                 status: 'complete', openingHours: '09:00 - 18:00', openDays: 'Fecha às Terças' }, 
-                
-                { name: 'Ópera Garnier', icon: 'fa-masks-theater', 
-                 status: 'pending', openingHours: '10:00 - 17:00', openDays: 'Todos os dias (pode fechar para eventos)' }] },
-            
+                { name: 'Museu do Louvre', icon: 'fa-landmark-dome', status: 'complete', openingHours: '09:00 - 18:00', openDays: 'Fecha às Terças' }, 
+                { name: 'Ópera Garnier', icon: 'fa-masks-theater', status: 'pending', openingHours: '10:00 - 17:00', openDays: 'Todos os dias (pode fechar para eventos)' }] },
             { day: 'Dia 5', date: '23/09', theme: 'Despedida e Regresso', ticketedVenues: [
-                 { name: 'Sainte-Chapelle', icon: 'fa-gem', 
-                status: 'complete', openingHours: '09:00 - 17:00', openDays: 'Todos os dias (verificar feriados)' } 
-                
-            ] }
+                 { name: 'Sainte-Chapelle', icon: 'fa-gem', status: 'complete', openingHours: '09:00 - 17:00', openDays: 'Todos os dias (verificar feriados)' } ] }
         ];
 
         function setupChecklist() {
