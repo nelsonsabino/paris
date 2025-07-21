@@ -117,8 +117,8 @@
         const database = firebase.database();
         const movimentosRef = database.ref('movimentos');
 
-        const budgetConfiguration = { /* ...Sua config de orçamento aqui... */ };
-        const planningEvents = [ /* ...Sua lista de eventos aqui... */ ];
+        const budgetConfiguration = {}; // Definido e preenchido em DOMContentLoaded
+        let planningEvents = []; // Definido e preenchido em DOMContentLoaded
         
         let sogrosRemainingCost = 0;
         let familiaRemainingCost = 0;
@@ -205,18 +205,22 @@
         }
 
         function processAndDisplayRemainingBudget() {
-            let remainingAdultCost = 0, remainingYoungCost = 0;
+            let remainingAdultCost = 0;
+            let remainingYoungCost = 0;
+
             const completedKeys = planningEvents.filter(e => e.status === 'complete' && e.budgetKey).map(e => e.budgetKey);
+            
             for (const key in budgetConfiguration) {
-                if (completedKeys.includes(key)) continue;
+                if (completedKeys.includes(key)) continue; // Se o bilhete já foi "comprado", ignorar para o cálculo do "Restante"
                 const category = budgetConfiguration[key];
                 category.tickets.forEach(ticket => {
                     if (ticket.type === 'adult') { remainingAdultCost += ticket.cost; }
                     else if (ticket.type === 'young') { remainingYoungCost += ticket.cost; }
                 });
             }
-            sogrosRemainingCost = remainingAdultCost;
-            familiaRemainingCost = (remainingAdultCost * 2) + (remainingYoungCost * 2);
+            sogrosRemainingCost = remainingAdultCost; // Um dos sogros (adulto)
+            familiaRemainingCost = (remainingAdultCost * 2) + (remainingYoungCost * 2); // Os 4 (2 adultos + 2 jovens)
+
             document.getElementById('sogros-cost').textContent = `${sogrosRemainingCost.toFixed(2)} €`;
             document.getElementById('familia-cost').textContent = `${familiaRemainingCost.toFixed(2)} €`;
         }
@@ -227,7 +231,7 @@
             if (!budgetContainer) return;
             budgetContainer.innerHTML = '';
             for (const key in budgetConfiguration) {
-                if (completedKeys.includes(key)) continue;
+                if (completedKeys.includes(key)) continue; // Se o bilhete já foi "comprado", não mostrar aqui
                 const category = budgetConfiguration[key];
                 let itemsHTML = category.tickets.map(ticket => {
                     const isCalculated = ticket.type === 'adult' || ticket.type === 'young';
@@ -251,8 +255,28 @@
                 let costHTML = '';
                 if (item.budgetKey && budgetConfiguration[item.budgetKey]) {
                     let cost = 0;
-                    budgetConfiguration[item.budgetKey].tickets.forEach(ticket => { if (ticket.type === 'adult') cost += ticket.cost; });
-                    if (cost > 0) costHTML = `<span class="ml-auto pl-4 font-semibold text-gray-700">${cost.toFixed(2)} € / pessoa</span>`;
+                    // Sum cost for 2 adults (sogros) + 2 young (nós). Assuming `adult` type for sogros.
+                    budgetConfiguration[item.budgetKey].tickets.forEach(ticket => {
+                        if (ticket.type === 'adult') cost += ticket.cost;
+                        else if (ticket.type === 'young') cost += ticket.cost; // Adiciona para os jovens também se houver.
+                    });
+                    
+                    // Ajusta para o total da família, se for relevante, ou mantém por pessoa.
+                    // Para o resumo de compras concluídas, vamos assumir o custo por pessoa, para simplificar.
+                    // Se precisar do custo total da família aqui, a lógica precisaria de ser mais específica (x2 adultos, x2 jovens).
+                    // Para já, mostraremos o custo por pessoa, se for relevante.
+                    // Ou podemos simplesmente mostrar o custo total da categoria, se a lógica for por categoria de bilhete.
+
+                    // Vamos mostrar o custo por pessoa para bilhos de "adult" type, o que se aplica aos sogros
+                    // e um custo total para "nós".
+                    let totalCostForFamily = 0;
+                    budgetConfiguration[item.budgetKey].tickets.forEach(ticket => {
+                        if (ticket.type === 'adult') totalCostForFamily += (ticket.cost * 2); // 2 adultos
+                        else if (ticket.type === 'young') totalCostForFamily += (ticket.cost * 2); // 2 jovens
+                    });
+
+
+                    if (totalCostForFamily > 0) costHTML = `<span class="ml-auto pl-4 font-semibold text-gray-700">Custo Total: ${totalCostForFamily.toFixed(2)} €</span>`;
                 }
                 return `<div class="flex items-center completed-item-text p-2 border-b border-gray-100"><i class="fa-solid fa-check-circle text-green-500 mr-4 text-xl"></i><span class="flex-grow">${item.title}</span>${costHTML}</div>`;
             }).join('');
@@ -265,12 +289,14 @@
 /* ---------------------------------------------------------------------------------------------------  */
 
         document.addEventListener('DOMContentLoaded', () => {
+            // Re-definir budgetConfiguration e planningEvents dentro do DOMContentLoaded
+            // para garantir que estão sempre atualizados quando a página carrega.
             Object.assign(budgetConfiguration, {
                 louvre: { title: "Museu do Louvre", icon: "fa-landmark-dome", tickets: [ 
                   { name: 'Bilhete Geral', cost: 22.00, type: 'adult' } ] },
                   
                 eiffel: { title: "Torre Eiffel", icon: "fa-tower-observation", tickets: [ 
-                  { name: 'Escadas + Elevador Topo (Adultos)', cost: 27.50 }, 
+                  { name: 'Escadas + Elevador Topo (Adultos)', cost: 27.50, type: 'adult' }, // Assumindo este é o que foi comprado
                   { name: 'Elevador Topo (Adultos)', cost: 36.10, type: 'adult' }, 
                   { name: 'Escadas + Elevador Topo (-18)', cost: 13.80, type: 'young' }
                   ] },
@@ -281,7 +307,6 @@
                   
                 versailles: { title: "Versailles", icon: "fa-landmark-dome", tickets: [ 
                   { name: 'Bilhete Geral', cost: 21.00, type: 'adult' }
-                  
                   ] },
 
                 orsay: { title: "Musée d'Orsay", icon: "fa-landmark-dome", tickets: [ 
@@ -306,12 +331,17 @@
 /* ---------------------------------- Resumo de Compras Concluídas -----------------------------------  */
 /* ---------------------------------------------------------------------------------------------------  */    
             
-            Object.assign(planningEvents, [
+            planningEvents = [
                 { title: 'Comprar bilhetes para o Museu do Louvre', status: 'complete', budgetKey: 'louvre' },
                 { title: 'Comprar bilhetes para a Museu D Orsay', status: 'complete', budgetKey: 'orsay' },
                 { title: 'Comprar bilhetes para Versailles', status: 'complete', budgetKey: 'versailles' },
+                { title: 'Comprar bilhetes para a Sainte-Chapelle', status: 'complete', budgetKey: 'saintechapelle' }, // Foi adicionado um budgetKey
+                { title: 'Comprar bilhetes para a Torre Eiffel', status: 'complete', budgetKey: 'eiffel' }, // Adicionado budgetKey e status completo
+                { title: 'Comprar bilhetes para a Ópera Garnier', status: 'pending', budgetKey: 'garnier' }, // Foi adicionado um budgetKey
+                { title: 'Fazer pagamento da casa de Paris', status: 'pending', budgetKey: '' }, // Não tem um custo direto de bilhete
+                { title: 'Reserva para entrada sem filas na Notre-Dame', status: 'pending', budgetKey: '' }, // Não tem um custo direto de bilhete
                 { title: 'VIAGEM!', status: 'complete' }
-            ]);
+            ];
 
             processAndDisplayRemainingBudget();
             renderMovementsTable();
