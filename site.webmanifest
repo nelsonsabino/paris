@@ -1,20 +1,30 @@
 {
-  "name": "Paris 2025",
-  "short_name": "ParisTrip",
+  "name": "Viagem a Paris 2025",
+  "short_name": "Paris 2025",
+  "description": "Planeamento da viagem a Paris em Setembro de 2025",
   "start_url": "index.html",
+  "scope": "./",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#ffffff",
-  "theme_color": "#facc15",
+  "theme_color": "#1f2937", 
+  "lang": "pt-PT",
   "icons": [
     {
-      "src": "web-app-manifest-192x192.png",
+      "src": "/web-app-manifest-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "web-app-manifest-512x512.png",
+      "src": "/web-app-manifest-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     }
   ]
 }
