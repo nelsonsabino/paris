@@ -319,5 +319,14 @@
             <p id="modal-description" class="text-gray-600">Descrição detalhada do evento irá aparecer aqui.</p>
         </div>
     </div>
+
+    <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js')
+      .then(() => console.log('Service Worker registado com sucesso!'))
+      .catch(error => console.log('Erro ao registar SW:', error));
+  }
+</script>
+
 </body>
 </html>
