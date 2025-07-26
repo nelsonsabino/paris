@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orçamento: Viagem a Paris 2025</title>
+
+    <!-- Favicon para diferentes browsers -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        /* Estilos base (para telemóveis) */
+        body { font-family: 'Poppins', sans-serif; background-color: #f0f4f8; font-size: 14px; }
+        .main-title { font-size: 1.875rem; line-height: 2.25rem; }
+        .section-title { font-size: 1.5rem; line-height: 2rem; }
+        .display-cost { font-size: 1.5rem; line-height: 2.5rem; }
+        .table-header-text { font-size: 0.85rem; }
+        .table-body-text { font-size: 0.75rem; }
+        .table-footer-text { font-size: 0.75rem; }
+        .completed-item-text { font-size: 0.875rem; }
+
+        /* Regras para ecrãs maiores (md: 768px em diante) */
+        @media (min-width: 768px) {
+            body { font-size: 16px; }
+            .main-title { font-size: 2.25rem; line-height: 2.5rem; }
+            .section-title { font-size: 1.875rem; line-height: 2.25rem; }
+            .display-cost { font-size: 3rem; line-height: 1; }
+            .table-header-text { font-size: 1.125rem; }
+            .table-body-text { font-size: 1rem; }
+            .table-footer-text { font-size: 1.25rem; }
+            .completed-item-text { font-size: 1.125rem; }
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+
+        <header class="mb-12 flex flex-col md:flex-row justify-between items-center gap-4">
+            <h1 class="main-title font-bold text-gray-800 text-center md:text-left">Orçamento e Finanças</h1>
+            <a href="index.html" class="bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-colors w-full md:w-auto text-center">
+                <i class="fa-solid fa-arrow-left mr-2"></i>
+                Voltar ao Painel
+            </a>
+        </header>
+
+        <section class="mb-12">
+            <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Folha de Movimentos</h2>
+            <div class="bg-white p-4 md:p-6 rounded-2xl shadow-lg">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left" id="movements-table">
+                        <thead class="border-b-2 border-gray-200">
+                            <tr>
+                                <th class="p-3 md:p-4 table-header-text">Movimento</th>
+                                <th class="p-3 md:p-4 table-header-text text-right">Sogra</th>
+                                <th class="p-3 md:p-4 table-header-text text-right">Sogro</th>
+                                <th class="p-3 md:p-4 table-header-text text-right">Nós</th>
+                                <th class="p-3 md:p-4 table-header-text text-center w-12"></th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100"></tbody>
+                        <tfoot class="border-t-2 border-gray-300 font-bold"></tfoot>
+                    </table>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-lg mt-8">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">Adicionar Novo Movimento</h3>
+                <form id="add-movement-form">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
+                        <div class="md:col-span-1"><label for="mov-description" class="block text-sm font-medium text-gray-700">Descrição</label><input type="text" id="mov-description" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required></div>
+                        <div><label for="mov-sogra" class="block text-sm font-medium text-gray-700">Sogra</label><input type="number" id="mov-sogra" step="0.01" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="0.00"></div>
+                        <div><label for="mov-sogro" class="block text-sm font-medium text-gray-700">Sogro</label><input type="number" id="mov-sogro" step="0.01" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="0.00"></div>
+                        <div><label for="mov-nos" class="block text-sm font-medium text-gray-700">Nós</label><input type="number" id="mov-nos" step="0.01" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="0.00"></div>
+                    </div>
+                    <button type="submit" class="w-full mt-4 bg-green-600 text-white font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-green-700 transition-colors"><i class="fa-solid fa-plus mr-2"></i>Adicionar</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Bilhetes Restantes</h2>
+            <p class="text-center text-gray-600 mb-8 -mt-6">Custo estimado do que ainda falta comprar.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
+                    <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Total dos bilhetes em falta (Sogros /cada)</h3>
+                    <p id="sogros-cost" class="display-cost font-bold text-green-600 mt-2">0.00 €</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
+                    <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Total dos bilhetes em Falta (Os 4)</h3>
+                    <p id="familia-cost" class="display-cost font-bold text-blue-600 mt-2">0.00 €</p>
+                </div>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center mt-12">Detalhe do Orçamento Restante</h3>
+            <div id="budget-cards-container" class="grid grid-cols-1 md:grid-cols-1 gap-8"></div>
+        </section>
+
+        <section class="mb-12">
+             <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Resumo de Compras Concluídas</h2>
+             <div id="completed-purchases-container" class="bg-white p-6 rounded-2xl shadow-lg space-y-4"></div>
+        </section>
+    </div>
+
+    <!-- MODAL DE PASSWORD -->
+    <div id="password-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-sm">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Ação Protegida</h3>
+            <p class="text-gray-600 mb-4">Por favor, insira a password para continuar.</p>
+            <form id="password-form">
+                <input type="password" id="password-input" class="w-full border-gray-300 rounded-md shadow-sm mb-2" required>
+                <span id="password-error" class="text-red-500 text-sm hidden">Password incorreta.</span>
+                <div class="flex justify-end gap-4 mt-6">
+                    <button type="button" id="cancel-password" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300">Cancelar</button>
+                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Confirmar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-database-compat.js"></script>
+    <script>
+        // --- CONFIGURAÇÃO DE SEGURANÇA ---
+        // !!! Altere esta password para a sua escolha !!!
+        const a_senha_secreta = 'paris2025';
+        let isAuthenticated = false;
+        let pendingAction = null;
+
+        // --- LÓGICA DE GESTÃO DE DADOS ---
+        const firebaseConfig = {
+          apiKey: "AIzaSyAt7jAk5r2tqSdyTf2m7MUebd_t7bbDTJk",
+          authDomain: "planeamento-viagem-paris.firebaseapp.com",
+          databaseURL: "https://planeamento-viagem-paris-default-rtdb.europe-west1.firebasedatabase.app",
+          projectId: "planeamento-viagem-paris",
+          storageBucket: "planeamento-viagem-paris.appspot.com",
+          messagingSenderId: "121000897121",
+          appId: "1:121000897121:web:75662c01dc56926bf61820"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+        const movimentosRef = database.ref('movimentos');
+
+        const budgetConfiguration = {};
+        let planningEvents = [];
+        let sogrosRemainingCost = 0;
+        let familiaRemainingCost = 0;
+
+        // --- FUNÇÕES DE RENDERIZAÇÃO E FORMATAÇÃO (AGORA COMPLETAS) ---
+        function formatCurrency(value) {
+            if (typeof value !== 'number' || isNaN(value)) { return '-'; }
+            return `${value.toFixed(2).replace('.', ',')} €`;
+        }
+        
+        function renderMovementsTable() {
+            const tfoot = document.querySelector('#movements-table tfoot');
+            movimentosRef.on('value', (snapshot) => {
+                const movements = snapshot.val();
+                const tbody = document.querySelector('#movements-table tbody');
+                tbody.innerHTML = '';
+                tfoot.innerHTML = '';
+                
+                let sumSogra = 0, sumSogro = 0, sumNos = 0;
+                if (movements) {
+                    for (const key in movements) {
+                        const mov = movements[key];
+                        sumSogra += mov.sogra || 0;
+                        sumSogro += mov.sogro || 0;
+                        sumNos += mov.nos || 0;
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td class="p-3 md:p-4 table-body-text">${mov.description}</td>
+                            <td class="p-3 md:p-4 table-body-text text-right font-mono ${(mov.sogra||0) >= 0 ? 'text-green-600' : 'text-red-600'}">${formatCurrency(mov.sogra)}</td>
+                            <td class="p-3 md:p-4 table-body-text text-right font-mono ${(mov.sogro||0) >= 0 ? 'text-green-600' : 'text-red-600'}">${formatCurrency(mov.sogro)}</td>
+                            <td class="p-3 md:p-4 table-body-text text-right font-mono ${(mov.nos||0) >= 0 ? 'text-green-600' : 'text-red-600'}">${formatCurrency(mov.nos)}</td>
+                            <td class="p-3 md:p-4 text-center"><button class="delete-btn text-gray-400 hover:text-red-600" data-key="${key}" title="Apagar"><i class="fa-solid fa-trash-can"></i></button></td>`;
+                        tbody.appendChild(row);
+                    }
+                }
+
+                const balanceRow = document.createElement('tr');
+                balanceRow.innerHTML = `
+                    <td class="p-3 md:p-4 table-footer-text">Saldo</td>
+                    <td class="p-3 md:p-4 table-footer-text text-right">${formatCurrency(sumSogra)}</td>
+                    <td class="p-3 md:p-4 table-footer-text text-right">${formatCurrency(sumSogro)}</td>
+                    <td class="p-3 md:p-4 table-footer-text text-right">${formatCurrency(sumNos)}</td>
+                    <td></td>`;
+                tfoot.appendChild(balanceRow);
+
+                const remainingCostsRow = document.createElement('tr');
+                remainingCostsRow.innerHTML = `
+                    <td class="p-3 md:p-4 table-footer-text text-red-700">Custos Restantes</td>
+                    <td class="p-3 md:p-4 table-footer-text text-right text-red-700 font-mono">- ${formatCurrency(sogrosRemainingCost)}</td>
+                    <td class="p-3 md:p-4 table-footer-text text-right text-red-700 font-mono">- ${formatCurrency(sogrosRemainingCost)}</td>
+                    <td class="p-3 md:p-4 table-footer-text text-right text-red-700 font-mono">- ${formatCurrency(familiaRemainingCost)}</td>
+                    <td></td>`;
+                tfoot.appendChild(remainingCostsRow);
+
+                const diffSogra = sumSogra - sogrosRemainingCost;
+                const diffSogro = sumSogro - sogrosRemainingCost;
+                const diffNos = sumNos - familiaRemainingCost;
+                const diffRow = document.createElement('tr');
+                diffRow.innerHTML = `
+                    <td class="p-3 md:p-4 table-footer-text text-blue-700">Diferença</td>
+                    <td class="p-3 md:p-4 table-footer-text text-right ${diffSogra >= 0 ? 'text-green-700' : 'text-red-700'}">${formatCurrency(diffSogra)}</td>
+                    <td class="p-3 md:p-4 table-footer-text text-right ${diffSogro >= 0 ? 'text-green-700' : 'text-red-700'}">${formatCurrency(diffSogro)}</td>
+                    <td class="p-3 md:p-4 table-footer-text text-right ${diffNos >= 0 ? 'text-green-700' : 'text-red-700'}">${formatCurrency(diffNos)}</td>
+                    <td></td>`;
+                tfoot.appendChild(diffRow);
+            });
+        }
+        
+        function processAndDisplayRemainingBudget() {
+            let remainingAdultCost = 0;
+            let remainingYoungCost = 0;
+
+            const completedKeys = planningEvents.filter(e => e.status === 'complete' && e.budgetKey).map(e => e.budgetKey);
+            
+            for (const key in budgetConfiguration) {
+                if (completedKeys.includes(key)) continue;
+                const category = budgetConfiguration[key];
+                category.tickets.forEach(ticket => {
+                    if (ticket.type === 'adult') { remainingAdultCost += ticket.cost; }
+                    else if (ticket.type === 'young') { remainingYoungCost += ticket.cost; }
+                });
+            }
+            sogrosRemainingCost = remainingAdultCost;
+            familiaRemainingCost = (remainingAdultCost * 2) + (remainingYoungCost * 2);
+
+            document.getElementById('sogros-cost').textContent = `${sogrosRemainingCost.toFixed(2)} €`;
+            document.getElementById('familia-cost').textContent = `${familiaRemainingCost.toFixed(2)} €`;
+        }
+
+        function renderRemainingBudgetCards() {
+            const budgetContainer = document.getElementById('budget-cards-container');
+            const completedKeys = planningEvents.filter(e => e.status === 'complete' && e.budgetKey).map(e => e.budgetKey);
+            if (!budgetContainer) return;
+            budgetContainer.innerHTML = '';
+            for (const key in budgetConfiguration) {
+                if (completedKeys.includes(key)) continue;
+                const category = budgetConfiguration[key];
+                let itemsHTML = category.tickets.map(ticket => {
+                    const isCalculated = ticket.type === 'adult' || ticket.type === 'young';
+                    const containerClass = isCalculated ? 'bg-green-50' : 'bg-gray-100';
+                    const textClass = isCalculated ? 'font-semibold' : 'text-gray-600';
+                    return `<div class="flex justify-between items-center p-2 rounded-md ${containerClass}"><span class="${textClass}">${ticket.name}</span><span class="font-mono ${textClass}">${ticket.cost.toFixed(2)} €</span></div>`;
+                }).join('');
+                const cardHTML = `<div class="bg-white p-6 rounded-2xl shadow-lg flex flex-col"><h3 class="text-xl font-bold text-gray-800 mb-4"><i class="fa-solid ${category.icon} mr-2 text-gray-400"></i>${category.title}</h3><div class="space-y-2">${itemsHTML}</div></div>`;
+                budgetContainer.innerHTML += cardHTML;
+            }
+        }
+
+        function renderCompletedPurchases() {
+            const container = document.getElementById('completed-purchases-container');
+            const completedItems = planningEvents.filter(e => e.status === 'complete' && e.title !== 'VIAGEM!');
+            if (!container || completedItems.length === 0) {
+                if (container) container.innerHTML = `<p class="text-gray-500 italic text-center">Nenhuma compra concluída ainda.</p>`;
+                return;
+            }
+            const itemsHTML = completedItems.map(item => {
+                return `<div class="flex items-center completed-item-text p-2 border-b border-gray-100"><i class="fa-solid fa-check-circle text-green-500 mr-4 text-xl"></i><span class="flex-grow">${item.title}</span></div>`;
+            }).join('');
+            container.innerHTML = itemsHTML;
+        }
+
+        // --- NOVA LÓGICA DE PASSWORD ---
+        const passwordModal = document.getElementById('password-modal');
+        const passwordForm = document.getElementById('password-form');
+        const passwordInput = document.getElementById('password-input');
+        const passwordError = document.getElementById('password-error');
+        const cancelPasswordBtn = document.getElementById('cancel-password');
+
+        function requestPassword(actionCallback) {
+            if (isAuthenticated) {
+                actionCallback();
+                return;
+            }
+            pendingAction = actionCallback;
+            passwordModal.classList.remove('hidden');
+            passwordInput.focus();
+        }
+
+        passwordForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (passwordInput.value === a_senha_secreta) {
+                isAuthenticated = true;
+                passwordModal.classList.add('hidden');
+                passwordInput.value = '';
+                passwordError.classList.add('hidden');
+                if (pendingAction) {
+                    pendingAction();
+                    pendingAction = null;
+                }
+            } else {
+                passwordError.classList.remove('hidden');
+            }
+        });
+
+        cancelPasswordBtn.addEventListener('click', () => {
+            passwordModal.classList.add('hidden');
+            passwordInput.value = '';
+            passwordError.classList.add('hidden');
+            pendingAction = null;
+        });
+
+        // --- FUNÇÕES DE MANIPULAÇÃO DE DADOS (ATUALIZADAS) ---
+        function setupMovementsForm() {
+            const form = document.getElementById('add-movement-form');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const newMovement = {
+                    description: document.getElementById('mov-description').value,
+                    sogra: parseFloat(document.getElementById('mov-sogra').value) || 0,
+                    sogro: parseFloat(document.getElementById('mov-sogro').value) || 0,
+                    nos: parseFloat(document.getElementById('mov-nos').value) || 0
+                };
+
+                requestPassword(() => {
+                    movimentosRef.push(newMovement);
+                    form.reset();
+                });
+            });
+        }
+
+        function setupDeleteFunctionality() {
+            const table = document.getElementById('movements-table');
+            table.addEventListener('click', (e) => {
+                const deleteBtn = e.target.closest('.delete-btn');
+                if (!deleteBtn) return;
+
+                const keyToDelete = deleteBtn.dataset.key;
+                const confirmed = confirm('Tem a certeza que quer apagar este movimento? Esta ação não pode ser desfeita.');
+                
+                if (confirmed) {
+                    requestPassword(() => {
+                        movimentosRef.child(keyToDelete).remove().catch(error => console.error("Erro ao apagar:", error));
+                    });
+                }
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            Object.assign(budgetConfiguration, {
+                louvre: { title: "Museu do Louvre", icon: "fa-landmark-dome", tickets: [ 
+                  { name: 'Bilhete Geral', cost: 22.00, type: 'adult' } ] },
+                eiffel: { title: "Torre Eiffel", icon: "fa-tower-observation", tickets: [ 
+                  { name: 'Elevador Topo (Adultos)', cost: 36.10, type: 'adult' }, 
+                  { name: 'Elevador Topo (-18)', cost: 18.10, type: 'young' } ] },
+                saintechapelle: { title: "Sainte-Chapelle", icon: "fa-church", tickets: [ 
+                  { name: 'Bilhete Geral', cost: 19.00, type: 'adult' } ] },
+                versailles: { title: "Versailles", icon: "fa-landmark-dome", tickets: [ 
+                  { name: 'Bilhete Geral', cost: 21.00, type: 'adult' } ] },
+                orsay: { title: "Musée d'Orsay", icon: "fa-landmark-dome", tickets: [ 
+                  { name: 'Bilhete Geral', cost: 16.00, type: 'adult' } ] },
+                garnier: { title: "Ópera Garnier", icon: "fa-masks-theater", tickets: [ 
+                  { name: 'Bilhete Adulto', cost: 15.00, type: 'adult' }, 
+                  { name: 'Bilhete -18', cost: 10.00, type: 'young' } ] },
+                transports: { title: "Transportes Públicos", icon: "fa-train-subway", tickets: [ 
+                  { name: 'Navigo Easy travel pass', cost: 2.00, type: 'adult' }, 
+                  { name: 'Forfait Paris Visit 5 dias', cost: 76.25, type: 'adult' }, 
+                  { name: 'Navigo Easy travel pass jovem', cost: 2.00, type: 'young' }, 
+                  { name: 'Forfait Paris Visit 5 dias jovem', cost: 76.25, type: 'young' } ] }
+            });
+            
+            planningEvents = [
+                { title: 'Comprar bilhetes para o Museu do Louvre', status: 'complete', budgetKey: 'louvre' },
+                { title: 'Comprar bilhetes para a Museu D Orsay', status: 'complete', budgetKey: 'orsay' },
+                { title: 'Comprar bilhetes para Versailles', status: 'complete', budgetKey: 'versailles' },
+                { title: 'Comprar bilhetes para a Sainte-Chapelle', status: 'complete', budgetKey: 'saintechapelle' },
+                { title: 'Comprar bilhetes para a Torre Eiffel', status: 'complete', budgetKey: 'eiffel' },
+                { title: 'Comprar bilhetes para a Ópera Garnier', status: 'complete', budgetKey: 'garnier' },
+                { title: 'Fazer pagamento da casa de Paris', status: 'pending', budgetKey: '' },
+                { title: 'Reserva para entrada sem filas na Notre-Dame', status: 'pending', budgetKey: '' },
+                { title: 'VIAGEM!', status: 'complete' }
+            ];
+
+            processAndDisplayRemainingBudget();
+            renderMovementsTable(); // A renderização inicial não precisa de password
+            setupMovementsForm();
+            setupDeleteFunctionality();
+            renderRemainingBudgetCards();
+            renderCompletedPurchases();
+        });
+    </script>
+</body>
+</html>
