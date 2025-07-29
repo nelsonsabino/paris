@@ -14,7 +14,7 @@ const guias = [
     { link: 'visita_quartier-latin.html', img: 'https://midias-turismo.eurodicas.com.br/wp-content/uploads/2025/02/quartier-latin-1-1200x800.jpg.webp', title: 'Quartier Latin' },
     { link: 'visita_opera-garnier.html', img: 'https://imgmd.net/images/v1/guia/1704274/opera-garnier.jpg', title: 'Ópera Garnier' },
     { link: 'visita_arco-do-triunfo.html', img: 'https://images.mnstatic.com/61/40/614037e83d114c30b06f7eecee55ff80.jpg', title: 'Arco do Triunfo' },
-    { link: 'visita_jardim-luxemburgo.html', img: 'https://www.eutouring.com/images_paris_jardin_du_luxembourg_18.jpeg', title: 'Jardim do Luxemburgo' }
+    { link: 'visita_jardim-luxemburgo.html', img: 'https://vinhedoscuiaba.com.br/blog/wp-content/uploads/2021/06/iStock-489807187_low.jpg', title: 'Jardim do Luxemburgo' }
 ];
 
 function renderStickyNav() {
