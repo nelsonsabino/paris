@@ -158,7 +158,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-database-compat.js"></script>
   
     
-        <script>
+            <script>
         const countdownDate = new Date(2025, 8, 19, 6, 0, 0).getTime();
         const x = setInterval(function() {
             const now = new Date().getTime();
@@ -217,14 +217,14 @@
         function renderTimeline() { /* ... código mantido ... */ }
         function renderCalendar() { /* ... código mantido ... */ }
         function renderTicketTimeline() { /* ... código mantido ... */ }
-        
-        // --- NOVO CÓDIGO PARA A PREVISÃO DA VIAGEM ---
+
+        // --- CÓDIGO ATUALIZADO PARA A PREVISÃO DA VIAGEM ---
+        const tripStartDate = new Date('2025-09-19T12:00:00Z');
+        const tripEndDate = new Date('2025-09-23T12:00:00Z');
+
         const fetchTripWeather = async () => {
-            const tripStartDate = new Date('2025-09-19T12:00:00Z');
-            const tripEndDate = new Date('2025-09-23T12:00:00Z');
             const today = new Date();
             const daysUntilTrip = Math.ceil((tripStartDate - today) / (1000 * 60 * 60 * 24));
-
             let apiUrl;
             let title;
 
@@ -256,10 +256,9 @@
             return icons[code] || 'fa-question-circle';
         };
         
-        const formatDayAndDate = (dateString) => {
-            const date = new Date(dateString);
-            const day = date.toLocaleDateString('pt-PT', { weekday: 'short' });
-            const dayOfMonth = date.getDate();
+        const formatDayAndDate = (dateObject) => {
+            const day = dateObject.toLocaleDateString('pt-PT', { weekday: 'short' });
+            const dayOfMonth = dateObject.getDate();
             return `${day} ${dayOfMonth}`;
         };
 
@@ -269,9 +268,14 @@
             
             let forecastHtml = '';
             for (let i = 0; i < daily.time.length; i++) {
+                // --- ALTERAÇÃO PRINCIPAL AQUI ---
+                // Cria a data correta para exibição, independentemente do ano dos dados
+                const displayDate = new Date(tripStartDate);
+                displayDate.setDate(tripStartDate.getDate() + i);
+                
                 forecastHtml += `
                     <div class="text-center p-3 bg-gray-100 rounded-lg">
-                        <p class="font-semibold">${formatDayAndDate(daily.time[i])}</p>
+                        <p class="font-semibold">${formatDayAndDate(displayDate)}</p>
                         <i class="fa-solid ${getWeatherIcon(daily.weather_code[i])} text-3xl my-2 text-blue-500"></i>
                         <p class="text-sm">
                             <span class="font-bold text-red-500">${Math.round(daily.temperature_2m_max[i])}°</span> / <span class="text-blue-600">${Math.round(daily.temperature_2m_min[i])}°</span>
