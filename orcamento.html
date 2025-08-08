@@ -129,7 +129,6 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-database-compat.js"></script>
     <script>
         // --- CONFIGURAÇÃO DE SEGURANÇA ---
-        // !!! Altere esta password para a sua escolha !!!
         const a_senha_secreta = 'paris2025';
         let isAuthenticated = false;
         let pendingAction = null;
@@ -153,7 +152,7 @@
         let sogrosRemainingCost = 0;
         let familiaRemainingCost = 0;
 
-        // --- FUNÇÕES DE RENDERIZAÇÃO E FORMATAÇÃO (AGORA COMPLETAS) ---
+        // --- FUNÇÕES DE RENDERIZAÇÃO E FORMATAÇÃO ---
         function formatCurrency(value) {
             if (typeof value !== 'number' || isNaN(value)) { return '-'; }
             return `${value.toFixed(2).replace('.', ',')} €`;
@@ -168,12 +167,19 @@
                 tfoot.innerHTML = '';
                 
                 let sumSogra = 0, sumSogro = 0, sumNos = 0;
+                let totalGastoSogra = 0, totalGastoSogro = 0, totalGastoNos = 0;
+
                 if (movements) {
                     for (const key in movements) {
                         const mov = movements[key];
                         sumSogra += mov.sogra || 0;
                         sumSogro += mov.sogro || 0;
                         sumNos += mov.nos || 0;
+
+                        if ((mov.sogra || 0) < 0) totalGastoSogra -= mov.sogra;
+                        if ((mov.sogro || 0) < 0) totalGastoSogro -= mov.sogro;
+                        if ((mov.nos || 0) < 0) totalGastoNos -= mov.nos;
+
                         const row = document.createElement('tr');
                         row.innerHTML = `
                             <td class="p-3 md:p-4 table-body-text">${mov.description}</td>
@@ -214,6 +220,15 @@
                     <td class="p-3 md:p-4 table-footer-text text-right ${diffNos >= 0 ? 'text-green-700' : 'text-red-700'}">${formatCurrency(diffNos)}</td>
                     <td></td>`;
                 tfoot.appendChild(diffRow);
+
+                const totalGastoRow = document.createElement('tr');
+                totalGastoRow.innerHTML = `
+                    <td class="p-3 md:p-4 table-footer-text text-gray-700">Total Gasto</td>
+                    <td class="p-3 md:p-4 table-footer-text text-right font-mono">${formatCurrency(totalGastoSogra)}</td>
+                    <td class="p-3 md:p-4 table-footer-text text-right font-mono">${formatCurrency(totalGastoSogro)}</td>
+                    <td class="p-3 md:p-4 table-footer-text text-right font-mono">${formatCurrency(totalGastoNos)}</td>
+                    <td></td>`;
+                tfoot.appendChild(totalGastoRow);
             });
         }
         
@@ -270,7 +285,7 @@
             container.innerHTML = itemsHTML;
         }
 
-        // --- NOVA LÓGICA DE PASSWORD ---
+        // --- LÓGICA DE PASSWORD E MANIPULAÇÃO DE DADOS ---
         const passwordModal = document.getElementById('password-modal');
         const passwordForm = document.getElementById('password-form');
         const passwordInput = document.getElementById('password-input');
@@ -310,7 +325,6 @@
             pendingAction = null;
         });
 
-        // --- FUNÇÕES DE MANIPULAÇÃO DE DADOS (ATUALIZADAS) ---
         function setupMovementsForm() {
             const form = document.getElementById('add-movement-form');
             form.addEventListener('submit', (e) => {
@@ -382,7 +396,7 @@
             ];
 
             processAndDisplayRemainingBudget();
-            renderMovementsTable(); // A renderização inicial não precisa de password
+            renderMovementsTable();
             setupMovementsForm();
             setupDeleteFunctionality();
             renderRemainingBudgetCards();
