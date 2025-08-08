@@ -128,12 +128,10 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-database-compat.js"></script>
     <script>
-        // --- CONFIGURAÇÃO DE SEGURANÇA ---
         const a_senha_secreta = 'paris2025';
         let isAuthenticated = false;
         let pendingAction = null;
 
-        // --- LÓGICA DE GESTÃO DE DADOS ---
         const firebaseConfig = {
           apiKey: "AIzaSyAt7jAk5r2tqSdyTf2m7MUebd_t7bbDTJk",
           authDomain: "planeamento-viagem-paris.firebaseapp.com",
@@ -152,7 +150,6 @@
         let sogrosRemainingCost = 0;
         let familiaRemainingCost = 0;
 
-        // --- FUNÇÕES DE RENDERIZAÇÃO E FORMATAÇÃO ---
         function formatCurrency(value) {
             if (typeof value !== 'number' || isNaN(value)) { return '-'; }
             return `${value.toFixed(2).replace('.', ',')} €`;
@@ -223,10 +220,10 @@
 
                 const totalGastoRow = document.createElement('tr');
                 totalGastoRow.innerHTML = `
-                    <td class="p-3 md:p-4 table-footer-text text-gray-700">Total Gasto</td>
-                    <td class="p-3 md:p-4 table-footer-text text-right font-mono">${formatCurrency(totalGastoSogra)}</td>
-                    <td class="p-3 md:p-4 table-footer-text text-right font-mono">${formatCurrency(totalGastoSogro)}</td>
-                    <td class="p-3 md:p-4 table-footer-text text-right font-mono">${formatCurrency(totalGastoNos)}</td>
+                    <td class="p-3 md:p-4 text-red-600 text-xs md:text-base">Total Gasto</td>
+                    <td class="p-3 md:p-4 text-red-600 text-xs md:text-base text-right font-mono">${formatCurrency(totalGastoSogra)}</td>
+                    <td class="p-3 md:p-4 text-red-600 text-xs md:text-base text-right font-mono">${formatCurrency(totalGastoSogro)}</td>
+                    <td class="p-3 md:p-4 text-red-600 text-xs md:text-base text-right font-mono">${formatCurrency(totalGastoNos)}</td>
                     <td></td>`;
                 tfoot.appendChild(totalGastoRow);
             });
@@ -235,9 +232,7 @@
         function processAndDisplayRemainingBudget() {
             let remainingAdultCost = 0;
             let remainingYoungCost = 0;
-
             const completedKeys = planningEvents.filter(e => e.status === 'complete' && e.budgetKey).map(e => e.budgetKey);
-            
             for (const key in budgetConfiguration) {
                 if (completedKeys.includes(key)) continue;
                 const category = budgetConfiguration[key];
@@ -248,7 +243,6 @@
             }
             sogrosRemainingCost = remainingAdultCost;
             familiaRemainingCost = (remainingAdultCost * 2) + (remainingYoungCost * 2);
-
             document.getElementById('sogros-cost').textContent = `${sogrosRemainingCost.toFixed(2)} €`;
             document.getElementById('familia-cost').textContent = `${familiaRemainingCost.toFixed(2)} €`;
         }
@@ -285,7 +279,6 @@
             container.innerHTML = itemsHTML;
         }
 
-        // --- LÓGICA DE PASSWORD E MANIPULAÇÃO DE DADOS ---
         const passwordModal = document.getElementById('password-modal');
         const passwordForm = document.getElementById('password-form');
         const passwordInput = document.getElementById('password-input');
@@ -293,10 +286,7 @@
         const cancelPasswordBtn = document.getElementById('cancel-password');
 
         function requestPassword(actionCallback) {
-            if (isAuthenticated) {
-                actionCallback();
-                return;
-            }
+            if (isAuthenticated) { actionCallback(); return; }
             pendingAction = actionCallback;
             passwordModal.classList.remove('hidden');
             passwordInput.focus();
@@ -309,10 +299,7 @@
                 passwordModal.classList.add('hidden');
                 passwordInput.value = '';
                 passwordError.classList.add('hidden');
-                if (pendingAction) {
-                    pendingAction();
-                    pendingAction = null;
-                }
+                if (pendingAction) { pendingAction(); pendingAction = null; }
             } else {
                 passwordError.classList.remove('hidden');
             }
@@ -335,7 +322,6 @@
                     sogro: parseFloat(document.getElementById('mov-sogro').value) || 0,
                     nos: parseFloat(document.getElementById('mov-nos').value) || 0
                 };
-
                 requestPassword(() => {
                     movimentosRef.push(newMovement);
                     form.reset();
@@ -348,10 +334,8 @@
             table.addEventListener('click', (e) => {
                 const deleteBtn = e.target.closest('.delete-btn');
                 if (!deleteBtn) return;
-
                 const keyToDelete = deleteBtn.dataset.key;
                 const confirmed = confirm('Tem a certeza que quer apagar este movimento? Esta ação não pode ser desfeita.');
-                
                 if (confirmed) {
                     requestPassword(() => {
                         movimentosRef.child(keyToDelete).remove().catch(error => console.error("Erro ao apagar:", error));
@@ -362,25 +346,13 @@
         
         document.addEventListener('DOMContentLoaded', () => {
             Object.assign(budgetConfiguration, {
-                louvre: { title: "Museu do Louvre", icon: "fa-landmark-dome", tickets: [ 
-                  { name: 'Bilhete Geral', cost: 22.00, type: 'adult' } ] },
-                eiffel: { title: "Torre Eiffel", icon: "fa-tower-observation", tickets: [ 
-                  { name: 'Elevador Topo (Adultos)', cost: 36.10, type: 'adult' }, 
-                  { name: 'Elevador Topo (-18)', cost: 18.10, type: 'young' } ] },
-                saintechapelle: { title: "Sainte-Chapelle", icon: "fa-church", tickets: [ 
-                  { name: 'Bilhete Geral', cost: 19.00, type: 'adult' } ] },
-                versailles: { title: "Versailles", icon: "fa-landmark-dome", tickets: [ 
-                  { name: 'Bilhete Geral', cost: 21.00, type: 'adult' } ] },
-                orsay: { title: "Musée d'Orsay", icon: "fa-landmark-dome", tickets: [ 
-                  { name: 'Bilhete Geral', cost: 16.00, type: 'adult' } ] },
-                garnier: { title: "Ópera Garnier", icon: "fa-masks-theater", tickets: [ 
-                  { name: 'Bilhete Adulto', cost: 15.00, type: 'adult' }, 
-                  { name: 'Bilhete -18', cost: 10.00, type: 'young' } ] },
-                transports: { title: "Transportes Públicos", icon: "fa-train-subway", tickets: [ 
-                  { name: 'Navigo Easy travel pass', cost: 2.00, type: 'adult' }, 
-                  { name: 'Forfait Paris Visit 5 dias', cost: 76.25, type: 'adult' }, 
-                  { name: 'Navigo Easy travel pass jovem', cost: 2.00, type: 'young' }, 
-                  { name: 'Forfait Paris Visit 5 dias jovem', cost: 76.25, type: 'young' } ] }
+                louvre: { title: "Museu do Louvre", icon: "fa-landmark-dome", tickets: [ { name: 'Bilhete Geral', cost: 22.00, type: 'adult' } ] },
+                eiffel: { title: "Torre Eiffel", icon: "fa-tower-observation", tickets: [ { name: 'Elevador Topo (Adultos)', cost: 36.10, type: 'adult' }, { name: 'Elevador Topo (-18)', cost: 18.10, type: 'young' } ] },
+                saintechapelle: { title: "Sainte-Chapelle", icon: "fa-church", tickets: [ { name: 'Bilhete Geral', cost: 19.00, type: 'adult' } ] },
+                versailles: { title: "Versailles", icon: "fa-landmark-dome", tickets: [ { name: 'Bilhete Geral', cost: 21.00, type: 'adult' } ] },
+                orsay: { title: "Musée d'Orsay", icon: "fa-landmark-dome", tickets: [ { name: 'Bilhete Geral', cost: 16.00, type: 'adult' } ] },
+                garnier: { title: "Ópera Garnier", icon: "fa-masks-theater", tickets: [ { name: 'Bilhete Adulto', cost: 15.00, type: 'adult' }, { name: 'Bilhete -18', cost: 10.00, type: 'young' } ] },
+                transports: { title: "Transportes Públicos", icon: "fa-train-subway", tickets: [ { name: 'Navigo Easy travel pass', cost: 2.00, type: 'adult' }, { name: 'Forfait Paris Visit 5 dias', cost: 76.25, type: 'adult' }, { name: 'Navigo Easy travel pass jovem', cost: 2.00, type: 'young' }, { name: 'Forfait Paris Visit 5 dias jovem', cost: 76.25, type: 'young' } ] }
             });
             
             planningEvents = [
