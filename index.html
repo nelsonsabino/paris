@@ -23,21 +23,12 @@
     <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/core/locales/pt-br.global.min.js'></script>
     
     <style>
-        /* CSS para a Galeria de Destaques */
-        .highlight-card {
-            aspect-ratio: 1 / 1;
-        }
-        .highlight-card.col-span-2 {
-            aspect-ratio: 2 / 1;
-        }
-    
-        /* Estilos base (para telemóveis) */
+        .highlight-card { aspect-ratio: 1 / 1; }
+        .highlight-card.col-span-2 { aspect-ratio: 2 / 1; }
         body { font-family: 'Poppins', sans-serif; background-color: #f0f4f8; font-size: 14px; }
         .main-title { font-size: 2rem; line-height: 2.5rem; }
         .section-title { font-size: 1.5rem; line-height: 2rem; }
         .countdown-number { font-size: 2.25rem; }
-
-        /* Regras para ecrãs maiores (md: 768px em diante) */
         @media (min-width: 768px) {
             body { font-size: 16px; }
             .main-title { font-size: 3rem; line-height: 1; }
@@ -60,7 +51,7 @@
                 <div><span id="seconds" class="countdown-number font-bold">00</span><span class="block text-sm">Segundos</span></div>
             </div>
         </header>
-        
+
         <section id="forecast-widget" class="bg-white p-6 rounded-2xl shadow-lg mb-12">
             <div class="text-center">
                 <p class="text-gray-500">A carregar previsão para a semana da viagem...</p>
@@ -69,19 +60,10 @@
 
         <section class="mb-12">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <a href="guia.html" class="block bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-transform duration-300">
-                    <div class="flex items-center text-green-800 mb-3"><i class="fa-solid fa-map-location-dot text-2xl mr-3"></i><h3 class="text-xl font-bold">Guia Visual</h3></div>
-                    <p class="text-gray-600">O nosso plano com imagens, curiosidades e destaques.</p>
-                </a>
-                <a href="roteiro.html" class="block bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-transform duration-300">
-                     <div class="flex items-center text-blue-800 mb-3"><i class="fa-solid fa-list-ol text-2xl mr-3"></i><h3 class="text-xl font-bold">Roteiro Detalhado</h3></div>
-                    <p class="text-gray-600">A versão com horários, transportes e todas as informações.</p>
-                </a>
-                <a href="orcamento.html" class="block bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-transform duration-300">
-                     <div class="flex items-center text-red-800 mb-3"><i class="fa-solid fa-euro-sign text-2xl mr-3"></i><h3 class="text-xl font-bold">Orçamento Detalhado</h3></div>
-                    <p class="text-gray-600">Consulta os custos estimados por grupo e bilhetes.</p>
-                </a>
-             </div>
+                <a href="guia.html" class="block bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-transform duration-300"><div class="flex items-center text-green-800 mb-3"><i class="fa-solid fa-map-location-dot text-2xl mr-3"></i><h3 class="text-xl font-bold">Guia Visual</h3></div><p class="text-gray-600">O nosso plano com imagens, curiosidades e destaques.</p></a>
+                <a href="roteiro.html" class="block bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-transform duration-300"><div class="flex items-center text-blue-800 mb-3"><i class="fa-solid fa-list-ol text-2xl mr-3"></i><h3 class="text-xl font-bold">Roteiro Detalhado</h3></div><p class="text-gray-600">A versão com horários, transportes e todas as informações.</p></a>
+                <a href="orcamento.html" class="block bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-transform duration-300"><div class="flex items-center text-red-800 mb-3"><i class="fa-solid fa-euro-sign text-2xl mr-3"></i><h3 class="text-xl font-bold">Orçamento Detalhado</h3></div><p class="text-gray-600">Consulta os custos estimados por grupo e bilhetes.</p></a>
+            </div>
         </section>
         
         <section class="mb-12">
@@ -135,7 +117,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-database-compat.js"></script>
     
     <script>
-        // --- CÓDIGO JAVASCRIPT ---
+        // --- SCRIPT COMPLETO E CORRIGIDO ---
         const countdownDate = new Date(2025, 8, 19, 6, 0, 0).getTime();
         const x = setInterval(function() {
             const now = new Date().getTime();
@@ -328,14 +310,11 @@
     
     <div id="event-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
         <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 w-full max-w-md relative">
-            <button id="modal-close-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 transition">
-                <i class="fa-solid fa-xmark fa-2x"></i>
-            </button>
+            <button id="modal-close-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 transition"><i class="fa-solid fa-xmark fa-2x"></i></button>
             <h3 id="modal-title" class="text-2xl font-bold text-gray-800 mb-4">Título do Evento</h3>
             <p id="modal-description" class="text-gray-600">Descrição detalhada do evento irá aparecer aqui.</p>
         </div>
     </div>
-
 
     <div id="installBanner" class="hidden fixed bottom-4 left-4 right-4 md:right-auto md:left-4 z-50 bg-white border border-gray-300 shadow-xl p-4 rounded-xl flex items-center justify-between max-w-sm mx-auto">
       <span class="text-gray-800 font-medium">Instalar esta app?</span>
@@ -352,13 +331,11 @@
 
     <script>
       let deferredPrompt;
-
       window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         deferredPrompt = e;
         const installBanner = document.getElementById('installBanner');
         installBanner.classList.remove('hidden');
-
         document.getElementById('installBtn').addEventListener('click', () => {
           installBanner.classList.add('hidden');
           deferredPrompt.prompt();
