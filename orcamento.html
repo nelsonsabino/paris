@@ -23,9 +23,6 @@
         .main-title { font-size: 1.875rem; line-height: 2.25rem; }
         .section-title { font-size: 1.5rem; line-height: 2rem; }
         .display-cost { font-size: 1.5rem; line-height: 2.5rem; }
-        .table-header-text { font-size: 0.85rem; }
-        .table-body-text { font-size: 0.75rem; }
-        .table-footer-text { font-size: 0.75rem; }
         .completed-item-text { font-size: 0.875rem; }
 
         /* Regras para ecrãs maiores (md: 768px em diante) */
@@ -34,9 +31,6 @@
             .main-title { font-size: 2.25rem; line-height: 2.5rem; }
             .section-title { font-size: 1.875rem; line-height: 2.25rem; }
             .display-cost { font-size: 3rem; line-height: 1; }
-            .table-header-text { font-size: 1.125rem; }
-            .table-body-text { font-size: 1rem; }
-            .table-footer-text { font-size: 1.25rem; }
             .completed-item-text { font-size: 1.125rem; }
         }
     </style>
@@ -54,49 +48,16 @@
         </header>
 
         <section class="mb-12">
-            <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Folha de Movimentos</h2>
-            <div class="bg-white p-4 md:p-6 rounded-2xl shadow-lg">
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left" id="movements-table">
-                        <thead class="border-b-2 border-gray-200">
-                            <tr>
-                                <th class="p-3 md:p-4 table-header-text">Movimento</th>
-                                <th class="p-3 md:p-4 table-header-text text-right">Sogra</th>
-                                <th class="p-3 md:p-4 table-header-text text-right">Sogro</th>
-                                <th class="p-3 md:p-4 table-header-text text-right">Nós</th>
-                                <th class="p-3 md:p-4 table-header-text text-center w-12"></th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-100"></tbody>
-                        <tfoot class="border-t-2 border-gray-300 font-bold"></tfoot>
-                    </table>
-                </div>
-            </div>
-            <div class="bg-white p-6 rounded-2xl shadow-lg mt-8">
-                <h3 class="text-xl font-bold text-gray-800 mb-4">Adicionar Novo Movimento</h3>
-                <form id="add-movement-form">
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
-                        <div class="md:col-span-1"><label for="mov-description" class="block text-sm font-medium text-gray-700">Descrição</label><input type="text" id="mov-description" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required></div>
-                        <div><label for="mov-sogra" class="block text-sm font-medium text-gray-700">Sogra</label><input type="number" id="mov-sogra" step="0.01" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="0.00"></div>
-                        <div><label for="mov-sogro" class="block text-sm font-medium text-gray-700">Sogro</label><input type="number" id="mov-sogro" step="0.01" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="0.00"></div>
-                        <div><label for="mov-nos" class="block text-sm font-medium text-gray-700">Nós</label><input type="number" id="mov-nos" step="0.01" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" placeholder="0.00"></div>
-                    </div>
-                    <button type="submit" class="w-full mt-4 bg-green-600 text-white font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-green-700 transition-colors"><i class="fa-solid fa-plus mr-2"></i>Adicionar</button>
-                </form>
-            </div>
-        </section>
-
-        <section class="mb-12">
             <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Bilhetes Restantes</h2>
             <p class="text-center text-gray-600 mb-8 -mt-6">Custo estimado do que ainda falta comprar.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                 <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
                     <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Total dos bilhetes em falta (Sogros /cada)</h3>
-                    <p id="sogros-cost" class="display-cost font-bold text-green-600 mt-2">0.00 €</p>
+                    <p id="sogros-cost" class="display-cost font-bold text-green-600 mt-2">0,00 €</p>
                 </div>
                 <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
                     <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Total dos bilhetes em Falta (Os 4)</h3>
-                    <p id="familia-cost" class="display-cost font-bold text-blue-600 mt-2">0.00 €</p>
+                    <p id="familia-cost" class="display-cost font-bold text-blue-600 mt-2">0,00 €</p>
                 </div>
             </div>
             <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center mt-12">Detalhe do Orçamento Restante</h3>
@@ -109,130 +70,21 @@
         </section>
     </div>
 
-    <!-- MODAL DE PASSWORD -->
-    <div id="password-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
-        <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-sm">
-            <h3 class="text-xl font-bold text-gray-800 mb-4">Ação Protegida</h3>
-            <p class="text-gray-600 mb-4">Por favor, insira a password para continuar.</p>
-            <form id="password-form">
-                <input type="password" id="password-input" class="w-full border-gray-300 rounded-md shadow-sm mb-2" required>
-                <span id="password-error" class="text-red-500 text-sm hidden">Password incorreta.</span>
-                <div class="flex justify-end gap-4 mt-6">
-                    <button type="button" id="cancel-password" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300">Cancelar</button>
-                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Confirmar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-database-compat.js"></script>
     <script>
-        const a_senha_secreta = 'paris2025';
-        let isAuthenticated = false;
-        let pendingAction = null;
-
-        const firebaseConfig = {
-          apiKey: "AIzaSyAt7jAk5r2tqSdyTf2m7MUebd_t7bbDTJk",
-          authDomain: "planeamento-viagem-paris.firebaseapp.com",
-          databaseURL: "https://planeamento-viagem-paris-default-rtdb.europe-west1.firebasedatabase.app",
-          projectId: "planeamento-viagem-paris",
-          storageBucket: "planeamento-viagem-paris.appspot.com",
-          messagingSenderId: "121000897121",
-          appId: "1:121000897121:web:75662c01dc56926bf61820"
-        };
-        firebase.initializeApp(firebaseConfig);
-        const database = firebase.database();
-        const movimentosRef = database.ref('movimentos');
-
         const budgetConfiguration = {};
         let planningEvents = [];
-        let sogrosRemainingCost = 0;
-        let familiaRemainingCost = 0;
-
+        
         function formatCurrency(value) {
             if (typeof value !== 'number' || isNaN(value)) { return '-'; }
             return `${value.toFixed(2).replace('.', ',')} €`;
         }
         
-        function renderMovementsTable() {
-            const tfoot = document.querySelector('#movements-table tfoot');
-            movimentosRef.on('value', (snapshot) => {
-                const movements = snapshot.val();
-                const tbody = document.querySelector('#movements-table tbody');
-                tbody.innerHTML = '';
-                tfoot.innerHTML = '';
-                
-                let sumSogra = 0, sumSogro = 0, sumNos = 0;
-                let totalGastoSogra = 0, totalGastoSogro = 0, totalGastoNos = 0;
-
-                if (movements) {
-                    for (const key in movements) {
-                        const mov = movements[key];
-                        sumSogra += mov.sogra || 0;
-                        sumSogro += mov.sogro || 0;
-                        sumNos += mov.nos || 0;
-
-                        if ((mov.sogra || 0) < 0) totalGastoSogra -= mov.sogra;
-                        if ((mov.sogro || 0) < 0) totalGastoSogro -= mov.sogro;
-                        if ((mov.nos || 0) < 0) totalGastoNos -= mov.nos;
-
-                        const row = document.createElement('tr');
-                        row.innerHTML = `
-                            <td class="p-3 md:p-4 table-body-text">${mov.description}</td>
-                            <td class="p-3 md:p-4 table-body-text text-right font-mono ${(mov.sogra||0) >= 0 ? 'text-green-600' : 'text-red-600'}">${formatCurrency(mov.sogra)}</td>
-                            <td class="p-3 md:p-4 table-body-text text-right font-mono ${(mov.sogro||0) >= 0 ? 'text-green-600' : 'text-red-600'}">${formatCurrency(mov.sogro)}</td>
-                            <td class="p-3 md:p-4 table-body-text text-right font-mono ${(mov.nos||0) >= 0 ? 'text-green-600' : 'text-red-600'}">${formatCurrency(mov.nos)}</td>
-                            <td class="p-3 md:p-4 text-center"><button class="delete-btn text-gray-400 hover:text-red-600" data-key="${key}" title="Apagar"><i class="fa-solid fa-trash-can"></i></button></td>`;
-                        tbody.appendChild(row);
-                    }
-                }
-
-                const balanceRow = document.createElement('tr');
-                balanceRow.innerHTML = `
-                    <td class="p-3 md:p-4 table-footer-text">Saldo</td>
-                    <td class="p-3 md:p-4 table-footer-text text-right">${formatCurrency(sumSogra)}</td>
-                    <td class="p-3 md:p-4 table-footer-text text-right">${formatCurrency(sumSogro)}</td>
-                    <td class="p-3 md:p-4 table-footer-text text-right">${formatCurrency(sumNos)}</td>
-                    <td></td>`;
-                tfoot.appendChild(balanceRow);
-
-                const remainingCostsRow = document.createElement('tr');
-                remainingCostsRow.innerHTML = `
-                    <td class="p-3 md:p-4 table-footer-text text-red-700">Custos Restantes</td>
-                    <td class="p-3 md:p-4 table-footer-text text-right text-red-700 font-mono">- ${formatCurrency(sogrosRemainingCost)}</td>
-                    <td class="p-3 md:p-4 table-footer-text text-right text-red-700 font-mono">- ${formatCurrency(sogrosRemainingCost)}</td>
-                    <td class="p-3 md:p-4 table-footer-text text-right text-red-700 font-mono">- ${formatCurrency(familiaRemainingCost)}</td>
-                    <td></td>`;
-                tfoot.appendChild(remainingCostsRow);
-
-                const diffSogra = sumSogra - sogrosRemainingCost;
-                const diffSogro = sumSogro - sogrosRemainingCost;
-                const diffNos = sumNos - familiaRemainingCost;
-                const diffRow = document.createElement('tr');
-                diffRow.innerHTML = `
-                    <td class="p-3 md:p-4 table-footer-text text-blue-700">Diferença</td>
-                    <td class="p-3 md:p-4 table-footer-text text-right ${diffSogra >= 0 ? 'text-green-700' : 'text-red-700'}">${formatCurrency(diffSogra)}</td>
-                    <td class="p-3 md:p-4 table-footer-text text-right ${diffSogro >= 0 ? 'text-green-700' : 'text-red-700'}">${formatCurrency(diffSogro)}</td>
-                    <td class="p-3 md:p-4 table-footer-text text-right ${diffNos >= 0 ? 'text-green-700' : 'text-red-700'}">${formatCurrency(diffNos)}</td>
-                    <td></td>`;
-                tfoot.appendChild(diffRow);
-
-                const totalGastoRow = document.createElement('tr');
-                totalGastoRow.innerHTML = `
-                    <td class="p-3 md:p-4 text-red-600 text-xs md:text-base">Total Gasto</td>
-                    <td class="p-3 md:p-4 text-red-600 text-xs md:text-base text-right font-mono">${formatCurrency(totalGastoSogra)}</td>
-                    <td class="p-3 md:p-4 text-red-600 text-xs md:text-base text-right font-mono">${formatCurrency(totalGastoSogro)}</td>
-                    <td class="p-3 md:p-4 text-red-600 text-xs md:text-base text-right font-mono">${formatCurrency(totalGastoNos)}</td>
-                    <td></td>`;
-                tfoot.appendChild(totalGastoRow);
-            });
-        }
-        
         function processAndDisplayRemainingBudget() {
             let remainingAdultCost = 0;
             let remainingYoungCost = 0;
+
             const completedKeys = planningEvents.filter(e => e.status === 'complete' && e.budgetKey).map(e => e.budgetKey);
+            
             for (const key in budgetConfiguration) {
                 if (completedKeys.includes(key)) continue;
                 const category = budgetConfiguration[key];
@@ -241,10 +93,11 @@
                     else if (ticket.type === 'young') { remainingYoungCost += ticket.cost; }
                 });
             }
-            sogrosRemainingCost = remainingAdultCost;
-            familiaRemainingCost = (remainingAdultCost * 2) + (remainingYoungCost * 2);
-            document.getElementById('sogros-cost').textContent = `${sogrosRemainingCost.toFixed(2)} €`;
-            document.getElementById('familia-cost').textContent = `${familiaRemainingCost.toFixed(2)} €`;
+            let sogrosRemainingCost = remainingAdultCost;
+            let familiaRemainingCost = (remainingAdultCost * 2) + (remainingYoungCost * 2);
+
+            document.getElementById('sogros-cost').textContent = formatCurrency(sogrosRemainingCost);
+            document.getElementById('familia-cost').textContent = formatCurrency(familiaRemainingCost);
         }
 
         function renderRemainingBudgetCards() {
@@ -278,71 +131,6 @@
             }).join('');
             container.innerHTML = itemsHTML;
         }
-
-        const passwordModal = document.getElementById('password-modal');
-        const passwordForm = document.getElementById('password-form');
-        const passwordInput = document.getElementById('password-input');
-        const passwordError = document.getElementById('password-error');
-        const cancelPasswordBtn = document.getElementById('cancel-password');
-
-        function requestPassword(actionCallback) {
-            if (isAuthenticated) { actionCallback(); return; }
-            pendingAction = actionCallback;
-            passwordModal.classList.remove('hidden');
-            passwordInput.focus();
-        }
-
-        passwordForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            if (passwordInput.value === a_senha_secreta) {
-                isAuthenticated = true;
-                passwordModal.classList.add('hidden');
-                passwordInput.value = '';
-                passwordError.classList.add('hidden');
-                if (pendingAction) { pendingAction(); pendingAction = null; }
-            } else {
-                passwordError.classList.remove('hidden');
-            }
-        });
-
-        cancelPasswordBtn.addEventListener('click', () => {
-            passwordModal.classList.add('hidden');
-            passwordInput.value = '';
-            passwordError.classList.add('hidden');
-            pendingAction = null;
-        });
-
-        function setupMovementsForm() {
-            const form = document.getElementById('add-movement-form');
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const newMovement = {
-                    description: document.getElementById('mov-description').value,
-                    sogra: parseFloat(document.getElementById('mov-sogra').value) || 0,
-                    sogro: parseFloat(document.getElementById('mov-sogro').value) || 0,
-                    nos: parseFloat(document.getElementById('mov-nos').value) || 0
-                };
-                requestPassword(() => {
-                    movimentosRef.push(newMovement);
-                    form.reset();
-                });
-            });
-        }
-
-        function setupDeleteFunctionality() {
-            const table = document.getElementById('movements-table');
-            table.addEventListener('click', (e) => {
-                const deleteBtn = e.target.closest('.delete-btn');
-                if (!deleteBtn) return;
-                const keyToDelete = deleteBtn.dataset.key;
-                const confirmed = confirm('Tem a certeza que quer apagar este movimento? Esta ação não pode ser desfeita.');
-                if (confirmed) {
-                    requestPassword(() => {
-                        movimentosRef.child(keyToDelete).remove().catch(error => console.error("Erro ao apagar:", error));
-                    });
-                }
-            });
-        }
         
         document.addEventListener('DOMContentLoaded', () => {
             Object.assign(budgetConfiguration, {
@@ -368,9 +156,6 @@
             ];
 
             processAndDisplayRemainingBudget();
-            renderMovementsTable();
-            setupMovementsForm();
-            setupDeleteFunctionality();
             renderRemainingBudgetCards();
             renderCompletedPurchases();
         });
