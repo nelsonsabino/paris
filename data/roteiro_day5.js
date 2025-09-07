@@ -27,7 +27,7 @@ export const day5Data = {
             title: "CACIFO DE MALAS → QUARTIER LATIN",
             mapLink: "https://maps.app.goo.gl/txr2n4YqygFrCiXj6",
             timeline: [
-                { time: "09:30", icon: "fa-gem", title: "Sainte-Chapelle <i class='fa-solid fa-ticket ml-2 text-blue-600' title='Necessita de Bilhete'></i>" },
+                { time: "09:30", icon: "fa-gem", title: "Sainte-Chapelle", requiresTicket: true, ticketLink: "https://www.sainte-chapelle.fr/billetterie" },
                 { icon: "fa-person-walking", title: "Rue de la Huchette" },
                 { icon: "fa-church", title: "Igreja de São Severino" },
                 { icon: "fa-monument", title: "Saint-Étienne-du-Mont" },
