@@ -42,15 +42,15 @@ export const day3Data = {
         {
             title: "MONTMARTRE → MOULIN ROUGE",
             mapLink: "https://maps.app.goo.gl/DBCJQ62qSGpKDVL28",
+            description: "Duração estimada do percurso a pé com visitas: ~2.5 horas",
             timeline: [
-                { icon: "fa-heart", title: "Muro do Eu Te Amo (Le Mur des Je t'aime)" },
-                { icon: "fa-tree", title: "Square Louise Michel" },
-                { icon: "fa-place-of-worship", title: "Basílica de Sacré Cœur", guideLink: "visita_montmartre.html" },
-                { icon: "fa-palette", title: "Place du Tertre" },
-                { icon: "fa-utensils", title: "Le Consulat & La Maison Rose" },
-                { icon: "fa-windmill", title: "Moulin Radet" },
-                { icon: "fa-mug-hot", title: "Café des Deux Moulins" },
-                { icon: "fa-wind", title: "Moulin Rouge" }
+                { time: "15:35", icon: "fa-heart", title: "Muro do Eu Te Amo (Le Mur des Je t'aime)", description: "Visita e fotos: ~15 min" },
+                { time: "16:00", icon: "fa-place-of-worship", title: "Basílica de Sacré Cœur", guideLink: "visita_montmartre.html", description: "Visita ao interior e vista: ~45 min" },
+                { time: "16:45", icon: "fa-palette", title: "Place du Tertre", description: "Passeio pela praça dos artistas: ~30 min" },
+                { time: "17:20", icon: "fa-utensils", title: "Le Consulat & La Maison Rose", description: "Paragem para fotos: ~10 min" },
+                { icon: "fa-windmill", title: "Moulin Radet", description: "Vista de passagem" },
+                { time: "17:45", icon: "fa-mug-hot", title: "Café des Deux Moulins", description: "Visita rápida/fotos: ~5 min" },
+                { time: "17:50", icon: "fa-wind", title: "Moulin Rouge", description: "Chegada e fotos finais: ~10 min" }
             ]
         },
         {
