@@ -11,7 +11,7 @@ export const day1Data = {
             timeline: [
                 { time: "7:00", icon: "fa-car", title: "Saída de Casa" },
                 { time: "7:45", icon: "fa-plane", title: "Chegada ao Aeroporto" },
-                { time: "8:00", icon: "fa-ticket", title: "Fecho do Embarque T2" },
+                { time: "9:00", icon: "fa-ticket", title: "Fecho do Embarque T2" },
                 { time: "9:40", icon: "fa-plane-departure", title: "Descolagem" },
                 { time: "13:10", icon: "fa-plane-arrival", title: "Chegada a Paris" }
             ]
