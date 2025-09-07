@@ -9,18 +9,18 @@ export const day1Data = {
             title: "ALENQUER → TERMINAL 2",
             mapLink: "https://maps.app.goo.gl/UDWRJ6vJieWfL2G19",
             timeline: [
-                { time: "6:00", icon: "fa-car", title: "Saída de Casa" },
-                { time: "6:45", icon: "fa-plane", title: "Chegada ao Aeroporto" },
-                { time: "8:00", icon: "fa-ticket", title: "Fecho do Embarque T2" },
-                { time: "8:50", icon: "fa-plane-departure", title: "Descolagem" },
-                { time: "12:20", icon: "fa-plane-arrival", title: "Chegada a Paris" }
+                { time: "7:00", icon: "fa-car", title: "Saída de Casa" },
+                { time: "7:45", icon: "fa-plane", title: "Chegada ao Aeroporto" },
+                { time: "9:00", icon: "fa-ticket", title: "Fecho do Embarque T2" },
+                { time: "9:40", icon: "fa-plane-departure", title: "Descolagem" },
+                { time: "13:10", icon: "fa-plane-arrival", title: "Chegada a Paris" }
             ]
         },
         {
             title: "METRO ORLY → CASA PARIS",
             mapLink: "https://maps.app.goo.gl/JCjyHWMVRRKshoWn6",
             timeline: [
-                { time: "12:30", icon: "fa-utensils", title: "Pausa para Almoço e WC" },
+                { time: "13:30", icon: "fa-utensils", title: "Pausa para Almoço e WC" },
                 {
                     time: "15:34", icon: "fa-route", title: "Percurso: Aeroporto d'Orly → Casa", description: "Duração total: ~36 min. Clica para ver os detalhes.",
                     accordion: [
