@@ -19,7 +19,7 @@ export const day3Data = {
                         { text: "9:05: Sair em Versailles", subText: "" }
                     ]
                 },
-                { time: "9:21", icon: "fa-crown", title: "Palácio de Versalhes <i class='fa-solid fa-ticket ml-2 text-blue-600' title='Necessita de Bilhete'></i>" }
+                { time: "9:21", icon: "fa-crown", title: "Palácio de Versalhes", requiresTicket: true, ticketLink: "https://billetterie.chateauversailles.fr/" }
             ]
         },
         {
