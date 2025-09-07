@@ -19,7 +19,7 @@ export const day3Data = {
                         { text: "9:05: Sair em Versailles", subText: "" }
                     ]
                 },
-                { time: "9:21", icon: "fa-crown", title: "Palácio de Versalhes", requiresTicket: true, ticketLink: "https://billetterie.chateauversailles.fr/" }
+                { time: "9:21", icon: "fa-crown", title: "Palácio de Versalhes", requiresTicket: true, ticketLink: "https://billetterie.chateauversailles.fr/", guideLink: "visita_versalhes.html" }
             ]
         },
         {
@@ -43,7 +43,7 @@ export const day3Data = {
             timeline: [
                 { icon: "fa-heart", title: "Muro do Eu Te Amo (Le Mur des Je t'aime)" },
                 { icon: "fa-tree", title: "Square Louise Michel" },
-                { icon: "fa-place-of-worship", title: "Basílica de Sacré Cœur" },
+                { icon: "fa-place-of-worship", title: "Basílica de Sacré Cœur", guideLink: "visita_montmartre.html" },
                 { icon: "fa-palette", title: "Place du Tertre" },
                 { icon: "fa-utensils", title: "Le Consulat & La Maison Rose" },
                 { icon: "fa-windmill", title: "Moulin Radet" },
