@@ -7,17 +7,14 @@ export const day5Data = {
     sections: [
         {
             title: "CASA → CACIFO DE MALAS",
-            mapLink: "https://maps.app.goo.gl/zAw8ipRidarLpRDd6",
+            mapLink: "https://maps.app.goo.gl/wW3zVHupQH2CQmCb8",
             timeline: [
-                { time: "08:28", icon: "fa-house-chimney", title: "Saída de Casa" },
+                { time: "08:27", icon: "fa-house-chimney", title: "Saída de Casa" },
                 {
-                    time: "08:33", icon: "fa-route", title: "Percurso: Casa → Cacifo", description: "Duração total: ~30 min. Clica para ver os detalhes.",
+                    time: "08:30", icon: "fa-route", title: "Percurso: Casa → Cacifo", description: "Duração total: ~31 min. Clica para ver os detalhes.",
                     accordion: [
-                        { text: "08:33: Caminhar até <strong>Porte de Charenton</strong>", subText: "Cerca de 5 min, 250 m." },
-                        { text: "08:33: Apanhar Metro <span class='metro-line' style='background-color: #ceadd2; color: black;'>8</span>", subText: "Da estação <strong>Porte de Charenton</strong>, direção Balard." },
-                        { text: "08:40: Chegar a Reuilly - Diderot e Caminhar", subText: "Cerca de 2 min até à linha 1." },
-                        { text: "08:44: Apanhar Metro <span class='metro-line' style='background-color: #ffcd00; color: black;'>1</span>", subText: "Da estação <strong>Reuilly - Diderot</strong>, direção La Défense (Grande Arche)." },
-                        { text: "08:53: Chegar a Louvre - Rivoli e Caminhar", subText: "Cerca de 5 min, 290 m até ao cacifo." }
+                        { text: "08:30: Apanhar Metro <span class='metro-line' style='background-color: #fa9aaa;'>7</span>", subText: "Da estação <strong>Fort d'Aubervilliers</strong>, direção Mairie d'Ivry." },
+                        { text: "08:55: Sair em Pont Neuf", subText: "Caminhar ~3 min até ao cacifo." }
                     ]
                 },
                 { time: "08:58", icon: "fa-suitcase", title: "Bounce Luggage Storage - Louvre" }
@@ -26,28 +23,29 @@ export const day5Data = {
         {
             title: "CACIFO DE MALAS → QUARTIER LATIN",
             mapLink: "https://maps.app.goo.gl/txr2n4YqygFrCiXj6",
+            description: "Duração estimada do percurso a pé com visitas: ~3.5 horas",
             timeline: [
-                { time: "09:30", icon: "fa-gem", title: "Sainte-Chapelle", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1ucQbtBDOxRx83d_m4Up5lnqzKcngOm3k/view?usp=drive_link", guideLink: "visita_sainte-chapelle.html" },
-                { icon: "fa-person-walking", title: "Rue de la Huchette" },
-                { icon: "fa-church", title: "Igreja de São Severino" },
-                { icon: "fa-monument", title: "Saint-Étienne-du-Mont" },
-                { icon: "fa-landmark-dome", title: "Panteão (Vista Exterior)", guideLink: "visita_quartier-latin.html" },
-                { icon: "fa-seedling", title: "Jardim do Luxemburgo", guideLink: "visita_jardim-luxemburgo.html" },
-                { time: "13:00", icon: "fa-person-walking", title: "Ida para o Metro Saint-Sulpice" }
+                { time: "09:30", icon: "fa-gem", title: "Sainte-Chapelle", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1ucQbtBDOxRx83d_m4Up5lnqzKcngOm3k/view?usp=drive_link", guideLink: "visita_sainte-chapelle.html", description: "Visita: ~1 hora" },
+                { time: "10:40", icon: "fa-person-walking", title: "Rue de la Huchette & Igreja de São Severino", description: "Passeio: ~20 min" },
+                { time: "11:15", icon: "fa-monument", title: "Saint-Étienne-du-Mont", description: "Visita: ~25 min" },
+                { time: "11:50", icon: "fa-landmark-dome", title: "Panteão (Vista Exterior)", guideLink: "visita_quartier-latin.html", description: "Fotos: ~15 min" },
+                { time: "12:15", icon: "fa-seedling", title: "Jardim do Luxemburgo", guideLink: "visita_jardim-luxemburgo.html", description: "Pausa e caminhada: ~45 min" },
+                { time: "13:00", icon: "fa-person-walking", title: "Chegada à zona do Metro Saint-Sulpice" }
             ]
         },
         {
             title: "SAINT-SULPICE → CACIFO DE MALAS",
             mapLink: "https://maps.app.goo.gl/P5shdcrXpkbLhBHy8",
             timeline: [
+                { time: "17:30", icon: "fa-utensils", title: "Fim do tempo livre/almoço e ida para o metro." },
                 {
-                    time: "13:00", icon: "fa-route", title: "Percurso: Saint-Sulpice → Cacifo", description: "Duração total: ~13 min. Clica para ver os detalhes.",
+                    time: "17:35", icon: "fa-route", title: "Percurso: Saint-Sulpice → Cacifo", description: "Duração total: ~13 min. Clica para ver os detalhes.",
                     accordion: [
-                        { text: "13:00: Apanhar Metro <span class='metro-line' style='background-color: #cf009e;'>4</span>", subText: "Da estação <strong>Saint-Sulpice</strong>, direção Porte de Clignancourt." },
-                        { text: "13:05: Sair em Châtelet e caminhar até ao cacifo", subText: "" }
+                        { text: "17:35: Apanhar Metro <span class='metro-line' style='background-color: #cf009e;'>4</span>", subText: "Da estação <strong>Saint-Sulpice</strong>, direção Porte de Clignancourt." },
+                        { text: "17:40: Sair em Châtelet e caminhar até ao cacifo." }
                     ]
                 },
-                { time: "13:13", icon: "fa-suitcase", title: "Recolher Malas no Cacifo" }
+                { time: "17:50", icon: "fa-suitcase", title: "Recolher Malas no Cacifo" }
             ]
         },
         {
@@ -55,13 +53,13 @@ export const day5Data = {
             mapLink: "https://maps.app.goo.gl/7tcmShAnygi9SJUA7",
             timeline: [
                 {
-                    time: "13:25", icon: "fa-route", title: "Percurso: Cacifo → Aeroporto Orly", description: "Duração total: ~30 min. Clica para ver os detalhes.",
+                    time: "18:15", icon: "fa-route", title: "Percurso: Cacifo → Aeroporto Orly", description: "Duração total: ~30 min. Clica para ver os detalhes.",
                     accordion: [
-                        { text: "13:25: Apanhar Metro <span class='metro-line' style='background-color: #62259d;'>14</span>", subText: "Da estação <strong>Châtelet</strong>, direção Aéroport d'Orly." },
-                        { text: "13:51: Sair em Aéroport d'Orly", subText: "" }
+                        { text: "18:15: Apanhar Metro <span class='metro-line' style='background-color: #62259d;'>14</span>", subText: "Da estação <strong>Châtelet</strong>, direção Aéroport d'Orly." },
+                        { text: "18:41: Sair em Aéroport d'Orly" }
                     ]
                 },
-                { time: "13:55", icon: "fa-plane-departure", title: "Chegada ao Aeroporto Orly T1" }
+                { time: "18:45", icon: "fa-plane-departure", title: "Chegada ao Aeroporto Orly (Voo às 20:50)" }
             ]
         }
     ]
