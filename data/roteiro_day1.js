@@ -18,7 +18,7 @@ export const day1Data = {
         },
         {
             title: "AEROPORTO ORLY → CASA",
-            mapLink: "https://maps.app.goo.gl/q6K1k6T7p6qCjXg16",
+            mapLink: "https://maps.app.goo.gl/cyPYrbbdUmfpbmAz9",
             timeline: [
                 { time: "12:30", icon: "fa-utensils", title: "Pausa para Almoço e WC" },
                 {
@@ -51,7 +51,7 @@ export const day1Data = {
         },
         {
             title: "INVALIDES - TOUR EIFFEL",
-            mapLink: "https://maps.app.goo.gl/F4k8W8L1mBq1gK9f9",
+            mapLink: "https://maps.app.goo.gl/R9Hgbbwr1KJgKHkD8",
             timeline: [
                 { icon: "fa-landmark-dome", title: "Hôtel des Invalides (Vista Exterior)" },
                 { icon: "fa-bridge", title: "Ponte Alexandre III" },
