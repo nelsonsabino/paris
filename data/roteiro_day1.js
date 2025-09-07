@@ -35,16 +35,16 @@ export const day1Data = {
         },
         {
             title: "CASA → INVALIDES",
-            mapLink: "https://maps.app.goo.gl/G63y2zV5y2rS1V577",
+            mapLink: "https://maps.app.goo.gl/eBNE3Dy1SoSbVufCA",
             timeline: [
-                { time: "18:05", icon: "fa-house-chimney", title: "Saída de Casa" },
+                { time: "18:30", icon: "fa-house-chimney", title: "Saída de Casa" },
                 {
-                    time: "18:07", icon: "fa-route", title: "Percurso: Casa → Invalides", description: "Duração total: ~33 min. Clica para ver os detalhes.",
+                    time: "18:33", icon: "fa-route", title: "Percurso: Casa → Invalides", description: "Duração total: ~30 min. Clica para ver os detalhes.",
                     accordion: [
-                        { text: "18:07: Apanhar Metro <span class='metro-line' style='background-color: #fa9aaa;'>7</span>", subText: "Da estação <strong>Fort d'Aubervilliers</strong>, direção Mairie d'Ivry." },
-                        { text: "18:27: Trocar em Opéra", subText: "Sair do metro e seguir para a Linha 8." },
-                        { text: "18:31: Apanhar Metro <span class='metro-line' style='background-color: #ceadd2; color: black;'>8</span>", subText: "Da estação <strong>Opéra</strong>, direção Balard." },
-                        { text: "18:38: Sair em Invalides", subText: "" }
+                        { text: "18:33: Apanhar Metro <span class='metro-line' style='background-color: #fa9aaa;'>7</span>", subText: "Da estação <strong>Fort d'Aubervilliers</strong>, direção Mairie d'Ivry." },
+                        { text: "18:53: Trocar em Opéra", subText: "Sair do metro e seguir para a Linha 8." },
+                        { text: "18:56: Apanhar Metro <span class='metro-line' style='background-color: #ceadd2; color: black;'>8</span>", subText: "Da estação <strong>Opéra</strong>, direção Balard." },
+                        { text: "19:00: Sair em Invalides", subText: "" }
                     ]
                 }
             ]
@@ -63,16 +63,18 @@ export const day1Data = {
         },
         {
             title: "ÉCOLE MILITAIRE → CASA",
-            mapLink: "https://maps.app.goo.gl/uX8z5zZ9qW1wX2y9A",
+            mapLink: "https://maps.app.goo.gl/h8Evfet5J4ntq5cE8",
             timeline: [
                 {
-                    icon: "fa-route", title: "Percurso: École Militaire → Casa", description: "Duração total: ~15 min. Clica para ver os detalhes.",
+                    time: "23:04", icon: "fa-route", title: "Percurso: École Militaire → Casa", description: "Duração total: ~34 min. Clica para ver os detalhes.",
                     accordion: [
-                        { text: "23:05: Apanhar Metro <span class='metro-line' style='background-color: #ceadd2; color: black;'>8</span>", subText: "Da estação <strong>École Militaire</strong>, direção Créteil-Pointe du Lac." },
-                        { text: "23:20: Sair em Porte de Charenton", subText: "" }
+                        { text: "23:04: Apanhar Metro <span class='metro-line' style='background-color: #ceadd2; color: black;'>8</span>", subText: "Da estação <strong>École Militaire</strong>, direção Créteil-Pointe du Lac." },
+                        { text: "23:10: Trocar em Opéra", subText: "Sair do metro e seguir para a Linha 7." },
+                        { text: "23:17: Apanhar Metro <span class='metro-line' style='background-color: #fa9aaa;'>7</span>", subText: "Da estação <strong>Opéra</strong>, direção La Courneuve-8-Mai-1945." },
+                        { text: "23:36: Sair em Fort d'Aubervilliers", subText: "Caminhar ~2 min até casa." }
                     ]
                 },
-                { icon: "fa-bed", title: "Regresso a Casa" }
+                { time: "23:38", icon: "fa-bed", title: "Regresso a Casa" }
             ]
         }
     ]
