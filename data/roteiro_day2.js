@@ -26,12 +26,13 @@ export const day2Data = {
             mapLink: "https://maps.app.goo.gl/rUXPgUtAZMW1sijY7",
             timeline: [
                 { time: "8:57", icon: "fa-coffee", title: "Au Vieux Paris d'Arcole" },
-                { time: "9:10", icon: "fa-church", title: "Catedral de Notre-Dame & Point Zéro", description: "Visita interior (~30-45min.)", requiresTicket: true, ticketLink: "https://www.notredamedeparis.fr/visiter/" },
+                { time: "9:10", icon: "fa-church", title: "Catedral de Notre-Dame", description: "Visita interior (~30-45min.) e Point Zéro", requiresTicket: true, ticketLink: "https://www.notredamedeparis.fr/visiter/", guideLink: "visita_notre-dame.html" },
                 { icon: "fa-book", title: "Shakespeare and Company" },
                 { icon: "fa-church", title: "Igreja de São Severino" },
                 { icon: "fa-person-walking", title: "Rue de la Huchette" },
                 { icon: "fa-fountain", title: "Fontaine Saint-Michel" },
                 { icon: "fa-flower", title: "Mercado das Flores Rainha Elizabeth II" },
+                { time: "11:30", icon: "fa-gem", title: "Sainte-Chapelle", requiresTicket: true, ticketLink: "https://www.sainte-chapelle.fr/billetterie", guideLink: "visita_sainte-chapelle.html" },
                 { icon: "fa-tree-city", title: "Place Dauphine" },
                 { icon: "fa-tree", title: "Square du Vert-Galant" }
             ]
@@ -45,7 +46,7 @@ export const day2Data = {
                 { icon: "fa-archway", title: "Arco do Triunfo do Carrossel" },
                 { icon: "fa-fountain", title: "Jardim das Tulherias" },
                 { icon: "fa-square-full", title: "Place de la Concorde" },
-                { time: "15:30", icon: "fa-building-columns", title: "Musée d'Orsay", requiresTicket: false},
+                { time: "15:30", icon: "fa-building-columns", title: "Musée d'Orsay", requiresTicket: true, ticketLink: "https://billetterie.musee-orsay.fr/", guideLink: "visita_musee-orsay.html" },
                 { icon: "fa-landmark", title: "Petit Palais/Grand Palais (Exterior)" }
             ]
         },
@@ -60,8 +61,8 @@ export const day2Data = {
                         { text: "18:10: Sair em Charles de Gaulle – Étoile", subText: "" }
                     ]
                 },
-                { icon: "fa-archway", title: "Arco do Triunfo" },
-                { icon: "fa-road", title: "Champs-Élysées" }
+                { icon: "fa-archway", title: "Arco do Triunfo", guideLink: "visita_arco-do-triunfo.html" },
+                { icon: "fa-road", title: "Champs-Élysées", guideLink: "visita_champs-elysees.html" }
             ]
         },
         {
