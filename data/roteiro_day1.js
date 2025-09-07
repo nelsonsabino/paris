@@ -54,7 +54,7 @@ export const day1Data = {
                 { icon: "fa-landmark-dome", title: "Hôtel des Invalides (Vista Exterior)" },
                 { icon: "fa-bridge", title: "Ponte Alexandre III" },
                 { icon: "fa-camera-retro", title: "Jardim do Trocadéro" },
-                { time: "21:00", icon: "fa-tower-observation", title: "Torre Eiffel", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1yA1rnPn_RHHJ3oZ8ImG2pWCC61VbrpNa/view?usp=sharing" },
+                { time: "21:00", icon: "fa-tower-observation", title: "Torre Eiffel", requiresTicket: true, ticketLink: "https://www.toureiffel.paris/fr/tarifs-horaires", guideLink: "visita_torre-eiffel.html" },
                 { icon: "fa-store", title: "Rue Cler" },
                 { time: "23:00", icon: "fa-person-walking", title: "Ida para o Metro École Militaire" }
             ]
