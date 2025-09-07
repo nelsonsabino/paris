@@ -21,7 +21,7 @@ export const day5Data = {
             ]
         },
         {
-            title: "CACIFO DE MALAS → QUARTIER LATIN",
+            title: "MANHÃ NO QUARTIER LATIN",
             mapLink: "https://maps.app.goo.gl/txr2n4YqygFrCiXj6",
             description: "Duração estimada do percurso a pé com visitas: ~3.5 horas",
             timeline: [
@@ -29,23 +29,31 @@ export const day5Data = {
                 { time: "10:40", icon: "fa-person-walking", title: "Rue de la Huchette & Igreja de São Severino", description: "Passeio: ~20 min" },
                 { time: "11:15", icon: "fa-monument", title: "Saint-Étienne-du-Mont", description: "Visita: ~25 min" },
                 { time: "11:50", icon: "fa-landmark-dome", title: "Panteão (Vista Exterior)", guideLink: "visita_quartier-latin.html", description: "Fotos: ~15 min" },
-                { time: "12:15", icon: "fa-seedling", title: "Jardim do Luxemburgo", guideLink: "visita_jardim-luxemburgo.html", description: "Pausa e caminhada: ~45 min" },
-                { time: "13:00", icon: "fa-person-walking", title: "Chegada à zona do Metro Saint-Sulpice" }
+                { time: "12:15", icon: "fa-seedling", title: "Jardim do Luxemburgo", guideLink: "visita_jardim-luxemburgo.html", description: "Pausa e caminhada: ~45 min" }
             ]
         },
         {
-            title: "SAINT-SULPICE → CACIFO DE MALAS",
-            mapLink: "https://maps.app.goo.gl/P5shdcrXpkbLhBHy8",
+            title: "ALMOÇO E TARDE EM SAINT-GERMAIN-DES-PRÉS",
+            mapLink: "https://maps.app.goo.gl/wJk4h6S8YtL6Q9C57",
             timeline: [
-                { time: "17:30", icon: "fa-utensils", title: "Fim do tempo livre/almoço e ida para o metro." },
+                { time: "13:00", icon: "fa-utensils", title: "Almoço descontraído", description: "Encontrar uma brasserie típica no bairro de Saint-Germain." },
+                { time: "14:30", icon: "fa-church", title: "Igreja de Saint-Sulpice", description: "Visitar o interior e ver as pinturas de Delacroix." },
+                { time: "15:15", icon: "fa-coffee", title: "Pausa num Café Icónico", description: "Sentar na esplanada do Les Deux Magots ou Café de Flore para um café e observar o movimento." },
+                { time: "16:00", icon: "fa-person-walking", title: "Explorar o Bairro", description: "Passear pelas ruas charmosas como a Rue de Buci, ver as galerias de arte e as lojas de chocolate." }
+            ]
+        },
+        {
+            title: "SAINT-GERMAIN → CACIFO DE MALAS",
+            mapLink: "https://maps.app.goo.gl/j4s4B1k6Nq7yV8tK9",
+            timeline: [
                 {
-                    time: "17:35", icon: "fa-route", title: "Percurso: Saint-Sulpice → Cacifo", description: "Duração total: ~13 min. Clica para ver os detalhes.",
+                    time: "17:30", icon: "fa-route", title: "Percurso: Saint-Germain → Cacifo", description: "Duração total: ~10 min. Clica para ver os detalhes.",
                     accordion: [
-                        { text: "17:35: Apanhar Metro <span class='metro-line' style='background-color: #cf009e;'>4</span>", subText: "Da estação <strong>Saint-Sulpice</strong>, direção Porte de Clignancourt." },
-                        { text: "17:40: Sair em Châtelet e caminhar até ao cacifo." }
+                        { text: "17:30: Apanhar Metro <span class='metro-line' style='background-color: #cf009e;'>4</span>", subText: "Da estação <strong>Saint-Germain-des-Prés</strong>, direção Porte de Clignancourt." },
+                        { text: "17:35: Sair em Châtelet e caminhar até ao cacifo." }
                     ]
                 },
-                { time: "17:50", icon: "fa-suitcase", title: "Recolher Malas no Cacifo" }
+                { time: "17:45", icon: "fa-suitcase", title: "Recolher Malas no Cacifo" }
             ]
         },
         {
