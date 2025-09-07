@@ -26,13 +26,13 @@ export const day2Data = {
             mapLink: "https://maps.app.goo.gl/rUXPgUtAZMW1sijY7",
             timeline: [
                 { time: "8:57", icon: "fa-coffee", title: "Au Vieux Paris d'Arcole" },
-                { time: "9:10", icon: "fa-church", title: "Catedral de Notre-Dame & Point Zéro <i class='fa-solid fa-ticket ml-2 text-blue-600' title='Necessita de Bilhete'></i>", description: "Visita interior (~30-45min.)" },
+                { time: "9:10", icon: "fa-church", title: "Catedral de Notre-Dame & Point Zéro", description: "Visita interior (~30-45min.)", requiresTicket: true, ticketLink: "https://www.notredamedeparis.fr/visiter/" },
                 { icon: "fa-book", title: "Shakespeare and Company" },
                 { icon: "fa-church", title: "Igreja de São Severino" },
                 { icon: "fa-person-walking", title: "Rue de la Huchette" },
                 { icon: "fa-fountain", title: "Fontaine Saint-Michel" },
                 { icon: "fa-flower", title: "Mercado das Flores Rainha Elizabeth II" },
-                { time: "11:30", icon: "fa-gem", title: "Sainte-Chapelle <i class='fa-solid fa-ticket ml-2 text-blue-600' title='Necessita de Bilhete'></i>" },
+                { time: "11:30", icon: "fa-gem", title: "Sainte-Chapelle", requiresTicket: true, ticketLink: "https://www.sainte-chapelle.fr/billetterie" },
                 { icon: "fa-tree-city", title: "Place Dauphine" },
                 { icon: "fa-tree", title: "Square du Vert-Galant" }
             ]
@@ -46,7 +46,7 @@ export const day2Data = {
                 { icon: "fa-archway", title: "Arco do Triunfo do Carrossel" },
                 { icon: "fa-fountain", title: "Jardim das Tulherias" },
                 { icon: "fa-square-full", title: "Place de la Concorde" },
-                { time: "15:30", icon: "fa-building-columns", title: "Musée d'Orsay <i class='fa-solid fa-ticket ml-2 text-blue-600' title='Necessita de Bilhete'></i>" },
+                { time: "15:30", icon: "fa-building-columns", title: "Musée d'Orsay", requiresTicket: true, ticketLink: "https://billetterie.musee-orsay.fr/" },
                 { icon: "fa-landmark", title: "Petit Palais/Grand Palais (Exterior)" }
             ]
         },
