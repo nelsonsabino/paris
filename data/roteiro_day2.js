@@ -7,16 +7,14 @@ export const day2Data = {
     sections: [
         {
             title: "CASA → ÎLE DE LA CITÉ",
-            mapLink: "https://maps.app.goo.gl/v5BUzJtit2LJrWhr9",
+            mapLink: "https://maps.app.goo.gl/7EPhqZnEWWDcPmbS6",
             timeline: [
-                { time: "8:26", icon: "fa-house-chimney", title: "Saída de Casa" },
+                { time: "8:21", icon: "fa-house-chimney", title: "Saída de Casa" },
                 {
-                    time: "8:29", icon: "fa-route", title: "Percurso: Casa → Hôtel de Ville", description: "Duração total: ~22 min. Clica para ver os detalhes.",
+                    time: "8:24", icon: "fa-route", title: "Percurso: Casa → Île de la Cité", description: "Duração total: ~37 min. Clica para ver os detalhes.",
                     accordion: [
-                        { text: "8:29: Apanhar Metro <span class='metro-line' style='background-color: #ceadd2; color: black;'>8</span>", subText: "Da estação <strong>Porte de Charenton</strong>, direção Balard." },
-                        { text: "8:39: Trocar em Bastille", subText: "Sair do metro e seguir para a Linha 1." },
-                        { text: "8:42: Apanhar Metro <span class='metro-line' style='background-color: #ffcd00; color: black;'>1</span>", subText: "Direção La Défense." },
-                        { text: "8:51: Sair em Hôtel de Ville", subText: "" }
+                        { text: "8:24: Apanhar Metro <span class='metro-line' style='background-color: #fa9aaa;'>7</span>", subText: "Da estação <strong>Fort d'Aubervilliers</strong>, direção Villejuif-Louis Aragon." },
+                        { text: "8:50: Sair em Châtelet", subText: "Caminhar ~8 min até ao nosso ponto de partida na ilha." }
                     ]
                 }
             ]
@@ -25,7 +23,7 @@ export const day2Data = {
             title: "ÎLE DE LA CITÉ → SQUARE DU VERT-GALANT",
             mapLink: "https://maps.app.goo.gl/rUXPgUtAZMW1sijY7",
             timeline: [
-                { time: "8:57", icon: "fa-coffee", title: "Au Vieux Paris d'Arcole" },
+                { time: "8:58", icon: "fa-coffee", title: "Au Vieux Paris d'Arcole" },
                 { time: "9:10", icon: "fa-church", title: "Catedral de Notre-Dame", description: "Visita interior (~30-45min.) e Point Zéro", requiresTicket: true, ticketLink: "https://www.notredamedeparis.fr/visiter/", guideLink: "visita_notre-dame.html" },
                 { icon: "fa-book", title: "Shakespeare and Company" },
                 { icon: "fa-church", title: "Igreja de São Severino" },
@@ -66,18 +64,18 @@ export const day2Data = {
         },
         {
             title: "CHAMPS-ÉLYSÉES → CASA",
-            mapLink: "https://maps.app.goo.gl/gfjS674H5TjMQ7jd9",
+            mapLink: "https://maps.app.goo.gl/SA1t9d2R1KwJmbvj8",
             timeline: [
                 {
-                    time: "20:37", icon: "fa-route", title: "Percurso: Champs-Élysées → Casa", description: "Duração total: ~31 min. Clica para ver os detalhes.",
+                    time: "20:02", icon: "fa-route", title: "Percurso: Champs-Élysées → Casa", description: "Duração total: ~36 min. Clica para ver os detalhes.",
                     accordion: [
-                        { text: "20:37: Apanhar Metro <span class='metro-line' style='background-color: #ffcd00; color: black;'>1</span>", subText: "Da estação <strong>George V</strong>, direção Château de Vincennes." },
-                        { text: "20:55: Trocar em Reuilly - Diderot", subText: "Sair do metro e seguir para a Linha 8." },
-                        { text: "20:59: Apanhar Metro <span class='metro-line' style='background-color: #ceadd2; color: black;'>8</span>", subText: "Direção Créteil-Pointe du Lac." },
-                        { text: "21:05: Sair em Porte de Charenton", subText: "" }
+                        { text: "20:05: Apanhar Metro <span class='metro-line' style='background-color: #ffcd00; color: black;'>1</span>", subText: "Da estação <strong>Charles de Gaulle-Etoile</strong>, direção Château de Vincennes." },
+                        { text: "20:12: Trocar em Palais Royal - Musée du Louvre", subText: "Sair do metro e seguir para a Linha 7." },
+                        { text: "20:14: Apanhar Metro <span class='metro-line' style='background-color: #fa9aaa;'>7</span>", subText: "Direção La Courneuve-8-Mai-1945." },
+                        { text: "20:36: Sair em Fort d'Aubervilliers", subText: "Caminhar ~2 min até casa." }
                     ]
                 },
-                { time: "21:08", icon: "fa-bed", title: "Regresso a Casa" }
+                { time: "20:38", icon: "fa-bed", title: "Regresso a Casa" }
             ]
         }
     ]
