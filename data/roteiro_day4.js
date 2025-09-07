@@ -19,7 +19,7 @@ export const day4Data = {
                         { text: "8:58: Sair em Palais Royal - Musée du Louvre", subText: "" }
                     ]
                 },
-                { time: "9:00", icon: "fa-landmark-dome", title: "Museu do Louvre", requiresTicket: true, ticketLink: "https://www.ticketlouvre.fr/" },
+                { time: "9:00", icon: "fa-landmark-dome", title: "Museu do Louvre", requiresTicket: true, ticketLink: "https://www.ticketlouvre.fr/", guideLink: "visita_louvre.html" },
                 { time: "13:00", icon: "fa-utensils", title: "Almoço nas Proximidades do Louvre" }
             ]
         },
@@ -30,8 +30,8 @@ export const day4Data = {
                 { icon: "fa-chess-board", title: "Palais Royal (Jardins e Colunas de Buren)" },
                 { icon: "fa-archway", title: "Galerie Vivienne" },
                 { icon: "fa-gem", title: "Place Vendôme" },
-                { time: "15:30", icon: "fa-masks-theater", title: "Ópera Garnier", description: "Visita interior (~1h)", requiresTicket: true, ticketLink: "https://www.operadeparis.fr/billetterie/visites-palais-garnier" },
-                { icon: "fa-store", title: "Galeries Lafayette", description: "Visita ao terraço para vista (~45min)" }
+                { time: "15:30", icon: "fa-masks-theater", title: "Ópera Garnier", description: "Visita interior (~1h)", requiresTicket: true, ticketLink: "https://www.operadeparis.fr/billetterie/visites-palais-garnier", guideLink: "visita_opera-garnier.html" },
+                { icon: "fa-store", title: "Galeries Lafayette", description: "Visita ao terraço para vista (~45min)", guideLink: "visita_galeries-lafayette.html" }
             ]
         },
         {
