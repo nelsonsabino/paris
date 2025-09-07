@@ -20,17 +20,17 @@ export const day1Data = {
             title: "AEROPORTO ORLY → CASA",
             mapLink: "https://maps.app.goo.gl/cyPYrbbdUmfpbmAz9",
             timeline: [
-                { time: "12:30", icon: "fa-utensils", title: "Pausa para Almoço e WC" },
+                { time: "13:30", icon: "fa-utensils", title: "Pausa para Almoço e WC" },
                 {
-                    time: "13:30", icon: "fa-route", title: "Percurso: Aeroporto d'Orly → Casa", description: "Duração total: ~54 min. Clica para ver os detalhes.",
+                    time: "14:30", icon: "fa-route", title: "Percurso: Aeroporto d'Orly → Casa", description: "Duração total: ~54 min. Clica para ver os detalhes.",
                     accordion: [
-                        { text: "13:30: Apanhar Metro <span class='metro-line' style='background-color: #62259d;'>14</span>", subText: "Da estação <strong>Aéroport d'Orly</strong>, direção Saint-Denis - Pleyel." },
-                        { text: "13:57: Trocar em Pyramides", subText: "Sair do metro e seguir para a Linha 7." },
-                        { text: "14:01: Apanhar Metro <span class='metro-line' style='background-color: #fa9aaa;'>7</span>", subText: "Da estação <strong>Pyramides</strong>, direção La Courneuve-8-Mai-1945." },
-                        { text: "14:22: Sair em Fort d'Aubervilliers", subText: "Saída final. Caminhar ~2 min até casa." }
+                        { text: "14:30: Apanhar Metro <span class='metro-line' style='background-color: #62259d;'>14</span>", subText: "Da estação <strong>Aéroport d'Orly</strong>, direção Saint-Denis - Pleyel." },
+                        { text: "14:57: Trocar em Pyramides", subText: "Sair do metro e seguir para a Linha 7." },
+                        { text: "15:01: Apanhar Metro <span class='metro-line' style='background-color: #fa9aaa;'>7</span>", subText: "Da estação <strong>Pyramides</strong>, direção La Courneuve-8-Mai-1945." },
+                        { text: "15:22: Sair em Fort d'Aubervilliers", subText: "Saída final. Caminhar ~2 min até casa." }
                     ]
                 },
-                { time: "14:24", icon: "fa-house-chimney", title: "Chegada a Casa" }
+                { time: "15:24", icon: "fa-house-chimney", title: "Chegada a Casa" }
             ]
         },
         {
