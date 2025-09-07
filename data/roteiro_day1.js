@@ -9,47 +9,49 @@ export const day1Data = {
             title: "ALENQUER → TERMINAL 2",
             mapLink: "https://maps.app.goo.gl/UDWRJ6vJieWfL2G19",
             timeline: [
-                { time: "7:00", icon: "fa-car", title: "Saída de Casa" },
-                { time: "7:45", icon: "fa-plane", title: "Chegada ao Aeroporto" },
-                { time: "9:00", icon: "fa-ticket", title: "Fecho do Embarque T2" },
-                { time: "9:40", icon: "fa-plane-departure", title: "Descolagem" },
-                { time: "13:10", icon: "fa-plane-arrival", title: "Chegada a Paris" }
+                { time: "6:00", icon: "fa-car", title: "Saída de Casa" },
+                { time: "6:45", icon: "fa-plane", title: "Chegada ao Aeroporto" },
+                { time: "8:00", icon: "fa-ticket", title: "Fecho do Embarque T2" },
+                { time: "8:50", icon: "fa-plane-departure", title: "Descolagem" },
+                { time: "12:20", icon: "fa-plane-arrival", title: "Chegada a Paris" }
             ]
         },
         {
-            title: "METRO ORLY → CASA PARIS",
-            mapLink: "https://maps.app.goo.gl/7D29KVUmjeroTZ9FA",
+            title: "AEROPORTO ORLY → CASA",
+            mapLink: "https://maps.app.goo.gl/q6K1k6T7p6qCjXg16",
             timeline: [
-                { time: "13:30", icon: "fa-utensils", title: "Pausa para Almoço e WC" },
+                { time: "12:30", icon: "fa-utensils", title: "Pausa para Almoço e WC" },
                 {
-                    time: "15:34", icon: "fa-route", title: "Percurso: Aeroporto d'Orly → Casa", description: "Duração total: ~54 min. Clica para ver os detalhes.",
+                    time: "13:30", icon: "fa-route", title: "Percurso: Aeroporto d'Orly → Casa", description: "Duração total: ~54 min. Clica para ver os detalhes.",
                     accordion: [
-                        { text: "15:34: Apanhar Metro <span class='metro-line' style='background-color: #62259d;'>14</span>", subText: "Da estação <strong>Aéroport d'Orly</strong>, direção Saint-Denis." },
-                        { text: "15:48: Trocar em Pyramides", subText: "Sair do metro e seguir para a paragem do elétrico (Tram)." },
-                        { text: "15:54: Apanhar Tram <span class='metro-line' style='background-color: #ff7e2e; color: black;'>T3a</span>", subText: "Da paragem <strong>Porte d'Italie</strong>, direção Porte de Vincennes." },
-                        { text: "16:04: Sair em Porte de Charenton", subText: "Saída final. Caminhar até casa." }
+                        { text: "13:30: Apanhar Metro <span class='metro-line' style='background-color: #62259d;'>14</span>", subText: "Da estação <strong>Aéroport d'Orly</strong>, direção Saint-Denis - Pleyel." },
+                        { text: "13:57: Trocar em Pyramides", subText: "Sair do metro e seguir para a Linha 7." },
+                        { text: "14:01: Apanhar Metro <span class='metro-line' style='background-color: #fa9aaa;'>7</span>", subText: "Da estação <strong>Pyramides</strong>, direção La Courneuve-8-Mai-1945." },
+                        { text: "14:22: Sair em Fort d'Aubervilliers", subText: "Saída final. Caminhar ~2 min até casa." }
                     ]
                 },
-                { time: "16:10", icon: "fa-house-chimney", title: "Chegada a Casa" }
+                { time: "14:24", icon: "fa-house-chimney", title: "Chegada a Casa" }
             ]
         },
         {
             title: "CASA → INVALIDES",
-            mapLink: "https://maps.app.goo.gl/Y1V2eJg2R5B8XnL8A", // Novo link de mapa
+            mapLink: "https://maps.app.goo.gl/G63y2zV5y2rS1V577",
             timeline: [
-                { icon: "fa-house-chimney", title: "Saída de Casa" },
+                { time: "18:05", icon: "fa-house-chimney", title: "Saída de Casa" },
                 {
-                    time: "18:25", icon: "fa-route", title: "Percurso: Casa → Invalides", description: "Duração total: ~20 min. Clica para ver os detalhes.",
+                    time: "18:07", icon: "fa-route", title: "Percurso: Casa → Invalides", description: "Duração total: ~33 min. Clica para ver os detalhes.",
                     accordion: [
-                        { text: "18:05: Apanhar Metro <span class='metro-line' style='background-color: #ceadd2; color: black;'>8</span>", subText: "Da estação <strong>Porte de Charenton</strong>, direção Balard." },
-                        { text: "18:25: Sair em Invalides", subText: "" }
+                        { text: "18:07: Apanhar Metro <span class='metro-line' style='background-color: #fa9aaa;'>7</span>", subText: "Da estação <strong>Fort d'Aubervilliers</strong>, direção Mairie d'Ivry." },
+                        { text: "18:27: Trocar em Opéra", subText: "Sair do metro e seguir para a Linha 8." },
+                        { text: "18:31: Apanhar Metro <span class='metro-line' style='background-color: #ceadd2; color: black;'>8</span>", subText: "Da estação <strong>Opéra</strong>, direção Balard." },
+                        { text: "18:38: Sair em Invalides", subText: "" }
                     ]
                 }
             ]
         },
         {
-            title: "INVALIDES - TOUR EIFFEL", // Título alterado
-            mapLink: "https://maps.app.goo.gl/F4k8W8L1mBq1gK9f9", // Novo link de mapa
+            title: "INVALIDES - TOUR EIFFEL",
+            mapLink: "https://maps.app.goo.gl/F4k8W8L1mBq1gK9f9",
             timeline: [
                 { icon: "fa-landmark-dome", title: "Hôtel des Invalides (Vista Exterior)" },
                 { icon: "fa-bridge", title: "Ponte Alexandre III" },
@@ -60,8 +62,8 @@ export const day1Data = {
             ]
         },
         {
-            title: "ÉCOLE MILITAIRE → CASA", // Novo bloco para o regresso
-            mapLink: "https://maps.app.goo.gl/uX8z5zZ9qW1wX2y9A", // Novo link de mapa
+            title: "ÉCOLE MILITAIRE → CASA",
+            mapLink: "https://maps.app.goo.gl/uX8z5zZ9qW1wX2y9A",
             timeline: [
                 {
                     icon: "fa-route", title: "Percurso: École Militaire → Casa", description: "Duração total: ~15 min. Clica para ver os detalhes.",
