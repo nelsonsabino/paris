@@ -32,7 +32,6 @@ export const day2Data = {
                 { icon: "fa-person-walking", title: "Rue de la Huchette" },
                 { icon: "fa-fountain", title: "Fontaine Saint-Michel" },
                 { icon: "fa-flower", title: "Mercado das Flores Rainha Elizabeth II" },
-                { time: "11:30", icon: "fa-gem", title: "Sainte-Chapelle", requiresTicket: true, ticketLink: "https://www.sainte-chapelle.fr/billetterie", guideLink: "visita_sainte-chapelle.html" },
                 { icon: "fa-tree-city", title: "Place Dauphine" },
                 { icon: "fa-tree", title: "Square du Vert-Galant" }
             ]
