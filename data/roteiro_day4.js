@@ -7,19 +7,17 @@ export const day4Data = {
     sections: [
         {
             title: "CASA → MUSEU DO LOUVRE",
-            mapLink: "https://maps.app.goo.gl/47SoBmDnHjDh9bUi7",
+            mapLink: "https://maps.app.goo.gl/HWn3htQ9Ewh4bVmi7",
             timeline: [
-                { time: "8:33", icon: "fa-house-chimney", title: "Saída de Casa" },
+                { time: "08:15", icon: "fa-house-chimney", title: "Saída de Casa" },
                 {
-                    time: "8:38", icon: "fa-route", title: "Percurso: Casa → Louvre", description: "Duração total: ~20 min. Clica para ver os detalhes.",
+                    time: "08:18", icon: "fa-route", title: "Percurso: Casa → Louvre", description: "Duração total: ~29 min. Clica para ver os detalhes.",
                     accordion: [
-                        { text: "8:38: Apanhar Metro <span class='metro-line' style='background-color: #ceadd2; color: black;'>8</span>", subText: "Da estação <strong>Porte de Charenton</strong>, direção Balard." },
-                        { text: "8:48: Trocar em Bastille", subText: "Sair do metro e seguir para a Linha 1." },
-                        { text: "8:51: Apanhar Metro <span class='metro-line' style='background-color: #ffcd00; color: black;'>1</span>", subText: "Direção La Défense." },
-                        { text: "8:58: Sair em Palais Royal - Musée du Louvre", subText: "" }
+                        { text: "08:18: Apanhar Metro <span class='metro-line' style='background-color: #fa9aaa;'>7</span>", subText: "Da estação <strong>Fort d'Aubervilliers</strong>, direção Mairie d'Ivry." },
+                        { text: "08:42: Sair em Palais Royal - Musée du Louvre", subText: "Caminhar ~2 min até à entrada." }
                     ]
                 },
-                { time: "9:00", icon: "fa-landmark-dome", title: "Museu do Louvre", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1zgpLvPJtgUGnMsOFsIbfg3tGwhPSse0w/view?usp=sharing", guideLink: "visita_louvre.html" },
+                { time: "09:00", icon: "fa-landmark-dome", title: "Museu do Louvre", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1zgpLvPJtgUGnMsOFsIbfg3tGwhPSse0w/view?usp=sharing", guideLink: "visita_louvre.html" },
                 { time: "13:00", icon: "fa-utensils", title: "Almoço nas Proximidades do Louvre" }
             ]
         },
@@ -30,7 +28,7 @@ export const day4Data = {
                 { icon: "fa-chess-board", title: "Palais Royal (Jardins e Colunas de Buren)" },
                 { icon: "fa-archway", title: "Galerie Vivienne" },
                 { icon: "fa-gem", title: "Place Vendôme" },
-                { time: "15:30", icon: "fa-masks-theater", title: "Ópera Garnier", description: "Visita interior (~1h)", requiresTicket: true, ticketLink: "https://billetterie.operadeparis.fr/account/file?fileId=20027533", guideLink: "visita_opera-garnier.html" },
+                { time: "15:00", icon: "fa-masks-theater", title: "Ópera Garnier", description: "Visita interior (~1h)", requiresTicket: true, ticketLink: "https://drive.google.com/drive/folders/1LzpXOo9CjPe37kIHkBRFG0Xy4sy5Kwg7?usp=sharing", guideLink: "visita_opera-garnier.html" },
                 { icon: "fa-store", title: "Galeries Lafayette", description: "Visita ao terraço para vista (~45min)", guideLink: "visita_galeries-lafayette.html" }
             ]
         },
@@ -51,26 +49,27 @@ export const day4Data = {
         {
             title: "FILLES DU CALVAIRE → PRAÇA DES VOSGES",
             mapLink: "https://maps.app.goo.gl/MBQ3dAXYBiFW33Dn6",
+            description: "Duração estimada do percurso a pé com visitas: ~1.5 - 2 horas",
             timeline: [
-                { icon: "fa-utensils", title: "Marché des Enfants Rouges" },
-                { icon: "fa-person-walking", title: "Explorar o Marais" },
-                { icon: "fa-road", title: "Rue Vieille-du-Temple" },
-                { icon: "fa-road", title: "Rue des Rosiers" },
-                { icon: "fa-square-full", title: "Praça des Vosges" }
+                { time: "18:45", icon: "fa-utensils", title: "Marché des Enfants Rouges", description: "Passeio pelo mercado: ~30 min" },
+                { time: "19:15", icon: "fa-person-walking", title: "Explorar o Marais", description: "Passeio pela Rue Vieille-du-Temple e Rue des Rosiers: ~45 min" },
+                { time: "20:00", icon: "fa-square-full", title: "Praça des Vosges", description: "Chegada e visita: ~15 min" }
             ]
         },
         {
             title: "MARAIS → CASA",
-            mapLink: "https://maps.app.goo.gl/oZJwgJTB8M8CWRHT7",
+            mapLink: "https://maps.app.goo.gl/EKhGAzi27pZ2JzrB8",
             timeline: [
                 {
-                    time: "20:12", icon: "fa-route", title: "Percurso: Le Marais → Casa", description: "Duração total: ~15 min. Clica para ver os detalhes.",
+                    time: "20:01", icon: "fa-route", title: "Percurso: Le Marais → Casa", description: "Duração total: ~32 min. Clica para ver os detalhes.",
                     accordion: [
-                        { text: "20:12: Apanhar Metro <span class='metro-line' style='background-color: #ceadd2; color: black;'>8</span>", subText: "Da estação <strong>Saint-Sébastien - Froissart</strong>, direção Créteil-Pointe du Lac." },
-                        { text: "20:24: Sair em Porte de Charenton", subText: "" }
+                        { text: "20:09: Apanhar Metro <span class='metro-line' style='background-color: #f19e38;'>5</span>", subText: "Da estação <strong>Bréguet - Sabin</strong>, direção Bobigny-Pablo-Picasso." },
+                        { text: "20:16: Trocar em Gare de l'Est", subText: "Sair do metro e seguir para a Linha 7." },
+                        { text: "20:18: Apanhar Metro <span class='metro-line' style='background-color: #fa9aaa;'>7</span>", subText: "Da estação <strong>Gare de l'Est</strong>, direção La Courneuve-8-Mai-1945." },
+                        { text: "20:31: Sair em Fort d'Aubervilliers", subText: "Caminhar ~2 min até casa." }
                     ]
                 },
-                { time: "21:08", icon: "fa-bed", title: "Regresso a Casa" }
+                { time: "20:33", icon: "fa-bed", title: "Regresso a Casa" }
             ]
         }
     ]
