@@ -18,14 +18,14 @@ export const day1Data = {
         },
         {
             title: "METRO ORLY → CASA PARIS",
-            mapLink: "https://maps.app.goo.gl/JCjyHWMVRRKshoWn6",
+            mapLink: "https://maps.app.goo.gl/7D29KVUmjeroTZ9FA",
             timeline: [
                 { time: "13:30", icon: "fa-utensils", title: "Pausa para Almoço e WC" },
                 {
-                    time: "15:34", icon: "fa-route", title: "Percurso: Aeroporto d'Orly → Casa", description: "Duração total: ~36 min. Clica para ver os detalhes.",
+                    time: "15:34", icon: "fa-route", title: "Percurso: Aeroporto d'Orly → Casa", description: "Duração total: ~54 min. Clica para ver os detalhes.",
                     accordion: [
                         { text: "15:34: Apanhar Metro <span class='metro-line' style='background-color: #62259d;'>14</span>", subText: "Da estação <strong>Aéroport d'Orly</strong>, direção Saint-Denis." },
-                        { text: "15:48: Trocar em Maison Blanche", subText: "Sair do metro e seguir para a paragem do elétrico (Tram)." },
+                        { text: "15:48: Trocar em Pyramides", subText: "Sair do metro e seguir para a paragem do elétrico (Tram)." },
                         { text: "15:54: Apanhar Tram <span class='metro-line' style='background-color: #ff7e2e; color: black;'>T3a</span>", subText: "Da paragem <strong>Porte d'Italie</strong>, direção Porte de Vincennes." },
                         { text: "16:04: Sair em Porte de Charenton", subText: "Saída final. Caminhar até casa." }
                     ]
