@@ -27,12 +27,12 @@ export const day5Data = {
             title: "CACIFO DE MALAS → QUARTIER LATIN",
             mapLink: "https://maps.app.goo.gl/txr2n4YqygFrCiXj6",
             timeline: [
-                { time: "09:30", icon: "fa-gem", title: "Sainte-Chapelle", requiresTicket: true, ticketLink: "https://www.sainte-chapelle.fr/billetterie" },
+                { time: "09:30", icon: "fa-gem", title: "Sainte-Chapelle", requiresTicket: true, ticketLink: "https://www.sainte-chapelle.fr/billetterie", guideLink: "visita_sainte-chapelle.html" },
                 { icon: "fa-person-walking", title: "Rue de la Huchette" },
                 { icon: "fa-church", title: "Igreja de São Severino" },
                 { icon: "fa-monument", title: "Saint-Étienne-du-Mont" },
-                { icon: "fa-landmark-dome", title: "Panteão (Vista Exterior)" },
-                { icon: "fa-seedling", title: "Jardim do Luxemburgo" },
+                { icon: "fa-landmark-dome", title: "Panteão (Vista Exterior)", guideLink: "visita_quartier-latin.html" },
+                { icon: "fa-seedling", title: "Jardim do Luxemburgo", guideLink: "visita_jardim-luxemburgo.html" },
                 { time: "13:00", icon: "fa-person-walking", title: "Ida para o Metro Saint-Sulpice" }
             ]
         },
