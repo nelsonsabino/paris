@@ -61,8 +61,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
             sectionBlock.timeline.forEach(item => {
                 const hasTime = item.time ? `<p class="timeline-time">${item.time}</p>` : '';
+
+                // Lógica para o ícone do bilhete com link
+                let ticketIconHTML = '';
+                if (item.requiresTicket) {
+                    const icon = `<i class='fa-solid fa-ticket ml-2 text-blue-600' title='Necessita de Bilhete'></i>`;
+                    if (item.ticketLink) {
+                        ticketIconHTML = `<a href="${item.ticketLink}" target="_blank" onclick="event.stopPropagation()" class="inline-block" title="Comprar/Ver Bilhetes">${icon}</a>`;
+                    } else {
+                        ticketIconHTML = icon; // Mostra só o ícone se não houver link
+                    }
+                }
                 
-                let itemBody = `<h3 class="font-semibold text-lg">${item.title}</h3>`;
+                let itemBody = `<h3 class="font-semibold text-lg">${item.title}${ticketIconHTML}</h3>`;
                 if (item.description) {
                     itemBody += `<p class="text-gray-600">${item.description}</p>`;
                 }
@@ -78,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     itemBody = `
                         <button class="accordion-toggle w-full text-left">
-                            <h3 class="font-semibold text-lg flex justify-between items-center"><span>${item.title}</span><i class="fas fa-chevron-down text-sm"></i></h3>
+                            <h3 class="font-semibold text-lg flex justify-between items-center"><span>${item.title}${ticketIconHTML}</span><i class="fas fa-chevron-down text-sm"></i></h3>
                             <p class="text-gray-600">${item.description}</p>
                         </button>
                         <div class="accordion-content hidden mt-4 pl-4 border-l-2 border-gray-300">
