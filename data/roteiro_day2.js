@@ -43,7 +43,7 @@ export const day2Data = {
                 { icon: "fa-archway", title: "Arco do Triunfo do Carrossel" },
                 { icon: "fa-fountain", title: "Jardim das Tulherias" },
                 { icon: "fa-square-full", title: "Place de la Concorde" },
-                { time: "15:30", icon: "fa-building-columns", title: "Musée d'Orsay", requiresTicket: true, ticketLink: "https://billetterie.musee-orsay.fr/", guideLink: "visita_musee-orsay.html" },
+                { time: "15:30", icon: "fa-building-columns", title: "Musée d'Orsay", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1Bu_gwN7g8FUIv_qIG1aK_RuN7e0ACQcr/view?usp=drive_link", guideLink: "visita_musee-orsay.html" },
                 { icon: "fa-landmark", title: "Petit Palais/Grand Palais (Exterior)" }
             ]
         },
