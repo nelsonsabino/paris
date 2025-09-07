@@ -69,11 +69,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (item.ticketLink) {
                         ticketIconHTML = `<a href="${item.ticketLink}" target="_blank" onclick="event.stopPropagation()" class="inline-block" title="Comprar/Ver Bilhetes">${icon}</a>`;
                     } else {
-                        ticketIconHTML = icon; // Mostra só o ícone se não houver link
+                        ticketIconHTML = icon;
                     }
                 }
+
+                // Lógica para o link do guia na atração
+                let titleHTML = item.title;
+                if (item.guideLink) {
+                    titleHTML = `<a href="${item.guideLink}" class="text-blue-700 hover:underline hover:text-blue-900 transition">${item.title}</a>`;
+                }
                 
-                let itemBody = `<h3 class="font-semibold text-lg">${item.title}${ticketIconHTML}</h3>`;
+                let itemBody = `<h3 class="font-semibold text-lg">${titleHTML}${ticketIconHTML}</h3>`;
                 if (item.description) {
                     itemBody += `<p class="text-gray-600">${item.description}</p>`;
                 }
@@ -89,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     itemBody = `
                         <button class="accordion-toggle w-full text-left">
-                            <h3 class="font-semibold text-lg flex justify-between items-center"><span>${item.title}${ticketIconHTML}</span><i class="fas fa-chevron-down text-sm"></i></h3>
+                            <h3 class="font-semibold text-lg flex justify-between items-center"><span>${titleHTML}${ticketIconHTML}</span><i class="fas fa-chevron-down text-sm"></i></h3>
                             <p class="text-gray-600">${item.description}</p>
                         </button>
                         <div class="accordion-content hidden mt-4 pl-4 border-l-2 border-gray-300">
