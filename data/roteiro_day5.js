@@ -29,7 +29,17 @@ export const day5Data = {
                 { time: "10:40", icon: "fa-person-walking", title: "Rue de la Huchette & Igreja de São Severino", description: "Passeio: ~20 min" },
                 { time: "11:15", icon: "fa-monument", title: "Saint-Étienne-du-Mont", description: "Visita: ~25 min" },
                 { time: "11:50", icon: "fa-landmark-dome", title: "Panteão (Vista Exterior)", guideLink: "visita_quartier-latin.html", description: "Fotos: ~15 min" },
-                { time: "12:15", icon: "fa-seedling", title: "Jardim do Luxemburgo", guideLink: "visita_jardim-luxemburgo.html", description: "Pausa e caminhada: ~45 min" }
+                { time: "12:15", icon: "fa-seedling", title: "Jardim do Luxemburgo", guideLink: "visita_jardim-luxemburgo.html", description: "Pausa e caminhada: ~45 min" },
+                {
+                    icon: "fa-restroom",
+                    title: "Casas de Banho Próximas",
+                    description: `
+                        <ul class='list-disc list-inside text-sm'>
+                            <li>Place du Panthéon - <a href='https://www.google.com/maps/search/?api=1&query=48.8471,2.3468' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
+                            <li>No Jardim do Luxemburgo (várias) - <a href='https://www.google.com/maps/search/?api=1&query=48.8460,2.3371' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
+                        </ul>
+                    `
+                }
             ]
         },
         {
@@ -40,6 +50,16 @@ export const day5Data = {
                 { time: "14:30", icon: "fa-church", title: "Igreja de Saint-Sulpice", description: "Visitar o interior e ver as pinturas de Delacroix." },
                 { time: "15:15", icon: "fa-coffee", title: "Pausa num Café Icónico", description: "Sentar na esplanada do Les Deux Magots ou Café de Flore para um café e observar o movimento." },
                 { time: "16:00", icon: "fa-person-walking", title: "Explorar o Bairro e caminhar para o cacifo", description: "Passear pelas ruas charmosas e seguir a pé em direção à zona do Louvre." },
+                {
+                    icon: "fa-restroom",
+                    title: "Casas de Banho Próximas",
+                    description: `
+                        <ul class='list-disc list-inside text-sm'>
+                            <li>Place Saint-Sulpice - <a href='https://www.google.com/maps/search/?api=1&query=48.8509,2.3330' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
+                            <li>Marché Saint-Germain - <a href='https://www.google.com/maps/search/?api=1&query=48.8521,2.3346' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
+                        </ul>
+                    `
+                },
                 { time: "17:45", icon: "fa-suitcase", title: "Recolher Malas no Cacifo" }
             ]
         },
