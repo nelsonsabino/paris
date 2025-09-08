@@ -36,7 +36,7 @@ export const day4Data = {
                     description: `
                         <ul class='list-disc list-inside text-sm'>
                             <li>Dentro das Galeries Lafayette (recomendado)</li>
-                            <li>4 Rue Scribe (perto da Ópera) - <a href='https://www.google.com/maps/search/?api=1&query=48.8711,2.3308' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
+                            <li>Place de la Madeleine - <a href='https://www.google.com/maps/search/?api=1&query=48.86950,2.32480' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
                         </ul>
                     `
                 }
@@ -69,8 +69,8 @@ export const day4Data = {
                     title: "Casas de Banho Próximas",
                     description: `
                         <ul class='list-disc list-inside text-sm'>
-                            <li>7 Rue de Bretagne (perto do mercado) - <a href='https://www.google.com/maps/search/?api=1&query=48.8617,2.3621' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
-                            <li>Place des Vosges - <a href='https://www.google.com/maps/search/?api=1&query=48.8553,2.3653' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
+                            <li>7 Rue de Bretagne (perto do mercado) - <a href='https://www.google.com/maps/search/?api=1&query=48.86171,2.36214' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
+                            <li>Place des Vosges - <a href='https://www.google.com/maps/search/?api=1&query=48.85532,2.36531' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
                         </ul>
                     `
                 }
