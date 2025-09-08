@@ -31,7 +31,17 @@ export const day2Data = {
                 { icon: "fa-fountain", title: "Fontaine Saint-Michel" },
                 { icon: "fa-flower", title: "Mercado das Flores Rainha Elizabeth II" },
                 { icon: "fa-tree-city", title: "Place Dauphine" },
-                { icon: "fa-tree", title: "Square du Vert-Galant" }
+                { icon: "fa-tree", title: "Square du Vert-Galant" },
+                {
+                    icon: "fa-restroom",
+                    title: "Casas de Banho Próximas",
+                    description: `
+                        <ul class='list-disc list-inside text-sm'>
+                            <li>Quai de l'Horloge - <a href='https://www.google.com/maps/search/?api=1&query=48.85686,2.34444' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
+                            <li>Place Saint-Michel - <a href='https://www.google.com/maps/search/?api=1&query=48.85324,2.34415' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
+                        </ul>
+                    `
+                }
             ]
         },
         {
@@ -43,6 +53,16 @@ export const day2Data = {
                 { icon: "fa-archway", title: "Arco do Triunfo do Carrossel" },
                 { icon: "fa-fountain", title: "Jardim das Tulherias" },
                 { icon: "fa-square-full", title: "Place de la Concorde" },
+                {
+                    icon: "fa-restroom",
+                    title: "Casas de Banho Próximas",
+                    description: `
+                        <ul class='list-disc list-inside text-sm'>
+                            <li>Jardin des Tuileries (várias localizações) - <a href='https://www.google.com/maps/search/?api=1&query=48.86532,2.32483' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
+                            <li>Rond-Point des Champs-Élysées - <a href='https://www.google.com/maps/search/?api=1&query=48.86877,2.31175' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
+                        </ul>
+                    `
+                },
                 { time: "15:30", icon: "fa-building-columns", title: "Musée d'Orsay", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1Bu_gwN7g8FUIv_qIG1aK_RuN7e0ACQcr/view?usp=drive_link", guideLink: "visita_musee-orsay.html" },
                 { icon: "fa-landmark", title: "Petit Palais/Grand Palais (Exterior)" }
             ]
