@@ -332,7 +332,8 @@
             fetchTripWeather();
 
             // --- LÓGICA DA CHECKLIST ---
-            const checklistItemsRef = database.ref('checklist_items');
+            // CORREÇÃO: Mudei de 'checklist_items' para 'checklist'
+            const checklistItemsRef = database.ref('checklist');
             const itemModal = document.getElementById('item-modal');
             const itemForm = document.getElementById('item-form');
             const itemInput = document.getElementById('item-input');
