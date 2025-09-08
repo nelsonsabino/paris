@@ -17,7 +17,7 @@ export const day4Data = {
                         { text: "08:42: Sair em Palais Royal - Musée du Louvre", subText: "Caminhar ~2 min até à entrada." }
                     ]
                 },
-                { time: "09:00", icon: "fa-landmark-dome", title: "Museu do Louvre", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1zgpLvPJtgUGnMsOFsIbfg3tGwhPSse0w/view?usp=sharing", guideLink: "visita_louvre.html" },
+                { time: "09:00", icon: "fa-landmark-dome", title: "Museu do Louvre", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1zgpLvPJtgUGnMsOFsIbfg3tGwhPSse0w/view?usp=sharing", guideLink: "visita_louvre.html", description: "O museu tem várias casas de banho no interior." },
                 { time: "13:00", icon: "fa-utensils", title: "Almoço nas Proximidades do Louvre" }
             ]
         },
@@ -29,7 +29,17 @@ export const day4Data = {
                 { icon: "fa-archway", title: "Galerie Vivienne" },
                 { icon: "fa-gem", title: "Place Vendôme" },
                 { time: "15:00", icon: "fa-masks-theater", title: "Ópera Garnier", description: "Visita interior (~1h)", requiresTicket: true, ticketLink: "https://drive.google.com/drive/folders/1LzpXOo9CjPe37kIHkBRFG0Xy4sy5Kwg7?usp=sharing", guideLink: "visita_opera-garnier.html" },
-                { icon: "fa-store", title: "Galeries Lafayette", description: "Visita ao terraço para vista (~45min)", guideLink: "visita_galeries-lafayette.html" }
+                { icon: "fa-store", title: "Galeries Lafayette", description: "Visita ao terraço para vista (~45min)", guideLink: "visita_galeries-lafayette.html" },
+                {
+                    icon: "fa-restroom",
+                    title: "Casas de Banho Próximas",
+                    description: `
+                        <ul class='list-disc list-inside text-sm'>
+                            <li>Dentro das Galeries Lafayette (recomendado)</li>
+                            <li>4 Rue Scribe (perto da Ópera) - <a href='https://www.google.com/maps/search/?api=1&query=48.8711,2.3308' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
+                        </ul>
+                    `
+                }
             ]
         },
         {
@@ -53,7 +63,17 @@ export const day4Data = {
             timeline: [
                 { time: "18:45", icon: "fa-utensils", title: "Marché des Enfants Rouges", description: "Passeio pelo mercado: ~30 min" },
                 { time: "19:15", icon: "fa-person-walking", title: "Explorar o Marais", description: "Passeio pela Rue Vieille-du-Temple e Rue des Rosiers: ~45 min" },
-                { time: "20:00", icon: "fa-square-full", title: "Praça des Vosges", description: "Chegada e visita: ~15 min" }
+                { time: "20:00", icon: "fa-square-full", title: "Praça des Vosges", description: "Chegada e visita: ~15 min" },
+                {
+                    icon: "fa-restroom",
+                    title: "Casas de Banho Próximas",
+                    description: `
+                        <ul class='list-disc list-inside text-sm'>
+                            <li>7 Rue de Bretagne (perto do mercado) - <a href='https://www.google.com/maps/search/?api=1&query=48.8617,2.3621' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
+                            <li>Place des Vosges - <a href='https://www.google.com/maps/search/?api=1&query=48.8553,2.3653' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
+                        </ul>
+                    `
+                }
             ]
         },
         {
