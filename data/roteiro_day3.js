@@ -21,7 +21,7 @@ export const day3Data = {
                         { text: "08:35: Sair em Versailles Château Rive Gauche", subText: "Caminhar ~15 min até ao palácio." }
                     ]
                 },
-                { time: "08:50", icon: "fa-crown", title: "Palácio de Versalhes", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1JWHf_KUwofGdZgYj5wp0JswPyZcCs3ys/view?usp=drive_link", guideLink: "visita_versalhes.html" }
+                { time: "08:50", icon: "fa-crown", title: "Palácio de Versalhes", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1JWHf_KUwofGdZgYj5wp0JswPyZcCs3ys/view?usp=drive_link", guideLink: "visita_versalhes.html", description: "Nota: Existem várias casas de banho dentro do palácio e nos jardins." }
             ]
         },
         {
@@ -50,7 +50,18 @@ export const day3Data = {
                 { time: "17:20", icon: "fa-utensils", title: "Le Consulat & La Maison Rose", description: "Paragem para fotos: ~10 min" },
                 { icon: "fa-windmill", title: "Moulin Radet", description: "Vista de passagem" },
                 { time: "17:45", icon: "fa-mug-hot", title: "Café des Deux Moulins", description: "Visita rápida/fotos: ~5 min" },
-                { time: "17:50", icon: "fa-wind", title: "Moulin Rouge", description: "Chegada e fotos finais: ~10 min" }
+                { time: "17:50", icon: "fa-wind", title: "Moulin Rouge", description: "Chegada e fotos finais: ~10 min" },
+                {
+                    icon: "fa-restroom",
+                    title: "Casas de Banho Próximas",
+                    description: `
+                        <ul class='list-disc list-inside text-sm'>
+                            <li>Início: Place des Abbesses - <a href='https://www.google.com/maps/search/?api=1&query=48.8845,2.3386' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
+                            <li>Topo: Square Nadar (perto da Sacré-Cœur) - <a href='https://www.google.com/maps/search/?api=1&query=48.8860,2.3429' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
+                            <li>Fim: Place Blanche (perto do Moulin Rouge) - <a href='https://www.google.com/maps/search/?api=1&query=48.8831,2.3325' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
+                        </ul>
+                    `
+                }
             ]
         },
         {
