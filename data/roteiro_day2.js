@@ -37,8 +37,8 @@ export const day2Data = {
                     title: "Casas de Banho Próximas",
                     description: `
                         <ul class='list-disc list-inside text-sm'>
-                            <li>Quai de l'Horloge - <a href='https://www.google.com/maps/search/?api=1&query=48.85686,2.34444' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
-                            <li>Place Saint-Michel - <a href='https://www.google.com/maps/search/?api=1&query=48.85324,2.34415' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
+                            <li>Place du Parvis de Notre-Dame - <a href='https://www.google.com/maps/search/?api=1&query=48.85311,2.34854' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
+                            <li>Quai du Louvre (Perto da Pont Neuf) - <a href='https://www.google.com/maps/search/?api=1&query=48.85834,2.34114' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
                         </ul>
                     `
                 }
@@ -58,8 +58,8 @@ export const day2Data = {
                     title: "Casas de Banho Próximas",
                     description: `
                         <ul class='list-disc list-inside text-sm'>
-                            <li>Jardin des Tuileries (várias localizações) - <a href='https://www.google.com/maps/search/?api=1&query=48.86532,2.32483' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
-                            <li>Rond-Point des Champs-Élysées - <a href='https://www.google.com/maps/search/?api=1&query=48.86877,2.31175' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
+                            <li>Quai Anatole France (perto do Musée d'Orsay) - <a href='https://www.google.com/maps/search/?api=1&query=48.86261,2.31964' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
+                            <li>Avenue des Champs-Élysées (Jardins) - <a href='https://www.google.com/maps/search/?api=1&query=48.86726,2.31709' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
                         </ul>
                     `
                 },
