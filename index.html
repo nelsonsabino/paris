@@ -120,28 +120,12 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-database-compat.js"></script>
     
     <script>
+        // --- VARIÁVEIS GLOBAIS ---
         const a_senha_secreta = 'paris2025';
         let isAuthenticated = false;
         let pendingAction = null;
 
-        const countdownDate = new Date(2025, 8, 19, 6, 0, 0).getTime();
-        const x = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = countdownDate - now;
-            if (document.getElementById("days")) {
-                document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
-                document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
-                document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-                document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
-            }
-            if (distance < 0) {
-                clearInterval(x);
-                if (document.getElementById("countdown")) {
-                    document.getElementById("countdown").innerHTML = "<div class='text-center w-full'><p class='text-2xl font-bold'>A VIAGEM COMEÇOU! BON VOYAGE!</p></div>";
-                }
-            }
-        }, 1000);
-        
+        // --- INICIALIZAÇÃO FIREBASE ---
         const firebaseConfig = {
           apiKey: "AIzaSyAt7jAk5r2tqSdyTf2m7MUebd_t7bbDTJk",
           authDomain: "planeamento-viagem-paris.firebaseapp.com",
@@ -153,7 +137,8 @@
         };
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
-        
+
+        // --- DADOS ESTÁTICOS ---
         const planningEvents = [
             { title: 'Comprar bilhetes para o Museu do Louvre', date: '2025-06-18', description: 'Comprar para o dia 22 de Setembro (Segunda-feira).', status: 'complete', color: '#16a34a' },
             { title: 'Comprar bilhetes para a Museu D Orsay', date: '2025-06-21', description: 'Em principio em julho já é possivel comprar os bilhetes. Verificar disponibilidade.', status: 'complete', color: '#16a34a' },
@@ -165,7 +150,6 @@
             { title: 'Reserva para entrada sem filas na Notre-Dame', date: '2025-09-19', description: 'A reserva só pode ser feita umas horas antes. Irá ser dificil apanhar um slot disponível.', status: 'pending', color: '#ea580c' },
             { title: 'VIAGEM!', date: '2025-09-19', endDate: '2025-09-24', description: 'De 19 a 23 de Setembro.', status: 'complete', color: '#16a34a' }
         ];
-        
         const tripItinerary = [
             { day: 'Dia 1', date: '19/09', theme: 'Chegada e Torre Eiffel', ticketedVenues: [ { name: 'Torre Eiffel', icon: 'fa-tower-observation', status: 'complete', openingHours: '09:00 - 23:45', openDays: 'Todos os dias' }] },
             { day: 'Dia 2', date: '20/09', theme: 'Coração Histórico', ticketedVenues: [ { name: 'Musée dOrsay', icon: 'fa-gem', status: 'complete', openingHours: '09:00 - 17:00', openDays: 'Todos os dias (verificar feriados)' }] },
@@ -174,21 +158,34 @@
             { day: 'Dia 5', date: '23/09', theme: 'Despedida e Regresso', ticketedVenues: [ { name: 'Sainte-Chapelle', icon: 'fa-gem', status: 'complete', openingHours: '09:00 - 17:00', openDays: 'Todos os dias (verificar feriados)' } ] }
         ];
 
-        // --- LÓGICA PARA A CHECKLIST DINÂMICA ---
-        const checklistItemsRef = database.ref('checklist_items');
-        const checklistContainer = document.getElementById('checklist-container');
-        const addItemBtn = document.getElementById('add-item-btn');
-        const itemModal = document.getElementById('item-modal');
-        const itemForm = document.getElementById('item-form');
-        const itemInput = document.getElementById('item-input');
-        const cancelItemBtn = document.getElementById('cancel-item-btn');
-        let currentItemKey = null;
+        // --- DEFINIÇÃO DAS FUNÇÕES ---
+        function startCountdown() {
+            const countdownDate = new Date(2025, 8, 19, 6, 0, 0).getTime();
+            const x = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = countdownDate - now;
+                if (document.getElementById("days")) {
+                    document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+                    document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                    document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                    document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+                }
+                if (distance < 0) {
+                    clearInterval(x);
+                    if (document.getElementById("countdown")) {
+                        document.getElementById("countdown").innerHTML = "<div class='text-center w-full'><p class='text-2xl font-bold'>A VIAGEM COMEÇOU! BON VOYAGE!</p></div>";
+                    }
+                }
+            }, 1000);
+        }
 
-        function renderChecklist() {
+        function renderChecklist(checklistItemsRef) {
+            const checklistContainer = document.getElementById('checklist-container');
             checklistItemsRef.orderByChild('order').on('value', (snapshot) => {
                 checklistContainer.innerHTML = '';
                 if (!snapshot.exists()) {
                     checklistContainer.innerHTML = '<p class="text-gray-500 italic">Nenhum item na checklist.</p>';
+                    return;
                 }
                 snapshot.forEach((childSnapshot) => {
                     const key = childSnapshot.key;
@@ -212,60 +209,23 @@
                         </div>
                     `;
                     
-                    // Event listeners
                     itemDiv.querySelector('input[type="checkbox"]').addEventListener('change', (e) => {
                         checklistItemsRef.child(key).update({ checked: e.target.checked });
                     });
                     itemDiv.querySelector('.edit-btn').addEventListener('click', (e) => {
                         const btn = e.currentTarget;
-                        currentItemKey = btn.dataset.key;
-                        itemInput.value = btn.dataset.text;
-                        itemModal.classList.remove('hidden');
-                        itemInput.focus();
+                        document.dispatchEvent(new CustomEvent('openItemModal', { detail: { key: btn.dataset.key, text: btn.dataset.text } }));
                     });
                     itemDiv.querySelector('.delete-btn').addEventListener('click', (e) => {
                         const keyToDelete = e.currentTarget.dataset.key;
                         if (confirm('Tem a certeza que quer apagar este item?')) {
-                            requestPassword(() => {
-                                checklistItemsRef.child(keyToDelete).remove();
-                            });
+                            requestPassword(() => checklistItemsRef.child(keyToDelete).remove());
                         }
                     });
-
                     checklistContainer.appendChild(itemDiv);
                 });
             });
         }
-        
-        addItemBtn.addEventListener('click', () => {
-            currentItemKey = null;
-            itemInput.value = '';
-            itemModal.classList.remove('hidden');
-            itemInput.focus();
-        });
-
-        cancelItemBtn.addEventListener('click', () => {
-            itemModal.classList.add('hidden');
-        });
-
-        itemForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const text = itemInput.value.trim();
-            if (!text) return;
-            
-            requestPassword(() => {
-                if (currentItemKey) { // Edit mode
-                    checklistItemsRef.child(currentItemKey).update({ text: text });
-                } else { // Add mode
-                    checklistItemsRef.once('value', (snapshot) => {
-                        const newOrder = snapshot.numChildren();
-                        checklistItemsRef.push({ text: text, checked: false, order: newOrder });
-                    });
-                }
-                itemModal.classList.add('hidden');
-            });
-        });
-
         
         function renderTimeline() {
             const timelineContainer = document.getElementById('timeline-container');
@@ -285,15 +245,8 @@
         function renderCalendar() {
             const calendarEl = document.getElementById('calendar');
             if (!calendarEl) return;
-            const modal = document.getElementById('event-modal');
-            const modalTitle = document.getElementById('modal-title');
-            const modalDescription = document.getElementById('modal-description');
-            const modalCloseBtn = document.getElementById('modal-close-btn');
             const calendarEvents = planningEvents.map(event => ({ title: event.title, start: event.date, end: event.endDate, backgroundColor: event.color, borderColor: event.color, allDay: true, extendedProps: { description: event.description || 'Não há detalhes adicionais.' } }));
-            const calendar = new FullCalendar.Calendar(calendarEl, { initialView: 'dayGridMonth', locale: 'pt-br', headerToolbar: { left: 'prev,next today', center: 'title', right: '' }, events: calendarEvents, eventClick: function(info) { info.jsEvent.preventDefault(); if(modal) { modalTitle.textContent = info.event.title; modalDescription.textContent = info.event.extendedProps.description; modal.classList.remove('hidden');} } });
-            function closeModal() { if(modal) modal.classList.add('hidden'); }
-            if(modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
-            if(modal) modal.addEventListener('click', function(e) { if (e.target === modal) { closeModal(); } });
+            const calendar = new FullCalendar.Calendar(calendarEl, { initialView: 'dayGridMonth', locale: 'pt-br', headerToolbar: { left: 'prev,next today', center: 'title', right: '' }, events: calendarEvents, eventClick: function(info) { info.jsEvent.preventDefault(); document.dispatchEvent(new CustomEvent('openEventModal', { detail: info.event }));} });
             calendar.render();
         }
 
@@ -308,22 +261,18 @@
                         const isComplete = venue.status === 'complete';
                         return `<li class="p-4 bg-gray-50 rounded-lg"><div class="flex items-center justify-between"><div class="flex items-center"><i class="fa-solid ${isComplete ? 'fa-check-circle text-green-500' : 'fa-hourglass-half text-yellow-500'} w-6 text-center mr-3"></i><span class="font-semibold ${isComplete ? 'line-through text-gray-400' : 'text-gray-800'}">${venue.name}</span></div><i class="fa-solid ${venue.icon} text-xl text-gray-400"></i></div><div class="mt-2 pl-9 text-sm text-gray-600 space-y-1"><div class="flex items-start"><i class="fa-regular fa-calendar-days w-6 text-center mr-1 pt-1"></i><span>${venue.openDays || 'Não especificado'}</span></div><div class="flex items-start"><i class="fa-regular fa-clock w-6 text-center mr-1 pt-1"></i><span>${venue.openingHours || 'Não especificado'}</span></div></div></li>`;
                     }).join('') + `</ul>`;
-                } else {
-                    venuesHTML = `<p class="mt-2 text-gray-500 italic">Nenhum bilhete a comprar para este dia.</p>`;
                 }
                 const dayHTML = `<div class="bg-white p-6 rounded-2xl shadow-lg"><div class="flex items-center border-b pb-3"><div class="text-center w-16"><p class="text-xl font-bold text-gray-800">${day.day}</p><p class="text-sm text-gray-500">${day.date}</p></div><div class="pl-4 border-l ml-4"><h4 class="font-semibold text-lg text-gray-900">${day.theme}</h4></div></div>${venuesHTML}</div>`;
                 container.innerHTML += dayHTML;
             });
         }
         
-        const tripStartDate = new Date('2025-09-19T12:00:00Z');
-        const fetchTripWeather = async () => {
+        async function fetchTripWeather() {
+            const tripStartDate = new Date('2025-09-19T12:00:00Z');
             const today = new Date();
             const daysUntilTrip = Math.ceil((tripStartDate - today) / (1000 * 60 * 60 * 24));
-            let apiUrl;
-            let title;
+            let apiUrl, title;
             let isForecast = daysUntilTrip <= 16;
-
             if (isForecast) {
                 title = "Previsão da Viagem";
                 apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=48.8566&longitude=2.3522&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Europe/Paris&forecast_days=16`;
@@ -331,98 +280,134 @@
                 title = "Previsão Histórica (com base no ano passado)";
                 apiUrl = `https://archive-api.open-meteo.com/v1/archive?latitude=48.8566&longitude=2.3522&start_date=2024-09-19&end_date=2024-09-23&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Europe/Paris`;
             }
-
             try {
                 const response = await fetch(apiUrl);
                 if (!response.ok) throw new Error(`Erro na API: ${response.statusText}`);
                 let data = await response.json();
-
                 if (isForecast) {
-                    const tripStartDateString = '2025-09-19';
-                    const tripEndDateString = '2025-09-23';
+                    const tripStartDateString = '2025-09-19', tripEndDateString = '2025-09-23';
                     const filteredDaily = { time: [], weather_code: [], temperature_2m_max: [], temperature_2m_min: [] };
                     data.daily.time.forEach((dateString, index) => {
                         if (dateString >= tripStartDateString && dateString <= tripEndDateString) {
-                            filteredDaily.time.push(data.daily.time[index]);
-                            filteredDaily.weather_code.push(data.daily.weather_code[index]);
-                            filteredDaily.temperature_2m_max.push(data.daily.temperature_2m_max[index]);
-                            filteredDaily.temperature_2m_min.push(data.daily.temperature_2m_min[index]);
+                            for (const key in filteredDaily) filteredDaily[key].push(data.daily[key][index]);
                         }
                     });
                     data.daily = filteredDaily;
                 }
-                
                 renderForecast(data, title);
             } catch (error) {
                 console.error("Erro ao buscar dados da meteorologia:", error);
                 document.getElementById('forecast-widget').innerHTML = `<h2 class="section-title font-bold text-gray-800 mb-4 text-center">Previsão da Viagem</h2><p class="text-red-500 text-center">Não foi possível carregar a previsão.</p>`;
             }
-        };
-
-        const getWeatherIcon = (code) => {
-            const icons = { 0: 'fa-sun', 1: 'fa-cloud-sun', 2: 'fa-cloud-sun', 3: 'fa-cloud', 45: 'fa-smog', 48: 'fa-smog', 51: 'fa-cloud-rain', 53: 'fa-cloud-rain', 55: 'fa-cloud-rain', 61: 'fa-cloud-showers-heavy', 63: 'fa-cloud-showers-heavy', 65: 'fa-cloud-showers-heavy', 80: 'fa-cloud-sun-rain', 81: 'fa-cloud-sun-rain', 82: 'fa-cloud-sun-rain', 95: 'fa-bolt' };
-            return icons[code] || 'fa-question-circle';
-        };
-        
-        const formatDayAndDate = (dateObject) => {
-            const day = dateObject.toLocaleDateString('pt-PT', { weekday: 'short' });
-            const dayOfMonth = dateObject.getDate();
-            return `${day} ${dayOfMonth}`;
-        };
-
-        const renderForecast = (data, title) => {
+        }
+        const getWeatherIcon = (code) => ({ 0: 'fa-sun', 1: 'fa-cloud-sun', 2: 'fa-cloud-sun', 3: 'fa-cloud', 45: 'fa-smog', 48: 'fa-smog', 51: 'fa-cloud-rain', 53: 'fa-cloud-rain', 55: 'fa-cloud-rain', 61: 'fa-cloud-showers-heavy', 63: 'fa-cloud-showers-heavy', 65: 'fa-cloud-showers-heavy', 80: 'fa-cloud-sun-rain', 81: 'fa-cloud-sun-rain', 82: 'fa-cloud-sun-rain', 95: 'fa-bolt' }[code] || 'fa-question-circle');
+        const formatDayAndDate = (dateObject) => `${dateObject.toLocaleDateString('pt-PT', { weekday: 'short' })} ${dateObject.getDate()}`;
+        function renderForecast(data, title) {
             const widget = document.getElementById('forecast-widget');
             const daily = data.daily;
             let forecastHtml = '';
             for (let i = 0; i < daily.time.length; i++) {
-                const displayDate = new Date(tripStartDate);
-                displayDate.setUTCDate(tripStartDate.getUTCDate() + i);
+                const displayDate = new Date(new Date('2025-09-19T12:00:00Z'));
+                displayDate.setUTCDate(displayDate.getUTCDate() + i);
                 forecastHtml += `<div class="text-center p-3 bg-gray-100 rounded-lg"><p class="font-semibold">${formatDayAndDate(displayDate)}</p><i class="fa-solid ${getWeatherIcon(daily.weather_code[i])} text-3xl my-2 text-blue-500"></i><p class="text-sm"><span class="font-bold text-red-500">${Math.round(daily.temperature_2m_max[i])}°</span> / <span class="text-blue-600">${Math.round(daily.temperature_2m_min[i])}°</span></p></div>`;
             }
-            const widgetHtml = `<h2 class="section-title font-bold text-gray-800 mb-4 text-center">${title}</h2><div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">${forecastHtml}</div>`;
-            widget.innerHTML = widgetHtml;
-        };
-
-        // --- LÓGICA DE PASSWORD ---
-        const passwordModal = document.getElementById('password-modal');
-        const passwordForm = document.getElementById('password-form');
-        const passwordInput = document.getElementById('password-input');
-        const passwordError = document.getElementById('password-error');
-        const cancelPasswordBtn = document.getElementById('cancel-password');
-
+            widget.innerHTML = `<h2 class="section-title font-bold text-gray-800 mb-4 text-center">${title}</h2><div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">${forecastHtml}</div>`;
+        }
+        
         function requestPassword(actionCallback) {
+            const passwordModal = document.getElementById('password-modal');
             if (isAuthenticated) { actionCallback(); return; }
             pendingAction = actionCallback;
             passwordModal.classList.remove('hidden');
-            passwordInput.focus();
+            document.getElementById('password-input').focus();
         }
 
-        passwordForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            if (passwordInput.value === a_senha_secreta) {
-                isAuthenticated = true;
-                passwordModal.classList.add('hidden');
-                passwordInput.value = '';
-                passwordError.classList.add('hidden');
-                if (pendingAction) { pendingAction(); pendingAction = null; }
-            } else {
-                passwordError.classList.remove('hidden');
-            }
-        });
-
-        cancelPasswordBtn.addEventListener('click', () => {
-            passwordModal.classList.add('hidden');
-            passwordInput.value = '';
-            passwordError.classList.add('hidden');
-            pendingAction = null;
-        });
-
+        // --- CÓDIGO EXECUTADO QUANDO A PÁGINA CARREGA ---
         document.addEventListener('DOMContentLoaded', () => {
-            renderChecklist();
+            // Inicializar todas as funções de renderização
+            startCountdown();
             renderTimeline();
             renderCalendar();
             renderTicketTimeline();
             fetchTripWeather();
+
+            // --- LÓGICA DA CHECKLIST ---
+            const checklistItemsRef = database.ref('checklist_items');
+            const itemModal = document.getElementById('item-modal');
+            const itemForm = document.getElementById('item-form');
+            const itemInput = document.getElementById('item-input');
+            const addItemBtn = document.getElementById('add-item-btn');
+            const cancelItemBtn = document.getElementById('cancel-item-btn');
+            let currentItemKey = null;
+
+            renderChecklist(checklistItemsRef);
+            
+            addItemBtn.addEventListener('click', () => {
+                document.dispatchEvent(new CustomEvent('openItemModal', { detail: {} }));
+            });
+
+            cancelItemBtn.addEventListener('click', () => itemModal.classList.add('hidden'));
+
+            document.addEventListener('openItemModal', (e) => {
+                currentItemKey = e.detail.key || null;
+                itemInput.value = e.detail.text || '';
+                itemModal.classList.remove('hidden');
+                itemInput.focus();
+            });
+
+            itemForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const text = itemInput.value.trim();
+                if (!text) return;
+                
+                requestPassword(() => {
+                    if (currentItemKey) {
+                        checklistItemsRef.child(currentItemKey).update({ text: text });
+                    } else {
+                        checklistItemsRef.once('value', (snapshot) => {
+                            const newOrder = snapshot.numChildren();
+                            checklistItemsRef.push({ text: text, checked: false, order: newOrder });
+                        });
+                    }
+                    itemModal.classList.add('hidden');
+                });
+            });
+
+            // --- LÓGICA DOS MODAIS ---
+            const eventModal = document.getElementById('event-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalDescription = document.getElementById('modal-description');
+            
+            document.addEventListener('openEventModal', (e) => {
+                modalTitle.textContent = e.detail.title;
+                modalDescription.textContent = e.detail.extendedProps.description;
+                eventModal.classList.remove('hidden');
+            });
+
+            function closeModal(modal) {
+                if (modal) modal.classList.add('hidden');
+            }
+            document.getElementById('modal-close-btn').addEventListener('click', () => closeModal(eventModal));
+            eventModal.addEventListener('click', (e) => { if (e.target === eventModal) closeModal(eventModal); });
+            
+            const passwordModal = document.getElementById('password-modal');
+            const passwordForm = document.getElementById('password-form');
+            const passwordInput = document.getElementById('password-input');
+            const passwordError = document.getElementById('password-error');
+            
+            passwordForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                if (passwordInput.value === a_senha_secreta) {
+                    isAuthenticated = true;
+                    passwordInput.value = '';
+                    passwordError.classList.add('hidden');
+                    closeModal(passwordModal);
+                    if (pendingAction) { pendingAction(); pendingAction = null; }
+                } else {
+                    passwordError.classList.remove('hidden');
+                }
+            });
+            document.getElementById('cancel-password').addEventListener('click', () => closeModal(passwordModal));
         });
     </script>
     
