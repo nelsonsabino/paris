@@ -58,7 +58,18 @@ export const day1Data = {
                 { icon: "fa-camera-retro", title: "Jardim do Trocadéro" },
                 { time: "21:00", icon: "fa-tower-observation", title: "Torre Eiffel", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1yA1rnPn_RHHJ3oZ8ImG2pWCC61VbrpNa/view?usp=sharing", guideLink: "visita_torre-eiffel.html" },
                 { icon: "fa-store", title: "Rue Cler" },
-                { time: "23:00", icon: "fa-person-walking", title: "Ida para o Metro École Militaire" }
+                { time: "23:00", icon: "fa-person-walking", title: "Ida para o Metro École Militaire" },
+                {
+                    icon: "fa-restroom",
+                    title: "Casas de Banho Próximas",
+                    description: `
+                        <ul class='list-disc list-inside text-sm'>
+                            <li>Jardins du Trocadéro - <a href='https://www.google.com/maps/search/?api=1&query=48.86259,2.28919' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
+                            <li>Champ de Mars (próximo Av. Gustave Eiffel) - <a href='https://www.google.com/maps/search/?api=1&query=48.85689,2.29828' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
+                            <li>Avenue de la Motte-Picquet - <a href='https://www.google.com/maps/search/?api=1&query=48.85233,2.30252' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
+                        </ul>
+                    `
+                }
             ]
         },
         {
