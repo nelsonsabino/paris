@@ -66,6 +66,19 @@
             </div>
         </section>
         
+        <!-- CHECKLIST DINÂMICA (NOVA POSIÇÃO) -->
+        <section class="mb-12">
+            <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Checklist de Preparação</h2>
+            <div class="bg-white p-6 rounded-2xl shadow-lg">
+                <div id="checklist-container" class="space-y-4">
+                    <!-- Os itens da checklist serão inseridos aqui pelo JavaScript -->
+                </div>
+                <button id="add-item-btn" class="w-full mt-6 bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-blue-700 transition-colors">
+                    <i class="fa-solid fa-plus mr-2"></i>Adicionar Novo Item
+                </button>
+            </div>
+        </section>
+
         <section class="mb-12">
             <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Guias da Nossa Viagem</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
@@ -81,7 +94,7 @@
                 <a href="visita_quartier-latin.html" class="highlight-card group block relative rounded-2xl overflow-hidden shadow-lg"><img src="https://midias-turismo.eurodicas.com.br/wp-content/uploads/2025/02/quartier-latin-1-1200x800.jpg.webp" alt="Quartier Latin" class="absolute w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"><div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div><h3 class="absolute bottom-4 left-4 text-white text-lg font-bold">Quartier Latin</h3></a>
                 <a href="visita_opera-garnier.html" class="highlight-card group block relative rounded-2xl overflow-hidden shadow-lg"><img src="https://imgmd.net/images/v1/guia/1704274/opera-garnier.jpg" alt="Ópera Garnier" class="absolute w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"><div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div><h3 class="absolute bottom-4 left-4 text-white text-lg font-bold">Ópera Garnier</h3></a>
                 <a href="visita_arco-do-triunfo.html" class="highlight-card group block relative rounded-2xl overflow-hidden shadow-lg"><img src="https://images.mnstatic.com/61/40/614037e83d114c30b06f7eecee55ff80.jpg" alt="Arco do Triunfo" class="absolute w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"><div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div><h3 class="absolute bottom-4 left-4 text-white text-lg font-bold">Arco do Triunfo</h3></a>
-                <a href="visita_jardim-luxemburgo.html" class="highlight-card group block relative rounded-2xl overflow-hidden shadow-lg col-span-2"><img src="https://www.eutouring.com/images_paris_jardin_du_luxembourg_18.jpeg" alt="Jardim do Luxemburgo" class="absolute w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><h3 class="absolute bottom-4 left-4 text-white text-xl font-bold">Jardim do Luxemburgo</h3></a>
+                <a href="visita_jardim-luxemburgo.html" class="highlight-card group block relative rounded-2xl overflow-hidden shadow-lg col-span-2"><img src="https://vinhedoscuiaba.com.br/blog/wp-content/uploads/2021/06/iStock-489807187_low.jpg" alt="Jardim do Luxemburgo" class="absolute w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><h3 class="absolute bottom-4 left-4 text-white text-xl font-bold">Jardim do Luxemburgo</h3></a>
             </div>
         </section>
         
@@ -94,19 +107,6 @@
             <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Calendário</h2>
             <div class="bg-white p-4 md:p-6 rounded-2xl shadow-lg">
                 <div id='calendar'></div>
-            </div>
-        </section>
-
-        <!-- CHECKLIST DINÂMICA -->
-        <section class="mb-12">
-            <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Checklist de Preparação</h2>
-            <div class="bg-white p-6 rounded-2xl shadow-lg">
-                <div id="checklist-container" class="space-y-4">
-                    <!-- Os itens da checklist serão inseridos aqui pelo JavaScript -->
-                </div>
-                <button id="add-item-btn" class="w-full mt-6 bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-blue-700 transition-colors">
-                    <i class="fa-solid fa-plus mr-2"></i>Adicionar Novo Item
-                </button>
             </div>
         </section>
         
@@ -332,7 +332,6 @@
             fetchTripWeather();
 
             // --- LÓGICA DA CHECKLIST ---
-            // CORREÇÃO: Mudei de 'checklist_items' para 'checklist'
             const checklistItemsRef = database.ref('checklist');
             const itemModal = document.getElementById('item-modal');
             const itemForm = document.getElementById('item-form');
