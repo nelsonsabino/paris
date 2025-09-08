@@ -36,7 +36,7 @@ export const day5Data = {
                     description: `
                         <ul class='list-disc list-inside text-sm'>
                             <li>Place du Panthéon - <a href='https://www.google.com/maps/search/?api=1&query=48.8471,2.3468' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
-                            <li>No Jardim do Luxemburgo (várias) - <a href='https://www.google.com/maps/search/?api=1&query=48.8460,2.3371' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
+                            <li>Jardin du Luxembourg - <a href='https://www.google.com/maps/search/?api=1&query=48.8460,2.3371' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
                         </ul>
                     `
                 }
@@ -55,7 +55,7 @@ export const day5Data = {
                     title: "Casas de Banho Próximas",
                     description: `
                         <ul class='list-disc list-inside text-sm'>
-                            <li>Place Saint-Sulpice - <a href='https://www.google.com/maps/search/?api=1&query=48.8509,2.3330' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
+                            <li>10 Rue Saint-Sulpice - <a href='https://www.google.com/maps/search/?api=1&query=48.8509,2.3330' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
                             <li>Marché Saint-Germain - <a href='https://www.google.com/maps/search/?api=1&query=48.8521,2.3346' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
                         </ul>
                     `
