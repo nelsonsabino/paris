@@ -56,9 +56,8 @@ export const day3Data = {
                     title: "Casas de Banho Próximas",
                     description: `
                         <ul class='list-disc list-inside text-sm'>
-                            <li>Início: Place des Abbesses - <a href='https://www.google.com/maps/search/?api=1&query=48.8845,2.3386' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
-                            <li>Topo: Square Nadar (perto da Sacré-Cœur) - <a href='https://www.google.com/maps/search/?api=1&query=48.8860,2.3429' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
-                            <li>Fim: Place Blanche (perto do Moulin Rouge) - <a href='https://www.google.com/maps/search/?api=1&query=48.8831,2.3325' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
+                            <li>1 Rue Lamarck (perto da Sacré-Cœur) - <a href='https://www.google.com/maps/search/?api=1&query=48.88626,2.34386' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
+                            <li>Avenue Rachel (perto do Moulin Rouge) - <a href='https://www.google.com/maps/search/?api=1&query=48.88372,2.33088' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
                         </ul>
                     `
                 }
