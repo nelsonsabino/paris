@@ -64,9 +64,8 @@ export const day1Data = {
                     title: "Casas de Banho Próximas",
                     description: `
                         <ul class='list-disc list-inside text-sm'>
-                            <li>Jardins du Trocadéro - <a href='https://www.google.com/maps/search/?api=1&query=48.86259,2.28919' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
-                            <li>Champ de Mars (próximo Av. Gustave Eiffel) - <a href='https://www.google.com/maps/search/?api=1&query=48.85689,2.29828' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
-                            <li>Avenue de la Motte-Picquet - <a href='https://www.google.com/maps/search/?api=1&query=48.85233,2.30252' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
+                            <li>Avenue Joseph Bouvard (Champ de Mars) - <a href='https://www.google.com/maps/search/?api=1&query=48.85429,2.29909' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
+                            <li>Avenue des Champs-Élysées (perto do Trocadéro) - <a href='https://www.google.com/maps/search/?api=1&query=48.86726,2.31709' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
                         </ul>
                     `
                 }
