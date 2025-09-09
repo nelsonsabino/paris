@@ -75,7 +75,7 @@
                     <p id="total-per-person" class="display-cost font-bold text-green-600 mt-2">0,00 €</p>
                 </div>
                 <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
-                    <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Total para 5 pessoas</h3>
+                    <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Total para 4 pessoas</h3>
                     <p id="total-for-group" class="display-cost font-bold text-blue-600 mt-2">0,00 €</p>
                 </div>
             </div>
@@ -101,41 +101,41 @@
         const costs = {
             individual: {
                 perPerson: 58.00,
-                totalGroup: 290.00,
+                totalGroup: 232.00,
                 details: [
-                    { item: 'Cartão Navigo Easy', quantity: 1, perPerson: 2.00, totalGroup: 10.00 },
-                    { item: 'Bilhetes Aeroporto Orly ↔ Paris', quantity: 2, perPerson: 26.00, totalGroup: 130.00 },
-                    { item: 'Bilhetes Paris ↔ Versalhes', quantity: 2, perPerson: 5.00, totalGroup: 25.00 },
-                    { item: 'Bilhetes Individuais (Metro)', quantity: 10, perPerson: 25.00, totalGroup: 125.00 }
+                    { item: 'Cartão Navigo Easy', quantity: 1, perPerson: 2.00, totalGroup: 8.00 },
+                    { item: 'Bilhetes Aeroporto Orly ↔ Paris', quantity: 2, perPerson: 26.00, totalGroup: 104.00 },
+                    { item: 'Bilhetes Paris ↔ Versalhes', quantity: 2, perPerson: 5.00, totalGroup: 20.00 },
+                    { item: 'Bilhetes Individuais (Metro)', quantity: 10, perPerson: 25.00, totalGroup: 100.00 }
                 ]
             },
             hybrid_taxi: {
-                perPerson: 55.00,
-                totalGroup: 275.00,
+                perPerson: 60.75,
+                totalGroup: 243.00,
                 details: [
-                    { item: 'Transfer Táxi (Orly ↔ Casa & Cacifo ↔ Orly)', quantity: 'Total Grupo', perPerson: 23.00, totalGroup: 115.00 },
-                    { item: 'Cartão Navigo Easy', quantity: 1, perPerson: 2.00, totalGroup: 10.00 },
-                    { item: 'Bilhetes Paris ↔ Versalhes', quantity: 2, perPerson: 5.00, totalGroup: 25.00 },
-                    { item: 'Bilhetes Individuais (Metro)', quantity: 10, perPerson: 25.00, totalGroup: 125.00 }
+                    { item: 'Transfer Táxi (Orly ↔ Casa & Cacifo ↔ Orly)', quantity: 'Total Grupo', perPerson: 28.75, totalGroup: 115.00 },
+                    { item: 'Cartão Navigo Easy', quantity: 1, perPerson: 2.00, totalGroup: 8.00 },
+                    { item: 'Bilhetes Paris ↔ Versalhes', quantity: 2, perPerson: 5.00, totalGroup: 20.00 },
+                    { item: 'Bilhetes Individuais (Metro)', quantity: 10, perPerson: 25.00, totalGroup: 100.00 }
                 ]
             },
             hybrid_louvre: {
-                perPerson: 58.50,
-                totalGroup: 292.50,
+                perPerson: 61.25,
+                totalGroup: 245.00,
                 details: [
-                    { item: 'Transfer Táxi (Orly → Louvre)', quantity: 'Total Grupo', perPerson: 11.00, totalGroup: 55.00 },
-                    { item: 'Cartão Navigo Easy', quantity: 1, perPerson: 2.00, totalGroup: 10.00 },
-                    { item: 'Bilhete Aeroporto Paris → Orly (Volta)', quantity: 1, perPerson: 13.00, totalGroup: 65.00 },
-                    { item: 'Bilhetes Paris ↔ Versalhes', quantity: 2, perPerson: 5.00, totalGroup: 25.00 },
-                    { item: 'Bilhetes Individuais (Metro)', quantity: 11, perPerson: 27.50, totalGroup: 137.50 }
+                    { item: 'Transfer Táxi (Orly → Louvre)', quantity: 'Total Grupo', perPerson: 13.75, totalGroup: 55.00 },
+                    { item: 'Cartão Navigo Easy', quantity: 1, perPerson: 2.00, totalGroup: 8.00 },
+                    { item: 'Bilhete Aeroporto Paris → Orly (Volta)', quantity: 1, perPerson: 13.00, totalGroup: 52.00 },
+                    { item: 'Bilhetes Paris ↔ Versalhes', quantity: 2, perPerson: 5.00, totalGroup: 20.00 },
+                    { item: 'Bilhetes Individuais (Metro)', quantity: 11, perPerson: 27.50, totalGroup: 110.00 }
                 ]
             },
             passe: {
                 perPerson: 78.25,
-                totalGroup: 391.25,
+                totalGroup: 313.00,
                 details: [
-                    { item: 'Cartão Navigo Easy', quantity: 1, perPerson: 2.00, totalGroup: 10.00 },
-                    { item: 'Passe Paris Visite (5 Dias, Zonas 1-5)', quantity: 1, perPerson: 76.25, totalGroup: 381.25 },
+                    { item: 'Cartão Navigo Easy', quantity: 1, perPerson: 2.00, totalGroup: 8.00 },
+                    { item: 'Passe Paris Visite (5 Dias, Zonas 1-5)', quantity: 1, perPerson: 76.25, totalGroup: 305.00 },
                 ]
             }
         };
@@ -163,7 +163,7 @@
                                 <th class="p-4 font-semibold text-gray-700">Componente</th>
                                 <th class="p-4 font-semibold text-gray-700 text-center">Quantidade</th>
                                 <th class="p-4 font-semibold text-gray-700 text-right">Custo p/ Pessoa</th>
-                                <th class="p-4 font-semibold text-gray-700 text-right">Custo Total (5 Pessoas)</th>
+                                <th class="p-4 font-semibold text-gray-700 text-right">Custo Total (4 Pessoas)</th>
                             </tr>
                         </thead>
                         <tbody>${tableRows}</tbody>
