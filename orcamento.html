@@ -54,12 +54,15 @@
         <section class="mb-12">
             <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Custos dos Transportes</h2>
             
-            <div class="flex flex-col md:flex-row justify-center gap-4 mb-8">
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
                 <button id="btn-individual" class="option-btn text-base font-semibold py-2 px-6 rounded-lg border-2 transition-colors duration-200">
                     <i class="fa-solid fa-ticket mr-2"></i>Bilhetes Individuais
                 </button>
                 <button id="btn-hybrid" class="option-btn text-base font-semibold py-2 px-6 rounded-lg border-2 transition-colors duration-200">
-                    <i class="fa-solid fa-taxi mr-2"></i>Opção Táxi + Metro
+                    <i class="fa-solid fa-taxi mr-2"></i>Opção Táxi (Casa)
+                </button>
+                <button id="btn-hybrid-louvre" class="option-btn text-base font-semibold py-2 px-6 rounded-lg border-2 transition-colors duration-200">
+                    <i class="fa-solid fa-taxi mr-2"></i>Opção Táxi (Louvre) + Metro
                 </button>
                 <button id="btn-passe" class="option-btn text-base font-semibold py-2 px-6 rounded-lg border-2 transition-colors duration-200">
                     <i class="fa-solid fa-address-card mr-2"></i>Passe Paris Visite
@@ -107,13 +110,24 @@
                 ]
             },
             hybrid_taxi: {
-                perPerson: 56.00,
-                totalGroup: 280.00,
+                perPerson: 55.00,
+                totalGroup: 275.00,
                 details: [
-                    { item: 'Transfer de Táxi (Orly ↔ Casa, 2 viag.)', quantity: 'Total Grupo', perPerson: 24.00, totalGroup: 120.00 },
+                    { item: 'Transfer Táxi (Orly ↔ Casa & Cacifo ↔ Orly)', quantity: 'Total Grupo', perPerson: 23.00, totalGroup: 115.00 },
                     { item: 'Cartão Navigo Easy', quantity: 1, perPerson: 2.00, totalGroup: 10.00 },
                     { item: 'Bilhetes Paris ↔ Versalhes', quantity: 2, perPerson: 5.00, totalGroup: 25.00 },
                     { item: 'Bilhetes Individuais (Metro)', quantity: 10, perPerson: 25.00, totalGroup: 125.00 }
+                ]
+            },
+            hybrid_louvre: {
+                perPerson: 58.50,
+                totalGroup: 292.50,
+                details: [
+                    { item: 'Transfer Táxi (Orly → Louvre)', quantity: 'Total Grupo', perPerson: 11.00, totalGroup: 55.00 },
+                    { item: 'Cartão Navigo Easy', quantity: 1, perPerson: 2.00, totalGroup: 10.00 },
+                    { item: 'Bilhete Aeroporto Paris → Orly (Volta)', quantity: 1, perPerson: 13.00, totalGroup: 65.00 },
+                    { item: 'Bilhetes Paris ↔ Versalhes', quantity: 2, perPerson: 5.00, totalGroup: 25.00 },
+                    { item: 'Bilhetes Individuais (Metro)', quantity: 11, perPerson: 27.50, totalGroup: 137.50 }
                 ]
             },
             passe: {
@@ -169,6 +183,7 @@
             const buttons = {
                 individual: document.getElementById('btn-individual'),
                 hybrid_taxi: document.getElementById('btn-hybrid'),
+                hybrid_louvre: document.getElementById('btn-hybrid-louvre'),
                 passe: document.getElementById('btn-passe')
             };
             const data = costs[option];
@@ -204,6 +219,7 @@
             
             document.getElementById('btn-individual').addEventListener('click', () => updateDisplay('individual'));
             document.getElementById('btn-hybrid').addEventListener('click', () => updateDisplay('hybrid_taxi'));
+            document.getElementById('btn-hybrid-louvre').addEventListener('click', () => updateDisplay('hybrid_louvre'));
             document.getElementById('btn-passe').addEventListener('click', () => updateDisplay('passe'));
 
             updateDisplay(selectedOption);
