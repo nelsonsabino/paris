@@ -22,6 +22,12 @@ export const day1Data = {
             timeline: [
                 { time: "13:30", icon: "fa-utensils", title: "Pausa para Almoço e WC" },
                 {
+                    time: "14:00",
+                    icon: "fa-ticket-simple",
+                    title: "Comprar Bilhetes de Transporte",
+                    description: "Dirigir-se às máquinas automáticas. Para cada pessoa, comprar 1 cartão Navigo Easy e carregar os bilhetes individuais necessários para os 5 dias."
+                },
+                {
                     time: "14:30", icon: "fa-route", title: "Percurso: Aeroporto d'Orly → Casa", description: "Duração total: ~54 min. Clica para ver os detalhes.",
                     accordion: [
                         { text: "14:30: Apanhar Metro <span class='metro-line' style='background-color: #62259d;'>14</span>", subText: "Da estação <strong>Aéroport d'Orly</strong>, direção Saint-Denis - Pleyel." },
