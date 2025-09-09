@@ -112,18 +112,18 @@
                 perPerson: 58.00,
                 totalGroup: 232.00,
                 details: [
-                    { item: 'Cartão Navigo Easy', perPerson: 2.00, totalGroup: 8.00 },
-                    { item: 'Bilhetes Aeroporto Orly ↔ Paris', perPerson: 26.00, totalGroup: 104.00 },
-                    { item: 'Bilhetes Paris ↔ Versalhes', perPerson: 5.00, totalGroup: 20.00 },
-                    { item: '10 Bilhetes Individuais (Metro)', perPerson: 25.00, totalGroup: 100.00 }
+                    { item: 'Cartão Navigo Easy', quantity: 1, perPerson: 2.00, totalGroup: 8.00 },
+                    { item: 'Bilhetes Aeroporto Orly ↔ Paris', quantity: 2, perPerson: 26.00, totalGroup: 104.00 },
+                    { item: 'Bilhetes Paris ↔ Versalhes', quantity: 2, perPerson: 5.00, totalGroup: 20.00 },
+                    { item: 'Bilhetes Individuais (Metro)', quantity: 10, perPerson: 25.00, totalGroup: 100.00 }
                 ]
             },
             passe: {
                 perPerson: 78.25,
                 totalGroup: 313.00,
                 details: [
-                    { item: 'Cartão Navigo Easy', perPerson: 2.00, totalGroup: 8.00 },
-                    { item: 'Passe Paris Visite (5 Dias, Zonas 1-5)', perPerson: 76.25, totalGroup: 305.00 },
+                    { item: 'Cartão Navigo Easy', quantity: 1, perPerson: 2.00, totalGroup: 8.00 },
+                    { item: 'Passe Paris Visite (5 Dias, Zonas 1-5)', quantity: 1, perPerson: 76.25, totalGroup: 305.00 },
                 ]
             }
         };
@@ -139,6 +139,7 @@
             const tableRows = details.map(d => `
                 <tr class="border-b border-gray-200">
                     <td class="p-4">${d.item}</td>
+                    <td class="p-4 text-center">${d.quantity}</td>
                     <td class="p-4 text-right font-mono">${formatCurrency(d.perPerson)}</td>
                     <td class="p-4 text-right font-mono">${formatCurrency(d.totalGroup)}</td>
                 </tr>
@@ -150,7 +151,8 @@
                         <thead class="bg-gray-100">
                             <tr>
                                 <th class="p-4 font-semibold text-gray-700">Componente</th>
-                                <th class="p-4 font-semibold text-gray-700 text-right">Custo por Pessoa</th>
+                                <th class="p-4 font-semibold text-gray-700 text-center">Quantidade (p/ pessoa)</th>
+                                <th class="p-4 font-semibold text-gray-700 text-right">Custo p/ Pessoa</th>
                                 <th class="p-4 font-semibold text-gray-700 text-right">Custo Total (4 Pessoas)</th>
                             </tr>
                         </thead>
@@ -159,7 +161,8 @@
                         </tbody>
                         <tfoot class="font-bold bg-gray-50">
                             <tr>
-                                <td class="p-4">TOTAL</td>
+                                <td class="p-4 text-lg">TOTAL</td>
+                                <td class="p-4"></td>
                                 <td id="footer-per-person" class="p-4 text-right font-mono text-lg"></td>
                                 <td id="footer-total-group" class="p-4 text-right font-mono text-lg"></td>
                             </tr>
