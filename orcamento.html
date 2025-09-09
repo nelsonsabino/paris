@@ -59,10 +59,10 @@
                     <i class="fa-solid fa-ticket mr-2"></i>100% Metro
                 </button>
                 <button id="btn-hybrid-louvre" class="option-btn text-base font-semibold py-2 px-6 rounded-lg border-2 transition-colors duration-200">
-                    <i class="fa-solid fa-taxi mr-2"></i>Táxi (C.Paris) + Metro
+                    <i class="fa-solid fa-taxi mr-2"></i>Táxi (Louvre) + Metro
                 </button>
                 <button id="btn-hybrid-casa" class="option-btn text-base font-semibold py-2 px-6 rounded-lg border-2 transition-colors duration-200">
-                    <i class="fa-solid fa-taxi mr-2"></i>Táxi (Casa)
+                    <i class="fa-solid fa-taxi mr-2"></i>Táxi (Casa) + Metro
                 </button>
                 <button id="btn-passe" class="option-btn text-base font-semibold py-2 px-6 rounded-lg border-2 transition-colors duration-200">
                     <i class="fa-solid fa-address-card mr-2"></i>Passe Paris Visite
@@ -185,26 +185,28 @@
             `).join('');
 
             container.innerHTML = `
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-                    <table class="w-full text-left">
-                        <thead class="bg-gray-100">
-                            <tr>
-                                <th class="p-4 font-semibold text-gray-700">Componente</th>
-                                <th class="p-4 font-semibold text-gray-700 text-center">Quantidade (5 Pessoas)</th>
-                                <th class="p-4 font-semibold text-gray-700 text-right">Custo p/ Pessoa</th>
-                                <th class="p-4 font-semibold text-gray-700 text-right">Custo Total (4 Pessoas)</th>
-                            </tr>
-                        </thead>
-                        <tbody>${tableRows}</tbody>
-                        <tfoot class="font-bold bg-gray-50">
-                            <tr>
-                                <td class="p-4 text-lg">TOTAL</td>
-                                <td class="p-4"></td>
-                                <td id="footer-per-person" class="p-4 text-right font-mono text-lg"></td>
-                                <td id="footer-total-group" class="p-4 text-right font-mono text-lg"></td>
-                            </tr>
-                        </tfoot>
-                    </table>
+                <div class="bg-white rounded-2xl shadow-lg">
+                    <div class="overflow-x-auto">
+                        <table class="w-full min-w-[700px] text-left">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="p-4 font-semibold text-gray-700">Componente</th>
+                                    <th class="p-4 font-semibold text-gray-700 text-center">Quantidade (5 Pessoas)</th>
+                                    <th class="p-4 font-semibold text-gray-700 text-right">Custo p/ Pessoa</th>
+                                    <th class="p-4 font-semibold text-gray-700 text-right">Custo Total (4 Pessoas)</th>
+                                </tr>
+                            </thead>
+                            <tbody>${tableRows}</tbody>
+                            <tfoot class="font-bold bg-gray-50">
+                                <tr>
+                                    <td class="p-4 text-lg">TOTAL</td>
+                                    <td class="p-4"></td>
+                                    <td id="footer-per-person" class="p-4 text-right font-mono text-lg"></td>
+                                    <td id="footer-total-group" class="p-4 text-right font-mono text-lg"></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
                     <div id="taxi-note" class="p-4 text-xs text-gray-500 bg-gray-50 hidden">*O custo por pessoa do táxi é a média do custo total partilhado por 5 pessoas.</div>
                 </div>`;
         }
@@ -221,18 +223,20 @@
             `).join('');
 
              container.innerHTML = `
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-                    <table class="w-full text-left">
-                        <thead class="bg-gray-100">
-                            <tr>
-                                <th class="p-4 font-semibold text-gray-700">Dia</th>
-                                <th class="p-4 font-semibold text-gray-700">Viagens</th>
-                                <th class="p-4 font-semibold text-gray-700 text-center">Bilhetes (5 Pessoas)</th>
-                                <th class="p-4 font-semibold text-gray-700 text-right">Custo Total (4 Pessoas)</th>
-                            </tr>
-                        </thead>
-                        <tbody>${tableRows}</tbody>
-                    </table>
+                <div class="bg-white rounded-2xl shadow-lg">
+                    <div class="overflow-x-auto">
+                        <table class="w-full min-w-[700px] text-left">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="p-4 font-semibold text-gray-700">Dia</th>
+                                    <th class="p-4 font-semibold text-gray-700">Viagens</th>
+                                    <th class="p-4 font-semibold text-gray-700 text-center">Bilhetes (5 Pessoas)</th>
+                                    <th class="p-4 font-semibold text-gray-700 text-right">Custo Total (4 Pessoas)</th>
+                                </tr>
+                            </thead>
+                            <tbody>${tableRows}</tbody>
+                        </table>
+                    </div>
                 </div>`;
         }
 
