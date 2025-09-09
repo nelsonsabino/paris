@@ -57,7 +57,7 @@
         </header>
 
         <section class="mb-12">
-            <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Custos dos Transportes</h2>
+            <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Custos dos Transportes (Metro/RER)</h2>
             
             <!-- Botões de Seleção -->
             <div class="flex justify-center gap-4 mb-8">
@@ -87,6 +87,29 @@
             </div>
         </section>
 
+        <!-- NOVA SECÇÃO PARA OS TRANSFERS DE TÁXI -->
+        <section class="mb-12">
+            <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Opções de Transfer do Aeroporto (Alternativas)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-lg text-center flex flex-col justify-between">
+                    <div>
+                        <i class="fa-solid fa-taxi text-4xl text-orange-500 mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Táxi: Orly → Zona do Louvre</h3>
+                        <p class="text-gray-600 mb-4">Viagem única para 4 pessoas e bagagens. Preço fixo.</p>
+                    </div>
+                    <p class="display-cost font-bold text-orange-600 mt-2">55,00 €</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg text-center flex flex-col justify-between">
+                    <div>
+                        <i class="fa-solid fa-taxi text-4xl text-orange-500 mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Táxi: Orly → Casa (Aubervilliers)</h3>
+                        <p class="text-gray-600 mb-4">Viagem única para 4 pessoas e bagagens. Preço fixo.</p>
+                    </div>
+                    <p class="display-cost font-bold text-orange-600 mt-2">60,00 €</p>
+                </div>
+            </div>
+        </section>
+
         <section class="mb-12">
              <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Resumo de Compras Concluídas</h2>
              <div id="completed-purchases-container" class="bg-white p-6 rounded-2xl shadow-lg space-y-4"></div>
@@ -106,7 +129,6 @@
             { title: 'VIAGEM!', status: 'complete' }
         ];
 
-        // --- DADOS DOS CUSTOS ---
         const costs = {
             individual: {
                 perPerson: 58.00,
@@ -128,7 +150,6 @@
             }
         };
 
-        // --- FUNÇÕES ---
         function formatCurrency(value) {
             if (typeof value !== 'number' || isNaN(value)) { return '-'; }
             return `${value.toFixed(2).replace('.', ',')} €`;
@@ -178,7 +199,6 @@
             
             const data = costs[option];
             
-            // Atualizar botões
             if (option === 'individual') {
                 btnIndividual.classList.remove('inactive');
                 btnIndividual.classList.add('active');
@@ -191,11 +211,9 @@
                 btnIndividual.classList.add('inactive');
             }
 
-            // Atualizar totais principais
             document.getElementById('total-per-person').textContent = formatCurrency(data.perPerson);
             document.getElementById('total-for-group').textContent = formatCurrency(data.totalGroup);
 
-            // Renderizar e atualizar tabela de detalhes
             renderCostDetailsTable(data.details);
             document.getElementById('footer-per-person').textContent = formatCurrency(data.perPerson);
             document.getElementById('footer-total-group').textContent = formatCurrency(data.totalGroup);
@@ -214,9 +232,8 @@
             container.innerHTML = itemsHTML;
         }
 
-        // --- EVENTOS ---
         document.addEventListener('DOMContentLoaded', () => {
-            let selectedOption = 'individual'; // Estado inicial
+            let selectedOption = 'individual'; 
             
             document.getElementById('btn-individual').addEventListener('click', () => {
                 selectedOption = 'individual';
@@ -227,7 +244,6 @@
                 updateDisplay(selectedOption);
             });
 
-            // Chamada inicial para mostrar os dados
             updateDisplay(selectedOption);
             renderCompletedPurchases();
         });
