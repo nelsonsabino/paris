@@ -75,8 +75,17 @@
                     <p id="total-per-person" class="display-cost font-bold text-green-600 mt-2">0,00 €</p>
                 </div>
                 <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
-                    <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Total para 4 pessoas</h3>
-                    <p id="total-for-group" class="display-cost font-bold text-blue-600 mt-2">0,00 €</p>
+                    <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Totais para o Grupo</h3>
+                    <div class="flex justify-center items-end gap-4 mt-2">
+                        <div id="total-group-4-container">
+                            <p id="total-for-group-4" class="display-cost font-bold text-blue-600">0,00 €</p>
+                            <p class="text-sm text-gray-500 -mt-2">4 Pessoas</p>
+                        </div>
+                        <div id="total-group-5-container" class="hidden">
+                            <p id="total-for-group-5" class="text-2xl font-bold text-gray-500">0,00 €</p>
+                            <p class="text-xs text-gray-500 -mt-1">Custo Real (5 Pessoas)</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -112,17 +121,22 @@
             hybrid_louvre: {
                 perPerson: 58.50,
                 totalGroup4: 234.00,
+                totalGroup5: 292.50, // 58.50 * 5
                 details: [
-                    { item: 'Táxi Orly → C. Paris + Cacifo → Orly', quantity: '2 (Grupo)', perPerson: 24.50, totalGroup: 98.00 },
+                    { item: 'Táxi: Orly → Centro de Paris (Grupo)', quantity: 'Fixo', perPerson: 11.00, totalGroup: 44.00 },
+                    { item: 'Táxi: Cacifo → Orly (Grupo)', quantity: 'Fixo', perPerson: 11.00, totalGroup: 44.00 },
                     { item: 'Cartão Navigo Easy', quantity: 4, perPerson: 2.00, totalGroup: 8.00 },
-                    { item: 'Bilhetes Individuais (Metro)', quantity: 52, perPerson: 32.50, totalGroup: 130.00 }
+                    { item: 'Bilhetes Individuais (Metro)', quantity: 52, perPerson: 32.50, totalGroup: 130.00 },
+                    { item: 'Bilhetes Paris ↔ Versalhes', quantity: 8, perPerson: 2.00, totalGroup: 8.00 }
                 ]
             },
             hybrid_casa: {
                 perPerson: 55.00,
                 totalGroup4: 220.00,
+                totalGroup5: 275.00, // 55.00 * 5
                 details: [
-                    { item: 'Táxi Orly → Casa + Cacifo → Orly', quantity: '2 (Grupo)', perPerson: 23.00, totalGroup: 92.00 },
+                    { item: 'Táxi: Orly → Casa (Grupo)', quantity: 'Fixo', perPerson: 12.00, totalGroup: 48.00 },
+                    { item: 'Táxi: Cacifo → Orly (Grupo)', quantity: 'Fixo', perPerson: 11.00, totalGroup: 44.00 },
                     { item: 'Cartão Navigo Easy', quantity: 4, perPerson: 2.00, totalGroup: 8.00 },
                     { item: 'Bilhetes Individuais (Metro)', quantity: 48, perPerson: 30.00, totalGroup: 120.00 }
                 ]
@@ -141,7 +155,7 @@
             return `${value.toFixed(2).replace('.', ',')} €`;
         }
 
-        function renderCostDetailsTable(details) {
+        function renderCostDetailsTable(details, groupSize) {
             const container = document.getElementById('cost-details-container');
             const tableRows = details.map(d => `
                 <tr class="border-b border-gray-200">
@@ -160,7 +174,7 @@
                                 <th class="p-4 font-semibold text-gray-700">Componente</th>
                                 <th class="p-4 font-semibold text-gray-700 text-center">Quantidade (Grupo)</th>
                                 <th class="p-4 font-semibold text-gray-700 text-right">Custo p/ Pessoa</th>
-                                <th class="p-4 font-semibold text-gray-700 text-right">Custo Total (4 Pessoas)</th>
+                                <th class="p-4 font-semibold text-gray-700 text-right">Custo Total (${groupSize} Pessoas)</th>
                             </tr>
                         </thead>
                         <tbody>${tableRows}</tbody>
@@ -199,15 +213,18 @@
             if (data.totalGroup5) {
                 totalGroup5Container.classList.remove('hidden');
                 document.getElementById('total-for-group-5').textContent = formatCurrency(data.totalGroup5);
+                renderCostDetailsTable(data.details, 4); 
                 document.getElementById('taxi-note').classList.remove('hidden');
+                document.getElementById('footer-total-group').textContent = formatCurrency(data.totalGroup4);
+
             } else {
                 totalGroup5Container.classList.add('hidden');
-                 document.getElementById('taxi-note')?.classList.add('hidden');
+                renderCostDetailsTable(data.details, 4);
+                document.getElementById('taxi-note').classList.add('hidden');
+                document.getElementById('footer-total-group').textContent = formatCurrency(data.totalGroup4);
             }
             
-            renderCostDetailsTable(data.details);
             document.getElementById('footer-per-person').textContent = formatCurrency(data.perPerson);
-            document.getElementById('footer-total-group').textContent = formatCurrency(data.totalGroup4);
         }
         
         function renderCompletedPurchases() {
