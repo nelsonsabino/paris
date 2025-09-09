@@ -56,13 +56,13 @@
             
             <div class="flex flex-wrap justify-center gap-4 mb-8">
                 <button id="btn-individual" class="option-btn text-base font-semibold py-2 px-6 rounded-lg border-2 transition-colors duration-200">
-                    <i class="fa-solid fa-ticket mr-2"></i>Bilhetes Individuais
-                </button>
-                <button id="btn-hybrid" class="option-btn text-base font-semibold py-2 px-6 rounded-lg border-2 transition-colors duration-200">
-                    <i class="fa-solid fa-taxi mr-2"></i>Opção Táxi (Casa)
+                    <i class="fa-solid fa-ticket mr-2"></i>100% Metro
                 </button>
                 <button id="btn-hybrid-louvre" class="option-btn text-base font-semibold py-2 px-6 rounded-lg border-2 transition-colors duration-200">
-                    <i class="fa-solid fa-taxi mr-2"></i>Opção Táxi (Louvre) + Metro
+                    <i class="fa-solid fa-taxi mr-2"></i>Táxi (Louvre) + Metro
+                </button>
+                <button id="btn-hybrid-casa" class="option-btn text-base font-semibold py-2 px-6 rounded-lg border-2 transition-colors duration-200">
+                    <i class="fa-solid fa-taxi mr-2"></i>Táxi (Casa) + Metro
                 </button>
                 <button id="btn-passe" class="option-btn text-base font-semibold py-2 px-6 rounded-lg border-2 transition-colors duration-200">
                     <i class="fa-solid fa-address-card mr-2"></i>Passe Paris Visite
@@ -75,8 +75,17 @@
                     <p id="total-per-person" class="display-cost font-bold text-green-600 mt-2">0,00 €</p>
                 </div>
                 <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
-                    <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Total para 4 pessoas</h3>
-                    <p id="total-for-group" class="display-cost font-bold text-blue-600 mt-2">0,00 €</p>
+                    <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Totais para o Grupo</h3>
+                    <div class="flex justify-center items-end gap-4 mt-2">
+                        <div id="total-group-4-container">
+                            <p id="total-for-group-4" class="display-cost font-bold text-blue-600">0,00 €</p>
+                            <p class="text-sm text-gray-500 -mt-2">4 Pessoas</p>
+                        </div>
+                        <div id="total-group-5-container" class="hidden">
+                            <p id="total-for-group-5" class="text-2xl font-bold text-gray-500">0,00 €</p>
+                            <p class="text-xs text-gray-500 -mt-1">Total Real (5 Pessoas)</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -101,7 +110,7 @@
         const costs = {
             individual: {
                 perPerson: 58.00,
-                totalGroup: 232.00,
+                totalGroup4: 232.00,
                 details: [
                     { item: 'Cartão Navigo Easy', quantity: 1, perPerson: 2.00, totalGroup: 8.00 },
                     { item: 'Bilhetes Aeroporto Orly ↔ Paris', quantity: 2, perPerson: 26.00, totalGroup: 104.00 },
@@ -109,30 +118,31 @@
                     { item: 'Bilhetes Individuais (Metro)', quantity: 10, perPerson: 25.00, totalGroup: 100.00 }
                 ]
             },
-            hybrid_taxi: {
-                perPerson: 60.75,
-                totalGroup: 243.00,
+            hybrid_louvre: {
+                perPerson: 59.50,
+                totalGroup4: 238.00,
+                totalGroup5: 270.00,
                 details: [
-                    { item: 'Transfer Táxi (Orly ↔ Casa & Cacifo ↔ Orly)', quantity: 'Total Grupo', perPerson: 28.75, totalGroup: 115.00 },
+                    { item: 'Táxi Orly→Pyramides + Locker→Orly (Grupo)', quantity: 'Fixo', perPerson: 22.00, totalGroup: 110.00 },
                     { item: 'Cartão Navigo Easy', quantity: 1, perPerson: 2.00, totalGroup: 8.00 },
                     { item: 'Bilhetes Paris ↔ Versalhes', quantity: 2, perPerson: 5.00, totalGroup: 20.00 },
-                    { item: 'Bilhetes Individuais (Metro)', quantity: 10, perPerson: 25.00, totalGroup: 100.00 }
+                    { item: 'Bilhetes Individuais (Metro)', quantity: 12, perPerson: 30.00, totalGroup: 120.00 }
                 ]
             },
-            hybrid_louvre: {
-                perPerson: 61.25,
-                totalGroup: 245.00,
+            hybrid_casa: {
+                perPerson: 58.25,
+                totalGroup4: 233.00,
+                totalGroup5: 262.50,
                 details: [
-                    { item: 'Transfer Táxi (Orly → Louvre)', quantity: 'Total Grupo', perPerson: 13.75, totalGroup: 55.00 },
+                    { item: 'Táxi Orly→Casa + Locker→Orly (Grupo)', quantity: 'Fixo', perPerson: 23.00, totalGroup: 115.00 },
                     { item: 'Cartão Navigo Easy', quantity: 1, perPerson: 2.00, totalGroup: 8.00 },
-                    { item: 'Bilhete Aeroporto Paris → Orly (Volta)', quantity: 1, perPerson: 13.00, totalGroup: 52.00 },
                     { item: 'Bilhetes Paris ↔ Versalhes', quantity: 2, perPerson: 5.00, totalGroup: 20.00 },
                     { item: 'Bilhetes Individuais (Metro)', quantity: 11, perPerson: 27.50, totalGroup: 110.00 }
                 ]
             },
             passe: {
                 perPerson: 78.25,
-                totalGroup: 313.00,
+                totalGroup4: 313.00,
                 details: [
                     { item: 'Cartão Navigo Easy', quantity: 1, perPerson: 2.00, totalGroup: 8.00 },
                     { item: 'Passe Paris Visite (5 Dias, Zonas 1-5)', quantity: 1, perPerson: 76.25, totalGroup: 305.00 },
@@ -144,13 +154,13 @@
             return `${value.toFixed(2).replace('.', ',')} €`;
         }
 
-        function renderCostDetailsTable(details) {
+        function renderCostDetailsTable(details, groupSize) {
             const container = document.getElementById('cost-details-container');
             const tableRows = details.map(d => `
                 <tr class="border-b border-gray-200">
                     <td class="p-4">${d.item}</td>
                     <td class="p-4 text-center">${d.quantity}</td>
-                    <td class="p-4 text-right font-mono">${formatCurrency(d.perPerson)}</td>
+                    <td class="p-4 text-right font-mono">${d.item.includes('Táxi') ? `(${formatCurrency(d.perPerson)})*` : formatCurrency(d.perPerson)}</td>
                     <td class="p-4 text-right font-mono">${formatCurrency(d.totalGroup)}</td>
                 </tr>
             `).join('');
@@ -163,7 +173,7 @@
                                 <th class="p-4 font-semibold text-gray-700">Componente</th>
                                 <th class="p-4 font-semibold text-gray-700 text-center">Quantidade</th>
                                 <th class="p-4 font-semibold text-gray-700 text-right">Custo p/ Pessoa</th>
-                                <th class="p-4 font-semibold text-gray-700 text-right">Custo Total (4 Pessoas)</th>
+                                <th class="p-4 font-semibold text-gray-700 text-right">Custo Total (${groupSize} Pessoas)</th>
                             </tr>
                         </thead>
                         <tbody>${tableRows}</tbody>
@@ -176,31 +186,44 @@
                             </tr>
                         </tfoot>
                     </table>
+                    <div id="taxi-note" class="p-4 text-xs text-gray-500 bg-gray-50 hidden">*O custo por pessoa do táxi é uma média do custo total do grupo.</div>
                 </div>`;
         }
 
         function updateDisplay(option) {
             const buttons = {
                 individual: document.getElementById('btn-individual'),
-                hybrid_taxi: document.getElementById('btn-hybrid'),
+                hybrid_casa: document.getElementById('btn-hybrid'),
                 hybrid_louvre: document.getElementById('btn-hybrid-louvre'),
                 passe: document.getElementById('btn-passe')
             };
             const data = costs[option];
-            
+            const totalGroup5Container = document.getElementById('total-group-5-container');
+
             Object.values(buttons).forEach(btn => btn.classList.remove('active', 'inactive'));
-            
             buttons[option].classList.add('active');
             for (const key in buttons) {
                 if (key !== option) buttons[key].classList.add('inactive');
             }
 
             document.getElementById('total-per-person').textContent = formatCurrency(data.perPerson);
-            document.getElementById('total-for-group').textContent = formatCurrency(data.totalGroup);
+            
+            if (data.totalGroup5) {
+                document.getElementById('total-for-group-4').textContent = formatCurrency(data.totalGroup4);
+                document.getElementById('total-for-group-5').textContent = formatCurrency(data.totalGroup5);
+                totalGroup5Container.classList.remove('hidden');
+                renderCostDetailsTable(data.details, 5); // A tabela de detalhes mostra o total de 5
+                document.getElementById('taxi-note').classList.remove('hidden');
+                document.getElementById('footer-total-group').textContent = formatCurrency(data.totalGroup5);
 
-            renderCostDetailsTable(data.details);
+            } else {
+                document.getElementById('total-for-group-4').textContent = formatCurrency(data.totalGroup4);
+                totalGroup5Container.classList.add('hidden');
+                renderCostDetailsTable(data.details, 4); // A tabela de detalhes mostra o total de 4
+                document.getElementById('footer-total-group').textContent = formatCurrency(data.totalGroup4);
+            }
+            
             document.getElementById('footer-per-person').textContent = formatCurrency(data.perPerson);
-            document.getElementById('footer-total-group').textContent = formatCurrency(data.totalGroup);
         }
         
         function renderCompletedPurchases() {
@@ -218,7 +241,7 @@
             let selectedOption = 'individual'; 
             
             document.getElementById('btn-individual').addEventListener('click', () => updateDisplay('individual'));
-            document.getElementById('btn-hybrid').addEventListener('click', () => updateDisplay('hybrid_taxi'));
+            document.getElementById('btn-hybrid-casa').addEventListener('click', () => updateDisplay('hybrid_casa'));
             document.getElementById('btn-hybrid-louvre').addEventListener('click', () => updateDisplay('hybrid_louvre'));
             document.getElementById('btn-passe').addEventListener('click', () => updateDisplay('passe'));
 
