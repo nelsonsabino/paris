@@ -75,17 +75,8 @@
                     <p id="total-per-person" class="display-cost font-bold text-green-600 mt-2">0,00 €</p>
                 </div>
                 <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
-                    <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Totais para o Grupo</h3>
-                    <div class="flex justify-center items-end gap-4 mt-2">
-                        <div id="total-group-4-container">
-                            <p id="total-for-group-4" class="display-cost font-bold text-blue-600">0,00 €</p>
-                            <p class="text-sm text-gray-500 -mt-2">4 Pessoas</p>
-                        </div>
-                        <div id="total-group-5-container" class="hidden">
-                            <p id="total-for-group-5" class="text-2xl font-bold text-gray-500">0,00 €</p>
-                            <p class="text-xs text-gray-500 -mt-1">Custo Real (5 Pessoas)</p>
-                        </div>
-                    </div>
+                    <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Total para 4 pessoas</h3>
+                    <p id="total-for-group" class="display-cost font-bold text-blue-600 mt-2">0,00 €</p>
                 </div>
             </div>
 
@@ -95,6 +86,14 @@
         <section class="mb-12">
              <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Resumo de Compras Concluídas</h2>
              <div id="completed-purchases-container" class="bg-white p-6 rounded-2xl shadow-lg space-y-4"></div>
+        </section>
+
+        <!-- NOVA TABELA DETALHADA POR DIA -->
+        <section class="mb-12">
+            <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Detalhe Diário de Custos (Opção Selecionada)</h2>
+            <div id="daily-breakdown-container">
+                <!-- O JavaScript irá gerar a tabela diária aqui -->
+            </div>
         </section>
     </div>
 
@@ -115,28 +114,45 @@
                     { item: 'Cartão Navigo Easy', quantity: 4, perPerson: 2.00, totalGroup: 8.00 },
                     { item: 'Bilhetes Aeroporto Orly ↔ Paris', quantity: 8, perPerson: 26.00, totalGroup: 104.00 },
                     { item: 'Bilhetes Individuais (Metro e RER)', quantity: 48, perPerson: 30.00, totalGroup: 120.00 }
+                ],
+                dailyBreakdown: [
+                    { day: "Dia 1", description: "Orly→Paris, 2x Metro", perPerson: 18.00, totalGroup: 72.00 },
+                    { day: "Dia 2", description: "3x Metro", perPerson: 7.50, totalGroup: 30.00 },
+                    { day: "Dia 3", description: "3x Metro/RER (incl. Versalhes)", perPerson: 7.50, totalGroup: 30.00 },
+                    { day: "Dia 4", description: "3x Metro", perPerson: 7.50, totalGroup: 30.00 },
+                    { day: "Dia 5", description: "1x Metro, Paris→Orly", perPerson: 15.50, totalGroup: 62.00 }
+                ]
+            },
+             hybrid_casa: {
+                perPerson: 55.00,
+                totalGroup4: 220.00,
+                details: [
+                    { item: 'Táxi Orly → Casa + Cacifo → Orly (Grupo)', quantity: '2 (Fixo)', perPerson: 23.00, totalGroup: 92.00 },
+                    { item: 'Cartão Navigo Easy', quantity: 4, perPerson: 2.00, totalGroup: 8.00 },
+                    { item: 'Bilhetes Individuais (Metro e RER)', quantity: 48, perPerson: 30.00, totalGroup: 120.00 }
+                ],
+                 dailyBreakdown: [
+                    { day: "Dia 1", description: "Táxi (ida), 2x Metro", perPerson: 17.00, totalGroup: 68.00 },
+                    { day: "Dia 2", description: "3x Metro", perPerson: 7.50, totalGroup: 30.00 },
+                    { day: "Dia 3", description: "3x Metro/RER (incl. Versalhes)", perPerson: 7.50, totalGroup: 30.00 },
+                    { day: "Dia 4", description: "3x Metro", perPerson: 7.50, totalGroup: 30.00 },
+                    { day: "Dia 5", description: "1x Metro, Táxi (volta)", perPerson: 15.50, totalGroup: 62.00 }
                 ]
             },
             hybrid_louvre: {
                 perPerson: 58.50,
                 totalGroup4: 234.00,
-                totalGroup5: 270.00,
                 details: [
-                    { item: 'Táxi: Orly → Centro de Paris (Grupo)', quantity: 'Fixo', perPerson: 11.00, totalGroup: 44.00 },
-                    { item: 'Táxi: Cacifo → Orly (Grupo)', quantity: 'Fixo', perPerson: 11.00, totalGroup: 44.00 },
+                    { item: 'Táxi Orly → C. Paris + Cacifo → Orly (Grupo)', quantity: '2 (Fixo)', perPerson: 24.50, totalGroup: 98.00 },
                     { item: 'Cartão Navigo Easy', quantity: 4, perPerson: 2.00, totalGroup: 8.00 },
-                    { item: 'Bilhetes Individuais (Metro e RER)', quantity: 52, perPerson: 34.50, totalGroup: 138.00 }
-                ]
-            },
-            hybrid_casa: {
-                perPerson: 55.00,
-                totalGroup4: 220.00,
-                totalGroup5: 275.00,
-                details: [
-                    { item: 'Táxi: Orly → Casa (Grupo)', quantity: 'Fixo', perPerson: 12.00, totalGroup: 48.00 },
-                    { item: 'Táxi: Cacifo → Orly (Grupo)', quantity: 'Fixo', perPerson: 11.00, totalGroup: 44.00 },
-                    { item: 'Cartão Navigo Easy', quantity: 4, perPerson: 2.00, totalGroup: 8.00 },
-                    { item: 'Bilhetes Individuais (Metro e RER)', quantity: 48, perPerson: 30.00, totalGroup: 120.00 }
+                    { item: 'Bilhetes Individuais (Metro e RER)', quantity: 52, perPerson: 32.00, totalGroup: 128.00 }
+                ],
+                 dailyBreakdown: [
+                    { day: "Dia 1", description: "Táxi (ida), 3x Metro", perPerson: 19.50, totalGroup: 78.00 },
+                    { day: "Dia 2", description: "3x Metro", perPerson: 7.50, totalGroup: 30.00 },
+                    { day: "Dia 3", description: "3x Metro/RER (incl. Versalhes)", perPerson: 7.50, totalGroup: 30.00 },
+                    { day: "Dia 4", description: "3x Metro", perPerson: 7.50, totalGroup: 30.00 },
+                    { day: "Dia 5", description: "1x Metro, Táxi (volta)", perPerson: 16.50, totalGroup: 66.00 }
                 ]
             },
             passe: {
@@ -145,6 +161,9 @@
                 details: [
                     { item: 'Cartão Navigo Easy', quantity: 4, perPerson: 2.00, totalGroup: 8.00 },
                     { item: 'Passe Paris Visite (5 Dias, Zonas 1-5)', quantity: 4, perPerson: 76.25, totalGroup: 305.00 },
+                ],
+                 dailyBreakdown: [
+                    { day: "Dia 1 a 5", description: "Todas as viagens incluídas no Passe", perPerson: 78.25, totalGroup: 313.00 }
                 ]
             }
         };
@@ -152,8 +171,8 @@
         function formatCurrency(value) {
             return `${value.toFixed(2).replace('.', ',')} €`;
         }
-
-        function renderCostDetailsTable(details, groupSize) {
+        
+        function renderCostDetailsTable(details) {
             const container = document.getElementById('cost-details-container');
             const tableRows = details.map(d => `
                 <tr class="border-b border-gray-200">
@@ -172,7 +191,7 @@
                                 <th class="p-4 font-semibold text-gray-700">Componente</th>
                                 <th class="p-4 font-semibold text-gray-700 text-center">Quantidade (Grupo)</th>
                                 <th class="p-4 font-semibold text-gray-700 text-right">Custo p/ Pessoa</th>
-                                <th class="p-4 font-semibold text-gray-700 text-right">Custo Total (${groupSize} Pessoas)</th>
+                                <th class="p-4 font-semibold text-gray-700 text-right">Custo Total (4 Pessoas)</th>
                             </tr>
                         </thead>
                         <tbody>${tableRows}</tbody>
@@ -189,6 +208,33 @@
                 </div>`;
         }
 
+        function renderDailyBreakdownTable(breakdown) {
+             const container = document.getElementById('daily-breakdown-container');
+             const tableRows = breakdown.map(d => `
+                <tr class="border-b border-gray-200">
+                    <td class="p-4 font-semibold">${d.day}</td>
+                    <td class="p-4 text-gray-600">${d.description}</td>
+                    <td class="p-4 text-right font-mono">${formatCurrency(d.perPerson)}</td>
+                    <td class="p-4 text-right font-mono">${formatCurrency(d.totalGroup)}</td>
+                </tr>
+            `).join('');
+
+             container.innerHTML = `
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <table class="w-full text-left">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th class="p-4 font-semibold text-gray-700">Dia</th>
+                                <th class="p-4 font-semibold text-gray-700">Viagens</th>
+                                <th class="p-4 font-semibold text-gray-700 text-right">Custo p/ Pessoa</th>
+                                <th class="p-4 font-semibold text-gray-700 text-right">Custo Total (4 Pessoas)</th>
+                            </tr>
+                        </thead>
+                        <tbody>${tableRows}</tbody>
+                    </table>
+                </div>`;
+        }
+
         function updateDisplay(option) {
             const buttons = {
                 individual: document.getElementById('btn-individual'),
@@ -197,7 +243,6 @@
                 passe: document.getElementById('btn-passe')
             };
             const data = costs[option];
-            const totalGroup5Container = document.getElementById('total-group-5-container');
             const taxiNote = document.getElementById('taxi-note');
             
             Object.values(buttons).forEach(btn => btn.classList.remove('active', 'inactive'));
@@ -207,25 +252,19 @@
             }
 
             document.getElementById('total-per-person').textContent = formatCurrency(data.perPerson);
-            document.getElementById('total-for-group-4').textContent = formatCurrency(data.totalGroup4);
+            document.getElementById('total-for-group').textContent = formatCurrency(data.totalGroup4);
 
-            if (data.totalGroup5) {
-                totalGroup5Container.classList.remove('hidden');
-                document.getElementById('total-for-group-5').textContent = formatCurrency(data.totalGroup5);
-                renderCostDetailsTable(data.details, 4); 
-                document.getElementById('taxi-note').classList.remove('hidden');
-                document.getElementById('footer-total-group').textContent = formatCurrency(data.totalGroup4);
-
+            renderCostDetailsTable(data.details);
+            renderDailyBreakdownTable(data.dailyBreakdown);
+            
+            if (option.includes('hybrid')) {
+                taxiNote.classList.remove('hidden');
             } else {
-                totalGroup5Container.classList.add('hidden');
-                renderCostDetailsTable(data.details, 4);
-                if(document.getElementById('taxi-note')) {
-                   document.getElementById('taxi-note').classList.add('hidden');
-                }
-                document.getElementById('footer-total-group').textContent = formatCurrency(data.totalGroup4);
+                taxiNote.classList.add('hidden');
             }
             
             document.getElementById('footer-per-person').textContent = formatCurrency(data.perPerson);
+            document.getElementById('footer-total-group').textContent = formatCurrency(data.totalGroup4);
         }
         
         function renderCompletedPurchases() {
