@@ -31,16 +31,11 @@
             .display-cost { font-size: 3rem; line-height: 1; }
             .completed-item-text { font-size: 1.125rem; }
         }
-        /* Estilos para os botões de seleção */
         .option-btn.active {
-            background-color: #2563eb; /* blue-600 */
-            color: white;
-            border-color: #2563eb;
+            background-color: #2563eb; color: white; border-color: #2563eb;
         }
         .option-btn.inactive {
-            background-color: white;
-            color: #374151; /* gray-700 */
-            border-color: #d1d5db; /* gray-300 */
+            background-color: white; color: #374151; border-color: #d1d5db;
         }
     </style>
 </head>
@@ -57,57 +52,32 @@
         </header>
 
         <section class="mb-12">
-            <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Custos dos Transportes (Metro/RER)</h2>
+            <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Custos dos Transportes</h2>
             
-            <!-- Botões de Seleção -->
-            <div class="flex justify-center gap-4 mb-8">
+            <div class="flex flex-col md:flex-row justify-center gap-4 mb-8">
                 <button id="btn-individual" class="option-btn text-base font-semibold py-2 px-6 rounded-lg border-2 transition-colors duration-200">
                     <i class="fa-solid fa-ticket mr-2"></i>Bilhetes Individuais
+                </button>
+                <button id="btn-hybrid" class="option-btn text-base font-semibold py-2 px-6 rounded-lg border-2 transition-colors duration-200">
+                    <i class="fa-solid fa-taxi mr-2"></i>Opção Táxi + Metro
                 </button>
                 <button id="btn-passe" class="option-btn text-base font-semibold py-2 px-6 rounded-lg border-2 transition-colors duration-200">
                     <i class="fa-solid fa-address-card mr-2"></i>Passe Paris Visite
                 </button>
             </div>
 
-            <!-- Totais -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
                 <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
-                    <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Total de bilhetes por pessoa</h3>
+                    <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Total por pessoa</h3>
                     <p id="total-per-person" class="display-cost font-bold text-green-600 mt-2">0,00 €</p>
                 </div>
                 <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
-                    <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Total de bilhetes para 4 pessoas</h3>
+                    <h3 class="text-lg font-semibold text-gray-500 uppercase tracking-wider">Total para 5 pessoas</h3>
                     <p id="total-for-group" class="display-cost font-bold text-blue-600 mt-2">0,00 €</p>
                 </div>
             </div>
 
-            <!-- Tabela de Detalhes -->
-            <div id="cost-details-container">
-                <!-- O JavaScript irá gerar a tabela aqui -->
-            </div>
-        </section>
-
-        <!-- NOVA SECÇÃO PARA OS TRANSFERS DE TÁXI -->
-        <section class="mb-12">
-            <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Opções de Transfer do Aeroporto (Alternativas)</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-white p-6 rounded-2xl shadow-lg text-center flex flex-col justify-between">
-                    <div>
-                        <i class="fa-solid fa-taxi text-4xl text-orange-500 mb-4"></i>
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Táxi: Orly → Zona do Louvre</h3>
-                        <p class="text-gray-600 mb-4">Viagem única para 4 pessoas e bagagens. Preço fixo.</p>
-                    </div>
-                    <p class="display-cost font-bold text-orange-600 mt-2">55,00 €</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl shadow-lg text-center flex flex-col justify-between">
-                    <div>
-                        <i class="fa-solid fa-taxi text-4xl text-orange-500 mb-4"></i>
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">Táxi: Orly → Casa (Aubervilliers)</h3>
-                        <p class="text-gray-600 mb-4">Viagem única para 4 pessoas e bagagens. Preço fixo.</p>
-                    </div>
-                    <p class="display-cost font-bold text-orange-600 mt-2">60,00 €</p>
-                </div>
-            </div>
+            <div id="cost-details-container"></div>
         </section>
 
         <section class="mb-12">
@@ -118,40 +88,45 @@
 
     <script>
         const planningEvents = [
-            { title: 'Comprar bilhetes para o Museu do Louvre', status: 'complete', budgetKey: 'louvre' },
-            { title: 'Comprar bilhetes para a Museu D Orsay', status: 'complete', budgetKey: 'orsay' },
-            { title: 'Comprar bilhetes para Versailles', status: 'complete', budgetKey: 'versailles' },
-            { title: 'Comprar bilhetes para a Sainte-Chapelle', status: 'complete', budgetKey: 'saintechapelle' },
-            { title: 'Comprar bilhetes para a Torre Eiffel', status: 'complete', budgetKey: 'eiffel' },
-            { title: 'Comprar bilhetes para a Ópera Garnier', status: 'complete', budgetKey: 'garnier' },
-            { title: 'Fazer pagamento da casa de Paris', status: 'complete', budgetKey: '' },
-            { title: 'Reserva para entrada sem filas na Notre-Dame', status: 'pending', budgetKey: '' },
+            { title: 'Comprar bilhetes para o Museu do Louvre', status: 'complete' }, { title: 'Comprar bilhetes para a Museu D Orsay', status: 'complete' },
+            { title: 'Comprar bilhetes para Versailles', status: 'complete' }, { title: 'Comprar bilhetes para a Sainte-Chapelle', status: 'complete' },
+            { title: 'Comprar bilhetes para a Torre Eiffel', status: 'complete' }, { title: 'Comprar bilhetes para a Ópera Garnier', status: 'complete' },
+            { title: 'Fazer pagamento da casa de Paris', status: 'complete' }, { title: 'Reserva para entrada sem filas na Notre-Dame', status: 'pending' },
             { title: 'VIAGEM!', status: 'complete' }
         ];
 
         const costs = {
             individual: {
                 perPerson: 58.00,
-                totalGroup: 232.00,
+                totalGroup: 290.00,
                 details: [
-                    { item: 'Cartão Navigo Easy', quantity: 1, perPerson: 2.00, totalGroup: 8.00 },
-                    { item: 'Bilhetes Aeroporto Orly ↔ Paris', quantity: 2, perPerson: 26.00, totalGroup: 104.00 },
-                    { item: 'Bilhetes Paris ↔ Versalhes', quantity: 2, perPerson: 5.00, totalGroup: 20.00 },
-                    { item: 'Bilhetes Individuais (Metro)', quantity: 10, perPerson: 25.00, totalGroup: 100.00 }
+                    { item: 'Cartão Navigo Easy', quantity: 1, perPerson: 2.00, totalGroup: 10.00 },
+                    { item: 'Bilhetes Aeroporto Orly ↔ Paris', quantity: 2, perPerson: 26.00, totalGroup: 130.00 },
+                    { item: 'Bilhetes Paris ↔ Versalhes', quantity: 2, perPerson: 5.00, totalGroup: 25.00 },
+                    { item: 'Bilhetes Individuais (Metro)', quantity: 10, perPerson: 25.00, totalGroup: 125.00 }
+                ]
+            },
+            hybrid_taxi: {
+                perPerson: 56.00,
+                totalGroup: 280.00,
+                details: [
+                    { item: 'Transfer de Táxi (Orly ↔ Casa, 2 viag.)', quantity: 'Total Grupo', perPerson: 24.00, totalGroup: 120.00 },
+                    { item: 'Cartão Navigo Easy', quantity: 1, perPerson: 2.00, totalGroup: 10.00 },
+                    { item: 'Bilhetes Paris ↔ Versalhes', quantity: 2, perPerson: 5.00, totalGroup: 25.00 },
+                    { item: 'Bilhetes Individuais (Metro)', quantity: 10, perPerson: 25.00, totalGroup: 125.00 }
                 ]
             },
             passe: {
                 perPerson: 78.25,
-                totalGroup: 313.00,
+                totalGroup: 391.25,
                 details: [
-                    { item: 'Cartão Navigo Easy', quantity: 1, perPerson: 2.00, totalGroup: 8.00 },
-                    { item: 'Passe Paris Visite (5 Dias, Zonas 1-5)', quantity: 1, perPerson: 76.25, totalGroup: 305.00 },
+                    { item: 'Cartão Navigo Easy', quantity: 1, perPerson: 2.00, totalGroup: 10.00 },
+                    { item: 'Passe Paris Visite (5 Dias, Zonas 1-5)', quantity: 1, perPerson: 76.25, totalGroup: 381.25 },
                 ]
             }
         };
 
         function formatCurrency(value) {
-            if (typeof value !== 'number' || isNaN(value)) { return '-'; }
             return `${value.toFixed(2).replace('.', ',')} €`;
         }
 
@@ -172,14 +147,12 @@
                         <thead class="bg-gray-100">
                             <tr>
                                 <th class="p-4 font-semibold text-gray-700">Componente</th>
-                                <th class="p-4 font-semibold text-gray-700 text-center">Quantidade (p/ pessoa)</th>
+                                <th class="p-4 font-semibold text-gray-700 text-center">Quantidade</th>
                                 <th class="p-4 font-semibold text-gray-700 text-right">Custo p/ Pessoa</th>
-                                <th class="p-4 font-semibold text-gray-700 text-right">Custo Total (4 Pessoas)</th>
+                                <th class="p-4 font-semibold text-gray-700 text-right">Custo Total (5 Pessoas)</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            ${tableRows}
-                        </tbody>
+                        <tbody>${tableRows}</tbody>
                         <tfoot class="font-bold bg-gray-50">
                             <tr>
                                 <td class="p-4 text-lg">TOTAL</td>
@@ -189,26 +162,22 @@
                             </tr>
                         </tfoot>
                     </table>
-                </div>
-            `;
+                </div>`;
         }
 
         function updateDisplay(option) {
-            const btnIndividual = document.getElementById('btn-individual');
-            const btnPasse = document.getElementById('btn-passe');
-            
+            const buttons = {
+                individual: document.getElementById('btn-individual'),
+                hybrid_taxi: document.getElementById('btn-hybrid'),
+                passe: document.getElementById('btn-passe')
+            };
             const data = costs[option];
             
-            if (option === 'individual') {
-                btnIndividual.classList.remove('inactive');
-                btnIndividual.classList.add('active');
-                btnPasse.classList.remove('active');
-                btnPasse.classList.add('inactive');
-            } else {
-                btnPasse.classList.remove('inactive');
-                btnPasse.classList.add('active');
-                btnIndividual.classList.remove('active');
-                btnIndividual.classList.add('inactive');
+            Object.values(buttons).forEach(btn => btn.classList.remove('active', 'inactive'));
+            
+            buttons[option].classList.add('active');
+            for (const key in buttons) {
+                if (key !== option) buttons[key].classList.add('inactive');
             }
 
             document.getElementById('total-per-person').textContent = formatCurrency(data.perPerson);
@@ -222,27 +191,20 @@
         function renderCompletedPurchases() {
             const container = document.getElementById('completed-purchases-container');
             const completedItems = planningEvents.filter(e => e.status === 'complete' && e.title !== 'VIAGEM!');
-            if (!container || completedItems.length === 0) {
-                if (container) container.innerHTML = `<p class="text-gray-500 italic text-center">Nenhuma compra concluída ainda.</p>`;
-                return;
-            }
-            const itemsHTML = completedItems.map(item => {
-                return `<div class="flex items-center completed-item-text p-2 border-b border-gray-100"><i class="fa-solid fa-check-circle text-green-500 mr-4 text-xl"></i><span class="flex-grow">${item.title}</span></div>`;
-            }).join('');
-            container.innerHTML = itemsHTML;
+            container.innerHTML = completedItems.map(item => `
+                <div class="flex items-center completed-item-text p-2 border-b border-gray-100">
+                    <i class="fa-solid fa-check-circle text-green-500 mr-4 text-xl"></i>
+                    <span class="flex-grow">${item.title}</span>
+                </div>
+            `).join('') || `<p class="text-gray-500 italic text-center">Nenhuma compra concluída ainda.</p>`;
         }
 
         document.addEventListener('DOMContentLoaded', () => {
             let selectedOption = 'individual'; 
             
-            document.getElementById('btn-individual').addEventListener('click', () => {
-                selectedOption = 'individual';
-                updateDisplay(selectedOption);
-            });
-            document.getElementById('btn-passe').addEventListener('click', () => {
-                selectedOption = 'passe';
-                updateDisplay(selectedOption);
-            });
+            document.getElementById('btn-individual').addEventListener('click', () => updateDisplay('individual'));
+            document.getElementById('btn-hybrid').addEventListener('click', () => updateDisplay('hybrid_taxi'));
+            document.getElementById('btn-passe').addEventListener('click', () => updateDisplay('passe'));
 
             updateDisplay(selectedOption);
             renderCompletedPurchases();
