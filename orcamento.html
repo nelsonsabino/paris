@@ -83,7 +83,7 @@
                         </div>
                         <div id="total-group-5-container" class="hidden">
                             <p id="total-for-group-5" class="text-2xl font-bold text-gray-500">0,00 €</p>
-                            <p class="text-xs text-gray-500 -mt-1">Total Real (5 Pessoas)</p>
+                            <p class="text-xs text-gray-500 -mt-1">Custo Real (5 Pessoas)</p>
                         </div>
                     </div>
                 </div>
@@ -119,25 +119,24 @@
                 ]
             },
             hybrid_louvre: {
-                perPerson: 59.50,
-                totalGroup4: 238.00,
-                totalGroup5: 270.00,
+                perPerson: 58.50,
+                totalGroup4: 234.00,
+                totalGroup5: 292.50,
                 details: [
-                    { item: 'Táxi Orly→Pyramides + Locker→Orly (Grupo)', quantity: 'Fixo', perPerson: 22.00, totalGroup: 110.00 },
+                    { item: 'Táxi Orly → C. Paris + Cacifo → Orly (Grupo)', quantity: 'Fixo', perPerson: 22.00, totalGroup: 110.00 },
                     { item: 'Cartão Navigo Easy', quantity: 1, perPerson: 2.00, totalGroup: 8.00 },
-                    { item: 'Bilhetes Paris ↔ Versalhes', quantity: 2, perPerson: 5.00, totalGroup: 20.00 },
-                    { item: 'Bilhetes Individuais (Metro)', quantity: 12, perPerson: 30.00, totalGroup: 120.00 }
+                    { item: 'Bilhetes Individuais (Metro)', quantity: 13, perPerson: 32.50, totalGroup: 130.00 },
+                    { item: 'Bilhetes Paris ↔ Versalhes', quantity: 2, perPerson: 2.00, totalGroup: 8.00 } // CORREÇÃO: PREÇO INCORRETO ANTERIOR
                 ]
             },
             hybrid_casa: {
-                perPerson: 58.25,
-                totalGroup4: 233.00,
-                totalGroup5: 262.50,
+                perPerson: 55.00,
+                totalGroup4: 220.00,
+                totalGroup5: 275.00,
                 details: [
-                    { item: 'Táxi Orly→Casa + Locker→Orly (Grupo)', quantity: 'Fixo', perPerson: 23.00, totalGroup: 115.00 },
+                    { item: 'Táxi Orly → Casa + Cacifo → Orly (Grupo)', quantity: 'Fixo', perPerson: 23.00, totalGroup: 115.00 },
                     { item: 'Cartão Navigo Easy', quantity: 1, perPerson: 2.00, totalGroup: 8.00 },
-                    { item: 'Bilhetes Paris ↔ Versalhes', quantity: 2, perPerson: 5.00, totalGroup: 20.00 },
-                    { item: 'Bilhetes Individuais (Metro)', quantity: 11, perPerson: 27.50, totalGroup: 110.00 }
+                    { item: 'Bilhetes Individuais (Metro)', quantity: 12, perPerson: 30.00, totalGroup: 120.00 }
                 ]
             },
             passe: {
@@ -186,7 +185,7 @@
                             </tr>
                         </tfoot>
                     </table>
-                    <div id="taxi-note" class="p-4 text-xs text-gray-500 bg-gray-50 hidden">*O custo por pessoa do táxi é uma média do custo total do grupo.</div>
+                    <div id="taxi-note" class="p-4 text-xs text-gray-500 bg-gray-50 hidden">*O custo por pessoa do táxi é a média do custo total do grupo de 5 pessoas.</div>
                 </div>`;
         }
 
@@ -212,14 +211,14 @@
                 document.getElementById('total-for-group-4').textContent = formatCurrency(data.totalGroup4);
                 document.getElementById('total-for-group-5').textContent = formatCurrency(data.totalGroup5);
                 totalGroup5Container.classList.remove('hidden');
-                renderCostDetailsTable(data.details, 5); // A tabela de detalhes mostra o total de 5
+                renderCostDetailsTable(data.details, 4); 
                 document.getElementById('taxi-note').classList.remove('hidden');
-                document.getElementById('footer-total-group').textContent = formatCurrency(data.totalGroup5);
+                document.getElementById('footer-total-group').textContent = formatCurrency(data.totalGroup4);
 
             } else {
                 document.getElementById('total-for-group-4').textContent = formatCurrency(data.totalGroup4);
                 totalGroup5Container.classList.add('hidden');
-                renderCostDetailsTable(data.details, 4); // A tabela de detalhes mostra o total de 4
+                renderCostDetailsTable(data.details, 4);
                 document.getElementById('footer-total-group').textContent = formatCurrency(data.totalGroup4);
             }
             
