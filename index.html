@@ -16,7 +16,7 @@
     <title>Planeamento: Viagem a Paris 2025</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
@@ -274,50 +274,88 @@
         }
         
         async function fetchTripWeather() {
+            const apiKey = 'd782138886146ff542c2d34f6c7adc15';
+            const lat = 48.8566;
+            const lon = 2.3522;
             const tripStartDate = new Date('2025-09-19T12:00:00Z');
             const today = new Date();
             const daysUntilTrip = Math.ceil((tripStartDate - today) / (1000 * 60 * 60 * 24));
-            let apiUrl, title;
-            let isForecast = daysUntilTrip <= 16;
-            if (isForecast) {
-                title = "Previsão da Viagem";
-                apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=48.8566&longitude=2.3522&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Europe/Paris&forecast_days=16`;
-            } else {
-                title = "Previsão Histórica (com base no ano passado)";
-                apiUrl = `https://archive-api.open-meteo.com/v1/archive?latitude=48.8566&longitude=2.3522&start_date=2024-09-19&end_date=2024-09-23&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Europe/Paris`;
+            
+            const widget = document.getElementById('forecast-widget');
+
+            if (daysUntilTrip > 16) {
+                widget.innerHTML = `<h2 class="section-title font-bold text-gray-800 mb-4 text-center">Previsão da Viagem</h2><p class="text-center text-gray-600">A previsão detalhada estará disponível 16 dias antes da viagem.</p>`;
+                return;
             }
+
+            const apiUrl = `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=16&appid=${apiKey}&units=metric&lang=pt`;
+
             try {
                 const response = await fetch(apiUrl);
                 if (!response.ok) throw new Error(`Erro na API: ${response.statusText}`);
-                let data = await response.json();
-                if (isForecast) {
-                    const tripStartDateString = '2025-09-19', tripEndDateString = '2025-09-23';
-                    const filteredDaily = { time: [], weather_code: [], temperature_2m_max: [], temperature_2m_min: [] };
-                    data.daily.time.forEach((dateString, index) => {
-                        if (dateString >= tripStartDateString && dateString <= tripEndDateString) {
-                            for (const key in filteredDaily) filteredDaily[key].push(data.daily[key][index]);
-                        }
-                    });
-                    data.daily = filteredDaily;
+                const data = await response.json();
+                
+                const tripStartDateString = '2025-09-19';
+                const tripEndDateString = '2025-09-23';
+                
+                const tripForecast = data.list.filter(day => {
+                    const forecastDate = new Date(day.dt * 1000).toISOString().split('T')[0];
+                    return forecastDate >= tripStartDateString && forecastDate <= tripEndDateString;
+                });
+
+                if(tripForecast.length < 5) {
+                   // This can happen if we are close to the date and the 16-day forecast doesn't cover the full trip.
+                   // For this specific use case, we will just show what we have. If it was a real-world app, we might need a fallback.
                 }
-                renderForecast(data, title);
+                
+                renderForecast(tripForecast);
+
             } catch (error) {
                 console.error("Erro ao buscar dados da meteorologia:", error);
-                document.getElementById('forecast-widget').innerHTML = `<h2 class="section-title font-bold text-gray-800 mb-4 text-center">Previsão da Viagem</h2><p class="text-red-500 text-center">Não foi possível carregar a previsão.</p>`;
+                widget.innerHTML = `<h2 class="section-title font-bold text-gray-800 mb-4 text-center">Previsão da Viagem</h2><p class="text-red-500 text-center">Não foi possível carregar a previsão.</p>`;
             }
         }
-        const getWeatherIcon = (code) => ({ 0: 'fa-sun', 1: 'fa-cloud-sun', 2: 'fa-cloud-sun', 3: 'fa-cloud', 45: 'fa-smog', 48: 'fa-smog', 51: 'fa-cloud-rain', 53: 'fa-cloud-rain', 55: 'fa-cloud-rain', 61: 'fa-cloud-showers-heavy', 63: 'fa-cloud-showers-heavy', 65: 'fa-cloud-showers-heavy', 80: 'fa-cloud-sun-rain', 81: 'fa-cloud-sun-rain', 82: 'fa-cloud-sun-rain', 95: 'fa-bolt' }[code] || 'fa-question-circle');
+
+        const getWeatherIcon = (iconCode) => {
+            const code = iconCode.substring(0, 2); // Get the number part, e.g., '01d' -> '01'
+            const iconMap = {
+                '01': 'fa-sun',           // clear sky
+                '02': 'fa-cloud-sun',     // few clouds
+                '03': 'fa-cloud',         // scattered clouds
+                '04': 'fa-cloud-meatball',// broken clouds
+                '09': 'fa-cloud-showers-heavy', // shower rain
+                '10': 'fa-cloud-rain',    // rain
+                '11': 'fa-bolt',          // thunderstorm
+                '13': 'fa-snowflake',     // snow
+                '50': 'fa-smog'           // mist
+            };
+            return iconMap[code] || 'fa-question-circle';
+        };
+
         const formatDayAndDate = (dateObject) => `${dateObject.toLocaleDateString('pt-PT', { weekday: 'short' })} ${dateObject.getDate()}`;
-        function renderForecast(data, title) {
+
+        function renderForecast(forecastDays) {
             const widget = document.getElementById('forecast-widget');
-            const daily = data.daily;
             let forecastHtml = '';
-            for (let i = 0; i < daily.time.length; i++) {
-                const displayDate = new Date(new Date('2025-09-19T12:00:00Z'));
-                displayDate.setUTCDate(displayDate.getUTCDate() + i);
-                forecastHtml += `<div class="text-center p-3 bg-gray-100 rounded-lg"><p class="font-semibold">${formatDayAndDate(displayDate)}</p><i class="fa-solid ${getWeatherIcon(daily.weather_code[i])} text-3xl my-2 text-blue-500"></i><p class="text-sm"><span class="font-bold text-red-500">${Math.round(daily.temperature_2m_max[i])}°</span> / <span class="text-blue-600">${Math.round(daily.temperature_2m_min[i])}°</span></p></div>`;
+            
+            if (forecastDays.length === 0) {
+                widget.innerHTML = `<h2 class="section-title font-bold text-gray-800 mb-4 text-center">Previsão da Viagem</h2><p class="text-center text-gray-600">A previsão para as datas da viagem ainda não está disponível.</p>`;
+                return;
             }
-            widget.innerHTML = `<h2 class="section-title font-bold text-gray-800 mb-4 text-center">${title}</h2><div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">${forecastHtml}</div>`;
+
+            forecastDays.forEach(day => {
+                const date = new Date(day.dt * 1000);
+                forecastHtml += `
+                    <div class="text-center p-3 bg-gray-100 rounded-lg">
+                        <p class="font-semibold">${formatDayAndDate(date)}</p>
+                        <i class="fa-solid ${getWeatherIcon(day.weather[0].icon)} text-3xl my-2 text-blue-500"></i>
+                        <p class="text-sm">
+                            <span class="font-bold text-red-500">${Math.round(day.temp.max)}°</span> / 
+                            <span class="text-blue-600">${Math.round(day.temp.min)}°</span>
+                        </p>
+                    </div>`;
+            });
+            widget.innerHTML = `<h2 class="section-title font-bold text-gray-800 mb-4 text-center">Previsão da Viagem</h2><div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">${forecastHtml}</div>`;
         }
         
         function requestPassword(actionCallback) {
