@@ -133,9 +133,10 @@ export const day1Data = {
                 "Ingredientes para jantares em casa (massa, molho, queijo, ovos, atum)."
             ],
             where: {
-                description: "<strong>Supermercados perto de casa:</strong> Para o abastecimento principal, procurar por um Franprix, Carrefour City ou Lidl na zona. Exemplo:",
+                description: "<strong>Supermercados perto de casa:</strong> Para o abastecimento principal, procurar por um Franprix ou Coccinelle Express",
                 locations: [
-                    { name: "Franprix Perto da Casa (Exemplo)", link: "https://maps.app.goo.gl/uzspchqU5hnb7xpk7" }
+                    { name: "Franprix Perto da Casa", link: "https://maps.app.goo.gl/uzspchqU5hnb7xpk7" },
+                     { name: "Coccinelle Express Perto da Casa", link: "https://maps.app.goo.gl/a6QLaHNL6opvUuhw6" }
                 ]
             }
         }
