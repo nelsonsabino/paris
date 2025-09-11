@@ -9,6 +9,12 @@ export const day3Data = {
             title: "CASA → VERSALHES",
             mapLink: "https://maps.app.goo.gl/QxRJ6gVoJ88yKXfH9",
             timeline: [
+                { time: "07:00", icon: "fa-mug-hot", title: "Pequeno-almoço em casa",
+                    mealSuggestion: {
+                        suggestion: "Refeição reforçada em casa, antes da longa viagem de RER para Versalhes.",
+                        budget: "~2 € / pessoa"
+                    }
+                },
                 { time: "07:26", icon: "fa-house-chimney", title: "Saída de Casa" },
                 {
                     time: "07:29", icon: "fa-route", title: "Percurso: Casa → Versailles", description: "Duração total: ~1h 24min. Clica para ver os detalhes.",
@@ -21,7 +27,25 @@ export const day3Data = {
                         { text: "08:35: Sair em Versailles Château Rive Gauche", subText: "Caminhar ~15 min até ao palácio." }
                     ]
                 },
-                { time: "08:50", icon: "fa-crown", title: "Palácio de Versalhes", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1JWHf_KUwofGdZgYj5wp0JswPyZcCs3ys/view?usp=drive_link", guideLink: "visita_versalhes.html", description: "Nota: Existem várias casas de banho dentro do palácio e nos jardins." }
+                { time: "08:50", icon: "fa-crown", title: "Palácio de Versalhes", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1JWHf_KUwofGdZgYj5wp0JswPyZcCs3ys/view?usp=drive_link", guideLink: "visita_versalhes.html", description: "Entrada no Palácio. Nota: Existem várias casas de banho dentro do palácio e nos jardins." }
+            ]
+        },
+        {
+            title: "VISITA AOS JARDINS E DOMÍNIOS",
+            mapLink: "https://www.google.com/maps/place/Jardins+do+Pal%C3%A1cio+de+Versalhes/@48.8057278,2.1027989,15.75z",
+            timeline: [
+                { time: "10:30", icon: "fa-cookie-bite", title: "Lanche da Manhã",
+                    mealSuggestion: {
+                        suggestion: "Pausa nos jardins para um lanche (fruta, barritas) levado de Paris para poupar.",
+                        budget: "~2 € / pessoa"
+                    }
+                },
+                { time: "13:00", icon: "fa-utensils", title: "Almoço Piquenique",
+                    mealSuggestion: {
+                        suggestion: "Almoço nos jardins com sandes preparadas no dia anterior. Evita os preços altos e as filas dos restaurantes do complexo.",
+                        budget: "~7 € / pessoa"
+                    }
+                }
             ]
         },
         {
@@ -47,10 +71,22 @@ export const day3Data = {
                 { time: "15:35", icon: "fa-heart", title: "Muro do Eu Te Amo (Le Mur des Je t'aime)", description: "Visita e fotos: ~15 min" },
                 { time: "16:00", icon: "fa-place-of-worship", title: "Basílica de Sacré Cœur", guideLink: "visita_montmartre.html", description: "Visita ao interior e vista: ~45 min" },
                 { time: "16:45", icon: "fa-palette", title: "Place du Tertre", description: "Passeio pela praça dos artistas: ~30 min" },
+                 { time: "17:00", icon: "fa-ice-cream", title: "Lanche da Tarde",
+                    mealSuggestion: {
+                        suggestion: "Pausa para um crepe, croissant ou outra pastelaria local numa das muitas 'boulangeries' de Montmartre.",
+                        budget: "~3 € / pessoa"
+                    }
+                },
                 { time: "17:20", icon: "fa-utensils", title: "Le Consulat & La Maison Rose", description: "Paragem para fotos: ~10 min" },
                 { icon: "fa-windmill", title: "Moulin Radet", description: "Vista de passagem" },
                 { time: "17:45", icon: "fa-mug-hot", title: "Café des Deux Moulins", description: "Visita rápida/fotos: ~5 min" },
                 { time: "17:50", icon: "fa-wind", title: "Moulin Rouge", description: "Chegada e fotos finais: ~10 min" },
+                { time: "19:30", icon: "fa-utensils", title: "Jantar em Montmartre",
+                    mealSuggestion: {
+                        suggestion: "Jantar rápido e económico. A zona tem muitas opções de kebab, pizza ou falafel que são saborosas e baratas, antes de apanhar o metro.",
+                        budget: "~9 € / pessoa"
+                    }
+                },
                 {
                     icon: "fa-restroom",
                     title: "Casas de Banho Próximas",
@@ -80,33 +116,11 @@ export const day3Data = {
             ]
         }
     ],
-    mealSuggestions: {
-        title: "Sugestões de Refeições e Compras",
-        options: [
-            {
-                type: "Pequeno-almoço (07:00)",
-                suggestion: "Refeição reforçada em casa, antes da longa viagem de RER para Versalhes.",
-                budget: "~2 € / pessoa"
-            },
-            {
-                type: "Almoço (13:00)",
-                suggestion: "Piquenique nos Jardins de Versalhes. É crucial preparar/comprar sandes no dia anterior e levar na mochila, pois tudo dentro do complexo é extremamente caro.",
-                budget: "~7 € / pessoa"
-            },
-            {
-                type: "Jantar (19:30)",
-                suggestion: "Jantar rápido e económico em Montmartre. A zona tem muitas opções de kebab, pizza ou falafel que são saborosas e baratas.",
-                budget: "~9 € / pessoa"
-            },
-            {
-                type: "Lanches",
-                suggestion: "Levar snacks (fruta, bolachas) para comer nos jardins de Versalhes. Ao final da tarde em Montmartre, um crepe simples ou um croissant.",
-                budget: "~3-5 € / pessoa"
-            }
-        ],
+    shoppingInfo: {
+        title: "Dicas de Compras do Dia",
         shopping: {
-            title: "Pontos de Compra",
-            where: "<strong>Dica para Versalhes:</strong> Preparar o almoço e lanches na véspera. <strong>Supermercados em Montmartre:</strong> Carrefour City (39 Rue Caulaincourt) ou Franprix (14 Rue Lepic) para comprar algo para o jantar ou para o dia seguinte."
+            title: "Pontos de Compra e Planeamento",
+            where: "<strong>Dica para Versalhes:</strong> Preparar o almoço e lanches na véspera é essencial. <strong>Supermercados em Montmartre:</strong> Carrefour City (39 Rue Caulaincourt) ou Franprix (14 Rue Lepic) são boas opções para comprar algo para o jantar ou para o dia seguinte."
         }
     }
 };
