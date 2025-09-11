@@ -61,8 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             sectionBlock.timeline.forEach(item => {
                 const hasTime = item.time ? `<p class="timeline-time">${item.time}</p>` : '';
-
-                // Lógica para o ícone do bilhete com link
                 let ticketIconHTML = '';
                 if (item.requiresTicket) {
                     const icon = `<i class='fa-solid fa-ticket ml-2 text-blue-600' title='Necessita de Bilhete'></i>`;
@@ -72,8 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         ticketIconHTML = icon;
                     }
                 }
-
-                // Lógica para o link do guia na atração
                 let titleHTML = item.title;
                 if (item.guideLink) {
                     titleHTML = `<a href="${item.guideLink}" class="text-blue-700 hover:underline hover:text-blue-900 transition">${item.title}</a>`;
@@ -114,6 +110,65 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             htmlContent += `</div>`;
         });
+        
+        // --- INÍCIO DA SECÇÃO DE REFEIÇÕES ---
+        if (dayData.mealSuggestions) {
+            const mealData = dayData.mealSuggestions;
+            let mealHtml = `
+                <div class="mt-10 border-t-2 border-dashed border-gray-300 pt-6">
+                    <button class="meal-accordion-toggle w-full flex justify-between items-center p-3 bg-green-50 hover:bg-green-100 rounded-lg transition-colors">
+                        <span class="font-display text-xl font-bold text-green-800">
+                            <i class="fa-solid fa-utensils mr-3"></i>${mealData.title}
+                        </span>
+                        <i class="fas fa-chevron-down text-green-800"></i>
+                    </button>
+                    <div class="meal-accordion-content hidden mt-4 space-y-6">`;
+
+            if (mealData.generalTips && mealData.generalTips.length > 0) {
+                mealHtml += `
+                    <div class="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
+                        <h4 class="font-bold text-lg text-blue-800 mb-2">Dicas Gerais</h4>
+                        <ul class="list-disc list-inside text-blue-700 space-y-1">
+                            ${mealData.generalTips.map(tip => `<li>${tip}</li>`).join('')}
+                        </ul>
+                    </div>`;
+            }
+
+            if (mealData.options && mealData.options.length > 0) {
+                mealHtml += `<div>
+                    <h4 class="font-bold text-lg text-gray-800 mb-2">Plano de Refeições do Dia</h4>
+                    <div class="space-y-4">
+                        ${mealData.options.map(opt => `
+                            <div class="p-4 bg-gray-50 rounded-lg">
+                                <div class="flex justify-between items-start">
+                                    <p class="font-semibold text-gray-700">${opt.type}</p>
+                                    ${opt.budget ? `<p class="font-mono text-sm bg-gray-200 text-gray-700 px-2 py-1 rounded">${opt.budget}</p>` : ''}
+                                </div>
+                                <p class="text-gray-600 mt-1">${opt.suggestion}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>`;
+            }
+            
+            if (mealData.shopping) {
+                 mealHtml += `<div>
+                    <h4 class="font-bold text-lg text-gray-800 mb-2">${mealData.shopping.title}</h4>
+                    <div class="p-4 bg-gray-50 rounded-lg">
+                        ${mealData.shopping.list ? `
+                            <ul class="grid grid-cols-2 md:grid-cols-3 gap-2 text-gray-600 mb-4">
+                                ${mealData.shopping.list.map(item => `<li class="flex items-start"><i class="fa-solid fa-check text-green-600 mr-2 mt-1"></i><span>${item}</span></li>`).join('')}
+                            </ul>` : ''}
+                        ${mealData.shopping.where ? `<p class="text-gray-700">${mealData.shopping.where}</p>` : ''}
+                    </div>
+                 </div>`;
+            }
+
+            mealHtml += `</div></div>`;
+            htmlContent += mealHtml;
+        }
+        // --- FIM DA SECÇÃO DE REFEIÇÕES ---
+
         section.innerHTML = htmlContent;
         targetNode.parentNode.insertBefore(section, targetNode.nextSibling);
         targetNode = section;
@@ -134,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Lógica para o acordeão ---
+    // --- Lógica para o acordeão de percursos ---
     const accordionToggles = document.querySelectorAll('.accordion-toggle');
     accordionToggles.forEach(button => {
         button.addEventListener('click', () => {
@@ -142,6 +197,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const icon = button.querySelector('i.fas');
             content.classList.toggle('hidden');
             if (content.classList.contains('hidden')) {
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            } else {
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            }
+        });
+    });
+
+    // --- Lógica para o acordeão de refeições ---
+    const mealAccordionToggles = document.querySelectorAll('.meal-accordion-toggle');
+    mealAccordionToggles.forEach(button => {
+        button.addEventListener('click', () => {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i.fas');
+            content.classList.toggle('hidden');
+             if (content.classList.contains('hidden')) {
                 icon.classList.remove('fa-chevron-up');
                 icon.classList.add('fa-chevron-down');
             } else {
@@ -197,14 +269,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (mobileDayHeader) {
-                    const titleElement = entry.target.querySelector('h2'); // Encontra o H2
-                    // ===== INÍCIO DA CORREÇÃO =====
-                    if (titleElement) { // Verifica se o H2 existe antes de o usar
+                    const titleElement = entry.target.querySelector('h2');
+                    if (titleElement) {
                         const title = titleElement.textContent.split(':')[0];
                         mobileDayHeader.textContent = `A navegar: ${title}`;
                         mobileDayHeader.classList.remove('hidden');
                     }
-                    // ===== FIM DA CORREÇÃO =====
                 }
             }
         });
