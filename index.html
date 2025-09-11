@@ -49,7 +49,6 @@
     
     <!-- Conteúdo da página -->
     <div id="content" class="opacity-0 transition-opacity duration-1000">
-
         <div class="container mx-auto p-4 md:p-8 max-w-5xl">
             <!-- TÍTULO SEPARADO NO TOPO DA PÁGINA -->
             <header class="text-center mb-8">
@@ -130,339 +129,72 @@
                 <div id="ticket-timeline-container" class="space-y-6"></div>
             </section>
         </div>
-        
-        <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-database-compat.js"></script>
-        
-        <script>
-            // --- VARIÁVEIS GLOBAIS ---
-            const a_senha_secreta = 'paris2025';
-            let isAuthenticated = false;
-            let pendingAction = null;
 
-            // --- INICIALIZAÇÃO FIREBASE ---
-            const firebaseConfig = {
-              apiKey: "AIzaSyAt7jAk5r2tqSdyTf2m7MUebd_t7bbDTJk",
-              authDomain: "planeamento-viagem-paris.firebaseapp.com",
-              databaseURL: "https://planeamento-viagem-paris-default-rtdb.europe-west1.firebasedatabase.app",
-              projectId: "planeamento-viagem-paris",
-              storageBucket: "planeamento-viagem-paris.appspot.com",
-              messagingSenderId: "121000897121",
-              appId: "1:121000897121:web:75662c01dc56926bf61820"
-            };
-            firebase.initializeApp(firebaseConfig);
-            const database = firebase.database();
+        <!-- MODAL DE EVENTOS DO CALENDÁRIO -->
+        <div id="event-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+            <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 w-full max-w-md relative">
+                <button id="modal-close-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 transition"><i class="fa-solid fa-xmark fa-2x"></i></button>
+                <h3 id="modal-title" class="text-2xl font-bold text-gray-800 mb-4">Título do Evento</h3>
+                <p id="modal-description" class="text-gray-600">Descrição detalhada do evento irá aparecer aqui.</p>
+            </div>
+        </div>
 
-            // --- DADOS ESTÁTICOS ---
-            const planningEvents = [
-                { title: 'Comprar bilhetes para o Museu do Louvre', date: '2025-06-18', description: 'Comprar para o dia 22 de Setembro (Segunda-feira).', status: 'complete', color: '#16a34a' },
-                { title: 'Comprar bilhetes para a Museu D Orsay', date: '2025-06-21', description: 'Em principio em julho já é possivel comprar os bilhetes. Verificar disponibilidade.', status: 'complete', color: '#16a34a' },
-                { title: 'Comprar bilhetes para Versailles', date: '2025-06-23', description: 'A partir desta data já é possivel comprar para o dia 21 de setembro.', status: 'complete', color: '#16a34a' },
-                { title: 'Comprar bilhetes para a Sainte-Chapelle', date: '2025-07-01', description: 'Em principio em julho já é possivel comprar os bilhetes. Verificar disponibilidade.', status: 'complete', color: '#16a34a' },
-                { title: 'Comprar bilhetes para a Torre Eiffel', date: '2025-07-20', description: 'Comprar ás 23h!! (0.00h em Paris) Os bilhetes ficam disponíveis 60 dias antes. Comprar para o dia 19 de Setembro (Sexta-feira).', status: 'complete', color: '#16a34a' },
-                { title: 'Comprar bilhetes para a Ópera Garnier', date: '2025-07-23', description: 'Fazer a compra ás 23h!! Comprar para o dia 22 de Setembro (Segunda-feira).', status: 'complete', color: '#16a34a' },
-                { title: 'Fazer pagamento da casa de Paris', date: '2025-08-25', description: 'Fazer o pagamento final da reserva.', status: 'complete', color: '#16a34a' },
-                { title: 'Reserva para entrada sem filas na Notre-Dame', date: '2025-09-19', description: 'A reserva só pode ser feita umas horas antes. Irá ser dificil apanhar um slot disponível.', status: 'pending', color: '#ea580c' },
-                { title: 'VIAGEM!', date: '2025-09-19', endDate: '2025-09-24', description: 'De 19 a 23 de Setembro.', status: 'complete', color: '#16a34a' }
-            ];
-            const tripItinerary = [
-                { day: 'Dia 1', date: '19/09', theme: 'Chegada e Torre Eiffel', ticketedVenues: [ { name: 'Torre Eiffel', icon: 'fa-tower-observation', status: 'complete', openingHours: '09:00 - 23:45', openDays: 'Todos os dias' }] },
-                { day: 'Dia 2', date: '20/09', theme: 'Coração Histórico', ticketedVenues: [ { name: 'Musée dOrsay', icon: 'fa-gem', status: 'complete', openingHours: '09:00 - 17:00', openDays: 'Todos os dias (verificar feriados)' }] },
-                { day: 'Dia 3', date: '21/09', theme: 'Realeza e Arte Boémia', ticketedVenues: [ { name: 'Palácio de Versalhes', icon: 'fa-crown', status: 'complete', openingHours: '09:00 - 18:30 (Palácio)', openDays: 'Fecha às Segundas' }] },
-                { day: 'Dia 4', date: '22/09', theme: 'Imersão em Arte', ticketedVenues: [ { name: 'Museu do Louvre', icon: 'fa-landmark-dome', status: 'complete', openingHours: '09:00 - 18:00', openDays: 'Fecha às Terças' }, { name: 'Ópera Garnier', icon: 'fa-masks-theater', status: 'complete', openingHours: '10:00 - 17:00', openDays: 'Todos os dias (pode fechar para eventos)' }] },
-                { day: 'Dia 5', date: '23/09', theme: 'Despedida e Regresso', ticketedVenues: [ { name: 'Sainte-Chapelle', icon: 'fa-gem', status: 'complete', openingHours: '09:00 - 17:00', openDays: 'Todos os dias (verificar feriados)' } ] }
-            ];
+        <!-- MODAL PARA ADICIONAR/EDITAR ITEM DA CHECKLIST -->
+        <div id="item-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
+            <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-sm">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">Gerir Item da Checklist</h3>
+                <form id="item-form">
+                    <input type="text" id="item-input" class="w-full border-gray-300 rounded-md shadow-sm mb-2" required placeholder="Descrição do item...">
+                    <div class="flex justify-end gap-4 mt-6">
+                        <button type="button" id="cancel-item-btn" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300">Cancelar</button>
+                        <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
-            // --- DEFINIÇÃO DAS FUNÇÕES ---
-            function startCountdown() {
-                const countdownDate = new Date(2025, 8, 19, 6, 0, 0).getTime();
-                const x = setInterval(function() {
-                    const now = new Date().getTime();
-                    const distance = countdownDate - now;
-                    if (document.getElementById("days")) {
-                        document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
-                        document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
-                        document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-                        document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
-                    }
-                    if (distance < 0) {
-                        clearInterval(x);
-                        if (document.getElementById("countdown")) {
-                            document.getElementById("countdown").innerHTML = "<div class='text-center w-full'><p class='text-2xl font-bold'>A VIAGEM COMEÇOU! BON VOYAGE!</p></div>";
-                        }
-                    }
-                }, 1000);
-            }
+        <!-- MODAL DE PASSWORD -->
+        <div id="password-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
+            <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-sm">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">Ação Protegida</h3>
+                <p class="text-gray-600 mb-4">Por favor, insira a password para continuar.</p>
+                <form id="password-form">
+                    <input type="password" id="password-input" class="w-full border-gray-300 rounded-md shadow-sm mb-2" required>
+                    <span id="password-error" class="text-red-500 text-sm hidden">Password incorreta.</span>
+                    <div class="flex justify-end gap-4 mt-6">
+                        <button type="button" id="cancel-password" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300">Cancelar</button>
+                        <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Confirmar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
-            function renderChecklist(checklistItemsRef) {
-                const checklistContainer = document.getElementById('checklist-container');
-                checklistItemsRef.orderByChild('order').on('value', (snapshot) => {
-                    checklistContainer.innerHTML = '';
-                    if (!snapshot.exists()) {
-                        checklistContainer.innerHTML = '<p class="text-gray-500 italic">Nenhum item na checklist.</p>';
-                        return;
-                    }
-                    snapshot.forEach((childSnapshot) => {
-                        const key = childSnapshot.key;
-                        const item = childSnapshot.val();
-                        
-                        const itemDiv = document.createElement('div');
-                        itemDiv.className = 'checklist-item flex items-center justify-between group';
-                        itemDiv.innerHTML = `
-                            <div class="flex-grow flex items-center">
-                                <input type="checkbox" id="${key}" class="hidden" ${item.checked ? 'checked' : ''}>
-                                <label for="${key}" class="flex items-center cursor-pointer w-full">
-                                    <span class="icon-box w-8 h-8 mr-4 flex items-center justify-center border-2 border-gray-300 rounded-md transition-colors flex-shrink-0">
-                                        <i class="fa-solid fa-check"></i>
-                                    </span>
-                                    <span class="text-lg">${item.text}</span>
-                                </label>
-                            </div>
-                            <div class="opacity-0 group-hover:opacity-100 transition-opacity">
-                                <button class="edit-btn p-2 text-gray-500 hover:text-blue-600" data-key="${key}" data-text="${item.text}"><i class="fa-solid fa-pencil"></i></button>
-                                <button class="delete-btn p-2 text-gray-500 hover:text-red-600" data-key="${key}"><i class="fa-solid fa-trash-can"></i></button>
-                            </div>
-                        `;
-                        
-                        itemDiv.querySelector('input[type="checkbox"]').addEventListener('change', (e) => {
-                            checklistItemsRef.child(key).update({ checked: e.target.checked });
-                        });
-                        itemDiv.querySelector('.edit-btn').addEventListener('click', (e) => {
-                            const btn = e.currentTarget;
-                            document.dispatchEvent(new CustomEvent('openItemModal', { detail: { key: btn.dataset.key, text: btn.dataset.text } }));
-                        });
-                        itemDiv.querySelector('.delete-btn').addEventListener('click', (e) => {
-                            const keyToDelete = e.currentTarget.dataset.key;
-                            if (confirm('Tem a certeza que quer apagar este item?')) {
-                                requestPassword(() => checklistItemsRef.child(keyToDelete).remove());
-                            }
-                        });
-                        checklistContainer.appendChild(itemDiv);
-                    });
-                });
-            }
-            
-            function renderTimeline() {
-                const timelineContainer = document.getElementById('timeline-container');
-                if (!timelineContainer) return;
-                timelineContainer.innerHTML = '';
-                planningEvents.forEach(event => {
-                    if (event.title === 'VIAGEM!') return;
-                    const eventDate = new Date(event.date + 'T00:00:00');
-                    const month = eventDate.toLocaleString('pt-PT', { month: 'short' }).toUpperCase().replace('.', '');
-                    const day = eventDate.getDate();
-                    const isComplete = event.status === 'complete';
-                    const itemHTML = `<div class="flex items-start space-x-4 ${isComplete ? 'opacity-60' : ''}"><div class="flex flex-col items-center"><span class="text-lg font-semibold ${isComplete ? 'text-gray-500' : 'text-green-700'}">${month}</span><span class="text-2xl font-bold ${isComplete ? 'text-gray-500' : 'text-green-700'}">${day}</span></div><div class="bg-white p-4 rounded-lg shadow-md flex-1"><h3 class="font-semibold text-lg ${isComplete ? 'line-through' : ''}">${event.title}</h3><p class="text-sm text-gray-600">${event.description}</p><div class="mt-2 text-sm font-medium ${isComplete ? 'text-green-600' : 'text-yellow-600'}"><i class="fa-solid ${isComplete ? 'fa-check-circle' : 'fa-hourglass-half'} mr-2"></i>${isComplete ? 'Concluído' : 'Pendente'}</div></div></div>`;
-                    timelineContainer.innerHTML += itemHTML;
-                });
-            }
-
-            function renderCalendar() {
-                const calendarEl = document.getElementById('calendar');
-                if (!calendarEl) return;
-                const calendarEvents = planningEvents.map(event => ({ title: event.title, start: event.date, end: event.endDate, backgroundColor: event.color, borderColor: event.color, allDay: true, extendedProps: { description: event.description || 'Não há detalhes adicionais.' } }));
-                const calendar = new FullCalendar.Calendar(calendarEl, { initialView: 'dayGridMonth', locale: 'pt-br', headerToolbar: { left: 'prev,next today', center: 'title', right: '' }, events: calendarEvents, eventClick: function(info) { info.jsEvent.preventDefault(); document.dispatchEvent(new CustomEvent('openEventModal', { detail: info.event }));} });
-                calendar.render();
-            }
-
-            function renderTicketTimeline() {
-                const container = document.getElementById('ticket-timeline-container');
-                if (!container) return;
-                container.innerHTML = '';
-                tripItinerary.forEach(day => {
-                    let venuesHTML = '';
-                    if (day.ticketedVenues.length > 0) {
-                        venuesHTML = `<ul class="mt-3 space-y-4">` + day.ticketedVenues.map(venue => {
-                            const isComplete = venue.status === 'complete';
-                            return `<li class="p-4 bg-gray-50 rounded-lg"><div class="flex items-center justify-between"><div class="flex items-center"><i class="fa-solid ${isComplete ? 'fa-check-circle text-green-500' : 'fa-hourglass-half text-yellow-500'} w-6 text-center mr-3"></i><span class="font-semibold ${isComplete ? 'line-through text-gray-400' : 'text-gray-800'}">${venue.name}</span></div><i class="fa-solid ${venue.icon} text-xl text-gray-400"></i></div><div class="mt-2 pl-9 text-sm text-gray-600 space-y-1"><div class="flex items-start"><i class="fa-regular fa-calendar-days w-6 text-center mr-1 pt-1"></i><span>${venue.openDays || 'Não especificado'}</span></div><div class="flex items-start"><i class="fa-regular fa-clock w-6 text-center mr-1 pt-1"></i><span>${venue.openingHours || 'Não especificado'}</span></div></div></li>`;
-                        }).join('') + `</ul>`;
-                    }
-                    const dayHTML = `<div class="bg-white p-6 rounded-2xl shadow-lg"><div class="flex items-center border-b pb-3"><div class="text-center w-16"><p class="text-xl font-bold text-gray-800">${day.day}</p><p class="text-sm text-gray-500">${day.date}</p></div><div class="pl-4 border-l ml-4"><h4 class="font-semibold text-lg text-gray-900">${day.theme}</h4></div></div>${venuesHTML}</div>`;
-                    container.innerHTML += dayHTML;
-                });
-            }
-            
-            async function fetchTripWeather() {
-                const apiKey = '__OPENWEATHERMAP_API_KEY__';
-                const lat = 48.8566;
-                const lon = 2.3522;
-                const tripStartDate = new Date('2025-09-19T00:00:00Z');
-                const today = new Date();
-                today.setHours(0, 0, 0, 0);
-
-                const msInDay = 1000 * 60 * 60 * 24;
-                const daysUntilTrip = Math.ceil((tripStartDate - today) / msInDay);
-                
-                const widget = document.getElementById('forecast-widget');
-
-                const forecastAvailableOnDay = 5;
-                if (daysUntilTrip > forecastAvailableOnDay) {
-                    const daysToWait = daysUntilTrip - forecastAvailableOnDay;
-                    const pluralS = daysToWait > 1 ? 's' : '';
-                    widget.innerHTML = `<h2 class="section-title font-bold text-gray-800 mb-4 text-center">Previsão da Viagem</h2><p class="text-center text-gray-600">A previsão estará disponível dentro de ${daysToWait} dia${pluralS}.</p>`;
-                    return;
-                }
-
-                const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=pt`;
-
-                try {
-                    const response = await fetch(apiUrl);
-                    if (!response.ok) throw new Error(`Erro na API: ${response.statusText}`);
-                    const data = await response.json();
-                    
-                    const tripStartDateString = '2025-09-19';
-                    const tripEndDateString = '2025-09-23';
-                    
-                    const dailyForecasts = {};
-                    data.list.forEach(item => {
-                        const itemDate = item.dt_txt.split(' ')[0];
-                        if (itemDate >= tripStartDateString && itemDate <= tripEndDateString) {
-                            if (!dailyForecasts[itemDate] || item.dt_txt.includes("12:00:00")) {
-                                dailyForecasts[itemDate] = item;
-                            }
-                        }
-                    });
-                    
-                    const tripForecast = Object.values(dailyForecasts);
-                    renderForecast(tripForecast);
-
-                } catch (error) {
-                    console.error("Erro ao buscar dados da meteorologia:", error);
-                    widget.innerHTML = `<h2 class="section-title font-bold text-gray-800 mb-4 text-center">Previsão da Viagem</h2><p class="text-red-500 text-center">Não foi possível carregar a previsão.</p>`;
-                }
-            }
-
-            const getWeatherIcon = (iconCode) => {
-                const code = iconCode.substring(0, 2);
-                const iconMap = {
-                    '01': 'fa-sun', '02': 'fa-cloud-sun', '03': 'fa-cloud', '04': 'fa-cloud-meatball',
-                    '09': 'fa-cloud-showers-heavy', '10': 'fa-cloud-rain', '11': 'fa-bolt',
-                    '13': 'fa-snowflake', '50': 'fa-smog'
-                };
-                return iconMap[code] || 'fa-question-circle';
-            };
-
-            const formatDayAndDate = (dateObject) => `${dateObject.toLocaleDateString('pt-PT', { weekday: 'short' })} ${dateObject.getDate()}`;
-
-            function renderForecast(forecastDays) {
-                const widget = document.getElementById('forecast-widget');
-                let forecastHtml = '';
-                
-                if (forecastDays.length === 0) {
-                    const daysToWait = Math.ceil((new Date('2025-09-19T00:00:00Z') - new Date()) / (1000 * 60 * 60 * 24)) - 5;
-                    widget.innerHTML = `<h2 class="section-title font-bold text-gray-800 mb-4 text-center">Previsão da Viagem</h2><p class="text-center text-gray-600">A previsão para as datas da viagem ainda não está disponível. Tente novamente em ${daysToWait > 0 ? daysToWait : 1} dia(s).</p>`;
-                    return;
-                }
-
-                forecastDays.forEach(day => {
-                    const date = new Date(day.dt * 1000);
-                    forecastHtml += `
-                        <div class="text-center p-3 bg-gray-100 rounded-lg">
-                            <p class="font-semibold">${formatDayAndDate(date)}</p>
-                            <i class="fa-solid ${getWeatherIcon(day.weather[0].icon)} text-3xl my-2 text-blue-500"></i>
-                            <p class="text-sm">
-                                <span class="font-bold text-red-500">${Math.round(day.main.temp_max)}°</span> / 
-                                <span class="text-blue-600">${Math.round(day.main.temp_min)}°</span>
-                            </p>
-                        </div>`;
-                });
-                widget.innerHTML = `<h2 class="section-title font-bold text-gray-800 mb-4 text-center">Previsão da Viagem</h2><div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">${forecastHtml}</div>`;
-            }
-            
-            function requestPassword(actionCallback) {
-                const passwordModal = document.getElementById('password-modal');
-                if (isAuthenticated) { actionCallback(); return; }
-                pendingAction = actionCallback;
-                passwordModal.classList.remove('hidden');
-                document.getElementById('password-input').focus();
-            }
-
-            document.addEventListener('DOMContentLoaded', () => {
-                startCountdown();
-                renderTimeline();
-                renderCalendar();
-                renderTicketTimeline();
-                fetchTripWeather();
-
-                const checklistItemsRef = database.ref('checklist');
-                const itemModal = document.getElementById('item-modal');
-                const itemForm = document.getElementById('item-form');
-                const itemInput = document.getElementById('item-input');
-                const addItemBtn = document.getElementById('add-item-btn');
-                const cancelItemBtn = document.getElementById('cancel-item-btn');
-                let currentItemKey = null;
-
-                renderChecklist(checklistItemsRef);
-                
-                addItemBtn.addEventListener('click', () => document.dispatchEvent(new CustomEvent('openItemModal', { detail: {} })));
-                cancelItemBtn.addEventListener('click', () => itemModal.classList.add('hidden'));
-
-                document.addEventListener('openItemModal', (e) => {
-                    currentItemKey = e.detail.key || null;
-                    itemInput.value = e.detail.text || '';
-                    itemModal.classList.remove('hidden');
-                    itemInput.focus();
-                });
-
-                itemForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const text = itemInput.value.trim();
-                    if (!text) return;
-                    requestPassword(() => {
-                        if (currentItemKey) {
-                            checklistItemsRef.child(currentItemKey).update({ text: text });
-                        } else {
-                            checklistItemsRef.once('value', (snapshot) => {
-                                const newOrder = snapshot.numChildren();
-                                checklistItemsRef.push({ text: text, checked: false, order: newOrder });
-                            });
-                        }
-                        itemModal.classList.add('hidden');
-                    });
-                });
-
-                const eventModal = document.getElementById('event-modal');
-                const modalTitle = document.getElementById('modal-title');
-                const modalDescription = document.getElementById('modal-description');
-                
-                document.addEventListener('openEventModal', (e) => {
-                    modalTitle.textContent = e.detail.title;
-                    modalDescription.textContent = e.detail.extendedProps.description;
-                    eventModal.classList.remove('hidden');
-                });
-
-                function closeModal(modal) { if (modal) modal.classList.add('hidden'); }
-                document.getElementById('modal-close-btn').addEventListener('click', () => closeModal(eventModal));
-                eventModal.addEventListener('click', (e) => { if (e.target === eventModal) closeModal(eventModal); });
-                
-                const passwordModal = document.getElementById('password-modal');
-                const passwordForm = document.getElementById('password-form');
-                const passwordInput = document.getElementById('password-input');
-                const passwordError = document.getElementById('password-error');
-                
-                passwordForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    if (passwordInput.value === a_senha_secreta) {
-                        isAuthenticated = true;
-                        passwordInput.value = '';
-                        passwordError.classList.add('hidden');
-                        closeModal(passwordModal);
-                        if (pendingAction) { pendingAction(); pendingAction = null; }
-                    } else {
-                        passwordError.classList.remove('hidden');
-                    }
-                });
-                document.getElementById('cancel-password').addEventListener('click', () => closeModal(passwordModal));
-            });
-        </script>
-        
-        <!-- MODAIS e outros elementos ... -->
-
+        <div id="installBanner" class="hidden fixed bottom-4 left-4 right-4 md:right-auto md:left-4 z-50 bg-white border border-gray-300 shadow-xl p-4 rounded-xl flex items-center justify-between max-w-sm mx-auto">
+          <span class="text-gray-800 font-medium">Instalar esta app?</span>
+          <button id="installBtn" class="ml-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Instalar</button>
+        </div>
     </div>
+    
+    <!-- Scripts do Firebase (necessários para os módulos) -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-database-compat.js"></script>
 
-    <!-- Lottie -->
+    <!-- Script principal da aplicação (agora como módulo) -->
+    <script type="module" src="js/main.js"></script>
+
+    <!-- Script do Service Worker -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('Service Worker registado com sucesso!'))
+          .catch(error => console.log('Erro ao registar SW:', error));
+      }
+    </script>
+
+    <!-- Script do Lottie (Loader) e Banner de Instalação -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.2/lottie.min.js"></script>
     <script>
+      const startTime = new Date().getTime();
       lottie.loadAnimation({
         container: document.getElementById('lottie'),
         renderer: 'svg',
@@ -474,8 +206,38 @@
       window.addEventListener("load", () => {
         const loader = document.getElementById("loader");
         const content = document.getElementById("content");
-        loader.style.display = "none";
-        content.classList.add("opacity-100");
+        const minimumDisplayTime = 2500; // 2.5 segundos
+        const elapsedTime = new Date().getTime() - startTime;
+        const remainingTime = Math.max(0, minimumDisplayTime - elapsedTime);
+
+        setTimeout(() => {
+          loader.style.display = "none";
+          content.classList.add("opacity-100");
+        }, remainingTime);
+      });
+
+      let deferredPrompt;
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        const installBanner = document.getElementById('installBanner');
+        if(installBanner) installBanner.classList.remove('hidden');
+        
+        const installBtn = document.getElementById('installBtn');
+        if(installBtn) {
+            installBtn.addEventListener('click', () => {
+              installBanner.classList.add('hidden');
+              deferredPrompt.prompt();
+              deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                  console.log('O utilizador aceitou instalar');
+                } else {
+                  console.log('O utilizador recusou instalar');
+                }
+                deferredPrompt = null;
+              });
+            });
+        }
       });
     </script>
 </body>
