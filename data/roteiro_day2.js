@@ -9,6 +9,12 @@ export const day2Data = {
             title: "CASA → ÎLE DE LA CITÉ",
             mapLink: "https://maps.app.goo.gl/7EPhqZnEWWDcPmbS6",
             timeline: [
+                { time: "8:00", icon: "fa-mug-hot", title: "Pequeno-almoço em casa", 
+                    mealSuggestion: {
+                        suggestion: "Refeição em casa com os produtos comprados no dia anterior (pão, leite, cereais, etc).",
+                        budget: "~2 € / pessoa"
+                    }
+                },
                 { time: "8:21", icon: "fa-house-chimney", title: "Saída de Casa" },
                 {
                     time: "8:24", icon: "fa-route", title: "Percurso: Casa → Île de la Cité", description: "Duração total: ~37 min. Clica para ver os detalhes.",
@@ -26,6 +32,12 @@ export const day2Data = {
                 { time: "8:58", icon: "fa-coffee", title: "Au Vieux Paris d'Arcole" },
                 { time: "9:10", icon: "fa-church", title: "Catedral de Notre-Dame", description: "Visita interior (~30-45min.) e Point Zéro", requiresTicket: true, ticketLink: "https://www.notredamedeparis.fr/visiter/", guideLink: "visita_notre-dame.html" },
                 { icon: "fa-book", title: "Shakespeare and Company" },
+                { time: "11:00", icon: "fa-cookie-bite", title: "Lanche da Manhã", 
+                    mealSuggestion: {
+                        suggestion: "Levar snacks do supermercado para comer a meio da manhã no Quartier Latin, ou comprar um croissant numa pastelaria local.",
+                        budget: "~2 € / pessoa"
+                    }
+                },
                 { icon: "fa-church", title: "Igreja de São Severino" },
                 { icon: "fa-person-walking", title: "Rue de la Huchette" },
                 { icon: "fa-fountain", title: "Fontaine Saint-Michel" },
@@ -51,6 +63,12 @@ export const day2Data = {
                 { icon: "fa-bridge", title: "Pont Neuf" },
                 { icon: "fa-bridge", title: "Pont des Arts" },
                 { icon: "fa-archway", title: "Arco do Triunfo do Carrossel" },
+                { time: "13:00", icon: "fa-utensils", title: "Almoço no Jardim das Tulherias", 
+                    mealSuggestion: {
+                        suggestion: "Optar por uma 'formule' de padaria (sandes + bebida + sobremesa). É prático e económico para comer ao ar livre nos jardins.",
+                        budget: "~7 € / pessoa"
+                    }
+                },
                 { icon: "fa-fountain", title: "Jardim das Tulherias" },
                 { icon: "fa-square-full", title: "Place de la Concorde" },
                 {
@@ -86,6 +104,12 @@ export const day2Data = {
             title: "CHAMPS-ÉLYSÉES → CASA",
             mapLink: "https://maps.app.goo.gl/SA1t9d2R1KwJmbvj8",
             timeline: [
+                 { time: "19:00", icon: "fa-utensils", title: "Jantar em Casa", 
+                    mealSuggestion: {
+                        suggestion: "Regresso a casa para um jantar económico. Uma massa com salada é uma opção rápida e barata após um dia longo.",
+                        budget: "~5 € / pessoa"
+                    }
+                },
                 {
                     time: "20:02", icon: "fa-route", title: "Percurso: Champs-Élysées → Casa", description: "Duração total: ~36 min. Clica para ver os detalhes.",
                     accordion: [
@@ -99,33 +123,11 @@ export const day2Data = {
             ]
         }
     ],
-    mealSuggestions: {
-        title: "Sugestões de Refeições e Compras",
-        options: [
-            {
-                type: "Pequeno-almoço (08:00)",
-                suggestion: "Refeição em casa com os produtos comprados no dia anterior (pão, leite, cereais, etc).",
-                budget: "~2 € / pessoa"
-            },
-            {
-                type: "Almoço (13:00)",
-                suggestion: "No Jardim das Tulherias, optar por uma 'formule' de padaria (sandes + bebida + sobremesa). É prático e económico para comer ao ar livre.",
-                budget: "~7 € / pessoa"
-            },
-            {
-                type: "Jantar (19:00)",
-                suggestion: "Refeição em casa para poupar. Uma massa com salada é uma opção rápida e barata após um dia longo.",
-                budget: "~5 € / pessoa"
-            },
-            {
-                type: "Lanches",
-                suggestion: "Levar snacks do supermercado para comer a meio da manhã (Quartier Latin) e à tarde, evitando os preços inflacionados dos Champs-Élysées.",
-                budget: "~2-4 € / pessoa"
-            }
-        ],
+    shoppingInfo: {
+        title: "Dicas de Compras do Dia",
         shopping: {
-            title: "Pontos de Compra",
-            where: "<strong>Supermercado no Quartier Latin:</strong> Franprix na 32 Rue Saint-André des Arts. Bom para reabastecer snacks e bebidas antes de seguir para a zona das Tulherias e Champs-Élysées."
+            title: "Pontos de Compra Sugeridos",
+            where: "<strong>Supermercado no Quartier Latin:</strong> Franprix na 32 Rue Saint-André des Arts. Bom para reabastecer snacks e bebidas antes de seguir para a zona das Tulherias e Champs-Élysées (onde os preços são mais altos)."
         }
     }
 };
