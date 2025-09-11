@@ -83,9 +83,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         <h3 class="font-semibold text-lg">${titleHTML}${ticketIconHTML}</h3>
                         ${item.description ? `<p class="text-gray-600 mt-1">${item.description}</p>` : ''}
                         <div class="timeline-item-meal">
-                            <div class="flex justify-between items-start gap-4">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-y-2 md:gap-x-4">
                                 <p class="text-gray-600 flex-grow">${item.mealSuggestion.suggestion}</p>
-                                ${item.mealSuggestion.budget ? `<p class="font-mono text-sm bg-green-100 text-green-800 px-2 py-1 rounded-md whitespace-nowrap">${item.mealSuggestion.budget}</p>` : ''}
+                                ${item.mealSuggestion.budget ? `<p class="font-mono text-sm bg-green-100 text-green-800 px-2 py-1 rounded-md whitespace-nowrap self-start md:self-auto">${item.mealSuggestion.budget}</p>` : ''}
                             </div>
                         </div>`;
                 } else if (item.accordion) {
