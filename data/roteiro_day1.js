@@ -135,7 +135,7 @@ export const day1Data = {
             where: {
                 description: "<strong>Supermercados perto de casa:</strong> Para o abastecimento principal, procurar por um Franprix, Carrefour City ou Lidl na zona. Exemplo:",
                 locations: [
-                    { name: "Franprix Perto da Casa (Exemplo)", link: "https://maps.app.goo.gl/exemplo" }
+                    { name: "Franprix Perto da Casa (Exemplo)", link: "https://maps.app.goo.gl/uzspchqU5hnb7xpk7" }
                 ]
             }
         }
