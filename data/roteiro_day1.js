@@ -93,5 +93,39 @@ export const day1Data = {
                 { time: "23:38", icon: "fa-bed", title: "Regresso a Casa" }
             ]
         }
-    ]
+    ],
+    mealSuggestions: {
+        title: "Sugestões de Refeições e Compras",
+        generalTips: [
+            "Levem sempre convosco uma garrafa de água para ir recarregando nas fontes públicas (são potáveis).",
+            "Evitem comprar snacks e bebidas dentro dos museus, pois os preços são muito mais altos.",
+            "Tentem fazer as compras de supermercado ao final do dia para estarem preparados para o dia seguinte."
+        ],
+        options: [
+            {
+                type: "Almoço (13:30)",
+                suggestion: "Refeição rápida no Aeroporto de Orly. Opções como McDonald's, Paul, ou sandes de supermercado.",
+                budget: "~10 € / pessoa"
+            },
+            {
+                type: "Jantar (20:00)",
+                suggestion: "Opção económica na zona da Torre Eiffel. Levar sandes feitas ou comprar algo num supermercado como o Franprix/Monoprix perto da Rue Cler.",
+                budget: "~6 € / pessoa"
+            },
+            {
+                type: "Lanches",
+                suggestion: "Fruta e bolachas do supermercado para a tarde. À noite, um croissant ou pão de chocolate para manter a energia.",
+                budget: "~3-4 € / pessoa"
+            }
+        ],
+        shopping: {
+            title: "Lista de Compras Essenciais (Dia 1)",
+            list: [
+                "Água (pack grande)", "Leite", "Cereais", "Pão de forma ou baguetes",
+                "Manteiga/Compota/Nutella", "Sumo", "Bolachas e barrinhas", "Fruta", "Iogurtes líquidos",
+                "Ingredientes para jantares em casa (massa, molho, queijo, ovos, atum)."
+            ],
+            where: "<strong>Supermercados perto de casa:</strong> Procurar por Franprix, Carrefour City ou Lidl na zona para fazer o abastecimento principal logo no primeiro dia."
+        }
+    }
 };
