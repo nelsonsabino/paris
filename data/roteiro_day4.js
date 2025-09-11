@@ -92,5 +92,29 @@ export const day4Data = {
                 { time: "20:33", icon: "fa-bed", title: "Regresso a Casa" }
             ]
         }
-    ]
+    ],
+    mealSuggestions: {
+        title: "Sugestões de Refeições e Compras",
+        options: [
+            {
+                type: "Almoço (13:00)",
+                suggestion: "Comprar sandes ou saladas take-away no Monoprix da Rue de Rivoli, junto ao Louvre. É uma opção muito prática e económica para não perder tempo.",
+                budget: "~7 € / pessoa"
+            },
+            {
+                type: "Jantar (19:30)",
+                suggestion: "Explorar o Marché des Enfants Rouges no Marais. Oferece uma variedade de street food (italiana, marroquina, etc.) com boa relação qualidade/preço.",
+                budget: "~10-12 € / pessoa"
+            },
+            {
+                type: "Lanches",
+                suggestion: "Levar uma barrinha de cereais para comer antes de entrar no Louvre. À tarde, no Marais, experimentar um falafel pequeno ou uma pastelaria local.",
+                budget: "~3-5 € / pessoa"
+            }
+        ],
+        shopping: {
+            title: "Pontos de Compra",
+            where: "<strong>Supermercado junto ao Louvre:</strong> Monoprix na 164 Rue de Rivoli. <strong>Jantar:</strong> Marché des Enfants Rouges na 19 Rue de Bretagne."
+        }
+    }
 };
