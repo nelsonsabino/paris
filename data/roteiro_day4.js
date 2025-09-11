@@ -9,6 +9,7 @@ export const day4Data = {
             title: "CASA → MUSEU DO LOUVRE",
             mapLink: "https://maps.app.goo.gl/HWn3htQ9Ewh4bVmi7",
             timeline: [
+                { time: "08:00", icon: "fa-mug-hot", title: "Pequeno-almoço em casa" },
                 { time: "08:15", icon: "fa-house-chimney", title: "Saída de Casa" },
                 {
                     time: "08:18", icon: "fa-route", title: "Percurso: Casa → Louvre", description: "Duração total: ~29 min. Clica para ver os detalhes.",
@@ -18,7 +19,18 @@ export const day4Data = {
                     ]
                 },
                 { time: "09:00", icon: "fa-landmark-dome", title: "Museu do Louvre", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1zgpLvPJtgUGnMsOFsIbfg3tGwhPSse0w/view?usp=sharing", guideLink: "visita_louvre.html", description: "O museu tem várias casas de banho no interior." },
-                { time: "13:00", icon: "fa-utensils", title: "Almoço nas Proximidades do Louvre" }
+                { time: "11:00", icon: "fa-cookie-bite", title: "Lanche da Manhã",
+                    mealSuggestion: {
+                        suggestion: "Pausa rápida durante a visita ao Louvre para comer uma barrinha de cereais ou outro snack levado na mochila.",
+                        budget: "~1,5 € / pessoa"
+                    }
+                },
+                { time: "13:00", icon: "fa-utensils", title: "Almoço perto do Louvre",
+                    mealSuggestion: {
+                        suggestion: "Comprar sandes ou saladas take-away no Monoprix da Rue de Rivoli, junto ao Louvre. É uma opção muito prática e económica para não perder tempo.",
+                        budget: "~7 € / pessoa"
+                    }
+                }
             ]
         },
         {
@@ -61,9 +73,15 @@ export const day4Data = {
             mapLink: "https://maps.app.goo.gl/MBQ3dAXYBiFW33Dn6",
             description: "Duração estimada do percurso a pé com visitas: ~1.5 - 2 horas",
             timeline: [
-                { time: "18:45", icon: "fa-utensils", title: "Marché des Enfants Rouges", description: "Passeio pelo mercado: ~30 min" },
-                { time: "19:15", icon: "fa-person-walking", title: "Explorar o Marais", description: "Passeio pela Rue Vieille-du-Temple e Rue des Rosiers: ~45 min" },
-                { time: "20:00", icon: "fa-square-full", title: "Praça des Vosges", description: "Chegada e visita: ~15 min" },
+                { time: "18:45", icon: "fa-utensils", title: "Jantar no Marché des Enfants Rouges",
+                    description: "Visitar o mercado coberto mais antigo de Paris e aproveitar para jantar numa das suas bancas de street food.",
+                    mealSuggestion: {
+                        suggestion: "Explorar a variedade de cozinhas do mundo (italiana, marroquina, etc.) e escolher uma opção para um jantar informal e saboroso.",
+                        budget: "~10-12 € / pessoa"
+                    }
+                },
+                { time: "19:30", icon: "fa-person-walking", title: "Explorar o Marais", description: "Passeio pela Rue Vieille-du-Temple e Rue des Rosiers." },
+                { time: "20:15", icon: "fa-square-full", title: "Praça des Vosges", description: "Chegada e visita." },
                 {
                     icon: "fa-restroom",
                     title: "Casas de Banho Próximas",
@@ -93,28 +111,11 @@ export const day4Data = {
             ]
         }
     ],
-    mealSuggestions: {
-        title: "Sugestões de Refeições e Compras",
-        options: [
-            {
-                type: "Almoço (13:00)",
-                suggestion: "Comprar sandes ou saladas take-away no Monoprix da Rue de Rivoli, junto ao Louvre. É uma opção muito prática e económica para não perder tempo.",
-                budget: "~7 € / pessoa"
-            },
-            {
-                type: "Jantar (19:30)",
-                suggestion: "Explorar o Marché des Enfants Rouges no Marais. Oferece uma variedade de street food (italiana, marroquina, etc.) com boa relação qualidade/preço.",
-                budget: "~10-12 € / pessoa"
-            },
-            {
-                type: "Lanches",
-                suggestion: "Levar uma barrinha de cereais para comer antes de entrar no Louvre. À tarde, no Marais, experimentar um falafel pequeno ou uma pastelaria local.",
-                budget: "~3-5 € / pessoa"
-            }
-        ],
+    shoppingInfo: {
+        title: "Dicas de Compras do Dia",
         shopping: {
-            title: "Pontos de Compra",
-            where: "<strong>Supermercado junto ao Louvre:</strong> Monoprix na 164 Rue de Rivoli. <strong>Jantar:</strong> Marché des Enfants Rouges na 19 Rue de Bretagne."
+            title: "Pontos de Compra Sugeridos",
+            where: "<strong>Supermercado junto ao Louvre:</strong> Monoprix na 164 Rue de Rivoli, ideal para um almoço take-away. <strong>Para Jantar:</strong> Marché des Enfants Rouges na 19 Rue de Bretagne."
         }
     }
 };
