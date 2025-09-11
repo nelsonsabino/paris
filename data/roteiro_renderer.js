@@ -147,6 +147,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             if (shopData.shopping) {
+                 let whereHtml = '';
+                 if (shopData.shopping.where) {
+                     if (typeof shopData.shopping.where === 'object') {
+                         whereHtml += `<p class="text-gray-700">${shopData.shopping.where.description}</p>`;
+                         if (shopData.shopping.where.locations && shopData.shopping.where.locations.length > 0) {
+                             whereHtml += `<ul class="list-none space-y-2 mt-2">`;
+                             shopData.shopping.where.locations.forEach(loc => {
+                                 whereHtml += `<li><a href="${loc.link}" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline"><i class="fa-solid fa-map-location-dot mr-2 text-sm"></i>${loc.name}</a></li>`;
+                             });
+                             whereHtml += `</ul>`;
+                         }
+                     } else {
+                         whereHtml = `<p class="text-gray-700">${shopData.shopping.where}</p>`;
+                     }
+                 }
+
                  shopHtml += `<div>
                     <h4 class="font-bold text-lg text-gray-800 mb-2">${shopData.shopping.title}</h4>
                     <div class="p-4 bg-gray-50 rounded-lg">
@@ -154,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <ul class="grid grid-cols-2 md:grid-cols-3 gap-2 text-gray-600 mb-4">
                                 ${shopData.shopping.list.map(item => `<li class="flex items-start"><i class="fa-solid fa-check text-green-600 mr-2 mt-1"></i><span>${item}</span></li>`).join('')}
                             </ul>` : ''}
-                        ${shopData.shopping.where ? `<p class="text-gray-700">${shopData.shopping.where}</p>` : ''}
+                        ${whereHtml}
                     </div>
                  </div>`;
             }
