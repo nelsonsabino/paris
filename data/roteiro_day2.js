@@ -130,18 +130,17 @@ export const day2Data = {
             "Evitem comprar snacks e bebidas dentro dos museus, pois os preços são muito mais altos.",
             "Tentem fazer as compras de supermercado ao final do dia para estarem preparados para o dia seguinte."
         ],
-        shopping: {
-            title: "Lista de Compras Essenciais (Dia 1)",
+       shopping: {
+            title: "Pontos de Compra Sugeridos",
             list: [
                 "Água (pack grande)", "Leite", "Cereais", "Pão de forma ou baguetes",
                 "Manteiga/Compota/Nutella", "Sumo", "Vinho", "Cerveja", "Bolachas e barrinhas", "Fruta", "Iogurtes líquidos",
                 "Ingredientes para jantares em casa (massa, molho, queijo, ovos, atum)."
             ],
             where: {
-                description: "<strong>Supermercados perto de casa:</strong> Para o abastecimento principal, procurar por um Franprix ou Coccinelle Express",
+                description: "<strong>Supermercado no Quartier Latin:</strong> Franprix na 32 Rue Saint-André des Arts. Bom para reabastecer snacks e bebidas antes de seguir para a zona das Tulherias e Champs-Élysées (onde os preços são mais altos).",
                 locations: [
-                    { name: "Franprix Perto da Casa", link: "https://maps.app.goo.gl/uzspchqU5hnb7xpk7" },
-                     { name: "Coccinelle Express Perto da Casa", link: "https://maps.app.goo.gl/a6QLaHNL6opvUuhw6" }
+                    { name: "Franprix", link: "https://maps.app.goo.gl/EVymYe173NsKXvaQ6" }
                 ]
             }
         }
