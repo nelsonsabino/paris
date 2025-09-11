@@ -1,0 +1,48 @@
+name: Deploy to GitHub Pages
+
+on:
+  # Executa sempre que fizer um push para o branch 'main'
+  push:
+    branches:
+      - main
+  # Permite executar este workflow manualmente a partir do separador Actions
+  workflow_dispatch:
+
+# Define as permissões necessárias para o GITHUB_TOKEN
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Permite apenas uma implantação de cada vez
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Replace API Key
+        # Encontra o placeholder no index.html e substitui-o pelo segredo
+        run: |
+          sed -i 's|__OPENWEATHERMAP_API_KEY__|${{ secrets.OPENWEATHERMAP_API_KEY }}|g' index.html
+        
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          # Carrega todo o diretório do projeto
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
