@@ -103,13 +103,7 @@ export const day2Data = {
         {
             title: "CHAMPS-ÉLYSÉES → CASA",
             mapLink: "https://maps.app.goo.gl/SA1t9d2R1KwJmbvj8",
-            timeline: [
-                 { time: "19:00", icon: "fa-utensils", title: "Jantar em Casa", 
-                    mealSuggestion: {
-                        suggestion: "Regresso a casa para um jantar económico. Uma massa com salada é uma opção rápida e barata após um dia longo.",
-                        budget: "~5 € / pessoa"
-                    }
-                },
+            timeline: [               
                 {
                     time: "20:02", icon: "fa-route", title: "Percurso: Champs-Élysées → Casa", description: "Duração total: ~36 min. Clica para ver os detalhes.",
                     accordion: [
@@ -121,7 +115,13 @@ export const day2Data = {
                 },
                 { time: "20:38", icon: "fa-bed", title: "Regresso a Casa" }
             ]
-        }
+        },
+          { time: "19:00", icon: "fa-utensils", title: "Jantar em Casa", 
+                    mealSuggestion: {
+                        suggestion: "Regresso a casa para um jantar económico. Uma massa com salada é uma opção rápida e barata após um dia longo.",
+                        budget: "~5 € / pessoa"
+                    }
+                }
     ],
     shoppingInfo: {
         title: "Dicas de Compras do Dia",
