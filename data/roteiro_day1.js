@@ -129,7 +129,7 @@ export const day1Data = {
             title: "Lista de Compras Essenciais (Dia 1)",
             list: [
                 "Água (pack grande)", "Leite", "Cereais", "Pão de forma ou baguetes",
-                "Manteiga/Compota/Nutella", "Sumo", "Bolachas e barrinhas", "Fruta", "Iogurtes líquidos",
+                "Manteiga/Compota/Nutella", "Sumo", "Vinho", "Cerveja", "Bolachas e barrinhas", "Fruta", "Iogurtes líquidos",
                 "Ingredientes para jantares em casa (massa, molho, queijo, ovos, atum)."
             ],
             where: {
