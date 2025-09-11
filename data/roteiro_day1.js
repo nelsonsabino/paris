@@ -42,15 +42,15 @@ export const day1Data = {
                         { text: "15:22: Sair em Fort d'Aubervilliers", subText: "Saída final. Caminhar ~2 min até casa." }
                     ]
                 },
-                { time: "15:24", icon: "fa-house-chimney", title: "Chegada a Casa" }
-            ]
-        },
-           { time: "17:00", icon: "fa-cookie-bite", title: "Lanche da Tarde",
+                { time: "15:24", icon: "fa-house-chimney", title: "Chegada a Casa" },
+          { time: "16:30", icon: "fa-cookie-bite", title: "Lanche da Tarde",
                     mealSuggestion: {
-                        suggestion: "Pequeno lanche em casa antes de sair (fruta, bolachas do supermercado) para aguentar até ao jantar.",
+                        suggestion: "Pequeno lanche em casa (fruta, bolachas do supermercado) para aguentar até ao jantar.",
                         budget: "~1,5 € / pessoa"
                     }
-                },
+                }
+            ]
+        },
         {
             title: "CASA → INVALIDES",
             mapLink: "https://maps.app.goo.gl/eBNE3Dy1SoSbVufCA",
