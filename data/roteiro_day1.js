@@ -20,7 +20,13 @@ export const day1Data = {
             title: "AEROPORTO ORLY → CASA",
             mapLink: "https://maps.app.goo.gl/cyPYrbbdUmfpbmAz9",
             timeline: [
-                { time: "13:30", icon: "fa-utensils", title: "Pausa para Almoço e WC" },
+                {
+                    time: "13:30", icon: "fa-utensils", title: "Pausa para Almoço e WC",
+                    mealSuggestion: {
+                        suggestion: "Refeição rápida no Aeroporto de Orly. Opções como McDonald's, Paul, ou sandes de supermercado.",
+                        budget: "~10 € / pessoa"
+                    }
+                },
                 {
                     time: "14:00",
                     icon: "fa-ticket-simple",
@@ -43,6 +49,12 @@ export const day1Data = {
             title: "CASA → INVALIDES",
             mapLink: "https://maps.app.goo.gl/eBNE3Dy1SoSbVufCA",
             timeline: [
+                { time: "17:00", icon: "fa-cookie-bite", title: "Lanche da Tarde",
+                    mealSuggestion: {
+                        suggestion: "Pequeno lanche em casa antes de sair (fruta, bolachas do supermercado) para aguentar até ao jantar.",
+                        budget: "~1,5 € / pessoa"
+                    }
+                },
                 { time: "18:30", icon: "fa-house-chimney", title: "Saída de Casa" },
                 {
                     time: "18:33", icon: "fa-route", title: "Percurso: Casa → Invalides", description: "Duração total: ~30 min. Clica para ver os detalhes.",
@@ -64,6 +76,18 @@ export const day1Data = {
                 { icon: "fa-camera-retro", title: "Jardim do Trocadéro" },
                 { time: "21:00", icon: "fa-tower-observation", title: "Torre Eiffel", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1yA1rnPn_RHHJ3oZ8ImG2pWCC61VbrpNa/view?usp=sharing", guideLink: "visita_torre-eiffel.html" },
                 { icon: "fa-store", title: "Rue Cler" },
+                { time: "22:00", icon: "fa-utensils", title: "Jantar Económico",
+                    mealSuggestion: {
+                        suggestion: "Explorar a Rue Cler para encontrar crepes ou levar sandes feitas. Uma boa opção é comprar algo num supermercado (Franprix/Monoprix) na zona.",
+                        budget: "~6 € / pessoa"
+                    }
+                },
+                { time: "22:45", icon: "fa-croissant", title: "Lanche Doce",
+                    mealSuggestion: {
+                        suggestion: "Comprar um croissant ou pão de chocolate para manter a energia dos mais novos antes da viagem de metro de volta.",
+                        budget: "~2 € / pessoa"
+                    }
+                },
                 { time: "23:00", icon: "fa-person-walking", title: "Ida para o Metro École Militaire" },
                 {
                     icon: "fa-restroom",
@@ -94,29 +118,12 @@ export const day1Data = {
             ]
         }
     ],
-    mealSuggestions: {
-        title: "Sugestões de Refeições e Compras",
+    shoppingInfo: {
+        title: "Dicas de Compras do Dia",
         generalTips: [
             "Levem sempre convosco uma garrafa de água para ir recarregando nas fontes públicas (são potáveis).",
             "Evitem comprar snacks e bebidas dentro dos museus, pois os preços são muito mais altos.",
             "Tentem fazer as compras de supermercado ao final do dia para estarem preparados para o dia seguinte."
-        ],
-        options: [
-            {
-                type: "Almoço (13:30)",
-                suggestion: "Refeição rápida no Aeroporto de Orly. Opções como McDonald's, Paul, ou sandes de supermercado.",
-                budget: "~10 € / pessoa"
-            },
-            {
-                type: "Jantar (20:00)",
-                suggestion: "Opção económica na zona da Torre Eiffel. Levar sandes feitas ou comprar algo num supermercado como o Franprix/Monoprix perto da Rue Cler.",
-                budget: "~6 € / pessoa"
-            },
-            {
-                type: "Lanches",
-                suggestion: "Fruta e bolachas do supermercado para a tarde. À noite, um croissant ou pão de chocolate para manter a energia.",
-                budget: "~3-4 € / pessoa"
-            }
         ],
         shopping: {
             title: "Lista de Compras Essenciais (Dia 1)",
