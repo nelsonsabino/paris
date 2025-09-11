@@ -43,7 +43,7 @@ export const day1Data = {
                     ]
                 },
                 { time: "15:24", icon: "fa-house-chimney", title: "Chegada a Casa" },
-          { time: "16:30", icon: "fa-cookie-bite", title: "Lanche da Tarde",
+                { time: "16:30", icon: "fa-cookie-bite", title: "Lanche da Tarde",
                     mealSuggestion: {
                         suggestion: "Pequeno lanche em casa (fruta, bolachas do supermercado) para aguentar até ao jantar.",
                         budget: "~1,5 € / pessoa"
@@ -55,7 +55,6 @@ export const day1Data = {
             title: "CASA → INVALIDES",
             mapLink: "https://maps.app.goo.gl/eBNE3Dy1SoSbVufCA",
             timeline: [
-             
                 { time: "18:30", icon: "fa-house-chimney", title: "Saída de Casa" },
                 {
                     time: "18:33", icon: "fa-route", title: "Percurso: Casa → Invalides", description: "Duração total: ~30 min. Clica para ver os detalhes.",
@@ -81,6 +80,12 @@ export const day1Data = {
                     mealSuggestion: {
                         suggestion: "Explorar a Rue Cler para encontrar crepes ou levar sandes feitas. Uma boa opção é comprar algo num supermercado (Franprix/Monoprix) na zona.",
                         budget: "~6 € / pessoa"
+                    }
+                },
+                { time: "22:45", icon: "fa-croissant", title: "Lanche Doce",
+                    mealSuggestion: {
+                        suggestion: "Comprar um croissant ou pão de chocolate para manter a energia dos mais novos antes da viagem de metro de volta.",
+                        budget: "~2 € / pessoa"
                     }
                 },
                 { time: "23:00", icon: "fa-person-walking", title: "Ida para o Metro École Militaire" },
@@ -127,7 +132,12 @@ export const day1Data = {
                 "Manteiga/Compota/Nutella", "Sumo", "Bolachas e barrinhas", "Fruta", "Iogurtes líquidos",
                 "Ingredientes para jantares em casa (massa, molho, queijo, ovos, atum)."
             ],
-            where: "<strong>Supermercados perto de casa:</strong> Procurar por Franprix, Carrefour City ou Lidl na zona para fazer o abastecimento principal logo no primeiro dia."
+            where: {
+                description: "<strong>Supermercados perto de casa:</strong> Para o abastecimento principal, procurar por um Franprix, Carrefour City ou Lidl na zona. Exemplo:",
+                locations: [
+                    { name: "Franprix Perto da Casa (Exemplo)", link: "https://maps.app.goo.gl/exemplo" }
+                ]
+            }
         }
     }
 };
