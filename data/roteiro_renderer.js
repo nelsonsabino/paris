@@ -75,12 +75,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     titleHTML = `<a href="${item.guideLink}" class="text-blue-700 hover:underline hover:text-blue-900 transition">${item.title}</a>`;
                 }
                 
-                let itemBody = `<h3 class="font-semibold text-lg">${titleHTML}${ticketIconHTML}</h3>`;
-                if (item.description) {
-                    itemBody += `<p class="text-gray-600">${item.description}</p>`;
-                }
+                let itemBody = '';
 
-                if (item.accordion) {
+                if (item.mealSuggestion) {
+                    itemBody = `
+                        <button class="accordion-toggle w-full text-left">
+                            <h3 class="font-semibold text-lg flex justify-between items-center">
+                                <span>${titleHTML}${ticketIconHTML}</span>
+                                <i class="fas fa-chevron-down text-sm text-gray-500"></i>
+                            </h3>
+                            ${item.description ? `<p class="text-gray-600 text-sm mt-1">${item.description}</p>` : ''}
+                        </button>
+                        <div class="accordion-content hidden mt-2 pl-4 border-l-2 border-green-300">
+                            <p class="text-gray-700">${item.mealSuggestion.suggestion}</p>
+                            ${item.mealSuggestion.budget ? `<p class="font-mono text-sm text-green-700 mt-2">${item.mealSuggestion.budget}</p>` : ''}
+                        </div>`;
+                } else if (item.accordion) {
                     let accordionContent = item.accordion.map(accItem => `
                         <div class="mb-4 relative">
                             <div class="absolute -left-[26px] top-1 h-3 w-3 bg-gray-400 rounded-full"></div>
@@ -88,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             ${accItem.subText ? `<p class="text-gray-600 text-sm ml-1">${accItem.subText}</p>` : ''}
                         </div>
                     `).join('');
-
                     itemBody = `
                         <button class="accordion-toggle w-full text-left">
                             <h3 class="font-semibold text-lg flex justify-between items-center"><span>${titleHTML}${ticketIconHTML}</span><i class="fas fa-chevron-down text-sm"></i></h3>
@@ -98,6 +107,11 @@ document.addEventListener('DOMContentLoaded', () => {
                             ${accordionContent}
                         </div>
                     `;
+                } else {
+                    itemBody = `<h3 class="font-semibold text-lg">${titleHTML}${ticketIconHTML}</h3>`;
+                    if (item.description) {
+                        itemBody += `<p class="text-gray-600 mt-1">${item.description}</p>`;
+                    }
                 }
 
                 htmlContent += `
@@ -111,63 +125,45 @@ document.addEventListener('DOMContentLoaded', () => {
             htmlContent += `</div>`;
         });
         
-        // --- INÍCIO DA SECÇÃO DE REFEIÇÕES ---
-        if (dayData.mealSuggestions) {
-            const mealData = dayData.mealSuggestions;
-            let mealHtml = `
+        // --- SECÇÃO DE COMPRAS E DICAS ---
+        if (dayData.shoppingInfo) {
+            const shopData = dayData.shoppingInfo;
+            let shopHtml = `
                 <div class="mt-10 border-t-2 border-dashed border-gray-300 pt-6">
-                    <button class="meal-accordion-toggle w-full flex justify-between items-center p-3 bg-green-50 hover:bg-green-100 rounded-lg transition-colors">
-                        <span class="font-display text-xl font-bold text-green-800">
-                            <i class="fa-solid fa-utensils mr-3"></i>${mealData.title}
+                    <button class="accordion-toggle w-full flex justify-between items-center p-3 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors">
+                        <span class="font-display text-xl font-bold text-blue-800">
+                            <i class="fa-solid fa-cart-shopping mr-3"></i>${shopData.title}
                         </span>
-                        <i class="fas fa-chevron-down text-green-800"></i>
+                        <i class="fas fa-chevron-down text-blue-800"></i>
                     </button>
-                    <div class="meal-accordion-content hidden mt-4 space-y-6">`;
+                    <div class="accordion-content hidden mt-4 space-y-6">`;
 
-            if (mealData.generalTips && mealData.generalTips.length > 0) {
-                mealHtml += `
-                    <div class="p-4 bg-blue-50 border-l-4 border-blue-400 rounded-r-lg">
-                        <h4 class="font-bold text-lg text-blue-800 mb-2">Dicas Gerais</h4>
-                        <ul class="list-disc list-inside text-blue-700 space-y-1">
-                            ${mealData.generalTips.map(tip => `<li>${tip}</li>`).join('')}
+            if (shopData.generalTips && shopData.generalTips.length > 0) {
+                shopHtml += `
+                    <div class="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded-r-lg">
+                        <h4 class="font-bold text-lg text-yellow-800 mb-2">Dicas Gerais</h4>
+                        <ul class="list-disc list-inside text-yellow-700 space-y-1">
+                            ${shopData.generalTips.map(tip => `<li>${tip}</li>`).join('')}
                         </ul>
                     </div>`;
             }
-
-            if (mealData.options && mealData.options.length > 0) {
-                mealHtml += `<div>
-                    <h4 class="font-bold text-lg text-gray-800 mb-2">Plano de Refeições do Dia</h4>
-                    <div class="space-y-4">
-                        ${mealData.options.map(opt => `
-                            <div class="p-4 bg-gray-50 rounded-lg">
-                                <div class="flex justify-between items-start">
-                                    <p class="font-semibold text-gray-700">${opt.type}</p>
-                                    ${opt.budget ? `<p class="font-mono text-sm bg-gray-200 text-gray-700 px-2 py-1 rounded">${opt.budget}</p>` : ''}
-                                </div>
-                                <p class="text-gray-600 mt-1">${opt.suggestion}</p>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>`;
-            }
             
-            if (mealData.shopping) {
-                 mealHtml += `<div>
-                    <h4 class="font-bold text-lg text-gray-800 mb-2">${mealData.shopping.title}</h4>
+            if (shopData.shopping) {
+                 shopHtml += `<div>
+                    <h4 class="font-bold text-lg text-gray-800 mb-2">${shopData.shopping.title}</h4>
                     <div class="p-4 bg-gray-50 rounded-lg">
-                        ${mealData.shopping.list ? `
+                        ${shopData.shopping.list ? `
                             <ul class="grid grid-cols-2 md:grid-cols-3 gap-2 text-gray-600 mb-4">
-                                ${mealData.shopping.list.map(item => `<li class="flex items-start"><i class="fa-solid fa-check text-green-600 mr-2 mt-1"></i><span>${item}</span></li>`).join('')}
+                                ${shopData.shopping.list.map(item => `<li class="flex items-start"><i class="fa-solid fa-check text-green-600 mr-2 mt-1"></i><span>${item}</span></li>`).join('')}
                             </ul>` : ''}
-                        ${mealData.shopping.where ? `<p class="text-gray-700">${mealData.shopping.where}</p>` : ''}
+                        ${shopData.shopping.where ? `<p class="text-gray-700">${shopData.shopping.where}</p>` : ''}
                     </div>
                  </div>`;
             }
 
-            mealHtml += `</div></div>`;
-            htmlContent += mealHtml;
+            shopHtml += `</div></div>`;
+            htmlContent += shopHtml;
         }
-        // --- FIM DA SECÇÃO DE REFEIÇÕES ---
 
         section.innerHTML = htmlContent;
         targetNode.parentNode.insertBefore(section, targetNode.nextSibling);
@@ -189,40 +185,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Lógica para o acordeão de percursos ---
+    // --- Lógica genérica para todos os acordeões ---
     const accordionToggles = document.querySelectorAll('.accordion-toggle');
     accordionToggles.forEach(button => {
         button.addEventListener('click', () => {
             const content = button.nextElementSibling;
-            const icon = button.querySelector('i.fas');
+            const icon = button.querySelector('i.fas.fa-chevron-down, i.fas.fa-chevron-up');
             content.classList.toggle('hidden');
-            if (content.classList.contains('hidden')) {
-                icon.classList.remove('fa-chevron-up');
-                icon.classList.add('fa-chevron-down');
-            } else {
-                icon.classList.remove('fa-chevron-down');
-                icon.classList.add('fa-chevron-up');
+            if (icon) {
+                if (content.classList.contains('hidden')) {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                } else {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                }
             }
         });
     });
-
-    // --- Lógica para o acordeão de refeições ---
-    const mealAccordionToggles = document.querySelectorAll('.meal-accordion-toggle');
-    mealAccordionToggles.forEach(button => {
-        button.addEventListener('click', () => {
-            const content = button.nextElementSibling;
-            const icon = button.querySelector('i.fas');
-            content.classList.toggle('hidden');
-             if (content.classList.contains('hidden')) {
-                icon.classList.remove('fa-chevron-up');
-                icon.classList.add('fa-chevron-down');
-            } else {
-                icon.classList.remove('fa-chevron-down');
-                icon.classList.add('fa-chevron-up');
-            }
-        });
-    });
-
+    
     // --- Lógica para o pop-up de imagem (modal) ---
     const imageModal = document.getElementById('imageModal');
     const modalImage = document.getElementById('modalImage');
