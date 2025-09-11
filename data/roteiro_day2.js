@@ -130,7 +130,7 @@ export const day2Data = {
             where: {
                 description: "<strong>Supermercado no Quartier Latin:</strong> Franprix na 32 Rue Saint-André des Arts. Bom para reabastecer snacks e bebidas antes de seguir para a zona das Tulherias e Champs-Élysées (onde os preços são mais altos).",
                 locations: [
-                    { name: "Franprix", link: "https://maps.app.goo.gl/EVymYe173NsKXvaQ6" }
+                    { name: "Franprix", link: "https://maps.app.goo.gl/FoV2c5YnBiqtz7u96" }
                 ]
             }
         }
