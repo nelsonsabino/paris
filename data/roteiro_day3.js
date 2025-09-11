@@ -79,5 +79,34 @@ export const day3Data = {
                 { time: "19:58", icon: "fa-bed", title: "Regresso a Casa" }
             ]
         }
-    ]
+    ],
+    mealSuggestions: {
+        title: "Sugestões de Refeições e Compras",
+        options: [
+            {
+                type: "Pequeno-almoço (07:00)",
+                suggestion: "Refeição reforçada em casa, antes da longa viagem de RER para Versalhes.",
+                budget: "~2 € / pessoa"
+            },
+            {
+                type: "Almoço (13:00)",
+                suggestion: "Piquenique nos Jardins de Versalhes. É crucial preparar/comprar sandes no dia anterior e levar na mochila, pois tudo dentro do complexo é extremamente caro.",
+                budget: "~7 € / pessoa"
+            },
+            {
+                type: "Jantar (19:30)",
+                suggestion: "Jantar rápido e económico em Montmartre. A zona tem muitas opções de kebab, pizza ou falafel que são saborosas e baratas.",
+                budget: "~9 € / pessoa"
+            },
+            {
+                type: "Lanches",
+                suggestion: "Levar snacks (fruta, bolachas) para comer nos jardins de Versalhes. Ao final da tarde em Montmartre, um crepe simples ou um croissant.",
+                budget: "~3-5 € / pessoa"
+            }
+        ],
+        shopping: {
+            title: "Pontos de Compra",
+            where: "<strong>Dica para Versalhes:</strong> Preparar o almoço e lanches na véspera. <strong>Supermercados em Montmartre:</strong> Carrefour City (39 Rue Caulaincourt) ou Franprix (14 Rue Lepic) para comprar algo para o jantar ou para o dia seguinte."
+        }
+    }
 };
