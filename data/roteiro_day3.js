@@ -121,9 +121,10 @@ export const day3Data = {
         shopping: {
             title: "Pontos de Compra e Planeamento",
             where: {
-               description: "<strong>Dica para Versalhes:</strong> Preparar o almoço e lanches na véspera é essencial. <strong>Supermercados em Montmartre:</strong> Carrefour City (39 Rue Caulaincourt) ou Franprix (14 Rue Lepic) são boas opções para comprar algo para o jantar ou para o dia seguinte.",
+               description: "<strong>Dica para Versalhes:</strong> Preparar o almoço e lanches na véspera é essencial. <strong> Supermercados em Montmartre:</strong> Intermarché EXPRESS Paris ou Franprix são boas opções para comprar algo para o jantar ou lanche.",
                locations: [
-                    { name: "Franprix", link: "https://maps.app.goo.gl/L3hNQjgqaduL2XC59" }
+                    { name: "Franprix", link: "https://maps.app.goo.gl/L3hNQjgqaduL2XC59" },
+                    { name: "Intermarché EXPRESS Paris", link: "https://maps.app.goo.gl/mgpnjgCuhHongUWz7" }
                 ]
             }
         }
