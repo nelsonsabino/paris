@@ -125,18 +125,8 @@ export const day2Data = {
     ],
      shoppingInfo: {
         title: "Dicas de Compras do Dia",
-        generalTips: [
-            "Levem sempre convosco uma garrafa de água para ir recarregando nas fontes públicas (são potáveis).",
-            "Evitem comprar snacks e bebidas dentro dos museus, pois os preços são muito mais altos.",
-            "Tentem fazer as compras de supermercado ao final do dia para estarem preparados para o dia seguinte."
-        ],
        shopping: {
             title: "Pontos de Compra Sugeridos",
-            list: [
-                "Água (pack grande)", "Leite", "Cereais", "Pão de forma ou baguetes",
-                "Manteiga/Compota/Nutella", "Sumo", "Vinho", "Cerveja", "Bolachas e barrinhas", "Fruta", "Iogurtes líquidos",
-                "Ingredientes para jantares em casa (massa, molho, queijo, ovos, atum)."
-            ],
             where: {
                 description: "<strong>Supermercado no Quartier Latin:</strong> Franprix na 32 Rue Saint-André des Arts. Bom para reabastecer snacks e bebidas antes de seguir para a zona das Tulherias e Champs-Élysées (onde os preços são mais altos).",
                 locations: [
