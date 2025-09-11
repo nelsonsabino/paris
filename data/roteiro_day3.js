@@ -50,7 +50,7 @@ export const day3Data = {
         },
         {
             title: "VERSALHES → MONTMARTRE",
-            mapLink: "https://maps.app.goo.gl/4vWWzNcMPB3eZq3T6",
+            mapLink: "https://maps.app.goo.gl/aVaPgnCmXYA1H8ic7",
             timeline: [
                 {
                     time: "14:40", icon: "fa-route", title: "Percurso: Versailles → Montmartre", description: "Duração total: ~54 min. Clica para ver os detalhes.",
@@ -65,7 +65,7 @@ export const day3Data = {
         },
         {
             title: "MONTMARTRE → MOULIN ROUGE",
-            mapLink: "https://maps.app.goo.gl/DBCJQ62qSGpKDVL28",
+            mapLink: "https://maps.app.goo.gl/kvAM9uTHiYisu51C8",
             description: "Duração estimada do percurso a pé com visitas: ~2.5 horas",
             timeline: [
                 { time: "15:35", icon: "fa-heart", title: "Muro do Eu Te Amo (Le Mur des Je t'aime)", description: "Visita e fotos: ~15 min" },
@@ -120,7 +120,10 @@ export const day3Data = {
         title: "Dicas de Compras do Dia",
         shopping: {
             title: "Pontos de Compra e Planeamento",
-            where: "<strong>Dica para Versalhes:</strong> Preparar o almoço e lanches na véspera é essencial. <strong>Supermercados em Montmartre:</strong> Carrefour City (39 Rue Caulaincourt) ou Franprix (14 Rue Lepic) são boas opções para comprar algo para o jantar ou para o dia seguinte."
-        }
+            where: {
+               description: "<strong>Dica para Versalhes:</strong> Preparar o almoço e lanches na véspera é essencial. <strong>Supermercados em Montmartre:</strong> Carrefour City (39 Rue Caulaincourt) ou Franprix (14 Rue Lepic) são boas opções para comprar algo para o jantar ou para o dia seguinte.",
+               locations: [
+                    { name: "Franprix", link: "https://maps.app.goo.gl/L3hNQjgqaduL2XC59" }
+            }
     }
 };
