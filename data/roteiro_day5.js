@@ -77,5 +77,34 @@ export const day5Data = {
                 { time: "18:40", icon: "fa-plane-departure", title: "Chegada ao Aeroporto Orly (Voo às 20:50)" }
             ]
         }
-    ]
+    ],
+    mealSuggestions: {
+        title: "Sugestões de Refeições e Compras",
+        options: [
+            {
+                type: "Pequeno-almoço (08:00)",
+                suggestion: "Última refeição em casa, aproveitando o que sobrou (cereais, pão, fruta).",
+                budget: ""
+            },
+            {
+                type: "Almoço (13:00)",
+                suggestion: "Refeição especial numa brasserie típica em Saint-Germain. É o 'desvio' ao orçamento, para uma experiência parisiense autêntica.",
+                budget: "~15€ (adulto), ~10€ (criança)"
+            },
+            {
+                type: "Jantar (18:00)",
+                suggestion: "Jantar no Aeroporto de Orly antes do voo. Opções de fast food ou sandes (Paul, etc.).",
+                budget: "~10 € / pessoa"
+            },
+            {
+                type: "Lanches",
+                suggestion: "De manhã, um croissant ou pastelaria no Quartier Latin. À tarde, um café num dos locais icónicos (Les Deux Magots ou Café de Flore) para a experiência.",
+                budget: "~2-6 € / pessoa"
+            }
+        ],
+        shopping: {
+            title: "Pontos de Compra",
+            where: "<strong>Supermercado em Saint-Germain:</strong> Franprix na 26 Rue de Buci. Pode ser útil para comprar um último snack ou bebida antes de ir para o aeroporto."
+        }
+    }
 };
