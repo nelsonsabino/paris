@@ -9,6 +9,11 @@ export const day5Data = {
             title: "CASA → CACIFO DE MALAS",
             mapLink: "https://maps.app.goo.gl/wW3zVHupQH2CQmCb8",
             timeline: [
+                { time: "08:00", icon: "fa-mug-hot", title: "Pequeno-almoço em casa",
+                    mealSuggestion: {
+                        suggestion: "Última refeição em casa, aproveitando o que sobrou (cereais, pão, fruta)."
+                    }
+                },
                 { time: "08:27", icon: "fa-house-chimney", title: "Saída de Casa" },
                 {
                     time: "08:30", icon: "fa-route", title: "Percurso: Casa → Cacifo", description: "Duração total: ~31 min. Clica para ver os detalhes.",
@@ -27,6 +32,12 @@ export const day5Data = {
             timeline: [
                 { time: "09:30", icon: "fa-gem", title: "Sainte-Chapelle", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1ucQbtBDOxRx83d_m4Up5lnqzKcngOm3k/view?usp=drive_link", guideLink: "visita_sainte-chapelle.html", description: "Visita: ~1 hora" },
                 { time: "10:40", icon: "fa-person-walking", title: "Rue de la Huchette & Igreja de São Severino", description: "Passeio: ~20 min" },
+                 { time: "11:00", icon: "fa-cookie-bite", title: "Lanche da Manhã",
+                    mealSuggestion: {
+                        suggestion: "Comprar um croissant ou outra pastelaria numa das muitas 'boulangeries' do Quartier Latin.",
+                        budget: "~2 € / pessoa"
+                    }
+                },
                 { time: "11:15", icon: "fa-monument", title: "Saint-Étienne-du-Mont", description: "Visita: ~25 min" },
                 { time: "11:50", icon: "fa-landmark-dome", title: "Panteão (Vista Exterior)", guideLink: "visita_quartier-latin.html", description: "Fotos: ~15 min" },
                 { time: "12:15", icon: "fa-seedling", title: "Jardim do Luxemburgo", guideLink: "visita_jardim-luxemburgo.html", description: "Pausa e caminhada: ~45 min" },
@@ -46,9 +57,21 @@ export const day5Data = {
             title: "ALMOÇO E TARDE EM SAINT-GERMAIN-DES-PRÉS",
             mapLink: "https://maps.app.goo.gl/ZcqjqcGoYmcdEt8u6",
             timeline: [
-                { time: "13:00", icon: "fa-utensils", title: "Almoço descontraído", description: "Encontrar uma brasserie típica no bairro de Saint-Germain." },
+                { time: "13:00", icon: "fa-utensils", title: "Almoço em Brasserie",
+                    description: "Encontrar uma brasserie típica no bairro de Saint-Germain para a refeição especial da viagem.",
+                     mealSuggestion: {
+                        suggestion: "É o 'desvio' ao orçamento, para uma experiência parisiense autêntica. Procurar menus com 'formule déjeuner'.",
+                        budget: "~15€ (adulto), ~10€ (criança)"
+                    }
+                },
                 { time: "14:30", icon: "fa-church", title: "Igreja de Saint-Sulpice", description: "Visitar o interior e ver as pinturas de Delacroix." },
-                { time: "15:15", icon: "fa-coffee", title: "Pausa num Café Icónico", description: "Sentar na esplanada do Les Deux Magots ou Café de Flore para um café e observar o movimento." },
+                { time: "15:15", icon: "fa-coffee", title: "Pausa num Café Icónico",
+                    description: "Sentar na esplanada do Les Deux Magots ou Café de Flore para um café e observar o movimento.",
+                     mealSuggestion: {
+                        suggestion: "Pedir um 'café crème' ou 'chocolat chaud' para a experiência completa. É caro, mas memorável.",
+                        budget: "~6 € / pessoa"
+                    }
+                },
                 { time: "16:00", icon: "fa-person-walking", title: "Explorar o Bairro e caminhar para o cacifo", description: "Passear pelas ruas charmosas e seguir a pé em direção à zona do Louvre." },
                 {
                     icon: "fa-restroom",
@@ -74,36 +97,20 @@ export const day5Data = {
                         { text: "18:36: Sair em Aéroport d'Orly" }
                     ]
                 },
-                { time: "18:40", icon: "fa-plane-departure", title: "Chegada ao Aeroporto Orly (Voo às 20:50)" }
+                { time: "18:40", icon: "fa-plane-departure", title: "Chegada ao Aeroporto Orly (Voo às 20:50)" },
+                { time: "19:00", icon: "fa-utensils", title: "Jantar no Aeroporto",
+                    mealSuggestion: {
+                        suggestion: "Jantar antes do voo. Opções de fast food ou sandes (Paul, Exki, etc.) no terminal.",
+                        budget: "~10 € / pessoa"
+                    }
+                }
             ]
         }
     ],
-    mealSuggestions: {
-        title: "Sugestões de Refeições e Compras",
-        options: [
-            {
-                type: "Pequeno-almoço (08:00)",
-                suggestion: "Última refeição em casa, aproveitando o que sobrou (cereais, pão, fruta).",
-                budget: ""
-            },
-            {
-                type: "Almoço (13:00)",
-                suggestion: "Refeição especial numa brasserie típica em Saint-Germain. É o 'desvio' ao orçamento, para uma experiência parisiense autêntica.",
-                budget: "~15€ (adulto), ~10€ (criança)"
-            },
-            {
-                type: "Jantar (18:00)",
-                suggestion: "Jantar no Aeroporto de Orly antes do voo. Opções de fast food ou sandes (Paul, etc.).",
-                budget: "~10 € / pessoa"
-            },
-            {
-                type: "Lanches",
-                suggestion: "De manhã, um croissant ou pastelaria no Quartier Latin. À tarde, um café num dos locais icónicos (Les Deux Magots ou Café de Flore) para a experiência.",
-                budget: "~2-6 € / pessoa"
-            }
-        ],
+    shoppingInfo: {
+        title: "Dicas de Compras do Dia",
         shopping: {
-            title: "Pontos de Compra",
+            title: "Pontos de Compra Sugeridos",
             where: "<strong>Supermercado em Saint-Germain:</strong> Franprix na 26 Rue de Buci. Pode ser útil para comprar um último snack ou bebida antes de ir para o aeroporto."
         }
     }
