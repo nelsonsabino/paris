@@ -76,19 +76,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 
                 let itemBody = '';
+                const iconClass = item.mealSuggestion ? 'timeline-icon timeline-icon-meal' : 'timeline-icon';
 
                 if (item.mealSuggestion) {
                     itemBody = `
-                        <button class="accordion-toggle w-full text-left">
-                            <h3 class="font-semibold text-lg flex justify-between items-center">
-                                <span>${titleHTML}${ticketIconHTML}</span>
-                                <i class="fas fa-chevron-down text-sm text-gray-500"></i>
-                            </h3>
-                            ${item.description ? `<p class="text-gray-600 text-sm mt-1">${item.description}</p>` : ''}
-                        </button>
-                        <div class="accordion-content hidden mt-2 pl-4 border-l-2 border-green-300">
-                            <p class="text-gray-700">${item.mealSuggestion.suggestion}</p>
-                            ${item.mealSuggestion.budget ? `<p class="font-mono text-sm text-green-700 mt-2">${item.mealSuggestion.budget}</p>` : ''}
+                        <h3 class="font-semibold text-lg">${titleHTML}${ticketIconHTML}</h3>
+                        ${item.description ? `<p class="text-gray-600 mt-1">${item.description}</p>` : ''}
+                        <div class="timeline-item-meal">
+                            <div class="flex justify-between items-start gap-4">
+                                <p class="text-gray-600 flex-grow">${item.mealSuggestion.suggestion}</p>
+                                ${item.mealSuggestion.budget ? `<p class="font-mono text-sm bg-green-100 text-green-800 px-2 py-1 rounded-md whitespace-nowrap">${item.mealSuggestion.budget}</p>` : ''}
+                            </div>
                         </div>`;
                 } else if (item.accordion) {
                     let accordionContent = item.accordion.map(accItem => `
@@ -117,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 htmlContent += `
                     <div class="timeline-item">
                         ${hasTime}
-                        <div class="timeline-icon"><i class="fa-solid ${item.icon} text-xs"></i></div>
+                        <div class="${iconClass}"><i class="fa-solid ${item.icon} text-xs"></i></div>
                         ${itemBody}
                     </div>
                 `;
