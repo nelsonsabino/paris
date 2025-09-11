@@ -98,5 +98,34 @@ export const day2Data = {
                 { time: "20:38", icon: "fa-bed", title: "Regresso a Casa" }
             ]
         }
-    ]
+    ],
+    mealSuggestions: {
+        title: "Sugestões de Refeições e Compras",
+        options: [
+            {
+                type: "Pequeno-almoço (08:00)",
+                suggestion: "Refeição em casa com os produtos comprados no dia anterior (pão, leite, cereais, etc).",
+                budget: "~2 € / pessoa"
+            },
+            {
+                type: "Almoço (13:00)",
+                suggestion: "No Jardim das Tulherias, optar por uma 'formule' de padaria (sandes + bebida + sobremesa). É prático e económico para comer ao ar livre.",
+                budget: "~7 € / pessoa"
+            },
+            {
+                type: "Jantar (19:00)",
+                suggestion: "Refeição em casa para poupar. Uma massa com salada é uma opção rápida e barata após um dia longo.",
+                budget: "~5 € / pessoa"
+            },
+            {
+                type: "Lanches",
+                suggestion: "Levar snacks do supermercado para comer a meio da manhã (Quartier Latin) e à tarde, evitando os preços inflacionados dos Champs-Élysées.",
+                budget: "~2-4 € / pessoa"
+            }
+        ],
+        shopping: {
+            title: "Pontos de Compra",
+            where: "<strong>Supermercado no Quartier Latin:</strong> Franprix na 32 Rue Saint-André des Arts. Bom para reabastecer snacks e bebidas antes de seguir para a zona das Tulherias e Champs-Élysées."
+        }
+    }
 };
