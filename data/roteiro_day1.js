@@ -45,16 +45,17 @@ export const day1Data = {
                 { time: "15:24", icon: "fa-house-chimney", title: "Chegada a Casa" }
             ]
         },
-        {
-            title: "CASA → INVALIDES",
-            mapLink: "https://maps.app.goo.gl/eBNE3Dy1SoSbVufCA",
-            timeline: [
-                { time: "17:00", icon: "fa-cookie-bite", title: "Lanche da Tarde",
+           { time: "17:00", icon: "fa-cookie-bite", title: "Lanche da Tarde",
                     mealSuggestion: {
                         suggestion: "Pequeno lanche em casa antes de sair (fruta, bolachas do supermercado) para aguentar até ao jantar.",
                         budget: "~1,5 € / pessoa"
                     }
                 },
+        {
+            title: "CASA → INVALIDES",
+            mapLink: "https://maps.app.goo.gl/eBNE3Dy1SoSbVufCA",
+            timeline: [
+             
                 { time: "18:30", icon: "fa-house-chimney", title: "Saída de Casa" },
                 {
                     time: "18:33", icon: "fa-route", title: "Percurso: Casa → Invalides", description: "Duração total: ~30 min. Clica para ver os detalhes.",
