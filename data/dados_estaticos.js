@@ -8,7 +8,7 @@ export const planningEvents = [
     { title: 'Comprar bilhetes para a Torre Eiffel', date: '2025-07-20', description: 'Comprar ás 23h!! (0.00h em Paris) Os bilhetes ficam disponíveis 60 dias antes. Comprar para o dia 19 de Setembro (Sexta-feira).', status: 'complete', color: '#16a34a' },
     { title: 'Comprar bilhetes para a Ópera Garnier', date: '2025-07-23', description: 'Fazer a compra ás 23h!! Comprar para o dia 22 de Setembro (Segunda-feira).', status: 'complete', color: '#16a34a' },
     { title: 'Fazer pagamento da casa de Paris', date: '2025-08-25', description: 'Fazer o pagamento final da reserva.', status: 'complete', color: '#16a34a' },
-    { title: 'Reserva para entrada sem filas na Notre-Dame', date: '2025-09-19', description: 'A reserva só pode ser feita umas horas antes. Irá ser dificil apanhar um slot disponível.', status: 'pending', color: '#ea580c' },
+    { title: 'Reserva para entrada sem filas na Notre-Dame', date: '2025-09-17', description: 'Reserva para 20/set. Tem que ser feita ás 23.45h por 2 pessoas. Uma reserva 4 para slot 9-9.15h e a outra reserva +1 para os mesmo slot, ou 15 min.depois', status: 'pending', color: '#ea580c' },
     { title: 'VIAGEM!', date: '2025-09-19', endDate: '2025-09-24', description: 'De 19 a 23 de Setembro.', status: 'complete', color: '#16a34a' }
 ];
 
