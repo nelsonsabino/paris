@@ -27,19 +27,7 @@ export const day3Data = {
                         { text: "08:35: Sair em Versailles Château Rive Gauche", subText: "Caminhar ~15 min até ao palácio." }
                     ]
                 },
-                { time: "08:50", icon: "fa-crown", title: "Palácio de Versalhes", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1JWHf_KUwofGdZgYj5wp0JswPyZcCs3ys/view?usp=drive_link", guideLink: "visita_versalhes.html", description: "Entrada no Palácio. Nota: Existem várias casas de banho dentro do palácio e nos jardins." }
-            ]
-        },
-        {
-            title: "VISITA AOS JARDINS E DOMÍNIOS",
-            mapLink: "https://www.google.com/maps/place/Jardins+do+Pal%C3%A1cio+de+Versalhes/@48.8057278,2.1027989,15.75z",
-            timeline: [
-                { time: "10:30", icon: "fa-cookie-bite", title: "Lanche da Manhã",
-                    mealSuggestion: {
-                        suggestion: "Pausa nos jardins para um lanche (fruta, barritas) levado de Paris para poupar.",
-                        budget: "~2 € / pessoa"
-                    }
-                },
+                { time: "08:50", icon: "fa-crown", title: "Palácio de Versalhes", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1JWHf_KUwofGdZgYj5wp0JswPyZcCs3ys/view?usp=drive_link", guideLink: "visita_versalhes.html", description: "Entrada no Palácio. Nota: Existem várias casas de banho dentro do palácio e nos jardins." },
                 { time: "13:00", icon: "fa-utensils", title: "Almoço Piquenique",
                     mealSuggestion: {
                         suggestion: "Almoço nos jardins com sandes preparadas no dia anterior. Evita os preços altos e as filas dos restaurantes do complexo.",
@@ -50,7 +38,7 @@ export const day3Data = {
         },
         {
             title: "VERSALHES → MONTMARTRE",
-            mapLink: "https://maps.app.goo.gl/aVaPgnCmXYA1H8ic7",
+            mapLink: "https://maps.app.goo.gl/4vWWzNcMPB3eZq3T6",
             timeline: [
                 {
                     time: "14:40", icon: "fa-route", title: "Percurso: Versailles → Montmartre", description: "Duração total: ~54 min. Clica para ver os detalhes.",
@@ -65,7 +53,7 @@ export const day3Data = {
         },
         {
             title: "MONTMARTRE → MOULIN ROUGE",
-            mapLink: "https://maps.app.goo.gl/kvAM9uTHiYisu51C8",
+            mapLink: "https://maps.app.goo.gl/DBCJQ62qSGpKDVL28",
             description: "Duração estimada do percurso a pé com visitas: ~2.5 horas",
             timeline: [
                 { time: "15:35", icon: "fa-heart", title: "Muro do Eu Te Amo (Le Mur des Je t'aime)", description: "Visita e fotos: ~15 min" },
@@ -120,13 +108,7 @@ export const day3Data = {
         title: "Dicas de Compras do Dia",
         shopping: {
             title: "Pontos de Compra e Planeamento",
-            where: {
-               description: "<strong>Dica para Versalhes:</strong> Preparar o almoço e lanches na véspera é essencial. <strong> Supermercados em Montmartre:</strong> Intermarché EXPRESS Paris ou Franprix são boas opções para comprar algo para o jantar ou lanche.",
-               locations: [
-                    { name: "Franprix", link: "https://maps.app.goo.gl/L3hNQjgqaduL2XC59" },
-                    { name: "Intermarché EXPRESS Paris", link: "https://maps.app.goo.gl/mgpnjgCuhHongUWz7" }
-                ]
-            }
+            where: "<strong>Dica para Versalhes:</strong> Preparar o almoço e lanches na véspera é essencial. <strong>Supermercados em Montmartre:</strong> Carrefour City (39 Rue Caulaincourt) ou Franprix (14 Rue Lepic) são boas opções para comprar algo para o jantar ou para o dia seguinte."
         }
     }
 };
