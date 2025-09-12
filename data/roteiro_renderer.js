@@ -13,19 +13,16 @@ const allDaysData = [day1Data, day2Data, day3Data, day4Data, day5Data];
  * Adiciona as badges de estado (Concluído, A Decorrer, Próximo) à timeline.
  */
 function updateTimelineBadges() {
-    // Para testar a funcionalidade, pode substituir 'new Date()' por uma data específica da viagem.
-    // Exemplo: new Date('2025-09-20T12:00:00')
-    const now = new Date(); // <<< ESTA ERA A LINHA EM FALTA
+    const now = new Date(); 
 
     const monthMap = { 'Setembro': 8 };
     const allTimedEvents = [];
 
-    // Recolhe todos os eventos com hora e data definida
     document.querySelectorAll('.timeline-item[data-time]').forEach(el => {
         const timeStr = el.dataset.time;
-        const dateStr = el.dataset.date; // "Sexta-feira, 19 de Setembro"
+        const dateStr = el.dataset.date;
         
-        const dateParts = dateStr.split(', ')[1].split(' de '); // ["19", "Setembro"]
+        const dateParts = dateStr.split(', ')[1].split(' de ');
         const day = parseInt(dateParts[0]);
         const month = monthMap[dateParts[1]];
         const year = 2025;
@@ -34,18 +31,12 @@ function updateTimelineBadges() {
         
         const eventDate = new Date(year, month, day, hours, minutes);
         
-        allTimedEvents.push({
-            element: el,
-            date: eventDate
-        });
+        allTimedEvents.push({ element: el, date: eventDate });
     });
 
-    // Ordena os eventos cronologicamente
     allTimedEvents.sort((a, b) => a.date - b.date);
 
     let nextEventIndex = -1;
-
-    // Encontra o próximo evento
     for (let i = 0; i < allTimedEvents.length; i++) {
         if (allTimedEvents[i].date > now) {
             nextEventIndex = i;
@@ -53,14 +44,12 @@ function updateTimelineBadges() {
         }
     }
 
-    // Aplica as badges
     allTimedEvents.forEach((event, index) => {
         const titleElement = event.element.querySelector('h3');
         if (!titleElement) return;
 
         let badgeHtml = '';
-
-        if (nextEventIndex === -1 && allTimedEvents.length > 0) { // Todos os eventos já passaram
+        if (nextEventIndex === -1 && allTimedEvents.length > 0) {
             badgeHtml = '<span class="timeline-badge badge-completed">CONCLUÍDO</span>';
         } else {
             if (index < nextEventIndex - 1) {
@@ -72,11 +61,8 @@ function updateTimelineBadges() {
             }
         }
         
-        if (badgeHtml) {
-            // Garante que não adiciona badges duplicadas
-            if (!titleElement.querySelector('.timeline-badge')) {
-                titleElement.innerHTML += badgeHtml;
-            }
+        if (badgeHtml && !titleElement.querySelector('.timeline-badge')) {
+            titleElement.innerHTML += badgeHtml;
         }
     });
 }
@@ -104,15 +90,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const dayNavSections = dayData.sections.filter(s => s.id);
         let dayNavHtml = '';
         if (dayNavSections.length > 0) {
-            dayNavHtml = `<div class="day-nav mb-10"><div class="container mx-auto max-w-5xl px-4 flex items-center justify-center space-x-2 md:space-x-4 overflow-x-auto">
-                ${dayNavSections.map(s => `<a href="#${s.id}" data-section-id="${s.id}">${s.title.split('→').pop().trim().split(' ')[0]}</a>`).join('')}
-            </div></div>`;
+            dayNavHtml = `
+                <div class="day-nav mb-10">
+                    <div class="container mx-auto max-w-5xl px-4 flex items-center justify-center space-x-2 md:space-x-4 overflow-x-auto">
+                        ${dayNavSections.map(s => {
+                            // Se navTitle existir, usa-o. Senão, gera automaticamente.
+                            const linkText = s.navTitle || s.title.split('→').pop().trim().split(' ')[0];
+                            return `<a href="#${s.id}" data-section-id="${s.id}">${linkText}</a>`;
+                        }).join('')}
+                    </div>
+                </div>`;
         }
 
         let htmlContent = `
             <h2 class="font-display text-2xl md:text-3xl text-gray-900 mb-1 font-bold">${dayData.title}</h2>
             <p class="text-gray-500 mb-6">${dayData.date}</p>
-            ${dayNavHtml}`;
+            ${dayNavHtml}
+        `;
 
         if (dayData.mapImage) {
             htmlContent += `<div class="cursor-pointer" onclick="openModal('${dayData.mapImage}')"><img src="${dayData.mapImage}" alt="Mapa do percurso do ${dayData.title}" class="w-full aspect-[5/2] object-cover rounded-lg mb-6"></div>`;
@@ -179,8 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- LÓGICA GERAL DA PÁGINA ---
-    const menuBtn = document.getElementById('menu-btn');
-    if (menuBtn) { /* ... */ }
+    const menuBtn = document.getElementById('menu-btn'); /* ... */
     document.querySelectorAll('.accordion-toggle').forEach(button => { /* ... */ });
     window.openModal = (imageUrl) => { /* ... */ };
     window.closeModal = () => { /* ... */ };
