@@ -35,7 +35,7 @@ export const day5Data = {
                  { time: "11:00", icon: "fa-cookie-bite", title: "Lanche da Manhã",
                     mealSuggestion: {
                         suggestion: "Comprar um croissant ou outra pastelaria numa das muitas 'boulangeries' do Quartier Latin.",
-                        budget: "~2 € / pessoa"
+                     /*   budget: "~2 € / pessoa"*/
                     }
                 },
                 { time: "11:15", icon: "fa-monument", title: "Saint-Étienne-du-Mont", description: "Visita: ~25 min" },
@@ -101,7 +101,7 @@ export const day5Data = {
                 { time: "19:00", icon: "fa-utensils", title: "Jantar no Aeroporto",
                     mealSuggestion: {
                         suggestion: "Jantar antes do voo. Opções de fast food ou sandes (Paul, Exki, etc.) no terminal.",
-                        budget: "~10 € / pessoa"
+                     /*   budget: "~10 € / pessoa"*/
                     }
                 }
             ]
