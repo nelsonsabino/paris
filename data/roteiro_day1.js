@@ -7,6 +7,7 @@ export const day1Data = {
     sections: [
         {
             id: "viagem",
+            navTitle: "Viagem", // Título personalizado para a navegação
             title: "ALENQUER → TERMINAL 2",
             mapLink: "https://maps.app.goo.gl/UDWRJ6vJieWfL2G19",
             timeline: [
@@ -19,6 +20,7 @@ export const day1Data = {
         },
         {
             id: "chegada",
+            navTitle: "Chegada", // Título personalizado
             title: "AEROPORTO ORLY → CASA",
             mapLink: "https://maps.app.goo.gl/cyPYrbbdUmfpbmAz9",
             timeline: [
@@ -55,6 +57,7 @@ export const day1Data = {
         },
         {
             id: "ida-eiffel",
+            navTitle: "Eiffel", // Título personalizado para a navegação
             title: "CASA → INVALIDES",
             mapLink: "https://maps.app.goo.gl/eBNE3Dy1SoSbVufCA",
             timeline: [
@@ -72,6 +75,7 @@ export const day1Data = {
         },
         {
             id: "zona-eiffel",
+            navTitle: "Zona Eiffel", // Título personalizado
             title: "INVALIDES - TOUR EIFFEL",
             mapLink: "https://maps.app.goo.gl/R9Hgbbwr1KJgKHkD8",
             timeline: [
@@ -107,6 +111,7 @@ export const day1Data = {
         },
         {
             id: "regresso-d1",
+            navTitle: "Regresso", // Título personalizado
             title: "ÉCOLE MILITAIRE → CASA",
             mapLink: "https://maps.app.goo.gl/h8Evfet5J4ntq5cE8",
             timeline: [
