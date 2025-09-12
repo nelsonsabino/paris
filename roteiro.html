@@ -131,17 +131,18 @@
         font-weight: 700;
     }
 
+    /* --- ESTILOS CORRIGIDOS PARA A BARRA DE NAVEGAÇÃO DO DIA --- */
     .day-nav {
         position: sticky;
         top: 60px;
         z-index: 40;
         background-color: #f1f5f9;
         border-bottom: 1px solid #cbd5e1;
-        padding: 0.5rem 1rem;
-        display: flex; /* Adicionado para controlo */
-        flex-wrap: wrap; /* PERMITE QUE OS LINKS QUEBREM A LINHA */
-        justify-content: center; /* Centraliza os links */
-        gap: 0.5rem; /* Espaçamento entre links */
+        padding: 0.75rem 1rem;
+        display: flex;
+        flex-wrap: wrap; /* Permite que os botões quebrem a linha */
+        justify-content: center; /* Centraliza os botões */
+        gap: 0.5rem; /* Espaçamento uniforme */
     }
     .day-nav a {
         padding: 0.5rem 1rem;
@@ -150,7 +151,7 @@
         font-weight: 600;
         color: #475569;
         transition: background-color 0.2s, color 0.2s;
-        white-space: nowrap; /* Evita que o texto do link quebre */
+        white-space: nowrap;
     }
     .day-nav a.active-section {
         background-color: #1e3a8a;
