@@ -90,23 +90,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const dayNavSections = dayData.sections.filter(s => s.id);
         let dayNavHtml = '';
         if (dayNavSections.length > 0) {
-            dayNavHtml = `
-                <div class="day-nav mb-10">
-                    <div class="container mx-auto max-w-5xl px-4 flex items-center justify-center space-x-2 md:space-x-4 overflow-x-auto">
-                        ${dayNavSections.map(s => {
-                            // Se navTitle existir, usa-o. Senão, gera automaticamente.
-                            const linkText = s.navTitle || s.title.split('→').pop().trim().split(' ')[0];
-                            return `<a href="#${s.id}" data-section-id="${s.id}">${linkText}</a>`;
-                        }).join('')}
-                    </div>
-                </div>`;
+            dayNavHtml = `<div class="day-nav mb-10"><div class="container mx-auto max-w-5xl flex items-center justify-center gap-x-2 md:gap-x-4 px-4">
+                ${dayNavSections.map(s => {
+                    const linkText = s.navTitle || s.title.split('→').pop().trim().split(' ')[0];
+                    return `<a href="#${s.id}" data-section-id="${s.id}">${linkText}</a>`;
+                }).join('')}
+            </div></div>`;
         }
 
         let htmlContent = `
             <h2 class="font-display text-2xl md:text-3xl text-gray-900 mb-1 font-bold">${dayData.title}</h2>
             <p class="text-gray-500 mb-6">${dayData.date}</p>
-            ${dayNavHtml}
-        `;
+            ${dayNavHtml}`;
 
         if (dayData.mapImage) {
             htmlContent += `<div class="cursor-pointer" onclick="openModal('${dayData.mapImage}')"><img src="${dayData.mapImage}" alt="Mapa do percurso do ${dayData.title}" class="w-full aspect-[5/2] object-cover rounded-lg mb-6"></div>`;
@@ -173,17 +168,43 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- LÓGICA GERAL DA PÁGINA ---
-    const menuBtn = document.getElementById('menu-btn'); /* ... */
-    document.querySelectorAll('.accordion-toggle').forEach(button => { /* ... */ });
-    window.openModal = (imageUrl) => { /* ... */ };
-    window.closeModal = () => { /* ... */ };
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setTimeout(() => { mobileMenu.classList.add('hidden'); }, 100)));
+    }
+
+    document.querySelectorAll('.accordion-toggle').forEach(button => {
+        button.addEventListener('click', () => {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i.fas.fa-chevron-down, i.fas.fa-chevron-up');
+            content.classList.toggle('hidden');
+            if (icon) {
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
+            }
+        });
+    });
     
+    const imageModal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const closeModalBtn = document.getElementById('closeModal');
+    window.openModal = (imageUrl) => { if (imageModal && modalImage) { modalImage.src = imageUrl; imageModal.classList.remove('hidden'); }};
+    window.closeModal = () => { if (imageModal) { imageModal.classList.add('hidden'); modalImage.src = ""; }};
+    if (imageModal && closeModalBtn) {
+        closeModalBtn.addEventListener('click', window.closeModal);
+        imageModal.addEventListener('click', (e) => { if (e.target === imageModal) window.closeModal(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !imageModal.classList.contains('hidden')) window.closeModal(); });
+    }
+
     // --- LÓGICA DE OBSERVERS (SCROLL) ---
     const mainNavLinks = document.querySelectorAll('.sticky-nav a[href^="#day"]');
     const daySections = document.querySelectorAll('.day-section');
     const dayNavLinks = document.querySelectorAll('.day-nav a');
     const sectionBlocks = document.querySelectorAll('.section-block');
     const observerOptions = { root: null, rootMargin: '-100px 0px -50% 0px', threshold: 0 };
+    
     const mainObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -194,6 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
     daySections.forEach(section => mainObserver.observe(section));
+
     const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
