@@ -15,7 +15,7 @@ const allDaysData = [day1Data, day2Data, day3Data, day4Data, day5Data];
 function updateTimelineBadges() {
     // Para testar a funcionalidade, pode substituir 'new Date()' por uma data específica da viagem.
     // Exemplo: new Date('2025-09-20T12:00:00')
-    new Date('2025-09-12T12:00:00'); 
+    const now = new Date(); // <<< ESTA ERA A LINHA EM FALTA
 
     const monthMap = { 'Setembro': 8 };
     const allTimedEvents = [];
@@ -60,7 +60,7 @@ function updateTimelineBadges() {
 
         let badgeHtml = '';
 
-        if (nextEventIndex === -1) { // Todos os eventos já passaram
+        if (nextEventIndex === -1 && allTimedEvents.length > 0) { // Todos os eventos já passaram
             badgeHtml = '<span class="timeline-badge badge-completed">CONCLUÍDO</span>';
         } else {
             if (index < nextEventIndex - 1) {
@@ -73,7 +73,10 @@ function updateTimelineBadges() {
         }
         
         if (badgeHtml) {
-            titleElement.innerHTML += badgeHtml;
+            // Garante que não adiciona badges duplicadas
+            if (!titleElement.querySelector('.timeline-badge')) {
+                titleElement.innerHTML += badgeHtml;
+            }
         }
     });
 }
@@ -168,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
             htmlContent += `</div></div>`;
         });
         
-        if (dayData.shoppingInfo) { /* ... Lógica de compras ... */ }
+        if (dayData.shoppingInfo) { /* Lógica de compras, mantida inalterada */ }
 
         section.innerHTML = htmlContent;
         targetNode.parentNode.insertBefore(section, targetNode.nextSibling);
@@ -176,7 +179,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- LÓGICA GERAL DA PÁGINA ---
-    const menuBtn = document.getElementById('menu-btn'); /* ... */
+    const menuBtn = document.getElementById('menu-btn');
+    if (menuBtn) { /* ... */ }
     document.querySelectorAll('.accordion-toggle').forEach(button => { /* ... */ });
     window.openModal = (imageUrl) => { /* ... */ };
     window.closeModal = () => { /* ... */ };
