@@ -30,7 +30,7 @@ export const day2Data = {
             mapLink: "https://maps.app.goo.gl/rUXPgUtAZMW1sijY7",
             timeline: [
                 { time: "8:58", icon: "fa-coffee", title: "Au Vieux Paris d'Arcole" },
-                { time: "9:10", icon: "fa-church", title: "Catedral de Notre-Dame", description: "Visita interior (~30-45min.) e Point Zéro", requiresTicket: true, ticketLink: "https://www.notredamedeparis.fr/visiter/", guideLink: "visita_notre-dame.html" },
+                { time: "9:10", icon: "fa-church", title: "Catedral de Notre-Dame", description: "Visita interior (~30-45min.) e Point Zéro", requiresTicket: true, ticketLink: "https://resa.notredamedeparis.fr/en/reservationindividuelle/tickets", guideLink: "visita_notre-dame.html" },
                 { icon: "fa-book", title: "Shakespeare and Company" },
                 { time: "11:00", icon: "fa-cookie-bite", title: "Lanche da Manhã", 
                     mealSuggestion: {
