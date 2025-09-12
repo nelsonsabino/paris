@@ -6,6 +6,7 @@ export const day3Data = {
     mapImage: "https://nelsonsabino.github.io/paris/Dia3a.png",
     sections: [
         {
+            id: "versalhes", // ID para a âncora de navegação
             title: "CASA → VERSALHES",
             mapLink: "https://maps.app.goo.gl/QxRJ6gVoJ88yKXfH9",
             timeline: [
@@ -37,6 +38,7 @@ export const day3Data = {
             ]
         },
         {
+            id: "viagem-montmartre", // ID para a âncora de navegação
             title: "VERSALHES → MONTMARTRE",
             mapLink: "https://maps.app.goo.gl/4vWWzNcMPB3eZq3T6",
             timeline: [
@@ -52,6 +54,7 @@ export const day3Data = {
             ]
         },
         {
+            id: "montmartre", // ID para a âncora de navegação
             title: "MONTMARTRE → MOULIN ROUGE",
             mapLink: "https://maps.app.goo.gl/DBCJQ62qSGpKDVL28",
             description: "Duração estimada do percurso a pé com visitas: ~2.5 horas",
@@ -88,6 +91,7 @@ export const day3Data = {
             ]
         },
         {
+            id: "regresso-casa", // ID para a âncora de navegação
             title: "MOULIN ROUGE → CASA",
             mapLink: "https://maps.app.goo.gl/Tic6qLZwvFfQGZCH8",
             timeline: [
