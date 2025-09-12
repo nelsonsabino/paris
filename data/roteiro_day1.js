@@ -24,7 +24,7 @@ export const day1Data = {
                     time: "13:30", icon: "fa-utensils", title: "Pausa para Almoço e WC",
                     mealSuggestion: {
                         suggestion: "Refeição rápida no Aeroporto de Orly. Opções como McDonald's, Paul, ou sandes de supermercado.",
-                        budget: "~10 € / pessoa"
+                       /* budget: "~10 € / pessoa" */
                     }
                 },
                 {
