@@ -109,34 +109,6 @@ function initializeModals() {
     document.getElementById('cancel-password')?.addEventListener('click', () => closeModal(passwordModal));
 }
 
-/**
- * Alterna entre modo claro e escuro, atualizando a classe 'dark' e salvando em localStorage.
- */
-function toggleTheme() {
-  const html = document.documentElement;
-  const isDark = html.classList.toggle('dark');
-  localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  const toggleIcon = document.getElementById('theme-toggle-icon');
-  if (toggleIcon) {
-    toggleIcon.classList.toggle('fa-sun', !isDark);
-    toggleIcon.classList.toggle('fa-moon', isDark);
-  }
-}
-
-/**
- * Inicializa o tema com base em preferência salva ou do sistema.
- */
-function initializeTheme() {
-  const savedTheme = localStorage.getItem('theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const isDark = savedTheme ? savedTheme === 'dark' : prefersDark;
-  if (isDark) {
-    document.documentElement.classList.add('dark');
-    const toggleIcon = document.getElementById('theme-toggle-icon');
-    if (toggleIcon) toggleIcon.classList.replace('fa-sun', 'fa-moon');
-  }
-}
-
 // --- CÓDIGO EXECUTADO QUANDO A PÁGINA CARREGA ---
 document.addEventListener('DOMContentLoaded', () => {
     // Inicializar componentes visuais
@@ -151,11 +123,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Inicializar os modais
     initializeModals();
-
-    // Inicializar tema e listener do toggle
-    initializeTheme();
-    const themeToggle = document.getElementById('theme-toggle');
-    if (themeToggle) {
-      themeToggle.addEventListener('click', toggleTheme);
-    }
 });
