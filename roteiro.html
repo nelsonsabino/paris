@@ -20,13 +20,13 @@
 <style>
     body {
         font-family: 'Poppins', sans-serif;
-        background-color: #f0f4f8; /* Tom de cinza mais suave e moderno */
+        background-color: #f0f4f8;
     }
     .font-display {
-        font-family: 'Playfair Display', serif; /* Fonte elegante para títulos */
+        font-family: 'Playfair Display', serif;
     }
     .day-section {
-        border: 1px solid #e2e8f0; /* Borda mais subtil */
+        border: 1px solid #e2e8f0;
         border-radius: 1rem;
         padding: 1.5rem;
         background-color: white;
@@ -38,10 +38,9 @@
         }
     }
 
-    /* --- NOVOS ESTILOS PARA CABEÇALHO DO DIA --- */
     .day-section > h2 {
         font-family: 'Playfair Display', serif;
-        color: #1e3a8a; /* Azul escuro para destaque */
+        color: #1e3a8a;
         border-bottom: 1px solid #e2e8f0;
         padding-bottom: 0.75rem;
         margin-bottom: 0.25rem;
@@ -49,9 +48,8 @@
     .day-section > p {
         font-style: italic;
         color: #64748b;
-        margin-bottom: 2.5rem; /* Mais espaço após a data */
+        margin-bottom: 2.5rem;
     }
-    /* --- FIM DOS NOVOS ESTILOS --- */
 
     .timeline-container {
         margin-left: 4rem;
@@ -69,7 +67,7 @@
     .timeline-item {
         position: relative;
         padding-left: 2.5rem;
-        padding-bottom: 3rem; /* Mais espaçamento entre eventos */
+        padding-bottom: 3rem;
     }
     .timeline-item:last-child {
         padding-bottom: 0.5rem;
@@ -93,7 +91,7 @@
         justify-content: center;
         width: 24px;
         height: 24px;
-        background-color: #475569; /* Tom de cinza mais sofisticado */
+        background-color: #475569;
         color: white;
         border-radius: 50%;
         z-index: 1;
@@ -112,8 +110,8 @@
         position: sticky;
         top: 0;
         z-index: 50;
-        background-color: rgba(255, 255, 255, 0.85); /* Fundo branco com transparência */
-        backdrop-filter: blur(8px); /* Efeito de desfoque */
+        background-color: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(8px);
         box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         border-bottom: 1px solid #e2e8f0;
     }
@@ -136,6 +134,31 @@
         position: sticky;
         top: 60px;
         z-index: 40;
+    }
+
+    /* --- NOVOS ESTILOS PARA BARRA DE NAVEGAÇÃO DO DIA --- */
+    .day-nav {
+        position: sticky;
+        top: 60px; /* Altura da nav principal */
+        z-index: 40;
+        background-color: #f1f5f9; /* Azul muito claro */
+        border-bottom: 1px solid #cbd5e1;
+        padding: 0.5rem 0;
+    }
+    .day-nav a {
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #475569;
+        transition: background-color 0.2s, color 0.2s;
+    }
+    .day-nav a.active-section {
+        background-color: #1e3a8a; /* Azul escuro */
+        color: white;
+    }
+    .day-nav a:hover {
+        background-color: #e2e8f0;
     }
 </style>
 
