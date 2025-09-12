@@ -90,12 +90,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const dayNavSections = dayData.sections.filter(s => s.id);
         let dayNavHtml = '';
         if (dayNavSections.length > 0) {
-            dayNavHtml = `<div class="day-nav mb-10"><div class="container mx-auto max-w-5xl flex items-center justify-center gap-x-2 md:gap-x-4 px-4">
+            dayNavHtml = `<div class="day-nav mb-10">
                 ${dayNavSections.map(s => {
                     const linkText = s.navTitle || s.title.split('→').pop().trim().split(' ')[0];
                     return `<a href="#${s.id}" data-section-id="${s.id}">${linkText}</a>`;
                 }).join('')}
-            </div></div>`;
+            </div>`;
         }
 
         let htmlContent = `
@@ -167,12 +167,18 @@ document.addEventListener('DOMContentLoaded', () => {
         targetNode = section;
     });
 
-    // --- LÓGICA GERAL DA PÁGINA ---
+    // --- LÓGICA GERAL DA PÁGINA (EVENT LISTENERS) ---
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     if (menuBtn && mobileMenu) {
-        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-        mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setTimeout(() => { mobileMenu.classList.add('hidden'); }, 100)));
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                setTimeout(() => { mobileMenu.classList.add('hidden'); }, 100);
+            });
+        });
     }
 
     document.querySelectorAll('.accordion-toggle').forEach(button => {
