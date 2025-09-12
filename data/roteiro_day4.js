@@ -7,6 +7,7 @@ export const day4Data = {
     sections: [
         {
             id: "louvre",
+            navTitle: "Louvre",
             title: "CASA → MUSEU DO LOUVRE",
             mapLink: "https://maps.app.goo.gl/HWn3htQ9Ewh4bVmi7",
             timeline: [
@@ -36,6 +37,7 @@ export const day4Data = {
         },
         {
             id: "opera",
+            navTitle: "Ópera",
             title: "PALAIS ROYAL → ÓPERA & GALERIES LAFAYETTE",
             mapLink: "https://maps.app.goo.gl/PDr1QqRANoiuuEJv8",
             timeline: [
@@ -58,6 +60,7 @@ export const day4Data = {
         },
         {
             id: "viagem-marais",
+            navTitle: "Ida Marais",
             title: "GALERIES LAFAYETTE → FILLES DU CALVAIRE",
             mapLink: "https://maps.app.goo.gl/cpviY5jbzmUnDDVt7",
             timeline: [
@@ -73,6 +76,7 @@ export const day4Data = {
         },
         {
             id: "marais",
+            navTitle: "Marais",
             title: "FILLES DU CALVAIRE → PRAÇA DES VOSGES",
             mapLink: "https://maps.app.goo.gl/MBQ3dAXYBiFW33Dn6",
             description: "Duração estimada do percurso a pé com visitas: ~1.5 - 2 horas",
@@ -100,6 +104,7 @@ export const day4Data = {
         },
         {
             id: "regresso-d4",
+            navTitle: "Regresso",
             title: "MARAIS → CASA",
             mapLink: "https://maps.app.goo.gl/EKhGAzi27pZ2JzrB8",
             timeline: [
