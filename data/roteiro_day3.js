@@ -30,16 +30,8 @@ export const day3Data = {
                 { time: "08:50", icon: "fa-crown", title: "Palácio de Versalhes", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1JWHf_KUwofGdZgYj5wp0JswPyZcCs3ys/view?usp=drive_link", guideLink: "visita_versalhes.html", description: "Entrada no Palácio. Nota: Existem várias casas de banho dentro do palácio e nos jardins." }
             ]
         },
-        {
-            title: "VISITA AOS JARDINS E DOMÍNIOS",
-            mapLink: "https://www.google.com/maps/place/Jardins+do+Pal%C3%A1cio+de+Versalhes/@48.8057278,2.1027989,15.75z",
-            timeline: [
-                { time: "10:30", icon: "fa-cookie-bite", title: "Lanche da Manhã",
-                    mealSuggestion: {
-                        suggestion: "Pausa nos jardins para um lanche (fruta, barritas) levado de Paris para poupar.",
-                        budget: "~2 € / pessoa"
-                    }
-                },
+        
+            
                 { time: "13:00", icon: "fa-utensils", title: "Almoço Piquenique",
                     mealSuggestion: {
                         suggestion: "Almoço nos jardins com sandes preparadas no dia anterior. Evita os preços altos e as filas dos restaurantes do complexo.",
