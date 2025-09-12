@@ -22,13 +22,13 @@ export const day4Data = {
                 { time: "11:00", icon: "fa-cookie-bite", title: "Lanche da Manhã",
                     mealSuggestion: {
                         suggestion: "Pausa rápida durante a visita ao Louvre para comer uma barrinha de cereais ou outro snack levado na mochila.",
-                        budget: "~1,5 € / pessoa"
+                     /*   budget: "~1,5 € / pessoa"*/
                     }
                 },
                 { time: "13:00", icon: "fa-utensils", title: "Almoço perto do Louvre",
                     mealSuggestion: {
                         suggestion: "Comprar sandes ou saladas take-away no Monoprix da Rue de Rivoli, junto ao Louvre. É uma opção muito prática e económica para não perder tempo.",
-                        budget: "~7 € / pessoa"
+                     /*   budget: "~7 € / pessoa"*/
                     }
                 }
             ]
@@ -77,7 +77,7 @@ export const day4Data = {
                     description: "Visitar o mercado coberto mais antigo de Paris e aproveitar para jantar numa das suas bancas de street food.",
                     mealSuggestion: {
                         suggestion: "Explorar a variedade de cozinhas do mundo (italiana, marroquina, etc.) e escolher uma opção para um jantar informal e saboroso.",
-                        budget: "~10-12 € / pessoa"
+                      /*  budget: "~10-12 € / pessoa"*/
                     }
                 },
                 { time: "19:30", icon: "fa-person-walking", title: "Explorar o Marais", description: "Passeio pela Rue Vieille-du-Temple e Rue des Rosiers." },
