@@ -7,6 +7,7 @@ export const day5Data = {
     sections: [
         {
             id: "cacifos",
+            navTitle: "Malas",
             title: "CASA → CACIFO DE MALAS",
             mapLink: "https://maps.app.goo.gl/wW3zVHupQH2CQmCb8",
             timeline: [
@@ -28,6 +29,7 @@ export const day5Data = {
         },
         {
             id: "quartier-latin",
+            navTitle: "Quartier Latin",
             title: "MANHÃ NO QUARTIER LATIN",
             mapLink: "https://maps.app.goo.gl/7GCuifBh5KauXXcCA",
             description: "Duração estimada do percurso a pé com visitas: ~3.5 horas",
@@ -57,6 +59,7 @@ export const day5Data = {
         },
         {
             id: "st-germain",
+            navTitle: "St. Germain",
             title: "ALMOÇO E TARDE EM SAINT-GERMAIN-DES-PRÉS",
             mapLink: "https://maps.app.goo.gl/ZcqjqcGoYmcdEt8u6",
             timeline: [
@@ -91,6 +94,7 @@ export const day5Data = {
         },
         {
             id: "regresso-d5",
+            navTitle: "Regresso",
             title: "CACIFO DE MALAS → AEROPORTO ORLY",
             mapLink: "https://maps.app.goo.gl/FT9XCYpm46v4dmf66",
             timeline: [
