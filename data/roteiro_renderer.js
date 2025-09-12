@@ -15,7 +15,7 @@ const allDaysData = [day1Data, day2Data, day3Data, day4Data, day5Data];
 function updateTimelineBadges() {
     // Para testar a funcionalidade, pode substituir 'new Date()' por uma data específica da viagem.
     // Exemplo: new Date('2025-09-20T12:00:00')
-    const now = new Date(); 
+    new Date('2025-09-12T12:00:00'); 
 
     const monthMap = { 'Setembro': 8 };
     const allTimedEvents = [];
