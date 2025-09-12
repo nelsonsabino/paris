@@ -14,29 +14,45 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
 
 <style>
     body {
         font-family: 'Poppins', sans-serif;
-        background-color: #d3d6de;
+        background-color: #f0f4f8; /* Tom de cinza mais suave e moderno */
     }
     .font-display {
-        font-family:  'Poppins', sans-serif;
+        font-family: 'Playfair Display', serif; /* Fonte elegante para títulos */
     }
     .day-section {
-        border: 1px solid #bbc1c9;
+        border: 1px solid #e2e8f0; /* Borda mais subtil */
         border-radius: 1rem;
         padding: 1.5rem;
         background-color: white;
-        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
     }
     @media (min-width: 768px) {
         .day-section {
-            padding: 1.5rem 2rem;
+            padding: 2rem 2.5rem;
         }
     }
+
+    /* --- NOVOS ESTILOS PARA CABEÇALHO DO DIA --- */
+    .day-section > h2 {
+        font-family: 'Playfair Display', serif;
+        color: #1e3a8a; /* Azul escuro para destaque */
+        border-bottom: 1px solid #e2e8f0;
+        padding-bottom: 0.75rem;
+        margin-bottom: 0.25rem;
+    }
+    .day-section > p {
+        font-style: italic;
+        color: #64748b;
+        margin-bottom: 2.5rem; /* Mais espaço após a data */
+    }
+    /* --- FIM DOS NOVOS ESTILOS --- */
+
     .timeline-container {
         margin-left: 4rem;
     }
@@ -53,7 +69,7 @@
     .timeline-item {
         position: relative;
         padding-left: 2.5rem;
-        padding-bottom: 2.5rem;
+        padding-bottom: 3rem; /* Mais espaçamento entre eventos */
     }
     .timeline-item:last-child {
         padding-bottom: 0.5rem;
@@ -77,36 +93,29 @@
         justify-content: center;
         width: 24px;
         height: 24px;
-        background-color: #526487;
+        background-color: #475569; /* Tom de cinza mais sofisticado */
         color: white;
         border-radius: 50%;
         z-index: 1;
     }
-    /* --- NOVOS ESTILOS PARA REFEIÇÕES --- */
     .timeline-icon-meal {
-        background-color: #22c55e; /* green-500 */
+        background-color: #22c55e;
     }
     .timeline-item-meal {
-        background-color: #f0fdf4; /* green-50 */
-        border-left: 4px solid #4ade80; /* green-400 */
+        background-color: #f0fdf4;
+        border-left: 4px solid #4ade80;
         padding: 0.75rem 1rem;
         border-radius: 0 0.5rem 0.5rem 0;
-        margin-top: 0.25rem;
-    }
-    /* --- FIM DOS NOVOS ESTILOS --- */
-    .info-box {
-        background-color: #f1f5f9;
-        border-left: 4px solid #606c38;
-        padding: 0.75rem 1rem;
-        margin-top: 1rem;
-        border-radius: 0 0.5rem 0.5rem 0;
+        margin-top: 0.5rem;
     }
     .sticky-nav {
         position: sticky;
         top: 0;
         z-index: 50;
-        background-color: #ffffff;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        background-color: rgba(255, 255, 255, 0.85); /* Fundo branco com transparência */
+        backdrop-filter: blur(8px); /* Efeito de desfoque */
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        border-bottom: 1px solid #e2e8f0;
     }
     .metro-line {
         display: inline-block;
@@ -118,19 +127,15 @@
         margin: 0 4px;
         line-height: 1.2;
     }
-
-    /* Estilo para o link ativo no menu do desktop */
     .active-day-link {
-        background-color: #eef2ff; /* Um azul muito claro */
-        color: #312e81; /* Um azul escuro */
-        font-weight: 700; /* Negrito */
+        background-color: #e0e7ff;
+        color: #312e81;
+        font-weight: 700;
     }
-
-    /* Estilo para o cabeçalho fixo no telemóvel */
     .mobile-day-header {
         position: sticky;
-        top: 60px; /* Altura da tua barra de navegação */
-        z-index: 40; /* Abaixo da nav, mas acima do resto */
+        top: 60px;
+        z-index: 40;
     }
 </style>
 
@@ -141,14 +146,14 @@
     <nav class="sticky-nav">
         <div class="container mx-auto max-w-5xl px-4">
             <div class="flex justify-between items-center py-3">
-                <a href="index.html" class="font-display text-xl text-gray-800">INICIO</a>
+                <a href="index.html" class="font-display text-xl text-gray-800 tracking-wider">INÍCIO</a>
                 <div class="hidden md:flex items-center space-x-2">
                     <a href="#day1" class="text-gray-600 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 1</a>
                     <a href="#day2" class="text-gray-600 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 2</a>
                     <a href="#day3" class="text-gray-600 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 3</a>
                     <a href="#day4" class="text-gray-600 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 4</a>
                     <a href="#day5" class="text-gray-600 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 5</a>
-                    <a href="guia.html" class="bg-blue-800 text-white font-semibold py-2 px-4 rounded-md transition hover:bg-blue-500">GUIA</a>
+                    <a href="guia.html" class="bg-blue-800 text-white font-semibold py-2 px-4 rounded-md transition hover:bg-blue-700">GUIA</a>
                 </div>
                 <div class="md:hidden">
                     <button id="menu-btn" class="text-gray-700 focus:outline-none"><i class="fas fa-bars text-2xl"></i></button>
@@ -174,7 +179,7 @@
     <!-- O conteúdo dos dias será injetado aqui pelo JavaScript -->
     <div class="container mx-auto p-4 md:p-8 max-w-5xl">
         <header class="text-center mb-12 md:mb-16">
-            <h1 class="font-display text-3xl md:text-5xl text-gray-900 mb-4 font-bold">Roteiro Detalhado de Paris</h1>
+            <h1 class="font-display text-4xl md:text-5xl text-gray-900 mb-4 font-bold">Roteiro Detalhado de Paris</h1>
             <p class="text-base md:text-lg text-gray-600">Uma viagem de 5 dias pela cultura, história e magia da capital francesa.</p>
         </header>
 
