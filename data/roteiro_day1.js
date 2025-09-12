@@ -82,12 +82,12 @@ export const day1Data = {
                       /*  budget: "~6 € / pessoa"*/
                     }
                 },
-                { time: "22:45", icon: "fa-croissant", title: "Lanche Doce",
+             /*   { time: "22:45", icon: "fa-croissant", title: "Lanche Doce",
                     mealSuggestion: {
                         suggestion: "Comprar um croissant ou pão de chocolate para manter a energia dos mais novos antes da viagem de metro de volta.",
-                      /*  budget: "~2 € / pessoa"*/
+                        budget: "~2 € / pessoa"
                     }
-                },
+                },*/
                 { time: "23:00", icon: "fa-person-walking", title: "Ida para o Metro École Militaire" },
                 {
                     icon: "fa-restroom",
