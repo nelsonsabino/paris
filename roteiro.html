@@ -20,13 +20,13 @@
 <style>
     body {
         font-family: 'Poppins', sans-serif;
-        background-color: #f0f4f8;
+        background-color: #f0f4f8; /* Tom de cinza mais suave e moderno */
     }
     .font-display {
-        font-family: 'Playfair Display', serif;
+        font-family: 'Playfair Display', serif; /* Fonte elegante para títulos */
     }
     .day-section {
-        border: 1px solid #e2e8f0;
+        border: 1px solid #e2e8f0; /* Borda mais subtil */
         border-radius: 1rem;
         padding: 1.5rem;
         background-color: white;
@@ -40,7 +40,7 @@
 
     .day-section > h2 {
         font-family: 'Playfair Display', serif;
-        color: #1e3a8a;
+        color: #1e3a8a; /* Azul escuro para destaque */
         border-bottom: 1px solid #e2e8f0;
         padding-bottom: 0.75rem;
         margin-bottom: 0.25rem;
@@ -48,7 +48,7 @@
     .day-section > p {
         font-style: italic;
         color: #64748b;
-        margin-bottom: 2.5rem;
+        margin-bottom: 2.5rem; /* Mais espaço após a data */
     }
 
     .timeline-container {
@@ -67,7 +67,7 @@
     .timeline-item {
         position: relative;
         padding-left: 2.5rem;
-        padding-bottom: 3rem;
+        padding-bottom: 3rem; /* Mais espaçamento entre eventos */
     }
     .timeline-item:last-child {
         padding-bottom: 0.5rem;
@@ -91,7 +91,7 @@
         justify-content: center;
         width: 24px;
         height: 24px;
-        background-color: #475569;
+        background-color: #475569; /* Tom de cinza mais sofisticado */
         color: white;
         border-radius: 50%;
         z-index: 1;
@@ -110,8 +110,8 @@
         position: sticky;
         top: 0;
         z-index: 50;
-        background-color: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(8px);
+        background-color: rgba(255, 255, 255, 0.85); /* Fundo branco com transparência */
+        backdrop-filter: blur(8px); /* Efeito de desfoque */
         box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         border-bottom: 1px solid #e2e8f0;
     }
@@ -136,7 +136,6 @@
         z-index: 40;
     }
 
-    /* --- NOVOS ESTILOS PARA BARRA DE NAVEGAÇÃO DO DIA --- */
     .day-nav {
         position: sticky;
         top: 60px; /* Altura da nav principal */
@@ -159,6 +158,29 @@
     }
     .day-nav a:hover {
         background-color: #e2e8f0;
+    }
+
+    /* --- NOVOS ESTILOS PARA BADGES DE ESTADO --- */
+    .timeline-badge {
+        display: inline-block;
+        padding: 0.15rem 0.6rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        border-radius: 9999px;
+        margin-left: 0.75rem;
+        vertical-align: middle;
+    }
+    .badge-completed {
+        background-color: #e5e7eb; /* gray-200 */
+        color: #4b5563; /* gray-600 */
+    }
+    .badge-ongoing {
+        background-color: #22c55e; /* green-500 */
+        color: white;
+    }
+    .badge-next {
+        background-color: #3b82f6; /* blue-500 */
+        color: white;
     }
 </style>
 
