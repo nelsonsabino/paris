@@ -6,6 +6,7 @@ export const day2Data = {
     mapImage: "https://nelsonsabino.github.io/paris/Dia2b.png",
     sections: [
         {
+            id: "ida-cite",
             title: "CASA → ÎLE DE LA CITÉ",
             mapLink: "https://maps.app.goo.gl/7EPhqZnEWWDcPmbS6",
             timeline: [
@@ -26,6 +27,7 @@ export const day2Data = {
             ]
         },
         {
+            id: "ile-cite",
             title: "ÎLE DE LA CITÉ → SQUARE DU VERT-GALANT",
             mapLink: "https://maps.app.goo.gl/rUXPgUtAZMW1sijY7",
             timeline: [
@@ -57,6 +59,7 @@ export const day2Data = {
             ]
         },
         {
+            id: "tulherias",
             title: "SQUARE DU VERT-GALANT → LE PETIT PALAIS",
             mapLink: "https://maps.app.goo.gl/Z2i67u12TGEfCiS17",
             timeline: [
@@ -86,6 +89,7 @@ export const day2Data = {
             ]
         },
         {
+            id: "arco-triunfo",
             title: "METRO ATÉ ARCO DO TRIUNFO",
             mapLink: "https://maps.app.goo.gl/833iy7seTNW8XpgP7",
             timeline: [
@@ -101,6 +105,7 @@ export const day2Data = {
             ]
         },
         {
+            id: "regresso-d2",
             title: "CHAMPS-ÉLYSÉES → CASA",
             mapLink: "https://maps.app.goo.gl/SA1t9d2R1KwJmbvj8",
             timeline: [
