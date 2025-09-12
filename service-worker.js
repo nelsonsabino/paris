@@ -11,7 +11,8 @@ const urlsToCache = [
   '/apple-touch-icon.png',
   '/web-app-manifest-192x192.png',
   '/web-app-manifest-512x512.png',
-  '/css/tailwind.css',
+
+  // Imagens dos dias (pasta /data)
   '/data/Dia1.png',
   '/data/Dia1a.png',
   '/data/Dia1b.png',
