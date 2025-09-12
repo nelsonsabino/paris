@@ -46,7 +46,7 @@ export const day1Data = {
                 { time: "16:30", icon: "fa-cookie-bite", title: "Lanche da Tarde",
                     mealSuggestion: {
                         suggestion: "Pequeno lanche em casa (fruta, bolachas do supermercado) para aguentar até ao jantar.",
-                        budget: "~1,5 € / pessoa"
+                     /*   budget: "~1,5 € / pessoa" */
                     }
                 }
             ]
@@ -79,13 +79,13 @@ export const day1Data = {
                 { time: "22:00", icon: "fa-utensils", title: "Jantar Económico",
                     mealSuggestion: {
                         suggestion: "Explorar a Rue Cler para encontrar crepes ou levar sandes feitas. Uma boa opção é comprar algo num supermercado (Franprix/Monoprix) na zona.",
-                        budget: "~6 € / pessoa"
+                      /*  budget: "~6 € / pessoa"*/
                     }
                 },
                 { time: "22:45", icon: "fa-croissant", title: "Lanche Doce",
                     mealSuggestion: {
                         suggestion: "Comprar um croissant ou pão de chocolate para manter a energia dos mais novos antes da viagem de metro de volta.",
-                        budget: "~2 € / pessoa"
+                      /*  budget: "~2 € / pessoa"*/
                     }
                 },
                 { time: "23:00", icon: "fa-person-walking", title: "Ida para o Metro École Militaire" },
