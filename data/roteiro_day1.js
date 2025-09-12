@@ -6,6 +6,7 @@ export const day1Data = {
     mapImage: "https://nelsonsabino.github.io/paris/Dia1b.png", // Imagem do mapa geral do dia
     sections: [
         {
+            id: "viagem",
             title: "ALENQUER → TERMINAL 2",
             mapLink: "https://maps.app.goo.gl/UDWRJ6vJieWfL2G19",
             timeline: [
@@ -17,6 +18,7 @@ export const day1Data = {
             ]
         },
         {
+            id: "chegada",
             title: "AEROPORTO ORLY → CASA",
             mapLink: "https://maps.app.goo.gl/cyPYrbbdUmfpbmAz9",
             timeline: [
@@ -52,6 +54,7 @@ export const day1Data = {
             ]
         },
         {
+            id: "ida-eiffel",
             title: "CASA → INVALIDES",
             mapLink: "https://maps.app.goo.gl/eBNE3Dy1SoSbVufCA",
             timeline: [
@@ -68,6 +71,7 @@ export const day1Data = {
             ]
         },
         {
+            id: "zona-eiffel",
             title: "INVALIDES - TOUR EIFFEL",
             mapLink: "https://maps.app.goo.gl/R9Hgbbwr1KJgKHkD8",
             timeline: [
@@ -102,6 +106,7 @@ export const day1Data = {
             ]
         },
         {
+            id: "regresso-d1",
             title: "ÉCOLE MILITAIRE → CASA",
             mapLink: "https://maps.app.goo.gl/h8Evfet5J4ntq5cE8",
             timeline: [
