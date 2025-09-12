@@ -12,7 +12,7 @@ export const day3Data = {
                 { time: "07:00", icon: "fa-mug-hot", title: "Pequeno-almoço em casa",
                     mealSuggestion: {
                         suggestion: "Refeição reforçada em casa, antes da longa viagem de RER para Versalhes.",
-                        budget: "~2 € / pessoa"
+                       /* budget: "~2 € / pessoa"*/
                     }
                 },
                 { time: "07:26", icon: "fa-house-chimney", title: "Saída de Casa" },
@@ -31,7 +31,7 @@ export const day3Data = {
                 { time: "13:00", icon: "fa-utensils", title: "Almoço Piquenique",
                     mealSuggestion: {
                         suggestion: "Almoço nos jardins com sandes preparadas no dia anterior. Evita os preços altos e as filas dos restaurantes do complexo.",
-                        budget: "~7 € / pessoa"
+                     /*   budget: "~7 € / pessoa"*/
                     }
                 }
             ]
@@ -62,7 +62,7 @@ export const day3Data = {
                  { time: "17:00", icon: "fa-ice-cream", title: "Lanche da Tarde",
                     mealSuggestion: {
                         suggestion: "Pausa para um crepe, croissant ou outra pastelaria local numa das muitas 'boulangeries' de Montmartre.",
-                        budget: "~3 € / pessoa"
+                       /* budget: "~3 € / pessoa"*/
                     }
                 },
                 { time: "17:20", icon: "fa-utensils", title: "Le Consulat & La Maison Rose", description: "Paragem para fotos: ~10 min" },
@@ -72,7 +72,7 @@ export const day3Data = {
                 { time: "19:30", icon: "fa-utensils", title: "Jantar em Montmartre",
                     mealSuggestion: {
                         suggestion: "Jantar rápido e económico. A zona tem muitas opções de kebab, pizza ou falafel que são saborosas e baratas, antes de apanhar o metro.",
-                        budget: "~9 € / pessoa"
+                    /*    budget: "~9 € / pessoa"*/
                     }
                 },
                 {
