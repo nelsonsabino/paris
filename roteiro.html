@@ -106,7 +106,9 @@
         border-radius: 0 0.5rem 0.5rem 0;
         margin-top: 0.5rem;
     }
-    .sticky-nav {
+
+    /* Nova Estrutura de Navegação */
+    .sticky-nav-days {
         position: sticky;
         top: 0;
         z-index: 50;
@@ -114,26 +116,11 @@
         backdrop-filter: blur(8px);
         box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         border-bottom: 1px solid #e2e8f0;
+        padding: 0.5rem 1rem;
     }
-    .metro-line {
-        display: inline-block;
-        color: white;
-        padding: 2px 7px;
-        border-radius: 4px;
-        font-weight: bold;
-        font-size: 0.8rem;
-        margin: 0 4px;
-        line-height: 1.2;
-    }
-    .active-day-link {
-        background-color: #e0e7ff;
-        color: #312e81;
-        font-weight: 700;
-    }
-
     .day-nav {
         position: sticky;
-        top: 57px;
+        top: 53px; /* Altura da barra de dias */
         z-index: 40;
         background-color: #f1f5f9;
         border-bottom: 1px solid #cbd5e1;
@@ -143,32 +130,13 @@
         justify-content: center;
         gap: 0.5rem;
     }
-    .day-nav a {
-        padding: 0.5rem 1rem;
-        border-radius: 0.5rem;
-        font-size: 0.875rem;
-        font-weight: 600;
-        color: #475569;
-        transition: background-color 0.2s, color 0.2s;
-        white-space: nowrap;
-    }
-    .day-nav a.active-section {
-        background-color: #1e3a8a;
-        color: white;
-    }
-    .day-nav a:hover {
-        background-color: #e2e8f0;
-    }
 
-    .timeline-badge {
-        display: inline-block;
-        padding: 0.15rem 0.6rem;
-        font-size: 0.75rem;
-        font-weight: 600;
-        border-radius: 9999px;
-        margin-left: 0.75rem;
-        vertical-align: middle;
-    }
+    .metro-line { display: inline-block; color: white; padding: 2px 7px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; margin: 0 4px; line-height: 1.2; }
+    .active-day-link { background-color: #e0e7ff; color: #312e81; font-weight: 700; }
+    .day-nav a { padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 0.875rem; font-weight: 600; color: #475569; transition: background-color 0.2s, color 0.2s; white-space: nowrap; }
+    .day-nav a.active-section { background-color: #1e3a8a; color: white; }
+    .day-nav a:hover { background-color: #e2e8f0; }
+    .timeline-badge { display: inline-block; padding: 0.15rem 0.6rem; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; margin-left: 0.75rem; vertical-align: middle; }
     .badge-completed { background-color: #e5e7eb; color: #4b5563; }
     .badge-ongoing { background-color: #22c55e; color: white; }
     .badge-next { background-color: #3b82f6; color: white; }
@@ -177,26 +145,26 @@
 </head>
 <body class="text-gray-800">
 
-    <!-- NAV BAR -->
-    <nav class="sticky-nav">
+    <!-- CABEÇALHO DA PÁGINA (NÃO-FLUTUANTE) -->
+    <header class="bg-white border-b border-gray-200">
         <div class="container mx-auto max-w-5xl px-4">
-            <!-- Flex-wrap permite que os itens quebrem para a linha de baixo em ecrãs pequenos -->
-            <div class="flex flex-wrap justify-between items-center py-3 gap-y-2">
+            <div class="flex justify-between items-center py-3">
                 <a href="index.html" class="font-display text-xl text-gray-800 tracking-wider">INÍCIO</a>
-                
-                <!-- O menu de dias está SEMPRE visível como um flex container -->
-                <div class="flex items-center justify-center flex-wrap gap-x-1 gap-y-2">
-                    <a href="#day1" class="text-gray-600 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 1</a>
-                    <a href="#day2" class="text-gray-600 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 2</a>
-                    <a href="#day3" class="text-gray-600 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 3</a>
-                    <a href="#day4" class="text-gray-600 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 4</a>
-                    <a href="#day5" class="text-gray-600 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 5</a>
-                    <a href="guia.html" class="bg-blue-800 text-white font-semibold py-2 px-4 rounded-md transition hover:bg-blue-700">GUIA</a>
-                </div>
+                <a href="guia.html" class="bg-blue-800 text-white font-semibold py-2 px-4 rounded-md transition hover:bg-blue-700">GUIA</a>
             </div>
         </div>
+    </header>
+
+    <!-- BARRA DE NAVEGAÇÃO DOS DIAS (FLUTUANTE) -->
+    <nav class="sticky-nav-days">
+        <div class="flex items-center justify-center flex-wrap gap-x-1 sm:gap-x-2 gap-y-2">
+            <a href="#day1" class="text-gray-600 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 1</a>
+            <a href="#day2" class="text-gray-600 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 2</a>
+            <a href="#day3" class="text-gray-600 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 3</a>
+            <a href="#day4" class="text-gray-600 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 4</a>
+            <a href="#day5" class="text-gray-600 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 5</a>
+        </div>
     </nav>
-    <!-- FIM NAV BAR -->
 
     <!-- O conteúdo dos dias será injetado aqui pelo JavaScript -->
     <div class="container mx-auto p-4 md:p-8 max-w-5xl">
