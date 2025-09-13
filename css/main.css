@@ -80,3 +80,9 @@ html.dark input[type="password"] {
 
 html.dark .theme-switcher .sun-icon { display: block; }
 html.dark .theme-switcher .moon-icon { display: none; }
+
+
+/* --- Ajuste para a Animação Lottie no Modo Escuro --- */
+html.dark #lottie {
+    filter: invert(1);
+}
