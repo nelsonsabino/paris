@@ -5,81 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guia de Viagem: Paris</title>
 
-<!-- Favicon para diferentes browsers -->
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <!-- SCRIPT ANTI-FLASH PARA O MODO ESCURO -->
+    <script>
+        (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches))
+            ? document.documentElement.classList.add('dark')
+            : document.documentElement.classList.remove('dark');
+    </script>
+
+    <!-- Favicon para diferentes browsers -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
     
+    <!-- LIGAÇÃO PARA O FICHEIRO CSS EXTERNO -->
+    <link rel="stylesheet" href="css/guia.css">
 
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #e1e6eb;
-        }
-        .font-display {
-            font-family: 'Poppins', sans-serif;
-        }
-        .info-box {
-            background-color: #f1f5f9;
-            border-left: 4px solid #606c38;
-            padding: 0.75rem 1rem;
-            margin-top: 1rem;
-            border-radius: 0 0.5rem 0.5rem 0;
-        }
-        .timeline-container::before {
-            content: '';
-            position: absolute;
-            left: 12px;
-            top: 2rem;
-            bottom: 2rem;
-            width: 2px;
-            background-color: #e5e7eb;
-            z-index: 0;
-        }
-        .timeline-item {
-            position: relative;
-            padding-left: 2.5rem;
-            padding-bottom: 2.5rem;
-        }
-        .timeline-item:last-child {
-            padding-bottom: 0.5rem;
-        }
-        .timeline-icon {
-            position: absolute;
-            left: 0;
-            top: 0.25rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 24px;
-            height: 24px;
-            background-color: #606c38;
-            color: white;
-            border-radius: 50%;
-            z-index: 1;
-        }
-        .sticky-nav {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            background-color: #ffffff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .image-popup-trigger img {
-            cursor: pointer;
-            transition: transform 0.2s ease-in-out;
-        }
-        .image-popup-trigger:hover img {
-            transform: scale(1.03);
-        }
-    </style>
 </head>
 <body class="text-gray-700">
 
@@ -88,18 +35,27 @@
         <div class="container mx-auto max-w-5xl px-4">
             <div class="flex justify-between items-center py-3">
                 <a href="index.html" class="font-display text-xl text-gray-800">INICIO</a>
-                <div class="hidden md:flex space-x-2">
-                    <a href="#day1" class="text-gray-600 font-medium py-2 px-3 rounded-md transition hover:bg-gray-200 hover:text-gray-800">Dia 1</a>
-                    <a href="#day2" class="text-gray-600 font-medium py-2 px-3 rounded-md transition hover:bg-gray-200 hover:text-gray-800">Dia 2</a>
-                    <a href="#day3" class="text-gray-600 font-medium py-2 px-3 rounded-md transition hover:bg-gray-200 hover:text-gray-800">Dia 3</a>
-                    <a href="#day4" class="text-gray-600 font-medium py-2 px-3 rounded-md transition hover:bg-gray-200 hover:text-gray-800">Dia 4</a>
-                    <a href="#day5" class="text-gray-600 font-medium py-2 px-3 rounded-md transition hover:bg-gray-200 hover:text-gray-800">Dia 5</a>
-                    <a href="roteiro.html" class="bg-blue-800 text-white font-semibold py-2 px-4 rounded-md transition hover:bg-blue-500">ROTEIRO</a>
-                </div>
-                <div class="md:hidden">
-                    <button id="menu-btn" class="text-gray-700 focus:outline-none">
-                        <i class="fas fa-bars text-2xl"></i>
+                <div class="flex items-center gap-2">
+                    <!-- Links para Desktop -->
+                    <div class="hidden md:flex items-center space-x-2">
+                        <a href="#day1" class="text-gray-600 font-medium py-2 px-3 rounded-md transition hover:bg-gray-200 hover:text-gray-800">Dia 1</a>
+                        <a href="#day2" class="text-gray-600 font-medium py-2 px-3 rounded-md transition hover:bg-gray-200 hover:text-gray-800">Dia 2</a>
+                        <a href="#day3" class="text-gray-600 font-medium py-2 px-3 rounded-md transition hover:bg-gray-200 hover:text-gray-800">Dia 3</a>
+                        <a href="#day4" class="text-gray-600 font-medium py-2 px-3 rounded-md transition hover:bg-gray-200 hover:text-gray-800">Dia 4</a>
+                        <a href="#day5" class="text-gray-600 font-medium py-2 px-3 rounded-md transition hover:bg-gray-200 hover:text-gray-800">Dia 5</a>
+                        <a href="roteiro.html" class="bg-blue-800 text-white font-semibold py-2 px-4 rounded-md transition hover:bg-blue-700">ROTEIRO</a>
+                    </div>
+                    <!-- Botão Seletor de Tema -->
+                    <button id="theme-switcher" class="theme-switcher h-10 w-10 rounded-full text-gray-500 dark:text-slate-400 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors duration-200 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-sun text-xl sun-icon"></i>
+                        <i class="fa-solid fa-moon text-xl moon-icon"></i>
                     </button>
+                    <!-- Menu Hamburger para Mobile -->
+                    <div class="md:hidden">
+                        <button id="menu-btn" class="text-gray-700 focus:outline-none">
+                            <i class="fas fa-bars text-2xl"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -223,6 +179,8 @@
                 </div>
             </div>
         </section>
+
+        <!-- ... (o restante do conteúdo dos outros dias permanece igual) ... -->
 
         <!-- =================================================================== -->
         <!-- ==================== DIA 3: DOMINGO 21/SET ==================== -->
@@ -448,5 +406,9 @@
             }
         });
     </script>
+
+    <!-- SCRIPT DO SELETOR DE TEMA -->
+    <script src="js/theme_switcher.js"></script>
+
 </body>
 </html>
