@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt" class="light"> <!-- Define 'light' como padrão para evitar flashes -->
+<html lang="pt">
 <head>
     <link rel="manifest" href="site.webmanifest">
     <meta name="theme-color" content="#facc15" />
@@ -14,67 +14,22 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     
     <title>Planeamento: Viagem a Paris 2025</title>
-    
-    <!-- Scripts de Estilos e Fontes -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
-    
-    <!-- Scripts de Funcionalidades -->
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
     <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/core/locales/pt-br.global.min.js'></script>
     
-    <!-- Script do Theme Switcher (IMPORTANTE: colocar no head) -->
-    <script src="js/theme_switcher.js"></script>
-    
-    <style>
-        .highlight-card { aspect-ratio: 1 / 1; }
-        .highlight-card.col-span-2 { aspect-ratio: 2 / 1; }
-        body { font-family: 'Poppins', sans-serif; font-size: 14px; }
-        .main-title { font-size: 2rem; line-height: 2.5rem; }
-        .section-title { font-size: 1.5rem; line-height: 2rem; }
-        .countdown-number { font-size: 2.25rem; }
-        @media (min-width: 768px) {
-            body { font-size: 16px; }
-            .main-title { font-size: 3rem; line-height: 1; }
-            .section-title { font-size: 1.875rem; line-height: 2.25rem; }
-            .countdown-number { font-size: 2.25rem; }
-        }
-        .checklist-item input:checked + label { text-decoration: line-through; }
-        .checklist-item input:checked + label .icon-box { background-color: #16a34a; color: white; }
-        .text-shadow { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); }
+    <!-- LIGAÇÃO PARA O FICHEIRO CSS EXTERNO -->
+    <link rel="stylesheet" href="css/main.css">
 
-        /* Controlo dos ícones do tema */
-        .dark .dark-icon { display: block; }
-        .dark .light-icon { display: none; }
-        .light .dark-icon { display: none; }
-        .light .light-icon { display: block; }
-        :not(.dark) .dark-icon { display: none; }
-        :not(.dark) .light-icon { display: block; }
-
-        /* Estilos Dark Mode para FullCalendar */
-        .dark .fc {
-            --fc-border-color: #374151; /* gray-700 */
-            --fc-daygrid-day-bg-color: transparent;
-            --fc-list-even-row-bg-color: #1f2937; /* gray-800 */
-        }
-        .dark .fc .fc-daygrid-day-number,
-        .dark .fc .fc-col-header-cell-cushion,
-        .dark .fc .fc-list-day-side-text,
-        .dark .fc .fc-list-event-title a {
-            color: #d1d5db; /* gray-300 */
-        }
-        .dark .fc .fc-toolbar-title {
-            color: #f3f4f6; /* gray-100 */
-        }
-    </style>
 </head>
-<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+<body class="text-gray-800">
 
     <!-- Loader -->
-    <div id="loader" class="fixed inset-0 flex items-center justify-center bg-white dark:bg-gray-900 z-50">
+    <div id="loader" class="fixed inset-0 flex items-center justify-center bg-white z-50">
       <div id="lottie" class="h-40 w-40"></div>
     </div>
     
@@ -82,15 +37,9 @@
     <div id="content" class="opacity-0 transition-opacity duration-1000">
         <div class="container mx-auto p-4 md:p-8 max-w-5xl">
             <!-- TÍTULO SEPARADO NO TOPO DA PÁGINA -->
-            <header class="flex justify-between items-center mb-8">
-                <div class="text-left">
-                    <h1 class="main-title font-bold text-gray-900 dark:text-white">Rumo a Paris!</h1>
-                    <p class="text-lg text-gray-500 dark:text-gray-400">A nossa aventura aproxima-se...</p>
-                </div>
-                <button onclick="toggleTheme()" class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="Alternar tema">
-                    <svg class="h-6 w-6 dark-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-                    <svg class="h-6 w-6 light-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-                </button>
+            <header class="text-center mb-8">
+                <h1 class="main-title font-bold text-gray-900">Rumo a Paris!</h1>
+                <p class="text-lg text-gray-500">A nossa aventura aproxima-se...</p>
             </header>
 
             <!-- IMAGEM CLICÁVEL COM CONTAGEM DECRESCENTE -->
@@ -106,23 +55,23 @@
                 </div>
             </a>
 
-            <section id="forecast-widget" class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg dark:shadow-2xl mb-12">
+            <section id="forecast-widget" class="bg-white p-6 rounded-2xl shadow-lg mb-12">
                 <div class="text-center">
-                    <p class="text-gray-500 dark:text-gray-400">A carregar previsão para a semana da viagem...</p>
+                    <p class="text-gray-500">A carregar previsão para a semana da viagem...</p>
                 </div>
             </section>
 
             <section class="mb-12">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <a href="guia.html" class="block bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg dark:shadow-2xl hover:shadow-xl hover:scale-105 transition-transform duration-300"><div class="flex items-center text-green-800 dark:text-green-400 mb-3"><i class="fa-solid fa-map-location-dot text-2xl mr-3"></i><h3 class="text-xl font-bold">Guia Visual</h3></div><p class="text-gray-600 dark:text-gray-400">O nosso plano com imagens, curiosidades e destaques.</p></a>
-                    <a href="roteiro.html" class="block bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg dark:shadow-2xl hover:shadow-xl hover:scale-105 transition-transform duration-300"><div class="flex items-center text-blue-800 dark:text-blue-400 mb-3"><i class="fa-solid fa-list-ol text-2xl mr-3"></i><h3 class="text-xl font-bold">Roteiro Detalhado</h3></div><p class="text-gray-600 dark:text-gray-400">A versão com horários, transportes e todas as informações.</p></a>
-                    <a href="orcamento.html" class="block bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg dark:shadow-2xl hover:shadow-xl hover:scale-105 transition-transform duration-300"><div class="flex items-center text-red-800 dark:text-red-400 mb-3"><i class="fa-solid fa-euro-sign text-2xl mr-3"></i><h3 class="text-xl font-bold">Orçamento Detalhado</h3></div><p class="text-gray-600 dark:text-gray-400">Consulta os custos estimados por grupo e bilhetes.</p></a>
+                    <a href="guia.html" class="block bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-transform duration-300"><div class="flex items-center text-green-800 mb-3"><i class="fa-solid fa-map-location-dot text-2xl mr-3"></i><h3 class="text-xl font-bold">Guia Visual</h3></div><p class="text-gray-600">O nosso plano com imagens, curiosidades e destaques.</p></a>
+                    <a href="roteiro.html" class="block bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-transform duration-300"><div class="flex items-center text-blue-800 mb-3"><i class="fa-solid fa-list-ol text-2xl mr-3"></i><h3 class="text-xl font-bold">Roteiro Detalhado</h3></div><p class="text-gray-600">A versão com horários, transportes e todas as informações.</p></a>
+                    <a href="orcamento.html" class="block bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-transform duration-300"><div class="flex items-center text-red-800 mb-3"><i class="fa-solid fa-euro-sign text-2xl mr-3"></i><h3 class="text-xl font-bold">Orçamento Detalhado</h3></div><p class="text-gray-600">Consulta os custos estimados por grupo e bilhetes.</p></a>
                 </div>
             </section>
             
             <section class="mb-12">
-                <h2 class="section-title font-bold text-gray-800 dark:text-gray-100 mb-6 text-center">Checklist de Preparação</h2>
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg dark:shadow-2xl">
+                <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Checklist de Preparação</h2>
+                <div class="bg-white p-6 rounded-2xl shadow-lg">
                     <div id="checklist-container" class="space-y-4"></div>
                     <button id="add-item-btn" class="w-full mt-6 bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg shadow-md hover:bg-blue-700 transition-colors">
                         <i class="fa-solid fa-plus mr-2"></i>Adicionar Novo Item
@@ -131,7 +80,7 @@
             </section>
 
             <section class="mb-12">
-                <h2 class="section-title font-bold text-gray-800 dark:text-gray-100 mb-6 text-center">Guias da Nossa Viagem</h2>
+                <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Guias da Nossa Viagem</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
                     <a href="visita_torre-eiffel.html" class="highlight-card group block relative rounded-2xl overflow-hidden shadow-lg col-span-2"><img src="https://res.cloudinary.com/dtljonz0f/image/upload/f_auto/q_auto/v1/gc-v1/paris/3%20giorni%20a%20Parigi%20Tour%20Eiffel?_a=BAVAZGE70" alt="Torre Eiffel" class="absolute w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><h3 class="absolute bottom-4 left-4 text-white text-xl font-bold">Torre Eiffel</h3></a>
                     <a href="visita_louvre.html" class="highlight-card group block relative rounded-2xl overflow-hidden shadow-lg"><img src="https://www.relaisdulouvre.com/wp-content/uploads/2024/03/Louvre1-1024x682.jpg" alt="Museu do Louvre" class="absolute w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"><div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div><h3 class="absolute bottom-4 left-4 text-white text-lg font-bold">Museu do Louvre</h3></a>
@@ -150,38 +99,38 @@
             </section>
             
             <section class="mb-12">
-                <h2 class="section-title font-bold text-gray-800 dark:text-gray-100 mb-6 text-center">Próximos Passos</h2>
+                <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Próximos Passos</h2>
                 <div id="timeline-container" class="space-y-8"></div>
             </section>
             
             <section class="mb-12">
-                <h2 class="section-title font-bold text-gray-800 dark:text-gray-100 mb-6 text-center">Calendário</h2>
-                <div class="bg-white dark:bg-gray-800 p-4 md:p-6 rounded-2xl shadow-lg dark:shadow-2xl">
+                <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Calendário</h2>
+                <div class="bg-white p-4 md:p-6 rounded-2xl shadow-lg">
                     <div id='calendar'></div>
                 </div>
             </section>
             
             <section class="mb-12">
-                <h2 class="section-title font-bold text-gray-800 dark:text-gray-100 mb-6 text-center">Resumo de Bilhetes a comprar</h2>
+                <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Resumo de Bilhetes a comprar</h2>
                 <div id="ticket-timeline-container" class="space-y-6"></div>
             </section>
         </div>
 
         <!-- MODAL DE EVENTOS DO CALENDÁRIO -->
         <div id="event-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 md:p-8 w-full max-w-md relative">
-                <button id="modal-close-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 dark:hover:text-white transition"><i class="fa-solid fa-xmark fa-2x"></i></button>
-                <h3 id="modal-title" class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">Título do Evento</h3>
-                <p id="modal-description" class="text-gray-600 dark:text-gray-300">Descrição detalhada do evento irá aparecer aqui.</p>
+            <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 w-full max-w-md relative">
+                <button id="modal-close-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 transition"><i class="fa-solid fa-xmark fa-2x"></i></button>
+                <h3 id="modal-title" class="text-2xl font-bold text-gray-800 mb-4">Título do Evento</h3>
+                <p id="modal-description" class="text-gray-600">Descrição detalhada do evento irá aparecer aqui.</p>
             </div>
         </div>
 
         <!-- MODAL PARA ADICIONAR/EDITAR ITEM DA CHECKLIST -->
         <div id="item-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
-            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 w-full max-w-sm">
-                <h3 class="text-xl font-bold text-gray-800 dark:text-gray-100 mb-4">Gerir Item da Checklist</h3>
+            <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-sm">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">Gerir Item da Checklist</h3>
                 <form id="item-form">
-                    <input type="text" id="item-input" class="w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 rounded-md shadow-sm mb-2" required placeholder="Descrição do item...">
+                    <input type="text" id="item-input" class="w-full border-gray-300 rounded-md shadow-sm mb-2" required placeholder="Descrição do item...">
                     <div class="flex justify-end gap-4 mt-6">
                         <button type="button" id="cancel-item-btn" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300">Cancelar</button>
                         <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">Guardar</button>
@@ -192,11 +141,11 @@
 
         <!-- MODAL DE PASSWORD -->
         <div id="password-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
-            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 w-full max-w-sm">
-                <h3 class="text-xl font-bold text-gray-800 dark:text-gray-100 mb-4">Ação Protegida</h3>
-                <p class="text-gray-600 dark:text-gray-400 mb-4">Por favor, insira a password para continuar.</p>
+            <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-sm">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">Ação Protegida</h3>
+                <p class="text-gray-600 mb-4">Por favor, insira a password para continuar.</p>
                 <form id="password-form">
-                    <input type="password" id="password-input" class="w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 rounded-md shadow-sm mb-2" required>
+                    <input type="password" id="password-input" class="w-full border-gray-300 rounded-md shadow-sm mb-2" required>
                     <span id="password-error" class="text-red-500 text-sm hidden">Password incorreta.</span>
                     <div class="flex justify-end gap-4 mt-6">
                         <button type="button" id="cancel-password" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300">Cancelar</button>
@@ -212,16 +161,47 @@
         </div>
     </div>
     
-    <!-- Scripts -->
+    <!-- Scripts do Firebase (necessários para os módulos) -->
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-database-compat.js"></script>
+
+    <!-- Script principal da aplicação (agora como módulo) -->
     <script type="module" src="js/main.js"></script>
+
+    <!-- Script do Service Worker -->
     <script>
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('service-worker.js')
           .then(() => console.log('Service Worker registado com sucesso!'))
           .catch(error => console.log('Erro ao registar SW:', error));
       }
+    </script>
+
+    <!-- Script do Lottie (Loader) e Banner de Instalação -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.2/lottie.min.js"></script>
+    <script>
+      const startTime = new Date().getTime();
+      lottie.loadAnimation({
+        container: document.getElementById('lottie'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: "https://lottie.host/f648d713-6f80-4650-afd3-8ab221b1b089/8MwHDPFPiF.json"
+      });
+
+      window.addEventListener("load", () => {
+        const loader = document.getElementById("loader");
+        const content = document.getElementById("content");
+        const minimumDisplayTime = 3000; // 3.0 segundos
+        const elapsedTime = new Date().getTime() - startTime;
+        const remainingTime = Math.max(0, minimumDisplayTime - elapsedTime);
+
+        setTimeout(() => {
+          loader.style.display = "none";
+          content.classList.add("opacity-100");
+        }, remainingTime);
+      });
+
       let deferredPrompt;
       window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
@@ -244,30 +224,6 @@
               });
             });
         }
-      });
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.2/lottie.min.js"></script>
-    <script>
-      const startTime = new Date().getTime();
-      lottie.loadAnimation({
-        container: document.getElementById('lottie'),
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        path: "https://lottie.host/f648d713-6f80-4650-afd3-8ab221b1b089/8MwHDPFPiF.json"
-      });
-
-      window.addEventListener("load", () => {
-        const loader = document.getElementById("loader");
-        const content = document.getElementById("content");
-        const minimumDisplayTime = 2500; // 2.5 segundos
-        const elapsedTime = new Date().getTime() - startTime;
-        const remainingTime = Math.max(0, minimumDisplayTime - elapsedTime);
-
-        setTimeout(() => {
-          loader.style.display = "none";
-          content.classList.add("opacity-100");
-        }, remainingTime);
       });
     </script>
 </body>
