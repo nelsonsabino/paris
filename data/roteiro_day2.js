@@ -4,6 +4,12 @@ export const day2Data = {
     title: "Dia 2: Coração Histórico e Grandes Avenidas",
     date: "Sábado, 20 de Setembro",
     mapImage: "assets/images/Dia2b.png",
+    highlights: [
+        { name: "Notre-Dame", icon: "fa-church", link: "visita_notre-dame.html" },
+        { name: "Musée d'Orsay", icon: "fa-palette", link: "visita_musee-orsay.html" },
+        { name: "Jardim das Tulherias", icon: "fa-tree", link: "visita_jardim-tulherias.html" },
+        { name: "Arco do Triunfo", icon: "fa-archway", link: "visita_arco-do-triunfo.html" }
+    ],
     sections: [
         {
             id: "ida-cite",
