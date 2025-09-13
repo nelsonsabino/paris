@@ -3,7 +3,7 @@ export const day2Data = {
     id: "day2",
     title: "Dia 2: Coração Histórico e Grandes Avenidas",
     date: "Sábado, 20 de Setembro",
-    mapImage: "https://nelsonsabino.github.io/paris/Dia2b.png",
+    mapImage: "assets/images/Dia2b.png",
     sections: [
         {
             id: "ida-cite",
