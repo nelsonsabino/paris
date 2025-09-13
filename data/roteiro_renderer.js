@@ -97,10 +97,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 }).join('')}
             </div>`;
         }
+        
+        // --- NOVO: Lógica para criar a grelha de destaques ---
+        let highlightsHtml = '';
+        if (dayData.highlights && dayData.highlights.length > 0) {
+            highlightsHtml = `
+                <div class="highlights-grid">
+                    ${dayData.highlights.map(highlight => `
+                        <div class="highlight-item">
+                            <i class="fa-solid ${highlight.icon} highlight-icon text-xl w-6 text-center"></i>
+                            <span class="highlight-name">${highlight.name}</span>
+                        </div>
+                    `).join('')}
+                </div>`;
+        }
+        // --- FIM DO NOVO BLOCO ---
 
         let htmlContent = `
             <h2 class="font-display text-2xl md:text-3xl text-gray-900 mb-1 font-bold">${dayData.title}</h2>
             <p class="text-gray-500 mb-6">${dayData.date}</p>
+            ${highlightsHtml}
             ${dayNavHtml}`;
 
         if (dayData.mapImage) {
