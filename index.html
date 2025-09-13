@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <link rel="manifest" href="site.webmanifest">
-    <meta name="theme-color" content="#facc15" />
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SCRIPT ANTI-FLASH PARA O MODO ESCURO -->
+    <script>
+        (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches))
+            ? document.documentElement.classList.add('dark')
+            : document.documentElement.classList.remove('dark');
+    </script>
+
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#facc15" />
 
     <!-- Favicon para diferentes browsers -->
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
@@ -35,7 +42,16 @@
     
     <!-- Conteúdo da página -->
     <div id="content" class="opacity-0 transition-opacity duration-1000">
-        <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+        <div class="container mx-auto p-4 md:p-8 max-w-5xl relative">
+            
+            <!-- BOTÃO SELETOR DE TEMA -->
+            <div class="absolute top-4 right-4 md:top-8 md:right-8">
+                <button id="theme-switcher" class="theme-switcher h-12 w-12 rounded-full text-gray-500 dark:text-slate-400 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors duration-200 flex items-center justify-center">
+                    <i class="fa-solid fa-sun text-2xl sun-icon"></i>
+                    <i class="fa-solid fa-moon text-2xl moon-icon"></i>
+                </button>
+            </div>
+
             <!-- TÍTULO SEPARADO NO TOPO DA PÁGINA -->
             <header class="text-center mb-8">
                 <h1 class="main-title font-bold text-gray-900">Rumo a Paris!</h1>
@@ -111,7 +127,7 @@
             </section>
         </div>
 
-        <!-- MODAL DE EVENTOS DO CALENDÁRIO -->
+        <!-- MODAIS... (código dos modais permanece inalterado) -->
         <div id="event-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
             <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 w-full max-w-md relative">
                 <button id="modal-close-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 transition"><i class="fa-solid fa-xmark fa-2x"></i></button>
@@ -119,8 +135,6 @@
                 <p id="modal-description" class="text-gray-600">Descrição detalhada do evento irá aparecer aqui.</p>
             </div>
         </div>
-
-        <!-- MODAL PARA ADICIONAR/EDITAR ITEM DA CHECKLIST -->
         <div id="item-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
             <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-sm">
                 <h3 class="text-xl font-bold text-gray-800 mb-4">Gerir Item da Checklist</h3>
@@ -133,8 +147,6 @@
                 </form>
             </div>
         </div>
-
-        <!-- MODAL DE PASSWORD -->
         <div id="password-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
             <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-sm">
                 <h3 class="text-xl font-bold text-gray-800 mb-4">Ação Protegida</h3>
@@ -162,6 +174,9 @@
 
     <!-- Script principal da aplicação (agora como módulo) -->
     <script type="module" src="js/main.js"></script>
+    
+    <!-- Script do seletor de tema -->
+    <script src="js/theme_switcher.js"></script>
 
     <!-- Script do Service Worker -->
     <script>
