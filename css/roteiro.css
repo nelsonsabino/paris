@@ -124,3 +124,83 @@ body {
 .badge-completed { background-color: #e5e7eb; color: #4b5563; }
 .badge-ongoing { background-color: #22c55e; color: white; }
 .badge-next { background-color: #3b82f6; color: white; }
+/* --- DARK MODE STYLES --- */
+html.dark body {
+    background-color: #0f172a; /* slate-900 */
+    color: #cbd5e1; /* slate-300 */
+}
+
+/* Cabeçalho não-flutuante e títulos */
+html.dark header.bg-white {
+    background-color: #1e293b; /* slate-800 */
+    border-bottom-color: #334155; /* slate-700 */
+}
+html.dark .font-display,
+html.dark .text-gray-900,
+html.dark .text-gray-800 {
+    color: #f1f5f9; /* slate-100 */
+}
+html.dark .text-gray-600 {
+    color: #94a3b8; /* slate-400 */
+}
+
+/* Barras de navegação flutuantes */
+html.dark .sticky-nav-days {
+    background-color: rgba(15, 23, 42, 0.75); /* slate-900 com transparência */
+    border-bottom-color: #334155; /* slate-700 */
+}
+html.dark .day-nav {
+    background-color: rgba(30, 41, 59, 0.75); /* slate-800 com transparência */
+    border-bottom-color: #475569; /* slate-600 */
+}
+
+/* Links das barras de navegação */
+html.dark .sticky-nav-days a,
+html.dark .day-nav a {
+    color: #cbd5e1; /* slate-300 */
+}
+html.dark .sticky-nav-days a:hover,
+html.dark .day-nav a:hover {
+    background-color: #334155; /* slate-700 */
+}
+html.dark .active-day-link {
+    background-color: #33488a; /* um azul mais escuro */
+    color: #e0e7ff;
+}
+html.dark .day-nav a.active-section {
+    background-color: #4f46e5; /* indigo-600 */
+    color: white;
+}
+
+/* Secções dos dias */
+html.dark .day-section {
+    background-color: #1e293b; /* slate-800 */
+    border-color: #334155; /* slate-700 */
+}
+html.dark .day-section > h2 {
+    color: #93c5fd; /* blue-300 */
+    border-bottom-color: #334155; /* slate-700 */
+}
+html.dark .day-section > p {
+    color: #94a3b8; /* slate-400 */
+}
+
+/* Bloco do link do mapa */
+html.dark .bg-slate-50 { background-color: #334155; /* slate-700 */ }
+html.dark .border-slate-200 { border-color: #475569; /* slate-600 */ }
+html.dark .hover\:bg-slate-100:hover { background-color: #475569; /* slate-600 */ }
+html.dark .hover\:border-slate-300:hover { border-color: #64748b; /* slate-500 */ }
+
+/* Timeline */
+html.dark .timeline-container::before { background-color: #475569; /* slate-600 */ }
+html.dark .timeline-time { color: #94a3b8; /* slate-400 */ }
+html.dark .timeline-item-meal {
+    background-color: #15322b; /* verde escuro */
+    border-left-color: #22c55e; /* green-500 */
+}
+
+/* Acordeão do percurso */
+html.dark .accordion-content { border-l-color: #475569; /* slate-600 */ }
+html.dark .accordion-toggle h3 { color: #f1f5f9; }
+html.dark .accordion-toggle p { color: #94a3b8; }
+html.dark .relative .absolute { background-color: #64748b; }
