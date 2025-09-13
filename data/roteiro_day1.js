@@ -5,10 +5,10 @@ export const day1Data = {
     date: "Sexta-feira, 19 de Setembro",
     mapImage: "assets/images/Dia1b.png", // Imagem do mapa geral do dia
     highlights: [
-        { name: "Torre Eiffel", icon: "fa-tower-observation" },
-        { name: "Ponte Alexandre III", icon: "fa-bridge" },
-        { name: "Jardim do Trocadéro", icon: "fa-camera-retro" },
-        { name: "Rue Cler", icon: "fa-store" }
+        { name: "Torre Eiffel", icon: "fa-tower-observation", link: "visita_torre-eiffel.html" },
+        { name: "Ponte Alexandre III", icon: "fa-bridge", link: "visita_ponte-alexandre-iii.html" },
+        { name: "Jardim do Trocadéro", icon: "fa-camera-retro", link: "visita_jardim-trocadero.html" },
+        { name: "Rue Cler", icon: "fa-store", link: "visita_rue-cler.html" }
     ],
     sections: [
         {
