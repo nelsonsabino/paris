@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia: Rue Cler</title>
+
+    <!-- SCRIPT ANTI-FLASH PARA O MODO ESCURO -->
+    <script>
+        (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches))
+            ? document.documentElement.classList.add('dark')
+            : document.documentElement.classList.remove('dark');
+    </script>
+
+    <!-- Favicon e Links Essenciais -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Poppins', sans-serif; background-color: #f0f4f8; }
+        .content-prose h2 { font-size: 1.5rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; }
+        .content-prose p { margin-bottom: 1rem; line-height: 1.75; }
+        .content-prose ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 1rem; }
+
+        /* --- Dark Mode Styles --- */
+        html.dark body { background-color: #0f172a; color: #cbd5e1; }
+        html.dark .bg-white { background-color: #1e293b; border-color: #334155; }
+        html.dark .text-gray-800 { color: #f1f5f9; }
+        html.dark .text-gray-600 { color: #94a3b8; }
+        html.dark .border-gray-200 { border-color: #334155; }
+        html.dark .hover\:bg-gray-100:hover { background-color: #334155; }
+        html.dark .bg-blue-600 { background-color: #3b82f6; }
+        html.dark .hover\:bg-blue-700:hover { background-color: #2563eb; }
+        .theme-switcher .sun-icon { display: none; }
+        html.dark .theme-switcher .sun-icon { display: block; }
+        html.dark .theme-switcher .moon-icon { display: none; }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+        <!-- Cabeçalho com Botões -->
+        <header class="flex justify-between items-center mb-8">
+            <a href="index.html" class="bg-blue-600 text-white font-semibold px-5 py-2 rounded-lg shadow-md hover:bg-blue-700 transition-colors text-sm">
+                <i class="fa-solid fa-arrow-left mr-2"></i>
+                Voltar ao Painel
+            </a>
+            <button id="theme-switcher" class="theme-switcher h-10 w-10 rounded-full text-gray-500 dark:text-slate-400 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors duration-200 flex items-center justify-center">
+                <i class="fa-solid fa-sun text-xl sun-icon"></i>
+                <i class="fa-solid fa-moon text-xl moon-icon"></i>
+            </button>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Menu Lateral (será preenchido pelo guias_renderer.js) -->
+            <aside id="guias-menu-container" class="md:col-span-1">
+                <!-- O menu dinâmico dos guias aparecerá aqui -->
+            </aside>
+
+            <!-- Conteúdo Principal do Guia -->
+            <main class="md:col-span-3 bg-white p-6 md:p-8 rounded-2xl shadow-lg">
+                <article class="content-prose">
+                    <h1 class="text-3xl md:text-4xl font-bold mb-4">Rue Cler</h1>
+                    <p class="text-gray-600">Uma das ruas de mercado mais famosas e autênticas de Paris, perto da Torre Eiffel.</p>
+
+                    <img src="https://i0.wp.com/bonjourparis.com/wp-content/uploads/2017/01/IMG_0126.jpg?ssl=1" alt="Bancas de fruta e flores na Rue Cler" class="w-full rounded-lg shadow-md my-6">
+
+                    <h2>A Essência de Paris Numa Rua</h2>
+                    <p>A Rue Cler é uma rua pedonal vibrante que oferece uma verdadeira experiência parisiense. É o local perfeito para sentir o pulsar da vida local, comprar produtos frescos ou simplesmente sentar-se num café a observar o movimento.</p>
+                    <ul>
+                        <li><strong>Lojas Especializadas:</strong> Encontrará de tudo um pouco: queijarias (fromageries), talhos (boucheries), padarias (boulangeries), lojas de vinho (caves), floriculturas e muito mais.</li>
+                        <li><strong>Cafés e Bistrôs:</strong> A rua está repleta de cafés com esplanadas, ideais para uma pausa. É um ótimo local para um jantar mais informal e económico.</li>
+                        <li><strong>Ambiente Local:</strong> É frequentada tanto por turistas como por parisienses que fazem as suas compras diárias, o que lhe confere um ambiente muito genuíno.</li>
+                    </ul>
+
+                    <h2>Dicas Práticas</h2>
+                    <ul>
+                        <li><strong>Ideal para um Piquenique:</strong> É o sítio perfeito para comprar pão fresco, queijo, charcutaria e uma garrafa de vinho para um piquenique no Champ de Mars, mesmo ao lado.</li>
+                        <li><strong>Horários:</strong> Muitas lojas fecham à segunda-feira e algumas podem fechar para o almoço. A manhã é o período de maior movimento e mais interessante.</li>
+                        <li><strong>Como Chegar:</strong> Fica a uma curta caminhada da Torre Eiffel e do Hôtel des Invalides. A estação de metro mais próxima é a École Militaire (linha 8).</li>
+                    </ul>
+                </article>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="js/guias_renderer.js"></script>
+    <script src="js/theme_switcher.js"></script>
+</body>
+</html>
