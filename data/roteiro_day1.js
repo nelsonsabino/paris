@@ -4,6 +4,12 @@ export const day1Data = {
     title: "Dia 1: Chegada e a Magia da Torre Eiffel",
     date: "Sexta-feira, 19 de Setembro",
     mapImage: "assets/images/Dia1b.png", // Imagem do mapa geral do dia
+    highlights: [
+        { name: "Torre Eiffel", icon: "fa-tower-observation" },
+        { name: "Ponte Alexandre III", icon: "fa-bridge" },
+        { name: "Jardim do Trocadéro", icon: "fa-camera-retro" },
+        { name: "Rue Cler", icon: "fa-store" }
+    ],
     sections: [
         {
             id: "viagem",
