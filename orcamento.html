@@ -179,7 +179,6 @@
     </div>
 
     <script>
-        // ... (todo o script de cálculo de custos permanece inalterado) ...
         const planningEvents = [
             { title: 'Comprar bilhetes para o Museu do Louvre', status: 'complete' }, { title: 'Comprar bilhetes para a Museu D Orsay', status: 'complete' },
             { title: 'Comprar bilhetes para Versailles', status: 'complete' }, { title: 'Comprar bilhetes para a Sainte-Chapelle', status: 'complete' },
@@ -190,64 +189,64 @@
 
         const costs = {
             individual: {
-                perPerson: 75.40,
-                totalGroup4: 301.60,
+                perPerson: 58.00,
+                totalGroup4: 232.00,
                 details: [
-                    { item: 'Cartão Navigo Easy', quantity: 5, perPerson: 2.60, totalGroup: 10.40 },
-                    { item: 'Bilhetes Aeroporto Orly ↔ Paris', quantity: 10, perPerson: 33.80, totalGroup: 135.20 },
-                    { item: 'Bilhetes Individuais (Metro e RER)', quantity: 60, perPerson: 39.00, totalGroup: 156.00 }
+                    { item: 'Cartão Navigo Easy', quantity: 5, perPerson: 2.00, totalGroup: 8.00 },
+                    { item: 'Bilhetes Aeroporto Orly ↔ Paris', quantity: 10, perPerson: 26.00, totalGroup: 104.00 },
+                    { item: 'Bilhetes Individuais (Metro e RER)', quantity: 60, perPerson: 30.00, totalGroup: 120.00 }
                 ],
                 dailyBreakdown: [
-                    { day: "Dia 1", description: "Orly→Paris, 2x Metro", quantity5pax: '15 bilhetes', totalGroup: 93.60 },
-                    { day: "Dia 2", description: "3x Metro", quantity5pax: '15 bilhetes', totalGroup: 39.00 },
-                    { day: "Dia 3", description: "3x Metro/RER (incl. Versalhes)", quantity5pax: '15 bilhetes', totalGroup: 39.00 },
-                    { day: "Dia 4", description: "3x Metro", quantity5pax: '15 bilhetes', totalGroup: 39.00 },
-                    { day: "Dia 5", description: "1x Metro, Paris→Orly", quantity5pax: '10 bilhetes', totalGroup: 80.60 }
+                    { day: "Dia 1", description: "Orly→Paris, 2x Metro", quantity5pax: '15 bilhetes', totalGroup: 72.00 },
+                    { day: "Dia 2", description: "3x Metro", quantity5pax: '15 bilhetes', totalGroup: 30.00 },
+                    { day: "Dia 3", description: "3x Metro/RER (incl. Versalhes)", quantity5pax: '15 bilhetes', totalGroup: 30.00 },
+                    { day: "Dia 4", description: "3x Metro", quantity5pax: '15 bilhetes', totalGroup: 30.00 },
+                    { day: "Dia 5", description: "1x Metro, Paris→Orly", quantity5pax: '10 bilhetes', totalGroup: 62.00 }
                 ]
             },
             hybrid_louvre: {
-                perPerson: 76.05,
-                totalGroup4: 304.20,
-                totalGroup5: 380.25, 
+                perPerson: 58.50,
+                totalGroup4: 234.00,
+                totalGroup5: 292.50, 
                 details: [
-                    { item: 'Táxi Orly → C. Paris + Cacifo → Orly (Grupo)', quantity: '2 (Fixo)', perPerson: 28.60, totalGroup: 114.40 },
-                    { item: 'Cartão Navigo Easy', quantity: 5, perPerson: 2.60, totalGroup: 10.40 },
-                    { item: 'Bilhetes Individuais (Metro e RER)', quantity: 65, perPerson: 44.85, totalGroup: 179.40 }
+                    { item: 'Táxi Orly → C. Paris + Cacifo → Orly (Grupo)', quantity: '2 (Fixo)', perPerson: 22.00, totalGroup: 88.00 },
+                    { item: 'Cartão Navigo Easy', quantity: 5, perPerson: 2.00, totalGroup: 8.00 },
+                    { item: 'Bilhetes Individuais (Metro e RER)', quantity: 65, perPerson: 34.50, totalGroup: 138.00 }
                 ],
                  dailyBreakdown: [
-                    { day: "Dia 1", description: "Táxi (ida), 3x Metro", quantity5pax: '15 bilhetes', totalGroup: 91.00 },
-                    { day: "Dia 2", description: "3x Metro", quantity5pax: '15 bilhetes', totalGroup: 39.00 },
-                    { day: "Dia 3", description: "3x Metro/RER (incl. Versalhes)", quantity5pax: '15 bilhetes', totalGroup: 39.00 },
-                    { day: "Dia 4", description: "3x Metro", quantity5pax: '15 bilhetes', totalGroup: 39.00 },
-                    { day: "Dia 5", description: "1x Metro, Táxi (volta)", quantity5pax: '5 bilhetes', totalGroup: 85.80 }
+                    { day: "Dia 1", description: "Táxi (ida), 3x Metro", quantity5pax: '15 bilhetes', totalGroup: 70.00 },
+                    { day: "Dia 2", description: "3x Metro", quantity5pax: '15 bilhetes', totalGroup: 30.00 },
+                    { day: "Dia 3", description: "3x Metro/RER (incl. Versalhes)", quantity5pax: '15 bilhetes', totalGroup: 30.00 },
+                    { day: "Dia 4", description: "3x Metro", quantity5pax: '15 bilhetes', totalGroup: 30.00 },
+                    { day: "Dia 5", description: "1x Metro, Táxi (volta)", quantity5pax: '5 bilhetes', totalGroup: 66.00 }
                 ]
             },
             hybrid_casa: {
-                perPerson: 71.50,
-                totalGroup4: 286.00,
-                totalGroup5: 357.50, 
+                perPerson: 55.00,
+                totalGroup4: 220.00,
+                totalGroup5: 275.00, 
                 details: [
-                    { item: 'Táxi Orly → Casa + Cacifo → Orly (Grupo)', quantity: '2 (Fixo)', perPerson: 29.90, totalGroup: 119.60 },
-                    { item: 'Cartão Navigo Easy', quantity: 5, perPerson: 2.60, totalGroup: 10.40 },
-                    { item: 'Bilhetes Individuais (Metro e RER)', quantity: 60, perPerson: 39.00, totalGroup: 156.00 }
+                    { item: 'Táxi Orly → Casa + Cacifo → Orly (Grupo)', quantity: '2 (Fixo)', perPerson: 23.00, totalGroup: 92.00 },
+                    { item: 'Cartão Navigo Easy', quantity: 5, perPerson: 2.00, totalGroup: 8.00 },
+                    { item: 'Bilhetes Individuais (Metro e RER)', quantity: 60, perPerson: 30.00, totalGroup: 120.00 }
                 ],
                  dailyBreakdown: [
-                    { day: "Dia 1", description: "Táxi (ida), 2x Metro", quantity5pax: '10 bilhetes', totalGroup: 88.40 },
-                    { day: "Dia 2", description: "3x Metro", quantity5pax: '15 bilhetes', totalGroup: 39.00 },
-                    { day: "Dia 3", description: "3x Metro/RER (incl. Versalhes)", quantity5pax: '15 bilhetes', totalGroup: 39.00 },
-                    { day: "Dia 4", description: "3x Metro", quantity5pax: '15 bilhetes', totalGroup: 39.00 },
-                    { day: "Dia 5", description: "1x Metro, Táxi (volta)", quantity5pax: '5 bilhetes', totalGroup: 80.60 }
+                    { day: "Dia 1", description: "Táxi (ida), 2x Metro", quantity5pax: '10 bilhetes', totalGroup: 68.00 },
+                    { day: "Dia 2", description: "3x Metro", quantity5pax: '15 bilhetes', totalGroup: 30.00 },
+                    { day: "Dia 3", description: "3x Metro/RER (incl. Versalhes)", quantity5pax: '15 bilhetes', totalGroup: 30.00 },
+                    { day: "Dia 4", description: "3x Metro", quantity5pax: '15 bilhetes', totalGroup: 30.00 },
+                    { day: "Dia 5", description: "1x Metro, Táxi (volta)", quantity5pax: '5 bilhetes', totalGroup: 62.00 }
                 ]
             },
             passe: {
-                perPerson: 101.73,
-                totalGroup4: 406.90,
+                perPerson: 78.25,
+                totalGroup4: 313.00,
                 details: [
-                    { item: 'Cartão Navigo Easy', quantity: 5, perPerson: 2.60, totalGroup: 10.40 },
-                    { item: 'Passe Paris Visite (5 Dias, Zonas 1-5)', quantity: 5, perPerson: 99.13, totalGroup: 396.50 },
+                    { item: 'Cartão Navigo Easy', quantity: 5, perPerson: 2.00, totalGroup: 8.00 },
+                    { item: 'Passe Paris Visite (5 Dias, Zonas 1-5)', quantity: 5, perPerson: 76.25, totalGroup: 305.00 },
                 ],
                  dailyBreakdown: [
-                    { day: "Dia 1 a 5", description: "Todas as viagens incluídas", quantity5pax: '5 passes', totalGroup: 406.90 }
+                    { day: "Dia 1 a 5", description: "Todas as viagens incluídas", quantity5pax: '5 passes', totalGroup: 313.00 }
                 ]
             }
         };
