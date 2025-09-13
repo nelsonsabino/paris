@@ -1,1 +1,102 @@
+/* --- ESTILOS BASE PARA GUIA.HTML --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #e1e6eb;
+}
+.font-display {
+    font-family: 'Poppins', sans-serif;
+}
+.info-box {
+    background-color: #f1f5f9;
+    border-left: 4px solid #606c38;
+    padding: 0.75rem 1rem;
+    margin-top: 1rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+}
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 2rem;
+    bottom: 2rem;
+    width: 2px;
+    background-color: #e5e7eb;
+    z-index: 0;
+}
+.timeline-item {
+    position: relative;
+    padding-left: 2.5rem;
+    padding-bottom: 2.5rem;
+}
+.timeline-item:last-child {
+    padding-bottom: 0.5rem;
+}
+.timeline-icon {
+    position: absolute;
+    left: 0;
+    top: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background-color: #606c38;
+    color: white;
+    border-radius: 50%;
+    z-index: 1;
+}
+.sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.image-popup-trigger img {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+.image-popup-trigger:hover img {
+    transform: scale(1.03);
+}
 
+/* --- DARK MODE STYLES --- */
+html.dark body {
+    background-color: #0f172a; /* slate-900 */
+    color: #cbd5e1; /* slate-300 */
+}
+html.dark .text-gray-800,
+html.dark .text-gray-700 {
+    color: #f1f5f9; /* slate-100 */
+}
+html.dark .text-gray-600,
+html.dark .text-gray-500 {
+    color: #94a3b8; /* slate-400 */
+}
+html.dark .bg-white {
+    background-color: #1e293b; /* slate-800 */
+    border: 1px solid #334155; /* slate-700 */
+}
+html.dark .sticky-nav {
+    background-color: rgba(30, 41, 59, 0.85); /* slate-800 com transparência */
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #334155; /* slate-700 */
+    box-shadow: none;
+}
+html.dark .hover\:bg-gray-200:hover {
+    background-color: #334155; /* slate-700 */
+}
+html.dark #mobile-menu {
+    background-color: #1e293b;
+    border-color: #334155;
+}
+html.dark .hover\:bg-gray-100:hover {
+    background-color: #334155;
+}
+html.dark .timeline-container::before {
+    background-color: #475569; /* slate-600 */
+}
+html.dark .bg-amber-200 { background-color: #453315; }
+html.dark .text-amber-800 { color: #fcd34d; }
+html.dark .bg-blue-200 { background-color: #1e40af; }
+html.dark .text-blue-800 { color: #93c5fd; }
