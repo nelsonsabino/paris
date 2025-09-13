@@ -1,7 +1,7 @@
 // js/main.js
 
 // Importa as funções de renderização da UI
-import { renderTimeline, renderCalendar, renderTicketTimeline, fetchTripWeather } from './ui_renderer.js';
+import { renderTimeline, renderCalendar, fetchTripWeather } from './ui_renderer.js';
 
 // Importa a lógica da checklist
 import { initializeChecklist } from './checklist.js';
@@ -104,7 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
     startCountdown();
     renderTimeline();
     renderCalendar();
-    renderTicketTimeline();
     fetchTripWeather();
     
     // Inicializar a lógica da checklist, passando a referência da base de dados e a função de password
