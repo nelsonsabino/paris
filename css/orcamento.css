@@ -1,0 +1,73 @@
+/* --- ESTILOS BASE PARA ORCAMENTO.HTML --- */
+body { font-family: 'Poppins', sans-serif; background-color: #f0f4f8; font-size: 14px; }
+.main-title { font-size: 1.875rem; line-height: 2.25rem; }
+.section-title { font-size: 1.5rem; line-height: 2rem; }
+.display-cost { font-size: 1.5rem; line-height: 2.5rem; }
+.completed-item-text { font-size: 0.875rem; }
+
+@media (min-width: 768px) {
+    body { font-size: 16px; }
+    .main-title { font-size: 2.25rem; line-height: 2.5rem; }
+    .section-title { font-size: 1.875rem; line-height: 2.25rem; }
+    .display-cost { font-size: 3rem; line-height: 1; }
+    .completed-item-text { font-size: 1.125rem; }
+}
+.option-btn.active {
+    background-color: #2563eb; color: white; border-color: #2563eb;
+}
+.option-btn.inactive {
+    background-color: white; color: #374151; border-color: #d1d5db;
+}
+
+/* --- DARK MODE STYLES --- */
+html.dark body {
+    background-color: #0f172a; /* slate-900 */
+    color: #cbd5e1; /* slate-300 */
+}
+
+/* Títulos e texto principal */
+html.dark .main-title,
+html.dark .section-title,
+html.dark .text-gray-800 {
+    color: #f1f5f9; /* slate-100 */
+}
+html.dark .text-gray-500,
+html.dark .text-gray-600,
+html.dark .text-gray-700 {
+    color: #94a3b8; /* slate-400 */
+}
+
+/* Fundos brancos (cards, tabelas) */
+html.dark .bg-white {
+    background-color: #1e293b; /* slate-800 */
+    border-color: #334155; /* slate-700 */
+}
+
+/* Botões de opção */
+html.dark .option-btn.active {
+    background-color: #4f46e5; /* indigo-600 */
+    border-color: #4f46e5;
+}
+html.dark .option-btn.inactive {
+    background-color: #1e293b; /* slate-800 */
+    color: #cbd5e1; /* slate-300 */
+    border-color: #475569; /* slate-600 */
+}
+html.dark .option-btn.inactive:hover {
+    background-color: #334155; /* slate-700 */
+}
+
+/* Custos em destaque */
+html.dark .text-green-600 { color: #4ade80; /* green-400 */ }
+html.dark .text-blue-600 { color: #60a5fa; /* blue-400 */ }
+
+/* Tabelas */
+html.dark .bg-gray-100 { background-color: #334155; /* slate-700 */ }
+html.dark .border-gray-200 { border-color: #475569; /* slate-600 */ }
+html.dark .bg-gray-50 { background-color: #0f172a; /* slate-900 */ }
+html.dark #taxi-note { background-color: #1e293b; color: #64748b; }
+html.dark .completed-item-text { border-color: #334155; }
+
+/* Botão Voltar */
+html.dark .bg-blue-600 { background-color: #3b82f6; }
+html.dark .hover\:bg-blue-700:hover { background-color: #2563eb; }
