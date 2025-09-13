@@ -224,6 +224,7 @@ html.dark .hover\:text-blue-900:hover {
     padding-top: 1rem;
     border-top: 1px solid #e2e8f0;
     margin-top: 1.5rem;
+    margin-bottom: 2.5rem; /* ADICIONADO: Espaçamento inferior */
 }
 .highlight-item {
     display: flex;
@@ -233,6 +234,11 @@ html.dark .hover\:text-blue-900:hover {
     padding: 0.75rem;
     border-radius: 0.75rem;
     border: 1px solid #e2e8f0; /* slate-200 */
+    transition: background-color 0.2s, border-color 0.2s; /* ADICIONADO: Transição suave */
+}
+.highlight-item:hover {
+    background-color: #f1f5f9; /* slate-100 */
+    border-color: #cbd5e1; /* slate-300 */
 }
 .highlight-icon {
     color: #1e3a8a; /* O mesmo azul dos títulos */
@@ -247,8 +253,12 @@ html.dark .highlights-grid {
     border-top-color: #334155; /* slate-700 */
 }
 html.dark .highlight-item {
-    background-color: #1e293b; /* slate-800 */
+    background-color: #334155; /* ALTERADO: slate-700, um pouco mais claro */
     border-color: #475569; /* slate-600 */
+}
+html.dark .highlight-item:hover {
+    background-color: #475569; /* slate-600 */
+    border-color: #64748b; /* slate-500 */
 }
 html.dark .highlight-icon {
     color: #93c5fd; /* blue-300 */
