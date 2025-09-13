@@ -4,6 +4,12 @@ export const day4Data = {
     title: "Dia 4: Imersão em Arte e Charme Parisiense",
     date: "Segunda-Feira, 22 de Setembro",
     mapImage: "assets/images/Dia4a.png",
+    highlights: [
+        { name: "Museu do Louvre", icon: "fa-landmark-dome", link: "visita_louvre.html" },
+        { name: "Ópera Garnier", icon: "fa-masks-theater", link: "visita_opera-garnier.html" },
+        { name: "Galeries Lafayette", icon: "fa-store", link: "visita_galeries-lafayette.html" },
+        { name: "Le Marais", icon: "fa-map-signs", link: "visita_marais.html" }
+    ],
     sections: [
         {
             id: "louvre",
