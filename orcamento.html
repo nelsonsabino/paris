@@ -5,11 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orçamento: Viagem a Paris 2025</title>
 
+    <!-- SCRIPT ANTI-FLASH PARA O MODO ESCURO -->
+    <script>
+        (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches))
+            ? document.documentElement.classList.add('dark')
+            : document.documentElement.classList.remove('dark');
+    </script>
+
     <!-- Favicon para diferentes browsers -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,27 +24,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
     
-    <style>
-        body { font-family: 'Poppins', sans-serif; background-color: #f0f4f8; font-size: 14px; }
-        .main-title { font-size: 1.875rem; line-height: 2.25rem; }
-        .section-title { font-size: 1.5rem; line-height: 2rem; }
-        .display-cost { font-size: 1.5rem; line-height: 2.5rem; }
-        .completed-item-text { font-size: 0.875rem; }
-
-        @media (min-width: 768px) {
-            body { font-size: 16px; }
-            .main-title { font-size: 2.25rem; line-height: 2.5rem; }
-            .section-title { font-size: 1.875rem; line-height: 2.25rem; }
-            .display-cost { font-size: 3rem; line-height: 1; }
-            .completed-item-text { font-size: 1.125rem; }
-        }
-        .option-btn.active {
-            background-color: #2563eb; color: white; border-color: #2563eb;
-        }
-        .option-btn.inactive {
-            background-color: white; color: #374151; border-color: #d1d5db;
-        }
-    </style>
+    <!-- LIGAÇÃO PARA O FICHEIRO CSS EXTERNO -->
+    <link rel="stylesheet" href="css/orcamento.css">
 </head>
 <body class="text-gray-800">
 
@@ -45,10 +33,17 @@
 
         <header class="mb-12 flex flex-col md:flex-row justify-between items-center gap-4">
             <h1 class="main-title font-bold text-gray-800 text-center md:text-left">Orçamento e Finanças</h1>
-            <a href="index.html" class="bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-colors w-full md:w-auto text-center">
-                <i class="fa-solid fa-arrow-left mr-2"></i>
-                Voltar ao Painel
-            </a>
+            <div class="flex items-center gap-4">
+                <!-- BOTÃO SELETOR DE TEMA -->
+                <button id="theme-switcher" class="theme-switcher h-12 w-12 rounded-full text-gray-500 dark:text-slate-400 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors duration-200 flex items-center justify-center flex-shrink-0">
+                    <i class="fa-solid fa-sun text-2xl sun-icon"></i>
+                    <i class="fa-solid fa-moon text-2xl moon-icon"></i>
+                </button>
+                <a href="index.html" class="bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-colors w-full md:w-auto text-center">
+                    <i class="fa-solid fa-arrow-left mr-2"></i>
+                    Voltar ao Painel
+                </a>
+            </div>
         </header>
 
         <section class="mb-12">
@@ -184,6 +179,7 @@
     </div>
 
     <script>
+        // ... (todo o script de cálculo de custos permanece inalterado) ...
         const planningEvents = [
             { title: 'Comprar bilhetes para o Museu do Louvre', status: 'complete' }, { title: 'Comprar bilhetes para a Museu D Orsay', status: 'complete' },
             { title: 'Comprar bilhetes para Versailles', status: 'complete' }, { title: 'Comprar bilhetes para a Sainte-Chapelle', status: 'complete' },
@@ -382,5 +378,6 @@
             renderCompletedPurchases();
         });
     </script>
+    <script src="js/theme_switcher.js"></script>
 </body>
 </html>
