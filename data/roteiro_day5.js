@@ -3,7 +3,7 @@ export const day5Data = {
     id: "day5",
     title: "Dia 5: Despedida com Charme e Regresso",
     date: "Terça-Feira, 23 de Setembro",
-    mapImage: "https://nelsonsabino.github.io/paris/Dia5a.png",
+    mapImage: "assets/images/Dia5a.png",
     sections: [
         {
             id: "cacifos",
