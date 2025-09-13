@@ -4,6 +4,12 @@ export const day3Data = {
     title: "Dia 3: Realeza, Arte Boémia e Vistas Icónicas",
     date: "Domingo, 21 de Setembro",
     mapImage: "assets/images/Dia3a.png",
+    highlights: [
+        { name: "Palácio de Versalhes", icon: "fa-crown", link: "visita_versalhes.html" },
+        { name: "Sacré-Cœur", icon: "fa-place-of-worship", link: "visita_montmartre.html" },
+        { name: "Place du Tertre", icon: "fa-palette", link: "visita_montmartre.html" },
+        { name: "Moulin Rouge", icon: "fa-wind", link: "visita_moulin-rouge.html" }
+    ],
     sections: [
         {
             id: "versalhes",
@@ -62,7 +68,7 @@ export const day3Data = {
             mapLink: "https://maps.app.goo.gl/DBCJQ62qSGpKDVL28",
             description: "Duração estimada do percurso a pé com visitas: ~2.5 horas",
             timeline: [
-                { time: "15:35", icon: "fa-heart", title: "Muro do Eu Te Amo (Le Mur des Je t'aime)", description: "Visita e fotos: ~15 min" },
+                { time: "15:35", icon: "fa-heart", title: "Muro do Eu Te Amo (Le Mur des Je t'aime)" },
                 { time: "16:00", icon: "fa-place-of-worship", title: "Basílica de Sacré Cœur", guideLink: "visita_montmartre.html", description: "Visita ao interior e vista: ~45 min" },
                 { time: "16:45", icon: "fa-palette", title: "Place du Tertre", description: "Passeio pela praça dos artistas: ~30 min" },
                  { time: "17:00", icon: "fa-ice-cream", title: "Lanche da Tarde",
