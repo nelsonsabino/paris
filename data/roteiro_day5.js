@@ -4,6 +4,12 @@ export const day5Data = {
     title: "Dia 5: Despedida com Charme e Regresso",
     date: "Terça-Feira, 23 de Setembro",
     mapImage: "assets/images/Dia5a.png",
+    highlights: [
+        { name: "Sainte-Chapelle", icon: "fa-gem", link: "visita_sainte-chapelle.html" },
+        { name: "Quartier Latin", icon: "fa-graduation-cap", link: "visita_quartier-latin.html" },
+        { name: "Jardim do Luxemburgo", icon: "fa-seedling", link: "visita_jardim-luxemburgo.html" },
+        { name: "Saint-Germain-des-Prés", icon: "fa-mug-saucer", link: "visita_saint-germain.html" }
+    ],
     sections: [
         {
             id: "cacifos",
