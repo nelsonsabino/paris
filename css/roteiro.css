@@ -146,12 +146,12 @@ html.dark .text-gray-600 {
 
 /* Barras de navegação flutuantes */
 html.dark .sticky-nav-days {
-    background-color: rgba(15, 23, 42, 0.75); /* slate-900 com transparência */
-    border-bottom-color: #334155; /* slate-700 */
+    background-color: rgba(30, 41, 59, 0.75); /* ANTES: slate-900, AGORA: slate-800 com transparência */
+    border-bottom-color: #475569; /* slate-600 */
 }
 html.dark .day-nav {
-    background-color: rgba(30, 41, 59, 0.75); /* slate-800 com transparência */
-    border-bottom-color: #475569; /* slate-600 */
+    background-color: rgba(51, 65, 85, 0.75); /* ANTES: slate-800, AGORA: slate-700 com transparência */
+    border-bottom-color: #64748b; /* slate-500 */
 }
 
 /* Links das barras de navegação */
