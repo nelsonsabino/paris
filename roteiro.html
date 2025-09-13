@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roteiro de Viagem Detalhado: Paris</title>
 
+    <!-- SCRIPT ANTI-FLASH PARA O MODO ESCURO -->
+    <script>
+        (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches))
+            ? document.documentElement.classList.add('dark')
+            : document.documentElement.classList.remove('dark');
+    </script>
+
     <!-- Favicon para diferentes browsers -->
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
@@ -28,7 +35,14 @@
         <div class="container mx-auto max-w-5xl px-4">
             <div class="flex justify-between items-center py-3">
                 <a href="index.html" class="font-display text-xl text-gray-800 tracking-wider">INÍCIO</a>
-                <a href="guia.html" class="bg-blue-800 text-white font-semibold py-2 px-4 rounded-md transition hover:bg-blue-700">GUIA</a>
+                <div class="flex items-center gap-2 md:gap-4">
+                    <!-- BOTÃO SELETOR DE TEMA -->
+                    <button id="theme-switcher" class="theme-switcher h-10 w-10 rounded-full text-gray-500 dark:text-slate-400 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors duration-200 flex items-center justify-center">
+                        <i class="fa-solid fa-sun text-xl sun-icon"></i>
+                        <i class="fa-solid fa-moon text-xl moon-icon"></i>
+                    </button>
+                    <a href="guia.html" class="bg-blue-800 text-white font-semibold py-2 px-4 rounded-md transition hover:bg-blue-700">GUIA</a>
+                </div>
             </div>
         </div>
     </header>
@@ -59,6 +73,7 @@
     </div>
         
     <script type="module" src="data/roteiro_renderer.js"></script>
+    <script src="js/theme_switcher.js"></script>
 
 </body>
 </html>
