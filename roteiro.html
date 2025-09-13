@@ -106,13 +106,11 @@
         border-radius: 0 0.5rem 0.5rem 0;
         margin-top: 0.5rem;
     }
-
-    /* Nova Estrutura de Navegação */
     .sticky-nav-days {
         position: sticky;
         top: 0;
         z-index: 50;
-        background-color: rgba(255, 255, 255, 0.85);
+        background-color: rgba(255, 255, 255, 0.75); /* Transparência aumentada */
         backdrop-filter: blur(8px);
         box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         border-bottom: 1px solid #e2e8f0;
@@ -120,9 +118,10 @@
     }
     .day-nav {
         position: sticky;
-        top: 53px; /* Altura da barra de dias */
+        top: 53px;
         z-index: 40;
-        background-color: #f1f5f9;
+        background-color: rgba(241, 245, 249, 0.75); /* Fundo com transparência */
+        backdrop-filter: blur(8px); /* Efeito de desfoque */
         border-bottom: 1px solid #cbd5e1;
         padding: 0.75rem 1rem;
         display: flex;
