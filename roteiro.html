@@ -1,207 +1,34 @@
 <!DOCTYPE html>
-<html lang="pt" class="light" style="scroll-behavior: smooth;">
+<html lang="pt" style="scroll-behavior: smooth;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roteiro de Viagem Detalhado: Paris</title>
 
-<!-- Favicon para diferentes browsers -->
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <!-- Favicon para diferentes browsers -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
-    
-    <!-- Script do Theme Switcher (IMPORTANTE: colocar no head) -->
-    <script src="js/theme_switcher.js"></script>
 
-<style>
-    body {
-        font-family: 'Poppins', sans-serif;
-    }
-    .font-display {
-        font-family: 'Playfair Display', serif;
-    }
-    
-    /* Controlo dos ícones do tema */
-    .dark .dark-icon { display: block; }
-    .dark .light-icon { display: none; }
-    .light .dark-icon { display: none; }
-    .light .light-icon { display: block; }
-    :not(.dark) .dark-icon { display: none; }
-    :not(.dark) .light-icon { display: block; }
-
-    .day-section {
-        border: 1px solid #e2e8f0;
-        border-radius: 1rem;
-        padding: 1.5rem;
-        background-color: white;
-        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
-    }
-    .dark .day-section {
-        border-color: #374151; /* gray-700 */
-        background-color: #1f2937; /* gray-800 */
-    }
-    @media (min-width: 768px) {
-        .day-section {
-            padding: 2rem 2.5rem;
-        }
-    }
-
-    .day-section > h2 {
-        font-family: 'Playfair Display', serif;
-        color: #1e3a8a;
-        border-bottom: 1px solid #e2e8f0;
-        padding-bottom: 0.75rem;
-        margin-bottom: 0.25rem;
-    }
-    .dark .day-section > h2 {
-        color: #93c5fd; /* blue-300 */
-        border-color: #374151;
-    }
-    .day-section > p {
-        font-style: italic;
-        color: #64748b;
-        margin-bottom: 2.5rem;
-    }
-    .dark .day-section > p {
-        color: #9ca3af; /* gray-400 */
-    }
-
-    .section-block[id] {
-        scroll-margin-top: 120px;
-    }
-
-    .timeline-container {
-        margin-left: 4rem;
-    }
-    .timeline-container::before {
-        content: '';
-        position: absolute;
-        left: 12px;
-        top: 2rem;
-        bottom: 2rem;
-        width: 2px;
-        background-color: #e5e7eb;
-        z-index: 0;
-    }
-    .dark .timeline-container::before {
-        background-color: #4b5563; /* gray-600 */
-    }
-    .timeline-item {
-        position: relative;
-        padding-left: 2.5rem;
-        padding-bottom: 3rem;
-    }
-    .timeline-item:last-child {
-        padding-bottom: 0.5rem;
-    }
-    .timeline-time {
-        position: absolute;
-        left: -1rem;
-        top: 0.1rem;
-        transform: translateX(-100%);
-        font-weight: 600;
-        color: #64748b;
-        width: 4rem;
-        text-align: right;
-    }
-    .dark .timeline-time {
-        color: #9ca3af;
-    }
-    .timeline-icon {
-        position: absolute;
-        left: 0;
-        top: 0.25rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 24px;
-        height: 24px;
-        background-color: #475569;
-        color: white;
-        border-radius: 50%;
-        z-index: 1;
-    }
-    .timeline-icon-meal {
-        background-color: #22c55e;
-    }
-    .timeline-item-meal {
-        background-color: #f0fdf4;
-        border-left: 4px solid #4ade80;
-        padding: 0.75rem 1rem;
-        border-radius: 0 0.5rem 0.5rem 0;
-        margin-top: 0.5rem;
-    }
-    .dark .timeline-item-meal {
-        background-color: #052e16; /* green-950 */
-        border-color: #22c55e; /* green-500 */
-    }
-    .sticky-nav-days {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        background-color: rgba(255, 255, 255, 0.75);
-        backdrop-filter: blur(8px);
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        border-bottom: 1px solid #e2e8f0;
-        padding: 0.5rem 1rem;
-    }
-    .dark .sticky-nav-days {
-        background-color: rgba(31, 41, 55, 0.75); /* gray-800 com transparência */
-        border-bottom-color: #374151; /* gray-700 */
-    }
-    .day-nav {
-        position: sticky;
-        top: 53px;
-        z-index: 40;
-        background-color: rgba(241, 245, 249, 0.75);
-        backdrop-filter: blur(8px);
-        border-bottom: 1px solid #cbd5e1;
-        padding: 0.75rem 1rem;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.5rem;
-    }
-    .dark .day-nav {
-        background-color: rgba(17, 24, 39, 0.75); /* gray-900 com transparência */
-        border-bottom-color: #4b5563; /* gray-600 */
-    }
-
-    .metro-line { display: inline-block; color: white; padding: 2px 7px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; margin: 0 4px; line-height: 1.2; }
-    .active-day-link { background-color: #e0e7ff; color: #312e81; }
-    .dark .active-day-link { background-color: #3730a3; color: #e0e7ff; }
-    .day-nav a { padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 0.875rem; font-weight: 600; transition: background-color 0.2s, color 0.2s; white-space: nowrap; }
-    .day-nav a.active-section { background-color: #1e3a8a; color: white; }
-    .dark .day-nav a.active-section { background-color: #60a5fa; color: #1e3a8a; }
-    .timeline-badge { display: inline-block; padding: 0.15rem 0.6rem; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; margin-left: 0.75rem; vertical-align: middle; }
-    .badge-completed { background-color: #e5e7eb; color: #4b5563; }
-    .dark .badge-completed { background-color: #4b5563; color: #d1d5db; }
-    .badge-ongoing { background-color: #22c55e; color: white; }
-    .badge-next { background-color: #3b82f6; color: white; }
-</style>
+    <!-- LIGAÇÃO PARA O FICHEIRO CSS EXTERNO -->
+    <link rel="stylesheet" href="css/roteiro.css">
 
 </head>
-<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+<body class="text-gray-800">
 
     <!-- CABEÇALHO DA PÁGINA (NÃO-FLUTUANTE) -->
-    <header class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+    <header class="bg-white border-b border-gray-200">
         <div class="container mx-auto max-w-5xl px-4">
             <div class="flex justify-between items-center py-3">
-                <a href="index.html" class="font-display text-xl text-gray-800 dark:text-gray-100 tracking-wider">INÍCIO</a>
-                <div class="flex items-center gap-4">
-                    <a href="guia.html" class="bg-blue-800 text-white font-semibold py-2 px-4 rounded-md transition hover:bg-blue-700">GUIA</a>
-                    <button onclick="toggleTheme()" class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" aria-label="Alternar tema">
-                        <svg class="h-6 w-6 dark-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-                        <svg class="h-6 w-6 light-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-                    </button>
-                </div>
+                <a href="index.html" class="font-display text-xl text-gray-800 tracking-wider">INÍCIO</a>
+                <a href="guia.html" class="bg-blue-800 text-white font-semibold py-2 px-4 rounded-md transition hover:bg-blue-700">GUIA</a>
             </div>
         </div>
     </header>
@@ -209,19 +36,19 @@
     <!-- BARRA DE NAVEGAÇÃO DOS DIAS (FLUTUANTE) -->
     <nav class="sticky-nav-days">
         <div class="flex items-center justify-center flex-wrap gap-x-1 sm:gap-x-2 gap-y-2">
-            <a href="#day1" class="text-gray-600 dark:text-gray-300 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200 dark:hover:bg-gray-700">Dia 1</a>
-            <a href="#day2" class="text-gray-600 dark:text-gray-300 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200 dark:hover:bg-gray-700">Dia 2</a>
-            <a href="#day3" class="text-gray-600 dark:text-gray-300 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200 dark:hover:bg-gray-700">Dia 3</a>
-            <a href="#day4" class="text-gray-600 dark:text-gray-300 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200 dark:hover:bg-gray-700">Dia 4</a>
-            <a href="#day5" class="text-gray-600 dark:text-gray-300 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200 dark:hover:bg-gray-700">Dia 5</a>
+            <a href="#day1" class="text-gray-600 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 1</a>
+            <a href="#day2" class="text-gray-600 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 2</a>
+            <a href="#day3" class="text-gray-600 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 3</a>
+            <a href="#day4" class="text-gray-600 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 4</a>
+            <a href="#day5" class="text-gray-600 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 5</a>
         </div>
     </nav>
 
     <!-- O conteúdo dos dias será injetado aqui pelo JavaScript -->
     <div class="container mx-auto p-4 md:p-8 max-w-5xl">
         <header class="text-center mb-12 md:mb-16">
-            <h1 class="font-display text-4xl md:text-5xl text-gray-900 dark:text-white mb-4 font-bold">Roteiro Detalhado de Paris</h1>
-            <p class="text-base md:text-lg text-gray-600 dark:text-gray-400">Uma viagem de 5 dias pela cultura, história e magia da capital francesa.</p>
+            <h1 class="font-display text-4xl md:text-5xl text-gray-900 mb-4 font-bold">Roteiro Detalhado de Paris</h1>
+            <p class="text-base md:text-lg text-gray-600">Uma viagem de 5 dias pela cultura, história e magia da capital francesa.</p>
         </header>
 
         <!-- As seções dos dias serão inseridas aqui dinamicamente pelo JavaScript -->
