@@ -6,24 +6,13 @@ import { renderTimeline, renderCalendar, renderTicketTimeline, fetchTripWeather 
 // Importa a lógica da checklist
 import { initializeChecklist } from './checklist.js';
 
+// Importa a configuração da base de dados do Firebase
+import { database } from './config/firebase-config.js';
+
 // --- VARIÁVEIS GLOBAIS ---
 const a_senha_secreta = 'paris2025';
 let isAuthenticated = false;
 let pendingAction = null;
-
-// --- INICIALIZAÇÃO FIREBASE ---
-const firebaseConfig = {
-  apiKey: "AIzaSyAt7jAk5r2tqSdyTf2m7MUebd_t7bbDTJk",
-  authDomain: "planeamento-viagem-paris.firebaseapp.com",
-  databaseURL: "https://planeamento-viagem-paris-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "planeamento-viagem-paris",
-  storageBucket: "planeamento-viagem-paris.appspot.com",
-  messagingSenderId: "121000897121",
-  appId: "1:121000897121:web:75662c01dc56926bf61820"
-};
-
-firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
 
 /**
  * Função para iniciar a contagem decrescente para a viagem.
