@@ -3,7 +3,7 @@ body {
     background-color: #f0f4f8;
 }
 .font-display {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Poppins', sans-serif;
 }
 .day-section {
     border: 1px solid #e2e8f0;
@@ -19,7 +19,7 @@ body {
 }
 
 .day-section > h2 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Poppins', sans-serif;
     color: #1e3a8a;
     border-bottom: 1px solid #e2e8f0;
     padding-bottom: 0.75rem;
