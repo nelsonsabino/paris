@@ -3,7 +3,7 @@ export const day1Data = {
     id: "day1",
     title: "Dia 1: Chegada e a Magia da Torre Eiffel",
     date: "Sexta-feira, 19 de Setembro",
-    mapImage: "https://nelsonsabino.github.io/paris/Dia1b.png", // Imagem do mapa geral do dia
+    mapImage: "assets/images/Dia1b.png", // Imagem do mapa geral do dia
     sections: [
         {
             id: "viagem",
