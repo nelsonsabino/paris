@@ -30,9 +30,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Replace API Key
-        # Encontra o placeholder no index.html e substitui-o pelo segredo
+        # Encontra o placeholder no ficheiro JS correto e substitui-o pelo segredo
         run: |
-          sed -i 's|__OPENWEATHERMAP_API_KEY__|${{ secrets.OPENWEATHERMAP_API_KEY }}|g' index.html
+          sed -i 's|__OPENWEATHERMAP_API_KEY__|${{ secrets.OPENWEATHERMAP_API_KEY }}|g' js/ui_renderer.js
         
       - name: Setup Pages
         uses: actions/configure-pages@v5
