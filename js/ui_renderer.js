@@ -152,7 +152,7 @@ function renderForecast(forecastDays) {
  * Busca e renderiza a previsão do tempo para a viagem.
  */
 export async function fetchTripWeather() {
-    const apiKey = '__OPENWEATHERMAP_API_KEY__';
+    const apiKey = '20a830e5b99cce598420aa6595328dfe'; // <-- A SUA CHAVE DE API ESTÁ AQUI
     const lat = 48.8566;
     const lon = 2.3522;
     const tripStartDate = new Date('2025-09-19T00:00:00Z');
