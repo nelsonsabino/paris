@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orçamento Detalhado: Táxi para o Centro</title>
+
+    <!-- SCRIPT ANTI-FLASH PARA O MODO ESCURO -->
+    <script>
+        (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches))
+            ? document.documentElement.classList.add('dark')
+            : document.documentElement.classList.remove('dark');
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+    
+    <!-- ESTILOS ESPECÍFICOS DA PÁGINA -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc;
+        }
+        .dark body {
+            background-color: #0f172a;
+        }
+        .main-title {
+            font-size: 2.5rem;
+        }
+        .section-title {
+            font-size: 1.75rem;
+        }
+        .display-cost {
+            font-size: 2.75rem;
+        }
+        .input-label {
+            font-weight: 600;
+            color: #4b5563;
+        }
+        .dark .input-label {
+            color: #d1d5db;
+        }
+        .input-field {
+            border: 2px solid #d1d5db;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            width: 100%;
+            font-size: 1.125rem;
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+        }
+        .dark .input-field {
+            background-color: #1e293b;
+            border-color: #4b5563;
+            color: #f8fafc;
+        }
+        .save-btn {
+            background-color: #16a34a;
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .save-btn:hover {
+            background-color: #15803d;
+        }
+        #save-status {
+            transition: opacity 0.5s;
+        }
+        .table-container {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .dark .table-container {
+            background-color: #1e293b;
+        }
+    </style>
+</head>
+<body class="text-gray-800 dark:text-gray-200">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+
+        <header class="mb-12 flex flex-col md:flex-row justify-between items-center gap-4">
+            <h1 class="main-title font-bold text-gray-800 dark:text-white text-center md:text-left">Cenário: Táxi para o Centro</h1>
+            <a href="orcamento.html" class="bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-colors w-full md:w-auto text-center">
+                <i class="fa-solid fa-arrow-left mr-2"></i>
+                Voltar ao Orçamento
+            </a>
+        </header>
+
+        <!-- SECÇÃO DE INPUTS -->
+        <section class="mb-12 bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-lg">
+            <h2 class="section-title font-bold text-gray-800 dark:text-white mb-6 text-center">Custos do Táxi (Grupo 5 Pessoas)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <label for="taxi-ida" class="input-label block mb-2">Custo Viagem 1 (Aeroporto → Centro Paris)</label>
+                    <input type="number" id="taxi-ida" class="input-field" placeholder="60.00">
+                </div>
+                <div>
+                    <label for="taxi-volta" class="input-label block mb-2">Custo Viagem 2 (Cacifo → Aeroporto)</label>
+                    <input type="number" id="taxi-volta" class="input-field" placeholder="60.00">
+                </div>
+            </div>
+            <div class="text-center">
+                <button id="save-button" class="save-btn">
+                    <i class="fa-solid fa-save mr-2"></i>Guardar Alterações
+                </button>
+                <p id="save-status" class="text-green-600 dark:text-green-400 mt-2 font-semibold opacity-0 h-6"></p>
+            </div>
+        </section>
+
+        <!-- SECÇÃO DE TOTAIS -->
+        <section class="mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-lg text-center">
+                    <h3 class="text-lg font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Total por pessoa</h3>
+                    <p id="total-per-person" class="display-cost font-bold text-green-600 dark:text-green-400 mt-2">0,00 €</p>
+                </div>
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-lg text-center">
+                    <h3 class="text-lg font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Total para 4 pessoas</h3>
+                    <p id="total-for-group" class="display-cost font-bold text-blue-600 dark:text-blue-400 mt-2">0,00 €</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECÇÃO DE DETALHES -->
+        <section class="mb-12">
+            <h2 class="section-title font-bold text-gray-800 dark:text-white mb-6 text-center">Detalhe Diário de Custos</h2>
+            <div id="daily-breakdown-container" class="table-container">
+                <!-- A tabela será gerada pelo JavaScript -->
+            </div>
+        </section>
+
+    </div>
+
+    <!-- SDKs do Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <!-- Configuração do Firebase e Lógica da Página -->
+    <script type="module">
+        // --- INICIALIZAÇÃO FIREBASE ---
+        const firebaseConfig = {
+            apiKey: "AIzaSyAt7jAk5r2tqSdyTf2m7MUebd_t7bbDTJk",
+            authDomain: "planeamento-viagem-paris.firebaseapp.com",
+            databaseURL: "https://planeamento-viagem-paris-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "planeamento-viagem-paris",
+            storageBucket: "planeamento-viagem-paris.appspot.com",
+            messagingSenderId: "121000897121",
+            appId: "1:121000897121:web:75662c01dc56926bf61820"
+        };
+
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+        const database = firebase.database();
+        const custosTaxiRef = database.ref('orcamento/custosTaxi');
+
+        // --- CONSTANTES E ELEMENTOS DO DOM ---
+        const taxiIdaInput = document.getElementById('taxi-ida');
+        const taxiVoltaInput = document.getElementById('taxi-volta');
+        const saveButton = document.getElementById('save-button');
+        const saveStatus = document.getElementById('save-status');
+
+        const CUSTO_METRO_VIAGEM = 2.50;
+        const CUSTO_NAVIGO = 2.00;
+        const NUMERO_VIAGENS_METRO_TOTAL = 13; // <-- ATUALIZADO para este cenário
+
+        // --- FUNÇÕES DE CÁLCULO E RENDERIZAÇÃO ---
+        function formatCurrency(value) {
+            return `${value.toFixed(2).replace('.', ',')} €`;
+        }
+
+        function recalculateAndRender() {
+            const custoTaxiIda = parseFloat(taxiIdaInput.value) || 0;
+            const custoTaxiVolta = parseFloat(taxiVoltaInput.value) || 0;
+
+            // Cálculos para o grupo completo de 5 pessoas
+            const custoTotalTaxi5pax = custoTaxiIda + custoTaxiVolta;
+            const custoTotalMetro5pax = NUMERO_VIAGENS_METRO_TOTAL * CUSTO_METRO_VIAGEM * 5;
+            const custoTotalNavigo5pax = CUSTO_NAVIGO * 5;
+            const custoTotalViagem5pax = custoTotalTaxi5pax + custoTotalMetro5pax + custoTotalNavigo5pax;
+
+            // Cálculos individuais e para o grupo de 4
+            const custoIndividual = custoTotalViagem5pax / 5;
+            const custo4pax = custoIndividual * 4;
+
+            // Atualizar os displays de totais
+            document.getElementById('total-per-person').textContent = formatCurrency(custoIndividual);
+            document.getElementById('total-for-group').textContent = formatCurrency(custo4pax);
+
+            // Gerar a tabela de detalhe diário
+            renderDailyTable(custoTaxiIda, custoTaxiVolta);
+        }
+
+        function renderDailyTable(custoIda, custoVolta) {
+            const container = document.getElementById('daily-breakdown-container');
+            const custoMetro4pax = CUSTO_METRO_VIAGEM * 4;
+            const custoTaxiIda4pax = (custoIda / 5) * 4;
+            const custoTaxiVolta4pax = (custoVolta / 5) * 4;
+            
+            // Itinerário específico para este cenário
+            const dailyData = [
+                { day: "Dia 1: Chegada", items: [
+                    { desc: "Táxi: Aeroporto Orly → Centro de Paris", cost: custoTaxiIda4pax },
+                    { desc: "Metro: Centro de Paris → Casa", cost: custoMetro4pax },
+                    { desc: "Metro: Casa → Invalides", cost: custoMetro4pax },
+                    { desc: "Metro: École Militaire → Casa", cost: custoMetro4pax }
+                ]},
+                { day: "Dia 2: Île de la Cité", items: [
+                    { desc: "Metro: Casa → Île de la Cité", cost: custoMetro4pax },
+                    { desc: "Metro: Champs-Élysées - Clemenceau → Arco do Triunfo", cost: custoMetro4pax },
+                    { desc: "Metro: Champs-Élysées → Casa", cost: custoMetro4pax }
+                ]},
+                { day: "Dia 3: Versalhes e Montmartre", items: [
+                    { desc: "Metro/RER: Casa → Versalhes", cost: custoMetro4pax },
+                    { desc: "Metro: Versalhes → Montmartre", cost: custoMetro4pax },
+                    { desc: "Metro: Moulin Rouge → Casa", cost: custoMetro4pax }
+                ]},
+                { day: "Dia 4: Louvre e Marais", items: [
+                    { desc: "Metro: Casa → Museu do Louvre", cost: custoMetro4pax },
+                    { desc: "Metro: Opéra → Filles du Calvaire", cost: custoMetro4pax },
+                    { desc: "Metro: Marais → Casa", cost: custoMetro4pax }
+                ]},
+                { day: "Dia 5: Partida", items: [
+                    { desc: "Metro: Casa → Cacifo de Malas", cost: custoMetro4pax },
+                    { desc: "Táxi: Cacifo de Malas → Aeroporto Orly", cost: custoTaxiVolta4pax }
+                ]}
+            ];
+
+            let tableHTML = `
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead class="bg-gray-100 dark:bg-slate-700">
+                            <tr>
+                                <th class="p-4 font-semibold text-gray-700 dark:text-gray-200">Descrição</th>
+                                <th class="p-4 font-semibold text-gray-700 dark:text-gray-200 text-right">Custo (4 Pessoas)</th>
+                            </tr>
+                        </thead>
+                        <tbody>`;
+            
+            let totalMetro = 0;
+            let totalTaxi = 0;
+
+            dailyData.forEach(day => {
+                const dailyTotal = day.items.reduce((sum, item) => sum + item.cost, 0);
+                tableHTML += `
+                    <tr class="font-bold bg-gray-50 dark:bg-slate-800 border-b border-gray-200 dark:border-slate-600">
+                        <td class="p-4">${day.day}</td>
+                        <td class="p-4 text-right font-mono">${formatCurrency(dailyTotal)}</td>
+                    </tr>`;
+                day.items.forEach(item => {
+                    if (item.desc.includes('Metro')) totalMetro += item.cost;
+                    if (item.desc.includes('Táxi')) totalTaxi += item.cost;
+                    tableHTML += `
+                        <tr class="border-b border-gray-200 dark:border-slate-700">
+                            <td class="pl-8 p-3 text-gray-600 dark:text-gray-400">${item.desc}</td>
+                            <td class="p-3 text-right font-mono">${formatCurrency(item.cost)}</td>
+                        </tr>`;
+                });
+            });
+            
+            const custoNavigo4pax = CUSTO_NAVIGO * 4;
+            const granTotal = totalTaxi + totalMetro + custoNavigo4pax;
+
+            tableHTML += `
+                        </tbody>
+                        <tfoot class="font-bold text-lg bg-gray-100 dark:bg-slate-700">
+                            <tr class="border-b border-t-2 border-gray-300 dark:border-slate-500">
+                                <td class="p-4">Subtotal Táxi</td>
+                                <td class="p-4 text-right font-mono">${formatCurrency(totalTaxi)}</td>
+                            </tr>
+                             <tr>
+                                <td class="p-4">Subtotal Metro (13 viagens)</td>
+                                <td class="p-4 text-right font-mono">${formatCurrency(totalMetro)}</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4">Cartão Navigo Easy</td>
+                                <td class="p-4 text-right font-mono">${formatCurrency(custoNavigo4pax)}</td>
+                            </tr>
+                            <tr class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200">
+                                <td class="p-4">TOTAL (4 Pessoas)</td>
+                                <td class="p-4 text-right font-mono">${formatCurrency(granTotal)}</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>`;
+            container.innerHTML = tableHTML;
+        }
+
+
+        // --- LÓGICA DE INTERAÇÃO E FIREBASE ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Carregar dados do Firebase
+            custosTaxiRef.child('centro').on('value', (snapshot) => {
+                const data = snapshot.val();
+                // Usar valores do Firebase ou os valores padrão (60 e 60)
+                taxiIdaInput.value = data && data.ida ? data.ida.toFixed(2) : '60.00';
+                taxiVoltaInput.value = data && data.volta ? data.volta.toFixed(2) : '60.00';
+                
+                // 2. Calcular e renderizar tudo com os valores carregados
+                recalculateAndRender();
+            });
+
+            // 3. Adicionar listeners para recalcular ao alterar os inputs
+            taxiIdaInput.addEventListener('input', recalculateAndRender);
+            taxiVoltaInput.addEventListener('input', recalculateAndRender);
+
+            // 4. Guardar no Firebase ao clicar no botão
+            saveButton.addEventListener('click', () => {
+                const idaValue = parseFloat(taxiIdaInput.value) || 0;
+                const voltaValue = parseFloat(taxiVoltaInput.value) || 0;
+
+                custosTaxiRef.child('centro').set({
+                    ida: idaValue,
+                    volta: voltaValue
+                })
+                .then(() => {
+                    saveStatus.textContent = 'Guardado com sucesso!';
+                    saveStatus.classList.remove('opacity-0');
+                    setTimeout(() => saveStatus.classList.add('opacity-0'), 2000);
+                })
+                .catch((error) => {
+                    saveStatus.textContent = 'Erro ao guardar: ' + error.message;
+                    saveStatus.classList.remove('opacity-0', 'text-green-600');
+                    saveStatus.classList.add('text-red-600');
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
