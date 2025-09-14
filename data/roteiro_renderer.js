@@ -98,18 +98,24 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>`;
         }
         
+        // --- LÓGICA ATUALIZADA PARA CRIAR OS CARDS DE DESTAQUES ---
         let highlightsHtml = '';
         if (dayData.highlights && dayData.highlights.length > 0) {
             highlightsHtml = `
                 <div class="highlights-grid">
                     ${dayData.highlights.map(highlight => `
-                        <a href="${highlight.link}" class="highlight-item">
-                            <i class="fa-solid ${highlight.icon} highlight-icon text-xl w-6 text-center"></i>
-                            <span class="highlight-name">${highlight.name}</span>
+                        <a href="${highlight.link}" class="highlight-card">
+                            <div class="highlight-card-bg" style="background-image: url('${highlight.imageUrl}');"></div>
+                            <div class="highlight-card-overlay"></div>
+                            <div class="highlight-card-content">
+                                <i class="fa-solid ${highlight.icon} highlight-icon"></i>
+                                <h3 class="highlight-name">${highlight.name}</h3>
+                            </div>
                         </a>
                     `).join('')}
                 </div>`;
         }
+        // --- FIM DO BLOCO ATUALIZADO ---
 
         let htmlContent = `
             <h2 class="font-display text-2xl md:text-3xl text-gray-900 mb-1 font-bold">${dayData.title}</h2>
@@ -122,7 +128,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         dayData.sections.forEach(sectionBlock => {
-            // A LINHA ABAIXO FOI CORRIGIDA
             htmlContent += `<div ${sectionBlock.id ? `id="${sectionBlock.id}"` : ''} class="section-block pt-4">
                     <a href="${sectionBlock.mapLink}" target="_blank" class="block p-3 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-colors duration-200 mt-8 mb-4">
                         <div class="flex items-center justify-between">
@@ -249,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
     sectionBlocks.forEach(section => sectionObserver.observe(section));
     
-    // --- NOVO: LÓGICA PARA A ANIMAÇÃO DE ENTRADA ---
+    // --- LÓGICA PARA A ANIMAÇÃO DE ENTRADA ---
     const animationObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
