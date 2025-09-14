@@ -5,10 +5,10 @@ export const day1Data = {
     date: "Sexta-feira, 19 de Setembro",
     mapImage: "assets/images/Dia1b.png", // Imagem do mapa geral do dia
     highlights: [
-        { name: "Torre Eiffel", icon: "fa-tower-observation", link: "visita_torre-eiffel.html", imageUrl: "https://i.imgur.com/4l1kZ6I.jpeg" },
-        { name: "Ponte Alexandre III", icon: "fa-bridge", link: "visita_ponte-alexandre-iii.html", imageUrl: "https://i.imgur.com/L5Gff1s.jpeg" },
-        { name: "Jardim do Trocadéro", icon: "fa-camera-retro", link: "visita_jardim-trocadero.html", imageUrl: "https://i.imgur.com/yT4fGzF.jpeg" },
-        { name: "Rue Cler", icon: "fa-store", link: "visita_rue-cler.html", imageUrl: "https://i.imgur.com/gK2i2bT.jpeg" }
+        { name: "Torre Eiffel", icon: "fa-tower-observation", link: "visita_torre-eiffel.html", imageUrl: "https://cdn.pixabay.com/photo/2017/03/22/11/30/eiffel-tower-2164711_1280.jpg" },
+        { name: "Ponte Alexandre III", icon: "fa-bridge", link: "visita_ponte-alexandre-iii.html", imageUrl: "https://www.duchensphotographie.fr/wp-content/uploads/2017/09/pont-alexandre-III-vignette-FB-article-blog-200917.jpg" },
+        { name: "Jardim do Trocadéro", icon: "fa-camera-retro", link: "visita_jardim-trocadero.html", imageUrl: "https://www.parisinsidersguide.com/image-files/trocadero-renovation-2024-grand-jardin-trocadero-tour-eiffel-7-800-2x1.jpg" },
+        { name: "Rue Cler", icon: "fa-store", link: "visita_rue-cler.html", imageUrl: "https://joetourist.ca/wp-content/uploads/2014/09/2014JCIMG-5139a-650x300.jpg" }
     ],
     sections: [
         {
