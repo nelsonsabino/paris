@@ -21,6 +21,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
     
+    <!-- LIGAÇÃO PARA O FICHEIRO CSS EXTERNO -->
+    <link rel="stylesheet" href="css/main.css"> <!-- Adicionei para partilhar estilos como o do theme switcher -->
+    
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -56,10 +59,16 @@
 
         <header class="mb-12 flex flex-col md:flex-row justify-between items-center gap-4">
             <h1 class="main-title font-bold text-gray-800 dark:text-white text-center md:text-left">Guia de Conversação</h1>
-            <a href="index.html" class="bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-colors w-full md:w-auto text-center">
-                <i class="fa-solid fa-arrow-left mr-2"></i>
-                Voltar ao Painel
-            </a>
+            <div class="flex items-center gap-4">
+                <button id="theme-switcher" class="theme-switcher h-12 w-12 rounded-full text-gray-500 dark:text-slate-400 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors duration-200 flex items-center justify-center flex-shrink-0">
+                    <i class="fa-solid fa-sun text-2xl sun-icon"></i>
+                    <i class="fa-solid fa-moon text-2xl moon-icon"></i>
+                </button>
+                <a href="index.html" class="bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-colors w-full md:w-auto text-center">
+                    <i class="fa-solid fa-arrow-left mr-2"></i>
+                    Voltar ao Painel
+                </a>
+            </div>
         </header>
 
         <main>
@@ -204,6 +213,6 @@
             });
         });
     </script>
-    <script src="js/theme_switcher.js"></script> <!-- Se tiver um ficheiro para o dark mode, mantenha-o -->
+    <script src="js/theme_switcher.js"></script>
 </body>
 </html>
