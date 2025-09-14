@@ -266,3 +266,23 @@ html.dark .highlight-icon {
 html.dark .highlight-name {
     color: #cbd5e1; /* slate-300 */
 }
+
+/* --- ANIMAÇÕES DE ENTRADA --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.timeline-item-hidden {
+    opacity: 0;
+}
+
+.timeline-item-animate {
+    animation: fadeInUp 0.5s ease-out forwards;
+}
