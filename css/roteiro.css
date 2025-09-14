@@ -233,7 +233,7 @@ html.dark .hover\:text-blue-900:hover {
     overflow: hidden;
     border-radius: 0.75rem;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    aspect-ratio: 4 / 5;
+    height: 90px; /* <<-- AQUI ESTÁ A ALTERAÇÃO PRINCIPAL */
     color: white;
     text-decoration: none;
 }
@@ -269,14 +269,16 @@ html.dark .hover\:text-blue-900:hover {
     position: absolute;
     bottom: 0;
     left: 0;
-    padding: 1rem;
+    padding: 0.75rem 1rem; /* <<-- Padding ligeiramente ajustado para a nova altura */
     width: 100%;
     z-index: 10;
+    display: flex; /* <<-- Adicionado para alinhar ícone e texto */
+    align-items: center; /* <<-- Adicionado para alinhar ícone e texto */
 }
 
 .highlight-card .highlight-icon {
     font-size: 1.25rem;
-    margin-bottom: 0.5rem;
+    margin-right: 0.75rem; /* <<-- Alterado de margin-bottom para margin-right */
     opacity: 0.9;
     transition: opacity 0.3s ease-out;
     text-shadow: 0 1px 2px rgba(0,0,0,0.3);
