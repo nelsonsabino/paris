@@ -5,10 +5,10 @@ export const day2Data = {
     date: "Sábado, 20 de Setembro",
     mapImage: "assets/images/Dia2b.png",
     highlights: [
-        { name: "Notre-Dame", icon: "fa-church", link: "visita_notre-dame.html" },
-        { name: "Musée d'Orsay", icon: "fa-palette", link: "visita_musee-orsay.html" },
-        { name: "Jardim das Tulherias", icon: "fa-tree", link: "visita_jardim-tulherias.html" },
-        { name: "Arco do Triunfo", icon: "fa-archway", link: "visita_arco-do-triunfo.html" }
+        { name: "Notre-Dame", icon: "fa-church", link: "visita_notre-dame.html", imageUrl: "https://www.civitatis.com/f/francia/paris/guia/catedral-notre-dame.jpg" },
+        { name: "Musée d'Orsay", icon: "fa-palette", link: "visita_musee-orsay.html", imageUrl: "https://asset-prod.france.fr/France_Seine_Paris_musee_d_Orsay_42258_Patrice_Schmidt_de06a75b85.jpg" },
+        { name: "Jardim das Tulherias", icon: "fa-tree", link: "visita_jardim-tulherias.html", imageUrl: "https://cparici.com/wp-content/uploads/2025/08/cparici-2025-08-16T075320.195.jpg" },
+        { name: "Arco do Triunfo", icon: "fa-archway", link: "visita_arco-do-triunfo.html", imageUrl: "https://blog.actafrika.net/wp-content/uploads/2021/09/arco-triunfo.jpg" }
     ],
     sections: [
         {
