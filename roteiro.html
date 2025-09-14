@@ -20,12 +20,29 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
 
     <!-- LIGAÇÃO PARA O FICHEIRO CSS EXTERNO -->
     <link rel="stylesheet" href="css/roteiro.css">
+
+    <!-- ESTILOS CRÍTICOS PARA A ANIMAÇÃO -->
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .timeline-item-hidden {
+            opacity: 0;
+        }
+    </style>
 
 </head>
 <body class="text-gray-800">
