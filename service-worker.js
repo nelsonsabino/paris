@@ -1,5 +1,5 @@
-// Versão 3: Força a atualização de todos os ficheiros em cache, incluindo o frases.html corrigido.
-const CACHE_NAME = 'paris-v3';
+// Versão 4: Garante que a versão corrigida de frases.html é carregada.
+const CACHE_NAME = 'paris-v4';
 const urlsToCache = [
   '/index.html',
   '/guia.html',
