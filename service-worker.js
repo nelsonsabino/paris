@@ -1,11 +1,11 @@
-// Versão 2: Adiciona frases.html e força a atualização do cache.
-const CACHE_NAME = 'paris-v2';
+// Versão 3: Força a atualização de todos os ficheiros em cache, incluindo o frases.html corrigido.
+const CACHE_NAME = 'paris-v3';
 const urlsToCache = [
   '/index.html',
   '/guia.html',
   '/roteiro.html',
   '/orcamento.html',
-  '/frases.html', // <-- NOVA PÁGINA ADICIONADA
+  '/frases.html',
   '/site.webmanifest',
   '/favicon.ico',
   '/favicon.svg',
