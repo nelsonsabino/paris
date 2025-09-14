@@ -51,7 +51,7 @@
     <div class="container mx-auto p-4 md:p-8 max-w-5xl">
 
         <header class="mb-12 flex flex-col md:flex-row justify-between items-center gap-4">
-            <h1 class="main-title font-bold text-gray-800 dark:text-white text-center md:text-left">Guia de Conversação</h1>
+            <h1 class="main-title font-bold text-gray-800 text-center md:text-left">Guia de Conversação</h1>
             <div class="flex items-center gap-4">
                 <button id="theme-switcher" class="theme-switcher h-12 w-12 rounded-full text-gray-500 dark:text-slate-400 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors duration-200 flex items-center justify-center flex-shrink-0">
                     <i class="fa-solid fa-sun text-2xl sun-icon"></i>
@@ -65,46 +65,46 @@
         </header>
 
         <main>
-            <p class="text-center text-lg text-gray-600 dark:text-gray-400 mb-12 max-w-3xl mx-auto">
+            <p class="text-center text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
                 Um guia rápido com frases essenciais em francês para facilitar a comunicação durante a sua viagem. A pronúncia é uma aproximação fonética simplificada.
             </p>
 
             <!-- Categoria: Cumprimentos e Básicos -->
             <section class="mb-12">
-                <h2 class="section-title font-bold text-gray-800 dark:text-white mb-6 flex items-center gap-4"><i class="fa-solid fa-hands-helping text-blue-500"></i>Cumprimentos e Expressões Básicas</h2>
-                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-4 md:p-6">
+                <h2 class="section-title font-bold text-gray-800 mb-6 flex items-center gap-4"><i class="fa-solid fa-hands-helping text-blue-500"></i>Cumprimentos e Expressões Básicas</h2>
+                <div class="bg-white rounded-2xl shadow-lg p-4 md:p-6">
                     <div id="phrases-container-basicos"></div>
                 </div>
             </section>
 
             <!-- Categoria: Restaurantes -->
             <section class="mb-12">
-                <h2 class="section-title font-bold text-gray-800 dark:text-white mb-6 flex items-center gap-4"><i class="fa-solid fa-utensils text-blue-500"></i>Em Restaurantes e Cafés</h2>
-                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-4 md:p-6">
+                <h2 class="section-title font-bold text-gray-800 mb-6 flex items-center gap-4"><i class="fa-solid fa-utensils text-blue-500"></i>Em Restaurantes e Cafés</h2>
+                <div class="bg-white rounded-2xl shadow-lg p-4 md:p-6">
                     <div id="phrases-container-restaurante"></div>
                 </div>
             </section>
 
             <!-- Categoria: Lojas -->
             <section class="mb-12">
-                <h2 class="section-title font-bold text-gray-800 dark:text-white mb-6 flex items-center gap-4"><i class="fa-solid fa-shopping-cart text-blue-500"></i>Em Lojas e Compras</h2>
-                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-4 md:p-6">
+                <h2 class="section-title font-bold text-gray-800 mb-6 flex items-center gap-4"><i class="fa-solid fa-shopping-cart text-blue-500"></i>Em Lojas e Compras</h2>
+                <div class="bg-white rounded-2xl shadow-lg p-4 md:p-6">
                     <div id="phrases-container-lojas"></div>
                 </div>
             </section>
 
             <!-- Categoria: Direções -->
             <section class="mb-12">
-                <h2 class="section-title font-bold text-gray-800 dark:text-white mb-6 flex items-center gap-4"><i class="fa-solid fa-map-signs text-blue-500"></i>Transportes e Direções</h2>
-                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-4 md:p-6">
+                <h2 class="section-title font-bold text-gray-800 mb-6 flex items-center gap-4"><i class="fa-solid fa-map-signs text-blue-500"></i>Transportes e Direções</h2>
+                <div class="bg-white rounded-2xl shadow-lg p-4 md:p-6">
                     <div id="phrases-container-direcoes"></div>
                 </div>
             </section>
 
             <!-- Categoria: Emergências -->
             <section class="mb-12">
-                <h2 class="section-title font-bold text-gray-800 dark:text-white mb-6 flex items-center gap-4"><i class="fa-solid fa-briefcase-medical text-red-500"></i>Emergências</h2>
-                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-4 md:p-6">
+                <h2 class="section-title font-bold text-gray-800 mb-6 flex items-center gap-4"><i class="fa-solid fa-briefcase-medical text-red-500"></i>Emergências</h2>
+                <div class="bg-white rounded-2xl shadow-lg p-4 md:p-6">
                     <div id="phrases-container-emergencia"></div>
                 </div>
             </section>
@@ -163,12 +163,12 @@
             const phraseHTML = phrases[category].map(p => `
                 <div class="phrase-item py-4 flex flex-col md:flex-row justify-between items-start md:items-center border-b border-gray-200 dark:border-slate-700 last:border-b-0">
                     <div class="w-full md:w-1/2 mb-2 md:mb-0">
-                        <p class="text-gray-700 dark:text-gray-200">${p.pt}</p>
+                        <p class="text-gray-700">${p.pt}</p>
                     </div>
                     <div class="w-full md:w-1/2 flex items-center justify-between">
                         <div class="flex-grow text-left md:text-right">
-                            <p class="text-lg font-semibold text-blue-600 dark:text-blue-300">${p.fr}</p>
-                            <p class="text-sm text-gray-500 dark:text-gray-400 italic">pron: ${p.pron}</p>
+                            <p class="text-lg font-semibold text-blue-600">${p.fr}</p>
+                            <p class="text-sm text-gray-500 italic">pron: ${p.pron}</p>
                         </div>
                         <button class="copy-btn ml-4 p-2 text-xl" data-copy-text="${p.fr}" title="Copiar">
                             <i class="fa-regular fa-copy"></i>
