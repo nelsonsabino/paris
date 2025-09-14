@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frases Úteis: Viagem a Paris 2025</title>
+
+    <!-- SCRIPT ANTI-FLASH PARA O MODO ESCURO -->
+    <script>
+        (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches))
+            ? document.documentElement.classList.add('dark')
+            : document.documentElement.classList.remove('dark');
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc;
+        }
+        .dark body {
+            background-color: #0f172a;
+        }
+        .main-title {
+            font-size: 2.5rem;
+        }
+        .section-title {
+            font-size: 1.75rem;
+        }
+        .copy-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #9ca3af; /* gray-400 */
+            transition: color 0.2s;
+        }
+        .dark .copy-btn {
+            color: #6b7280; /* gray-500 */
+        }
+        .copy-btn:hover {
+            color: #3b82f6; /* blue-500 */
+        }
+    </style>
+</head>
+<body class="text-gray-800 dark:text-gray-200">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+
+        <header class="mb-12 flex flex-col md:flex-row justify-between items-center gap-4">
+            <h1 class="main-title font-bold text-gray-800 dark:text-white text-center md:text-left">Guia de Conversação</h1>
+            <a href="index.html" class="bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-colors w-full md:w-auto text-center">
+                <i class="fa-solid fa-arrow-left mr-2"></i>
+                Voltar ao Painel
+            </a>
+        </header>
+
+        <main>
+            <p class="text-center text-lg text-gray-600 dark:text-gray-400 mb-12 max-w-3xl mx-auto">
+                Um guia rápido com frases essenciais em francês para facilitar a comunicação durante a sua viagem. A pronúncia é uma aproximação fonética simplificada.
+            </p>
+
+            <!-- Categoria: Cumprimentos e Básicos -->
+            <section class="mb-12">
+                <h2 class="section-title font-bold text-gray-800 dark:text-white mb-6 flex items-center gap-4"><i class="fa-solid fa-hands-helping text-blue-500"></i>Cumprimentos e Expressões Básicas</h2>
+                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-4 md:p-6">
+                    <div id="phrases-container-basicos"></div>
+                </div>
+            </section>
+
+            <!-- Categoria: Restaurantes -->
+            <section class="mb-12">
+                <h2 class="section-title font-bold text-gray-800 dark:text-white mb-6 flex items-center gap-4"><i class="fa-solid fa-utensils text-blue-500"></i>Em Restaurantes e Cafés</h2>
+                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-4 md:p-6">
+                    <div id="phrases-container-restaurante"></div>
+                </div>
+            </section>
+
+            <!-- Categoria: Lojas -->
+            <section class="mb-12">
+                <h2 class="section-title font-bold text-gray-800 dark:text-white mb-6 flex items-center gap-4"><i class="fa-solid fa-shopping-cart text-blue-500"></i>Em Lojas e Compras</h2>
+                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-4 md:p-6">
+                    <div id="phrases-container-lojas"></div>
+                </div>
+            </section>
+
+            <!-- Categoria: Direções -->
+            <section class="mb-12">
+                <h2 class="section-title font-bold text-gray-800 dark:text-white mb-6 flex items-center gap-4"><i class="fa-solid fa-map-signs text-blue-500"></i>Transportes e Direções</h2>
+                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-4 md:p-6">
+                    <div id="phrases-container-direcoes"></div>
+                </div>
+            </section>
+
+            <!-- Categoria: Emergências -->
+            <section class="mb-12">
+                <h2 class="section-title font-bold text-gray-800 dark:text-white mb-6 flex items-center gap-4"><i class="fa-solid fa-briefcase-medical text-red-500"></i>Emergências</h2>
+                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-4 md:p-6">
+                    <div id="phrases-container-emergencia"></div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        const phrases = {
+            basicos: [
+                { pt: 'Olá / Bom dia', fr: 'Bonjour', pron: 'Bon-jur' },
+                { pt: 'Boa tarde / Boa noite', fr: 'Bonsoir', pron: 'Bon-suar' },
+                { pt: 'Adeus', fr: 'Au revoir', pron: 'O-revu-ar' },
+                { pt: 'Sim', fr: 'Oui', pron: 'Uí' },
+                { pt: 'Não', fr: 'Non', pron: 'Non' },
+                { pt: 'Por favor', fr: 'S\'il vous plaît', pron: 'Sil vu plé' },
+                { pt: 'Obrigado(a)', fr: 'Merci', pron: 'Mér-ci' },
+                { pt: 'De nada', fr: 'De rien', pron: 'De ri-an' },
+                { pt: 'Com licença / Desculpe', fr: 'Excusez-moi / Pardon', pron: 'Excuse-muá / Par-don' },
+                { pt: 'Eu não compreendo', fr: 'Je ne comprends pas', pron: 'Je ne com-pran pa' },
+                { pt: 'Fala inglês?', fr: 'Parlez-vous anglais?', pron: 'Parle-vu an-glé?' }
+            ],
+            restaurante: [
+                { pt: 'Uma mesa para quatro, por favor', fr: 'Une table pour quatre, s\'il vous plaît', pron: 'Iun táble pur catre, sil vu plé' },
+                { pt: 'O menu, por favor', fr: 'La carte, s\'il vous plaît', pron: 'La cart, sil vu plé' },
+                { pt: 'A conta, por favor', fr: 'L\'addition, s\'il vous plaît', pron: 'La-di-ci-on, sil vu plé' },
+                { pt: 'Eu gostaria de...', fr: 'Je voudrais...', pron: 'Je vudré...' },
+                { pt: 'Água (com gás / sem gás)', fr: 'De l\'eau (gazeuse / plate)', pron: 'De lô (gazêz / plat)' },
+                { pt: 'Estava delicioso!', fr: 'C\'était délicieux!', pron: 'Cê-tê de-li-ci-ê' }
+            ],
+            lojas: [
+                { pt: 'Quanto custa?', fr: 'Combien ça coûte?', pron: 'Com-bi-an ça cut?' },
+                { pt: 'Posso pagar com cartão?', fr: 'Je peux payer par carte?', pron: 'Je pê pe-iê par cart?' },
+                { pt: 'Estou só a ver, obrigado(a)', fr: 'Je regarde seulement, merci', pron: 'Je re-gard sêl-mon, mér-ci' },
+                { pt: 'Você tem isto noutro tamanho?', fr: 'Vous avez ça dans une autre taille?', pron: 'Vu-zavê sá dan zun otre tái?' },
+                { pt: 'Onde ficam os provadores?', fr: 'Où sont les cabines d\'essayage?', pron: 'U son lê cabin de-ce-i-age?' }
+            ],
+            direcoes: [
+                { pt: 'Onde fica o metro?', fr: 'Où est le métro?', pron: 'U é le metrô?' },
+                { pt: 'Um bilhete para..., por favor', fr: 'Un billet pour..., s\'il vous plaît', pron: 'An bi-lhé pur..., sil vu plé' },
+                { pt: 'Estou perdido(a)', fr: 'Je suis perdu(e)', pron: 'Je sui per-di' },
+                { pt: 'Esquerda / Direita / Em frente', fr: 'Gauche / Droite / Tout droit', pron: 'Gôxe / Druát / Tu druá' },
+                { pt: 'Onde é a casa de banho?', fr: 'Où sont les toilettes?', pron: 'U son lê toa-lét?' }
+            ],
+            emergencia: [
+                { pt: 'Ajuda!', fr: 'Au secours!', pron: 'O secur!' },
+                { pt: 'Chame a polícia', fr: 'Appelez la police', pron: 'A-ple-lê la polís' },
+                { pt: 'Preciso de um médico', fr: 'J\'ai besoin d\'un médecin', pron: 'Jé be-zoan dan med-san' }
+            ]
+        };
+
+        function renderPhrases(category, containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            const phraseHTML = phrases[category].map(p => `
+                <div class="phrase-item py-4 flex flex-col md:flex-row justify-between items-start md:items-center border-b border-gray-200 dark:border-slate-700 last:border-b-0">
+                    <div class="w-full md:w-1/2 mb-2 md:mb-0">
+                        <p class="text-gray-700 dark:text-gray-300">${p.pt}</p>
+                    </div>
+                    <div class="w-full md:w-1/2 flex items-center justify-between">
+                        <div class="flex-grow text-left md:text-right">
+                            <p class="text-lg font-semibold text-blue-600 dark:text-blue-400">${p.fr}</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 italic">pron: ${p.pron}</p>
+                        </div>
+                        <button class="copy-btn ml-4 p-2 text-xl" data-copy-text="${p.fr}" title="Copiar">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            container.innerHTML = phraseHTML;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPhrases('basicos', 'phrases-container-basicos');
+            renderPhrases('restaurante', 'phrases-container-restaurante');
+            renderPhrases('lojas', 'phrases-container-lojas');
+            renderPhrases('direcoes', 'phrases-container-direcoes');
+            renderPhrases('emergencia', 'phrases-container-emergencia');
+
+            document.querySelectorAll('.copy-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const textToCopy = button.dataset.copyText;
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        const icon = button.querySelector('i');
+                        icon.classList.remove('fa-regular', 'fa-copy');
+                        icon.classList.add('fa-solid', 'fa-check');
+                        icon.style.color = '#22c55e'; // green-500
+
+                        setTimeout(() => {
+                            icon.classList.remove('fa-solid', 'fa-check');
+                            icon.classList.add('fa-regular', 'fa-copy');
+                            icon.style.color = '';
+                        }, 1500);
+                    });
+                });
+            });
+        });
+    </script>
+    <script src="js/theme_switcher.js"></script> <!-- Se tiver um ficheiro para o dark mode, mantenha-o -->
+</body>
+</html>
