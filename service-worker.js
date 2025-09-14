@@ -1,5 +1,5 @@
 // Versão 4: Garante que a versão corrigida de frases.html é carregada.
-const CACHE_NAME = 'paris-v4';
+const CACHE_NAME = 'paris-v5';
 const urlsToCache = [
   '/index.html',
   '/guia.html',
