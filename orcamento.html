@@ -246,7 +246,7 @@
                 perPerson: 58.50,
                 totalGroup4: 234.00,
                 details: [
-                    { item: 'Táxi Orly ↔ Centro Paris (Grupo)', quantity: '2 (Fixo)', perPerson: 24.00, totalGroup: 96.00 },
+                    { item: 'Táxi Orly ↔ Centro Paris (Grupo)', quantity: '2 (Fixo)', perPerson: 24.00, totalGroup: 96.00, note: 'Ponto de encontro: In the arrivals, gate 33A, inside' },
                     { item: 'Cartão Navigo Easy', quantity: 5, perPerson: 2.00, totalGroup: 8.00 },
                     { item: 'Bilhetes Individuais (Metro e RER)', quantity: 65, perPerson: 32.50, totalGroup: 130.00 }
                 ],
@@ -262,7 +262,7 @@
                 perPerson: 55.00,
                 totalGroup4: 220.00,
                 details: [
-                    { item: 'Táxi Orly ↔ Casa (Grupo)', quantity: '2 (Fixo)', perPerson: 23.00, totalGroup: 92.00 },
+                    { item: 'Táxi Orly ↔ Casa (Grupo)', quantity: '2 (Fixo)', perPerson: 23.00, totalGroup: 92.00, note: 'Ponto de encontro: In the arrivals, gate 33A, inside' },
                     { item: 'Cartão Navigo Easy', quantity: 5, perPerson: 2.00, totalGroup: 8.00 },
                     { item: 'Bilhetes Individuais (Metro e RER)', quantity: 60, perPerson: 30.00, totalGroup: 120.00 }
                 ],
@@ -295,7 +295,7 @@
             { title: 'VIAGEM!', status: 'complete' }
         ];
 
-        // --- FUNÇÕES DE RENDERIZAÇÃO (mantidas do ficheiro original) ---
+        // --- FUNÇÕES DE RENDERIZAÇÃO ---
         function formatCurrency(value) {
             return `${value.toFixed(2).replace('.', ',')} €`;
         }
@@ -304,7 +304,10 @@
             const container = document.getElementById('cost-details-container');
             const tableRows = details.map(d => `
                 <tr class="border-b border-gray-200">
-                    <td class="p-4">${d.item}</td>
+                    <td class="p-4">
+                        ${d.item}
+                        ${d.note ? `<br><small class="text-gray-500 italic"><i class="fa-solid fa-circle-info mr-2"></i>${d.note}</small>` : ''}
+                    </td>
                     <td class="p-4 text-center">${d.quantity}</td>
                     <td class="p-4 text-right font-mono">${d.item.includes('Táxi') ? `(${formatCurrency(d.perPerson)})*` : formatCurrency(d.perPerson)}</td>
                     <td class="p-4 text-right font-mono">${formatCurrency(d.totalGroup)}</td>
