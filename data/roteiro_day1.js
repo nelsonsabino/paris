@@ -5,10 +5,10 @@ export const day1Data = {
     date: "Sexta-feira, 19 de Setembro",
     mapImage: "assets/images/Dia1b.png", // Imagem do mapa geral do dia
     highlights: [
-        { name: "Torre Eiffel", icon: "fa-tower-observation", link: "visita_torre-eiffel.html" },
-        { name: "Ponte Alexandre III", icon: "fa-bridge", link: "visita_ponte-alexandre-iii.html" },
-        { name: "Jardim do Trocadéro", icon: "fa-camera-retro", link: "visita_jardim-trocadero.html" },
-        { name: "Rue Cler", icon: "fa-store", link: "visita_rue-cler.html" }
+        { name: "Torre Eiffel", icon: "fa-tower-observation", link: "visita_torre-eiffel.html", imageUrl: "https://i.imgur.com/4l1kZ6I.jpeg" },
+        { name: "Ponte Alexandre III", icon: "fa-bridge", link: "visita_ponte-alexandre-iii.html", imageUrl: "https://i.imgur.com/L5Gff1s.jpeg" },
+        { name: "Jardim do Trocadéro", icon: "fa-camera-retro", link: "visita_jardim-trocadero.html", imageUrl: "https://i.imgur.com/yT4fGzF.jpeg" },
+        { name: "Rue Cler", icon: "fa-store", link: "visita_rue-cler.html", imageUrl: "https://i.imgur.com/gK2i2bT.jpeg" }
     ],
     sections: [
         {
