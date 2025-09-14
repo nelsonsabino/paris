@@ -7,12 +7,12 @@
 
     <!-- SCRIPT ANTI-FLASH PARA O MODO ESCURO -->
     <script>
-        (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches))
+        (localStorage.theme === 'dark' || (!('theme'in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches))
             ? document.documentElement.classList.add('dark')
             : document.documentElement.classList.remove('dark');
     </script>
 
-    <!-- Favicon para diferentes browsers -->
+    <!-- Favicon -->
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
@@ -20,12 +20,33 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
     
     <!-- LIGAÇÃO PARA O FICHEIRO CSS EXTERNO -->
     <link rel="stylesheet" href="css/orcamento.css">
+    <style>
+        .edit-link {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 32px;
+            height: 32px;
+            background-color: #fbbf24; /* amber-400 */
+            color: white;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        .edit-link:hover {
+            transform: scale(1.1);
+            background-color: #f59e0b; /* amber-500 */
+        }
+    </style>
 </head>
 <body class="text-gray-800">
 
@@ -34,7 +55,6 @@
         <header class="mb-12 flex flex-col md:flex-row justify-between items-center gap-4">
             <h1 class="main-title font-bold text-gray-800 text-center md:text-left">Orçamento e Finanças</h1>
             <div class="flex items-center gap-4">
-                <!-- BOTÃO SELETOR DE TEMA -->
                 <button id="theme-switcher" class="theme-switcher h-12 w-12 rounded-full text-gray-500 dark:text-slate-400 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors duration-200 flex items-center justify-center flex-shrink-0">
                     <i class="fa-solid fa-sun text-2xl sun-icon"></i>
                     <i class="fa-solid fa-moon text-2xl moon-icon"></i>
@@ -49,16 +69,26 @@
         <section class="mb-12">
             <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Custos dos Transportes</h2>
             
-            <div class="flex flex-wrap justify-center gap-4 mb-8">
+            <div class="flex flex-wrap justify-center gap-6 mb-8">
                 <button id="btn-individual" class="option-btn text-base font-semibold py-2 px-6 rounded-lg border-2 transition-colors duration-200">
                     <i class="fa-solid fa-ticket mr-2"></i>100% Metro
                 </button>
-                <button id="btn-hybrid-louvre" class="option-btn text-base font-semibold py-2 px-6 rounded-lg border-2 transition-colors duration-200">
-                    <i class="fa-solid fa-taxi mr-2"></i>Táxi até ao c.Paris + Metro
-                </button>
-                <button id="btn-hybrid-casa" class="option-btn text-base font-semibold py-2 px-6 rounded-lg border-2 transition-colors duration-200">
-                    <i class="fa-solid fa-taxi mr-2"></i>Táxi até casa
-                </button>
+                <div class="relative">
+                    <button id="btn-hybrid-louvre" class="option-btn text-base font-semibold py-2 px-6 rounded-lg border-2 transition-colors duration-200">
+                        <i class="fa-solid fa-taxi mr-2"></i>Táxi até c.Paris + Metro
+                    </button>
+                    <a href="orcamento_taxi_centro.html" title="Editar custos do Táxi para o Centro" class="edit-link">
+                        <i class="fa-solid fa-pencil text-xs"></i>
+                    </a>
+                </div>
+                <div class="relative">
+                    <button id="btn-hybrid-casa" class="option-btn text-base font-semibold py-2 px-6 rounded-lg border-2 transition-colors duration-200">
+                        <i class="fa-solid fa-taxi mr-2"></i>Táxi até casa
+                    </button>
+                     <a href="orcamento_taxi_casa.html" title="Editar custos do Táxi para Casa" class="edit-link">
+                        <i class="fa-solid fa-pencil text-xs"></i>
+                    </a>
+                </div>
                 <button id="btn-passe" class="option-btn text-base font-semibold py-2 px-6 rounded-lg border-2 transition-colors duration-200">
                     <i class="fa-solid fa-address-card mr-2"></i>Passe Paris Visite
                 </button>
@@ -78,11 +108,10 @@
             <div id="cost-details-container"></div>
         </section>
 
+        <!-- O RESTANTE DO HTML PERMANECE IGUAL -->
         <section class="mb-12">
             <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Detalhe Diário de Custos (Opção Selecionada)</h2>
-            <div id="daily-breakdown-container">
-                <!-- O JavaScript irá gerar a tabela diária aqui -->
-            </div>
+            <div id="daily-breakdown-container"></div>
         </section>
 
         <section class="mb-12">
@@ -90,8 +119,6 @@
             <p class="text-center text-gray-600 mb-8 max-w-3xl mx-auto">
                 Esta é uma estimativa com base num plano de refeições económico, priorizando compras em supermercado e opções de take-away, com algumas refeições em restaurantes de baixo custo. Valores incluem uma margem de segurança de 30%.
             </p>
-
-            <!-- Tabela de Resumo Geral -->
             <div class="bg-white rounded-2xl shadow-lg mb-8">
                 <div class="overflow-x-auto">
                     <table class="w-full text-left min-w-[700px]">
@@ -120,8 +147,6 @@
                     </table>
                 </div>
             </div>
-
-            <!-- Tabela de Detalhe Diário -->
             <div class="bg-white rounded-2xl shadow-lg">
                 <h3 class="text-xl font-bold text-gray-800 p-4 border-b border-gray-200">Detalhe Diário por Grupo</h3>
                 <div class="overflow-x-auto">
@@ -178,15 +203,28 @@
         </section>
     </div>
 
-    <script>
-        const planningEvents = [
-            { title: 'Comprar bilhetes para o Museu do Louvre', status: 'complete' }, { title: 'Comprar bilhetes para a Museu D Orsay', status: 'complete' },
-            { title: 'Comprar bilhetes para Versailles', status: 'complete' }, { title: 'Comprar bilhetes para a Sainte-Chapelle', status: 'complete' },
-            { title: 'Comprar bilhetes para a Torre Eiffel', status: 'complete' }, { title: 'Comprar bilhetes para a Ópera Garnier', status: 'complete' },
-            { title: 'Fazer pagamento da casa de Paris', status: 'complete' }, { title: 'Reserva para entrada sem filas na Notre-Dame', status: 'pending' },
-            { title: 'VIAGEM!', status: 'complete' }
-        ];
+    <!-- SDKs do Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
+    <script type="module">
+        // --- INICIALIZAÇÃO FIREBASE ---
+        const firebaseConfig = {
+            apiKey: "AIzaSyAt7jAk5r2tqSdyTf2m7MUebd_t7bbDTJk",
+            authDomain: "planeamento-viagem-paris.firebaseapp.com",
+            databaseURL: "https://planeamento-viagem-paris-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "planeamento-viagem-paris",
+            storageBucket: "planeamento-viagem-paris.appspot.com",
+            messagingSenderId: "121000897121",
+            appId: "1:121000897121:web:75662c01dc56926bf61820"
+        };
+
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+        const database = firebase.database();
+
+        // DADOS PADRÃO / FALLBACK
         const costs = {
             individual: {
                 perPerson: 58.00,
@@ -207,11 +245,10 @@
             hybrid_louvre: {
                 perPerson: 58.50,
                 totalGroup4: 234.00,
-                totalGroup5: 292.50, 
                 details: [
-                    { item: 'Táxi Orly → C. Paris + Cacifo → Orly (Grupo)', quantity: '2 (Fixo)', perPerson: 22.00, totalGroup: 88.00 },
+                    { item: 'Táxi Orly ↔ Centro Paris (Grupo)', quantity: '2 (Fixo)', perPerson: 24.00, totalGroup: 96.00 },
                     { item: 'Cartão Navigo Easy', quantity: 5, perPerson: 2.00, totalGroup: 8.00 },
-                    { item: 'Bilhetes Individuais (Metro e RER)', quantity: 65, perPerson: 34.50, totalGroup: 138.00 }
+                    { item: 'Bilhetes Individuais (Metro e RER)', quantity: 65, perPerson: 32.50, totalGroup: 130.00 }
                 ],
                  dailyBreakdown: [
                     { day: "Dia 1", description: "Táxi (ida), 3x Metro", quantity5pax: '15 bilhetes', totalGroup: 70.00 },
@@ -224,9 +261,8 @@
             hybrid_casa: {
                 perPerson: 55.00,
                 totalGroup4: 220.00,
-                totalGroup5: 275.00, 
                 details: [
-                    { item: 'Táxi Orly → Casa + Cacifo → Orly (Grupo)', quantity: '2 (Fixo)', perPerson: 23.00, totalGroup: 92.00 },
+                    { item: 'Táxi Orly ↔ Casa (Grupo)', quantity: '2 (Fixo)', perPerson: 23.00, totalGroup: 92.00 },
                     { item: 'Cartão Navigo Easy', quantity: 5, perPerson: 2.00, totalGroup: 8.00 },
                     { item: 'Bilhetes Individuais (Metro e RER)', quantity: 60, perPerson: 30.00, totalGroup: 120.00 }
                 ],
@@ -251,6 +287,15 @@
             }
         };
 
+        const planningEvents = [
+            { title: 'Comprar bilhetes para o Museu do Louvre', status: 'complete' }, { title: 'Comprar bilhetes para a Museu D Orsay', status: 'complete' },
+            { title: 'Comprar bilhetes para Versailles', status: 'complete' }, { title: 'Comprar bilhetes para a Sainte-Chapelle', status: 'complete' },
+            { title: 'Comprar bilhetes para a Torre Eiffel', status: 'complete' }, { title: 'Comprar bilhetes para a Ópera Garnier', status: 'complete' },
+            { title: 'Fazer pagamento da casa de Paris', status: 'complete' }, { title: 'Reserva para entrada sem filas na Notre-Dame', status: 'pending' },
+            { title: 'VIAGEM!', status: 'complete' }
+        ];
+
+        // --- FUNÇÕES DE RENDERIZAÇÃO (mantidas do ficheiro original) ---
         function formatCurrency(value) {
             return `${value.toFixed(2).replace('.', ',')} €`;
         }
@@ -344,11 +389,8 @@
             renderDailyBreakdownTable(data.dailyBreakdown);
             
             const taxiNote = document.getElementById('taxi-note');
-            if (option.includes('hybrid')) {
-                taxiNote.classList.remove('hidden');
-            } else {
-                taxiNote.classList.add('hidden');
-            }
+            if (option.includes('hybrid')) taxiNote.classList.remove('hidden');
+            else taxiNote.classList.add('hidden');
             
             document.getElementById('footer-per-person').textContent = formatCurrency(data.perPerson);
             document.getElementById('footer-total-group').textContent = formatCurrency(data.totalGroup4);
@@ -364,9 +406,51 @@
                 </div>
             `).join('') || `<p class="text-gray-500 italic text-center">Nenhuma compra concluída ainda.</p>`;
         }
+        
+        // --- NOVA LÓGICA COM FIREBASE ---
+        async function initializePageWithFirebaseData() {
+            const CUSTO_METRO_VIAGEM = 2.50;
+            const CUSTO_NAVIGO = 2.00;
 
-        document.addEventListener('DOMContentLoaded', () => {
-            let selectedOption = 'individual'; 
+            try {
+                const snapshot = await database.ref('orcamento/custosTaxi').once('value');
+                const firebaseCosts = snapshot.val();
+
+                if (firebaseCosts) {
+                    // --- Atualiza cenário "Táxi para Casa" ---
+                    if (firebaseCosts.casa) {
+                        const totalTaxi = firebaseCosts.casa.ida + firebaseCosts.casa.volta;
+                        const totalMetro = 12 * CUSTO_METRO_VIAGEM * 5;
+                        const totalNavigo = CUSTO_NAVIGO * 5;
+                        const total5pax = totalTaxi + totalMetro + totalNavigo;
+                        const perPerson = total5pax / 5;
+                        
+                        costs.hybrid_casa.perPerson = perPerson;
+                        costs.hybrid_casa.totalGroup4 = perPerson * 4;
+                        costs.hybrid_casa.details[0].perPerson = totalTaxi / 5;
+                        costs.hybrid_casa.details[0].totalGroup = (totalTaxi / 5) * 4;
+                    }
+
+                    // --- Atualiza cenário "Táxi para o Centro" ---
+                    if (firebaseCosts.centro) {
+                        const totalTaxi = firebaseCosts.centro.ida + firebaseCosts.centro.volta;
+                        const totalMetro = 13 * CUSTO_METRO_VIAGEM * 5; // 13 viagens neste cenário
+                        const totalNavigo = CUSTO_NAVIGO * 5;
+                        const total5pax = totalTaxi + totalMetro + totalNavigo;
+                        const perPerson = total5pax / 5;
+
+                        costs.hybrid_louvre.perPerson = perPerson;
+                        costs.hybrid_louvre.totalGroup4 = perPerson * 4;
+                        costs.hybrid_louvre.details[0].perPerson = totalTaxi / 5;
+                        costs.hybrid_louvre.details[0].totalGroup = (totalTaxi / 5) * 4;
+                    }
+                }
+            } catch (error) {
+                console.error("Não foi possível carregar os custos do Firebase. A usar valores padrão.", error);
+            }
+
+            // --- INICIALIZA A PÁGINA DEPOIS DE CARREGAR OS DADOS ---
+            let selectedOption = 'individual';
             
             document.getElementById('btn-individual').addEventListener('click', () => updateDisplay('individual'));
             document.getElementById('btn-hybrid-casa').addEventListener('click', () => updateDisplay('hybrid_casa'));
@@ -375,6 +459,10 @@
 
             updateDisplay(selectedOption);
             renderCompletedPurchases();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initializePageWithFirebaseData();
         });
     </script>
     <script src="js/theme_switcher.js"></script>
