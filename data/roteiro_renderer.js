@@ -122,7 +122,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         dayData.sections.forEach(sectionBlock => {
-            htmlContent += `<div ${sectionBlock.id ? `id="${sectionBlock.id}" : ''} class="section-block pt-4">
+            // A LINHA ABAIXO FOI CORRIGIDA
+            htmlContent += `<div ${sectionBlock.id ? `id="${sectionBlock.id}"` : ''} class="section-block pt-4">
                     <a href="${sectionBlock.mapLink}" target="_blank" class="block p-3 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-colors duration-200 mt-8 mb-4">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center"><i class="fas fa-map-location-dot text-blue-600 text-xl mr-3"></i><h3 class="font-display text-lg md:text-xl font-bold text-gray-800">${sectionBlock.title}</h3></div>
@@ -165,7 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (item.description) { itemBody += `<p class="text-gray-600 mt-1">${item.description}</p>`; }
                 }
 
-                // ADICIONADO: A classe 'timeline-item-hidden' para preparar a animação
                 htmlContent += `<div class="timeline-item timeline-item-hidden" ${timeDataAttr}>
                         ${hasTime}
                         <div class="${iconClass}"><i class="fa-solid ${item.icon} text-xs"></i></div>
@@ -183,7 +183,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- LÓGICA GERAL DA PÁGINA (EVENT LISTENERS) ---
-    // ... (o seu código de listeners para menu, acordeão e modal permanece inalterado) ...
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     if (menuBtn && mobileMenu) {
@@ -256,25 +255,21 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting) {
                 const timelineItems = entry.target.querySelectorAll('.timeline-item-hidden');
                 timelineItems.forEach((item, index) => {
-                    // Adiciona um atraso escalonado para o efeito de cascata
                     item.style.animationDelay = `${index * 100}ms`;
                     item.classList.add('timeline-item-animate');
                     item.classList.remove('timeline-item-hidden');
                 });
-                // Uma vez que a animação foi executada para esta seção, não precisamos mais observá-la
                 observer.unobserve(entry.target);
             }
         });
     }, {
-        threshold: 0.1, // Começa a animar quando 10% da seção estiver visível
-        rootMargin: '0px 0px -50px 0px' // Começa a animar um pouco antes de chegar ao centro
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
     });
 
-    // Inicia a observação de cada seção de dia para a animação
     document.querySelectorAll('.day-section').forEach(daySection => {
         animationObserver.observe(daySection);
     });
-    // --- FIM DO NOVO BLOCO DE CÓDIGO ---
 
     // --- INICIALIZA AS BADGES DE ESTADO ---
     updateTimelineBadges();
