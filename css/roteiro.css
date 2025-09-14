@@ -146,11 +146,11 @@ html.dark .text-gray-600 {
 
 /* Barras de navegação flutuantes */
 html.dark .sticky-nav-days {
-    background-color: rgba(30, 41, 59, 0.75); /* ANTES: slate-900, AGORA: slate-800 com transparência */
+    background-color: rgba(30, 41, 59, 0.75);
     border-bottom-color: #475569; /* slate-600 */
 }
 html.dark .day-nav {
-    background-color: rgba(51, 65, 85, 0.75); /* ANTES: slate-800, AGORA: slate-700 com transparência */
+    background-color: rgba(51, 65, 85, 0.75);
     border-bottom-color: #64748b; /* slate-500 */
 }
 
@@ -164,7 +164,7 @@ html.dark .day-nav a:hover {
     background-color: #334155; /* slate-700 */
 }
 html.dark .active-day-link {
-    background-color: #33488a; /* um azul mais escuro */
+    background-color: #33488a;
     color: #e0e7ff;
 }
 html.dark .day-nav a.active-section {
@@ -195,7 +195,7 @@ html.dark .hover\:border-slate-300:hover { border-color: #64748b; /* slate-500 *
 html.dark .timeline-container::before { background-color: #475569; /* slate-600 */ }
 html.dark .timeline-time { color: #94a3b8; /* slate-400 */ }
 html.dark .timeline-item-meal {
-    background-color: #15322b; /* verde escuro */
+    background-color: #15322b;
     border-left-color: #22c55e; /* green-500 */
 }
 
@@ -216,55 +216,86 @@ html.dark .hover\:text-blue-900:hover {
     color: #93c5fd; /* Even lighter blue (blue-300) on hover */
 }
 
-/* --- ESTILOS PARA OS DESTAQUES DO DIA --- */
+/* --- ESTILOS PARA OS DESTAQUES DO DIA (VISUAL CARDS) --- */
 .highlights-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 1rem;
     padding-top: 1rem;
     border-top: 1px solid #e2e8f0;
     margin-top: 1.5rem;
-    margin-bottom: 2.5rem; /* ADICIONADO: Espaçamento inferior */
+    margin-bottom: 2.5rem;
 }
-.highlight-item {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    background-color: #f8fafc; /* slate-50 */
-    padding: 0.75rem;
+
+.highlight-card {
+    position: relative;
+    display: block;
+    overflow: hidden;
     border-radius: 0.75rem;
-    border: 1px solid #e2e8f0; /* slate-200 */
-    transition: background-color 0.2s, border-color 0.2s; /* ADICIONADO: Transição suave */
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    aspect-ratio: 4 / 5;
+    color: white;
+    text-decoration: none;
 }
-.highlight-item:hover {
-    background-color: #f1f5f9; /* slate-100 */
-    border-color: #cbd5e1; /* slate-300 */
+
+.highlight-card-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease-out;
 }
-.highlight-icon {
-    color: #1e3a8a; /* O mesmo azul dos títulos */
+
+.highlight-card:hover .highlight-card-bg {
+    transform: scale(1.1);
 }
-.highlight-name {
-    font-weight: 600;
-    color: #334155; /* slate-700 */
+
+.highlight-card-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 20%, rgba(0, 0, 0, 0) 60%);
+    transition: background-color 0.3s ease-out;
+}
+
+.highlight-card:hover .highlight-card-overlay {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.highlight-card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    width: 100%;
+    z-index: 10;
+}
+
+.highlight-card .highlight-icon {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
+    transition: opacity 0.3s ease-out;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.highlight-card .highlight-name {
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1.2;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.highlight-card:hover .highlight-icon {
+    opacity: 1;
 }
 
 /* --- Dark Mode para os Destaques --- */
 html.dark .highlights-grid {
     border-top-color: #334155; /* slate-700 */
-}
-html.dark .highlight-item {
-    background-color: #334155; /* ALTERADO: slate-700, um pouco mais claro */
-    border-color: #475569; /* slate-600 */
-}
-html.dark .highlight-item:hover {
-    background-color: #475569; /* slate-600 */
-    border-color: #64748b; /* slate-500 */
-}
-html.dark .highlight-icon {
-    color: #93c5fd; /* blue-300 */
-}
-html.dark .highlight-name {
-    color: #cbd5e1; /* slate-300 */
 }
 
 /* --- ANIMAÇÕES DE ENTRADA --- */
