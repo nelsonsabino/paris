@@ -1,32 +1,32 @@
-// Versão 7: Corrige os caminhos das imagens dos mapas para /assets/images/
-const CACHE_NAME = 'paris-v7';
+// Versão 8: Remove as barras iniciais (/) de todos os caminhos para os tornar relativos.
+const CACHE_NAME = 'paris-v8';
 const urlsToCache = [
   // Páginas principais
-  '/index.html',
-  '/guia.html',
-  '/roteiro.html',
-  '/orcamento.html',
-  '/frases.html',
+  'index.html',
+  'guia.html',
+  'roteiro.html',
+  'orcamento.html',
+  'frases.html',
   
   // Ficheiro Manifest
-  '/site.webmanifest',
+  'site.webmanifest',
 
-  // Ícones (com os caminhos corretos)
-  '/assets/images/favicon.ico',
-  '/assets/images/favicon.svg',
-  '/assets/images/favicon-96x96.png',
-  '/assets/images/apple-touch-icon.png',
+  // Ícones (caminhos relativos)
+  'assets/images/favicon.ico',
+  'assets/images/favicon.svg',
+  'assets/images/favicon-96x96.png',
+  'assets/images/apple-touch-icon.png',
 
-  // Imagens dos dias (AGORA NA PASTA CORRETA)
-  '/assets/images/Dia1.png',
-  '/assets/images/Dia1a.png',
-  '/assets/images/Dia1b.png',
-  '/assets/images/Dia2.png',
-  '/assets/images/Dia2a.png',
-  '/assets/images/Dia2b.png',
-  '/assets/images/Dia3a.png',
-  '/assets/images/Dia4a.png',
-  '/assets/images/Dia5a.png'
+  // Imagens dos dias (caminhos relativos)
+  'assets/images/Dia1.png',
+  'assets/images/Dia1a.png',
+  'assets/images/Dia1b.png',
+  'assets/images/Dia2.png',
+  'assets/images/Dia2a.png',
+  'assets/images/Dia2b.png',
+  'assets/images/Dia3a.png',
+  'assets/images/Dia4a.png',
+  'assets/images/Dia5a.png'
 ];
 
 // Instalação do Service Worker
@@ -34,6 +34,7 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
+        console.log('Opened cache');
         return cache.addAll(urlsToCache);
       })
   );
@@ -46,6 +47,7 @@ self.addEventListener('activate', event => {
       Promise.all(
         cacheNames.map(name => {
           if (name !== CACHE_NAME) {
+            console.log('Deleting old cache:', name);
             return caches.delete(name);
           }
         })
