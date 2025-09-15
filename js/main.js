@@ -9,11 +9,6 @@ import { initializeChecklist } from './checklist.js';
 // Importa a configuração da base de dados do Firebase
 import { database } from './config/firebase-config.js';
 
-// --- VARIÁVEIS GLOBAIS ---
-const a_senha_secreta = 'paris2025';
-let isAuthenticated = false;
-let pendingAction = null;
-
 /**
  * Função para iniciar a contagem decrescente para a viagem.
  */
@@ -39,28 +34,10 @@ function startCountdown() {
 }
 
 /**
- * Pede a password para executar uma ação protegida.
- * @param {function} actionCallback - A função a ser executada se a password estiver correta.
- */
-function requestPassword(actionCallback) {
-    const passwordModal = document.getElementById('password-modal');
-    if (isAuthenticated) {
-        actionCallback();
-        return;
-    }
-    pendingAction = actionCallback;
-    if (passwordModal) {
-        passwordModal.classList.remove('hidden');
-        document.getElementById('password-input').focus();
-    }
-}
-
-/**
- * Inicializa todos os event listeners para os modais (evento, password).
+ * Inicializa todos os event listeners para os modais (apenas evento).
  */
 function initializeModals() {
     const eventModal = document.getElementById('event-modal');
-    const passwordModal = document.getElementById('password-modal');
 
     // Modal de eventos do calendário
     document.addEventListener('openEventModal', (e) => {
@@ -77,25 +54,6 @@ function initializeModals() {
 
     document.getElementById('modal-close-btn')?.addEventListener('click', () => closeModal(eventModal));
     eventModal?.addEventListener('click', (e) => { if (e.target === eventModal) closeModal(eventModal); });
-    
-    // Modal de password
-    document.getElementById('password-form')?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const passwordInput = document.getElementById('password-input');
-        if (passwordInput.value === a_senha_secreta) {
-            isAuthenticated = true;
-            passwordInput.value = '';
-            document.getElementById('password-error').classList.add('hidden');
-            closeModal(passwordModal);
-            if (pendingAction) {
-                pendingAction();
-                pendingAction = null;
-            }
-        } else {
-            document.getElementById('password-error').classList.remove('hidden');
-        }
-    });
-    document.getElementById('cancel-password')?.addEventListener('click', () => closeModal(passwordModal));
 }
 
 // --- CÓDIGO EXECUTADO QUANDO A PÁGINA CARREGA ---
@@ -106,8 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
     renderCalendar();
     fetchTripWeather();
     
-    // Inicializar a lógica da checklist, passando a referência da base de dados e a função de password
-    initializeChecklist(database, requestPassword);
+    // Inicializar a lógica da checklist, passando null em vez da função de password
+    initializeChecklist(database, null);
 
     // Inicializar os modais
     initializeModals();
