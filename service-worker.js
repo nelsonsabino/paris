@@ -1,5 +1,5 @@
-// Versão 6: Corrige os caminhos dos favicons para a pasta /assets/images/
-const CACHE_NAME = 'paris-v6';
+// Versão 7: Corrige os caminhos das imagens dos mapas para /assets/images/
+const CACHE_NAME = 'paris-v7';
 const urlsToCache = [
   // Páginas principais
   '/index.html',
@@ -12,21 +12,21 @@ const urlsToCache = [
   '/site.webmanifest',
 
   // Ícones (com os caminhos corretos)
-  'assets/images/favicon.ico',
-  'assets/images/favicon.svg',
-  'assets/images/favicon-96x96.png',
-  'assets/images/apple-touch-icon.png',
+  '/assets/images/favicon.ico',
+  '/assets/images/favicon.svg',
+  '/assets/images/favicon-96x96.png',
+  '/assets/images/apple-touch-icon.png',
 
-  // Imagens dos dias (pasta /data)
-  '/data/Dia1.png',
-  '/data/Dia1a.png',
-  '/data/Dia1b.png',
-  '/data/Dia2.png',
-  '/data/Dia2a.png',
-  '/data/Dia2b.png',
-  '/data/Dia3a.png',
-  '/data/Dia4a.png',
-  '/data/Dia5a.png'
+  // Imagens dos dias (AGORA NA PASTA CORRETA)
+  '/assets/images/Dia1.png',
+  '/assets/images/Dia1a.png',
+  '/assets/images/Dia1b.png',
+  '/assets/images/Dia2.png',
+  '/assets/images/Dia2a.png',
+  '/assets/images/Dia2b.png',
+  '/assets/images/Dia3a.png',
+  '/assets/images/Dia4a.png',
+  '/assets/images/Dia5a.png'
 ];
 
 // Instalação do Service Worker
