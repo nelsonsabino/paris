@@ -13,126 +13,104 @@ body { font-family: 'Poppins', sans-serif; background-color: #f0f4f8; font-size:
 .checklist-item input:checked + label { text-decoration: line-through; color: #9ca3af; }
 .checklist-item input:checked + label .icon-box { background-color: #16a34a; color: white; }
 .text-shadow { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); }
-/* --- DARK MODE STYLES --- */
-html.dark {
-    color-scheme: dark;
-}
 
+/* --- DARK MODE STYLES --- */
+html.dark { color-scheme: dark; }
 html.dark body {
     background-color: #0f172a; /* slate-900 */
     color: #cbd5e1; /* slate-300 */
 }
-
-/* Títulos e texto principal */
 html.dark .main-title,
 html.dark .section-title,
 html.dark .text-gray-900,
 html.dark .text-gray-800 {
     color: #f1f5f9; /* slate-100 */
 }
-
 html.dark .text-gray-500,
-html.dark .text-gray-600 {
+html.dark .text-gray-600,
+html.dark .text-gray-700 {
     color: #94a3b8; /* slate-400 */
 }
-
-/* Cards, seções e modais com fundo branco */
 html.dark .bg-white {
     background-color: #1e293b; /* slate-800 */
     border: 1px solid #334155; /* slate-700 */
 }
-
-/* Links coloridos nos cards de navegação */
 html.dark .text-green-800 { color: #4ade80; }
 html.dark .text-blue-800 { color: #60a5fa; }
 html.dark .text-red-800 { color: #f87171; }
 html.dark .text-purple-800 { color: #c084fc; }
 
-/* Checklist */
-html.dark .checklist-item input:checked + label {
-    color: #64748b; /* slate-500 */
-}
-html.dark .checklist-item input:checked + label .icon-box {
-    background-color: #22c55e; /* green-500 */
-}
-
-/* Botões primários */
-html.dark .bg-blue-600 { background-color: #3b82f6; }
-html.dark .hover\:bg-blue-700:hover { background-color: #2563eb; }
-html.dark .bg-green-600 { background-color: #22c55e; }
-html.dark .hover\:bg-green-700:hover { background-color: #16a34a; }
-
-/* Botões secundários */
-html.dark .bg-gray-200 { background-color: #334155; /* slate-700 */ }
-html.dark .hover\:bg-gray-300:hover { background-color: #475569; /* slate-600 */ }
-
-/* Input dos modais */
-html.dark input[type="text"], 
-html.dark input[type="password"] {
-    background-color: #334155;
-    border-color: #475569;
-    color: #f1f5f9;
-}
-
-/* Ícones do seletor de tema */
 .theme-switcher .sun-icon { display: none; }
 .theme-switcher .moon-icon { display: block; }
-
 html.dark .theme-switcher .sun-icon { display: block; }
 html.dark .theme-switcher .moon-icon { display: none; }
+html.dark #lottie { filter: invert(1); }
 
-/* --- Ajuste para a Animação Lottie no Modo Escuro --- */
-html.dark #lottie {
-    filter: invert(1);
-}
-
-/* --- ESTILOS PARA O WIDGET DE METEOROLOGIA --- */
-.weather-card {
-    background-color: #f3f4f6; /* gray-100 */
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-}
-.weather-card-title {
+/* --- ESTILOS DEFINITIVOS PARA O WIDGET DE METEOROLOGIA --- */
+.weather-current-title, .weather-forecast-title {
+    font-size: 1.125rem;
     font-weight: 600;
-    color: #4b5569; /* gray-600 */
+    text-align: center;
+    color: #6b7280; /* gray-500 */
+    margin-bottom: 1rem;
 }
-.weather-card-value {
+.weather-current-icon {
+    font-size: 3rem;
+    color: #3b82f6; /* blue-500 */
+}
+.weather-current-temp {
+    font-size: 3.75rem;
     font-weight: 700;
     color: #1f2937; /* gray-800 */
 }
-
-/* MODO ESCURO PARA O WIDGET DE METEOROLOGIA */
-html.dark .weather-card {
-    background-color: #334155; /* slate-700 */
-}
-html.dark .weather-card-title {
-    color: #cbd5e1; /* slate-300 */
-}
-html.dark .weather-card-value {
-    color: #f1f5f9; /* slate-100 */
-}
-/* --- ESTILOS DEFINITIVOS PARA O WIDGET DE METEOROLOGIA --- */
-.weather-card {
+.weather-info-card {
     background-color: #f3f4f6; /* gray-100 */
     padding: 0.5rem;
     border-radius: 0.75rem;
 }
-.weather-card-title {
+.weather-info-title {
     font-weight: 600;
     color: #4b5569; /* gray-600 */
 }
-.weather-card-value {
+.weather-info-value {
     font-weight: 700;
     color: #1f2937; /* gray-800 */
 }
+.weather-forecast-card {
+    background-color: #f3f4f6; /* gray-100 */
+    padding: 0.75rem 0.5rem;
+    border-radius: 0.75rem;
+    text-align: center;
+}
+.weather-forecast-date {
+    font-weight: 600;
+    color: #374151; /* gray-700 */
+}
+.weather-forecast-icon {
+    font-size: 1.875rem;
+    margin: 0.5rem 0;
+    color: #3b82f6; /* blue-500 */
+}
 
 /* MODO ESCURO PARA O WIDGET DE METEOROLOGIA */
-html.dark .weather-card {
+html.dark .weather-current-title, html.dark .weather-forecast-title {
+    color: #94a3b8; /* slate-400 */
+}
+html.dark .weather-current-icon {
+    color: #60a5fa; /* blue-400 */
+}
+html.dark .weather-current-temp {
+    color: #f1f5f9; /* slate-100 */
+}
+html.dark .weather-info-card, html.dark .weather-forecast-card {
     background-color: #334155; /* slate-700 */
 }
-html.dark .weather-card-title {
+html.dark .weather-info-title, html.dark .weather-forecast-date {
     color: #cbd5e1; /* slate-300 */
 }
-html.dark .weather-card-value {
+html.dark .weather-info-value {
     color: #f1f5f9; /* slate-100 */
+}
+html.dark .weather-forecast-icon {
+    color: #60a5fa; /* blue-400 */
 }
