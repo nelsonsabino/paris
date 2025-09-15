@@ -142,28 +142,28 @@ function renderWeatherWidget(forecastData, airQualityData) {
     const aqiInfo = getAqiInfo(airQualityData.current.european_aqi);
 
     const currentHtml = `
-        <div class="text-center border-b dark:border-slate-700 pb-6 mb-6">
-            <p class="text-lg font-semibold text-gray-700 dark:text-slate-200">Tempo Atual em Paris</p>
+        <div class="text-center border-b pb-6 mb-6">
+            <p class="text-lg font-semibold text-gray-700">Tempo Atual em Paris</p>
             <div class="flex items-center justify-center gap-4 my-2">
-                <i class="fa-solid ${getWeatherIconFromWMO(current.weathercode)} text-5xl text-blue-500 dark:text-blue-400"></i>
-                <p class="text-6xl font-bold text-gray-800 dark:text-slate-100">${Math.round(current.temperature_2m)}°C</p>
+                <i class="fa-solid ${getWeatherIconFromWMO(current.weathercode)} text-5xl text-blue-500"></i>
+                <p class="text-6xl font-bold text-gray-800">${Math.round(current.temperature_2m)}°C</p>
             </div>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm mt-4">
-                <div class="bg-gray-100 dark:bg-slate-700 p-2 rounded-lg">
-                    <p class="font-semibold text-gray-600 dark:text-slate-300">Qualidade do Ar</p>
+                <div class="weather-info-box p-2 rounded-lg">
+                    <p class="font-semibold text-gray-600">Qualidade do Ar</p>
                     <p class="font-bold ${aqiInfo.color}">${aqiInfo.text}</p>
                 </div>
-                <div class="bg-gray-100 dark:bg-slate-700 p-2 rounded-lg">
-                    <p class="font-semibold text-gray-600 dark:text-slate-300">Visibilidade</p>
-                    <p class="font-bold text-gray-800 dark:text-slate-100">${(current.visibility / 1000).toFixed(1)} km</p>
+                <div class="weather-info-box p-2 rounded-lg">
+                    <p class="font-semibold text-gray-600">Visibilidade</p>
+                    <p class="font-bold text-gray-800">${(current.visibility / 1000).toFixed(1)} km</p>
                 </div>
-                <div class="bg-gray-100 dark:bg-slate-700 p-2 rounded-lg">
-                    <p class="font-semibold text-gray-600 dark:text-slate-300">Nascer do Sol</p>
-                    <p class="font-bold text-gray-800 dark:text-slate-100">${new Date(todayForecast.sunrise[0]).toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' })}</p>
+                <div class="weather-info-box p-2 rounded-lg">
+                    <p class="font-semibold text-gray-600">Nascer do Sol</p>
+                    <p class="font-bold text-gray-800">${new Date(todayForecast.sunrise[0]).toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' })}</p>
                 </div>
-                <div class="bg-gray-100 dark:bg-slate-700 p-2 rounded-lg">
-                    <p class="font-semibold text-gray-600 dark:text-slate-300">Pôr do Sol</p>
-                    <p class="font-bold text-gray-800 dark:text-slate-100">${new Date(todayForecast.sunset[0]).toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' })}</p>
+                <div class="weather-info-box p-2 rounded-lg">
+                    <p class="font-semibold text-gray-600">Pôr do Sol</p>
+                    <p class="font-bold text-gray-800">${new Date(todayForecast.sunset[0]).toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' })}</p>
                 </div>
             </div>
         </div>
@@ -173,12 +173,12 @@ function renderWeatherWidget(forecastData, airQualityData) {
     todayForecast.time.forEach((time, index) => {
         const date = new Date(time);
         forecastHtml += `
-            <div class="text-center p-3 bg-gray-100 dark:bg-slate-700 rounded-lg">
-                <p class="font-semibold text-gray-700 dark:text-slate-200">${formatDayAndDate(date)}</p>
-                <i class="fa-solid ${getWeatherIconFromWMO(todayForecast.weathercode[index])} text-3xl my-2 text-blue-500 dark:text-blue-400"></i>
+            <div class="weather-forecast-day text-center p-3 rounded-lg">
+                <p class="font-semibold text-gray-700">${formatDayAndDate(date)}</p>
+                <i class="fa-solid ${getWeatherIconFromWMO(todayForecast.weathercode[index])} text-3xl my-2 text-blue-500"></i>
                 <p class="text-sm">
-                    <span class="font-bold text-red-500 dark:text-red-400">${Math.round(todayForecast.temperature_2m_max[index])}°</span> / 
-                    <span class="text-blue-600 dark:text-sky-400">${Math.round(todayForecast.temperature_2m_min[index])}°</span>
+                    <span class="font-bold text-red-500">${Math.round(todayForecast.temperature_2m_max[index])}°</span> / 
+                    <span class="text-blue-600">${Math.round(todayForecast.temperature_2m_min[index])}°</span>
                 </p>
             </div>`;
     });
@@ -186,7 +186,7 @@ function renderWeatherWidget(forecastData, airQualityData) {
     widget.innerHTML = `
         <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Meteorologia</h2>
         ${currentHtml}
-        <h3 class="font-semibold text-lg text-center text-gray-700 dark:text-slate-200 mb-4">Previsão para a Viagem</h3>
+        <h3 class="font-semibold text-lg text-center text-gray-700 mb-4">Previsão para a Viagem</h3>
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">${forecastHtml}</div>
     `;
 }
