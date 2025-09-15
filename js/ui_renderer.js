@@ -111,14 +111,13 @@ export function renderTicketTimeline() {
 
 // --- Lógica da Meteorologia (com Open-Meteo) ---
 
-// NOVO: Função para interpretar o Índice de Qualidade do Ar Europeu (AQI)
 const getAqiInfo = (aqi) => {
-    if (aqi <= 20) return { text: 'Boa', color: 'text-green-500' };
-    if (aqi <= 40) return { text: 'Razoável', color: 'text-yellow-500' };
-    if (aqi <= 60) return { text: 'Moderada', color: 'text-orange-500' };
-    if (aqi <= 80) return { text: 'Fraca', color: 'text-red-500' };
-    if (aqi <= 100) return { text: 'Má', color: 'text-red-700' };
-    return { text: 'Muito Má', color: 'text-purple-700' };
+    if (aqi <= 20) return { text: 'Boa', color: 'text-green-500 dark:text-green-400' };
+    if (aqi <= 40) return { text: 'Razoável', color: 'text-yellow-500 dark:text-yellow-400' };
+    if (aqi <= 60) return { text: 'Moderada', color: 'text-orange-500 dark:text-orange-400' };
+    if (aqi <= 80) return { text: 'Fraca', color: 'text-red-500 dark:text-red-400' };
+    if (aqi <= 100) return { text: 'Má', color: 'text-red-700 dark:text-red-500' };
+    return { text: 'Muito Má', color: 'text-purple-700 dark:text-purple-500' };
 };
 
 const getWeatherIconFromWMO = (wmoCode) => {
@@ -135,50 +134,47 @@ const getWeatherIconFromWMO = (wmoCode) => {
 
 const formatDayAndDate = (dateObject) => `${dateObject.toLocaleDateString('pt-PT', { weekday: 'short' })} ${dateObject.getDate()}`;
 
-// NOVO: Função principal que renderiza todo o widget (tempo atual + previsão)
 function renderWeatherWidget(forecastData, airQualityData) {
     const widget = document.getElementById('forecast-widget');
 
-    // --- Parte 1: Renderizar o Tempo Atual ---
     const current = forecastData.current;
     const todayForecast = forecastData.daily;
     const aqiInfo = getAqiInfo(airQualityData.current.european_aqi);
 
     const currentHtml = `
         <div class="text-center border-b dark:border-slate-700 pb-6 mb-6">
-            <p class="text-lg font-semibold text-gray-700">Tempo Atual em Paris</p>
+            <p class="text-lg font-semibold text-gray-700 dark:text-slate-200">Tempo Atual em Paris</p>
             <div class="flex items-center justify-center gap-4 my-2">
                 <i class="fa-solid ${getWeatherIconFromWMO(current.weathercode)} text-5xl text-blue-500 dark:text-blue-400"></i>
-                <p class="text-6xl font-bold text-gray-800">${Math.round(current.temperature_2m)}°C</p>
+                <p class="text-6xl font-bold text-gray-800 dark:text-slate-100">${Math.round(current.temperature_2m)}°C</p>
             </div>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm mt-4">
                 <div class="bg-gray-100 dark:bg-slate-700 p-2 rounded-lg">
-                    <p class="font-semibold">Qualidade do Ar</p>
-                    <p class="${aqiInfo.color} font-bold">${aqiInfo.text}</p>
+                    <p class="font-semibold text-gray-600 dark:text-slate-300">Qualidade do Ar</p>
+                    <p class="font-bold ${aqiInfo.color}">${aqiInfo.text}</p>
                 </div>
                 <div class="bg-gray-100 dark:bg-slate-700 p-2 rounded-lg">
-                    <p class="font-semibold">Visibilidade</p>
-                    <p class="font-bold">${(current.visibility / 1000).toFixed(1)} km</p>
+                    <p class="font-semibold text-gray-600 dark:text-slate-300">Visibilidade</p>
+                    <p class="font-bold text-gray-800 dark:text-slate-100">${(current.visibility / 1000).toFixed(1)} km</p>
                 </div>
                 <div class="bg-gray-100 dark:bg-slate-700 p-2 rounded-lg">
-                    <p class="font-semibold">Nascer do Sol</p>
-                    <p class="font-bold">${new Date(todayForecast.sunrise[0]).toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' })}</p>
+                    <p class="font-semibold text-gray-600 dark:text-slate-300">Nascer do Sol</p>
+                    <p class="font-bold text-gray-800 dark:text-slate-100">${new Date(todayForecast.sunrise[0]).toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' })}</p>
                 </div>
                 <div class="bg-gray-100 dark:bg-slate-700 p-2 rounded-lg">
-                    <p class="font-semibold">Pôr do Sol</p>
-                    <p class="font-bold">${new Date(todayForecast.sunset[0]).toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' })}</p>
+                    <p class="font-semibold text-gray-600 dark:text-slate-300">Pôr do Sol</p>
+                    <p class="font-bold text-gray-800 dark:text-slate-100">${new Date(todayForecast.sunset[0]).toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' })}</p>
                 </div>
             </div>
         </div>
     `;
 
-    // --- Parte 2: Renderizar a Previsão dos 5 Dias ---
     let forecastHtml = '';
     todayForecast.time.forEach((time, index) => {
         const date = new Date(time);
         forecastHtml += `
             <div class="text-center p-3 bg-gray-100 dark:bg-slate-700 rounded-lg">
-                <p class="font-semibold">${formatDayAndDate(date)}</p>
+                <p class="font-semibold text-gray-700 dark:text-slate-200">${formatDayAndDate(date)}</p>
                 <i class="fa-solid ${getWeatherIconFromWMO(todayForecast.weathercode[index])} text-3xl my-2 text-blue-500 dark:text-blue-400"></i>
                 <p class="text-sm">
                     <span class="font-bold text-red-500 dark:text-red-400">${Math.round(todayForecast.temperature_2m_max[index])}°</span> / 
@@ -187,18 +183,14 @@ function renderWeatherWidget(forecastData, airQualityData) {
             </div>`;
     });
     
-    // --- Parte 3: Juntar tudo e colocar no HTML ---
     widget.innerHTML = `
         <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Meteorologia</h2>
         ${currentHtml}
-        <h3 class="font-semibold text-lg text-center text-gray-700 mb-4">Previsão para a Viagem</h3>
+        <h3 class="font-semibold text-lg text-center text-gray-700 dark:text-slate-200 mb-4">Previsão para a Viagem</h3>
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">${forecastHtml}</div>
     `;
 }
 
-/**
- * Busca e renderiza a previsão do tempo para a viagem usando Open-Meteo.
- */
 export async function fetchTripWeather() {
     const lat = 48.8566;
     const lon = 2.3522;
@@ -210,7 +202,6 @@ export async function fetchTripWeather() {
     const airQualityApiUrl = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}&current=european_aqi`;
 
     try {
-        // NOVO: Faz as duas chamadas à API em paralelo
         const [forecastResponse, airQualityResponse] = await Promise.all([
             fetch(forecastApiUrl),
             fetch(airQualityApiUrl)
@@ -233,3 +224,4 @@ export async function fetchTripWeather() {
         widget.innerHTML = `<h2 class="section-title font-bold text-gray-800 mb-4 text-center">Meteorologia</h2><p class="text-red-500 text-center">Não foi possível carregar a previsão do tempo.</p>`;
     }
 }
+```--- END OF FILE ui_renderer.js ---
