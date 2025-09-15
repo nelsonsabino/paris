@@ -12,11 +12,10 @@
     </script>
 
     <link rel="manifest" href="site.webmanifest">
-
-     <!-- META TAGS DE COR DO TEMA (ALTERADAS) -->
+    
+    <!-- META TAGS DE COR DO TEMA (ALTERADAS) -->
     <meta name="theme-color" content="#facc15" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#1f2937" media="(prefers-color-scheme: dark)">
-
 
     <!-- Favicon para diferentes browsers -->
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
@@ -59,10 +58,10 @@
             <!-- TÍTULO SEPARADO NO TOPO DA PÁGINA -->
             <header class="text-center mb-8">
                 <h1 class="main-title font-bold text-gray-900">Rumo a Paris!</h1>
-                 <!-- <p class="text-lg text-gray-500">A nossa aventura aproxima-se...</p>-->
+                <p class="text-lg text-gray-500">A nossa aventura aproxima-se...</p>
             </header>
 
-            <!-- SECÇÃO DE NAVEGAÇÃO PRINCIPAL (MOVIDA PARA CIMA) -->
+            <!-- SECÇÃO DE NAVEGAÇÃO PRINCIPAL -->
             <section class="mb-12">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                     <a href="guia.html" class="block bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-transform duration-300"><div class="flex items-center text-green-800 mb-3"><i class="fa-solid fa-map-location-dot text-2xl mr-3"></i><h3 class="text-xl font-bold">Guia Visual</h3></div><p class="text-gray-600">O plano com imagens e destaques.</p></a>
@@ -91,6 +90,13 @@
                 </div>
             </section>
 
+            <!-- SECÇÃO DE PRÓXIMOS PASSOS (MOVIDA PARA CIMA) -->
+            <section class="mb-12">
+                <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Próximos Passos</h2>
+                <div id="timeline-container" class="space-y-8"></div>
+            </section>
+
+            <!-- SECÇÃO DA CHECKLIST -->
             <section class="mb-12">
                 <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Checklist de Preparação</h2>
                 <div class="bg-white p-6 rounded-2xl shadow-lg">
@@ -121,11 +127,6 @@
             </section>
             
             <section class="mb-12">
-                <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Próximos Passos</h2>
-                <div id="timeline-container" class="space-y-8"></div>
-            </section>
-            
-            <section class="mb-12">
                 <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Calendário</h2>
                 <div class="bg-white p-4 md:p-6 rounded-2xl shadow-lg">
                     <div id='calendar'></div>
@@ -133,7 +134,7 @@
             </section>
         </div>
 
-        <!-- MODAIS... (código dos modais permanece inalterado) -->
+        <!-- MODAIS -->
         <div id="event-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
             <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 w-full max-w-md relative">
                 <button id="modal-close-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 transition"><i class="fa-solid fa-xmark fa-2x"></i></button>
@@ -149,20 +150,6 @@
                     <div class="flex justify-end gap-4 mt-6">
                         <button type="button" id="cancel-item-btn" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300">Cancelar</button>
                         <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">Guardar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div id="password-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
-            <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-sm">
-                <h3 class="text-xl font-bold text-gray-800 mb-4">Ação Protegida</h3>
-                <p class="text-gray-600 mb-4">Por favor, insira a password para continuar.</p>
-                <form id="password-form">
-                    <input type="password" id="password-input" class="w-full border-gray-300 rounded-md shadow-sm mb-2" required>
-                    <span id="password-error" class="text-red-500 text-sm hidden">Password incorreta.</span>
-                    <div class="flex justify-end gap-4 mt-6">
-                        <button type="button" id="cancel-password" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300">Cancelar</button>
-                        <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Confirmar</button>
                     </div>
                 </form>
             </div>
@@ -199,13 +186,10 @@
       const loader = document.getElementById("loader");
       const content = document.getElementById("content");
 
-      // Verifica se a animação já foi executada nesta sessão
       if (sessionStorage.getItem('animationPlayed')) {
-        // Se sim, esconde o loader e mostra o conteúdo imediatamente
         loader.style.display = 'none';
         content.classList.add('opacity-100');
       } else {
-        // Se não, executa a animação
         const startTime = new Date().getTime();
         lottie.loadAnimation({
           container: document.getElementById('lottie'),
@@ -216,14 +200,13 @@
         });
 
         window.addEventListener("load", () => {
-          const minimumDisplayTime = 3000; // 3.0 segundos
+          const minimumDisplayTime = 3000;
           const elapsedTime = new Date().getTime() - startTime;
           const remainingTime = Math.max(0, minimumDisplayTime - elapsedTime);
 
           setTimeout(() => {
             loader.style.display = "none";
             content.classList.add("opacity-100");
-            // Marca que a animação foi executada para esta sessão
             sessionStorage.setItem('animationPlayed', 'true');
           }, remainingTime);
         });
