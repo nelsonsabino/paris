@@ -1,5 +1,5 @@
-// Versão 12: MUDANÇA DE ESTRATÉGIA para Network First, Cache Fallback.
-const CACHE_NAME = 'paris-v14';
+// Versão 13: CORRIGE os nomes dos ficheiros de ícone para corresponder ao site.webmanifest
+const CACHE_NAME = 'paris-v13';
 const urlsToCache = [
   // Páginas principais
   'index.html',
@@ -16,8 +16,10 @@ const urlsToCache = [
   'assets/images/favicon.svg',
   'assets/images/favicon-96x96.png',
   'assets/images/apple-touch-icon.png',
-  'assets/images/android-chrome-192x192.png',
-  'assets/images/android-chrome-512x512.png',
+  
+  // ÍCONES DA PWA COM NOMES CORRIGIDOS
+  'assets/images/web-app-manifest-192x192.png',
+  'assets/images/web-app-manifest-512x512.png',
 
   // Imagens dos dias (caminhos relativos)
   'assets/images/Dia1.png',
@@ -58,10 +60,7 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Interceção de pedidos: ESTRATÉGIA ALTERADA (NETWORK-FIRST)
-// Esta estratégia tenta primeiro obter os ficheiros da internet.
-// Se a ligação à internet falhar, ele usa os ficheiros da cache como fallback.
-// Isto garante que vê sempre a versão mais recente quando está online.
+// Interceção de pedidos: Estratégia Network-First
 self.addEventListener('fetch', event => {
   event.respondWith(
     fetch(event.request).catch(() => {
