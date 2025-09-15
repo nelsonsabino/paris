@@ -12,10 +12,7 @@
     </script>
 
     <link rel="manifest" href="site.webmanifest">
-    
-    <!-- META TAGS DE COR DO TEMA (ALTERADAS) -->
-    <meta name="theme-color" content="#facc15" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#1f2937" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#facc15" />
 
     <!-- Favicon para diferentes browsers -->
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
@@ -58,10 +55,10 @@
             <!-- TÍTULO SEPARADO NO TOPO DA PÁGINA -->
             <header class="text-center mb-8">
                 <h1 class="main-title font-bold text-gray-900">Rumo a Paris!</h1>
-                <p class="text-lg text-gray-500">A nossa aventura aproxima-se...</p>
+                 <!-- <p class="text-lg text-gray-500">A nossa aventura aproxima-se...</p>-->
             </header>
 
-            <!-- SECÇÃO DE NAVEGAÇÃO PRINCIPAL -->
+            <!-- SECÇÃO DE NAVEGAÇÃO PRINCIPAL (MOVIDA PARA CIMA) -->
             <section class="mb-12">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                     <a href="guia.html" class="block bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-transform duration-300"><div class="flex items-center text-green-800 mb-3"><i class="fa-solid fa-map-location-dot text-2xl mr-3"></i><h3 class="text-xl font-bold">Guia Visual</h3></div><p class="text-gray-600">O plano com imagens e destaques.</p></a>
@@ -72,9 +69,9 @@
             </section>
 
             <!-- IMAGEM CLICÁVEL COM CONTAGEM DECRESCENTE -->
-            <a href="assets/images/fotodegrupo3.png" target="_blank"
+            <a href="assets/images/fotodegrupo2.png" target="_blank"
                class="block relative text-center py-8 rounded-2xl shadow-lg mb-12 bg-cover bg-center h-80 md:h-[650px]"
-               style="background-image: url('assets/images/fotodegrupo3.png');">
+               style="background-image: url('assets/images/fotodegrupo2.png');">
                 
                 <div id="countdown" class="flex justify-center space-x-4 md:space-x-8 text-white pt-4">
                     <div><span id="days" class="countdown-number font-bold text-shadow">00</span><span class="block text-sm text-shadow">Dias</span></div>
@@ -84,19 +81,12 @@
                 </div>
             </a>
 
-<section id="forecast-widget" class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-lg mb-12">
+            <section id="forecast-widget" class="bg-white p-6 rounded-2xl shadow-lg mb-12">
                 <div class="text-center">
                     <p class="text-gray-500">A carregar previsão para a semana da viagem...</p>
                 </div>
             </section>
 
-            <!-- SECÇÃO DE PRÓXIMOS PASSOS -->
-            <section class="mb-12">
-                <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Próximos Passos</h2>
-                <div id="timeline-container" class="space-y-8"></div>
-            </section>
-
-            <!-- SECÇÃO DA CHECKLIST -->
             <section class="mb-12">
                 <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Checklist de Preparação</h2>
                 <div class="bg-white p-6 rounded-2xl shadow-lg">
@@ -127,6 +117,11 @@
             </section>
             
             <section class="mb-12">
+                <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Próximos Passos</h2>
+                <div id="timeline-container" class="space-y-8"></div>
+            </section>
+            
+            <section class="mb-12">
                 <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Calendário</h2>
                 <div class="bg-white p-4 md:p-6 rounded-2xl shadow-lg">
                     <div id='calendar'></div>
@@ -134,7 +129,7 @@
             </section>
         </div>
 
-        <!-- MODAIS -->
+        <!-- MODAIS... (código dos modais permanece inalterado) -->
         <div id="event-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
             <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 w-full max-w-md relative">
                 <button id="modal-close-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 transition"><i class="fa-solid fa-xmark fa-2x"></i></button>
@@ -150,6 +145,20 @@
                     <div class="flex justify-end gap-4 mt-6">
                         <button type="button" id="cancel-item-btn" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300">Cancelar</button>
                         <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="password-modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50">
+            <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-sm">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">Ação Protegida</h3>
+                <p class="text-gray-600 mb-4">Por favor, insira a password para continuar.</p>
+                <form id="password-form">
+                    <input type="password" id="password-input" class="w-full border-gray-300 rounded-md shadow-sm mb-2" required>
+                    <span id="password-error" class="text-red-500 text-sm hidden">Password incorreta.</span>
+                    <div class="flex justify-end gap-4 mt-6">
+                        <button type="button" id="cancel-password" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300">Cancelar</button>
+                        <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Confirmar</button>
                     </div>
                 </form>
             </div>
@@ -171,20 +180,12 @@
     <!-- Script do seletor de tema -->
     <script src="js/theme_switcher.js"></script>
 
-    <!-- SCRIPT DO SERVICE WORKER (COM LIMPEZA DE CACHE) -->
+    <!-- Script do Service Worker -->
     <script>
       if ('serviceWorker' in navigator) {
-        // Primeiro, desregistar todos os service workers antigos para forçar a atualização
-        navigator.serviceWorker.getRegistrations().then(function(registrations) {
-          for(let registration of registrations) {
-            registration.unregister();
-            console.log('Service worker antigo desregistado.');
-          }
-          // Depois de desregistar, registar o novo
-          navigator.serviceWorker.register('service-worker.js')
-            .then(() => console.log('Novo Service Worker registado com sucesso!'))
-            .catch(error => console.log('Erro ao registar novo SW:', error));
-        });
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('Service Worker registado com sucesso!'))
+          .catch(error => console.log('Erro ao registar SW:', error));
       }
     </script>
 
@@ -194,10 +195,13 @@
       const loader = document.getElementById("loader");
       const content = document.getElementById("content");
 
+      // Verifica se a animação já foi executada nesta sessão
       if (sessionStorage.getItem('animationPlayed')) {
+        // Se sim, esconde o loader e mostra o conteúdo imediatamente
         loader.style.display = 'none';
         content.classList.add('opacity-100');
       } else {
+        // Se não, executa a animação
         const startTime = new Date().getTime();
         lottie.loadAnimation({
           container: document.getElementById('lottie'),
@@ -208,13 +212,14 @@
         });
 
         window.addEventListener("load", () => {
-          const minimumDisplayTime = 3000;
+          const minimumDisplayTime = 3000; // 3.0 segundos
           const elapsedTime = new Date().getTime() - startTime;
           const remainingTime = Math.max(0, minimumDisplayTime - elapsedTime);
 
           setTimeout(() => {
             loader.style.display = "none";
             content.classList.add("opacity-100");
+            // Marca que a animação foi executada para esta sessão
             sessionStorage.setItem('animationPlayed', 'true');
           }, remainingTime);
         });

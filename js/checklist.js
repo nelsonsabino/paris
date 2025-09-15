@@ -3,7 +3,7 @@
 /**
  * Renders the checklist items from Firebase and sets up event listeners for each item.
  * @param {object} checklistItemsRef - The Firebase database reference to the checklist.
- * @param {function|null} requestPassword - The function to call for password-protected actions, or null.
+ * @param {function} requestPassword - The function to call for password-protected actions.
  */
 function renderChecklist(checklistItemsRef, requestPassword) {
     const checklistContainer = document.getElementById('checklist-container');
@@ -37,25 +37,22 @@ function renderChecklist(checklistItemsRef, requestPassword) {
                 </div>
             `;
             
+            // Event listener para marcar/desmarcar o item
             itemDiv.querySelector('input[type="checkbox"]').addEventListener('change', (e) => {
                 checklistItemsRef.child(key).update({ checked: e.target.checked });
             });
             
+            // Event listener para o botão de editar
             itemDiv.querySelector('.edit-btn').addEventListener('click', (e) => {
                 const btn = e.currentTarget;
                 document.dispatchEvent(new CustomEvent('openItemModal', { detail: { key: btn.dataset.key, text: btn.dataset.text } }));
             });
 
+            // Event listener para o botão de apagar
             itemDiv.querySelector('.delete-btn').addEventListener('click', (e) => {
                 const keyToDelete = e.currentTarget.dataset.key;
                 if (confirm('Tem a certeza que quer apagar este item?')) {
-                    const deleteAction = () => checklistItemsRef.child(keyToDelete).remove();
-                    // Se a função de password existir, chama-a. Se não, executa a ação diretamente.
-                    if (requestPassword) {
-                        requestPassword(deleteAction);
-                    } else {
-                        deleteAction();
-                    }
+                    requestPassword(() => checklistItemsRef.child(keyToDelete).remove());
                 }
             });
             checklistContainer.appendChild(itemDiv);
@@ -66,7 +63,7 @@ function renderChecklist(checklistItemsRef, requestPassword) {
 /**
  * Initializes all the functionality related to the checklist.
  * @param {object} database - The Firebase database instance.
- * @param {function|null} requestPassword - The function to call for password-protected actions, or null.
+ * @param {function} requestPassword - The function to call for password-protected actions.
  */
 export function initializeChecklist(database, requestPassword) {
     const checklistItemsRef = database.ref('checklist');
@@ -77,18 +74,22 @@ export function initializeChecklist(database, requestPassword) {
     const cancelItemBtn = document.getElementById('cancel-item-btn');
     let currentItemKey = null;
 
+    // Inicia a renderização da checklist
     renderChecklist(checklistItemsRef, requestPassword);
     
+    // Configura o botão para adicionar um novo item
     if (addItemBtn) {
         addItemBtn.addEventListener('click', () => {
             document.dispatchEvent(new CustomEvent('openItemModal', { detail: {} }));
         });
     }
 
+    // Configura o botão de cancelar no modal
     if (cancelItemBtn) {
         cancelItemBtn.addEventListener('click', () => itemModal.classList.add('hidden'));
     }
 
+    // Event listener global para abrir o modal (para adição ou edição)
     document.addEventListener('openItemModal', (e) => {
         if (!itemModal || !itemInput) return;
         currentItemKey = e.detail.key || null;
@@ -97,30 +98,26 @@ export function initializeChecklist(database, requestPassword) {
         itemInput.focus();
     });
 
+    // Configura o formulário do modal para guardar as alterações
     if (itemForm) {
         itemForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const text = itemInput.value.trim();
             if (!text) return;
             
-            const saveAction = () => {
+            requestPassword(() => {
                 if (currentItemKey) {
+                    // Atualiza um item existente
                     checklistItemsRef.child(currentItemKey).update({ text: text });
                 } else {
+                    // Adiciona um novo item
                     checklistItemsRef.once('value', (snapshot) => {
                         const newOrder = snapshot.numChildren();
                         checklistItemsRef.push({ text: text, checked: false, order: newOrder });
                     });
                 }
                 itemModal.classList.add('hidden');
-            };
-
-            // Se a função de password existir, chama-a. Se não, executa a ação diretamente.
-            if (requestPassword) {
-                requestPassword(saveAction);
-            } else {
-                saveAction();
-            }
+            });
         });
     }
 }
