@@ -101,3 +101,17 @@ html.dark .phrase-item .text-gray-700 {
 html.dark .phrase-item .text-blue-600 {
     color: #93c5fd !important; /* Tailwind blue-300 */
 }
+
+/* Força as cores corretas para o novo widget de meteorologia */
+html.dark #forecast-widget .text-gray-700 {
+    color: #cbd5e1 !important; /* slate-300 */
+}
+html.dark #forecast-widget .text-gray-600 {
+    color: #94a3b8 !important; /* slate-400 */
+}
+html.dark #forecast-widget .text-gray-800 {
+    color: #f1f5f9 !important; /* slate-100 */
+}
+html.dark #forecast-widget .bg-gray-100 {
+    background-color: #334155 !important; /* slate-700 */
+}
