@@ -1,5 +1,5 @@
-// Versão 15: Altera todos os caminhos para serem absolutos a partir da raiz.
-const CACHE_NAME = 'paris-v15';
+// Versão 16: Remove o favicon.svg da cache para corresponder ao manifesto.
+const CACHE_NAME = 'paris-v16';
 const urlsToCache = [
   // Páginas principais
   '/index.html',
@@ -11,9 +11,8 @@ const urlsToCache = [
   // Ficheiro Manifest
   '/site.webmanifest',
 
-  // Ícones na raiz
+  // Ícones na raiz (SVG removido)
   '/favicon.ico',
-  '/favicon.svg',
   '/favicon-96x96.png',
   '/apple-touch-icon.png',
   
