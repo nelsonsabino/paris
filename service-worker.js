@@ -1,5 +1,5 @@
-// Versão 9: Remove as barras iniciais (/) de todos os caminhos para os tornar relativos.
-const CACHE_NAME = 'paris-v10';
+// Versão 9: Força a atualização de todos os caches e adiciona as páginas de orçamento.
+const CACHE_NAME = 'paris-v9';
 const urlsToCache = [
   // Páginas principais
   'index.html',
@@ -7,6 +7,8 @@ const urlsToCache = [
   'roteiro.html',
   'orcamento.html',
   'frases.html',
+  'orcamento_taxi_casa.html',
+  'orcamento_taxi_centro.html',
   
   // Ficheiro Manifest
   'site.webmanifest',
