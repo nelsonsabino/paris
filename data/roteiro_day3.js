@@ -70,7 +70,10 @@ export const day3Data = {
                 restaurants: [
                     { name: "Aux Delices de Katty", type: "Restaurante", mapLink: "https://maps.app.goo.gl/BZZe8mht2r2CTKTx8" },
                     { name: "Les Crêpes à Tonton", type: "Creperia", mapLink: "https://maps.app.goo.gl/NmczRsEK5egM9xoH8" },
-                    { name: "Crêperie Belle Ile", type: "Creperia", mapLink: "https://maps.app.goo.gl/4buQpgjXCVjwP3iZA" }
+                    { name: "Crêperie Belle Ile", type: "Creperia", mapLink: "https://maps.app.goo.gl/4buQpgjXCVjwP3iZA" },
+                    { name: "Pizza Gigi Montmartre", type: "Restaurante italiano", mapLink: "https://maps.app.goo.gl/Lg3a52PD1bRf9zUS9" },
+                    { name: "La Porteña", type: "Restaurante argentino", mapLink: "https://maps.app.goo.gl/i2nYHq5b3ejoJStc6" },
+                    { name: "Colline d'Asie - Del Sarte", type: "Restaurante cambojano", mapLink: "https://maps.app.goo.gl/PMXt9wDe95Y4jgDk7" }
                 ]
             },
             timeline: [
