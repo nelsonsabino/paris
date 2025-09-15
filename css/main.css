@@ -32,7 +32,8 @@ html.dark .text-gray-800 {
 }
 
 html.dark .text-gray-500,
-html.dark .text-gray-600 {
+html.dark .text-gray-600,
+html.dark .text-gray-700 {
     color: #94a3b8; /* slate-400 */
 }
 
@@ -63,7 +64,8 @@ html.dark .hover\:bg-green-700:hover { background-color: #16a34a; }
 
 /* Botões secundários */
 html.dark .bg-gray-200 { background-color: #334155; /* slate-700 */ }
-html.dark .text-gray-800 { color: #f1f5f9; /* slate-100 */ }
+/* A regra abaixo foi ajustada para não afetar o widget */
+html.dark .text-gray-800:not(.dark\:text-slate-100) { color: #f1f5f9; /* slate-100 */ }
 html.dark .hover\:bg-gray-300:hover { background-color: #475569; /* slate-600 */ }
 
 /* Input dos modais */
@@ -74,7 +76,7 @@ html.dark input[type="password"] {
     color: #f1f5f9; /* slate-100 */
 }
 
-/* Ícones do seletor de tema (a ser adicionado depois) */
+/* Ícones do seletor de tema */
 .theme-switcher .sun-icon { display: none; }
 .theme-switcher .moon-icon { display: block; }
 
@@ -87,36 +89,34 @@ html.dark #lottie {
     filter: invert(1);
 }
 
-/* --- CORREÇÕES DE EMERGÊNCIA PARA O MODO ESCURO (PARCIALMENTE MANTIDAS) --- */
-/* Força a cor correta do botão "Frases Úteis" na página inicial */
+/* --- CORREÇÕES MANTIDAS --- */
 html.dark .text-purple-800 {
-    color: #c084fc !important; /* Tailwind purple-400 */
+    color: #c084fc !important;
 }
-
-/* Força as cores corretas na lista de frases de frases.html */
 html.dark .phrase-item .text-gray-700 {
-    color: #cbd5e1 !important; /* Tailwind slate-300 */
+    color: #cbd5e1 !important;
 }
-
 html.dark .phrase-item .text-blue-600 {
-    color: #93c5fd !important; /* Tailwind blue-300 */
+    color: #93c5fd !important;
 }
 
-/* --- ESTILOS DO WIDGET DE METEOROLOGIA (CORRIGIDO) --- */
-/* Esta secção foi reescrita para funcionar corretamente em ambos os modos */
-
-/* Estilos para o MODO CLARO (padrão) */
-#forecast-widget .info-box,
-#forecast-widget .forecast-day {
-    background-color: #e5e7eb; /* gray-200 para um contraste suave */
-    color: #1f2937; /* gray-800 */
+/* --- NOVOS ESTILOS PARA O WIDGET DE METEOROLOGIA --- */
+/* Modo Claro (Padrão) */
+.weather-info-box,
+.weather-forecast-day {
+    background-color: #f3f4f6; /* gray-100 */
 }
 
-/* Estilos para o MODO ESCURO */
-html.dark #forecast-widget .info-box,
-html.dark #forecast-widget .forecast-day {
+/* Modo Escuro */
+html.dark .weather-info-box,
+html.dark .weather-forecast-day {
     background-color: #334155; /* slate-700 */
-    color: #f1f5f9; /* slate-100 */
 }
 
-/* As classes dark: nos ficheiros JS já tratam das cores específicas do texto (vermelho, azul, etc) */
+/* Cor da borda que separa o "Tempo Atual" da "Previsão" */
+#forecast-widget .border-b {
+    border-color: #e5e7eb; /* gray-200 */
+}
+html.dark #forecast-widget .border-b {
+    border-color: #4b5563; /* slate-600 */
+}
