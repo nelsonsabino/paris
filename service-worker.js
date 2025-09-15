@@ -1,5 +1,5 @@
 // Versão 9: Força a atualização de todos os caches e adiciona as páginas de orçamento.
-const CACHE_NAME = 'paris-v12';
+const CACHE_NAME = 'paris-v14';
 const urlsToCache = [
   // Páginas principais
   'index.html',
