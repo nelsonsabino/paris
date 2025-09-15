@@ -1,5 +1,5 @@
-// Versão 11: Adiciona os ícones principais da PWA (192x192 e 512x512) à cache.
-const CACHE_NAME = 'paris-v11';
+// Versão 12: MUDANÇA DE ESTRATÉGIA para Network First, Cache Fallback.
+const CACHE_NAME = 'paris-v12';
 const urlsToCache = [
   // Páginas principais
   'index.html',
@@ -16,11 +16,8 @@ const urlsToCache = [
   'assets/images/favicon.svg',
   'assets/images/favicon-96x96.png',
   'assets/images/apple-touch-icon.png',
-  
-  // ÍCONES DA PWA ADICIONADOS AQUI
   'assets/images/android-chrome-192x192.png',
   'assets/images/android-chrome-512x512.png',
-
 
   // Imagens dos dias (caminhos relativos)
   'assets/images/Dia1.png',
@@ -61,10 +58,14 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Interceção de pedidos: serve a cache quando possível
+// Interceção de pedidos: ESTRATÉGIA ALTERADA (NETWORK-FIRST)
+// Esta estratégia tenta primeiro obter os ficheiros da internet.
+// Se a ligação à internet falhar, ele usa os ficheiros da cache como fallback.
+// Isto garante que vê sempre a versão mais recente quando está online.
 self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request)
-      .then(response => response || fetch(event.request))
+    fetch(event.request).catch(() => {
+      return caches.match(event.request);
+    })
   );
 });
