@@ -43,9 +43,10 @@ html.dark .bg-white {
 }
 
 /* Links coloridos nos cards de navegação */
-html.dark .text-green-800 { color: #4ade80; /* green-400 */ }
-html.dark .text-blue-800 { color: #60a5fa; /* blue-400 */ }
-html.dark .text-red-800 { color: #f87171; /* red-400 */ }
+html.dark .text-green-800 { color: #4ade80; }
+html.dark .text-blue-800 { color: #60a5fa; }
+html.dark .text-red-800 { color: #f87171; }
+html.dark .text-purple-800 { color: #c084fc; }
 
 /* Checklist */
 html.dark .checklist-item input:checked + label {
@@ -63,15 +64,14 @@ html.dark .hover\:bg-green-700:hover { background-color: #16a34a; }
 
 /* Botões secundários */
 html.dark .bg-gray-200 { background-color: #334155; /* slate-700 */ }
-html.dark .text-gray-800 { color: #f1f5f9; /* slate-100 */ }
 html.dark .hover\:bg-gray-300:hover { background-color: #475569; /* slate-600 */ }
 
 /* Input dos modais */
 html.dark input[type="text"], 
 html.dark input[type="password"] {
-    background-color: #334155; /* slate-700 */
-    border-color: #475569; /* slate-600 */
-    color: #f1f5f9; /* slate-100 */
+    background-color: #334155;
+    border-color: #475569;
+    color: #f1f5f9;
 }
 
 /* Ícones do seletor de tema */
@@ -81,23 +81,33 @@ html.dark input[type="password"] {
 html.dark .theme-switcher .sun-icon { display: block; }
 html.dark .theme-switcher .moon-icon { display: none; }
 
-
 /* --- Ajuste para a Animação Lottie no Modo Escuro --- */
 html.dark #lottie {
     filter: invert(1);
 }
 
-/* --- CORREÇÕES DE EMERGÊNCIA PARA O MODO ESCURO --- */
-/* Força a cor correta do botão "Frases Úteis" na página inicial */
-html.dark .text-purple-800 {
-    color: #c084fc !important; /* Tailwind purple-400 */
+/* --- ESTILOS PARA O WIDGET DE METEOROLOGIA --- */
+.weather-card {
+    background-color: #f3f4f6; /* gray-100 */
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+.weather-card-title {
+    font-weight: 600;
+    color: #4b5569; /* gray-600 */
+}
+.weather-card-value {
+    font-weight: 700;
+    color: #1f2937; /* gray-800 */
 }
 
-/* Força as cores corretas na lista de frases de frases.html */
-html.dark .phrase-item .text-gray-700 {
-    color: #cbd5e1 !important; /* Tailwind slate-300 */
+/* MODO ESCURO PARA O WIDGET DE METEOROLOGIA */
+html.dark .weather-card {
+    background-color: #334155; /* slate-700 */
 }
-
-html.dark .phrase-item .text-blue-600 {
-    color: #93c5fd !important; /* Tailwind blue-300 */
+html.dark .weather-card-title {
+    color: #cbd5e1; /* slate-300 */
+}
+html.dark .weather-card-value {
+    color: #f1f5f9; /* slate-100 */
 }
