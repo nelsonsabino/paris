@@ -1,5 +1,5 @@
 // Versão 12: MUDANÇA DE ESTRATÉGIA para Network First, Cache Fallback.
-const CACHE_NAME = 'paris-v12';
+const CACHE_NAME = 'paris-v14';
 const urlsToCache = [
   // Páginas principais
   'index.html',
