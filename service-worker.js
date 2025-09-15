@@ -1,4 +1,4 @@
-const CACHE_NAME = 'paris-v6';
+const CACHE_NAME = 'paris-v7';
 const urlsToCache = [
   '/index.html',
   '/guia.html',
