@@ -5,10 +5,10 @@ export const day4Data = {
     date: "Segunda-Feira, 22 de Setembro",
     mapImage: "assets/images/Dia4a.png",
     highlights: [
-        { name: "Museu do Louvre", icon: "fa-landmark-dome", link: "visita_louvre.html" },
-        { name: "Ópera Garnier", icon: "fa-masks-theater", link: "visita_opera-garnier.html" },
-        { name: "Galeries Lafayette", icon: "fa-store", link: "visita_galeries-lafayette.html" },
-        { name: "Le Marais", icon: "fa-map-signs", link: "visita_marais.html" }
+        { name: "Museu do Louvre", icon: "fa-landmark-dome", link: "visita_louvre.html", imageUrl: "https://www.parismania.com.br/wp-content/uploads/2016/12/le-louvre-20-728x364.jpeg" },
+        { name: "Ópera Garnier", icon: "fa-masks-theater", link: "visita_opera-garnier.html", imageUrl: "https://loving-travel.com/wp-content/uploads/2023/04/230404120450001-e1680602804903.jpg" },
+        { name: "Galeries Lafayette", icon: "fa-store", link: "visita_galeries-lafayette.html", imageUrl: "https://www.conexaoparis.com.br/wp-content/uploads/2017/07/Panorama2-e1499078294376.jpg" },
+        { name: "Le Marais", icon: "fa-map-signs", link: "visita_marais.html", imageUrl: "https://asset-prod.france.fr/le_marais_paris_city_tour_private_df11833fe1.jpg" }
     ],
     sections: [
         {
