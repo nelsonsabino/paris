@@ -10,10 +10,8 @@ import { day5Data } from './roteiro_day5.js';
 const allDaysData = [day1Data, day2Data, day3Data, day4Data, day5Data];
 const monthMap = { 'Setembro': 8 };
 
-// --- LÓGICA DA METEOROLOGIA (NOVO) ---
+// --- LÓGICA DA METEOROLOGIA ---
 
-// Função auxiliar para converter o código WMO da API num ícone do Font Awesome
-// (Copiada de ui_renderer.js para que este script seja independente)
 function getWeatherIconFromWMO(wmoCode) {
     const iconMap = {
         0: 'fa-sun', 1: 'fa-cloud-sun', 2: 'fa-cloud-sun', 3: 'fa-cloud',
@@ -26,14 +24,12 @@ function getWeatherIconFromWMO(wmoCode) {
     return iconMap[wmoCode] || 'fa-question-circle';
 }
 
-// NOVA FUNÇÃO: Vai buscar a previsão hora a hora para todos os dias da viagem
 async function fetchHourlyWeatherForTrip() {
     const lat = 48.8566;
     const lon = 2.3522;
     const startDate = '2025-09-19';
     const endDate = '2025-09-23';
     
-    // A API agora pede 'hourly=weathercode'
     const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=weathercode&timezone=Europe/Paris&start_date=${startDate}&end_date=${endDate}`;
 
     try {
@@ -41,11 +37,9 @@ async function fetchHourlyWeatherForTrip() {
         if (!response.ok) return null;
         const data = await response.json();
 
-        // Transforma os dois arrays (time, weathercode) num único objeto para fácil acesso
         const weatherMap = new Map();
         if (data.hourly && data.hourly.time && data.hourly.weathercode) {
             data.hourly.time.forEach((time, index) => {
-                // A chave será algo como "2025-09-19T09:00"
                 weatherMap.set(time, data.hourly.weathercode[index]);
             });
         }
@@ -56,10 +50,6 @@ async function fetchHourlyWeatherForTrip() {
     }
 }
 
-
-/**
- * Adiciona as badges de estado (Concluído, A Decorrer, Próximo) à timeline.
- */
 function updateTimelineBadges() {
     const now = new Date(); 
     const allTimedEvents = [];
@@ -113,13 +103,11 @@ function updateTimelineBadges() {
     });
 }
 
-
-// LÓGICA PRINCIPAL DE RENDERIZAÇÃO (AGORA É UMA FUNÇÃO ASSÍNCRONA)
 async function renderPage() {
-    // 1. Ir buscar os dados da meteorologia primeiro
     const weatherMap = await fetchHourlyWeatherForTrip();
 
-    const mainContentArea = document.querySelector('.container.mx-auto.p-4.md\\:p-8.maxw-5xl');
+    // A LINHA ABAIXO FOI CORRIGIDA
+    const mainContentArea = document.querySelector('.container.mx-auto.p-4.md\\:p-8.max-w-5xl');
     if (!mainContentArea) return;
 
     const header = mainContentArea.querySelector('header');
@@ -189,7 +177,6 @@ async function renderPage() {
                 const hasTime = item.time ? `<p class="timeline-time">${item.time}</p>` : '';
                 const timeDataAttr = item.time ? `data-time="${item.time}" data-date="${dayData.date}"` : '';
                 
-                // --- LÓGICA DO ÍCONE DE METEOROLOGIA (NOVO) ---
                 let weatherIconHtml = '';
                 if (item.time && weatherMap) {
                     const dateParts = dayData.date.split(', ')[1].split(' de ');
@@ -203,7 +190,6 @@ async function renderPage() {
                         weatherIconHtml = `<i class="fa-solid ${iconClass} weather-icon" title="Previsão para as ${item.time}"></i>`;
                     }
                 }
-                // --- FIM DA LÓGICA DO ÍCONE ---
 
                 let ticketIconHTML = '';
                 if (item.requiresTicket) {
@@ -212,7 +198,6 @@ async function renderPage() {
                     else { ticketIconHTML = icon; }
                 }
                 
-                // O ícone da meteorologia é adicionado aqui
                 let titleContent = item.guideLink 
                     ? `<a href="${item.guideLink}" class="text-blue-700 hover:underline hover:text-blue-900 transition">${item.title}</a>`
                     : item.title;
