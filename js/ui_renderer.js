@@ -224,4 +224,3 @@ export async function fetchTripWeather() {
         widget.innerHTML = `<h2 class="section-title font-bold text-gray-800 mb-4 text-center">Meteorologia</h2><p class="text-red-500 text-center">Não foi possível carregar a previsão do tempo.</p>`;
     }
 }
-```--- END OF FILE ui_renderer.js ---
