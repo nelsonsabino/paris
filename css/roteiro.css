@@ -323,7 +323,7 @@ html.dark .highlights-grid {
     animation: fadeInUp 0.5s ease-out forwards;
 }
 
-/* --- ESTILOS PARA O ÍCONE DE METEOROLOGIA NA TIMELINE (NOVO) --- */
+/* --- ESTILOS PARA O ÍCONE DE METEOROLOGIA NA TIMELINE --- */
 .weather-icon {
     margin-right: 0.5rem;
     color: #3b82f6; /* blue-500 */
@@ -335,4 +335,81 @@ html.dark .highlights-grid {
 
 html.dark .weather-icon {
     color: #60a5fa; /* blue-400 */
+}
+
+/* --- ESTILOS PARA O ACORDEÃO "PLANO B" (NOVO) --- */
+.rainy-accordion {
+    border: 1px solid #e2e8f0; /* slate-200 */
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+    background-color: #f8fafc; /* slate-50 */
+    overflow: hidden;
+}
+.rainy-accordion-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    color: #475569; /* slate-600 */
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.rainy-accordion-toggle:hover {
+    background-color: #f1f5f9; /* slate-100 */
+}
+.rainy-accordion-content {
+    padding: 0 1rem 1rem 1rem;
+}
+.rainy-restaurant-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e2e8f0; /* slate-200 */
+}
+.rainy-restaurant-item:last-child {
+    border-bottom: none;
+}
+.rainy-map-link {
+    background-color: #e0e7ff; /* indigo-100 */
+    color: #3730a3; /* indigo-800 */
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    flex-shrink: 0;
+}
+.rainy-map-link:hover {
+    background-color: #c7d2fe; /* indigo-200 */
+}
+
+/* Modo Escuro */
+html.dark .rainy-accordion {
+    background-color: #1e293b; /* slate-800 */
+    border-color: #334155; /* slate-700 */
+}
+html.dark .rainy-accordion-toggle {
+    color: #cbd5e1; /* slate-300 */
+}
+html.dark .rainy-accordion-toggle:hover {
+    background-color: #334155; /* slate-700 */
+}
+html.dark .rainy-restaurant-item {
+    border-color: #334155; /* slate-700 */
+}
+html.dark .rainy-restaurant-item .text-gray-500 {
+    color: #94a3b8; /* slate-400 */
+}
+html.dark .rainy-map-link {
+    background-color: #3730a3; /* indigo-800 */
+    color: #e0e7ff; /* indigo-100 */
+}
+html.dark .rainy-map-link:hover {
+    background-color: #4338ca; /* indigo-700 */
 }
