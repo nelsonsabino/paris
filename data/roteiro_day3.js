@@ -20,7 +20,6 @@ export const day3Data = {
                 { time: "07:00", icon: "fa-mug-hot", title: "Pequeno-almoço em casa",
                     mealSuggestion: {
                         suggestion: "Refeição reforçada em casa, antes da longa viagem de RER para Versalhes.",
-                       /* budget: "~2 € / pessoa"*/
                     }
                 },
                 { time: "07:26", icon: "fa-house-chimney", title: "Saída de Casa" },
@@ -39,7 +38,6 @@ export const day3Data = {
                 { time: "13:00", icon: "fa-utensils", title: "Almoço Piquenique",
                     mealSuggestion: {
                         suggestion: "Almoço nos jardins com sandes preparadas no dia anterior. Evita os preços altos e as filas dos restaurantes do complexo.",
-                     /*   budget: "~7 € / pessoa"*/
                     }
                 }
             ]
@@ -67,6 +65,14 @@ export const day3Data = {
             title: "MONTMARTRE → MOULIN ROUGE",
             mapLink: "https://maps.app.goo.gl/DBCJQ62qSGpKDVL28",
             description: "Duração estimada do percurso a pé com visitas: ~2.5 horas",
+            rainyDayAlternatives: {
+                title: "Plano B (Chuva): Restaurantes em Montmartre",
+                restaurants: [
+                    { name: "Aux Delices de Katty", type: "Restaurante", mapLink: "https://maps.app.goo.gl/BZZe8mht2r2CTKTx8" },
+                    { name: "Les Crêpes à Tonton", type: "Creperia", mapLink: "https://maps.app.goo.gl/NmczRsEK5egM9xoH8" },
+                    { name: "Crêperie Belle Ile", type: "Creperia", mapLink: "https://maps.app.goo.gl/4buQpgjXCVjwP3iZA" }
+                ]
+            },
             timeline: [
                 { time: "15:35", icon: "fa-heart", title: "Muro do Eu Te Amo (Le Mur des Je t'aime)" },
                 { time: "16:00", icon: "fa-place-of-worship", title: "Basílica de Sacré Cœur", guideLink: "visita_montmartre.html", description: "Visita ao interior e vista: ~45 min" },
@@ -74,7 +80,6 @@ export const day3Data = {
                  { time: "17:00", icon: "fa-ice-cream", title: "Lanche da Tarde",
                     mealSuggestion: {
                         suggestion: "Pausa para um crepe, croissant ou outra pastelaria local numa das muitas 'boulangeries' de Montmartre.",
-                       /* budget: "~3 € / pessoa"*/
                     }
                 },
                 { time: "17:20", icon: "fa-utensils", title: "Le Consulat & La Maison Rose", description: "Paragem para fotos: ~10 min" },
@@ -84,7 +89,6 @@ export const day3Data = {
                 { time: "19:30", icon: "fa-utensils", title: "Jantar em Montmartre",
                     mealSuggestion: {
                         suggestion: "Jantar rápido e económico. A zona tem muitas opções de kebab, pizza ou falafel que são saborosas e baratas, antes de apanhar o metro.",
-                    /*    budget: "~9 € / pessoa"*/
                     }
                 },
                 {
