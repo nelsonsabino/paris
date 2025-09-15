@@ -1,5 +1,5 @@
 // Versão 13: CORRIGE os nomes dos ficheiros de ícone para corresponder ao site.webmanifest
-const CACHE_NAME = 'paris-v13';
+const CACHE_NAME = 'paris-v14';
 const urlsToCache = [
   // Páginas principais
   'index.html',
@@ -12,14 +12,14 @@ const urlsToCache = [
   'site.webmanifest',
 
   // Ícones (caminhos relativos)
-  'assets/images/favicon.ico',
-  'assets/images/favicon.svg',
-  'assets/images/favicon-96x96.png',
-  'assets/images/apple-touch-icon.png',
+  'favicon.ico',
+  'favicon.svg',
+  'favicon-96x96.png',
+  'apple-touch-icon.png',
   
   // ÍCONES DA PWA COM NOMES CORRIGIDOS
-  'assets/images/web-app-manifest-192x192.png',
-  'assets/images/web-app-manifest-512x512.png',
+  'web-app-manifest-192x192.png',
+  'web-app-manifest-512x512.png',
 
   // Imagens dos dias (caminhos relativos)
   'assets/images/Dia1.png',
