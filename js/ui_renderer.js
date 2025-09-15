@@ -111,52 +111,89 @@ export function renderTicketTimeline() {
 
 // --- Lógica da Meteorologia (com Open-Meteo) ---
 
+// NOVO: Função para interpretar o Índice de Qualidade do Ar Europeu (AQI)
+const getAqiInfo = (aqi) => {
+    if (aqi <= 20) return { text: 'Boa', color: 'text-green-500' };
+    if (aqi <= 40) return { text: 'Razoável', color: 'text-yellow-500' };
+    if (aqi <= 60) return { text: 'Moderada', color: 'text-orange-500' };
+    if (aqi <= 80) return { text: 'Fraca', color: 'text-red-500' };
+    if (aqi <= 100) return { text: 'Má', color: 'text-red-700' };
+    return { text: 'Muito Má', color: 'text-purple-700' };
+};
+
 const getWeatherIconFromWMO = (wmoCode) => {
     const iconMap = {
-        0: 'fa-sun', // Céu limpo
-        1: 'fa-cloud-sun', // Principalmente limpo
-        2: 'fa-cloud-sun', // Parcialmente nublado
-        3: 'fa-cloud', // Nublado
-        45: 'fa-smog', // Nevoeiro
-        48: 'fa-smog', // Nevoeiro depositante de geada
-        51: 'fa-cloud-rain', // Chuvisco leve
-        53: 'fa-cloud-rain', // Chuvisco moderado
-        55: 'fa-cloud-rain', // Chuvisco denso
-        61: 'fa-cloud-showers-heavy', // Chuva leve
-        63: 'fa-cloud-showers-heavy', // Chuva moderada
-        65: 'fa-cloud-showers-heavy', // Chuva forte
-        71: 'fa-snowflake', // Neve leve
-        73: 'fa-snowflake', // Neve moderada
-        75: 'fa-snowflake', // Neve forte
-        80: 'fa-cloud-showers-heavy', // Aguaceiros de chuva leves
-        81: 'fa-cloud-showers-heavy', // Aguaceiros de chuva moderados
-        82: 'fa-cloud-showers-heavy', // Aguaceiros de chuva violentos
-        95: 'fa-bolt', // Trovoada
-        96: 'fa-bolt', // Trovoada com granizo leve
-        99: 'fa-bolt', // Trovoada com granizo forte
+        0: 'fa-sun', 1: 'fa-cloud-sun', 2: 'fa-cloud-sun', 3: 'fa-cloud',
+        45: 'fa-smog', 48: 'fa-smog', 51: 'fa-cloud-rain', 53: 'fa-cloud-rain', 55: 'fa-cloud-rain',
+        61: 'fa-cloud-showers-heavy', 63: 'fa-cloud-showers-heavy', 65: 'fa-cloud-showers-heavy',
+        71: 'fa-snowflake', 73: 'fa-snowflake', 75: 'fa-snowflake',
+        80: 'fa-cloud-showers-heavy', 81: 'fa-cloud-showers-heavy', 82: 'fa-cloud-showers-heavy',
+        95: 'fa-bolt', 96: 'fa-bolt', 99: 'fa-bolt',
     };
-    return iconMap[wmoCode] || 'fa-question-circle'; // Ícone padrão
+    return iconMap[wmoCode] || 'fa-question-circle';
 };
 
 const formatDayAndDate = (dateObject) => `${dateObject.toLocaleDateString('pt-PT', { weekday: 'short' })} ${dateObject.getDate()}`;
 
-function renderForecast(forecastDays) {
+// NOVO: Função principal que renderiza todo o widget (tempo atual + previsão)
+function renderWeatherWidget(forecastData, airQualityData) {
     const widget = document.getElementById('forecast-widget');
-    let forecastHtml = '';
 
-    forecastDays.forEach(day => {
-        const date = new Date(day.time);
+    // --- Parte 1: Renderizar o Tempo Atual ---
+    const current = forecastData.current;
+    const todayForecast = forecastData.daily;
+    const aqiInfo = getAqiInfo(airQualityData.current.european_aqi);
+
+    const currentHtml = `
+        <div class="text-center border-b dark:border-slate-700 pb-6 mb-6">
+            <p class="text-lg font-semibold text-gray-700">Tempo Atual em Paris</p>
+            <div class="flex items-center justify-center gap-4 my-2">
+                <i class="fa-solid ${getWeatherIconFromWMO(current.weathercode)} text-5xl text-blue-500 dark:text-blue-400"></i>
+                <p class="text-6xl font-bold text-gray-800">${Math.round(current.temperature_2m)}°C</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm mt-4">
+                <div class="bg-gray-100 dark:bg-slate-700 p-2 rounded-lg">
+                    <p class="font-semibold">Qualidade do Ar</p>
+                    <p class="${aqiInfo.color} font-bold">${aqiInfo.text}</p>
+                </div>
+                <div class="bg-gray-100 dark:bg-slate-700 p-2 rounded-lg">
+                    <p class="font-semibold">Visibilidade</p>
+                    <p class="font-bold">${(current.visibility / 1000).toFixed(1)} km</p>
+                </div>
+                <div class="bg-gray-100 dark:bg-slate-700 p-2 rounded-lg">
+                    <p class="font-semibold">Nascer do Sol</p>
+                    <p class="font-bold">${new Date(todayForecast.sunrise[0]).toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' })}</p>
+                </div>
+                <div class="bg-gray-100 dark:bg-slate-700 p-2 rounded-lg">
+                    <p class="font-semibold">Pôr do Sol</p>
+                    <p class="font-bold">${new Date(todayForecast.sunset[0]).toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' })}</p>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // --- Parte 2: Renderizar a Previsão dos 5 Dias ---
+    let forecastHtml = '';
+    todayForecast.time.forEach((time, index) => {
+        const date = new Date(time);
         forecastHtml += `
             <div class="text-center p-3 bg-gray-100 dark:bg-slate-700 rounded-lg">
                 <p class="font-semibold">${formatDayAndDate(date)}</p>
-                <i class="fa-solid ${getWeatherIconFromWMO(day.weathercode)} text-3xl my-2 text-blue-500 dark:text-blue-400"></i>
+                <i class="fa-solid ${getWeatherIconFromWMO(todayForecast.weathercode[index])} text-3xl my-2 text-blue-500 dark:text-blue-400"></i>
                 <p class="text-sm">
-                    <span class="font-bold text-red-500 dark:text-red-400">${Math.round(day.temperature_2m_max)}°</span> / 
-                    <span class="text-blue-600 dark:text-sky-400">${Math.round(day.temperature_2m_min)}°</span>
+                    <span class="font-bold text-red-500 dark:text-red-400">${Math.round(todayForecast.temperature_2m_max[index])}°</span> / 
+                    <span class="text-blue-600 dark:text-sky-400">${Math.round(todayForecast.temperature_2m_min[index])}°</span>
                 </p>
             </div>`;
     });
-    widget.innerHTML = `<h2 class="section-title font-bold text-gray-800 mb-4 text-center">Previsão da Viagem</h2><div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">${forecastHtml}</div>`;
+    
+    // --- Parte 3: Juntar tudo e colocar no HTML ---
+    widget.innerHTML = `
+        <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Meteorologia</h2>
+        ${currentHtml}
+        <h3 class="font-semibold text-lg text-center text-gray-700 mb-4">Previsão para a Viagem</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">${forecastHtml}</div>
+    `;
 }
 
 /**
@@ -169,29 +206,30 @@ export async function fetchTripWeather() {
     const endDate = '2025-09-23';
     const widget = document.getElementById('forecast-widget');
 
-    const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=Europe/Paris&start_date=${startDate}&end_date=${endDate}`;
+    const forecastApiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weathercode,visibility&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset&timezone=Europe/Paris&start_date=${startDate}&end_date=${endDate}`;
+    const airQualityApiUrl = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}&current=european_aqi`;
 
     try {
-        const response = await fetch(apiUrl);
-        if (!response.ok) throw new Error(`Erro na API: ${response.statusText}`);
-        const data = await response.json();
+        // NOVO: Faz as duas chamadas à API em paralelo
+        const [forecastResponse, airQualityResponse] = await Promise.all([
+            fetch(forecastApiUrl),
+            fetch(airQualityApiUrl)
+        ]);
 
-        if (!data.daily || !data.daily.time) {
-            throw new Error("Resposta da API inválida.");
+        if (!forecastResponse.ok) throw new Error(`Erro na API de previsão: ${forecastResponse.statusText}`);
+        if (!airQualityResponse.ok) throw new Error(`Erro na API de qualidade do ar: ${airQualityResponse.statusText}`);
+
+        const forecastData = await forecastResponse.json();
+        const airQualityData = await airQualityResponse.json();
+
+        if (!forecastData.daily || !airQualityData.current) {
+            throw new Error("Resposta de uma das APIs é inválida.");
         }
         
-        // Transforma a resposta da API na estrutura que a função renderForecast espera
-        const tripForecast = data.daily.time.map((time, index) => ({
-            time: time,
-            weathercode: data.daily.weathercode[index],
-            temperature_2m_max: data.daily.temperature_2m_max[index],
-            temperature_2m_min: data.daily.temperature_2m_min[index],
-        }));
-        
-        renderForecast(tripForecast);
+        renderWeatherWidget(forecastData, airQualityData);
 
     } catch (error) {
         console.error("Erro ao buscar dados da meteorologia:", error);
-        widget.innerHTML = `<h2 class="section-title font-bold text-gray-800 mb-4 text-center">Previsão da Viagem</h2><p class="text-red-500 text-center">Não foi possível carregar a previsão.</p>`;
+        widget.innerHTML = `<h2 class="section-title font-bold text-gray-800 mb-4 text-center">Meteorologia</h2><p class="text-red-500 text-center">Não foi possível carregar a previsão do tempo.</p>`;
     }
 }
