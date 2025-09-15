@@ -109,16 +109,33 @@ export function renderTicketTimeline() {
 }
 
 
-// --- Lógica da Meteorologia ---
+// --- Lógica da Meteorologia (com Open-Meteo) ---
 
-const getWeatherIcon = (iconCode) => {
-    const code = iconCode.substring(0, 2);
+const getWeatherIconFromWMO = (wmoCode) => {
     const iconMap = {
-        '01': 'fa-sun', '02': 'fa-cloud-sun', '03': 'fa-cloud', '04': 'fa-cloud-meatball',
-        '09': 'fa-cloud-showers-heavy', '10': 'fa-cloud-rain', '11': 'fa-bolt',
-        '13': 'fa-snowflake', '50': 'fa-smog'
+        0: 'fa-sun', // Céu limpo
+        1: 'fa-cloud-sun', // Principalmente limpo
+        2: 'fa-cloud-sun', // Parcialmente nublado
+        3: 'fa-cloud', // Nublado
+        45: 'fa-smog', // Nevoeiro
+        48: 'fa-smog', // Nevoeiro depositante de geada
+        51: 'fa-cloud-rain', // Chuvisco leve
+        53: 'fa-cloud-rain', // Chuvisco moderado
+        55: 'fa-cloud-rain', // Chuvisco denso
+        61: 'fa-cloud-showers-heavy', // Chuva leve
+        63: 'fa-cloud-showers-heavy', // Chuva moderada
+        65: 'fa-cloud-showers-heavy', // Chuva forte
+        71: 'fa-snowflake', // Neve leve
+        73: 'fa-snowflake', // Neve moderada
+        75: 'fa-snowflake', // Neve forte
+        80: 'fa-cloud-showers-heavy', // Aguaceiros de chuva leves
+        81: 'fa-cloud-showers-heavy', // Aguaceiros de chuva moderados
+        82: 'fa-cloud-showers-heavy', // Aguaceiros de chuva violentos
+        95: 'fa-bolt', // Trovoada
+        96: 'fa-bolt', // Trovoada com granizo leve
+        99: 'fa-bolt', // Trovoada com granizo forte
     };
-    return iconMap[code] || 'fa-question-circle';
+    return iconMap[wmoCode] || 'fa-question-circle'; // Ícone padrão
 };
 
 const formatDayAndDate = (dateObject) => `${dateObject.toLocaleDateString('pt-PT', { weekday: 'short' })} ${dateObject.getDate()}`;
@@ -126,22 +143,16 @@ const formatDayAndDate = (dateObject) => `${dateObject.toLocaleDateString('pt-PT
 function renderForecast(forecastDays) {
     const widget = document.getElementById('forecast-widget');
     let forecastHtml = '';
-    
-    if (forecastDays.length === 0) {
-        const daysToWait = Math.ceil((new Date('2025-09-19T00:00:00Z') - new Date()) / (1000 * 60 * 60 * 24)) - 5;
-        widget.innerHTML = `<h2 class="section-title font-bold text-gray-800 mb-4 text-center">Previsão da Viagem</h2><p class="text-center text-gray-600">A previsão para as datas da viagem ainda não está disponível. Tente novamente em ${daysToWait > 0 ? daysToWait : 1} dia(s).</p>`;
-        return;
-    }
 
     forecastDays.forEach(day => {
-        const date = new Date(day.dt * 1000);
+        const date = new Date(day.time);
         forecastHtml += `
-            <div class="text-center p-3 bg-gray-100 rounded-lg">
+            <div class="text-center p-3 bg-gray-100 dark:bg-slate-700 rounded-lg">
                 <p class="font-semibold">${formatDayAndDate(date)}</p>
-                <i class="fa-solid ${getWeatherIcon(day.weather[0].icon)} text-3xl my-2 text-blue-500"></i>
+                <i class="fa-solid ${getWeatherIconFromWMO(day.weathercode)} text-3xl my-2 text-blue-500 dark:text-blue-400"></i>
                 <p class="text-sm">
-                    <span class="font-bold text-red-500">${Math.round(day.main.temp_max)}°</span> / 
-                    <span class="text-blue-600">${Math.round(day.main.temp_min)}°</span>
+                    <span class="font-bold text-red-500 dark:text-red-400">${Math.round(day.temperature_2m_max)}°</span> / 
+                    <span class="text-blue-600 dark:text-sky-400">${Math.round(day.temperature_2m_min)}°</span>
                 </p>
             </div>`;
     });
@@ -149,50 +160,34 @@ function renderForecast(forecastDays) {
 }
 
 /**
- * Busca e renderiza a previsão do tempo para a viagem.
+ * Busca e renderiza a previsão do tempo para a viagem usando Open-Meteo.
  */
 export async function fetchTripWeather() {
-    const apiKey = '20a830e5b99cce598420aa6595328dfe'; // <-- A SUA CHAVE DE API ESTÁ AQUI
     const lat = 48.8566;
     const lon = 2.3522;
-    const tripStartDate = new Date('2025-09-19T00:00:00Z');
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-
-    const msInDay = 1000 * 60 * 60 * 24;
-    const daysUntilTrip = Math.ceil((tripStartDate - today) / msInDay);
-    
+    const startDate = '2025-09-19';
+    const endDate = '2025-09-23';
     const widget = document.getElementById('forecast-widget');
 
-    const forecastAvailableOnDay = 5;
-    if (daysUntilTrip > forecastAvailableOnDay) {
-        const daysToWait = daysUntilTrip - forecastAvailableOnDay;
-        const pluralS = daysToWait > 1 ? 's' : '';
-        widget.innerHTML = `<h2 class="section-title font-bold text-gray-800 mb-4 text-center">Previsão da Viagem</h2><p class="text-center text-gray-600">A previsão estará disponível dentro de ${daysToWait} dia${pluralS}.</p>`;
-        return;
-    }
-
-    const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=pt`;
+    const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=Europe/Paris&start_date=${startDate}&end_date=${endDate}`;
 
     try {
         const response = await fetch(apiUrl);
         if (!response.ok) throw new Error(`Erro na API: ${response.statusText}`);
         const data = await response.json();
+
+        if (!data.daily || !data.daily.time) {
+            throw new Error("Resposta da API inválida.");
+        }
         
-        const tripStartDateString = '2025-09-19';
-        const tripEndDateString = '2025-09-23';
+        // Transforma a resposta da API na estrutura que a função renderForecast espera
+        const tripForecast = data.daily.time.map((time, index) => ({
+            time: time,
+            weathercode: data.daily.weathercode[index],
+            temperature_2m_max: data.daily.temperature_2m_max[index],
+            temperature_2m_min: data.daily.temperature_2m_min[index],
+        }));
         
-        const dailyForecasts = {};
-        data.list.forEach(item => {
-            const itemDate = item.dt_txt.split(' ')[0];
-            if (itemDate >= tripStartDateString && itemDate <= tripEndDateString) {
-                if (!dailyForecasts[itemDate] || item.dt_txt.includes("12:00:00")) {
-                    dailyForecasts[itemDate] = item;
-                }
-            }
-        });
-        
-        const tripForecast = Object.values(dailyForecasts);
         renderForecast(tripForecast);
 
     } catch (error) {
