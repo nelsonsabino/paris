@@ -5,10 +5,10 @@ export const day5Data = {
     date: "Terça-Feira, 23 de Setembro",
     mapImage: "assets/images/Dia5a.png",
     highlights: [
-        { name: "Sainte-Chapelle", icon: "fa-gem", link: "visita_sainte-chapelle.html" },
-        { name: "Quartier Latin", icon: "fa-graduation-cap", link: "visita_quartier-latin.html" },
-        { name: "Jardim do Luxemburgo", icon: "fa-seedling", link: "visita_jardim-luxemburgo.html" },
-        { name: "Saint-Germain-des-Prés", icon: "fa-mug-saucer", link: "visita_saint-germain.html" }
+        { name: "Sainte-Chapelle", icon: "fa-gem", link: "visita_sainte-chapelle.html", imageUrl: "https://www.civitatis.com/f/francia/paris/guia/sainte-chapelle.jpg" },
+        { name: "Quartier Latin", icon: "fa-graduation-cap", link: "visita_quartier-latin.html", imageUrl: "https://cdn.tourdesk.io/activity-gallery/f1f967f84edd4696975c3e6614e7ca07_main_slider.jpg" },
+        { name: "Jardim do Luxemburgo", icon: "fa-seedling", link: "visita_jardim-luxemburgo.html", imageUrl: "https://www.civitatis.com/f/francia/paris/guia/jardines-luxemburgo.jpg" },
+        { name: "Saint-Germain-des-Prés", icon: "fa-mug-saucer", link: "visita_saint-germain.html", imageUrl: "https://media.vrbo.com/lodging/78000000/77880000/77875600/77875504/83a7323f.jpg" }
     ],
     sections: [
         {
