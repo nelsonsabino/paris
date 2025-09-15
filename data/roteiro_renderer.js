@@ -105,8 +105,6 @@ function updateTimelineBadges() {
 
 async function renderPage() {
     const weatherMap = await fetchHourlyWeatherForTrip();
-
-    // A LINHA ABAIXO FOI CORRIGIDA
     const mainContentArea = document.querySelector('.container.mx-auto.p-4.md\\:p-8.max-w-5xl');
     if (!mainContentArea) return;
 
@@ -164,6 +162,36 @@ async function renderPage() {
         }
 
         dayData.sections.forEach(sectionBlock => {
+            // --- INÍCIO DA CRIAÇÃO DO ACORDEÃO DE RESTAURANTES (NOVO) ---
+            let rainyDayHtml = '';
+            if (sectionBlock.rainyDayAlternatives && sectionBlock.rainyDayAlternatives.restaurants.length > 0) {
+                const { title, restaurants } = sectionBlock.rainyDayAlternatives;
+                const restaurantList = restaurants.map(r => `
+                    <li class="rainy-restaurant-item">
+                        <div class="flex-grow">
+                            <p class="font-semibold">${r.name}</p>
+                            <p class="text-sm text-gray-500">${r.type}</p>
+                        </div>
+                        <a href="${r.mapLink}" target="_blank" class="rainy-map-link">
+                            Mapa <i class="fa-solid fa-location-dot ml-1 text-xs"></i>
+                        </a>
+                    </li>
+                `).join('');
+
+                rainyDayHtml = `
+                    <div class="rainy-accordion">
+                        <button class="rainy-accordion-toggle">
+                            <span><i class="fa-solid fa-cloud-showers-heavy mr-3"></i>${title}</span>
+                            <i class="fas fa-chevron-down text-sm"></i>
+                        </button>
+                        <div class="rainy-accordion-content hidden">
+                            <ul>${restaurantList}</ul>
+                        </div>
+                    </div>
+                `;
+            }
+            // --- FIM DA CRIAÇÃO DO ACORDEÃO ---
+
             htmlContent += `<div ${sectionBlock.id ? `id="${sectionBlock.id}"` : ''} class="section-block pt-4">
                     <a href="${sectionBlock.mapLink}" target="_blank" class="block p-3 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-colors duration-200 mt-8 mb-4">
                         <div class="flex items-center justify-between">
@@ -171,6 +199,7 @@ async function renderPage() {
                             <span class="text-sm font-semibold text-blue-500 hidden md:block">Ver no Mapa <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></span>
                         </div>
                     </a>
+                    ${rainyDayHtml} 
                     <div class="relative timeline-container">`;
 
             sectionBlock.timeline.forEach(item => {
@@ -242,7 +271,9 @@ async function renderPage() {
         targetNode = section;
     });
 
-    document.querySelectorAll('.accordion-toggle').forEach(button => {
+    // --- LÓGICA GERAL DA PÁGINA (EVENT LISTENERS) ---
+    // Adiciona listener para o novo acordeão de chuva
+    document.querySelectorAll('.accordion-toggle, .rainy-accordion-toggle').forEach(button => {
         button.addEventListener('click', () => {
             const content = button.nextElementSibling;
             const icon = button.querySelector('i.fas.fa-chevron-down, i.fas.fa-chevron-up');
