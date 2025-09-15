@@ -1,6 +1,7 @@
 const CACHE_NAME = 'paris-v7';
 const urlsToCache = [
   '/index.html',
+  '/js/ui_renderer.js',
   '/guia.html',
   '/roteiro.html',
   '/orcamento.html',
