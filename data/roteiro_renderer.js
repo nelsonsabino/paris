@@ -98,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>`;
         }
         
-        // --- LÓGICA ATUALIZADA PARA CRIAR OS CARDS DE DESTAQUES ---
         let highlightsHtml = '';
         if (dayData.highlights && dayData.highlights.length > 0) {
             highlightsHtml = `
@@ -115,7 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     `).join('')}
                 </div>`;
         }
-        // --- FIM DO BLOCO ATUALIZADO ---
 
         let htmlContent = `
             <h2 class="font-display text-2xl md:text-3xl text-gray-900 mb-1 font-bold">${dayData.title}</h2>
@@ -225,18 +223,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- LÓGICA DE OBSERVERS (SCROLL) ---
-    const mainNavLinks = document.querySelectorAll('.sticky-nav a[href^="#day"]');
+    const mainNavLinks = document.querySelectorAll('.sticky-nav-days a[href^="#day"]');
     const daySections = document.querySelectorAll('.day-section');
     const dayNavLinks = document.querySelectorAll('.day-nav a');
     const sectionBlocks = document.querySelectorAll('.section-block');
     const observerOptions = { root: null, rootMargin: '-100px 0px -50% 0px', threshold: 0 };
     
+    // LÓGICA DO OBSERVADOR PRINCIPAL FOI ATUALIZADA
     const mainObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
                 mainNavLinks.forEach(link => {
-                    link.classList.toggle('active-day-link', link.getAttribute('href').substring(1) === entry.target.id);
+                    link.classList.remove('active-day-link');
                 });
+                const activeLink = document.querySelector(`.sticky-nav-days a[href="#${id}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active-day-link');
+                }
             }
         });
     }, observerOptions);
