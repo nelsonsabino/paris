@@ -90,7 +90,7 @@
                 </div>
             </section>
 
-            <!-- SECÇÃO DE PRÓXIMOS PASSOS (MOVIDA PARA CIMA) -->
+            <!-- SECÇÃO DE PRÓXIMOS PASSOS -->
             <section class="mb-12">
                 <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Próximos Passos</h2>
                 <div id="timeline-container" class="space-y-8"></div>
@@ -171,12 +171,20 @@
     <!-- Script do seletor de tema -->
     <script src="js/theme_switcher.js"></script>
 
-    <!-- Script do Service Worker -->
+    <!-- SCRIPT DO SERVICE WORKER (COM LIMPEZA DE CACHE) -->
     <script>
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('service-worker.js')
-          .then(() => console.log('Service Worker registado com sucesso!'))
-          .catch(error => console.log('Erro ao registar SW:', error));
+        // Primeiro, desregistar todos os service workers antigos para forçar a atualização
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+          for(let registration of registrations) {
+            registration.unregister();
+            console.log('Service worker antigo desregistado.');
+          }
+          // Depois de desregistar, registar o novo
+          navigator.serviceWorker.register('service-worker.js')
+            .then(() => console.log('Novo Service Worker registado com sucesso!'))
+            .catch(error => console.log('Erro ao registar novo SW:', error));
+        });
       }
     </script>
 
