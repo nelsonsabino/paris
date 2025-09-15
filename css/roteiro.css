@@ -33,7 +33,7 @@ body {
 
 /* --- CORREÇÃO PARA O SCROLL --- */
 .section-block[id] {
-    scroll-margin-top: 120px; /* Altura combinada das duas barras + margem */
+    scroll-margin-top: 120px;
 }
 
 .timeline-container {
@@ -101,29 +101,19 @@ body {
     border-bottom: 1px solid #e2e8f0;
     padding: 0.5rem 1rem;
 }
+/* --- REGRAS DO DAY-NAV RESTAURADAS E CORRIGIDAS --- */
 .day-nav {
-    /* Por defeito (mobile), a barra não é sticky */
-    position: static;
-    background-color: #f1f5f9;
+    position: sticky;
+    top: 53px; /* Altura da barra de cima */
+    z-index: 40; /* Z-index inferior ao da barra de cima */
+    background-color: rgba(241, 245, 249, 0.75);
+    backdrop-filter: blur(8px);
     border-bottom: 1px solid #cbd5e1;
     padding: 0.75rem 1rem;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     gap: 0.5rem;
 }
-
-/* A barra secundária só se torna sticky em ecrãs maiores */
-@media (min-width: 768px) {
-    .day-nav {
-        position: sticky;
-        top: 53px;
-        z-index: 40;
-        background-color: rgba(241, 245, 249, 0.75);
-        backdrop-filter: blur(8px);
-    }
-}
-
 
 .metro-line { display: inline-block; color: white; padding: 2px 7px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; margin: 0 4px; line-height: 1.2; }
 .active-day-link { background-color: #e0e7ff; color: #312e81; font-weight: 700; }
@@ -136,105 +126,87 @@ body {
 .badge-next { background-color: #3b82f6; color: white; }
 /* --- DARK MODE STYLES --- */
 html.dark body {
-    background-color: #0f172a; /* slate-900 */
-    color: #cbd5e1; /* slate-300 */
+    background-color: #0f172a;
+    color: #cbd5e1;
 }
 
-/* Cabeçalho não-flutuante e títulos */
 html.dark header.bg-white {
-    background-color: #1e293b; /* slate-800 */
-    border-bottom-color: #334155; /* slate-700 */
+    background-color: #1e293b;
+    border-bottom-color: #334155;
 }
 html.dark .font-display,
 html.dark .text-gray-900,
 html.dark .text-gray-800 {
-    color: #f1f5f9; /* slate-100 */
+    color: #f1f5f9;
 }
 html.dark .text-gray-600 {
-    color: #94a3b8; /* slate-400 */
+    color: #94a3b8;
 }
 
-/* Barras de navegação flutuantes */
 html.dark .sticky-nav-days {
     background-color: rgba(30, 41, 59, 0.75);
-    border-bottom-color: #475569; /* slate-600 */
+    border-bottom-color: #475569;
 }
 html.dark .day-nav {
-    background-color: #334155; /* slate-700 */
-    border-bottom-color: #64748b; /* slate-500 */
+    background-color: rgba(51, 65, 85, 0.75);
+    border-bottom-color: #64748b;
 }
 
-/* Apenas no desktop para o modo escuro */
-@media (min-width: 768px) {
-    html.dark .day-nav {
-        background-color: rgba(51, 65, 85, 0.75);
-    }
-}
-
-
-/* Links das barras de navegação */
 html.dark .sticky-nav-days a,
 html.dark .day-nav a {
-    color: #cbd5e1; /* slate-300 */
+    color: #cbd5e1;
 }
 html.dark .sticky-nav-days a:hover,
 html.dark .day-nav a:hover {
-    background-color: #334155; /* slate-700 */
+    background-color: #334155;
 }
 html.dark .active-day-link {
     background-color: #33488a;
     color: #e0e7ff;
 }
 html.dark .day-nav a.active-section {
-    background-color: #4f46e5; /* indigo-600 */
+    background-color: #4f46e5;
     color: white;
 }
 
-/* Secções dos dias */
 html.dark .day-section {
-    background-color: #1e293b; /* slate-800 */
-    border-color: #334155; /* slate-700 */
+    background-color: #1e293b;
+    border-color: #334155;
 }
 html.dark .day-section > h2 {
-    color: #93c5fd; /* blue-300 */
-    border-bottom-color: #334155; /* slate-700 */
+    color: #93c5fd;
+    border-bottom-color: #334155;
 }
 html.dark .day-section > p {
-    color: #94a3b8; /* slate-400 */
+    color: #94a3b8;
 }
 
-/* Bloco do link do mapa */
-html.dark .bg-slate-50 { background-color: #334155; /* slate-700 */ }
-html.dark .border-slate-200 { border-color: #475569; /* slate-600 */ }
-html.dark .hover\:bg-slate-100:hover { background-color: #475569; /* slate-600 */ }
-html.dark .hover\:border-slate-300:hover { border-color: #64748b; /* slate-500 */ }
+html.dark .bg-slate-50 { background-color: #334155; }
+html.dark .border-slate-200 { border-color: #475569; }
+html.dark .hover\:bg-slate-100:hover { background-color: #475569; }
+html.dark .hover\:border-slate-300:hover { border-color: #64748b; }
 
-/* Timeline */
-html.dark .timeline-container::before { background-color: #475569; /* slate-600 */ }
-html.dark .timeline-time { color: #94a3b8; /* slate-400 */ }
+html.dark .timeline-container::before { background-color: #475569; }
+html.dark .timeline-time { color: #94a3b8; }
 html.dark .timeline-item-meal {
     background-color: #15322b;
-    border-left-color: #22c55e; /* green-500 */
+    border-left-color: #22c55e;
 }
 
-/* Acordeão do percurso */
-html.dark .accordion-content { border-l-color: #475569; /* slate-600 */ }
+html.dark .accordion-content { border-l-color: #475569; }
 html.dark .accordion-toggle h3 { color: #f1f5f9; }
 html.dark .accordion-toggle p { color: #94a3b8; }
 html.dark .relative .absolute { background-color: #64748b; }
 
-
-/* --- Ajustes de Cor para Links e Ícones no Modo Escuro --- */
 html.dark .text-blue-600,
 html.dark .text-blue-700 {
-    color: #60a5fa; /* Lighter blue (blue-400) for better contrast */
+    color: #60a5fa;
 }
 
 html.dark .hover\:text-blue-900:hover {
-    color: #93c5fd; /* Even lighter blue (blue-300) on hover */
+    color: #93c5fd;
 }
 
-/* --- ESTILOS PARA OS DESTAQUES DO DIA (VISUAL CARDS) --- */
 .highlights-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -244,7 +216,6 @@ html.dark .hover\:text-blue-900:hover {
     margin-top: 1.5rem;
     margin-bottom: 2.5rem;
 }
-
 .highlight-card {
     position: relative;
     display: block;
@@ -255,7 +226,6 @@ html.dark .hover\:text-blue-900:hover {
     color: white;
     text-decoration: none;
 }
-
 .highlight-card-bg {
     position: absolute;
     inset: 0;
@@ -265,11 +235,9 @@ html.dark .hover\:text-blue-900:hover {
     background-position: center;
     transition: transform 0.3s ease-out;
 }
-
 .highlight-card:hover .highlight-card-bg {
     transform: scale(1.1);
 }
-
 .highlight-card-overlay {
     position: absolute;
     inset: 0;
@@ -278,11 +246,9 @@ html.dark .hover\:text-blue-900:hover {
     background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 20%, rgba(0, 0, 0, 0) 60%);
     transition: background-color 0.3s ease-out;
 }
-
 .highlight-card:hover .highlight-card-overlay {
     background-color: rgba(0, 0, 0, 0.2);
 }
-
 .highlight-card-content {
     position: absolute;
     bottom: 0;
@@ -293,7 +259,6 @@ html.dark .hover\:text-blue-900:hover {
     display: flex;
     align-items: center;
 }
-
 .highlight-card .highlight-icon {
     font-size: 1.25rem;
     margin-right: 0.75rem;
@@ -301,49 +266,41 @@ html.dark .hover\:text-blue-900:hover {
     transition: opacity 0.3s ease-out;
     text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 }
-
 .highlight-card .highlight-name {
     font-weight: 700;
     font-size: 1.125rem;
     line-height: 1.2;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
-
 .highlight-card:hover .highlight-icon {
     opacity: 1;
 }
 
-/* --- Dark Mode para os Destaques --- */
 html.dark .highlights-grid {
-    border-top-color: #334155; /* slate-700 */
+    border-top-color: #334155;
 }
 
-/* --- ANIMAÇÕES DE ENTRADA --- */
 .timeline-item-animate {
     animation: fadeInUp 0.5s ease-out forwards;
 }
 
-/* --- ESTILOS PARA O ÍCONE DE METEOROLOGIA NA TIMELINE --- */
 .weather-icon {
     margin-right: 0.5rem;
-    color: #3b82f6; /* blue-500 */
-    font-size: 1.125rem; /* text-lg */
+    color: #3b82f6;
+    font-size: 1.125rem;
     vertical-align: middle;
-    width: 24px; /* Garante alinhamento consistente */
+    width: 24px;
     text-align: center;
 }
-
 html.dark .weather-icon {
-    color: #60a5fa; /* blue-400 */
+    color: #60a5fa;
 }
 
-/* --- ESTILOS PARA O ACORDEÃO "PLANO B" (CORRIGIDO) --- */
 .rainy-accordion {
-    border: 1px solid #e2e8f0; /* slate-200 */
+    border: 1px solid #e2e8f0;
     border-radius: 0.75rem;
     margin-bottom: 1rem;
-    background-color: #f1f5f9; /* slate-100 */
-    /* overflow: hidden; <-- ESTA LINHA FOI REMOVIDA PARA CORRIGIR O BUG DO STICKY */
+    background-color: #f1f5f9;
 }
 .rainy-accordion-toggle {
     display: flex;
@@ -352,21 +309,20 @@ html.dark .weather-icon {
     width: 100%;
     padding: 0.75rem 1rem;
     font-weight: 600;
-    color: #475569; /* slate-600 */
+    color: #475569;
     background-color: transparent;
     border: none;
     cursor: pointer;
     transition: background-color 0.2s;
-    border-radius: 0.75rem; /* Adicionado para quando o conteúdo está escondido */
+    border-radius: 0.75rem;
 }
 .rainy-accordion-toggle:hover {
-    background-color: #e2e8f0; /* slate-200 */
+    background-color: #e2e8f0;
 }
 .rainy-accordion-content {
     padding: 0 1rem 1rem 1rem;
     border-top: 1px solid #e2e8f0;
 }
-/* Estilo para quando o acordeão está aberto */
 .rainy-accordion-toggle:not(:has(+ .hidden)) {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -376,14 +332,14 @@ html.dark .weather-icon {
     justify-content: space-between;
     align-items: center;
     padding: 0.75rem 0;
-    border-bottom: 1px solid #e2e8f0; /* slate-200 */
+    border-bottom: 1px solid #e2e8f0;
 }
 .rainy-restaurant-item:last-child {
     border-bottom: none;
 }
 .rainy-map-link {
-    background-color: #e0e7ff; /* indigo-100 */
-    color: #3730a3; /* indigo-800 */
+    background-color: #e0e7ff;
+    color: #3730a3;
     padding: 0.25rem 0.75rem;
     border-radius: 9999px;
     font-size: 0.875rem;
@@ -393,57 +349,54 @@ html.dark .weather-icon {
     flex-shrink: 0;
 }
 .rainy-map-link:hover {
-    background-color: #c7d2fe; /* indigo-200 */
+    background-color: #c7d2fe;
 }
 
-/* Modo Escuro */
 html.dark .rainy-accordion {
-    background-color: #334155; /* slate-700 */
-    border-color: #475569; /* slate-600 */
+    background-color: #334155;
+    border-color: #475569;
 }
 html.dark .rainy-accordion-toggle {
-    color: #cbd5e1; /* slate-300 */
+    color: #cbd5e1;
 }
 html.dark .rainy-accordion-toggle:hover {
-    background-color: #475569; /* slate-600 */
+    background-color: #475569;
 }
 html.dark .rainy-accordion-content {
-    border-top-color: #475569; /* slate-600 */
+    border-top-color: #475569;
 }
 html.dark .rainy-restaurant-item {
-    border-color: #475569; /* slate-600 */
+    border-color: #475569;
 }
 html.dark .rainy-restaurant-item .text-gray-500 {
-    color: #94a3b8; /* slate-400 */
+    color: #94a3b8;
 }
 html.dark .rainy-map-link {
-    background-color: #3730a3; /* indigo-800 */
-    color: #e0e7ff; /* indigo-100 */
+    background-color: #3730a3;
+    color: #e0e7ff;
 }
 html.dark .rainy-map-link:hover {
-    background-color: #4338ca; /* indigo-700 */
+    background-color: #4338ca;
 }
 
-/* --- ESTILOS PARA RESTAURANTE EM DESTAQUE --- */
 .highlight-restaurant {
-    background-color: #fefce8; /* yellow-50 */
+    background-color: #fefce8;
     border-radius: 0.5rem;
     margin: 0.5rem -0.75rem;
     padding: 0.75rem;
-    border-left: 4px solid #facc15; /* yellow-400 */
+    border-left: 4px solid #facc15;
 }
 .highlight-restaurant .font-semibold {
-    color: #854d0e; /* yellow-800 */
+    color: #854d0e;
 }
 
-/* Modo Escuro */
 html.dark .highlight-restaurant {
     background-color: #3a321d;
-    border-color: #fcd34d; /* amber-300 */
+    border-color: #fcd34d;
 }
 html.dark .highlight-restaurant .font-semibold {
-    color: #fde047; /* yellow-300 */
+    color: #fde047;
 }
 html.dark .highlight-restaurant .text-gray-500 {
-    color: #ca8a04; /* yellow-600 */
+    color: #ca8a04;
 }
