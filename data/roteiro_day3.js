@@ -5,10 +5,10 @@ export const day3Data = {
     date: "Domingo, 21 de Setembro",
     mapImage: "assets/images/Dia3a.png",
     highlights: [
-        { name: "Palácio de Versalhes", icon: "fa-crown", link: "visita_versalhes.html" },
-        { name: "Sacré-Cœur", icon: "fa-place-of-worship", link: "visita_montmartre.html" },
-        { name: "Place du Tertre", icon: "fa-palette", link: "visita_montmartre.html" },
-        { name: "Moulin Rouge", icon: "fa-wind", link: "visita_moulin-rouge.html" }
+        { name: "Palácio de Versalhes", icon: "fa-crown", link: "visita_versalhes.html", imageUrl: "https://static.historiadomundo.com.br/conteudo/images/o-palacio-versalhes-comecou-tomar-atual-forma-durante-reinado-luis-xiv-5bc475fc3586e.jpg" },
+        { name: "Sacré-Cœur", icon: "fa-place-of-worship", link: "visita_montmartre.html", imageUrl: "https://travel.com.br/wp-content/uploads/2024/07/basilica-capa.jpg" },
+        { name: "Place du Tertre", icon: "fa-palette", link: "visita_montmartre.html", imageUrl: "https://www.travelfranceonline.com/wp-content/uploads/2013/05/Montmartre-3.jpg" },
+        { name: "Moulin Rouge", icon: "fa-wind", link: "visita_moulin-rouge.html", imageUrl: "https://www.civitatis.com/f/francia/paris/entradas-moulin-rouge-grid.jpg" }
     ],
     sections: [
         {
