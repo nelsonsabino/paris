@@ -109,94 +109,118 @@ export function renderTicketTimeline() {
 }
 
 
-// --- Lógica da Meteorologia ---
+// --- Lógica da Meteorologia (com Open-Meteo) ---
 
-const getWeatherIcon = (iconCode) => {
-    const code = iconCode.substring(0, 2);
+const getAqiInfo = (aqi) => {
+    if (aqi <= 20) return { text: 'Boa', color: 'text-green-500 dark:text-green-400' };
+    if (aqi <= 40) return { text: 'Razoável', color: 'text-yellow-500 dark:text-yellow-400' };
+    if (aqi <= 60) return { text: 'Moderada', color: 'text-orange-500 dark:text-orange-400' };
+    if (aqi <= 80) return { text: 'Fraca', color: 'text-red-500 dark:text-red-400' };
+    if (aqi <= 100) return { text: 'Má', color: 'text-red-700 dark:text-red-500' };
+    return { text: 'Muito Má', color: 'text-purple-700 dark:text-purple-500' };
+};
+
+const getWeatherIconFromWMO = (wmoCode) => {
     const iconMap = {
-        '01': 'fa-sun', '02': 'fa-cloud-sun', '03': 'fa-cloud', '04': 'fa-cloud-meatball',
-        '09': 'fa-cloud-showers-heavy', '10': 'fa-cloud-rain', '11': 'fa-bolt',
-        '13': 'fa-snowflake', '50': 'fa-smog'
+        0: 'fa-sun', 1: 'fa-cloud-sun', 2: 'fa-cloud-sun', 3: 'fa-cloud',
+        45: 'fa-smog', 48: 'fa-smog', 51: 'fa-cloud-rain', 53: 'fa-cloud-rain', 55: 'fa-cloud-rain',
+        61: 'fa-cloud-showers-heavy', 63: 'fa-cloud-showers-heavy', 65: 'fa-cloud-showers-heavy',
+        71: 'fa-snowflake', 73: 'fa-snowflake', 75: 'fa-snowflake',
+        80: 'fa-cloud-showers-heavy', 81: 'fa-cloud-showers-heavy', 82: 'fa-cloud-showers-heavy',
+        95: 'fa-bolt', 96: 'fa-bolt', 99: 'fa-bolt',
     };
-    return iconMap[code] || 'fa-question-circle';
+    return iconMap[wmoCode] || 'fa-question-circle';
 };
 
 const formatDayAndDate = (dateObject) => `${dateObject.toLocaleDateString('pt-PT', { weekday: 'short' })} ${dateObject.getDate()}`;
 
-function renderForecast(forecastDays) {
+function renderWeatherWidget(forecastData, airQualityData) {
     const widget = document.getElementById('forecast-widget');
-    let forecastHtml = '';
-    
-    if (forecastDays.length === 0) {
-        const daysToWait = Math.ceil((new Date('2025-09-19T00:00:00Z') - new Date()) / (1000 * 60 * 60 * 24)) - 5;
-        widget.innerHTML = `<h2 class="section-title font-bold text-gray-800 mb-4 text-center">Previsão da Viagem</h2><p class="text-center text-gray-600">A previsão para as datas da viagem ainda não está disponível. Tente novamente em ${daysToWait > 0 ? daysToWait : 1} dia(s).</p>`;
-        return;
-    }
 
-    forecastDays.forEach(day => {
-        const date = new Date(day.dt * 1000);
+    const current = forecastData.current;
+    const todayForecast = forecastData.daily;
+    const aqiInfo = getAqiInfo(airQualityData.current.european_aqi);
+
+    const currentHtml = `
+        <div class="text-center border-b dark:border-slate-700 pb-6 mb-6">
+            <p class="text-lg font-semibold text-gray-700 dark:text-slate-200">Tempo Atual em Paris</p>
+            <div class="flex items-center justify-center gap-4 my-2">
+                <i class="fa-solid ${getWeatherIconFromWMO(current.weathercode)} text-5xl text-blue-500 dark:text-blue-400"></i>
+                <p class="text-6xl font-bold text-gray-800 dark:text-slate-100">${Math.round(current.temperature_2m)}°C</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm mt-4">
+                <div class="bg-gray-100 dark:bg-slate-700 p-2 rounded-lg">
+                    <p class="font-semibold text-gray-600 dark:text-slate-300">Qualidade do Ar</p>
+                    <p class="font-bold ${aqiInfo.color}">${aqiInfo.text}</p>
+                </div>
+                <div class="bg-gray-100 dark:bg-slate-700 p-2 rounded-lg">
+                    <p class="font-semibold text-gray-600 dark:text-slate-300">Visibilidade</p>
+                    <p class="font-bold text-gray-800 dark:text-slate-100">${(current.visibility / 1000).toFixed(1)} km</p>
+                </div>
+                <div class="bg-gray-100 dark:bg-slate-700 p-2 rounded-lg">
+                    <p class="font-semibold text-gray-600 dark:text-slate-300">Nascer do Sol</p>
+                    <p class="font-bold text-gray-800 dark:text-slate-100">${new Date(todayForecast.sunrise[0]).toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' })}</p>
+                </div>
+                <div class="bg-gray-100 dark:bg-slate-700 p-2 rounded-lg">
+                    <p class="font-semibold text-gray-600 dark:text-slate-300">Pôr do Sol</p>
+                    <p class="font-bold text-gray-800 dark:text-slate-100">${new Date(todayForecast.sunset[0]).toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' })}</p>
+                </div>
+            </div>
+        </div>
+    `;
+
+    let forecastHtml = '';
+    todayForecast.time.forEach((time, index) => {
+        const date = new Date(time);
         forecastHtml += `
-            <div class="text-center p-3 bg-gray-100 rounded-lg">
-                <p class="font-semibold">${formatDayAndDate(date)}</p>
-                <i class="fa-solid ${getWeatherIcon(day.weather[0].icon)} text-3xl my-2 text-blue-500"></i>
+            <div class="text-center p-3 bg-gray-100 dark:bg-slate-700 rounded-lg">
+                <p class="font-semibold text-gray-700 dark:text-slate-200">${formatDayAndDate(date)}</p>
+                <i class="fa-solid ${getWeatherIconFromWMO(todayForecast.weathercode[index])} text-3xl my-2 text-blue-500 dark:text-blue-400"></i>
                 <p class="text-sm">
-                    <span class="font-bold text-red-500">${Math.round(day.main.temp_max)}°</span> / 
-                    <span class="text-blue-600">${Math.round(day.main.temp_min)}°</span>
+                    <span class="font-bold text-red-500 dark:text-red-400">${Math.round(todayForecast.temperature_2m_max[index])}°</span> / 
+                    <span class="text-blue-600 dark:text-sky-400">${Math.round(todayForecast.temperature_2m_min[index])}°</span>
                 </p>
             </div>`;
     });
-    widget.innerHTML = `<h2 class="section-title font-bold text-gray-800 mb-4 text-center">Previsão da Viagem</h2><div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">${forecastHtml}</div>`;
+    
+    widget.innerHTML = `
+        <h2 class="section-title font-bold text-gray-800 mb-6 text-center">Meteorologia</h2>
+        ${currentHtml}
+        <h3 class="font-semibold text-lg text-center text-gray-700 dark:text-slate-200 mb-4">Previsão para a Viagem</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">${forecastHtml}</div>
+    `;
 }
 
-/**
- * Busca e renderiza a previsão do tempo para a viagem.
- */
 export async function fetchTripWeather() {
-    const apiKey = '__OPENWEATHERMAP_API_KEY__';
     const lat = 48.8566;
     const lon = 2.3522;
-    const tripStartDate = new Date('2025-09-19T00:00:00Z');
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-
-    const msInDay = 1000 * 60 * 60 * 24;
-    const daysUntilTrip = Math.ceil((tripStartDate - today) / msInDay);
-    
+    const startDate = '2025-09-19';
+    const endDate = '2025-09-23';
     const widget = document.getElementById('forecast-widget');
 
-    const forecastAvailableOnDay = 5;
-    if (daysUntilTrip > forecastAvailableOnDay) {
-        const daysToWait = daysUntilTrip - forecastAvailableOnDay;
-        const pluralS = daysToWait > 1 ? 's' : '';
-        widget.innerHTML = `<h2 class="section-title font-bold text-gray-800 mb-4 text-center">Previsão da Viagem</h2><p class="text-center text-gray-600">A previsão estará disponível dentro de ${daysToWait} dia${pluralS}.</p>`;
-        return;
-    }
-
-    const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=pt`;
+    const forecastApiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weathercode,visibility&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset&timezone=Europe/Paris&start_date=${startDate}&end_date=${endDate}`;
+    const airQualityApiUrl = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}&current=european_aqi`;
 
     try {
-        const response = await fetch(apiUrl);
-        if (!response.ok) throw new Error(`Erro na API: ${response.statusText}`);
-        const data = await response.json();
+        const [forecastResponse, airQualityResponse] = await Promise.all([
+            fetch(forecastApiUrl),
+            fetch(airQualityApiUrl)
+        ]);
+
+        if (!forecastResponse.ok) throw new Error(`Erro na API de previsão: ${forecastResponse.statusText}`);
+        if (!airQualityResponse.ok) throw new Error(`Erro na API de qualidade do ar: ${airQualityResponse.statusText}`);
+
+        const forecastData = await forecastResponse.json();
+        const airQualityData = await airQualityResponse.json();
+
+        if (!forecastData.daily || !airQualityData.current) {
+            throw new Error("Resposta de uma das APIs é inválida.");
+        }
         
-        const tripStartDateString = '2025-09-19';
-        const tripEndDateString = '2025-09-23';
-        
-        const dailyForecasts = {};
-        data.list.forEach(item => {
-            const itemDate = item.dt_txt.split(' ')[0];
-            if (itemDate >= tripStartDateString && itemDate <= tripEndDateString) {
-                if (!dailyForecasts[itemDate] || item.dt_txt.includes("12:00:00")) {
-                    dailyForecasts[itemDate] = item;
-                }
-            }
-        });
-        
-        const tripForecast = Object.values(dailyForecasts);
-        renderForecast(tripForecast);
+        renderWeatherWidget(forecastData, airQualityData);
 
     } catch (error) {
         console.error("Erro ao buscar dados da meteorologia:", error);
-        widget.innerHTML = `<h2 class="section-title font-bold text-gray-800 mb-4 text-center">Previsão da Viagem</h2><p class="text-red-500 text-center">Não foi possível carregar a previsão.</p>`;
+        widget.innerHTML = `<h2 class="section-title font-bold text-gray-800 mb-4 text-center">Meteorologia</h2><p class="text-red-500 text-center">Não foi possível carregar a previsão do tempo.</p>`;
     }
 }
