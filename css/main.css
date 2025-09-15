@@ -87,7 +87,7 @@ html.dark #lottie {
     filter: invert(1);
 }
 
-/* --- CORREÇÕES DE EMERGÊNCIA PARA O MODO ESCURO --- */
+/* --- CORREÇÕES DE EMERGÊNCIA PARA O MODO ESCURO (PARCIALMENTE MANTIDAS) --- */
 /* Força a cor correta do botão "Frases Úteis" na página inicial */
 html.dark .text-purple-800 {
     color: #c084fc !important; /* Tailwind purple-400 */
@@ -101,3 +101,22 @@ html.dark .phrase-item .text-gray-700 {
 html.dark .phrase-item .text-blue-600 {
     color: #93c5fd !important; /* Tailwind blue-300 */
 }
+
+/* --- ESTILOS DO WIDGET DE METEOROLOGIA (CORRIGIDO) --- */
+/* Esta secção foi reescrita para funcionar corretamente em ambos os modos */
+
+/* Estilos para o MODO CLARO (padrão) */
+#forecast-widget .info-box,
+#forecast-widget .forecast-day {
+    background-color: #e5e7eb; /* gray-200 para um contraste suave */
+    color: #1f2937; /* gray-800 */
+}
+
+/* Estilos para o MODO ESCURO */
+html.dark #forecast-widget .info-box,
+html.dark #forecast-widget .forecast-day {
+    background-color: #334155; /* slate-700 */
+    color: #f1f5f9; /* slate-100 */
+}
+
+/* As classes dark: nos ficheiros JS já tratam das cores específicas do texto (vermelho, azul, etc) */
