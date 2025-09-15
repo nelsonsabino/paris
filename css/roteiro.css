@@ -337,7 +337,7 @@ html.dark .weather-icon {
     color: #60a5fa; /* blue-400 */
 }
 
-/* --- ESTILOS PARA O ACORDEÃO "PLANO B" (ALTERADO) --- */
+/* --- ESTILOS PARA O ACORDEÃO "PLANO B" --- */
 .rainy-accordion {
     border: 1px solid #e2e8f0; /* slate-200 */
     border-radius: 0.75rem;
@@ -389,7 +389,7 @@ html.dark .weather-icon {
     background-color: #c7d2fe; /* indigo-200 */
 }
 
-/* Modo Escuro (ALTERADO) */
+/* Modo Escuro */
 html.dark .rainy-accordion {
     background-color: #334155; /* slate-700 */
     border-color: #475569; /* slate-600 */
@@ -412,4 +412,28 @@ html.dark .rainy-map-link {
 }
 html.dark .rainy-map-link:hover {
     background-color: #4338ca; /* indigo-700 */
+}
+
+/* --- ESTILOS PARA RESTAURANTE EM DESTAQUE (NOVO) --- */
+.highlight-restaurant {
+    background-color: #fefce8; /* yellow-50 */
+    border-radius: 0.5rem;
+    margin: 0.5rem -0.75rem; /* Margem negativa para alinhar com o padding */
+    padding: 0.75rem;
+    border-left: 4px solid #facc15; /* yellow-400 */
+}
+.highlight-restaurant .font-semibold {
+    color: #854d0e; /* yellow-800 */
+}
+
+/* Modo Escuro */
+html.dark .highlight-restaurant {
+    background-color: #3a321d;
+    border-color: #fcd34d; /* amber-300 */
+}
+html.dark .highlight-restaurant .font-semibold {
+    color: #fde047; /* yellow-300 */
+}
+html.dark .highlight-restaurant .text-gray-500 {
+    color: #ca8a04; /* yellow-600 */
 }
