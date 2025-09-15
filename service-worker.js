@@ -1,5 +1,5 @@
 // Versão 9: Remove as barras iniciais (/) de todos os caminhos para os tornar relativos.
-const CACHE_NAME = 'paris-v9';
+const CACHE_NAME = 'paris-v10';
 const urlsToCache = [
   // Páginas principais
   'index.html',
