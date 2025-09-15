@@ -1,36 +1,36 @@
-// Versão 13: CORRIGE os nomes dos ficheiros de ícone para corresponder ao site.webmanifest
-const CACHE_NAME = 'paris-v14';
+// Versão 15: Altera todos os caminhos para serem absolutos a partir da raiz.
+const CACHE_NAME = 'paris-v15';
 const urlsToCache = [
   // Páginas principais
-  'index.html',
-  'guia.html',
-  'roteiro.html',
-  'orcamento.html',
-  'frases.html',
+  '/index.html',
+  '/guia.html',
+  '/roteiro.html',
+  '/orcamento.html',
+  '/frases.html',
   
   // Ficheiro Manifest
-  'site.webmanifest',
+  '/site.webmanifest',
 
-  // Ícones (caminhos relativos)
-  'favicon.ico',
-  'favicon.svg',
-  'favicon-96x96.png',
-  'apple-touch-icon.png',
+  // Ícones na raiz
+  '/favicon.ico',
+  '/favicon.svg',
+  '/favicon-96x96.png',
+  '/apple-touch-icon.png',
   
-  // ÍCONES DA PWA COM NOMES CORRIGIDOS
-  'web-app-manifest-192x192.png',
-  'web-app-manifest-512x512.png',
+  // ÍCONES DA PWA na raiz
+  '/web-app-manifest-192x192.png',
+  '/web-app-manifest-512x512.png',
 
-  // Imagens dos dias (caminhos relativos)
-  'assets/images/Dia1.png',
-  'assets/images/Dia1a.png',
-  'assets/images/Dia1b.png',
-  'assets/images/Dia2.png',
-  'assets/images/Dia2a.png',
-  'assets/images/Dia2b.png',
-  'assets/images/Dia3a.png',
-  'assets/images/Dia4a.png',
-  'assets/images/Dia5a.png'
+  // Imagens de conteúdo
+  '/assets/images/Dia1.png',
+  '/assets/images/Dia1a.png',
+  '/assets/images/Dia1b.png',
+  '/assets/images/Dia2.png',
+  '/assets/images/Dia2a.png',
+  '/assets/images/Dia2b.png',
+  '/assets/images/Dia3a.png',
+  '/assets/images/Dia4a.png',
+  '/assets/images/Dia5a.png'
 ];
 
 // Instalação do Service Worker
@@ -39,7 +39,12 @@ self.addEventListener('install', event => {
     caches.open(CACHE_NAME)
       .then(cache => {
         console.log('Opened cache');
-        return cache.addAll(urlsToCache);
+        // Usar {cache: 'reload'} para garantir que os ficheiros são obtidos da rede
+        const requests = urlsToCache.map(url => new Request(url, {cache: 'reload'}));
+        return cache.addAll(requests);
+      })
+      .catch(error => {
+        console.error('Falha ao adicionar ficheiros à cache:', error);
       })
   );
 });
