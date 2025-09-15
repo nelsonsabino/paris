@@ -33,7 +33,6 @@ body {
 
 /* --- CORREÇÃO PARA O SCROLL --- */
 .section-block[id] {
-    /* Aumentado para acomodar a segunda barra quando tem 2 linhas */
     scroll-margin-top: 160px; 
 }
 
@@ -101,9 +100,10 @@ body {
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     border-bottom: 1px solid #e2e8f0;
     padding: 0.5rem 1rem;
+    /* Adicionado para corrigir bugs de renderização em navegadores móveis */
+    transform: translate3d(0, 0, 0); 
 }
 
-/* --- REGRAS DO DAY-NAV PARA QUEBRA DE LINHA (ALTERADO) --- */
 .day-nav {
     position: sticky;
     top: 53px;
@@ -115,7 +115,6 @@ body {
     display: flex;
     justify-content: center;
     gap: 0.5rem;
-    /* Permite que os itens quebrem para a linha seguinte */
     flex-wrap: wrap; 
 }
 
@@ -129,7 +128,6 @@ body {
     color: #475569; 
     transition: background-color 0.2s, color 0.2s; 
     white-space: nowrap; 
-    /* A propriedade flex-shrink: 0; foi removida para permitir a quebra de linha */
 }
 .day-nav a.active-section { background-color: #1e3a8a; color: white; }
 .day-nav a:hover { background-color: #e2e8f0; }
