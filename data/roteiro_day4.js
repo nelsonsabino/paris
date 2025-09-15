@@ -6,7 +6,7 @@ export const day4Data = {
     mapImage: "assets/images/Dia4a.png",
     highlights: [
         { name: "Museu do Louvre", icon: "fa-landmark-dome", link: "visita_louvre.html", imageUrl: "https://www.parismania.com.br/wp-content/uploads/2016/12/le-louvre-20-728x364.jpeg" },
-        { name: "Ópera Garnier", icon: "fa-masks-theater", link: "visita_opera-garnier.html", imageUrl: "https://res.cloudinary.com/opera-national-de-paris/image/upload/c_crop,h_2000,w_3050,x_150,y_1300/c_scale,w_870/v1563286913/visites/Garnier%20visites%20autonomes%2023.jpg" },
+        { name: "Ópera Garnier", icon: "fa-masks-theater", link: "visita_opera-garnier.html", imageUrl: "https://loving-travel.com/wp-content/uploads/2023/04/230404120450001-e1680602804903.jpg" },
         { name: "Galeries Lafayette", icon: "fa-store", link: "visita_galeries-lafayette.html", imageUrl: "https://www.conexaoparis.com.br/wp-content/uploads/2017/07/Panorama2-e1499078294376.jpg" },
         { name: "Le Marais", icon: "fa-map-signs", link: "visita_marais.html", imageUrl: "https://asset-prod.france.fr/le_marais_paris_city_tour_private_df11833fe1.jpg" }
     ],
@@ -30,13 +30,11 @@ export const day4Data = {
                 { time: "11:00", icon: "fa-cookie-bite", title: "Lanche da Manhã",
                     mealSuggestion: {
                         suggestion: "Pausa rápida durante a visita ao Louvre para comer uma barrinha de cereais ou outro snack levado na mochila.",
-                     /*   budget: "~1,5 € / pessoa"*/
                     }
                 },
                 { time: "13:00", icon: "fa-utensils", title: "Almoço perto do Louvre",
                     mealSuggestion: {
                         suggestion: "Comprar sandes ou saladas take-away no Monoprix da Rue de Rivoli, junto ao Louvre. É uma opção muito prática e económica para não perder tempo.",
-                     /*   budget: "~7 € / pessoa"*/
                     }
                 }
             ]
@@ -46,6 +44,16 @@ export const day4Data = {
             navTitle: "Ópera",
             title: "PALAIS ROYAL → ÓPERA & GALERIES LAFAYETTE",
             mapLink: "https://maps.app.goo.gl/PDr1QqRANoiuuEJv8",
+            rainyDayAlternatives: {
+                title: "Plano B (Chuva): Restaurantes Perto da Ópera",
+                restaurants: [
+                    { name: "La Maison du Daya", type: "Restaurante", mapLink: "https://maps.app.goo.gl/Bki8PT3975NrFoGr6" },
+                    { name: "Restaurant Thaï Moom Mam", type: "Restaurante Tailandês", mapLink: "https://maps.app.goo.gl/UEJVbBYVNGSwvSq97" },
+                    { name: "Happy Caffé", type: "Creperia", mapLink: "https://maps.app.goo.gl/THDLRXqjPvgxgPQw6" },
+                    { name: "Galeries Lafayette Le Gourmet", type: "Charcutaria", mapLink: "https://maps.app.goo.gl/dpAKyjumBANgXRju7", highlight: true },
+                    { name: "Starving Club Galeries Lafayette Gourmet", type: "Burgers e hot dogs", mapLink: "https://maps.app.goo.gl/B1XWsTpumWX8v4Wb8" }
+                ]
+            },
             timeline: [
                 { icon: "fa-chess-board", title: "Palais Royal (Jardins e Colunas de Buren)" },
                 { icon: "fa-archway", title: "Galerie Vivienne" },
@@ -91,7 +99,6 @@ export const day4Data = {
                     description: "Visitar o mercado coberto mais antigo de Paris e aproveitar para jantar numa das suas bancas de street food.",
                     mealSuggestion: {
                         suggestion: "Explorar a variedade de cozinhas do mundo (italiana, marroquina, etc.) e escolher uma opção para um jantar informal e saboroso.",
-                      /*  budget: "~10-12 € / pessoa"*/
                     }
                 },
                 { time: "19:30", icon: "fa-person-walking", title: "Explorar o Marais", description: "Passeio pela Rue Vieille-du-Temple e Rue des Rosiers." },
