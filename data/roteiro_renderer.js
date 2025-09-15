@@ -8,14 +8,60 @@ import { day4Data } from './roteiro_day4.js';
 import { day5Data } from './roteiro_day5.js';
 
 const allDaysData = [day1Data, day2Data, day3Data, day4Data, day5Data];
+const monthMap = { 'Setembro': 8 };
+
+// --- LÓGICA DA METEOROLOGIA (NOVO) ---
+
+// Função auxiliar para converter o código WMO da API num ícone do Font Awesome
+// (Copiada de ui_renderer.js para que este script seja independente)
+function getWeatherIconFromWMO(wmoCode) {
+    const iconMap = {
+        0: 'fa-sun', 1: 'fa-cloud-sun', 2: 'fa-cloud-sun', 3: 'fa-cloud',
+        45: 'fa-smog', 48: 'fa-smog', 51: 'fa-cloud-rain', 53: 'fa-cloud-rain', 55: 'fa-cloud-rain',
+        61: 'fa-cloud-showers-heavy', 63: 'fa-cloud-showers-heavy', 65: 'fa-cloud-showers-heavy',
+        71: 'fa-snowflake', 73: 'fa-snowflake', 75: 'fa-snowflake',
+        80: 'fa-cloud-showers-heavy', 81: 'fa-cloud-showers-heavy', 82: 'fa-cloud-showers-heavy',
+        95: 'fa-bolt', 96: 'fa-bolt', 99: 'fa-bolt',
+    };
+    return iconMap[wmoCode] || 'fa-question-circle';
+}
+
+// NOVA FUNÇÃO: Vai buscar a previsão hora a hora para todos os dias da viagem
+async function fetchHourlyWeatherForTrip() {
+    const lat = 48.8566;
+    const lon = 2.3522;
+    const startDate = '2025-09-19';
+    const endDate = '2025-09-23';
+    
+    // A API agora pede 'hourly=weathercode'
+    const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=weathercode&timezone=Europe/Paris&start_date=${startDate}&end_date=${endDate}`;
+
+    try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) return null;
+        const data = await response.json();
+
+        // Transforma os dois arrays (time, weathercode) num único objeto para fácil acesso
+        const weatherMap = new Map();
+        if (data.hourly && data.hourly.time && data.hourly.weathercode) {
+            data.hourly.time.forEach((time, index) => {
+                // A chave será algo como "2025-09-19T09:00"
+                weatherMap.set(time, data.hourly.weathercode[index]);
+            });
+        }
+        return weatherMap;
+    } catch (error) {
+        console.error("Erro ao buscar previsão horária:", error);
+        return null;
+    }
+}
+
 
 /**
  * Adiciona as badges de estado (Concluído, A Decorrer, Próximo) à timeline.
  */
 function updateTimelineBadges() {
     const now = new Date(); 
-
-    const monthMap = { 'Setembro': 8 };
     const allTimedEvents = [];
 
     document.querySelectorAll('.timeline-item[data-time]').forEach(el => {
@@ -68,8 +114,12 @@ function updateTimelineBadges() {
 }
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    const mainContentArea = document.querySelector('.container.mx-auto.p-4.md\\:p-8.max-w-5xl');
+// LÓGICA PRINCIPAL DE RENDERIZAÇÃO (AGORA É UMA FUNÇÃO ASSÍNCRONA)
+async function renderPage() {
+    // 1. Ir buscar os dados da meteorologia primeiro
+    const weatherMap = await fetchHourlyWeatherForTrip();
+
+    const mainContentArea = document.querySelector('.container.mx-auto.p-4.md\\:p-8.maxw-5xl');
     if (!mainContentArea) return;
 
     const header = mainContentArea.querySelector('header');
@@ -138,15 +188,37 @@ document.addEventListener('DOMContentLoaded', () => {
             sectionBlock.timeline.forEach(item => {
                 const hasTime = item.time ? `<p class="timeline-time">${item.time}</p>` : '';
                 const timeDataAttr = item.time ? `data-time="${item.time}" data-date="${dayData.date}"` : '';
+                
+                // --- LÓGICA DO ÍCONE DE METEOROLOGIA (NOVO) ---
+                let weatherIconHtml = '';
+                if (item.time && weatherMap) {
+                    const dateParts = dayData.date.split(', ')[1].split(' de ');
+                    const day = parseInt(dateParts[0]);
+                    const month = monthMap[dateParts[1]];
+                    const dateString = `2025-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}T${item.time}`;
+                    
+                    const weatherCode = weatherMap.get(dateString);
+                    if (weatherCode !== undefined) {
+                        const iconClass = getWeatherIconFromWMO(weatherCode);
+                        weatherIconHtml = `<i class="fa-solid ${iconClass} weather-icon" title="Previsão para as ${item.time}"></i>`;
+                    }
+                }
+                // --- FIM DA LÓGICA DO ÍCONE ---
+
                 let ticketIconHTML = '';
                 if (item.requiresTicket) {
                     const icon = `<i class='fa-solid fa-ticket ml-2 text-blue-600' title='Necessita de Bilhete'></i>`;
                     if (item.ticketLink) { ticketIconHTML = `<a href="${item.ticketLink}" target="_blank" onclick="event.stopPropagation()" class="inline-block" title="Comprar/Ver Bilhetes">${icon}</a>`; } 
                     else { ticketIconHTML = icon; }
                 }
-                let titleHTML = item.title;
-                if (item.guideLink) { titleHTML = `<a href="${item.guideLink}" class="text-blue-700 hover:underline hover:text-blue-900 transition">${item.title}</a>`; }
                 
+                // O ícone da meteorologia é adicionado aqui
+                let titleContent = item.guideLink 
+                    ? `<a href="${item.guideLink}" class="text-blue-700 hover:underline hover:text-blue-900 transition">${item.title}</a>`
+                    : item.title;
+                
+                let titleHTML = `${weatherIconHtml} ${titleContent}`;
+
                 let itemBody = '';
                 const iconClass = item.mealSuggestion ? 'timeline-icon timeline-icon-meal' : 'timeline-icon';
 
@@ -185,20 +257,6 @@ document.addEventListener('DOMContentLoaded', () => {
         targetNode = section;
     });
 
-    // --- LÓGICA GERAL DA PÁGINA (EVENT LISTENERS) ---
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (menuBtn && mobileMenu) {
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                setTimeout(() => { mobileMenu.classList.add('hidden'); }, 100);
-            });
-        });
-    }
-
     document.querySelectorAll('.accordion-toggle').forEach(button => {
         button.addEventListener('click', () => {
             const content = button.nextElementSibling;
@@ -222,14 +280,12 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !imageModal.classList.contains('hidden')) window.closeModal(); });
     }
 
-    // --- LÓGICA DE OBSERVERS (SCROLL) ---
     const mainNavLinks = document.querySelectorAll('.sticky-nav-days a[href^="#day"]');
     const daySections = document.querySelectorAll('.day-section');
     const dayNavLinks = document.querySelectorAll('.day-nav a');
     const sectionBlocks = document.querySelectorAll('.section-block');
     const observerOptions = { root: null, rootMargin: '-100px 0px -50% 0px', threshold: 0 };
     
-    // LÓGICA DO OBSERVADOR PRINCIPAL FOI ATUALIZADA
     const mainObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -258,7 +314,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
     sectionBlocks.forEach(section => sectionObserver.observe(section));
     
-    // --- LÓGICA PARA A ANIMAÇÃO DE ENTRADA ---
     const animationObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -280,6 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
         animationObserver.observe(daySection);
     });
 
-    // --- INICIALIZA AS BADGES DE ESTADO ---
     updateTimelineBadges();
-});
+}
+
+document.addEventListener('DOMContentLoaded', renderPage);
