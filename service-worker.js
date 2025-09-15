@@ -1,18 +1,21 @@
-const CACHE_NAME = 'paris-v7';
+// Versão 6: Corrige os caminhos dos favicons para a pasta /assets/images/
+const CACHE_NAME = 'paris-v6';
 const urlsToCache = [
+  // Páginas principais
   '/index.html',
-  '/js/ui_renderer.js',
   '/guia.html',
   '/roteiro.html',
   '/orcamento.html',
   '/frases.html',
+  
+  // Ficheiro Manifest
   '/site.webmanifest',
-  '/favicon.ico',
-  '/favicon.svg',
-  '/favicon-96x96.png',
-  '/apple-touch-icon.png',
-  '/web-app-manifest-192x192.png',
-  '/web-app-manifest-512x512.png',
+
+  // Ícones (com os caminhos corretos)
+  'assets/images/favicon.ico',
+  'assets/images/favicon.svg',
+  'assets/images/favicon-96x96.png',
+  'assets/images/apple-touch-icon.png',
 
   // Imagens dos dias (pasta /data)
   '/data/Dia1.png',
