@@ -102,11 +102,9 @@ body {
     padding: 0.5rem 1rem;
 }
 .day-nav {
-    position: sticky;
-    top: 53px;
-    z-index: 40;
-    background-color: rgba(241, 245, 249, 0.75);
-    backdrop-filter: blur(8px);
+    /* Por defeito (mobile), a barra não é sticky */
+    position: static;
+    background-color: #f1f5f9;
     border-bottom: 1px solid #cbd5e1;
     padding: 0.75rem 1rem;
     display: flex;
@@ -114,6 +112,18 @@ body {
     justify-content: center;
     gap: 0.5rem;
 }
+
+/* A barra secundária só se torna sticky em ecrãs maiores */
+@media (min-width: 768px) {
+    .day-nav {
+        position: sticky;
+        top: 53px;
+        z-index: 40;
+        background-color: rgba(241, 245, 249, 0.75);
+        backdrop-filter: blur(8px);
+    }
+}
+
 
 .metro-line { display: inline-block; color: white; padding: 2px 7px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; margin: 0 4px; line-height: 1.2; }
 .active-day-link { background-color: #e0e7ff; color: #312e81; font-weight: 700; }
@@ -150,9 +160,17 @@ html.dark .sticky-nav-days {
     border-bottom-color: #475569; /* slate-600 */
 }
 html.dark .day-nav {
-    background-color: rgba(51, 65, 85, 0.75);
+    background-color: #334155; /* slate-700 */
     border-bottom-color: #64748b; /* slate-500 */
 }
+
+/* Apenas no desktop para o modo escuro */
+@media (min-width: 768px) {
+    html.dark .day-nav {
+        background-color: rgba(51, 65, 85, 0.75);
+    }
+}
+
 
 /* Links das barras de navegação */
 html.dark .sticky-nav-days a,
@@ -233,7 +251,7 @@ html.dark .hover\:text-blue-900:hover {
     overflow: hidden;
     border-radius: 0.75rem;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    height: 90px; /* <<-- AQUI ESTÁ A ALTERAÇÃO PRINCIPAL */
+    height: 90px;
     color: white;
     text-decoration: none;
 }
@@ -269,16 +287,16 @@ html.dark .hover\:text-blue-900:hover {
     position: absolute;
     bottom: 0;
     left: 0;
-    padding: 0.75rem 1rem; /* <<-- Padding ligeiramente ajustado para a nova altura */
+    padding: 0.75rem 1rem;
     width: 100%;
     z-index: 10;
-    display: flex; /* <<-- Adicionado para alinhar ícone e texto */
-    align-items: center; /* <<-- Adicionado para alinhar ícone e texto */
+    display: flex;
+    align-items: center;
 }
 
 .highlight-card .highlight-icon {
     font-size: 1.25rem;
-    margin-right: 0.75rem; /* <<-- Alterado de margin-bottom para margin-right */
+    margin-right: 0.75rem;
     opacity: 0.9;
     transition: opacity 0.3s ease-out;
     text-shadow: 0 1px 2px rgba(0,0,0,0.3);
