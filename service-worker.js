@@ -1,5 +1,5 @@
-// Versão 9: Força a atualização de todos os caches e adiciona as páginas de orçamento.
-const CACHE_NAME = 'paris-v14';
+// Versão 11: Adiciona os ícones principais da PWA (192x192 e 512x512) à cache.
+const CACHE_NAME = 'paris-v11';
 const urlsToCache = [
   // Páginas principais
   'index.html',
@@ -7,8 +7,6 @@ const urlsToCache = [
   'roteiro.html',
   'orcamento.html',
   'frases.html',
-  'orcamento_taxi_casa.html',
-  'orcamento_taxi_centro.html',
   
   // Ficheiro Manifest
   'site.webmanifest',
@@ -18,6 +16,11 @@ const urlsToCache = [
   'assets/images/favicon.svg',
   'assets/images/favicon-96x96.png',
   'assets/images/apple-touch-icon.png',
+  
+  // ÍCONES DA PWA ADICIONADOS AQUI
+  'assets/images/android-chrome-192x192.png',
+  'assets/images/android-chrome-512x512.png',
+
 
   // Imagens dos dias (caminhos relativos)
   'assets/images/Dia1.png',
