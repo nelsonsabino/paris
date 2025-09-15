@@ -20,7 +20,6 @@ export const day2Data = {
                 { time: "8:00", icon: "fa-mug-hot", title: "Pequeno-almoço em casa", 
                     mealSuggestion: {
                         suggestion: "Refeição em casa com os produtos comprados no dia anterior (pão, leite, cereais, etc).",
-                       /* budget: "~2 € / pessoa"*/
                     }
                 },
                 { time: "8:21", icon: "fa-house-chimney", title: "Saída de Casa" },
@@ -45,7 +44,6 @@ export const day2Data = {
                 { time: "11:00", icon: "fa-cookie-bite", title: "Lanche da Manhã", 
                     mealSuggestion: {
                         suggestion: "Levar snacks do supermercado para comer a meio da manhã no Quartier Latin, ou comprar um croissant numa pastelaria local.",
-                      /*  budget: "~2 € / pessoa"*/
                     }
                 },
                 { icon: "fa-church", title: "Igreja de São Severino" },
@@ -71,6 +69,14 @@ export const day2Data = {
             navTitle: "Tulherias",
             title: "SQUARE DU VERT-GALANT → LE PETIT PALAIS",
             mapLink: "https://maps.app.goo.gl/Z2i67u12TGEfCiS17",
+            rainyDayAlternatives: {
+                title: "Plano B (Chuva): Restaurantes Perto",
+                restaurants: [
+                    { name: "La Petite Bouclerie", type: "Creperia", mapLink: "https://maps.app.goo.gl/6dyuiZb21UHdwWgo8" },
+                    { name: "Le Bistro des Augustins", type: "Restaurante francês", mapLink: "https://maps.app.goo.gl/h3ZLYmS8VsP9WNu38" },
+                    { name: "Gusto Italia Amélie", type: "Restaurante italiano", mapLink: "https://maps.app.goo.gl/v19S5NtF13CDPMRD9" }
+                ]
+            },
             timeline: [
                 { icon: "fa-bridge", title: "Pont Neuf" },
                 { icon: "fa-bridge", title: "Pont des Arts" },
@@ -78,7 +84,6 @@ export const day2Data = {
                 { time: "13:00", icon: "fa-utensils", title: "Almoço no Jardim das Tulherias", 
                     mealSuggestion: {
                         suggestion: "Optar por uma 'formule' de padaria (sandes + bebida + sobremesa). É prático e económico para comer ao ar livre nos jardins.",
-                      /*  budget: "~7 € / pessoa"*/
                     }
                 },
                 { icon: "fa-fountain", title: "Jardim das Tulherias" },
@@ -133,7 +138,6 @@ export const day2Data = {
                 { time: "21:00", icon: "fa-utensils", title: "Jantar em Casa", 
                     mealSuggestion: {
                         suggestion: "Refeição em casa para poupar. Uma massa com salada é uma opção rápida e barata após um dia longo.",
-                      /*  budget: "~5 € / pessoa"*/
                     }
                 }
             ]
