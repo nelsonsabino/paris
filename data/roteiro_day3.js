@@ -16,6 +16,15 @@ export const day3Data = {
             navTitle: "Versalhes",
             title: "CASA → VERSALHES",
             mapLink: "https://maps.app.goo.gl/QxRJ6gVoJ88yKXfH9",
+            // --- BLOCO DE RESTAURANTES MOVIDO PARA AQUI ---
+            rainyDayAlternatives: {
+                title: "Plano B (Chuva): Restaurantes em Versalhes",
+                restaurants: [
+                    { name: "Aux Delices de Katty", type: "Restaurante", mapLink: "https://maps.app.goo.gl/BZZe8mht2r2CTKTx8" },
+                    { name: "Les Crêpes à Tonton", type: "Creperia", mapLink: "https://maps.app.goo.gl/NmczRsEK5egM9xoH8" },
+                    { name: "Crêperie Belle Ile", type: "Creperia", mapLink: "https://maps.app.goo.gl/4buQpgjXCVjwP3iZA" }
+                ]
+            },
             timeline: [
                 { time: "07:00", icon: "fa-mug-hot", title: "Pequeno-almoço em casa",
                     mealSuggestion: {
@@ -65,12 +74,11 @@ export const day3Data = {
             title: "MONTMARTRE → MOULIN ROUGE",
             mapLink: "https://maps.app.goo.gl/DBCJQ62qSGpKDVL28",
             description: "Duração estimada do percurso a pé com visitas: ~2.5 horas",
+            // --- RESTAURANTES REMOVIDOS DESTA SECÇÃO ---
+            // --- NOVOS RESTAURANTES ADICIONADOS AQUI EM BAIXO ---
             rainyDayAlternatives: {
                 title: "Plano B (Chuva): Restaurantes em Montmartre",
                 restaurants: [
-                    { name: "Aux Delices de Katty", type: "Restaurante", mapLink: "https://maps.app.goo.gl/BZZe8mht2r2CTKTx8" },
-                    { name: "Les Crêpes à Tonton", type: "Creperia", mapLink: "https://maps.app.goo.gl/NmczRsEK5egM9xoH8" },
-                    { name: "Crêperie Belle Ile", type: "Creperia", mapLink: "https://maps.app.goo.gl/4buQpgjXCVjwP3iZA" },
                     { name: "Pizza Gigi Montmartre", type: "Restaurante italiano", mapLink: "https://maps.app.goo.gl/Lg3a52PD1bRf9zUS9" },
                     { name: "La Porteña", type: "Restaurante argentino", mapLink: "https://maps.app.goo.gl/i2nYHq5b3ejoJStc6" },
                     { name: "Colline d'Asie - Del Sarte", type: "Restaurante cambojano", mapLink: "https://maps.app.goo.gl/PMXt9wDe95Y4jgDk7" }
