@@ -47,53 +47,36 @@ html.dark .theme-switcher .moon-icon { display: none; }
 html.dark #lottie { filter: invert(1); }
 
 /* --- ESTILOS DEFINITIVOS PARA O WIDGET DE METEOROLOGIA --- */
-.weather-current-title, .weather-forecast-title {
-    font-size: 1.125rem;
-    font-weight: 600;
-    text-align: center;
+
+/* MODO CLARO */
+html:not(.dark) .weather-current-title, 
+html:not(.dark) .weather-forecast-title {
     color: #6b7280; /* gray-500 */
-    margin-bottom: 1rem;
 }
-.weather-current-icon {
-    font-size: 3rem;
+html:not(.dark) .weather-current-icon {
     color: #3b82f6; /* blue-500 */
 }
-.weather-current-temp {
-    font-size: 3.75rem;
-    font-weight: 700;
+html:not(.dark) .weather-current-temp {
     color: #1f2937; /* gray-800 */
 }
-.weather-info-card {
+html:not(.dark) .weather-info-card, 
+html:not(.dark) .weather-forecast-card {
     background-color: #f3f4f6; /* gray-100 */
-    padding: 0.5rem;
-    border-radius: 0.75rem;
 }
-.weather-info-title {
-    font-weight: 600;
+html:not(.dark) .weather-info-title, 
+html:not(.dark) .weather-forecast-date {
     color: #4b5569; /* gray-600 */
 }
-.weather-info-value {
-    font-weight: 700;
+html:not(.dark) .weather-info-value {
     color: #1f2937; /* gray-800 */
 }
-.weather-forecast-card {
-    background-color: #f3f4f6; /* gray-100 */
-    padding: 0.75rem 0.5rem;
-    border-radius: 0.75rem;
-    text-align: center;
-}
-.weather-forecast-date {
-    font-weight: 600;
-    color: #374151; /* gray-700 */
-}
-.weather-forecast-icon {
-    font-size: 1.875rem;
-    margin: 0.5rem 0;
+html:not(.dark) .weather-forecast-icon {
     color: #3b82f6; /* blue-500 */
 }
 
-/* MODO ESCURO PARA O WIDGET DE METEOROLOGIA */
-html.dark .weather-current-title, html.dark .weather-forecast-title {
+/* MODO ESCURO */
+html.dark .weather-current-title, 
+html.dark .weather-forecast-title {
     color: #94a3b8; /* slate-400 */
 }
 html.dark .weather-current-icon {
@@ -102,10 +85,12 @@ html.dark .weather-current-icon {
 html.dark .weather-current-temp {
     color: #f1f5f9; /* slate-100 */
 }
-html.dark .weather-info-card, html.dark .weather-forecast-card {
+html.dark .weather-info-card, 
+html.dark .weather-forecast-card {
     background-color: #334155; /* slate-700 */
 }
-html.dark .weather-info-title, html.dark .weather-forecast-date {
+html.dark .weather-info-title, 
+html.dark .weather-forecast-date {
     color: #cbd5e1; /* slate-300 */
 }
 html.dark .weather-info-value {
