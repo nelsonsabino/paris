@@ -162,12 +162,14 @@ async function renderPage() {
         }
 
         dayData.sections.forEach(sectionBlock => {
-            // --- INÍCIO DA CRIAÇÃO DO ACORDEÃO DE RESTAURANTES (NOVO) ---
             let rainyDayHtml = '';
             if (sectionBlock.rainyDayAlternatives && sectionBlock.rainyDayAlternatives.restaurants.length > 0) {
                 const { title, restaurants } = sectionBlock.rainyDayAlternatives;
-                const restaurantList = restaurants.map(r => `
-                    <li class="rainy-restaurant-item">
+                const restaurantList = restaurants.map(r => {
+                    // Adiciona a classe 'highlight-restaurant' se a propriedade 'highlight' for verdadeira
+                    const highlightClass = r.highlight ? 'highlight-restaurant' : '';
+                    return `
+                    <li class="rainy-restaurant-item ${highlightClass}">
                         <div class="flex-grow">
                             <p class="font-semibold">${r.name}</p>
                             <p class="text-sm text-gray-500">${r.type}</p>
@@ -175,8 +177,8 @@ async function renderPage() {
                         <a href="${r.mapLink}" target="_blank" class="rainy-map-link">
                             Mapa <i class="fa-solid fa-location-dot ml-1 text-xs"></i>
                         </a>
-                    </li>
-                `).join('');
+                    </li>`;
+                }).join('');
 
                 rainyDayHtml = `
                     <div class="rainy-accordion">
@@ -190,7 +192,6 @@ async function renderPage() {
                     </div>
                 `;
             }
-            // --- FIM DA CRIAÇÃO DO ACORDEÃO ---
 
             htmlContent += `<div ${sectionBlock.id ? `id="${sectionBlock.id}"` : ''} class="section-block pt-4">
                     <a href="${sectionBlock.mapLink}" target="_blank" class="block p-3 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-colors duration-200 mt-8 mb-4">
@@ -272,7 +273,6 @@ async function renderPage() {
     });
 
     // --- LÓGICA GERAL DA PÁGINA (EVENT LISTENERS) ---
-    // Adiciona listener para o novo acordeão de chuva
     document.querySelectorAll('.accordion-toggle, .rainy-accordion-toggle').forEach(button => {
         button.addEventListener('click', () => {
             const content = button.nextElementSibling;
