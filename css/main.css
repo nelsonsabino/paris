@@ -111,3 +111,28 @@ html.dark .weather-card-title {
 html.dark .weather-card-value {
     color: #f1f5f9; /* slate-100 */
 }
+/* --- ESTILOS DEFINITIVOS PARA O WIDGET DE METEOROLOGIA --- */
+.weather-card {
+    background-color: #f3f4f6; /* gray-100 */
+    padding: 0.5rem;
+    border-radius: 0.75rem;
+}
+.weather-card-title {
+    font-weight: 600;
+    color: #4b5569; /* gray-600 */
+}
+.weather-card-value {
+    font-weight: 700;
+    color: #1f2937; /* gray-800 */
+}
+
+/* MODO ESCURO PARA O WIDGET DE METEOROLOGIA */
+html.dark .weather-card {
+    background-color: #334155; /* slate-700 */
+}
+html.dark .weather-card-title {
+    color: #cbd5e1; /* slate-300 */
+}
+html.dark .weather-card-value {
+    color: #f1f5f9; /* slate-100 */
+}
