@@ -90,7 +90,7 @@ export const day1Data = {
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~20 min a pé desde a Ponte Alexandre III." },
                 { time: "20:30", icon: "fa-camera-retro", title: "Jardim do Trocadéro", description: "Fotos da Torre Eiffel, breve passeio (~15 min)." },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé desde o Trocadéro." },
-                { time: "20:45", icon: "fa-tower-observation", title: "Torre Eiffel", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1yA1rnPn_RHHJ3oZ8ImG2pWCC61VbrpNa/view?usp=sharing", guideLink: "visita_torre-eiffel.html", description: "Chegada 15 min antes do bilhete (21:00). Visita estimada: 1h30." },
+                { time: "20:45", icon: "fa-tower-observation", title: "Torre Eiffel", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1yA1rnPn_RHHJ3oZ8ImG2pWCC61VbrpNa/view?usp=sharing", guideLink: "visita_torre-eiffel.html", description: "Chegada 15 min antes do bilhete (21:00). Visita estimada: 1h." },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~10 min a pé desde a Torre Eiffel." },
                 { time: "22:00", icon: "fa-store", title: "Rue Cler", description: "Passeio rápido ou lanche (~30 min)." },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min até à estação de metro." },
