@@ -7,7 +7,7 @@
 
     <!-- SCRIPT ANTI-FLASH PARA O MODO ESCURO -->
     <script>
-        (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches))
+        (localStorage.theme === 'dark' || (!('theme'in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches))
             ? document.documentElement.classList.add('dark')
             : document.documentElement.classList.remove('dark');
     </script>
@@ -26,7 +26,7 @@
     <!-- LIGAÇÃO PARA O FICHEIRO CSS EXTERNO -->
     <link rel="stylesheet" href="css/roteiro.css">
 
-    <!-- ESTILOS CRÍTICOS PARA A ANIMAÇÃO E SCROLL HORIZONTAL -->
+    <!-- ESTILOS CRÍTICOS PARA A ANIMAÇÃO -->
     <style>
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
@@ -38,34 +38,39 @@
 </head>
 <body class="text-gray-800">
 
-    <!-- NOVO MENU FLUTUANTE -->
-    <div class="fixed top-4 right-4 z-[60]">
-        <button id="floating-menu-btn" class="h-12 w-12 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center text-gray-700 dark:text-slate-200 hover:scale-110 transition-transform">
-            <i class="fa-solid fa-bars text-xl"></i>
-        </button>
-        <div id="floating-menu-content" class="hidden absolute top-14 right-0 bg-white dark:bg-slate-800 rounded-xl shadow-2xl overflow-hidden border border-gray-200 dark:border-slate-700 w-48">
-            <a href="index.html" class="flex items-center gap-4 px-5 py-3 text-gray-700 dark:text-slate-200 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">
-                <i class="fa-solid fa-house w-5 text-center text-gray-500 dark:text-slate-400"></i>
-                <span class="font-medium">Início</span>
-            </a>
-            <button id="theme-switcher" class="w-full flex items-center gap-4 px-5 py-3 text-gray-700 dark:text-slate-200 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors theme-switcher">
-                <div class="w-5 text-center text-gray-500 dark:text-slate-400">
-                    <i class="fa-solid fa-sun sun-icon"></i>
-                    <i class="fa-solid fa-moon moon-icon"></i>
-                </div>
-                <span class="font-medium">Mudar Tema</span>
-            </button>
-        </div>
-    </div>
-
-    <!-- BARRA DE NAVEGAÇÃO DOS DIAS (FLUTUANTE) -->
+    <!-- BARRA DE NAVEGAÇÃO DOS DIAS (FLUTUANTE) - REESTRUTURADA -->
     <nav class="sticky-nav-days">
-        <div class="flex items-center justify-center flex-wrap gap-x-1 sm:gap-x-2 gap-y-2">
-            <a href="#day1" class="text-gray-600 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 1</a>
-            <a href="#day2" class="text-gray-600 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 2</a>
-            <a href="#day3" class="text-gray-600 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 3</a>
-            <a href="#day4" class="text-gray-600 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 4</a>
-            <a href="#day5" class="text-gray-600 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 5</a>
+        <div class="flex items-center justify-between w-full">
+            <!-- Container dos Dias -->
+            <div class="flex-grow flex justify-center">
+                <div class="flex items-center justify-center flex-wrap gap-x-1 sm:gap-x-2 gap-y-2">
+                    <a href="#day1" class="text-gray-600 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 1</a>
+                    <a href="#day2" class="text-gray-600 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 2</a>
+                    <a href="#day3" class="text-gray-600 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 3</a>
+                    <a href="#day4" class="text-gray-600 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 4</a>
+                    <a href="#day5" class="text-gray-600 font-semibold py-2 px-3 rounded-md transition hover:bg-gray-200">Dia 5</a>
+                </div>
+            </div>
+            
+            <!-- Container do Menu Hambúrguer -->
+            <div class="relative">
+                <button id="floating-menu-btn" class="h-10 w-10 bg-gray-200/50 dark:bg-slate-700/50 rounded-full flex items-center justify-center text-gray-700 dark:text-slate-200">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+                <div id="floating-menu-content" class="hidden absolute top-12 right-0 bg-white dark:bg-slate-800 rounded-xl shadow-2xl overflow-hidden border border-gray-200 dark:border-slate-700 w-48">
+                    <a href="index.html" class="flex items-center gap-4 px-5 py-3 text-gray-700 dark:text-slate-200 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">
+                        <i class="fa-solid fa-house w-5 text-center text-gray-500 dark:text-slate-400"></i>
+                        <span class="font-medium">Início</span>
+                    </a>
+                    <button id="theme-switcher" class="w-full flex items-center gap-4 px-5 py-3 text-gray-700 dark:text-slate-200 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors theme-switcher">
+                        <div class="w-5 text-center text-gray-500 dark:text-slate-400">
+                            <i class="fa-solid fa-sun sun-icon"></i>
+                            <i class="fa-solid fa-moon moon-icon"></i>
+                        </div>
+                        <span class="font-medium">Mudar Tema</span>
+                    </button>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -93,13 +98,11 @@
 
         if (menuBtn && menuContent) {
             menuBtn.addEventListener('click', (event) => {
-                event.stopPropagation(); // Impede que o clique feche o menu imediatamente
+                event.stopPropagation();
                 menuContent.classList.toggle('hidden');
             });
 
-            // Fecha o menu se clicar em qualquer outro lugar da página
             document.addEventListener('click', (event) => {
-                // Verifica se o menu está visível e se o clique foi fora do botão e do conteúdo do menu
                 if (!menuContent.classList.contains('hidden') && !menuContent.contains(event.target) && !menuBtn.contains(event.target)) {
                     menuContent.classList.add('hidden');
                 }
