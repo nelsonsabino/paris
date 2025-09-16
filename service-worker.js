@@ -1,5 +1,5 @@
-// Versão 16: Remove o favicon.svg da cache para corresponder ao manifesto.
-const CACHE_NAME = 'paris-v16';
+// Versão 17: Renomeia os ícones da PWA para forçar a atualização da cache do servidor.
+const CACHE_NAME = 'paris-v17';
 const urlsToCache = [
   // Páginas principais
   '/index.html',
@@ -11,14 +11,14 @@ const urlsToCache = [
   // Ficheiro Manifest
   '/site.webmanifest',
 
-  // Ícones na raiz (SVG removido)
+  // Ícones na raiz
   '/favicon.ico',
   '/favicon-96x96.png',
   '/apple-touch-icon.png',
   
-  // ÍCONES DA PWA na raiz
-  '/web-app-manifest-192x192.png',
-  '/web-app-manifest-512x512.png',
+  // ÍCONES DA PWA na raiz (com novos nomes)
+  '/icon-192.png',
+  '/icon-512.png',
 
   // Imagens de conteúdo
   '/assets/images/Dia1.png',
