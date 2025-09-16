@@ -121,7 +121,7 @@ export const day2Data = {
                 { time: "20:38", icon: "fa-bed", title: "Regresso a Casa" },
                 { time: "21:00", icon: "fa-utensils", title: "Jantar em Casa", 
                     mealSuggestion: {
-                        suggestion: "Refeição em casa para poupar. Uma massa com salada é uma opção rápida e barata após um dia longo.",
+                        suggestion: "Refeição em casa para poupar.",
                     }
                 }
             ]
