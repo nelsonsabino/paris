@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- NOVA LÓGICA PARA CONTROLAR A COR DA BARRA DE STATUS ---
 
     const lightThemeColor = "#f0f4f8"; // Cor de fundo do modo claro
-    const darkThemeColor = "#1f2937";  // Cor de fundo do modo escuro
+    const darkThemeColor = "#0f172a";  // Cor de fundo do modo escuro
 
     /**
      * Encontra ou cria a meta tag 'theme-color' e atualiza a sua cor.
