@@ -79,9 +79,9 @@ export const day1Data = {
         {
             id: "zona-eiffel",
             navTitle: "Zona Eiffel",
-            title: "ÓPERA - TOUR EIFFEL", // <-- TÍTULO ATUALIZADO
-            mapLink: "https://maps.app.goo.gl/6E5Nvw35RZtfxwYUA", // <-- LINK ATUALIZADO
-            timeline: [ // <-- TIMELINE COMPLETAMENTE ATUALIZADA
+            title: "ÓPERA - TOUR EIFFEL",
+            mapLink: "https://maps.app.goo.gl/6E5Nvw35RZtfxwYUA",
+            timeline: [
                 { time: "19:00", icon: "fa-landmark", title: "Opéra Garnier (Chegada e Vista Exterior)" },
                 { time: "19:30", icon: "fa-landmark-dome", title: "Hôtel des Invalides (Vista Exterior)" },
                 { time: "19:45", icon: "fa-bridge", title: "Ponte Alexandre III", description: "Local ideal para ver o pôr do sol." },
@@ -105,18 +105,18 @@ export const day1Data = {
             id: "regresso-d1",
             navTitle: "Regresso",
             title: "ÉCOLE MILITAIRE → CASA",
-            mapLink: "https://maps.app.goo.gl/h8Evfet5J4ntq5cE8",
-            timeline: [
+            mapLink: "https://maps.app.goo.gl/bVccedxWUbvoQinR6", // <-- LINK ATUALIZADO
+            timeline: [ // <-- TIMELINE ATUALIZADA
                 {
-                    time: "23:04", icon: "fa-route", title: "Percurso: École Militaire → Casa", description: "Duração total: ~34 min. Clica para ver os detalhes.",
+                    time: "22:34", icon: "fa-route", title: "Percurso: École Militaire → Casa", description: "Duração total: ~34 min. Clica para ver os detalhes.",
                     accordion: [
-                        { text: "23:04: Apanhar Metro <span class='metro-line' style='background-color: #ceadd2; color: black;'>8</span>", subText: "Da estação <strong>École Militaire</strong>, direção Créteil-Pointe du Lac." },
-                        { text: "23:10: Trocar em Opéra", subText: "Sair do metro e seguir para a Linha 7." },
-                        { text: "23:17: Apanhar Metro <span class='metro-line' style='background-color: #fa9aaa;'>7</span>", subText: "Da estação <strong>Opéra</strong>, direção La Courneuve-8-Mai-1945." },
-                        { text: "23:36: Sair em Fort d'Aubervilliers", subText: "Caminhar ~2 min até casa." }
+                        { text: "22:34: Apanhar Metro <span class='metro-line' style='background-color: #ceadd2; color: black;'>8</span>", subText: "Da estação <strong>École Militaire</strong>, direção Créteil-Pointe du Lac." },
+                        { text: "22:40: Trocar em Opéra", subText: "Sair do metro e seguir para a Linha 7." },
+                        { text: "22:47: Apanhar Metro <span class='metro-line' style='background-color: #fa9aaa;'>7</span>", subText: "Da estação <strong>Opéra</strong>, direção La Courneuve-8-Mai-1945." },
+                        { text: "23:06: Sair em Fort d'Aubervilliers", subText: "Caminhar ~2 min até casa." }
                     ]
                 },
-                { time: "23:38", icon: "fa-bed", title: "Regresso a Casa" }
+                { time: "23:08", icon: "fa-bed", title: "Regresso a Casa" }
             ]
         }
     ],
