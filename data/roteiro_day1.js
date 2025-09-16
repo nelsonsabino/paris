@@ -3,7 +3,7 @@ export const day1Data = {
     id: "day1",
     title: "Dia 1: Chegada e a Magia da Torre Eiffel",
     date: "Sexta-feira, 19 de Setembro",
-    mapImage: "assets/images/Dia1b.png", // Imagem do mapa geral do dia
+    mapImage: "assets/images/Dia1b.png",
     highlights: [
         { name: "Torre Eiffel", icon: "fa-tower-observation", link: "visita_torre-eiffel.html", imageUrl: "https://cdn.pixabay.com/photo/2017/03/22/11/30/eiffel-tower-2164711_1280.jpg" },
         { name: "Ponte Alexandre III", icon: "fa-bridge", link: "visita_ponte-alexandre-iii.html", imageUrl: "https://www.duchensphotographie.fr/wp-content/uploads/2017/09/pont-alexandre-III-vignette-FB-article-blog-200917.jpg" },
@@ -13,7 +13,7 @@ export const day1Data = {
     sections: [
         {
             id: "viagem",
-            navTitle: "Viagem", // Título personalizado para a navegação
+            navTitle: "Viagem",
             title: "ALENQUER → TERMINAL 2",
             mapLink: "https://maps.app.goo.gl/UDWRJ6vJieWfL2G19",
             timeline: [
@@ -26,7 +26,7 @@ export const day1Data = {
         },
         {
             id: "chegada",
-            navTitle: "Chegada", // Título personalizado
+            navTitle: "Chegada",
             title: "AEROPORTO ORLY → CASA",
             mapLink: "https://maps.app.goo.gl/cyPYrbbdUmfpbmAz9",
             timeline: [
@@ -61,15 +61,14 @@ export const day1Data = {
         },
         {
             id: "ida-eiffel",
-            navTitle: "Eiffel", // Título personalizado para a navegação
+            navTitle: "Eiffel",
             title: "CASA → INVALIDES",
-            mapLink: "https://maps.app.goo.gl/q5okVHgdTgK4mSdn7", // <-- LINK ATUALIZADO
+            mapLink: "https://maps.app.goo.gl/q5okVHgdTgK4mSdn7",
             timeline: [
                 { time: "18:30", icon: "fa-house-chimney", title: "Saída de Casa" },
                 {
-                    time: "18:33", icon: "fa-route", title: "Percurso: Casa → Opéra", // <-- TÍTULO E DESCRIÇÃO ATUALIZADOS
+                    time: "18:33", icon: "fa-route", title: "Percurso: Casa → Opéra",
                     description: "Duração total: ~23 min. Clica para ver os detalhes.",
-                    // <-- PERCURSO ATUALIZADO ---
                     accordion: [
                         { text: "18:33: Apanhar Metro <span class='metro-line' style='background-color: #fa9aaa;'>7</span>", subText: "Da estação <strong>Fort d'Aubervilliers</strong>, direção Mairie d'Ivry (14 paragens)." },
                         { text: "18:53: Sair em Opéra", subText: "Fim do percurso de metro. Daqui, seguir a pé para a zona de Invalides." }
@@ -80,20 +79,16 @@ export const day1Data = {
         {
             id: "zona-eiffel",
             navTitle: "Zona Eiffel",
-            title: "INVALIDES - TOUR EIFFEL",
-            mapLink: "https://maps.app.goo.gl/R9Hgbbwr1KJgKHkD8",
-            timeline: [
-                { icon: "fa-landmark-dome", title: "Hôtel des Invalides (Vista Exterior)" },
-                { icon: "fa-bridge", title: "Ponte Alexandre III" },
-                { icon: "fa-camera-retro", title: "Jardim do Trocadéro" },
+            title: "ÓPERA - TOUR EIFFEL", // <-- TÍTULO ATUALIZADO
+            mapLink: "https://maps.app.goo.gl/6E5Nvw35RZtfxwYUA", // <-- LINK ATUALIZADO
+            timeline: [ // <-- TIMELINE COMPLETAMENTE ATUALIZADA
+                { time: "19:00", icon: "fa-landmark", title: "Opéra Garnier (Chegada e Vista Exterior)" },
+                { time: "19:30", icon: "fa-landmark-dome", title: "Hôtel des Invalides (Vista Exterior)" },
+                { time: "19:45", icon: "fa-bridge", title: "Ponte Alexandre III", description: "Local ideal para ver o pôr do sol." },
+                { time: "20:30", icon: "fa-camera-retro", title: "Jardim do Trocadéro" },
                 { time: "21:00", icon: "fa-tower-observation", title: "Torre Eiffel", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1yA1rnPn_RHHJ3oZ8ImG2pWCC61VbrpNa/view?usp=sharing", guideLink: "visita_torre-eiffel.html" },
-                { icon: "fa-store", title: "Rue Cler" },
-                { time: "22:00", icon: "fa-utensils", title: "Jantar Económico",
-                    mealSuggestion: {
-                        suggestion: "Explorar a Rue Cler para encontrar crepes ou levar sandes feitas. Uma boa opção é comprar algo num supermercado (Franprix/Monoprix) na zona.",
-                    }
-                },
-                { time: "23:00", icon: "fa-person-walking", title: "Ida para o Metro École Militaire" },
+                { time: "22:00", icon: "fa-store", title: "Rue Cler" },
+                { time: "22:30", icon: "fa-person-walking", title: "Ida para o Metro École Militaire" },
                 {
                     icon: "fa-restroom",
                     title: "Casas de Banho Próximas",
