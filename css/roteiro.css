@@ -100,7 +100,6 @@ body {
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     border-bottom: 1px solid #e2e8f0;
     padding: 0.5rem 1rem;
-    /* Adicionado para corrigir bugs de renderização em navegadores móveis */
     transform: translate3d(0, 0, 0); 
 }
 
@@ -285,14 +284,10 @@ html.dark .highlights-grid {
 }
 .weather-icon {
     margin-right: 0.5rem;
-    color: #3b82f6;
     font-size: 1.125rem;
     vertical-align: middle;
     width: 24px;
     text-align: center;
-}
-html.dark .weather-icon {
-    color: #60a5fa;
 }
 .rainy-accordion {
     border: 1px solid #e2e8f0;
@@ -395,3 +390,18 @@ html.dark .highlight-restaurant .font-semibold {
 html.dark .highlight-restaurant .text-gray-500 {
     color: #ca8a04;
 }
+
+/* --- CORES DOS ÍCONES DE METEOROLOGIA (NOVO) --- */
+.weather-color-sun { color: #f59e0b; } /* amber-500 */
+.weather-color-cloud { color: #9ca3af; } /* gray-400 */
+.weather-color-rain { color: #3b82f6; } /* blue-500 */
+.weather-color-smog { color: #a1a1aa; } /* zinc-400 */
+.weather-color-snow { color: #22d3ee; } /* cyan-400 */
+.weather-color-storm { color: #a78bfa; } /* violet-400 */
+
+html.dark .weather-color-sun { color: #fcd34d; } /* amber-300 */
+html.dark .weather-color-cloud { color: #94a3b8; } /* slate-400 */
+html.dark .weather-color-rain { color: #60a5fa; } /* blue-400 */
+html.dark .weather-color-smog { color: #a1a1aa; } /* zinc-400 */
+html.dark .weather-color-snow { color: #67e8f9; } /* cyan-300 */
+html.dark .weather-color-storm { color: #c4b5fd; } /* violet-300 */
