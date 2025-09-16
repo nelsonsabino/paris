@@ -74,7 +74,7 @@ export const day5Data = {
                 { time: "13:00", icon: "fa-utensils", title: "Almoço em Brasserie",
                      mealSuggestion: {
                         suggestion: "Escolha uma brasserie típica para a refeição especial. Duração: ~1h30. Saída: 14:30",
-                        budget: "~15€ (adulto), ~10€ (criança)"
+                        /*budget: "~15€ (adulto), ~10€ (criança)"*/
                     }
                 },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~6 min a pé." },
@@ -83,7 +83,7 @@ export const day5Data = {
                 { time: "15:00", icon: "fa-coffee", title: "Pausa num Café Icónico",
                      mealSuggestion: {
                         suggestion: "Sentar no Les Deux Magots ou Café de Flore (~30 min). Saída: 15:30",
-                        budget: "~6 € / pessoa"
+                        /*budget: "~6 € / pessoa"*/
                     }
                 },
                 { time: "15:30", icon: "fa-church", title: "Abadia de Saint-Germain-des-Prés", description: "Visita rápida e fotos (~10 min). Saída: 15:40" },
