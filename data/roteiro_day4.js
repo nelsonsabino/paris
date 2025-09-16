@@ -54,7 +54,7 @@ export const day4Data = {
                     { name: "Starving Club Galeries Lafayette Gourmet", type: "Burgers e hot dogs", mapLink: "https://maps.app.goo.gl/B1XWsTpumWX8v4Wb8" }
                 ]
             },
-            timeline: [ // <-- TIMELINE COMPLETAMENTE REFEITA
+            timeline: [
                 { time: "13:30", icon: "fa-chess-board", title: "Palais Royal (Jardins e Colunas de Buren)", description: "Passeio e fotos: ~30 min. Saída: 14:00" },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé desde Palais Royal." },
                 { time: "14:00", icon: "fa-archway", title: "Galerie Vivienne", description: "Passeio rápido, fotos (~20 min). Saída: 14:20" },
@@ -96,45 +96,40 @@ export const day4Data = {
             id: "marais",
             navTitle: "Marais",
             title: "FILLES DU CALVAIRE → PRAÇA DES VOSGES",
-            mapLink: "https://maps.app.goo.gl/MBQ3dAXYBiFW33Dn6",
-            description: "Duração estimada do percurso a pé com visitas: ~1.5 - 2 horas",
-            timeline: [
-                { time: "18:45", icon: "fa-utensils", title: "Jantar no Marché des Enfants Rouges",
-                    description: "Visitar o mercado coberto mais antigo de Paris e aproveitar para jantar numa das suas bancas de street food.",
+            mapLink: "https://maps.app.goo.gl/M9mUnPSePrvmsEKX8", // <-- LINK ATUALIZADO
+            timeline: [ // <-- TIMELINE ATUALIZADA
+                { time: "18:45", icon: "fa-utensils", title: "Marché des Enfants Rouges",
+                    description: "Visitar e jantar numa das bancas de street food (~45 min). Saída: 19:30",
                     mealSuggestion: {
-                        suggestion: "Explorar a variedade de cozinhas do mundo (italiana, marroquina, etc.) e escolher uma opção para um jantar informal e saboroso.",
+                        suggestion: "Explorar a variedade de cozinhas do mundo (italiana, marroquina, etc.) para um jantar informal e saboroso.",
                     }
                 },
-                { time: "19:30", icon: "fa-person-walking", title: "Explorar o Marais", description: "Passeio pela Rue Vieille-du-Temple e Rue des Rosiers." },
-                { time: "20:15", icon: "fa-square-full", title: "Praça des Vosges", description: "Chegada e visita." },
-                {
-                    icon: "fa-restroom",
-                    title: "Casas de Banho Próximas",
-                    description: `
-                        <ul class='list-disc list-inside text-sm'>
-                            <li>7 Rue de Bretagne (perto do mercado) - <a href='https://www.google.com/maps/search/?api=1&query=48.86171,2.36214' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
-                            <li>Place des Vosges - <a href='https://www.google.com/maps/search/?api=1&query=48.85532,2.36531' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
-                        </ul>
-                    `
-                }
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~2 min a pé." },
+                { time: "19:30", icon: "fa-road", title: "Rue de Bretagne & Rue Charlot", description: "Passeio por ruas típicas do Marais (~15 min). Saída: 19:45" },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~3 min a pé." },
+                { time: "19:45", icon: "fa-road", title: "Rue Vieille-du-Temple", description: "Passeio e fotos (~10 min). Saída: 19:55" },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~2 min a pé." },
+                { time: "19:55", icon: "fa-road", title: "Rue des Rosiers", description: "Rua típica judaica (~15 min). Saída: 20:10" },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~2 min a pé." },
+                { time: "20:10", icon: "fa-square-full", title: "Place des Vosges", description: "Passeio pela praça e fotos (~15 min). Saída: 20:25" },
             ]
         },
         {
             id: "regresso-d4",
             navTitle: "Regresso",
             title: "MARAIS → CASA",
-            mapLink: "https://maps.app.goo.gl/EKhGAzi27pZ2JzrB8",
-            timeline: [
+            mapLink: "https://maps.app.goo.gl/2dJMg3JBoemb5edx7", // <-- LINK ATUALIZADO
+            timeline: [ // <-- TIMELINE ATUALIZADA
                 {
-                    time: "20:01", icon: "fa-route", title: "Percurso: Le Marais → Casa", description: "Duração total: ~32 min. Clica para ver os detalhes.",
+                    time: "20:30", icon: "fa-route", title: "Percurso: Le Marais → Casa", description: "Duração total: ~40 min. Clica para ver os detalhes.",
                     accordion: [
-                        { text: "20:09: Apanhar Metro <span class='metro-line' style='background-color: #f19e38;'>5</span>", subText: "Da estação <strong>Bréguet - Sabin</strong>, direção Bobigny-Pablo-Picasso." },
-                        { text: "20:16: Trocar em Gare de l'Est", subText: "Sair do metro e seguir para a Linha 7." },
-                        { text: "20:18: Apanhar Metro <span class='metro-line' style='background-color: #fa9aaa;'>7</span>", subText: "Da estação <strong>Gare de l'Est</strong>, direção La Courneuve-8-Mai-1945." },
-                        { text: "20:31: Sair em Fort d'Aubervilliers", subText: "Caminhar ~2 min até casa." }
+                        { text: "20:35: Apanhar Metro <span class='metro-line' style='background-color: #ceadd2; color: black;'>8</span>", subText: "Da estação <strong>Chemin Vert</strong>, direção Balard." },
+                        { text: "20:43: Trocar em Opéra", subText: "Sair do metro e seguir para a Linha 7." },
+                        { text: "20:48: Apanhar Metro <span class='metro-line' style='background-color: #fa9aaa;'>7</span>", subText: "Da estação <strong>Opéra</strong>, direção La Courneuve-8-Mai-1945." },
+                        { text: "21:07: Sair em Fort d'Aubervilliers", subText: "Caminhar ~2 min até casa." }
                     ]
                 },
-                { time: "20:33", icon: "fa-bed", title: "Regresso a Casa" }
+                { time: "21:09", icon: "fa-bed", title: "Regresso a Casa" }
             ]
         }
     ],
