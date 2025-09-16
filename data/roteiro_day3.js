@@ -16,7 +16,6 @@ export const day3Data = {
             navTitle: "Versalhes",
             title: "CASA → VERSALHES",
             mapLink: "https://maps.app.goo.gl/QxRJ6gVoJ88yKXfH9",
-            // --- BLOCO DE RESTAURANTES MOVIDO PARA AQUI ---
             rainyDayAlternatives: {
                 title: "Plano B (Chuva): Restaurantes em Versalhes",
                 restaurants: [
@@ -72,10 +71,7 @@ export const day3Data = {
             id: "montmartre",
             navTitle: "Montmartre",
             title: "MONTMARTRE → MOULIN ROUGE",
-            mapLink: "https://maps.app.goo.gl/DBCJQ62qSGpKDVL28",
-            description: "Duração estimada do percurso a pé com visitas: ~2.5 horas",
-            // --- RESTAURANTES REMOVIDOS DESTA SECÇÃO ---
-            // --- NOVOS RESTAURANTES ADICIONADOS AQUI EM BAIXO ---
+            mapLink: "https://maps.app.goo.gl/SVUXBAM5yxQckn8w6", // <-- LINK ATUALIZADO
             rainyDayAlternatives: {
                 title: "Plano B (Chuva): Restaurantes em Montmartre",
                 restaurants: [
@@ -84,33 +80,34 @@ export const day3Data = {
                     { name: "Colline d'Asie - Del Sarte", type: "Restaurante cambojano", mapLink: "https://maps.app.goo.gl/PMXt9wDe95Y4jgDk7" }
                 ]
             },
-            timeline: [
-                { time: "15:35", icon: "fa-heart", title: "Muro do Eu Te Amo (Le Mur des Je t'aime)" },
-                { time: "16:00", icon: "fa-place-of-worship", title: "Basílica de Sacré Cœur", guideLink: "visita_montmartre.html", description: "Visita ao interior e vista: ~45 min" },
-                { time: "16:45", icon: "fa-palette", title: "Place du Tertre", description: "Passeio pela praça dos artistas: ~30 min" },
-                 { time: "17:00", icon: "fa-ice-cream", title: "Lanche da Tarde",
+            timeline: [ // <-- TIMELINE COMPLETAMENTE REFEITA
+                { time: "15:35", icon: "fa-heart", title: "Muro do Eu Te Amo", description: "Visita/fotos: ~10 min. Saída: 15:45" },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~7 min a pé." },
+                { time: "15:52", icon: "fa-store", title: "Franprix", description: "Pequena paragem (água/snack): ~5 min. Saída: 15:57" },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~1 min a pé." },
+                { time: "15:57", icon: "fa-tree", title: "Square Louise Michel", description: "Passeio breve, fotos: ~10 min. Saída: 16:07" },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé." },
+                { time: "16:07", icon: "fa-place-of-worship", title: "Basílica do Sacré-Cœur", guideLink: "visita_montmartre.html", description: "Subida/funicular + visita + vista: ~45 min. Saída: 16:52" },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé." },
+                { time: "16:52", icon: "fa-palette", title: "Place du Tertre", description: "Passeio pela praça dos artistas, fotos: ~30 min. Saída: 17:22" },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~2 min a pé." },
+                { time: "17:22", icon: "fa-ice-cream", title: "Lanche da tarde em Montmartre", description: "Duração: ~20 min. Saída: 17:42",
                     mealSuggestion: {
                         suggestion: "Pausa para um crepe, croissant ou outra pastelaria local numa das muitas 'boulangeries' de Montmartre.",
                     }
                 },
-                { time: "17:20", icon: "fa-utensils", title: "Le Consulat & La Maison Rose", description: "Paragem para fotos: ~10 min" },
-                { icon: "fa-windmill", title: "Moulin Radet", description: "Vista de passagem" },
-                { time: "17:45", icon: "fa-mug-hot", title: "Café des Deux Moulins", description: "Visita rápida/fotos: ~5 min" },
-                { time: "17:50", icon: "fa-wind", title: "Moulin Rouge", description: "Chegada e fotos finais: ~10 min" },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~3 min a pé." },
+                { time: "17:42", icon: "fa-utensils", title: "Le Consulat & La Maison Rose", description: "Fotos rápidas: ~10 min. Saída: 17:52" },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~2 min a pé." },
+                { time: "17:52", icon: "fa-wind", title: "Moulin de la Galette (Radet)", description: "Passagem rápida, fotos: ~5 min. Saída: 17:57" },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~2 min a pé." },
+                { time: "17:57", icon: "fa-mug-hot", title: "Café des Deux Moulins", description: "Paragem rápida/fotos: ~5 min. Saída: 18:02" },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé." },
+                { time: "18:02", icon: "fa-wind", title: "Moulin Rouge", description: "Fotos finais: ~10 min. Saída: 18:12" },
                 { time: "19:30", icon: "fa-utensils", title: "Jantar em Montmartre",
                     mealSuggestion: {
                         suggestion: "Jantar rápido e económico. A zona tem muitas opções de kebab, pizza ou falafel que são saborosas e baratas, antes de apanhar o metro.",
                     }
-                },
-                {
-                    icon: "fa-restroom",
-                    title: "Casas de Banho Próximas",
-                    description: `
-                        <ul class='list-disc list-inside text-sm'>
-                            <li>1 Rue Lamarck (perto da Sacré-Cœur) - <a href='https://www.google.com/maps/search/?api=1&query=48.88626,2.34386' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
-                            <li>Avenue Rachel (perto do Moulin Rouge) - <a href='https://www.google.com/maps/search/?api=1&query=48.88372,2.33088' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
-                        </ul>
-                    `
                 }
             ]
         },
