@@ -36,6 +36,10 @@ body {
     scroll-margin-top: 160px; 
 }
 
+.day-section[id] {
+    scroll-margin-top: 70px; /* Ajuste este valor se for necessário */
+}
+
 .timeline-container {
     margin-left: 4rem;
 }
