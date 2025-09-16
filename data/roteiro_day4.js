@@ -54,12 +54,16 @@ export const day4Data = {
                     { name: "Starving Club Galeries Lafayette Gourmet", type: "Burgers e hot dogs", mapLink: "https://maps.app.goo.gl/B1XWsTpumWX8v4Wb8" }
                 ]
             },
-            timeline: [
-                { icon: "fa-chess-board", title: "Palais Royal (Jardins e Colunas de Buren)" },
-                { icon: "fa-archway", title: "Galerie Vivienne" },
-                { icon: "fa-gem", title: "Place Vendôme" },
-                { time: "15:00", icon: "fa-masks-theater", title: "Ópera Garnier", description: "Visita interior (~1h)", requiresTicket: true, ticketLink: "https://drive.google.com/drive/folders/1LzpXOo9CjPe37kIHkBRFG0Xy4sy5Kwg7?usp=sharing", guideLink: "visita_opera-garnier.html" },
-                { icon: "fa-store", title: "Galeries Lafayette", description: "Visita ao terraço para vista (~45min)", guideLink: "visita_galeries-lafayette.html" },
+            timeline: [ // <-- TIMELINE COMPLETAMENTE REFEITA
+                { time: "13:30", icon: "fa-chess-board", title: "Palais Royal (Jardins e Colunas de Buren)", description: "Passeio e fotos: ~30 min. Saída: 14:00" },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé desde Palais Royal." },
+                { time: "14:00", icon: "fa-archway", title: "Galerie Vivienne", description: "Passeio rápido, fotos (~20 min). Saída: 14:20" },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~7 min a pé desde Galerie Vivienne." },
+                { time: "14:20", icon: "fa-gem", title: "Place Vendôme", description: "Breve visita, fotos (~20 min). Saída: 14:40" },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé desde Place Vendôme." },
+                { time: "15:00", icon: "fa-masks-theater", title: "Ópera Garnier", description: "Visita interior: ~1h. Saída: 16:00", requiresTicket: true, ticketLink: "https://drive.google.com/drive/folders/1LzpXOo9CjPe37kIHkBRFG0Xy4sy5Kwg7?usp=sharing", guideLink: "visita_opera-garnier.html" },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~7 min a pé desde Opéra Garnier." },
+                { time: "16:00", icon: "fa-store", title: "Galeries Lafayette", description: "Visita ao terraço para vista panorâmica e fotos: ~45 min. Saída: 16:45", guideLink: "visita_galeries-lafayette.html" },
                 {
                     icon: "fa-restroom",
                     title: "Casas de Banho Próximas",
