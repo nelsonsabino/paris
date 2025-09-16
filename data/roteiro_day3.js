@@ -71,7 +71,7 @@ export const day3Data = {
             id: "montmartre",
             navTitle: "Montmartre",
             title: "MONTMARTRE → MOULIN ROUGE",
-            mapLink: "https://maps.app.goo.gl/SVUXBAM5yxQckn8w6", // <-- LINK ATUALIZADO
+            mapLink: "https://maps.app.goo.gl/prShFffrVB7u3UdU8", // <-- LINK ATUALIZADO
             rainyDayAlternatives: {
                 title: "Plano B (Chuva): Restaurantes em Montmartre",
                 restaurants: [
