@@ -15,8 +15,8 @@ export const day2Data = {
             id: "ida-cite",
             navTitle: "Ida",
             title: "CASA → ÎLE DE LA CITÉ",
-            mapLink: "https://maps.app.goo.gl/ZLTXGwidLLW28Cpv5", // <-- LINK ATUALIZADO
-            timeline: [ // <-- TIMELINE ATUALIZADA
+            mapLink: "https://maps.app.goo.gl/ZLTXGwidLLW28Cpv5",
+            timeline: [
                 { time: "08:01", icon: "fa-house-chimney", title: "Saída de Casa" },
                 {
                     time: "08:04", icon: "fa-route", title: "Percurso: Casa → Île de la Cité", description: "Duração total: ~37 min. Clica para ver os detalhes.",
@@ -31,8 +31,8 @@ export const day2Data = {
             id: "ile-cite",
             navTitle: "Île Cité",
             title: "ÎLE DE LA CITÉ → SQUARE DU VERT-GALANT",
-            mapLink: "https://maps.app.goo.gl/5E9U6Ka6DwobLj5e7", // <-- LINK ATUALIZADO
-            timeline: [ // <-- TIMELINE COMPLETAMENTE REFEITA
+            mapLink: "https://maps.app.goo.gl/5E9U6Ka6DwobLj5e7",
+            timeline: [
                 { time: "08:40", icon: "fa-coffee", title: "Au Vieux Paris d'Arcole", description: "Início do passeio, fotos rápidas (~10 min)." },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~10 min a pé." },
                 { time: "08:50", icon: "fa-church", title: "Catedral de Notre-Dame", description: "Visita interior + Point Zéro (~1h10). Saída prevista: 10:00.", requiresTicket: true, ticketLink: "https://resa.notredamedeparis.fr/en/reservationindividuelle/tickets", guideLink: "visita_notre-dame.html" },
@@ -65,29 +65,25 @@ export const day2Data = {
                     { name: "Gusto Italia Amélie", type: "Restaurante italiano", mapLink: "https://maps.app.goo.gl/v19S5NtF13CDPMRD9" }
                 ]
             },
-            timeline: [
-                { icon: "fa-bridge", title: "Pont Neuf" },
-                { icon: "fa-bridge", title: "Pont des Arts" },
-                { icon: "fa-archway", title: "Arco do Triunfo do Carrossel" },
-                { time: "13:00", icon: "fa-utensils", title: "Almoço no Jardim das Tulherias", 
+            timeline: [ // <-- TIMELINE COMPLETAMENTE REFEITA
+                { time: "12:00", icon: "fa-bridge", title: "Pont Neuf", description: "Passeio rápido, fotos (~10 min)." },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~10 min a pé desde Pont Neuf." },
+                { time: "12:10", icon: "fa-bridge", title: "Pont des Arts", description: "Passeio, fotos e apreciar vista do Sena (~10 min)." },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé desde Pont des Arts." },
+                { time: "12:20", icon: "fa-archway", title: "Arco do Triunfo do Carrossel", description: "Passeio rápido, fotos (~10 min)." },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé desde o Arco." },
+                { time: "12:30", icon: "fa-tree", title: "Jardim das Tulherias", description: "Passeio pelos jardins, fotos (~20 min)." },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé desde os Jardins." },
+                { time: "12:50", icon: "fa-square-full", title: "Place de la Concorde", description: "Breve visita, fotos (~10 min)." },
+                { time: "13:00", icon: "fa-utensils", title: "Almoço", 
                     mealSuggestion: {
                         suggestion: "Optar por uma 'formule' de padaria (sandes + bebida + sobremesa). É prático e económico para comer ao ar livre nos jardins.",
                     }
                 },
-                { icon: "fa-fountain", title: "Jardim das Tulherias" },
-                { icon: "fa-square-full", title: "Place de la Concorde" },
-                {
-                    icon: "fa-restroom",
-                    title: "Casas de Banho Próximas",
-                    description: `
-                        <ul class='list-disc list-inside text-sm'>
-                            <li>Quai Anatole France (perto do Musée d'Orsay) - <a href='https://www.google.com/maps/search/?api=1&query=48.86261,2.31964' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
-                            <li>Avenue des Champs-Élysées (Jardins) - <a href='https://www.google.com/maps/search/?api=1&query=48.86726,2.31709' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
-                        </ul>
-                    `
-                },
-                { time: "15:30", icon: "fa-building-columns", title: "Musée d'Orsay", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1Bu_gwN7g8FUIv_qIG1aK_RuN7e0ACQcr/view?usp=drive_link", guideLink: "visita_musee-orsay.html" },
-                { icon: "fa-landmark", title: "Petit Palais/Grand Palais (Exterior)" }
+                { time: "14:30", icon: "fa-person-walking", title: "Caminhada até Musée d’Orsay", description: "~20 min a pé desde Place de la Concorde. Chegada prevista às 14:50." },
+                { time: "15:30", icon: "fa-building-columns", title: "Musée d'Orsay", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1Bu_gwN7g8FUIv_qIG1aK_RuN7e0ACQcr/view?usp=drive_link", guideLink: "visita_musee-orsay.html", description: "Entrada na porta A. Visita recomendada: 1h30-2h." },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~10 min a pé desde o Musée d'Orsay." },
+                { time: "17:30", icon: "fa-landmark", title: "Petit Palais / Grand Palais", description: "Observação exterior e fotos rápidas (~20 min)." }
             ]
         },
         {
