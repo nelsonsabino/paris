@@ -10,18 +10,34 @@ import { day5Data } from './roteiro_day5.js';
 const allDaysData = [day1Data, day2Data, day3Data, day4Data, day5Data];
 const monthMap = { 'Setembro': 8 };
 
-// --- LÓGICA DA METEOROLOGIA ---
+// --- LÓGICA DA METEOROLOGIA (ALTERADA) ---
 
+// Função modificada para devolver também uma classe de cor
 function getWeatherIconFromWMO(wmoCode) {
     const iconMap = {
-        0: 'fa-sun', 1: 'fa-cloud-sun', 2: 'fa-cloud-sun', 3: 'fa-cloud',
-        45: 'fa-smog', 48: 'fa-smog', 51: 'fa-cloud-rain', 53: 'fa-cloud-rain', 55: 'fa-cloud-rain',
-        61: 'fa-cloud-showers-heavy', 63: 'fa-cloud-showers-heavy', 65: 'fa-cloud-showers-heavy',
-        71: 'fa-snowflake', 73: 'fa-snowflake', 75: 'fa-snowflake',
-        80: 'fa-cloud-showers-heavy', 81: 'fa-cloud-showers-heavy', 82: 'fa-cloud-showers-heavy',
-        95: 'fa-bolt', 96: 'fa-bolt', 99: 'fa-bolt',
+        0: { icon: 'fa-sun', colorClass: 'weather-color-sun' },
+        1: { icon: 'fa-cloud-sun', colorClass: 'weather-color-sun' },
+        2: { icon: 'fa-cloud-sun', colorClass: 'weather-color-cloud' },
+        3: { icon: 'fa-cloud', colorClass: 'weather-color-cloud' },
+        45: { icon: 'fa-smog', colorClass: 'weather-color-smog' },
+        48: { icon: 'fa-smog', colorClass: 'weather-color-smog' },
+        51: { icon: 'fa-cloud-rain', colorClass: 'weather-color-rain' },
+        53: { icon: 'fa-cloud-rain', colorClass: 'weather-color-rain' },
+        55: { icon: 'fa-cloud-rain', colorClass: 'weather-color-rain' },
+        61: { icon: 'fa-cloud-showers-heavy', colorClass: 'weather-color-rain' },
+        63: { icon: 'fa-cloud-showers-heavy', colorClass: 'weather-color-rain' },
+        65: { icon: 'fa-cloud-showers-heavy', colorClass: 'weather-color-rain' },
+        71: { icon: 'fa-snowflake', colorClass: 'weather-color-snow' },
+        73: { icon: 'fa-snowflake', colorClass: 'weather-color-snow' },
+        75: { icon: 'fa-snowflake', colorClass: 'weather-color-snow' },
+        80: { icon: 'fa-cloud-showers-heavy', colorClass: 'weather-color-rain' },
+        81: { icon: 'fa-cloud-showers-heavy', colorClass: 'weather-color-rain' },
+        82: { icon: 'fa-cloud-showers-heavy', colorClass: 'weather-color-rain' },
+        95: { icon: 'fa-bolt', colorClass: 'weather-color-storm' },
+        96: { icon: 'fa-bolt', colorClass: 'weather-color-storm' },
+        99: { icon: 'fa-bolt', colorClass: 'weather-color-storm' },
     };
-    return iconMap[wmoCode] || 'fa-question-circle';
+    return iconMap[wmoCode] || { icon: 'fa-question-circle', colorClass: 'weather-color-cloud' };
 }
 
 async function fetchHourlyWeatherForTrip() {
@@ -166,7 +182,6 @@ async function renderPage() {
             if (sectionBlock.rainyDayAlternatives && sectionBlock.rainyDayAlternatives.restaurants.length > 0) {
                 const { title, restaurants } = sectionBlock.rainyDayAlternatives;
                 const restaurantList = restaurants.map(r => {
-                    // Adiciona a classe 'highlight-restaurant' se a propriedade 'highlight' for verdadeira
                     const highlightClass = r.highlight ? 'highlight-restaurant' : '';
                     return `
                     <li class="rainy-restaurant-item ${highlightClass}">
@@ -216,8 +231,9 @@ async function renderPage() {
                     
                     const weatherCode = weatherMap.get(dateString);
                     if (weatherCode !== undefined) {
-                        const iconClass = getWeatherIconFromWMO(weatherCode);
-                        weatherIconHtml = `<i class="fa-solid ${iconClass} weather-icon" title="Previsão para as ${item.time}"></i>`;
+                        const weatherInfo = getWeatherIconFromWMO(weatherCode);
+                        // A linha abaixo agora adiciona a classe de cor
+                        weatherIconHtml = `<i class="fa-solid ${weatherInfo.icon} weather-icon ${weatherInfo.colorClass}" title="Previsão para as ${item.time}"></i>`;
                     }
                 }
 
