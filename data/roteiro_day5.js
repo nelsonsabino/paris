@@ -15,7 +15,7 @@ export const day5Data = {
             id: "cacifos",
             navTitle: "Malas",
             title: "CASA → CACIFO DE MALAS",
-            mapLink: "https://maps.app.goo.gl/wW3zVHupQH2CQmCb8",
+            mapLink: "https://maps.app.goo.gl/ekxEaaQ8wJTVeGcT7", // <-- LINK ATUALIZADO
             timeline: [
                 { time: "08:00", icon: "fa-mug-hot", title: "Pequeno-almoço em casa",
                     mealSuggestion: {
@@ -33,9 +33,9 @@ export const day5Data = {
                 { 
                     time: "08:58", 
                     icon: "fa-suitcase", 
-                    title: "Bounce Luggage Storage - Near Châtelet Subway Station", // <-- TÍTULO ATUALIZADO
-                    requiresTicket: true, // <-- ADICIONADO PARA MOSTRAR ÍCONE
-                    ticketLink: "https://bounce.com/s/location/ea27629f-40f9-4ddd-8681-123a56cc7fa4/book?compactBags=0&from=2025-09-23T0900&gei=4KHJaObYBc-ahbIPlb_XwQo&hl=pt-PT&oddsizeBags=0&rwg_token=ACgRB3caBtj1F5C5gJujlif9Lbgl7N2KQuQyeATYkdU6Xu30I6vvo77t8UdzF1mxa6xzJ1XecZ2rNQPCtg4wKBWGZLzsyICIQg%3D%3D&standardBags=5&to=2025-09-23T1800&utm_source=rwg" // <-- LINK ADICIONADO
+                    title: "Bounce Luggage Storage - Near Châtelet Subway Station",
+                    requiresTicket: true,
+                    ticketLink: "https://bounce.com/s/location/ea27629f-40f9-4ddd-8681-123a56cc7fa4/book?compactBags=0&from=2025-09-23T0900&gei=4KHJaObYBc-ahbIPlb_XwQo&hl=pt-PT&oddsizeBags=0&rwg_token=ACgRB3caBtj1F5C5gJujlif9Lbgl7N2KQuQyeATYkdU6Xu30I6vvo77t8UdzF1mxa6xzJ1XecZ2rNQPCtg4wKBWGZLzsyICIQg%3D%3D&standardBags=5&to=2025-09-23T1800&utm_source=rwg"
                 }
             ]
         },
@@ -43,29 +43,26 @@ export const day5Data = {
             id: "quartier-latin",
             navTitle: "Quartier Latin",
             title: "MANHÃ NO QUARTIER LATIN",
-            mapLink: "https://maps.app.goo.gl/7GCuifBh5KauXXcCA",
-            description: "Duração estimada do percurso a pé com visitas: ~3.5 horas",
-            timeline: [
-                { time: "09:30", icon: "fa-gem", title: "Sainte-Chapelle", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1ucQbtBDOxRx83d_m4Up5lnqzKcngOm3k/view?usp=drive_link", guideLink: "visita_sainte-chapelle.html", description: "Visita: ~1 hora" },
-                { time: "10:40", icon: "fa-person-walking", title: "Rue de la Huchette & Igreja de São Severino", description: "Passeio: ~20 min" },
-                 { time: "11:00", icon: "fa-cookie-bite", title: "Lanche da Manhã",
+            mapLink: "https://maps.app.goo.gl/JkgAoFCqB5ca5qpE6", // <-- LINK ATUALIZADO
+            timeline: [ // <-- TIMELINE COMPLETAMENTE REFEITA
+                { time: "09:00", icon: "fa-train-subway", title: "Saída do Metro Châtelet", description: "~4 min a pé até Sainte-Chapelle." },
+                { time: "09:30", icon: "fa-gem", title: "Sainte-Chapelle", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1ucQbtBDOxRx83d_m4Up5lnqzKcngOm3k/view?usp=drive_link", guideLink: "visita_sainte-chapelle.html", description: "Visita: ~1 hora. Saída: 10:30" },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé." },
+                { time: "10:30", icon: "fa-road", title: "Rue de la Huchette", description: "Passeio e fotos (~10 min). Saída: 10:40" },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~2 min a pé." },
+                { time: "10:40", icon: "fa-church", title: "Igreja de São Severino", description: "Visita breve (~20 min). Saída: 11:00" },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~2 min a pé." },
+                { time: "11:00", icon: "fa-cookie-bite", title: "Lanche da Manhã",
                     mealSuggestion: {
-                        suggestion: "Comprar um croissant ou outra pastelaria numa das muitas 'boulangeries' do Quartier Latin.",
+                        suggestion: "Comprar um croissant ou outra pastelaria numa das muitas 'boulangeries' do Quartier Latin (~15 min). Saída: 11:15"
                     }
                 },
-                { time: "11:15", icon: "fa-monument", title: "Saint-Étienne-du-Mont", description: "Visita: ~25 min" },
-                { time: "11:50", icon: "fa-landmark-dome", title: "Panteão (Vista Exterior)", guideLink: "visita_quartier-latin.html", description: "Fotos: ~15 min" },
-                { time: "12:15", icon: "fa-seedling", title: "Jardim do Luxemburgo", guideLink: "visita_jardim-luxemburgo.html", description: "Pausa e caminhada: ~45 min" },
-                {
-                    icon: "fa-restroom",
-                    title: "Casas de Banho Próximas",
-                    description: `
-                        <ul class='list-disc list-inside text-sm'>
-                            <li>Place du Panthéon - <a href='https://www.google.com/maps/search/?api=1&query=48.8471,2.3468' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
-                            <li>Jardin du Luxembourg - <a href='https://www.google.com/maps/search/?api=1&query=48.8460,2.3371' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
-                        </ul>
-                    `
-                }
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~3 min a pé." },
+                { time: "11:15", icon: "fa-monument", title: "Saint-Étienne-du-Mont", description: "Visita: ~25 min. Saída: 11:40" },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~3 min a pé." },
+                { time: "11:40", icon: "fa-landmark-dome", title: "Panteão (Vista Exterior)", guideLink: "visita_quartier-latin.html", description: "Fotos: ~15 min. Saída: 11:55" },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé." },
+                { time: "11:55", icon: "fa-seedling", title: "Jardim do Luxemburgo", guideLink: "visita_jardim-luxemburgo.html", description: "Pausa, caminhada e fotos: ~45 min. Saída: 12:40" }
             ]
         },
         {
