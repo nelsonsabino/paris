@@ -12,12 +12,12 @@ const monthMap = { 'Setembro': 8 };
 
 // --- LÓGICA DA METEOROLOGIA (ALTERADA) ---
 
-// Função modificada para devolver também uma classe de cor
+// Função modificada para corrigir as cores
 function getWeatherIconFromWMO(wmoCode) {
     const iconMap = {
         0: { icon: 'fa-sun', colorClass: 'weather-color-sun' },
         1: { icon: 'fa-cloud-sun', colorClass: 'weather-color-sun' },
-        2: { icon: 'fa-cloud-sun', colorClass: 'weather-color-cloud' },
+        2: { icon: 'fa-cloud-sun', colorClass: 'weather-color-sun' }, // <-- CORRIGIDO AQUI
         3: { icon: 'fa-cloud', colorClass: 'weather-color-cloud' },
         45: { icon: 'fa-smog', colorClass: 'weather-color-smog' },
         48: { icon: 'fa-smog', colorClass: 'weather-color-smog' },
@@ -227,13 +227,16 @@ async function renderPage() {
                     const dateParts = dayData.date.split(', ')[1].split(' de ');
                     const day = parseInt(dateParts[0]);
                     const month = monthMap[dateParts[1]];
-                    const dateString = `2025-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}T${item.time}`;
+                    
+                    // --- LÓGICA DA HORA APROXIMADA (ALTERADA) ---
+                    const hourPart = item.time.split(':')[0]; // Pega apenas a hora, ignora os minutos
+                    const lookupTime = `${String(hourPart).padStart(2, '0')}:00`; // Formata para HH:00
+                    const dateString = `2025-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}T${lookupTime}`;
                     
                     const weatherCode = weatherMap.get(dateString);
                     if (weatherCode !== undefined) {
                         const weatherInfo = getWeatherIconFromWMO(weatherCode);
-                        // A linha abaixo agora adiciona a classe de cor
-                        weatherIconHtml = `<i class="fa-solid ${weatherInfo.icon} weather-icon ${weatherInfo.colorClass}" title="Previsão para as ${item.time}"></i>`;
+                        weatherIconHtml = `<i class="fa-solid ${weatherInfo.icon} weather-icon ${weatherInfo.colorClass}" title="Previsão para as ${lookupTime}"></i>`;
                     }
                 }
 
