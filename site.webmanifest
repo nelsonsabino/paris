@@ -4,7 +4,7 @@
   "description": "Planeamento da viagem a Paris em Setembro de 2025",
   "start_url": "index.html",
   "scope": "./",
-  "display": "standalone",
+  "display": "fullscreen",
   "orientation": "portrait",
   "background_color": "#ffffff",
   "theme_color": "#1f2937", 
