@@ -15,7 +15,7 @@ export const day5Data = {
             id: "cacifos",
             navTitle: "Malas",
             title: "CASA → CACIFO DE MALAS",
-            mapLink: "https://maps.app.goo.gl/ekxEaaQ8wJTVeGcT7", // <-- LINK ATUALIZADO
+            mapLink: "https://maps.app.goo.gl/ekxEaaQ8wJTVeGcT7",
             timeline: [
                 { time: "08:00", icon: "fa-mug-hot", title: "Pequeno-almoço em casa",
                     mealSuggestion: {
@@ -43,8 +43,8 @@ export const day5Data = {
             id: "quartier-latin",
             navTitle: "Quartier Latin",
             title: "MANHÃ NO QUARTIER LATIN",
-            mapLink: "https://maps.app.goo.gl/JkgAoFCqB5ca5qpE6", // <-- LINK ATUALIZADO
-            timeline: [ // <-- TIMELINE COMPLETAMENTE REFEITA
+            mapLink: "https://maps.app.goo.gl/JkgAoFCqB5ca5qpE6",
+            timeline: [
                 { time: "09:00", icon: "fa-train-subway", title: "Saída do Metro Châtelet", description: "~4 min a pé até Sainte-Chapelle." },
                 { time: "09:30", icon: "fa-gem", title: "Sainte-Chapelle", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1ucQbtBDOxRx83d_m4Up5lnqzKcngOm3k/view?usp=drive_link", guideLink: "visita_sainte-chapelle.html", description: "Visita: ~1 hora. Saída: 10:30" },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé." },
@@ -69,35 +69,31 @@ export const day5Data = {
             id: "st-germain",
             navTitle: "St. Germain",
             title: "ALMOÇO E TARDE EM SAINT-GERMAIN-DES-PRÉS",
-            mapLink: "https://maps.app.goo.gl/ZcqjqcGoYmcdEt8u6",
-            timeline: [
+            mapLink: "https://maps.app.goo.gl/8vhhuJfL3BteB6mk9", // <-- LINK ATUALIZADO
+            timeline: [ // <-- TIMELINE COMPLETAMENTE REFEITA
                 { time: "13:00", icon: "fa-utensils", title: "Almoço em Brasserie",
-                    description: "Encontrar uma brasserie típica no bairro de Saint-Germain para a refeição especial da viagem.",
                      mealSuggestion: {
-                        suggestion: "É o 'desvio' ao orçamento, para uma experiência parisiense autêntica. Procurar menus com 'formule déjeuner'.",
+                        suggestion: "Escolha uma brasserie típica para a refeição especial. Duração: ~1h30. Saída: 14:30",
                         budget: "~15€ (adulto), ~10€ (criança)"
                     }
                 },
-                { time: "14:30", icon: "fa-church", title: "Igreja de Saint-Sulpice", description: "Visitar o interior e ver as pinturas de Delacroix." },
-                { time: "15:15", icon: "fa-coffee", title: "Pausa num Café Icónico",
-                    description: "Sentar na esplanada do Les Deux Magots ou Café de Flore para um café e observar o movimento.",
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~6 min a pé." },
+                { time: "14:30", icon: "fa-church", title: "Igreja de Saint-Sulpice", description: "Visita e pinturas de Delacroix (~30 min). Saída: 15:00" },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé." },
+                { time: "15:00", icon: "fa-coffee", title: "Pausa num Café Icónico",
                      mealSuggestion: {
-                        suggestion: "Pedir um 'café crème' ou 'chocolat chaud' para a experiência completa. É caro, mas memorável.",
+                        suggestion: "Sentar no Les Deux Magots ou Café de Flore (~30 min). Saída: 15:30",
                         budget: "~6 € / pessoa"
                     }
                 },
-                { time: "16:00", icon: "fa-person-walking", title: "Explorar o Bairro e caminhar para o cacifo", description: "Passear pelas ruas charmosas e seguir a pé em direção à zona do Louvre." },
-                {
-                    icon: "fa-restroom",
-                    title: "Casas de Banho Próximas",
-                    description: `
-                        <ul class='list-disc list-inside text-sm'>
-                            <li>10 Rue Saint-Sulpice - <a href='https://www.google.com/maps/search/?api=1&query=48.8509,2.3330' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
-                            <li>Marché Saint-Germain - <a href='https://www.google.com/maps/search/?api=1&query=48.8521,2.3346' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
-                        </ul>
-                    `
-                },
-                { time: "17:45", icon: "fa-suitcase", title: "Recolher Malas no Cacifo" }
+                { time: "15:30", icon: "fa-church", title: "Abadia de Saint-Germain-des-Prés", description: "Visita rápida e fotos (~10 min). Saída: 15:40" },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~2 min a pé." },
+                { time: "15:40", icon: "fa-tree", title: "Square Laurent-Prache", description: "Passeio breve, fotos (~10 min). Saída: 15:50" },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~3 min a pé." },
+                { time: "15:50", icon: "fa-shopping-bag", title: "Rue Jacob", description: "Passeio por ruas pitorescas, lojas e galerias (~20 min). Saída: 16:10" },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~10 min a pé." },
+                { time: "16:10", icon: "fa-road", title: "Rue de Seine", description: "Caminhada final explorando boutiques até ao cacifo (~35 min). Chegada: 16:45" },
+                { time: "17:45", icon: "fa-suitcase", title: "Recolher Malas no Cacifo", description: "Duração estimada: ~15 min para recolher as malas. Saída: 18:00" }
             ]
         },
         {
