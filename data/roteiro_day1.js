@@ -34,7 +34,6 @@ export const day1Data = {
                     time: "13:30", icon: "fa-utensils", title: "Pausa para Almoço e WC",
                     mealSuggestion: {
                         suggestion: "Refeição rápida no Aeroporto de Orly. Opções como McDonald's, Paul, ou sandes de supermercado.",
-                       /* budget: "~10 € / pessoa" */
                     }
                 },
                 {
@@ -56,7 +55,6 @@ export const day1Data = {
                 { time: "16:30", icon: "fa-cookie-bite", title: "Lanche da Tarde",
                     mealSuggestion: {
                         suggestion: "Pequeno lanche em casa (fruta, bolachas do supermercado) para aguentar até ao jantar.",
-                     /*   budget: "~1,5 € / pessoa" */
                     }
                 }
             ]
@@ -65,23 +63,23 @@ export const day1Data = {
             id: "ida-eiffel",
             navTitle: "Eiffel", // Título personalizado para a navegação
             title: "CASA → INVALIDES",
-            mapLink: "https://maps.app.goo.gl/eBNE3Dy1SoSbVufCA",
+            mapLink: "https://maps.app.goo.gl/q5okVHgdTgK4mSdn7", // <-- LINK ATUALIZADO
             timeline: [
                 { time: "18:30", icon: "fa-house-chimney", title: "Saída de Casa" },
                 {
-                    time: "18:33", icon: "fa-route", title: "Percurso: Casa → Invalides", description: "Duração total: ~30 min. Clica para ver os detalhes.",
+                    time: "18:33", icon: "fa-route", title: "Percurso: Casa → Opéra", // <-- TÍTULO E DESCRIÇÃO ATUALIZADOS
+                    description: "Duração total: ~23 min. Clica para ver os detalhes.",
+                    // <-- PERCURSO ATUALIZADO ---
                     accordion: [
-                        { text: "18:33: Apanhar Metro <span class='metro-line' style='background-color: #fa9aaa;'>7</span>", subText: "Da estação <strong>Fort d'Aubervilliers</strong>, direção Mairie d'Ivry." },
-                        { text: "18:53: Trocar em Opéra", subText: "Sair do metro e seguir para a Linha 8." },
-                        { text: "18:56: Apanhar Metro <span class='metro-line' style='background-color: #ceadd2; color: black;'>8</span>", subText: "Da estação <strong>Opéra</strong>, direção Balard." },
-                        { text: "19:00: Sair em Invalides", subText: "" }
+                        { text: "18:33: Apanhar Metro <span class='metro-line' style='background-color: #fa9aaa;'>7</span>", subText: "Da estação <strong>Fort d'Aubervilliers</strong>, direção Mairie d'Ivry (14 paragens)." },
+                        { text: "18:53: Sair em Opéra", subText: "Fim do percurso de metro. Daqui, seguir a pé para a zona de Invalides." }
                     ]
                 }
             ]
         },
         {
             id: "zona-eiffel",
-            navTitle: "Zona Eiffel", // Título personalizado
+            navTitle: "Zona Eiffel",
             title: "INVALIDES - TOUR EIFFEL",
             mapLink: "https://maps.app.goo.gl/R9Hgbbwr1KJgKHkD8",
             timeline: [
@@ -93,15 +91,8 @@ export const day1Data = {
                 { time: "22:00", icon: "fa-utensils", title: "Jantar Económico",
                     mealSuggestion: {
                         suggestion: "Explorar a Rue Cler para encontrar crepes ou levar sandes feitas. Uma boa opção é comprar algo num supermercado (Franprix/Monoprix) na zona.",
-                      /*  budget: "~6 € / pessoa"*/
                     }
                 },
-             /*   { time: "22:45", icon: "fa-croissant", title: "Lanche Doce",
-                    mealSuggestion: {
-                        suggestion: "Comprar um croissant ou pão de chocolate para manter a energia dos mais novos antes da viagem de metro de volta.",
-                        budget: "~2 € / pessoa"
-                    }
-                },*/
                 { time: "23:00", icon: "fa-person-walking", title: "Ida para o Metro École Militaire" },
                 {
                     icon: "fa-restroom",
@@ -117,7 +108,7 @@ export const day1Data = {
         },
         {
             id: "regresso-d1",
-            navTitle: "Regresso", // Título personalizado
+            navTitle: "Regresso",
             title: "ÉCOLE MILITAIRE → CASA",
             mapLink: "https://maps.app.goo.gl/h8Evfet5J4ntq5cE8",
             timeline: [
