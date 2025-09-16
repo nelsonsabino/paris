@@ -15,19 +15,14 @@ export const day2Data = {
             id: "ida-cite",
             navTitle: "Ida",
             title: "CASA → ÎLE DE LA CITÉ",
-            mapLink: "https://maps.app.goo.gl/7EPhqZnEWWDcPmbS6",
-            timeline: [
-                { time: "8:00", icon: "fa-mug-hot", title: "Pequeno-almoço em casa", 
-                    mealSuggestion: {
-                        suggestion: "Refeição em casa com os produtos comprados no dia anterior (pão, leite, cereais, etc).",
-                    }
-                },
-                { time: "8:21", icon: "fa-house-chimney", title: "Saída de Casa" },
+            mapLink: "https://maps.app.goo.gl/ZLTXGwidLLW28Cpv5", // <-- LINK ATUALIZADO
+            timeline: [ // <-- TIMELINE ATUALIZADA
+                { time: "08:01", icon: "fa-house-chimney", title: "Saída de Casa" },
                 {
-                    time: "8:24", icon: "fa-route", title: "Percurso: Casa → Île de la Cité", description: "Duração total: ~37 min. Clica para ver os detalhes.",
+                    time: "08:04", icon: "fa-route", title: "Percurso: Casa → Île de la Cité", description: "Duração total: ~37 min. Clica para ver os detalhes.",
                     accordion: [
-                        { text: "8:24: Apanhar Metro <span class='metro-line' style='background-color: #fa9aaa;'>7</span>", subText: "Da estação <strong>Fort d'Aubervilliers</strong>, direção Villejuif-Louis Aragon." },
-                        { text: "8:50: Sair em Châtelet", subText: "Caminhar ~8 min até ao nosso ponto de partida na ilha." }
+                        { text: "08:04: Apanhar Metro <span class='metro-line' style='background-color: #fa9aaa;'>7</span>", subText: "Da estação <strong>Fort d'Aubervilliers</strong>, direção Villejuif-Louis Aragon (18 paragens)." },
+                        { text: "08:30: Sair em Châtelet", subText: "Caminhar ~8 min até ao ponto de partida na ilha, chegando às 08:38." }
                     ]
                 }
             ]
@@ -36,32 +31,25 @@ export const day2Data = {
             id: "ile-cite",
             navTitle: "Île Cité",
             title: "ÎLE DE LA CITÉ → SQUARE DU VERT-GALANT",
-            mapLink: "https://maps.app.goo.gl/rUXPgUtAZMW1sijY7",
-            timeline: [
-                { time: "8:58", icon: "fa-coffee", title: "Au Vieux Paris d'Arcole" },
-                { time: "9:10", icon: "fa-church", title: "Catedral de Notre-Dame", description: "Visita interior (~30-45min.) e Point Zéro", requiresTicket: true, ticketLink: "https://resa.notredamedeparis.fr/en/reservationindividuelle/tickets", guideLink: "visita_notre-dame.html" },
-                { icon: "fa-book", title: "Shakespeare and Company" },
-                { time: "11:00", icon: "fa-cookie-bite", title: "Lanche da Manhã", 
-                    mealSuggestion: {
-                        suggestion: "Levar snacks do supermercado para comer a meio da manhã no Quartier Latin, ou comprar um croissant numa pastelaria local.",
-                    }
-                },
-                { icon: "fa-church", title: "Igreja de São Severino" },
-                { icon: "fa-person-walking", title: "Rue de la Huchette" },
-                { icon: "fa-fountain", title: "Fontaine Saint-Michel" },
-                { icon: "fa-flower", title: "Mercado das Flores Rainha Elizabeth II" },
-                { icon: "fa-tree-city", title: "Place Dauphine" },
-                { icon: "fa-tree", title: "Square du Vert-Galant" },
-                {
-                    icon: "fa-restroom",
-                    title: "Casas de Banho Próximas",
-                    description: `
-                        <ul class='list-disc list-inside text-sm'>
-                            <li>Place du Parvis de Notre-Dame - <a href='https://www.google.com/maps/search/?api=1&query=48.85311,2.34854' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
-                            <li>Quai du Louvre (Perto da Pont Neuf) - <a href='https://www.google.com/maps/search/?api=1&query=48.85834,2.34114' target='_blank' class='text-blue-600'>Ver Mapa</a></li>
-                        </ul>
-                    `
-                }
+            mapLink: "https://maps.app.goo.gl/5E9U6Ka6DwobLj5e7", // <-- LINK ATUALIZADO
+            timeline: [ // <-- TIMELINE COMPLETAMENTE REFEITA
+                { time: "08:40", icon: "fa-coffee", title: "Au Vieux Paris d'Arcole", description: "Início do passeio, fotos rápidas (~10 min)." },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~10 min a pé." },
+                { time: "08:50", icon: "fa-church", title: "Catedral de Notre-Dame", description: "Visita interior + Point Zéro (~1h10). Saída prevista: 10:00.", requiresTicket: true, ticketLink: "https://resa.notredamedeparis.fr/en/reservationindividuelle/tickets", guideLink: "visita_notre-dame.html" },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~2 min a pé." },
+                { time: "10:00", icon: "fa-book", title: "Shakespeare and Company", description: "Livraria histórica, fotos (~15 min). Saída prevista: 10:15." },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~10 min a pé." },
+                { time: "10:25", icon: "fa-church", title: "Igreja de São Severino", description: "Visita interior/exterior (~15 min). Saída prevista: 10:40." },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé." },
+                { time: "10:45", icon: "fa-road", title: "Rue de la Huchette", description: "Passeio rápido, ambiente da rua (~10 min). Saída prevista: 10:55." },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé." },
+                { time: "11:00", icon: "fa-fountain", title: "Fontaine Saint-Michel", description: "Fotos rápidas, breve paragem (~10 min). Saída prevista: 11:10." },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé." },
+                { time: "11:15", icon: "fa-leaf", title: "Mercado das Flores Rainha Elizabeth II", description: "Passeio e fotos (~15 min). Saída prevista: 11:30." },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé." },
+                { time: "11:35", icon: "fa-tree-city", title: "Place Dauphine", description: "Breve visita, fotos (~10 min). Saída prevista: 11:45." },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~3 min a pé." },
+                { time: "11:48", icon: "fa-tree", title: "Square du Vert-Galant", description: "Pausa final, fotos, contemplação do Sena (~10 min). Saída prevista: 11:58." },
             ]
         },
         {
