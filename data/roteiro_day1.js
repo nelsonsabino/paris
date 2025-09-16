@@ -82,13 +82,19 @@ export const day1Data = {
             title: "ÓPERA - TOUR EIFFEL",
             mapLink: "https://maps.app.goo.gl/6E5Nvw35RZtfxwYUA",
             timeline: [
-                { time: "19:00", icon: "fa-landmark", title: "Opéra Garnier (Chegada e Vista Exterior)" },
-                { time: "19:30", icon: "fa-landmark-dome", title: "Hôtel des Invalides (Vista Exterior)" },
-                { time: "19:45", icon: "fa-bridge", title: "Ponte Alexandre III", description: "Local ideal para ver o pôr do sol." },
-                { time: "20:30", icon: "fa-camera-retro", title: "Jardim do Trocadéro" },
-                { time: "21:00", icon: "fa-tower-observation", title: "Torre Eiffel", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1yA1rnPn_RHHJ3oZ8ImG2pWCC61VbrpNa/view?usp=sharing", guideLink: "visita_torre-eiffel.html" },
-                { time: "22:00", icon: "fa-store", title: "Rue Cler" },
-                { time: "22:30", icon: "fa-person-walking", title: "Ida para o Metro École Militaire" },
+                { time: "19:00", icon: "fa-landmark", title: "Opéra Garnier", description: "Chegada, vista exterior e fotos rápidas." },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~20 min a pé desde Opéra Garnier" },
+                { time: "19:30", icon: "fa-landmark-dome", title: "Hôtel des Invalides", description: "Vista exterior, paragem rápida (~10 min)." },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~10 min a pé desde Hôtel des Invalides." },
+                { time: "19:45", icon: "fa-bridge", title: "Ponte Alexandre III", description: "<strong>Pôr-do-sol às 19:53.</strong> Chegar 10-15 min antes para garantir boa posição." },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~20 min a pé desde a Ponte Alexandre III." },
+                { time: "20:30", icon: "fa-camera-retro", title: "Jardim do Trocadéro", description: "Fotos da Torre Eiffel, breve passeio (~15 min)." },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé desde o Trocadéro." },
+                { time: "20:45", icon: "fa-tower-observation", title: "Torre Eiffel", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1yA1rnPn_RHHJ3oZ8ImG2pWCC61VbrpNa/view?usp=sharing", guideLink: "visita_torre-eiffel.html", description: "Chegada 15 min antes do bilhete (21:00). Visita estimada: 1h30." },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~10 min a pé desde a Torre Eiffel." },
+                { time: "22:00", icon: "fa-store", title: "Rue Cler", description: "Passeio rápido ou lanche (~30 min)." },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min até à estação de metro." },
+                { time: "22:30", icon: "fa-train-subway", title: "Entrada no Metro École Militaire" },
                 {
                     icon: "fa-restroom",
                     title: "Casas de Banho Próximas",
@@ -105,8 +111,8 @@ export const day1Data = {
             id: "regresso-d1",
             navTitle: "Regresso",
             title: "ÉCOLE MILITAIRE → CASA",
-            mapLink: "https://maps.app.goo.gl/bVccedxWUbvoQinR6", // <-- LINK ATUALIZADO
-            timeline: [ // <-- TIMELINE ATUALIZADA
+            mapLink: "https://maps.app.goo.gl/bVccedxWUbvoQinR6",
+            timeline: [
                 {
                     time: "22:34", icon: "fa-route", title: "Percurso: École Militaire → Casa", description: "Duração total: ~34 min. Clica para ver os detalhes.",
                     accordion: [
