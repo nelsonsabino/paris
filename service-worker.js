@@ -1,35 +1,35 @@
-// Versão 17: Renomeia os ícones da PWA para forçar a atualização da cache do servidor.
-const CACHE_NAME = 'paris-v17';
+// Versão 18: CORRIGE TODOS OS CAMINHOS para relativos, adequados para GitHub Project Pages.
+const CACHE_NAME = 'paris-v18';
 const urlsToCache = [
   // Páginas principais
-  '/index.html',
-  '/guia.html',
-  '/roteiro.html',
-  '/orcamento.html',
-  '/frases.html',
+  'index.html',
+  'guia.html',
+  'roteiro.html',
+  'orcamento.html',
+  'frases.html',
   
   // Ficheiro Manifest
-  '/site.webmanifest',
+  'site.webmanifest',
 
   // Ícones na raiz
-  '/favicon.ico',
-  '/favicon-96x96.png',
-  '/apple-touch-icon.png',
+  'favicon.ico',
+  'favicon-96x96.png',
+  'apple-touch-icon.png',
   
-  // ÍCONES DA PWA na raiz (com novos nomes)
-  '/icon-192.png',
-  '/icon-512.png',
+  // ÍCONES DA PWA na raiz
+  'icon-192.png',
+  'icon-512.png',
 
   // Imagens de conteúdo
-  '/assets/images/Dia1.png',
-  '/assets/images/Dia1a.png',
-  '/assets/images/Dia1b.png',
-  '/assets/images/Dia2.png',
-  '/assets/images/Dia2a.png',
-  '/assets/images/Dia2b.png',
-  '/assets/images/Dia3a.png',
-  '/assets/images/Dia4a.png',
-  '/assets/images/Dia5a.png'
+  'assets/images/Dia1.png',
+  'assets/images/Dia1a.png',
+  'assets/images/Dia1b.png',
+  'assets/images/Dia2.png',
+  'assets/images/Dia2a.png',
+  'assets/images/Dia2b.png',
+  'assets/images/Dia3a.png',
+  'assets/images/Dia4a.png',
+  'assets/images/Dia5a.png'
 ];
 
 // Instalação do Service Worker
@@ -38,7 +38,6 @@ self.addEventListener('install', event => {
     caches.open(CACHE_NAME)
       .then(cache => {
         console.log('Opened cache');
-        // Usar {cache: 'reload'} para garantir que os ficheiros são obtidos da rede
         const requests = urlsToCache.map(url => new Request(url, {cache: 'reload'}));
         return cache.addAll(requests);
       })
