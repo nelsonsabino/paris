@@ -100,7 +100,9 @@ body {
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     border-bottom: 1px solid #e2e8f0;
     padding: 0.5rem 1rem;
-    transform: translate3d(0, 0, 0); 
+    transform: translate3d(0, 0, 0);
+    display: flex;         /* <-- ADICIONE ESTA LINHA */
+    align-items: center;   /* <-- ADICIONE ESTA LINHA */
 }
 
 .day-nav {
@@ -407,9 +409,6 @@ html.dark .weather-color-snow { color: #67e8f9; } /* cyan-300 */
 html.dark .weather-color-storm { color: #c4b5fd; } /* violet-300 */
 
 
-.container > header {
-    padding-top: 4rem; 
-}
 
 .theme-switcher .sun-icon { display: none; }
 .theme-switcher .moon-icon { display: block; }
