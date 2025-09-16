@@ -405,3 +405,13 @@ html.dark .weather-color-rain { color: #60a5fa; } /* blue-400 */
 html.dark .weather-color-smog { color: #a1a1aa; } /* zinc-400 */
 html.dark .weather-color-snow { color: #67e8f9; } /* cyan-300 */
 html.dark .weather-color-storm { color: #c4b5fd; } /* violet-300 */
+
+
+.container > header {
+    padding-top: 4rem; 
+}
+
+.theme-switcher .sun-icon { display: none; }
+.theme-switcher .moon-icon { display: block; }
+html.dark .theme-switcher .sun-icon { display: block; }
+html.dark .theme-switcher .moon-icon { display: none; }
