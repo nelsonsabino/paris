@@ -69,8 +69,8 @@ export const day5Data = {
             id: "st-germain",
             navTitle: "St. Germain",
             title: "ALMOÇO E TARDE EM SAINT-GERMAIN-DES-PRÉS",
-            mapLink: "https://maps.app.goo.gl/8vhhuJfL3BteB6mk9", // <-- LINK ATUALIZADO
-            timeline: [ // <-- TIMELINE COMPLETAMENTE REFEITA
+            mapLink: "https://maps.app.goo.gl/8vhhuJfL3BteB6mk9",
+            timeline: [
                 { time: "13:00", icon: "fa-utensils", title: "Almoço em Brasserie",
                      mealSuggestion: {
                         suggestion: "Escolha uma brasserie típica para a refeição especial. Duração: ~1h30. Saída: 14:30",
@@ -100,10 +100,13 @@ export const day5Data = {
             id: "regresso-d5",
             navTitle: "Regresso",
             title: "CACIFO DE MALAS → AEROPORTO ORLY",
-            mapLink: "https://maps.app.goo.gl/FT9XCYpm46v4dmf66",
+            mapLink: "https://maps.app.goo.gl/DQDxF2NFxLGHDybs5", // <-- LINK ATUALIZADO
             timeline: [
                 {
-                    time: "18:10", icon: "fa-route", title: "Percurso: Cacifo → Aeroporto Orly", description: "Duração total: ~30 min. Clica para ver os detalhes.",
+                    time: "18:10", 
+                    icon: "fa-route", 
+                    title: "Percurso: Cacifo → Aeroporto Orly", 
+                    description: "Duração total: ~30 min. <strong>Alternativa:</strong> Táxi via app (custo total ~55€).", // <-- NOTA ADICIONADA
                     accordion: [
                         { text: "18:10: Apanhar Metro <span class='metro-line' style='background-color: #62259d;'>14</span>", subText: "Da estação <strong>Châtelet</strong>, direção Aéroport d'Orly." },
                         { text: "18:36: Sair em Aéroport d'Orly" }
