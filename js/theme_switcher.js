@@ -1,8 +1,5 @@
 // js/theme_switcher.js
 
-/**
- * Script para controlar a lógica de alternância de tema (Dark/Light Mode).
- */
 document.addEventListener('DOMContentLoaded', () => {
     const themeSwitcherBtn = document.getElementById('theme-switcher');
     
@@ -11,18 +8,50 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    // Função para definir o tema
+    // --- NOVA LÓGICA PARA CONTROLAR A COR DA BARRA DE STATUS ---
+
+    const lightThemeColor = "#f0f4f8"; // Cor de fundo do modo claro
+    const darkThemeColor = "#1f2937";  // Cor de fundo do modo escuro
+
+    /**
+     * Encontra ou cria a meta tag 'theme-color' e atualiza a sua cor.
+     */
+    function updateMetaThemeColor() {
+        let metaThemeColor = document.querySelector('meta[name="theme-color"]');
+        
+        // Se a tag não existir, cria-a e adiciona-a ao <head>
+        if (!metaThemeColor) {
+            metaThemeColor = document.createElement('meta');
+            metaThemeColor.setAttribute('name', 'theme-color');
+            document.head.appendChild(metaThemeColor);
+        }
+
+        // Verifica se o modo escuro está ativo
+        const isDarkMode = document.documentElement.classList.contains('dark');
+        
+        // Define a cor da tag com base no tema
+        metaThemeColor.setAttribute('content', isDarkMode ? darkThemeColor : lightThemeColor);
+    }
+
+
+    // --- LÓGICA EXISTENTE (MODIFICADA) ---
+
+    /**
+     * Aplica o tema (classe 'dark') e atualiza a cor da barra de status.
+     * @param {string} theme - O tema a ser aplicado ('light' or 'dark').
+     */
     const applyTheme = (theme) => {
         if (theme === 'dark') {
             document.documentElement.classList.add('dark');
         } else {
             document.documentElement.classList.remove('dark');
         }
+        // Chama a nossa nova função sempre que o tema muda
+        updateMetaThemeColor();
     };
     
     // Adiciona o evento de clique ao botão
     themeSwitcherBtn.addEventListener('click', () => {
-        // Verifica se o modo escuro está ativo e alterna
         const isDarkMode = document.documentElement.classList.contains('dark');
         if (isDarkMode) {
             localStorage.setItem('theme', 'light');
@@ -33,6 +62,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // O script "anti-flash" no <head> já cuida da aplicação inicial do tema.
-    // Este script apenas garante que o botão funciona após o carregamento da página.
+    // Ouve por mudanças no tema do sistema operativo (ex: o modo escuro do telemóvel)
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+        // Só muda automaticamente se o utilizador não tiver uma preferência guardada
+        if (!('theme' in localStorage)) {
+            applyTheme(event.matches ? 'dark' : 'light');
+        }
+    });
+
+    // Chama a função uma vez no carregamento inicial da página para definir a cor correta
+    updateMetaThemeColor();
 });
