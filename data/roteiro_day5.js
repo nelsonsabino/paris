@@ -30,7 +30,13 @@ export const day5Data = {
                         { text: "08:55: Sair em Pont Neuf", subText: "Caminhar ~3 min até ao cacifo." }
                     ]
                 },
-                { time: "08:58", icon: "fa-suitcase", title: "Bounce Luggage Storage - Louvre" }
+                { 
+                    time: "08:58", 
+                    icon: "fa-suitcase", 
+                    title: "Bounce Luggage Storage - Near Châtelet Subway Station", // <-- TÍTULO ATUALIZADO
+                    requiresTicket: true, // <-- ADICIONADO PARA MOSTRAR ÍCONE
+                    ticketLink: "https://bounce.com/s/location/ea27629f-40f9-4ddd-8681-123a56cc7fa4/book?compactBags=0&from=2025-09-23T0900&gei=4KHJaObYBc-ahbIPlb_XwQo&hl=pt-PT&oddsizeBags=0&rwg_token=ACgRB3caBtj1F5C5gJujlif9Lbgl7N2KQuQyeATYkdU6Xu30I6vvo77t8UdzF1mxa6xzJ1XecZ2rNQPCtg4wKBWGZLzsyICIQg%3D%3D&standardBags=5&to=2025-09-23T1800&utm_source=rwg" // <-- LINK ADICIONADO
+                }
             ]
         },
         {
@@ -45,7 +51,6 @@ export const day5Data = {
                  { time: "11:00", icon: "fa-cookie-bite", title: "Lanche da Manhã",
                     mealSuggestion: {
                         suggestion: "Comprar um croissant ou outra pastelaria numa das muitas 'boulangeries' do Quartier Latin.",
-                     /*   budget: "~2 € / pessoa"*/
                     }
                 },
                 { time: "11:15", icon: "fa-monument", title: "Saint-Étienne-du-Mont", description: "Visita: ~25 min" },
@@ -115,7 +120,6 @@ export const day5Data = {
                 { time: "19:00", icon: "fa-utensils", title: "Jantar no Aeroporto",
                     mealSuggestion: {
                         suggestion: "Jantar antes do voo. Opções de fast food ou sandes (Paul, Exki, etc.) no terminal.",
-                     /*   budget: "~10 € / pessoa"*/
                     }
                 }
             ]
