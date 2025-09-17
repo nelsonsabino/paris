@@ -3,6 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SCRIPT ANTI-FLASH PARA O MODO ESCURO -->
+<script>
+    (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches))
+        ? document.documentElement.classList.add('dark')
+        : document.documentElement.classList.remove('dark');
+</script>
+    
     <title>Guia: Torre Eiffel</title>
 
     <!-- Favicon (código existente) -->
@@ -81,6 +89,12 @@
     <div class="container mx-auto p-4 md:p-8 max-w-3xl">
         
         <header class="mb-8">
+
+<button id="theme-switcher" class="theme-switcher h-12 w-12 rounded-full text-gray-500 dark:text-slate-400 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors duration-200 flex items-center justify-center">
+    <i class="fa-solid fa-sun text-2xl sun-icon"></i>
+    <i class="fa-solid fa-moon text-2xl moon-icon"></i>
+</button>
+            
             <a href="index.html" class="inline-flex items-center text-blue-600 hover:text-blue-800 transition mb-4">
                 <i class="fa-solid fa-arrow-left mr-2"></i>
                 Voltar à Página Principal
@@ -158,5 +172,7 @@
 
     <script src="js/guias_renderer.js"></script>
 
+<script src="js/theme_switcher.js"></script>
+    
 </body>
 </html>
