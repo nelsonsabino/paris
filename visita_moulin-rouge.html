@@ -12,87 +12,72 @@
             : document.documentElement.classList.remove('dark');
     </script>
 
-    <!-- Favicon e Links Essenciais -->
-    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
-    <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
-    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+    
+    <!-- LIGAÇÃO PARA O NOVO FICHEIRO CSS -->
+    <link rel="stylesheet" href="css/visita.css">
 
     <style>
-        body { font-family: 'Poppins', sans-serif; background-color: #f0f4f8; }
         .content-prose h2 { font-size: 1.5rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; }
         .content-prose p { margin-bottom: 1rem; line-height: 1.75; }
         .content-prose ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 1rem; }
-
-        /* --- Dark Mode Styles --- */
-        html.dark body { background-color: #0f172a; color: #cbd5e1; }
-        html.dark .bg-white { background-color: #1e293b; border-color: #334155; }
-        html.dark .text-gray-800 { color: #f1f5f9; }
-        html.dark .text-gray-600 { color: #94a3b8; }
-        html.dark .border-gray-200 { border-color: #334155; }
-        html.dark .hover\:bg-gray-100:hover { background-color: #334155; }
-        html.dark .bg-blue-600 { background-color: #3b82f6; }
-        html.dark .hover\:bg-blue-700:hover { background-color: #2563eb; }
-        .theme-switcher .sun-icon { display: none; }
-        html.dark .theme-switcher .sun-icon { display: block; }
-        html.dark .theme-switcher .moon-icon { display: none; }
     </style>
 </head>
 <body class="text-gray-800">
 
-    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
-        <!-- Cabeçalho com Botões -->
-        <header class="flex justify-between items-center mb-8">
-            <a href="index.html" class="bg-blue-600 text-white font-semibold px-5 py-2 rounded-lg shadow-md hover:bg-blue-700 transition-colors text-sm">
-                <i class="fa-solid fa-arrow-left mr-2"></i>
-                Voltar ao Painel
-            </a>
-            <button id="theme-switcher" class="theme-switcher h-10 w-10 rounded-full text-gray-500 dark:text-slate-400 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors duration-200 flex items-center justify-center">
-                <i class="fa-solid fa-sun text-xl sun-icon"></i>
-                <i class="fa-solid fa-moon text-xl moon-icon"></i>
-            </button>
-        </header>
+    <!-- NOVA BARRA DE NAVEGAÇÃO SUPERIOR -->
+    <nav class="visita-nav">
+        <a href="index.html" class="visita-nav-link" title="Início">
+            <i class="fa-solid fa-house text-lg"></i>
+        </a>
+        <a href="roteiro.html" class="visita-nav-link" title="Roteiro">
+            <i class="fa-solid fa-list-ol text-lg"></i>
+        </a>
+        <a href="orcamento.html" class="visita-nav-link" title="Orçamento">
+            <i class="fa-solid fa-euro-sign text-lg"></i>
+        </a>
+        <button id="theme-switcher" class="theme-switcher" title="Mudar Tema">
+            <i class="fa-solid fa-sun text-lg sun-icon"></i>
+            <i class="fa-solid fa-moon text-lg moon-icon"></i>
+        </button>
+    </nav>
 
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <!-- Menu Lateral (será preenchido pelo guias_renderer.js) -->
-            <aside id="guias-menu-container" class="md:col-span-1">
-                <!-- O menu dinâmico dos guias aparecerá aqui -->
-            </aside>
+    <div class="container mx-auto p-4 md:p-8 max-w-3xl">
+        <main class="bg-white p-6 md:p-8 rounded-2xl shadow-lg">
+            <article class="content-prose">
+                <h1 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Moulin Rouge</h1>
+                <p class="text-gray-600">O cabaré mais famoso do mundo e o berço da dança Can-Can.</p>
 
-            <!-- Conteúdo Principal do Guia -->
-            <main class="md:col-span-3 bg-white p-6 md:p-8 rounded-2xl shadow-lg">
-                <article class="content-prose">
-                    <h1 class="text-3xl md:text-4xl font-bold mb-4">Moulin Rouge</h1>
-                    <p class="text-gray-600">O cabaré mais famoso do mundo e o berço da dança Can-Can.</p>
+                <img src="https://www.civitatis.com/f/francia/paris/entradas-moulin-rouge-grid.jpg" alt="A fachada icónica do Moulin Rouge com o seu moinho vermelho iluminado à noite" class="w-full rounded-lg shadow-md my-6">
 
-                    <img src="https://www.civitatis.com/f/francia/paris/entradas-moulin-rouge-grid.jpg" alt="A fachada icónica do Moulin Rouge com o seu moinho vermelho iluminado à noite" class="w-full rounded-lg shadow-md my-6">
+                <h2 class="text-gray-800">Um Ícone da Belle Époque</h2>
+                <p class="text-gray-700">Desde a sua inauguração em 1889, o Moulin Rouge tem sido um símbolo da vida boémia e artística de Paris. Localizado no bairro de Pigalle, o seu famoso moinho vermelho é reconhecido mundialmente e continua a atrair multidões para os seus espetáculos extravagantes.</p>
+                <ul class="text-gray-700">
+                    <li><strong>O Can-Can:</strong> O Moulin Rouge é famoso por ser o local de nascimento da forma moderna do Can-Can, uma dança energética e provocadora que escandalizou e encantou a sociedade da época.</li>
+                    <li><strong>Artistas Famosos:</strong> O pintor Henri de Toulouse-Lautrec foi um dos seus frequentadores mais assíduos, imortalizando a vida do cabaré nas suas obras.</li>
+                    <li><strong>O Espetáculo "Féerie":</strong> O show atual, intitulado "Féerie", é uma produção grandiosa com mais de 80 artistas, incluindo as famosas Doriss Girls, cenários espetaculares e guarda-roupa luxuoso com penas e lantejoulas.</li>
+                </ul>
 
-                    <h2>Um Ícone da Belle Époque</h2>
-                    <p>Desde a sua inauguração em 1889, o Moulin Rouge tem sido um símbolo da vida boémia e artística de Paris. Localizado no bairro de Pigalle, o seu famoso moinho vermelho é reconhecido mundialmente e continua a atrair multidões para os seus espetáculos extravagantes.</p>
-                    <ul>
-                        <li><strong>O Can-Can:</strong> O Moulin Rouge é famoso por ser o local de nascimento da forma moderna do Can-Can, uma dança energética e provocadora que escandalizou e encantou a sociedade da época.</li>
-                        <li><strong>Artistas Famosos:</strong> O pintor Henri de Toulouse-Lautrec foi um dos seus frequentadores mais assíduos, imortalizando a vida do cabaré nas suas obras.</li>
-                        <li><strong>O Espetáculo "Féerie":</strong> O show atual, intitulado "Féerie", é uma produção grandiosa com mais de 80 artistas, incluindo as famosas Doriss Girls, cenários espetaculares e guarda-roupa luxuoso com penas e lantejoulas.</li>
-                    </ul>
-
-                    <h2>Dicas Práticas</h2>
-                    <ul>
-                        <li><strong>Visita Exterior:</strong> Para o nosso roteiro, a visita será exterior. O objetivo é ver a famosa fachada e o moinho, que são especialmente fotogénicos à noite, quando as luzes de néon se acendem.</li>
-                        <li><strong>Reservar um Espetáculo:</strong> Caso queira assistir a um espetáculo, é absolutamente essencial reservar com meses de antecedência, pois os bilhetes esgotam rapidamente.</li>
-                        <li><strong>Localização:</strong> Situa-se no Boulevard de Clichy, no bairro de Pigalle. A estação de metro mais próxima é a Blanche (linha 2), que fica mesmo em frente.</li>
-                    </ul>
-                </article>
-            </main>
-        </div>
+                <h2 class="text-gray-800">Dicas Práticas</h2>
+                <ul class="text-gray-700">
+                    <li><strong>Visita Exterior:</strong> Para o nosso roteiro, a visita será exterior. O objetivo é ver a famosa fachada e o moinho, que são especialmente fotogénicos à noite, quando as luzes de néon se acendem.</li>
+                    <li><strong>Reservar um Espetáculo:</strong> Caso queira assistir a um espetáculo, é absolutamente essencial reservar com meses de antecedência, pois os bilhetes esgotam rapidamente.</li>
+                    <li><strong>Localização:</strong> Situa-se no Boulevard de Clichy, no bairro de Pigalle. A estação de metro mais próxima é a Blanche (linha 2), que fica mesmo em frente.</li>
+                </ul>
+            </article>
+        </main>
     </div>
 
-    <!-- Scripts -->
-    <script type="module" src="js/guias_renderer.js"></script>
+    <!-- SCRIPT DO SELETOR DE TEMA -->
     <script src="js/theme_switcher.js"></script>
 </body>
 </html>
