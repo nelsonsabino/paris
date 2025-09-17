@@ -1,5 +1,5 @@
 // Versão 18: CORRIGE TODOS OS CAMINHOS para relativos, adequados para GitHub Project Pages.
-const CACHE_NAME = 'paris-v18';
+const CACHE_NAME = 'paris-v19';
 const urlsToCache = [
   // Páginas principais
   'index.html',
