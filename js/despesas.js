@@ -18,6 +18,7 @@ if (!firebase.apps.length) {
 }
 const database = firebase.database();
 const despesasRef = database.ref('despesas');
+const saldosRef = database.ref('saldos'); // Nova referência para os saldos
 
 // --- ELEMENTOS DO DOM ---
 const form = document.getElementById('form-despesa');
@@ -25,14 +26,21 @@ const inputDescricao = document.getElementById('descricao');
 const inputValor = document.getElementById('valor');
 const inputCategoria = document.getElementById('categoria');
 const inputData = document.getElementById('data');
+// Elementos de Saldo e Disponível
+const saldo4pEl = document.getElementById('saldo-4p');
+const saldo1pEl = document.getElementById('saldo-1p');
 const totalGeral4pEl = document.getElementById('total-geral-4p');
 const totalGeral1pEl = document.getElementById('total-geral-1p');
+const disponivel4pEl = document.getElementById('disponivel-4p');
+const disponivel1pEl = document.getElementById('disponivel-1p');
+
 const despesasContainer = document.getElementById('despesas-container');
 const deleteModal = document.getElementById('delete-modal');
 const cancelDeleteBtn = document.getElementById('cancel-delete-btn');
 const confirmDeleteBtn = document.getElementById('confirm-delete-btn');
 
 let itemParaApagar = null;
+let saldos = { saldo4p: 0, saldo1p: 0 }; // Objeto para guardar os saldos localmente
 
 // --- FUNÇÕES ---
 
@@ -50,20 +58,36 @@ function getHojeString() {
     return new Date().toISOString().split('T')[0];
 }
 
+function atualizarTotaisDisponiveis(totalGasto4p, totalGasto1p) {
+    const disponivel4p = saldos.saldo4p - totalGasto4p;
+    const disponivel1p = saldos.saldo1p - totalGasto1p;
+    disponivel4pEl.textContent = formatarMoeda(disponivel4p);
+    disponivel1pEl.textContent = formatarMoeda(disponivel1p);
+}
+
+// Função principal que lê do Firebase e renderiza a página
 function renderizarDespesas() {
     despesasRef.orderByChild('data').on('value', (snapshot) => {
-        if (!snapshot.exists()) {
-            despesasContainer.innerHTML = '<p class="text-gray-500 text-center italic">Ainda não há despesas registadas.</p>';
-            totalGeral4pEl.textContent = formatarMoeda(0);
-            totalGeral1pEl.textContent = formatarMoeda(0);
-            return;
-        }
-
         const despesas = [];
         snapshot.forEach(child => {
             despesas.push({ id: child.key, ...child.val() });
         });
         despesas.reverse();
+
+        // Calcular totais gerais de despesas
+        const totalGasto4p = despesas.reduce((sum, d) => sum + parseFloat(d.valor4p || 0), 0);
+        const totalGasto1p = despesas.reduce((sum, d) => sum + parseFloat(d.valor1p || 0), 0);
+        
+        totalGeral4pEl.textContent = formatarMoeda(totalGasto4p);
+        totalGeral1pEl.textContent = formatarMoeda(totalGasto1p);
+
+        // Atualizar o disponível com base nos saldos atuais
+        atualizarTotaisDisponiveis(totalGasto4p, totalGasto1p);
+
+        if (despesas.length === 0) {
+            despesasContainer.innerHTML = '<p class="text-gray-500 text-center italic">Ainda não há despesas registadas.</p>';
+            return;
+        }
 
         const despesasPorDia = despesas.reduce((acc, despesa) => {
             const data = despesa.data;
@@ -71,13 +95,7 @@ function renderizarDespesas() {
             acc[data].push(despesa);
             return acc;
         }, {});
-
-        // Calcular totais gerais
-        const totalGeral4p = despesas.reduce((sum, d) => sum + parseFloat(d.valor4p), 0);
-        const totalGeral1p = despesas.reduce((sum, d) => sum + parseFloat(d.valor1p), 0);
-        totalGeral4pEl.textContent = formatarMoeda(totalGeral4p);
-        totalGeral1pEl.textContent = formatarMoeda(totalGeral1p);
-
+        
         // Renderizar a lista de despesas
         despesasContainer.innerHTML = Object.keys(despesasPorDia).map(data => {
             const diaTotal4p = despesasPorDia[data].reduce((sum, d) => sum + parseFloat(d.valor4p), 0);
@@ -128,6 +146,10 @@ function renderizarDespesas() {
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     const valorTotal = parseFloat(inputValor.value);
+    if (isNaN(valorTotal) || valorTotal <= 0) {
+        alert("Por favor, insira um valor válido.");
+        return;
+    }
     const novaDespesa = {
         descricao: inputDescricao.value,
         valorTotal: valorTotal,
@@ -161,8 +183,36 @@ cancelDeleteBtn.addEventListener('click', () => {
     deleteModal.classList.add('hidden');
 });
 
+// Listeners para editar os saldos
+saldo4pEl.addEventListener('click', () => {
+    const novoSaldoStr = prompt("Insira o novo saldo para o Grupo 4:", saldos.saldo4p);
+    if (novoSaldoStr !== null) {
+        const novoSaldo = parseFloat(novoSaldoStr.replace(',', '.'));
+        if (!isNaN(novoSaldo)) {
+            saldosRef.child('saldo4p').set(novoSaldo);
+        }
+    }
+});
+
+saldo1pEl.addEventListener('click', () => {
+    const novoSaldoStr = prompt("Insira o novo saldo para 1 Pessoa:", saldos.saldo1p);
+    if (novoSaldoStr !== null) {
+        const novoSaldo = parseFloat(novoSaldoStr.replace(',', '.'));
+        if (!isNaN(novoSaldo)) {
+            saldosRef.child('saldo1p').set(novoSaldo);
+        }
+    }
+});
+
 // --- INICIALIZAÇÃO DA PÁGINA ---
 document.addEventListener('DOMContentLoaded', () => {
     inputData.value = getHojeString();
-    renderizarDespesas();
+    
+    // Ouve por alterações nos saldos guardados no Firebase
+    saldosRef.on('value', (snapshot) => {
+        saldos = snapshot.val() || { saldo4p: 0, saldo1p: 0 };
+        saldo4pEl.textContent = formatarMoeda(saldos.saldo4p);
+        saldo1pEl.textContent = formatarMoeda(saldos.saldo1p);
+        renderizarDespesas(); // Re-renderiza tudo para atualizar o 'Disponível'
+    });
 });
