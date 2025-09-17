@@ -104,13 +104,17 @@ function renderizarDespesas() {
 
             return `
                 <div class="bg-white p-4 rounded-2xl shadow-lg">
-                    <div class="flex justify-between items-center border-b dark:border-slate-700 pb-3 mb-3">
-                        <h3 class="font-bold text-lg text-gray-800">${formatarData(data)}</h3>
-                        <div class="text-right">
-                            <p class="font-semibold text-sm text-gray-500">Total Dia (4p/1p)</p>
-                            <p class="font-semibold text-gray-800">${formatarMoeda(diaTotal4p)} / ${formatarMoeda(diaTotal1p)}</p>
-                        </div>
+                                <div class="flex justify-between items-center border-b dark:border-slate-700 pb-3 mb-3">
+                    <h3 class="font-bold text-lg text-gray-800">${formatarData(data)}</h3>
+                    <div class="text-right">
+                        <p class="font-semibold text-sm text-gray-500">Total Dia (5p)</p>
+                        <p class="font-semibold text-gray-800 mb-1">${formatarMoeda(diaTotal5p)}</p>
+                        <p class="text-xs">
+                            <span class="font-semibold text-blue-600">${formatarMoeda(diaTotal4p)}</span> / 
+                            <span class="font-semibold text-green-600">${formatarMoeda(diaTotal1p)}</span>
+                        </p>
                     </div>
+                </div>
                     <ul class="space-y-3">
                         ${despesasPorDia[data].map(d => `
                             <li class="flex items-center justify-between group">
