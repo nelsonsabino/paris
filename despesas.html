@@ -24,15 +24,10 @@
     <link rel="stylesheet" href="css/visita.css">
     <style>
         .input-field {
-            border: 2px solid #d1d5db;
-            padding: 0.5rem 0.75rem;
-            border-radius: 0.5rem;
-            width: 100%;
+            border: 2px solid #d1d5db; padding: 0.5rem 0.75rem; border-radius: 0.5rem; width: 100%;
         }
         html.dark .input-field {
-            background-color: #334155;
-            border-color: #4b5563;
-            color: #f1f5f9;
+            background-color: #334155; border-color: #4b5563; color: #f1f5f9;
         }
     </style>
 
@@ -49,37 +44,23 @@
         </header>
 
         <main class="space-y-8">
-            <!-- Totais -->
-            <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
-                    <h2 class="text-lg font-semibold text-gray-500 uppercase">Total da Viagem</h2>
-                    <p id="total-geral" class="text-4xl font-bold text-blue-600 mt-2">0,00 €</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
-                    <h2 class="text-lg font-semibold text-gray-500 uppercase">Total de Hoje</h2>
-                    <p id="total-hoje" class="text-4xl font-bold text-green-600 mt-2">0,00 €</p>
-                </div>
-            </section>
-
-            <!-- Formulário de Nova Despesa -->
+            <!-- Formulário de Nova Despesa (agora no topo) -->
             <section class="bg-white p-6 rounded-2xl shadow-lg">
                 <h2 class="text-2xl font-bold text-gray-800 mb-4">Adicionar Nova Despesa</h2>
                 <form id="form-despesa" class="space-y-4">
                     <div>
                         <label for="descricao" class="font-semibold text-gray-700">Descrição</label>
-                        <input type="text" id="descricao" class="input-field" required placeholder="Ex: Almoço no café X">
+                        <input type="text" id="descricao" class="input-field" required placeholder="Ex: Crepes em Montmartre">
                     </div>
                     <div class="grid grid-cols-2 gap-4">
                         <div>
-                            <label for="valor" class="font-semibold text-gray-700">Valor (€)</label>
-                            <input type="number" id="valor" class="input-field" required placeholder="15.50" step="0.01">
+                            <label for="valor" class="font-semibold text-gray-700">Valor Total (para 5)</label>
+                            <input type="number" id="valor" class="input-field" required placeholder="25.00" step="0.01">
                         </div>
                         <div>
                             <label for="categoria" class="font-semibold text-gray-700">Categoria</label>
                             <select id="categoria" class="input-field">
                                 <option>Alimentação</option>
-                                <option>Transporte</option>
-                                <option>Alojamento</option>
                                 <option>Atividades</option>
                                 <option>Compras</option>
                                 <option>Outros</option>
@@ -94,6 +75,18 @@
                         <i class="fa-solid fa-plus mr-2"></i>Adicionar Despesa
                     </button>
                 </form>
+            </section>
+
+            <!-- Totais Gerais -->
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
+                    <h2 class="text-lg font-semibold text-gray-500 uppercase">Total Gasto (Grupo 4)</h2>
+                    <p id="total-geral-4p" class="text-4xl font-bold text-blue-600 mt-2">0,00 €</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
+                    <h2 class="text-lg font-semibold text-gray-500 uppercase">Total Gasto (1 Pessoa)</h2>
+                    <p id="total-geral-1p" class="text-4xl font-bold text-green-600 mt-2">0,00 €</p>
+                </div>
             </section>
             
             <!-- Lista de Despesas -->
