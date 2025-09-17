@@ -20,6 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <a href="roteiro.html" class="visita-nav-link" title="Roteiro">
             <i class="fa-solid fa-list-ol text-lg"></i>
         </a>
+         <a href="essencial.html" class="visita-nav-link" title="Essencial">
+            <i class="fa-solid fa-shield-halved text-lg"></i>
+        </a>
         <a href="orcamento.html" class="visita-nav-link" title="Orçamento">
             <i class="fa-solid fa-euro-sign text-lg"></i>
         </a>
