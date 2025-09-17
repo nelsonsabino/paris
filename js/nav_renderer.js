@@ -23,6 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <a href="orcamento.html" class="visita-nav-link" title="Orçamento">
             <i class="fa-solid fa-euro-sign text-lg"></i>
         </a>
+        <a href="frases.html" class="visita-nav-link" title="Frases Úteis">
+            <i class="fa-solid fa-language text-lg"></i>
+        </a>
         <button id="theme-switcher" class="theme-switcher" title="Mudar Tema">
             <i class="fa-solid fa-sun text-lg sun-icon"></i>
             <i class="fa-solid fa-moon text-lg moon-icon"></i>
