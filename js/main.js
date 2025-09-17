@@ -36,10 +36,16 @@ function startCountdown() {
         document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
         document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
         
-        if (distance < 0) {
-            clearInterval(interval);
-            countdownElement.innerHTML = "<div class='text-center w-full'><p class='text-2xl font-bold'>A VIAGEM COMEÇOU! BON VOYAGE!</p></div>";
-        }
+      if (distance < 0) {
+    clearInterval(interval);
+    // Transforma o contador numa mensagem de celebração
+    countdownElement.innerHTML = `
+        <div class="relative flex flex-col items-center justify-center h-full pt-4 text-white">
+            <h2 class="text-5xl md:text-7xl font-bold text-shadow" style="font-family: 'Poppins', sans-serif;">Bon Voyage!</h2>
+            <p class="text-xl md:text-2xl text-shadow mt-2">A vossa aventura começou!</p>
+        </div>
+    `;
+}
     }, 1000);
 }
 
