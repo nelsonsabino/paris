@@ -387,12 +387,12 @@ async function renderPage() {
 document.addEventListener('DOMContentLoaded', renderPage);
 
 /* --- ESTILOS PARA O ACORDEÃO DO MAPA (NOVO) --- */
-.map-accordion {
+/*.map-accordion {
     border: 1px solid #e2e8f0; /* slate-200 */
-    border-radius: 0.75rem;
+/*    border-radius: 0.75rem;
     background-color: #f8fafc; /* slate-50 */
-    margin-bottom: 2.5rem; /* Aumenta o espaço antes da barra de secções */
-}
+/*    margin-bottom: 2.5rem; /* Aumenta o espaço antes da barra de secções 
+}*/
 .map-accordion-toggle {
     display: flex;
     justify-content: space-between;
