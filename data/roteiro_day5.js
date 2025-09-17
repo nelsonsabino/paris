@@ -117,6 +117,19 @@ export const day5Data = {
                     mealSuggestion: {
                         suggestion: "Jantar antes do voo. Opções de fast food ou sandes (Paul, Exki, etc.) no terminal.",
                     }
+                },
+                { 
+                    time: "20:50", 
+                    icon: "fa-plane-up", 
+                    title: "Voo de Regresso (TO 7664)",
+                    description: `
+                        <ul class='list-disc list-inside text-sm mt-1'>
+                            <li><strong>Nº Confirmação:</strong> CD9VUW</li>
+                            <li><strong>Partida:</strong> 20:50</li>
+                            <li><strong>Chegada:</strong> 22:30</li>
+                            <li><strong>Duração:</strong> 2h 40min</li>
+                        </ul>
+                    `
                 }
             ]
         }
