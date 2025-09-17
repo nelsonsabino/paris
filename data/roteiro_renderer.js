@@ -385,3 +385,52 @@ async function renderPage() {
 }
 
 document.addEventListener('DOMContentLoaded', renderPage);
+
+/* --- ESTILOS PARA O ACORDEÃO DO MAPA (NOVO) --- */
+.map-accordion {
+    border: 1px solid #e2e8f0; /* slate-200 */
+    border-radius: 0.75rem;
+    background-color: #f8fafc; /* slate-50 */
+    margin-bottom: 2.5rem; /* Aumenta o espaço antes da barra de secções */
+}
+.map-accordion-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    color: #475569; /* slate-600 */
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-radius: 0.75rem;
+}
+.map-accordion-toggle:hover {
+    background-color: #f1f5f9; /* slate-100 */
+}
+.map-accordion-content {
+    padding: 0 0.5rem 0.5rem 0.5rem;
+    border-top: 1px solid #e2e8f0;
+}
+/* Estilo para quando o acordeão está aberto */
+.map-accordion-toggle:not(:has(+ .hidden)) {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* Modo Escuro */
+html.dark .map-accordion {
+    background-color: #1e293b; /* slate-800 */
+    border-color: #334155; /* slate-700 */
+}
+html.dark .map-accordion-toggle {
+    color: #cbd5e1; /* slate-300 */
+}
+html.dark .map-accordion-toggle:hover {
+    background-color: #334155; /* slate-700 */
+}
+html.dark .map-accordion-content {
+    border-top-color: #334155; /* slate-700 */
+}
