@@ -386,19 +386,3 @@ async function renderPage() {
 
 document.addEventListener('DOMContentLoaded', renderPage);
 
-
-
-/* Modo Escuro */
-html.dark .map-accordion {
-    background-color: #1e293b; /* slate-800 */
-    border-color: #334155; /* slate-700 */
-}
-html.dark .map-accordion-toggle {
-    color: #cbd5e1; /* slate-300 */
-}
-html.dark .map-accordion-toggle:hover {
-    background-color: #334155; /* slate-700 */
-}
-html.dark .map-accordion-content {
-    border-top-color: #334155; /* slate-700 */
-}
