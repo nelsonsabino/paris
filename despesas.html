@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registo de Despesas: Viagem a Paris</title>
+
+    <!-- SCRIPT ANTI-FLASH PARA O MODO ESCURO -->
+    <script>
+        (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches))
+            ? document.documentElement.classList.add('dark')
+            : document.documentElement.classList.remove('dark');
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/visita.css">
+    <style>
+        .input-field {
+            border: 2px solid #d1d5db;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            width: 100%;
+        }
+        html.dark .input-field {
+            background-color: #334155;
+            border-color: #4b5563;
+            color: #f1f5f9;
+        }
+    </style>
+
+</head>
+<body class="text-gray-800">
+
+    <!-- BARRA DE NAVEGAÇÃO SUPERIOR -->
+    <nav id="main-nav-container"></nav>
+
+    <div class="container mx-auto p-4 md:p-8 max-w-3xl">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-800">Registo de Despesas</h1>
+            <p class="text-lg text-gray-600">Controle os seus gastos durante a viagem.</p>
+        </header>
+
+        <main class="space-y-8">
+            <!-- Totais -->
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
+                    <h2 class="text-lg font-semibold text-gray-500 uppercase">Total da Viagem</h2>
+                    <p id="total-geral" class="text-4xl font-bold text-blue-600 mt-2">0,00 €</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
+                    <h2 class="text-lg font-semibold text-gray-500 uppercase">Total de Hoje</h2>
+                    <p id="total-hoje" class="text-4xl font-bold text-green-600 mt-2">0,00 €</p>
+                </div>
+            </section>
+
+            <!-- Formulário de Nova Despesa -->
+            <section class="bg-white p-6 rounded-2xl shadow-lg">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Adicionar Nova Despesa</h2>
+                <form id="form-despesa" class="space-y-4">
+                    <div>
+                        <label for="descricao" class="font-semibold text-gray-700">Descrição</label>
+                        <input type="text" id="descricao" class="input-field" required placeholder="Ex: Almoço no café X">
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label for="valor" class="font-semibold text-gray-700">Valor (€)</label>
+                            <input type="number" id="valor" class="input-field" required placeholder="15.50" step="0.01">
+                        </div>
+                        <div>
+                            <label for="categoria" class="font-semibold text-gray-700">Categoria</label>
+                            <select id="categoria" class="input-field">
+                                <option>Alimentação</option>
+                                <option>Transporte</option>
+                                <option>Alojamento</option>
+                                <option>Atividades</option>
+                                <option>Compras</option>
+                                <option>Outros</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="data" class="font-semibold text-gray-700">Data</label>
+                        <input type="date" id="data" class="input-field" required>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                        <i class="fa-solid fa-plus mr-2"></i>Adicionar Despesa
+                    </button>
+                </form>
+            </section>
+            
+            <!-- Lista de Despesas -->
+            <section>
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Histórico de Despesas</h2>
+                <div id="despesas-container" class="space-y-6">
+                    <!-- As despesas serão inseridas aqui pelo JavaScript -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal de Confirmação de Eliminação -->
+    <div id="delete-modal" class="hidden fixed inset-0 bg-black/60 flex items-center justify-center p-4 z-50">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-8 w-full max-w-sm text-center">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Confirmar Eliminação</h3>
+            <p class="text-gray-600 mb-6">Tem a certeza que quer apagar esta despesa?</p>
+            <div class="flex justify-center gap-4">
+                <button id="cancel-delete-btn" class="px-6 py-2 bg-gray-200 dark:bg-slate-600 text-gray-800 dark:text-slate-100 rounded-lg hover:bg-gray-300 dark:hover:bg-slate-500">Cancelar</button>
+                <button id="confirm-delete-btn" class="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">Apagar</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-database-compat.js"></script>
+    <script src="js/nav_renderer.js"></script>
+    <script src="js/theme_switcher.js"></script>
+    <script type="module" src="js/despesas.js"></script>
+
+</body>
+</html>
