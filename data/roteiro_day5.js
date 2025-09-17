@@ -106,17 +106,23 @@ export const day5Data = {
                     time: "18:10", 
                     icon: "fa-route", 
                     title: "Percurso: Cacifo → Aeroporto Orly", 
-                    description: "Duração total: ~30 min. <strong>Alternativa:</strong> Táxi via app (custo total ~55€).", // <-- NOTA ADICIONADA
+                    description: "Duração total: ~30 min. <strong>Alternativa:</strong> Táxi via app (custo total ~55€).",
                     accordion: [
                         { text: "18:10: Apanhar Metro <span class='metro-line' style='background-color: #62259d;'>14</span>", subText: "Da estação <strong>Châtelet</strong>, direção Aéroport d'Orly." },
                         { text: "18:36: Sair em Aéroport d'Orly" }
                     ]
                 },
-                { time: "18:40", icon: "fa-plane-departure", title: "Chegada ao Aeroporto Orly (Voo às 20:50)" },
+                { time: "18:40", icon: "fa-plane-departure", title: "Chegada ao Aeroporto Orly (Terminal 3)" },
                 { time: "19:00", icon: "fa-utensils", title: "Jantar no Aeroporto",
                     mealSuggestion: {
                         suggestion: "Jantar antes do voo. Opções de fast food ou sandes (Paul, Exki, etc.) no terminal.",
                     }
+                },
+                { 
+                    time: "20:00", 
+                    icon: "fa-door-open", 
+                    title: "Chegada à Porta de Embarque",
+                    description: "Fecho previsto às 20:20. A partida é no <strong>Terminal 3</strong>."
                 },
                 { 
                     time: "20:50", 
