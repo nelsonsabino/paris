@@ -77,15 +77,39 @@
                 </form>
             </section>
 
-            <!-- Totais Gerais -->
+                      <!-- SALDOS E TOTAIS -->
             <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
-                    <h2 class="text-lg font-semibold text-gray-500 uppercase">Total Gasto (Grupo 4)</h2>
-                    <p id="total-geral-4p" class="text-4xl font-bold text-blue-600 mt-2">0,00 €</p>
+                <!-- Coluna Grupo 4 Pessoas -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg text-center space-y-4">
+                    <h2 class="text-lg font-semibold text-gray-500 uppercase">Grupo 4 Pessoas</h2>
+                    <div>
+                        <p class="text-sm text-gray-500">Saldo (clique para editar)</p>
+                        <p id="saldo-4p" class="text-3xl font-bold text-gray-800 cursor-pointer">0,00 €</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500">Total Gasto</p>
+                        <p id="total-geral-4p" class="text-2xl font-semibold text-red-500">0,00 €</p>
+                    </div>
+                    <div class="border-t dark:border-slate-700 pt-4">
+                        <p class="text-lg font-semibold text-gray-500 uppercase">Disponível</p>
+                        <p id="disponivel-4p" class="text-4xl font-bold text-blue-600">0,00 €</p>
+                    </div>
                 </div>
-                <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
-                    <h2 class="text-lg font-semibold text-gray-500 uppercase">Total Gasto (1 Pessoa)</h2>
-                    <p id="total-geral-1p" class="text-4xl font-bold text-green-600 mt-2">0,00 €</p>
+                <!-- Coluna 1 Pessoa -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg text-center space-y-4">
+                    <h2 class="text-lg font-semibold text-gray-500 uppercase">1 Pessoa</h2>
+                     <div>
+                        <p class="text-sm text-gray-500">Saldo (clique para editar)</p>
+                        <p id="saldo-1p" class="text-3xl font-bold text-gray-800 cursor-pointer">0,00 €</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500">Total Gasto</p>
+                        <p id="total-geral-1p" class="text-2xl font-semibold text-red-500">0,00 €</p>
+                    </div>
+                    <div class="border-t dark:border-slate-700 pt-4">
+                        <p class="text-lg font-semibold text-gray-500 uppercase">Disponível</p>
+                        <p id="disponivel-1p" class="text-4xl font-bold text-green-600">0,00 €</p>
+                    </div>
                 </div>
             </section>
             
