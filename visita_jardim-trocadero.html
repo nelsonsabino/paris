@@ -12,87 +12,72 @@
             : document.documentElement.classList.remove('dark');
     </script>
 
-    <!-- Favicon e Links Essenciais -->
-    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
-    <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
-    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+    
+    <!-- LIGAÇÃO PARA O NOVO FICHEIRO CSS -->
+    <link rel="stylesheet" href="css/visita.css">
 
     <style>
-        body { font-family: 'Poppins', sans-serif; background-color: #f0f4f8; }
         .content-prose h2 { font-size: 1.5rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; }
         .content-prose p { margin-bottom: 1rem; line-height: 1.75; }
         .content-prose ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 1rem; }
-
-        /* --- Dark Mode Styles --- */
-        html.dark body { background-color: #0f172a; color: #cbd5e1; }
-        html.dark .bg-white { background-color: #1e293b; border-color: #334155; }
-        html.dark .text-gray-800 { color: #f1f5f9; }
-        html.dark .text-gray-600 { color: #94a3b8; }
-        html.dark .border-gray-200 { border-color: #334155; }
-        html.dark .hover\:bg-gray-100:hover { background-color: #334155; }
-        html.dark .bg-blue-600 { background-color: #3b82f6; }
-        html.dark .hover\:bg-blue-700:hover { background-color: #2563eb; }
-        .theme-switcher .sun-icon { display: none; }
-        html.dark .theme-switcher .sun-icon { display: block; }
-        html.dark .theme-switcher .moon-icon { display: none; }
     </style>
 </head>
 <body class="text-gray-800">
 
-    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
-        <!-- Cabeçalho com Botões -->
-        <header class="flex justify-between items-center mb-8">
-            <a href="index.html" class="bg-blue-600 text-white font-semibold px-5 py-2 rounded-lg shadow-md hover:bg-blue-700 transition-colors text-sm">
-                <i class="fa-solid fa-arrow-left mr-2"></i>
-                Voltar ao Painel
-            </a>
-            <button id="theme-switcher" class="theme-switcher h-10 w-10 rounded-full text-gray-500 dark:text-slate-400 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors duration-200 flex items-center justify-center">
-                <i class="fa-solid fa-sun text-xl sun-icon"></i>
-                <i class="fa-solid fa-moon text-xl moon-icon"></i>
-            </button>
-        </header>
+    <!-- NOVA BARRA DE NAVEGAÇÃO SUPERIOR -->
+    <nav class="visita-nav">
+        <a href="index.html" class="visita-nav-link" title="Início">
+            <i class="fa-solid fa-house text-lg"></i>
+        </a>
+        <a href="roteiro.html" class="visita-nav-link" title="Roteiro">
+            <i class="fa-solid fa-list-ol text-lg"></i>
+        </a>
+        <a href="orcamento.html" class="visita-nav-link" title="Orçamento">
+            <i class="fa-solid fa-euro-sign text-lg"></i>
+        </a>
+        <button id="theme-switcher" class="theme-switcher" title="Mudar Tema">
+            <i class="fa-solid fa-sun text-lg sun-icon"></i>
+            <i class="fa-solid fa-moon text-lg moon-icon"></i>
+        </button>
+    </nav>
 
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <!-- Menu Lateral (será preenchido pelo guias_renderer.js) -->
-            <aside id="guias-menu-container" class="md:col-span-1">
-                <!-- O menu dinâmico dos guias aparecerá aqui -->
-            </aside>
+    <div class="container mx-auto p-4 md:p-8 max-w-3xl">
+        <main class="bg-white p-6 md:p-8 rounded-2xl shadow-lg">
+            <article class="content-prose">
+                <h1 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Jardins do Trocadéro</h1>
+                <p class="text-gray-600">A esplanada com a vista mais famosa e fotogénica da Torre Eiffel.</p>
 
-            <!-- Conteúdo Principal do Guia -->
-            <main class="md:col-span-3 bg-white p-6 md:p-8 rounded-2xl shadow-lg">
-                <article class="content-prose">
-                    <h1 class="text-3xl md:text-4xl font-bold mb-4">Jardins do Trocadéro</h1>
-                    <p class="text-gray-600">A esplanada com a vista mais famosa e fotogénica da Torre Eiffel.</p>
+                <img src="https://www.parisinsidersguide.com/image-files/trocadero-renovation-2024-grand-jardin-trocadero-tour-eiffel-7-800-2x1.jpg" alt="Vista dos Jardins do Trocadéro com a Fonte de Varsóvia e a Torre Eiffel" class="w-full rounded-lg shadow-md my-6">
 
-                    <img src="https://www.parisinsidersguide.com/image-files/trocadero-renovation-2024-grand-jardin-trocadero-tour-eiffel-7-800-2x1.jpg" alt="Vista dos Jardins do Trocadéro com a Fonte de Varsóvia e a Torre Eiffel" class="w-full rounded-lg shadow-md my-6">
+                <h2 class="text-gray-800">O Ponto de Vista Perfeito</h2>
+                <p class="text-gray-700">Os Jardins do Trocadéro são, indiscutivelmente, o local mais procurado para fotografar a Torre Eiffel. A sua posição elevada e simétrica oferece uma perspetiva imbatível.</p>
+                <ul class="text-gray-700">
+                    <li><strong>Esplanada dos Direitos do Homem:</strong> A grande praça no topo é o ponto principal. A partir daqui, as escadarias e os declives criam linhas perfeitas para enquadrar a torre.</li>
+                    <li><strong>Fonte de Varsóvia:</strong> A peça central dos jardins, esta fonte monumental com os seus canhões de água cria um espetáculo magnífico, especialmente em dias de sol.</li>
+                    <li><strong>Esculturas e Vegetação:</strong> Os jardins estão repletos de estátuas de bronze e pedra, e áreas verdes perfeitas para relaxar e apreciar a vista.</li>
+                </ul>
 
-                    <h2>O Ponto de Vista Perfeito</h2>
-                    <p>Os Jardins do Trocadéro são, indiscutivelmente, o local mais procurado para fotografar a Torre Eiffel. A sua posição elevada e simétrica oferece uma perspetiva imbatível.</p>
-                    <ul>
-                        <li><strong>Esplanada dos Direitos do Homem:</strong> A grande praça no topo é o ponto principal. A partir daqui, as escadarias e os declives criam linhas perfeitas para enquadrar a torre.</li>
-                        <li><strong>Fonte de Varsóvia:</strong> A peça central dos jardins, esta fonte monumental com os seus canhões de água cria um espetáculo magnífico, especialmente em dias de sol.</li>
-                        <li><strong>Esculturas e Vegetação:</strong> Os jardins estão repletos de estátuas de bronze e pedra, e áreas verdes perfeitas para relaxar e apreciar a vista.</li>
-                    </ul>
-
-                    <h2>Dicas Práticas</h2>
-                    <ul>
-                        <li><strong>Melhor Hora para Visitar:</strong> O nascer do sol é mágico, com a luz a incidir sobre a torre e muito menos gente. O final da tarde e o início da noite são igualmente espetaculares para ver a torre iluminar-se.</li>
-                        <li><strong>Multidões:</strong> Esteja preparado para encontrar muitas pessoas, especialmente durante o dia e ao fim de semana. Paciência é essencial para conseguir a fotografia perfeita.</li>
-                        <li><strong>Acesso:</strong> A estação de metro Trocadéro (linhas 6 e 9) deixa-o diretamente na esplanada. A área tem muitas escadas, mas existem rampas de acesso.</li>
-                    </ul>
-                </article>
-            </main>
-        </div>
+                <h2 class="text-gray-800">Dicas Práticas</h2>
+                <ul class="text-gray-700">
+                    <li><strong>Melhor Hora para Visitar:</strong> O nascer do sol é mágico, com a luz a incidir sobre a torre e muito menos gente. O final da tarde e o início da noite são igualmente espetaculares para ver a torre iluminar-se.</li>
+                    <li><strong>Multidões:</strong> Esteja preparado para encontrar muitas pessoas, especialmente durante o dia e ao fim de semana. Paciência é essencial para conseguir a fotografia perfeita.</li>
+                    <li><strong>Acesso:</strong> A estação de metro Trocadéro (linhas 6 e 9) deixa-o diretamente na esplanada. A área tem muitas escadas, mas existem rampas de acesso.</li>
+                </ul>
+            </article>
+        </main>
     </div>
 
-    <!-- Scripts -->
-    <script type="module" src="js/guias_renderer.js"></script>
+    <!-- SCRIPT DO SELETOR DE TEMA -->
     <script src="js/theme_switcher.js"></script>
 </body>
 </html>
