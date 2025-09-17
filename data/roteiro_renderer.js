@@ -10,14 +10,13 @@ import { day5Data } from './roteiro_day5.js';
 const allDaysData = [day1Data, day2Data, day3Data, day4Data, day5Data];
 const monthMap = { 'Setembro': 8 };
 
-// --- LÓGICA DA METEOROLOGIA (ALTERADA) ---
+// --- LÓGICA DA METEOROLOGIA ---
 
-// Função modificada para corrigir as cores
 function getWeatherIconFromWMO(wmoCode) {
     const iconMap = {
         0: { icon: 'fa-sun', colorClass: 'weather-color-sun' },
         1: { icon: 'fa-cloud-sun', colorClass: 'weather-color-sun' },
-        2: { icon: 'fa-cloud-sun', colorClass: 'weather-color-sun' }, // <-- CORRIGIDO AQUI
+        2: { icon: 'fa-cloud-sun', colorClass: 'weather-color-sun' },
         3: { icon: 'fa-cloud', colorClass: 'weather-color-cloud' },
         45: { icon: 'fa-smog', colorClass: 'weather-color-smog' },
         48: { icon: 'fa-smog', colorClass: 'weather-color-smog' },
@@ -167,15 +166,28 @@ async function renderPage() {
                 </div>`;
         }
 
+        let mapAccordionHtml = '';
+        if (dayData.mapImage) {
+            mapAccordionHtml = `
+                <div class="map-accordion">
+                    <button class="map-accordion-toggle">
+                        <span><i class="fa-solid fa-map-location-dot mr-3"></i>Mostrar Mapa do Percurso</span>
+                        <i class="fas fa-chevron-down text-sm"></i>
+                    </button>
+                    <div class="map-accordion-content hidden">
+                        <div class="cursor-pointer mt-2" onclick="openModal('${dayData.mapImage}')">
+                            <img src="${dayData.mapImage}" alt="Mapa do percurso do ${dayData.title}" class="w-full object-cover rounded-lg">
+                        </div>
+                    </div>
+                </div>`;
+        }
+
         let htmlContent = `
             <h2 class="font-display text-2xl md:text-3xl text-gray-900 mb-1 font-bold">${dayData.title}</h2>
             <p class="text-gray-500 mb-6">${dayData.date}</p>
             ${highlightsHtml}
+            ${mapAccordionHtml}
             ${dayNavHtml}`;
-
-        if (dayData.mapImage) {
-            htmlContent += `<div class="cursor-pointer" onclick="openModal('${dayData.mapImage}')"><img src="${dayData.mapImage}" alt="Mapa do percurso do ${dayData.title}" class="w-full aspect-[5/2] object-cover rounded-lg mb-6"></div>`;
-        }
 
         dayData.sections.forEach(sectionBlock => {
             let rainyDayHtml = '';
@@ -228,9 +240,8 @@ async function renderPage() {
                     const day = parseInt(dateParts[0]);
                     const month = monthMap[dateParts[1]];
                     
-                    // --- LÓGICA DA HORA APROXIMADA (ALTERADA) ---
-                    const hourPart = item.time.split(':')[0]; // Pega apenas a hora, ignora os minutos
-                    const lookupTime = `${String(hourPart).padStart(2, '0')}:00`; // Formata para HH:00
+                    const hourPart = item.time.split(':')[0];
+                    const lookupTime = `${String(hourPart).padStart(2, '0')}:00`;
                     const dateString = `2025-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}T${lookupTime}`;
                     
                     const weatherCode = weatherMap.get(dateString);
@@ -292,7 +303,7 @@ async function renderPage() {
     });
 
     // --- LÓGICA GERAL DA PÁGINA (EVENT LISTENERS) ---
-    document.querySelectorAll('.accordion-toggle, .rainy-accordion-toggle').forEach(button => {
+    document.querySelectorAll('.accordion-toggle, .rainy-accordion-toggle, .map-accordion-toggle').forEach(button => {
         button.addEventListener('click', () => {
             const content = button.nextElementSibling;
             const icon = button.querySelector('i.fas.fa-chevron-down, i.fas.fa-chevron-up');
