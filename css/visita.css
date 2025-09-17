@@ -1,0 +1,86 @@
+/* css/visita.css */
+
+/* --- ESTILOS GERAIS PARA AS PÁGINAS DE GUIA --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f4f8;
+}
+html.dark body {
+    background-color: #0f172a;
+    color: #cbd5e1;
+}
+
+/* --- BARRA DE NAVEGAÇÃO SUPERIOR --- */
+.visita-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding: 0.5rem 1rem;
+    background-color: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: flex-end; /* Alinha os itens à direita */
+    align-items: center;
+    gap: 0.5rem; /* Espaçamento entre os ícones */
+}
+
+/* Ícones da navegação */
+.visita-nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 9999px;
+    color: #4b5563; /* gray-600 */
+    transition: background-color 0.2s, color 0.2s;
+}
+.visita-nav-link:hover {
+    background-color: #e5e7eb; /* gray-200 */
+    color: #1f2937; /* gray-800 */
+}
+
+/* Botão do tema */
+.theme-switcher {
+    height: 40px;
+    width: 40px;
+    border-radius: 9999px;
+    color: #4b5563;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, color 0.2s;
+}
+.theme-switcher:hover {
+    background-color: #e5e7eb;
+    color: #1f2937;
+}
+
+/* Visibilidade dos ícones de sol/lua */
+.theme-switcher .sun-icon { display: none; }
+.theme-switcher .moon-icon { display: block; }
+
+/* --- MODO ESCURO --- */
+html.dark .visita-nav {
+    background-color: rgba(30, 41, 59, 0.75);
+    border-bottom-color: #334155;
+}
+html.dark .visita-nav-link,
+html.dark .theme-switcher {
+    color: #9ca3af; /* gray-400 */
+}
+html.dark .visita-nav-link:hover,
+html.dark .theme-switcher:hover {
+    background-color: #334155; /* slate-700 */
+    color: #f1f5f9; /* slate-100 */
+}
+html.dark .theme-switcher .sun-icon { display: block; }
+html.dark .theme-switcher .moon-icon { display: none; }
+
+/* Estilos gerais para texto e fundos no modo escuro */
+html.dark .bg-white { background-color: #1e293b; }
+html.dark .text-gray-800 { color: #f1f5f9; }
+html.dark .text-gray-700 { color: #e2e8f0; }
+html.dark .text-gray-600 { color: #94a3b8; }
+html.dark .border-gray-200 { border-color: #334155; }
