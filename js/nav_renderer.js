@@ -26,6 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <a href="orcamento.html" class="visita-nav-link" title="Orçamento">
             <i class="fa-solid fa-euro-sign text-lg"></i>
         </a>
+           <a href="despesas.html" class="visita-nav-link" title="Despesas">
+            <i class="fa-solid fa-cash-register text-lg"></i>
+        </a>
         <a href="frases.html" class="visita-nav-link" title="Frases Úteis">
             <i class="fa-solid fa-language text-lg"></i>
         </a>
