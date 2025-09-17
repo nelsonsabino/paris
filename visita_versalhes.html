@@ -5,11 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guia: Palácio de Versalhes</title>
 
-    <!-- Favicon para diferentes browsers -->
+    <!-- SCRIPT ANTI-FLASH PARA O MODO ESCURO -->
+    <script>
+        (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches))
+            ? document.documentElement.classList.add('dark')
+            : document.documentElement.classList.remove('dark');
+    </script>
+
+    <!-- Favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,68 +23,40 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
     
+    <!-- LIGAÇÃO PARA O NOVO FICHEIRO CSS -->
+    <link rel="stylesheet" href="css/visita.css">
+
     <style>
-        body { font-family: 'Poppins', sans-serif; background-color: #f0f4f8; }
         .section-title { font-size: 1.5rem; line-height: 2rem; }
         @media (min-width: 768px) {
             .section-title { font-size: 1.875rem; line-height: 2.25rem; }
-            .container { padding-right: 160px; } 
-        }
-
-        #guias-nav-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            z-index: 50;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        #guias-nav-container ul {
-            overflow-x: auto;
-            white-space: nowrap;
-        }
-        #guias-nav-container li a img {
-            width: 72px;
-            height: 72px;
-        }
-
-        @media (min-width: 768px) {
-            #guias-nav-container {
-                top: 50%;
-                transform: translateY(-50%);
-                left: auto;
-                right: 10px;
-                width: auto;
-                max-height: 90vh;
-                overflow-y: auto;
-                border-radius: 12px;
-            }
-            #guias-nav-container ul {
-                overflow-x: hidden;
-                white-space: normal;
-            }
-            #guias-nav-container li a img {
-                width: 96px;
-                height: 96px;
-            }
         }
     </style>
 </head>
-<body class="text-gray-800 pt-32 md:pt-0">
+<body class="text-gray-800">
 
-    <nav id="guias-nav-container"></nav>
+    <!-- NOVA BARRA DE NAVEGAÇÃO SUPERIOR -->
+    <nav class="visita-nav">
+        <a href="index.html" class="visita-nav-link" title="Início">
+            <i class="fa-solid fa-house text-lg"></i>
+        </a>
+        <a href="roteiro.html" class="visita-nav-link" title="Roteiro">
+            <i class="fa-solid fa-list-ol text-lg"></i>
+        </a>
+        <a href="orcamento.html" class="visita-nav-link" title="Orçamento">
+            <i class="fa-solid fa-euro-sign text-lg"></i>
+        </a>
+        <button id="theme-switcher" class="theme-switcher" title="Mudar Tema">
+            <i class="fa-solid fa-sun text-lg sun-icon"></i>
+            <i class="fa-solid fa-moon text-lg moon-icon"></i>
+        </button>
+    </nav>
 
     <div class="container mx-auto p-4 md:p-8 max-w-3xl">
         
         <header class="mb-8">
-            <a href="index.html" class="inline-flex items-center text-blue-600 hover:text-blue-800 transition mb-4">
-                <i class="fa-solid fa-arrow-left mr-2"></i>
-                Voltar à Página Principal
-            </a>
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900">Guia Essencial de Versalhes</h1>
-            <p class="text-lg text-gray-500">Otimizado para uma Manhã no Palácio</p>
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800">Guia Essencial de Versalhes</h1>
+            <p class="text-lg text-gray-600">Otimizado para uma Manhã no Palácio</p>
         </header>
 
         <img src="https://static.historiadomundo.com.br/conteudo/images/2018/10/galeria-dos-espelhos.jpg" alt="A Galeria dos Espelhos em Versalhes" class="w-full h-64 md:h-80 object-cover rounded-2xl shadow-lg mb-8">
@@ -89,21 +67,21 @@
                 <li class="flex items-start">
                     <span class="bg-green-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0"><i class="fa-solid fa-ticket"></i></span>
                     <div>
-                        <h3 class="font-bold text-lg">Bilhetes Prontos</h3>
+                        <h3 class="font-bold text-lg text-gray-800">Bilhetes Prontos</h3>
                         <p class="text-gray-600">Tenha o PDF dos bilhetes no telemóvel para mostrar na entrada. <a href="https://drive.google.com/file/d/1JWHf_KUwofGdZgYj5wp0JswPyZcCs3ys/view?usp=drive_link" class="text-blue-600 hover:underline font-semibold">Aceder aos bilhetes.</a></p>
                     </div>
                 </li>
                 <li class="flex items-start">
                     <span class="bg-green-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0"><i class="fa-solid fa-person-running"></i></span>
                     <div>
-                        <h3 class="font-bold text-lg">Chegar Cedo é Fundamental</h3>
+                        <h3 class="font-bold text-lg text-gray-800">Chegar Cedo é Fundamental</h3>
                         <p class="text-gray-600">O vosso roteiro prevê a chegada às 08:50, o que é perfeito para entrar na fila de segurança antes da abertura oficial às 09:00 e ser dos primeiros a entrar.</p>
                     </div>
                 </li>
                  <li class="flex items-start">
                     <span class="bg-green-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0"><i class="fa-solid fa-bullseye"></i></span>
                     <div>
-                        <h3 class="font-bold text-lg">Foco Total no Interior</h3>
+                        <h3 class="font-bold text-lg text-gray-800">Foco Total no Interior</h3>
                         <p class="text-gray-600">Numa manhã, o objetivo é explorar o **Palácio Principal** com o máximo de detalhe. **Vamos ignorar completamente os Jardins e os Domínios de Maria Antonieta (Trianons)** para não perdermos tempo precioso em deslocações.</p>
                     </div>
                 </li>
@@ -113,19 +91,19 @@
         <section class="bg-white p-6 rounded-2xl shadow-lg mb-8 text-gray-700 space-y-4">
             <h2 class="section-title font-bold text-gray-800 mb-4">Roteiro no Palácio (Manhã Completa)</h2>
 
-            <h4 class="text-xl font-bold">Passo 1: A Capela Real (Chapelle Royale)</h4>
+            <h4 class="text-xl font-bold text-gray-800">Passo 1: A Capela Real (Chapelle Royale)</h4>
             <p>Logo após a entrada, uma das primeiras maravilhas que encontrará. Dedicada a São Luís, o ancestral do Rei Sol, a sua beleza e a luz que entra pelas janelas altas são um começo impressionante.</p>
             
-            <h4 class="text-xl font-bold pt-4">Passo 2: Os Grandes Apartamentos do Rei (Grand Appartement du Roi)</h4>
+            <h4 class="text-xl font-bold pt-4 text-gray-800">Passo 2: Os Grandes Apartamentos do Rei (Grand Appartement du Roi)</h4>
             <p>Siga o fluxo da visita através de uma série de salões deslumbrantes, cada um dedicado a uma divindade greco-romana. Preste especial atenção ao Salão de Apolo (o Salão do Trono) e ao Salão de Hércules.</p>
 
-            <h4 class="text-xl font-bold pt-4">Passo 3: A Galeria dos Espelhos (Galerie des Glaces) - O Ponto Alto</h4>
+            <h4 class="text-xl font-bold pt-4 text-gray-800">Passo 3: A Galeria dos Espelhos (Galerie des Glaces) - O Ponto Alto</h4>
             <p>O salão mais famoso e espetacular do mundo. Com 73 metros de comprimento, 357 espelhos e tetos pintados que glorificam Luís XIV, este é o coração de Versalhes. Foi aqui que foi assinado o Tratado que terminou a Primeira Guerra Mundial.</p>
 
-            <h4 class="text-xl font-bold pt-4">Passo 4: Os Apartamentos da Rainha (Grand Appartement de la Reine)</h4>
+            <h4 class="text-xl font-bold pt-4 text-gray-800">Passo 4: Os Apartamentos da Rainha (Grand Appartement de la Reine)</h4>
             <p>Na continuação da Galeria dos Espelhos, estes aposentos são igualmente luxuosos, mas com um toque mais delicado. É aqui que várias rainhas de França, incluindo Maria Antonieta, viveram a sua vida pública.</p>
             
-            <h4 class="text-xl font-bold pt-4">Passo 5: A Galeria das Batalhas (Galerie des Batailles)</h4>
+            <h4 class="text-xl font-bold pt-4 text-gray-800">Passo 5: A Galeria das Batalhas (Galerie des Batailles)</h4>
             <p>Antes de terminar, não perca esta galeria imensa que ocupa quase toda a extensão da ala sul do palácio. As suas pinturas monumentais retratam as grandes batalhas da história de França.</p>
         </section>
 
@@ -141,6 +119,6 @@
 
     </div>
 
-    <script src="js/guias_renderer.js"></script>
+    <script src="js/theme_switcher.js"></script>
 </body>
 </html>
