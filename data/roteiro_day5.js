@@ -30,12 +30,11 @@ export const day5Data = {
                         { text: "08:55: Sair em Pont Neuf", subText: "Caminhar ~3 min até ao cacifo." }
                     ]
                 },
-                { 
+                            { 
                     time: "08:58", 
                     icon: "fa-suitcase", 
                     title: "Bounce Luggage Storage - Near Châtelet Subway Station",
-                    requiresTicket: true,
-                    ticketLink: "https://bounce.com/s/location/ea27629f-40f9-4ddd-8681-123a56cc7fa4/book?compactBags=0&from=2025-09-23T0900&gei=4KHJaObYBc-ahbIPlb_XwQo&hl=pt-PT&oddsizeBags=0&rwg_token=ACgRB3caBtj1F5C5gJujlif9Lbgl7N2KQuQyeATYkdU6Xu30I6vvo77t8UdzF1mxa6xzJ1XecZ2rNQPCtg4wKBWGZLzsyICIQg%3D%3D&standardBags=5&to=2025-09-23T1800&utm_source=rwg"
+                    description: "<strong>Reservado!</strong> Usar a app."
                 }
             ]
         },
