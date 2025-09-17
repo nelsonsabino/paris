@@ -36,8 +36,8 @@ body {
     scroll-margin-top: 115px; 
 }
 
-.day-section[id] {
-    scroll-margin-top: 70px; /* Ajuste este valor se for necessário */
+.day-section {
+    scroll-margin-top: 70px;
 }
 
 .timeline-container {
@@ -134,7 +134,7 @@ body {
     transition: background-color 0.2s, color 0.2s; 
     white-space: nowrap; 
 }
-.day-nav a.active-section { background-color: #1e3a8a; color: white; }
+.day-nav .active-section { background-color: #1e3a8a; color: white; }
 .day-nav a:hover { background-color: #e2e8f0; }
 .timeline-badge { display: inline-block; padding: 0.15rem 0.6rem; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; margin-left: 0.75rem; vertical-align: middle; }
 .badge-completed { background-color: #e5e7eb; color: #4b5563; }
