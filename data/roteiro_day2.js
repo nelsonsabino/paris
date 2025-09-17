@@ -29,7 +29,7 @@ export const day2Data = {
         },
         {
             id: "ile-cite",
-            navTitle: "Île Cité",
+            navTitle: "Notre Dame",
             title: "ÎLE DE LA CITÉ → SQUARE DU VERT-GALANT",
             mapLink: "https://maps.app.goo.gl/5E9U6Ka6DwobLj5e7",
             timeline: [
@@ -54,7 +54,7 @@ export const day2Data = {
         },
         {
             id: "tulherias",
-            navTitle: "Tulherias",
+            navTitle: "D'Orsay",
             title: "SQUARE DU VERT-GALANT → LE PETIT PALAIS",
             mapLink: "https://maps.app.goo.gl/Z2i67u12TGEfCiS17",
             rainyDayAlternatives: {
