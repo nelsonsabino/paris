@@ -1,5 +1,8 @@
 // js/despesas.js
 
+// Importa os dados do orçamento de alimentação
+import { orcamentoAlimentacao } from '../data/alimentacao_dados.js';
+
 // --- INICIALIZAÇÃO FIREBASE ---
 const firebaseConfig = {
     apiKey: "AIzaSyAt7jAk5r2tqSdyTf2m7MUebd_t7bbDTJk",
@@ -22,8 +25,8 @@ const inputDescricao = document.getElementById('descricao');
 const inputValor = document.getElementById('valor');
 const inputCategoria = document.getElementById('categoria');
 const inputData = document.getElementById('data');
-const totalGeralEl = document.getElementById('total-geral');
-const totalHojeEl = document.getElementById('total-hoje');
+const totalGeral4pEl = document.getElementById('total-geral-4p');
+const totalGeral1pEl = document.getElementById('total-geral-1p');
 const despesasContainer = document.getElementById('despesas-container');
 const deleteModal = document.getElementById('delete-modal');
 const cancelDeleteBtn = document.getElementById('cancel-delete-btn');
@@ -33,30 +36,26 @@ let itemParaApagar = null;
 
 // --- FUNÇÕES ---
 
-// Formata um número para a moeda local (Euro)
 function formatarMoeda(valor) {
     return new Intl.NumberFormat('pt-PT', { style: 'currency', currency: 'EUR' }).format(valor);
 }
 
-// Converte a data de YYYY-MM-DD para um formato legível (ex: "Sexta, 19 de Setembro")
 function formatarData(dataString) {
     const [ano, mes, dia] = dataString.split('-');
     const data = new Date(ano, mes - 1, dia);
     return new Intl.DateTimeFormat('pt-PT', { weekday: 'long', day: 'numeric', month: 'long' }).format(data);
 }
 
-// Obtém a data de hoje no formato YYYY-MM-DD
 function getHojeString() {
     return new Date().toISOString().split('T')[0];
 }
 
-// Função principal que lê do Firebase e renderiza a página
 function renderizarDespesas() {
     despesasRef.orderByChild('data').on('value', (snapshot) => {
         if (!snapshot.exists()) {
             despesasContainer.innerHTML = '<p class="text-gray-500 text-center italic">Ainda não há despesas registadas.</p>';
-            totalGeralEl.textContent = formatarMoeda(0);
-            totalHojeEl.textContent = formatarMoeda(0);
+            totalGeral4pEl.textContent = formatarMoeda(0);
+            totalGeral1pEl.textContent = formatarMoeda(0);
             return;
         }
 
@@ -64,9 +63,8 @@ function renderizarDespesas() {
         snapshot.forEach(child => {
             despesas.push({ id: child.key, ...child.val() });
         });
-        despesas.reverse(); // Mais recentes primeiro
+        despesas.reverse();
 
-        // Agrupar despesas por dia
         const despesasPorDia = despesas.reduce((acc, despesa) => {
             const data = despesa.data;
             if (!acc[data]) acc[data] = [];
@@ -74,23 +72,28 @@ function renderizarDespesas() {
             return acc;
         }, {});
 
-        // Calcular totais
-        const totalGeral = despesas.reduce((sum, d) => sum + parseFloat(d.valor), 0);
-        const totalHoje = despesasPorDia[getHojeString()]?.reduce((sum, d) => sum + parseFloat(d.valor), 0) || 0;
+        // Calcular totais gerais
+        const totalGeral4p = despesas.reduce((sum, d) => sum + parseFloat(d.valor4p), 0);
+        const totalGeral1p = despesas.reduce((sum, d) => sum + parseFloat(d.valor1p), 0);
+        totalGeral4pEl.textContent = formatarMoeda(totalGeral4p);
+        totalGeral1pEl.textContent = formatarMoeda(totalGeral1p);
 
-        totalGeralEl.textContent = formatarMoeda(totalGeral);
-        totalHojeEl.textContent = formatarMoeda(totalHoje);
-
-        // Renderizar a lista
+        // Renderizar a lista de despesas
         despesasContainer.innerHTML = Object.keys(despesasPorDia).map(data => {
-            const diaTotal = despesasPorDia[data].reduce((sum, d) => sum + parseFloat(d.valor), 0);
+            const diaTotal4p = despesasPorDia[data].reduce((sum, d) => sum + parseFloat(d.valor4p), 0);
+            const diaTotal1p = despesasPorDia[data].reduce((sum, d) => sum + parseFloat(d.valor1p), 0);
+            const orcamentoDoDia = orcamentoAlimentacao[data] || { total4p: 0, porPessoa: 0 };
+
             return `
                 <div class="bg-white p-4 rounded-2xl shadow-lg">
                     <div class="flex justify-between items-center border-b dark:border-slate-700 pb-3 mb-3">
                         <h3 class="font-bold text-lg text-gray-800">${formatarData(data)}</h3>
-                        <p class="font-semibold text-gray-700">${formatarMoeda(diaTotal)}</p>
+                        <div class="text-right">
+                            <p class="font-semibold text-sm text-gray-500">Total Dia (4p/1p)</p>
+                            <p class="font-semibold text-gray-800">${formatarMoeda(diaTotal4p)} / ${formatarMoeda(diaTotal1p)}</p>
+                        </div>
                     </div>
-                    <ul class="space-y-2">
+                    <ul class="space-y-3">
                         ${despesasPorDia[data].map(d => `
                             <li class="flex items-center justify-between group">
                                 <div>
@@ -98,7 +101,11 @@ function renderizarDespesas() {
                                     <p class="text-sm text-gray-500">${d.categoria}</p>
                                 </div>
                                 <div class="flex items-center">
-                                    <p class="font-mono mr-4 text-gray-800">${formatarMoeda(d.valor)}</p>
+                                    <div class="text-right mr-4">
+                                        <p class="font-mono text-sm text-gray-800" title="Total para 5">${formatarMoeda(d.valorTotal)}</p>
+                                        <p class="font-mono text-xs text-blue-600" title="Quota 4 Pessoas">${formatarMoeda(d.valor4p)}</p>
+                                        <p class="font-mono text-xs text-green-600" title="Quota 1 Pessoa">${formatarMoeda(d.valor1p)}</p>
+                                    </div>
                                     <button data-id="${d.id}" class="delete-btn opacity-0 group-hover:opacity-100 text-red-500 hover:text-red-700 transition">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </button>
@@ -106,30 +113,34 @@ function renderizarDespesas() {
                             </li>
                         `).join('')}
                     </ul>
+                    <div class="border-t dark:border-slate-700 mt-3 pt-3 text-center">
+                         <p class="text-sm font-semibold text-gray-500">Orçamento do Dia (Alimentação)</p>
+                         <p class="text-sm text-gray-700">Grupo 4: ${formatarMoeda(orcamentoDoDia.total4p)} | 1 Pessoa: ${formatarMoeda(orcamentoDoDia.porPessoa)}</p>
+                    </div>
                 </div>
             `;
         }).join('');
     });
 }
 
-
 // --- EVENT LISTENERS ---
 
-// Listener para o formulário
 form.addEventListener('submit', (e) => {
     e.preventDefault();
+    const valorTotal = parseFloat(inputValor.value);
     const novaDespesa = {
         descricao: inputDescricao.value,
-        valor: parseFloat(inputValor.value),
+        valorTotal: valorTotal,
+        valor4p: (valorTotal / 5) * 4,
+        valor1p: (valorTotal / 5),
         categoria: inputCategoria.value,
         data: inputData.value
     };
     despesasRef.push(novaDespesa);
     form.reset();
-    inputData.value = getHojeString(); // Repõe a data para hoje
+    inputData.value = getHojeString();
 });
 
-// Listener para os botões de apagar (usando delegação de eventos)
 despesasContainer.addEventListener('click', (e) => {
     const deleteBtn = e.target.closest('.delete-btn');
     if (deleteBtn) {
@@ -138,7 +149,6 @@ despesasContainer.addEventListener('click', (e) => {
     }
 });
 
-// Listeners do modal de confirmação
 confirmDeleteBtn.addEventListener('click', () => {
     if (itemParaApagar) {
         despesasRef.child(itemParaApagar).remove();
@@ -153,6 +163,6 @@ cancelDeleteBtn.addEventListener('click', () => {
 
 // --- INICIALIZAÇÃO DA PÁGINA ---
 document.addEventListener('DOMContentLoaded', () => {
-    inputData.value = getHojeString(); // Preenche a data de hoje
-    renderizarDespesas(); // Carrega e exibe as despesas existentes
+    inputData.value = getHojeString();
+    renderizarDespesas();
 });
