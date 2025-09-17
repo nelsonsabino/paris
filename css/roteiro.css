@@ -33,7 +33,7 @@ body {
 
 /* --- CORREÇÃO PARA O SCROLL --- */
 .section-block[id] {
-    scroll-margin-top: 160px; 
+    scroll-margin-top: 115px; 
 }
 
 .day-section[id] {
