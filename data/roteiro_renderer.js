@@ -141,7 +141,7 @@ async function renderPage() {
         const dayNavSections = dayData.sections.filter(s => s.id);
         let dayNavHtml = '';
         if (dayNavSections.length > 0) {
-            dayNavHtml = `<div class="day-nav mb-10">
+            dayNavHtml = `<div class="day-nav mb-4">
                 ${dayNavSections.map(s => {
                     const linkText = s.navTitle || s.title.split('→').pop().trim().split(' ')[0];
                     return `<a href="#${s.id}" data-section-id="${s.id}">${linkText}</a>`;
@@ -221,7 +221,7 @@ async function renderPage() {
             }
 
             htmlContent += `<div ${sectionBlock.id ? `id="${sectionBlock.id}"` : ''} class="section-block pt-4">
-                    <a href="${sectionBlock.mapLink}" target="_blank" class="block p-3 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-colors duration-200 mt-8 mb-4">
+                    <a href="${sectionBlock.mapLink}" target="_blank" class="block p-3 rounded-lg bg-slate-50 border border-slate-200 hover:bg-slate-100 hover:border-slate-300 transition-colors duration-200 mt-0 mb-4">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center"><i class="fas fa-map-location-dot text-blue-600 text-xl mr-3"></i><h3 class="font-display text-lg md:text-xl font-bold text-gray-800">${sectionBlock.title}</h3></div>
                             <span class="text-sm font-semibold text-blue-500 hidden md:block">Ver no Mapa <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i></span>
