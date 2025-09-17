@@ -100,6 +100,7 @@ function renderizarDespesas() {
         despesasContainer.innerHTML = Object.keys(despesasPorDia).map(data => {
             const diaTotal4p = despesasPorDia[data].reduce((sum, d) => sum + parseFloat(d.valor4p), 0);
             const diaTotal1p = despesasPorDia[data].reduce((sum, d) => sum + parseFloat(d.valor1p), 0);
+            const diaTotal5p = despesasPorDia[data].reduce((sum, d) => sum + parseFloat(d.valorTotal), 0);
             const orcamentoDoDia = orcamentoAlimentacao[data] || { total4p: 0, porPessoa: 0 };
 
             return `
