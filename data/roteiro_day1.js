@@ -20,7 +20,19 @@ export const day1Data = {
                 { time: "7:00", icon: "fa-car", title: "Saída de Casa" },
                 { time: "7:45", icon: "fa-plane", title: "Chegada ao Aeroporto" },
                 { time: "9:00", icon: "fa-ticket", title: "Fecho do Embarque T2" },
-                { time: "9:40", icon: "fa-plane-departure", title: "Descolagem" },
+                { 
+                    time: "9:40", 
+                    icon: "fa-plane-departure", 
+                    title: "Voo de Partida (TO 7641)",
+                    description: `
+                        <ul class='list-disc list-inside text-sm mt-1'>
+                            <li><strong>Nº Confirmação:</strong> B7UQNI</li>
+                            <li><strong>Partida:</strong> 09:40</li>
+                            <li><strong>Chegada:</strong> 13:10</li>
+                            <li><strong>Duração:</strong> 2h 30min</li>
+                        </ul>
+                    `
+                },
                 { time: "13:10", icon: "fa-plane-arrival", title: "Chegada a Paris" }
             ]
         },
