@@ -98,11 +98,11 @@ export const day1Data = {
              timeline: [
                 { time: "19:00", icon: "fa-landmark", title: "Opéra Garnier", description: "Chegada, vista exterior e fotos rápidas." },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~10 min a pé desde Opéra Garnier" },
-                { 
+            { 
                     time: "19:10", 
                     icon: "fa-basket-shopping", 
                     title: "Abastecimento em MONOP'", 
-                    description: "Paragem rápida para comprar sandes, snacks e bebidas para a caminhada.",
+                    description: "Paragem rápida para comprar sandes e bebidas. <a href='https://maps.app.goo.gl/xXqvbr9uYVRGC6jH8' target='_blank' class='text-blue-600 hover:underline font-semibold'>(Ver no Mapa)</a>",
                     isLogistics: true // <-- Campo especial para o destaque
                 },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~10 min a pé desde o MONOP'" },
