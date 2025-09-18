@@ -166,9 +166,8 @@ export const day1Data = {
                 description: "<strong>Supermercados perto de casa e da zona da Torre Eifell:</strong>",
                 locations: [
                     { name: "Franprix Perto da Casa", link: "https://maps.app.goo.gl/uzspchqU5hnb7xpk7" },
-                     { name: "Coccinelle Express Perto da Casa", link: "https://maps.app.goo.gl/a6QLaHNL6opvUuhw6" }
-                    { name: "Supermercados na área", link: "https://maps.app.goo.gl/V3mjkNaZi5hk7mZbA" }
-                    
+                     { name: "Coccinelle Express Perto da Casa", link: "https://maps.app.goo.gl/a6QLaHNL6opvUuhw6" },
+                    { name: "Supermercados na área", link: "https://maps.app.goo.gl/V3mjkNaZi5hk7mZbA" }                    
                 ]
             }
         }
