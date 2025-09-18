@@ -1,7 +1,7 @@
 // data/dados_estaticos.js
 
 export const planningEvents = [
-    { title: 'Reserva para entrada sem filas na Notre-Dame', date: '2025-09-17', description: 'Reserva para 20/set. Tem que ser feita ás 23.45h por 2 pessoas. Uma reserva 4 para slot 9-9.15h e a outra reserva +1 para os mesmo slot, ou 15 min.depois', status: 'pending', color: '#ea580c' }
+    { title: 'Reserva para entrada sem filas na Notre-Dame', date: '2025-09-17', description: 'Reserva para 20/set. Tem que ser feita ás 23.45h por 2 pessoas. Uma reserva 4 para slot 9-9.15h e a outra reserva +1 para os mesmo slot, ou 15 min.depois', status: 'complete', color: '#0d9c08' }
 ];
 
 export const tripItinerary = [
