@@ -55,28 +55,28 @@ export const day2Data = {
         {
             id: "tulherias-arco", // ID ATUALIZADO
             navTitle: "Tarde a Pé",    // navTitle ATUALIZADO
-            title: "SQUARE DU VERT-GALANT → ARCO DO TRIUNFO (A PÉ)", // TÍTULO ATUALIZADO
-            mapLink: "https://maps.app.goo.gl/uF5f8gPfrd9jLscy8", // NOVO LINK DE MAPA
+            title: "SQUARE DU VERT-GALANT → ARCO DO TRIUNFO", // TÍTULO ATUALIZADO
+            mapLink: "https://maps.app.goo.gl/ywsRRywyqL4Laeoq9", // NOVO LINK DE MAPA
             timeline: [ // TIMELINE COMPLETAMENTE REFEITA
                 { time: "12:00", icon: "fa-bridge", title: "Pont Neuf", description: "Passeio rápido, fotos (~10 min)." },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~10 min a pé desde Pont Neuf." },
                 { time: "12:10", icon: "fa-bridge", title: "Pont des Arts", description: "Passeio, fotos e apreciar vista do Sena (~10 min)." },
-                { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé desde Pont des Arts." },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~11 min a pé desde Pont des Arts." },
                 { time: "12:20", icon: "fa-archway", title: "Arco do Triunfo do Carrossel", description: "Passeio rápido, fotos (~10 min)." },
-                { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé desde o Arco." },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~8 min a pé desde o Arco." },
                 { time: "12:30", icon: "fa-tree", title: "Jardim das Tulherias", description: "Passeio pelos jardins, fotos (~20 min)." },
-                { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé desde os Jardins." },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~8 min a pé desde os Jardins." },
                 { time: "12:50", icon: "fa-square-full", title: "Place de la Concorde", description: "Breve visita, fotos (~10 min)." },
                 { time: "13:00", icon: "fa-utensils", title: "Almoço", 
                     mealSuggestion: {
                         suggestion: "Optar por uma 'formule' de padaria (sandes + bebida + sobremesa). É prático e económico para comer ao ar livre nos jardins.",
                     }
                 },
-                { time: "14:30", icon: "fa-person-walking", title: "Caminhada até Musée d’Orsay", description: "~20 min a pé desde Place de la Concorde. Chegada prevista às 14:50." },
+                { time: "14:30", icon: "fa-person-walking", title: "Caminhada até Musée d’Orsay", description: "~10 min a pé desde Place de la Concorde." },
                 { time: "15:30", icon: "fa-building-columns", title: "Musée d'Orsay", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1Bu_gwN7g8FUIv_qIG1aK_RuN7e0ACQcr/view?usp=drive_link", guideLink: "visita_musee-orsay.html", description: "Entrada na porta A. Visita recomendada: 1h30-2h." },
-                { icon: "fa-person-walking", title: "Percurso a pé", description: "~10 min a pé desde o Musée d'Orsay." },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~19 min a pé desde o Musée d'Orsay." },
                 { time: "17:30", icon: "fa-landmark", title: "Petit Palais / Grand Palais", description: "Observação exterior e fotos rápidas (~20 min)." },
-                { icon: "fa-person-walking", title: "Percurso a pé pelos Champs-Élysées" },
+                { icon: "fa-person-walking", title: "Percurso a pé pelos Champs-Élysées", description: "~27 min a pé desde o Petit Palais / Grand Palais." },
                 { time: "18:30", icon: "fa-archway", title: "Arco do Triunfo", guideLink: "visita_arco-do-triunfo.html" }
             ]
         },
@@ -84,7 +84,7 @@ export const day2Data = {
             id: "ida-notre-dame-noite", // NOVA SECÇÃO
             navTitle: "Ida Notre-Dame",
             title: "ARCO DO TRIUNFO → NOTRE DAME",
-            mapLink: "https://maps.app.goo.gl/T4CqgW5oT7U8ZQnRA",
+            mapLink: "https://maps.app.goo.gl/94ZvMCRg8pcUY4MS8",
             timeline: [
                 {
                     time: "19:45", icon: "fa-route", title: "Percurso de Metro", description: "Duração total: ~30 min. Clica para ver os detalhes.",
@@ -102,7 +102,7 @@ export const day2Data = {
             id: "regresso-d2", // SECÇÃO DE REGRESSO ATUALIZADA
             navTitle: "Regresso",
             title: "NOTRE DAME → CASA",
-            mapLink: "https://maps.app.goo.gl/S3z3fGq2S3wJvJ8e7",
+            mapLink: "https://maps.app.goo.gl/MV9jF8i7hp164RHb9",
             timeline: [
                 {
                     time: "21:30", icon: "fa-route", title: "Percurso de Metro para Casa", description: "Duração total: ~30 min. Clica para ver os detalhes.",
