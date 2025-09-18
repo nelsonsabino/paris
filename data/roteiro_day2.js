@@ -35,7 +35,7 @@ export const day2Data = {
             timeline: [
                 { time: "08:40", icon: "fa-coffee", title: "Au Vieux Paris d'Arcole", description: "Início do passeio, fotos rápidas (~10 min)." },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~10 min a pé." },
-                { time: "08:50", icon: "fa-church", title: "Catedral de Notre-Dame", description: "Visita principal. Se a fila for demasiado longa, visitaremos à noite (bilhete reservado para as 20:30).", requiresTicket: true, ticketLink: "https://drive.google.com/drive/folders/1oSk8g-YICideKP3QHB0Q7mGai2Yfihoh?usp=drive_link", guideLink: "visita_notre-dame.html" },
+                { time: "08:50", icon: "fa-church", title: "Catedral de Notre-Dame", description: "Visita principal. Se a fila for demasiado longa, visitaremos à noite (bilhete reservado para as 20:30).", requiresTicket: true, ticketLink: "https://drive.google.com/drive/folders/1oSk8g-YICideKP3QHB0Q7mGai2Yfihoh?usp=drive_link", guideLink: "visita_notre-dame.html", isHighlight: true  },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~2 min a pé." },
                 { time: "10:00", icon: "fa-book", title: "Shakespeare and Company", description: "Livraria histórica, fotos (~15 min). Saída prevista: 10:15." },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~10 min a pé." },
@@ -45,7 +45,7 @@ export const day2Data = {
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé." },
                 { time: "11:00", icon: "fa-fountain", title: "Fontaine Saint-Michel", description: "Fotos rápidas, breve paragem (~10 min). Saída prevista: 11:10." },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé." },
-                { time: "11:15", icon: "fa-leaf", title: "Mercado das Flores Rainha Elizabeth II", description: "Passeio e fotos (~15 min). Saída prevista: 11:30." },
+                { time: "11:15", icon: "fa-leaf", title: "Mercado das Flores Rainha Elizabeth II", description: "Passeio e fotos (~15 min). Saída prevista: 11:30.", isHighlight: true  },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé." },
                 { time: "11:35", icon: "fa-tree-city", title: "Place Dauphine", description: "Breve visita, fotos (~10 min). Saída prevista: 11:45." },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~3 min a pé." },
@@ -62,9 +62,9 @@ export const day2Data = {
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~10 min a pé desde Pont Neuf." },
                 { time: "12:10", icon: "fa-bridge", title: "Pont des Arts", description: "Passeio, fotos e apreciar vista do Sena (~10 min)." },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~11 min a pé desde Pont des Arts." },
-                { time: "12:20", icon: "fa-archway", title: "Arco do Triunfo do Carrossel", description: "Passeio rápido, fotos (~10 min)." },
+                { time: "12:20", icon: "fa-archway", title: "Arco do Triunfo do Carrossel", description: "Passeio rápido, fotos (~10 min).", isHighlight: true  },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~8 min a pé desde o Arco." },
-                { time: "12:30", icon: "fa-tree", title: "Jardim das Tulherias", description: "Passeio pelos jardins, fotos (~20 min)." },
+                { time: "12:30", icon: "fa-tree", title: "Jardim das Tulherias", description: "Passeio pelos jardins, fotos (~20 min).", isHighlight: true  },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~8 min a pé desde os Jardins." },
                 { time: "12:50", icon: "fa-square-full", title: "Place de la Concorde", description: "Breve visita, fotos (~10 min)." },
                 { time: "13:00", icon: "fa-utensils", title: "Almoço", 
@@ -73,11 +73,11 @@ export const day2Data = {
                     }
                 },
                 { time: "14:30", icon: "fa-person-walking", title: "Caminhada até Musée d’Orsay", description: "~10 min a pé desde Place de la Concorde." },
-                { time: "15:30", icon: "fa-building-columns", title: "Musée d'Orsay", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1Bu_gwN7g8FUIv_qIG1aK_RuN7e0ACQcr/view?usp=drive_link", guideLink: "visita_musee-orsay.html", description: "Entrada na porta A. Visita recomendada: 1h30-2h." },
+                { time: "15:30", icon: "fa-building-columns", title: "Musée d'Orsay", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1Bu_gwN7g8FUIv_qIG1aK_RuN7e0ACQcr/view?usp=drive_link", guideLink: "visita_musee-orsay.html", description: "Entrada na porta A. Visita recomendada: 1h30-2h.", isHighlight: true  },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~19 min a pé desde o Musée d'Orsay." },
-                { time: "17:30", icon: "fa-landmark", title: "Petit Palais / Grand Palais", description: "Observação exterior e fotos rápidas (~20 min)." },
+                { time: "17:30", icon: "fa-landmark", title: "Petit Palais / Grand Palais", description: "Observação exterior e fotos rápidas (~20 min).", isHighlight: true  },
                 { icon: "fa-person-walking", title: "Percurso a pé pelos Champs-Élysées", description: "~27 min a pé desde o Petit Palais / Grand Palais." },
-                { time: "18:30", icon: "fa-archway", title: "Arco do Triunfo", guideLink: "visita_arco-do-triunfo.html" }
+                { time: "18:30", icon: "fa-archway", title: "Arco do Triunfo", guideLink: "visita_arco-do-triunfo.html", isHighlight: true  }
             ]
         },
                {
@@ -96,7 +96,7 @@ export const day2Data = {
                         { text: "19:46: Sair em Hôtel de Ville", subText: "Caminhar ~8 min até à catedral." }
                     ]
                 },
-                { time: "20:30", icon: "fa-church", title: "Visita Noturna a Notre-Dame", requiresTicket: true, ticketLink: "https://drive.google.com/drive/folders/1oSk8g-YICideKP3QHB0Q7mGai2Yfihoh?usp=drive_link", guideLink: "visita_notre-dame.html" }
+                { time: "20:30", icon: "fa-church", title: "Visita Noturna a Notre-Dame", requiresTicket: true, ticketLink: "https://drive.google.com/drive/folders/1oSk8g-YICideKP3QHB0Q7mGai2Yfihoh?usp=drive_link", guideLink: "visita_notre-dame.html", isHighlight: true  }
             ]
         },
         {
