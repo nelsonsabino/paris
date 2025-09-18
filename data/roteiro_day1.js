@@ -106,9 +106,9 @@ export const day1Data = {
                     isLogistics: true // <-- Campo especial para o destaque
                 },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~10 min a pé desde o MONOP'" },
-                { time: "19:30", icon: "fa-landmark-dome", title: "Hôtel des Invalides", description: "Vista exterior, paragem rápida (~10 min)." },
+                { time: "19:30", icon: "fa-landmark-dome", title: "Hôtel des Invalides", description: "Vista exterior, paragem rápida (~10 min).", isHighlight: true  },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~10 min a pé desde Hôtel des Invalides." },
-                { time: "19:45", icon: "fa-bridge", title: "Ponte Alexandre III", description: "<strong>Pôr-do-sol às 19:53.</strong> Chegar 10-15 min antes para garantir boa posição." },
+                { time: "19:45", icon: "fa-bridge", title: "Ponte Alexandre III", description: "<strong>Pôr-do-sol às 19:53.</strong> Chegar 10-15 min antes para garantir boa posição.", isHighlight: true  },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~20 min a pé desde a Ponte Alexandre III." },
                 { time: "20:30", icon: "fa-camera-retro", title: "Jardim do Trocadéro", description: "Fotos da Torre Eiffel, breve passeio (~15 min)." },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé desde o Trocadéro." },
