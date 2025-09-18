@@ -506,6 +506,7 @@ html.dark .location-links a:hover {
     padding-left: 2.5rem;
     border-radius: 0.5rem;
     border-left: 4px solid #facc15; /* yellow-400 */
+    margin-bottom: 3rem; /* <-- ADICIONE ESTA LINHA */
 }
 .timeline-icon-logistics {
     background-color: #f59e0b; /* amber-500 */
