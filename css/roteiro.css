@@ -496,3 +496,26 @@ html.dark .location-links a {
 html.dark .location-links a:hover {
     background-color: #4338ca; /* indigo-700 */
 }
+
+/* --- ESTILOS PARA ITENS DE LOGÍSTICA NA TIMELINE (NOVO) --- */
+.timeline-item-logistics {
+    background-color: #fefce8; /* yellow-50 */
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    margin-left: -2.5rem; /* Alinha com a linha da timeline */
+    padding-left: 2.5rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid #facc15; /* yellow-400 */
+}
+.timeline-icon-logistics {
+    background-color: #f59e0b; /* amber-500 */
+}
+
+/* Modo Escuro */
+html.dark .timeline-item-logistics {
+    background-color: #3a321d;
+    border-color: #fcd34d; /* amber-300 */
+}
+html.dark .timeline-icon-logistics {
+    background-color: #d97706; /* amber-600 */
+}
