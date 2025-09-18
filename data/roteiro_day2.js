@@ -35,7 +35,7 @@ export const day2Data = {
             timeline: [
                 { time: "08:40", icon: "fa-coffee", title: "Au Vieux Paris d'Arcole", description: "Início do passeio, fotos rápidas (~10 min)." },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~10 min a pé." },
-                { time: "08:50", icon: "fa-church", title: "Catedral de Notre-Dame", description: "Visita principal. Se a fila for demasiado longa, visitaremos à noite (bilhete reservado para as 20:30).", requiresTicket: true, ticketLink: "https://resa.notredamedeparis.fr/en/reservationindividuelle/tickets", guideLink: "visita_notre-dame.html" },
+                { time: "08:50", icon: "fa-church", title: "Catedral de Notre-Dame", description: "Visita principal. Se a fila for demasiado longa, visitaremos à noite (bilhete reservado para as 20:30).", requiresTicket: true, ticketLink: "https://drive.google.com/drive/folders/1oSk8g-YICideKP3QHB0Q7mGai2Yfihoh?usp=drive_link", guideLink: "visita_notre-dame.html" },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~2 min a pé." },
                 { time: "10:00", icon: "fa-book", title: "Shakespeare and Company", description: "Livraria histórica, fotos (~15 min). Saída prevista: 10:15." },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~10 min a pé." },
@@ -96,7 +96,7 @@ export const day2Data = {
                         { text: "19:46: Sair em Hôtel de Ville", subText: "Caminhar ~8 min até à catedral." }
                     ]
                 },
-                { time: "20:30", icon: "fa-church", title: "Visita Noturna a Notre-Dame", requiresTicket: true, ticketLink: "https://resa.notredamedeparis.fr/en/reservationindividuelle/tickets", guideLink: "visita_notre-dame.html" }
+                { time: "20:30", icon: "fa-church", title: "Visita Noturna a Notre-Dame", requiresTicket: true, ticketLink: "https://drive.google.com/drive/folders/1oSk8g-YICideKP3QHB0Q7mGai2Yfihoh?usp=drive_link", guideLink: "visita_notre-dame.html" }
             ]
         },
         {
