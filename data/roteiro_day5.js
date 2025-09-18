@@ -45,7 +45,7 @@ export const day5Data = {
             mapLink: "https://maps.app.goo.gl/JkgAoFCqB5ca5qpE6",
             timeline: [
                 { time: "09:00", icon: "fa-train-subway", title: "Saída do Metro Châtelet", description: "~4 min a pé até Sainte-Chapelle." },
-                { time: "09:30", icon: "fa-gem", title: "Sainte-Chapelle", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1ucQbtBDOxRx83d_m4Up5lnqzKcngOm3k/view?usp=drive_link", guideLink: "visita_sainte-chapelle.html", description: "Visita: ~1 hora. Saída: 10:30" },
+                { time: "09:30", icon: "fa-gem", title: "Sainte-Chapelle", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1ucQbtBDOxRx83d_m4Up5lnqzKcngOm3k/view?usp=drive_link", guideLink: "visita_sainte-chapelle.html", description: "Visita: ~1 hora. Saída: 10:30", isHighlight: true  },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé." },
                 { time: "10:30", icon: "fa-road", title: "Rue de la Huchette", description: "Passeio e fotos (~10 min). Saída: 10:40" },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~2 min a pé." },
@@ -57,11 +57,11 @@ export const day5Data = {
                     }
                 },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~3 min a pé." },
-                { time: "11:15", icon: "fa-monument", title: "Saint-Étienne-du-Mont", description: "Visita: ~25 min. Saída: 11:40" },
+                { time: "11:15", icon: "fa-monument", title: "Saint-Étienne-du-Mont", description: "Visita: ~25 min. Saída: 11:40", isHighlight: true  },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~3 min a pé." },
-                { time: "11:40", icon: "fa-landmark-dome", title: "Panteão (Vista Exterior)", guideLink: "visita_quartier-latin.html", description: "Fotos: ~15 min. Saída: 11:55" },
+                { time: "11:40", icon: "fa-landmark-dome", title: "Panteão (Vista Exterior)", guideLink: "visita_quartier-latin.html", description: "Fotos: ~15 min. Saída: 11:55", isHighlight: true  },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé." },
-                { time: "11:55", icon: "fa-seedling", title: "Jardim do Luxemburgo", guideLink: "visita_jardim-luxemburgo.html", description: "Pausa, caminhada e fotos: ~45 min. Saída: 12:40" }
+                { time: "11:55", icon: "fa-seedling", title: "Jardim do Luxemburgo", guideLink: "visita_jardim-luxemburgo.html", description: "Pausa, caminhada e fotos: ~45 min. Saída: 12:40", isHighlight: true  }
             ]
         },
         {
@@ -77,7 +77,7 @@ export const day5Data = {
                     }
                 },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~6 min a pé." },
-                { time: "14:30", icon: "fa-church", title: "Igreja de Saint-Sulpice", description: "Visita e pinturas de Delacroix (~30 min). Saída: 15:00" },
+                { time: "14:30", icon: "fa-church", title: "Igreja de Saint-Sulpice", description: "Visita e pinturas de Delacroix (~30 min). Saída: 15:00", isHighlight: true  },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé." },
                 { time: "15:00", icon: "fa-coffee", title: "Pausa num Café Icónico",
                      mealSuggestion: {
@@ -85,7 +85,7 @@ export const day5Data = {
                         /*budget: "~6 € / pessoa"*/
                     }
                 },
-                { time: "15:30", icon: "fa-church", title: "Abadia de Saint-Germain-des-Prés", description: "Visita rápida e fotos (~10 min). Saída: 15:40" },
+                { time: "15:30", icon: "fa-church", title: "Abadia de Saint-Germain-des-Prés", description: "Visita rápida e fotos (~10 min). Saída: 15:40", isHighlight: true  },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~2 min a pé." },
                 { time: "15:40", icon: "fa-tree", title: "Square Laurent-Prache", description: "Passeio breve, fotos (~10 min). Saída: 15:50" },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~3 min a pé." },
