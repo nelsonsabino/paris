@@ -42,7 +42,7 @@ export const day3Data = {
                         { text: "08:35: Sair em Versailles Château Rive Gauche", subText: "Caminhar ~15 min até ao palácio." }
                     ]
                 },
-                { time: "08:50", icon: "fa-crown", title: "Palácio de Versalhes", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1JWHf_KUwofGdZgYj5wp0JswPyZcCs3ys/view?usp=drive_link", guideLink: "visita_versalhes.html", description: "Entrada no Palácio. Nota: Existem várias casas de banho dentro do palácio e nos jardins." },
+                { time: "08:50", icon: "fa-crown", title: "Palácio de Versalhes", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1JWHf_KUwofGdZgYj5wp0JswPyZcCs3ys/view?usp=drive_link", guideLink: "visita_versalhes.html", description: "Entrada no Palácio. Nota: Existem várias casas de banho dentro do palácio e nos jardins.", isHighlight: true  },
                 { time: "13:00", icon: "fa-utensils", title: "Almoço Piquenique",
                     mealSuggestion: {
                         suggestion: "Almoço nos jardins com sandes preparadas no dia anterior. Evita os preços altos e as filas dos restaurantes do complexo.",
@@ -87,9 +87,9 @@ export const day3Data = {
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~1 min a pé." },
                 { time: "15:57", icon: "fa-tree", title: "Square Louise Michel", description: "Passeio breve, fotos: ~10 min. Saída: 16:07" },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé." },
-                { time: "16:07", icon: "fa-place-of-worship", title: "Basílica do Sacré-Cœur", guideLink: "visita_montmartre.html", description: "Subida/funicular + visita + vista: ~45 min. Saída: 16:52" },
+                { time: "16:07", icon: "fa-place-of-worship", title: "Basílica do Sacré-Cœur", guideLink: "visita_montmartre.html", description: "Subida/funicular + visita + vista: ~45 min. Saída: 16:52", isHighlight: true  },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé." },
-                { time: "16:52", icon: "fa-palette", title: "Place du Tertre", description: "Passeio pela praça dos artistas, fotos: ~30 min. Saída: 17:22" },
+                { time: "16:52", icon: "fa-palette", title: "Place du Tertre", description: "Passeio pela praça dos artistas, fotos: ~30 min. Saída: 17:22", isHighlight: true  },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~2 min a pé." },
                 { time: "17:22", icon: "fa-ice-cream", title: "Lanche da tarde em Montmartre", description: "Duração: ~20 min. Saída: 17:42",
                     mealSuggestion: {
@@ -99,11 +99,11 @@ export const day3Data = {
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~3 min a pé." },
                 { time: "17:42", icon: "fa-utensils", title: "Le Consulat & La Maison Rose", description: "Fotos rápidas: ~10 min. Saída: 17:52" },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~2 min a pé." },
-                { time: "17:52", icon: "fa-wind", title: "Moulin de la Galette (Radet)", description: "Passagem rápida, fotos: ~5 min. Saída: 17:57" },
+                { time: "17:52", icon: "fa-wind", title: "Moulin de la Galette (Radet)", description: "Passagem rápida, fotos: ~5 min. Saída: 17:57", isHighlight: true  },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~2 min a pé." },
                 { time: "17:57", icon: "fa-mug-hot", title: "Café des Deux Moulins", description: "Paragem rápida/fotos: ~5 min. Saída: 18:02" },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé." },
-                { time: "18:02", icon: "fa-wind", title: "Moulin Rouge", description: "Fotos finais: ~10 min. Saída: 18:12" },
+                { time: "18:02", icon: "fa-wind", title: "Moulin Rouge", description: "Fotos finais: ~10 min. Saída: 18:12", isHighlight: true  },
                 { time: "19:30", icon: "fa-utensils", title: "Jantar em Montmartre",
                     mealSuggestion: {
                         suggestion: "Jantar rápido e económico. A zona tem muitas opções de kebab, pizza ou falafel que são saborosas e baratas, antes de apanhar o metro.",
