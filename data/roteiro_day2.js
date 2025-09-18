@@ -33,6 +33,13 @@ export const day2Data = {
             title: "ÎLE DE LA CITÉ → SQUARE DU VERT-GALANT",
             mapLink: "https://maps.app.goo.gl/5E9U6Ka6DwobLj5e7",
             timeline: [
+{ 
+                    /*time: "-:-",*/ 
+                    icon: "fa-basket-shopping", 
+                    title: "Carrefour City", 
+                    description: "Opcional para comprar sandes e bebidas. <a href='https://maps.app.goo.gl/cU5h3QfqqtbsB7U79' target='_blank' class='text-blue-600 hover:underline font-semibold'>(Ver no Mapa)</a>",
+                    isLogistics: true // <-- Campo especial para o destaque
+                },
                 { time: "08:40", icon: "fa-coffee", title: "Au Vieux Paris d'Arcole", description: "Início do passeio, fotos rápidas (~10 min)." },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~10 min a pé." },
                 { time: "08:50", icon: "fa-church", title: "Catedral de Notre-Dame", description: "Visita principal. Se a fila for demasiado longa, visitaremos à noite (bilhete reservado para as 20:30).", requiresTicket: true, ticketLink: "https://drive.google.com/drive/folders/1oSk8g-YICideKP3QHB0Q7mGai2Yfihoh?usp=drive_link", guideLink: "visita_notre-dame.html", isHighlight: true  },
