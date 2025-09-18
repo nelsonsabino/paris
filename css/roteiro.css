@@ -418,3 +418,81 @@ html.dark .weather-color-storm { color: #c4b5fd; } /* violet-300 */
 .theme-switcher .moon-icon { display: block; }
 html.dark .theme-switcher .sun-icon { display: block; }
 html.dark .theme-switcher .moon-icon { display: none; }
+
+
+/* --- ESTILOS PARA A SECÇÃO DE DICAS DE COMPRAS (NOVO) --- */
+.shopping-info-container {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e2e8f0; /* slate-200 */
+}
+.shopping-info-title {
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 700;
+    color: #475569; /* slate-600 */
+    margin-bottom: 1rem;
+}
+.shopping-info-container ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    color: #475569; /* slate-600 */
+    margin-bottom: 1rem;
+}
+.shopping-info-section {
+    margin-top: 1.5rem;
+}
+.shopping-info-section h4 {
+    font-weight: 600;
+    color: #334155; /* slate-700 */
+    margin-bottom: 0.5rem;
+}
+.shopping-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.25rem 1rem;
+    font-size: 0.875rem; /* text-sm */
+}
+@media (min-width: 768px) {
+    .shopping-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+.location-links {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+}
+.location-links a {
+    background-color: #e0e7ff; /* indigo-100 */
+    color: #3730a3; /* indigo-800 */
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+.location-links a:hover {
+    background-color: #c7d2fe; /* indigo-200 */
+}
+
+/* Modo Escuro */
+html.dark .shopping-info-container {
+    border-top-color: #334155; /* slate-700 */
+}
+html.dark .shopping-info-title {
+    color: #cbd5e1; /* slate-300 */
+}
+html.dark .shopping-info-container ul {
+    color: #94a3b8; /* slate-400 */
+}
+html.dark .shopping-info-section h4 {
+    color: #e2e8f0; /* slate-200 */
+}
+html.dark .location-links a {
+    background-color: #3730a3; /* indigo-800 */
+    color: #e0e7ff; /* indigo-100 */
+}
+html.dark .location-links a:hover {
+    background-color: #4338ca; /* indigo-700 */
+}
