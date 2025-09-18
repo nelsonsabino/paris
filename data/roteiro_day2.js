@@ -19,7 +19,7 @@ export const day2Data = {
             timeline: [
                 { time: "08:01", icon: "fa-house-chimney", title: "Saída de Casa" },
                 {
-                    time: "08:04", icon: "fa-route", title: "Percurso: Casa → Île de la Cité", description: "Duração total: ~37 min. Clica para ver os detalhes.",
+                    time: "08:04", icon: "fa-route", title: "Percurso: Casa → Île de la Cité", description: "Duração total: ~37 min.",
                     accordion: [
                         { text: "08:04: Apanhar Metro <span class='metro-line' style='background-color: #fa9aaa;'>7</span>", subText: "Da estação <strong>Fort d'Aubervilliers</strong>, direção Villejuif-Louis Aragon (18 paragens)." },
                         { text: "08:30: Sair em Châtelet", subText: "Caminhar ~8 min até ao ponto de partida na ilha, chegando às 08:38." }
@@ -29,13 +29,13 @@ export const day2Data = {
         },
         {
             id: "ile-cite",
-            navTitle: "Notre Dame",
+            navTitle: "Île Cité",
             title: "ÎLE DE LA CITÉ → SQUARE DU VERT-GALANT",
             mapLink: "https://maps.app.goo.gl/5E9U6Ka6DwobLj5e7",
             timeline: [
                 { time: "08:40", icon: "fa-coffee", title: "Au Vieux Paris d'Arcole", description: "Início do passeio, fotos rápidas (~10 min)." },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~10 min a pé." },
-                { time: "08:50", icon: "fa-church", title: "Catedral de Notre-Dame", description: "Visita interior + Point Zéro (~1h10). Saída prevista: 10:00.", requiresTicket: true, ticketLink: "https://resa.notredamedeparis.fr/en/reservationindividuelle/tickets", guideLink: "visita_notre-dame.html" },
+                { time: "08:50", icon: "fa-church", title: "Catedral de Notre-Dame", description: "Visita principal. Se a fila for demasiado longa, visitaremos à noite (bilhete reservado para as 20:30).", requiresTicket: true, ticketLink: "https://resa.notredamedeparis.fr/en/reservationindividuelle/tickets", guideLink: "visita_notre-dame.html" },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~2 min a pé." },
                 { time: "10:00", icon: "fa-book", title: "Shakespeare and Company", description: "Livraria histórica, fotos (~15 min). Saída prevista: 10:15." },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~10 min a pé." },
@@ -53,19 +53,11 @@ export const day2Data = {
             ]
         },
         {
-            id: "tulherias",
-            navTitle: "D'Orsay",
-            title: "SQUARE DU VERT-GALANT → LE PETIT PALAIS",
-            mapLink: "https://maps.app.goo.gl/Z2i67u12TGEfCiS17",
-            rainyDayAlternatives: {
-                title: "Plano B (Chuva): Restaurantes Perto",
-                restaurants: [
-                    { name: "La Petite Bouclerie", type: "Creperia", mapLink: "https://maps.app.goo.gl/6dyuiZb21UHdwWgo8" },
-                    { name: "Le Bistro des Augustins", type: "Restaurante francês", mapLink: "https://maps.app.goo.gl/h3ZLYmS8VsP9WNu38" },
-                    { name: "Gusto Italia Amélie", type: "Restaurante italiano", mapLink: "https://maps.app.goo.gl/v19S5NtF13CDPMRD9" }
-                ]
-            },
-            timeline: [ // <-- TIMELINE COMPLETAMENTE REFEITA
+            id: "tulherias-arco", // ID ATUALIZADO
+            navTitle: "Tarde a Pé",    // navTitle ATUALIZADO
+            title: "SQUARE DU VERT-GALANT → ARCO DO TRIUNFO (A PÉ)", // TÍTULO ATUALIZADO
+            mapLink: "https://maps.app.goo.gl/uF5f8gPfrd9jLscy8", // NOVO LINK DE MAPA
+            timeline: [ // TIMELINE COMPLETAMENTE REFEITA
                 { time: "12:00", icon: "fa-bridge", title: "Pont Neuf", description: "Passeio rápido, fotos (~10 min)." },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~10 min a pé desde Pont Neuf." },
                 { time: "12:10", icon: "fa-bridge", title: "Pont des Arts", description: "Passeio, fotos e apreciar vista do Sena (~10 min)." },
@@ -83,47 +75,45 @@ export const day2Data = {
                 { time: "14:30", icon: "fa-person-walking", title: "Caminhada até Musée d’Orsay", description: "~20 min a pé desde Place de la Concorde. Chegada prevista às 14:50." },
                 { time: "15:30", icon: "fa-building-columns", title: "Musée d'Orsay", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1Bu_gwN7g8FUIv_qIG1aK_RuN7e0ACQcr/view?usp=drive_link", guideLink: "visita_musee-orsay.html", description: "Entrada na porta A. Visita recomendada: 1h30-2h." },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~10 min a pé desde o Musée d'Orsay." },
-                { time: "17:30", icon: "fa-landmark", title: "Petit Palais / Grand Palais", description: "Observação exterior e fotos rápidas (~20 min)." }
+                { time: "17:30", icon: "fa-landmark", title: "Petit Palais / Grand Palais", description: "Observação exterior e fotos rápidas (~20 min)." },
+                { icon: "fa-person-walking", title: "Percurso a pé pelos Champs-Élysées" },
+                { time: "18:30", icon: "fa-archway", title: "Arco do Triunfo", guideLink: "visita_arco-do-triunfo.html" }
             ]
         },
         {
-            id: "arco-triunfo",
-            navTitle: "Arco",
-            title: "METRO ATÉ ARCO DO TRIUNFO",
-            mapLink: "https://maps.app.goo.gl/833iy7seTNW8XpgP7",
+            id: "ida-notre-dame-noite", // NOVA SECÇÃO
+            navTitle: "Ida Notre-Dame",
+            title: "ARCO DO TRIUNFO → NOTRE DAME",
+            mapLink: "https://maps.app.goo.gl/T4CqgW5oT7U8ZQnRA",
             timeline: [
                 {
-                    time: "18:07", icon: "fa-route", title: "Percurso: Clemenceau → Arco do Triunfo", description: "Duração total: ~7 min. Clica para ver os detalhes.",
+                    time: "19:45", icon: "fa-route", title: "Percurso de Metro", description: "Duração total: ~30 min. Clica para ver os detalhes.",
                     accordion: [
-                        { text: "18:07: Apanhar Metro <span class='metro-line' style='background-color: #ffcd00; color: black;'>1</span>", subText: "Da estação <strong>Champs-Élysées - Clemenceau</strong>, direção La Défense." },
-                        { text: "18:10: Sair em Charles de Gaulle – Étoile", subText: "" }
+                        { text: "19:45: Apanhar Metro <span class='metro-line' style='background-color: #ffcd00; color: black;'>1</span>", subText: "Da estação <strong>Charles de Gaulle – Étoile</strong>, direção Château de Vincennes." },
+                        { text: "19:55: Trocar em Châtelet", subText: "Sair do metro e seguir para a Linha 4." },
+                        { text: "20:00: Apanhar Metro <span class='metro-line' style='background-color: #cf009e;'>4</span>", subText: "Da estação <strong>Châtelet</strong>, direção Bagneux - Lucie Aubrac." },
+                        { text: "20:02: Sair em Cité", subText: "Caminhar ~5 min até à catedral." }
                     ]
                 },
-                { icon: "fa-archway", title: "Arco do Triunfo", guideLink: "visita_arco-do-triunfo.html" },
-                { icon: "fa-road", title: "Champs-Élysées", guideLink: "visita_champs-elysees.html" }
+                { time: "20:30", icon: "fa-church", title: "Visita Noturna a Notre-Dame", requiresTicket: true, ticketLink: "https://resa.notredamedeparis.fr/en/reservationindividuelle/tickets", guideLink: "visita_notre-dame.html" }
             ]
         },
         {
-            id: "regresso-d2",
+            id: "regresso-d2", // SECÇÃO DE REGRESSO ATUALIZADA
             navTitle: "Regresso",
-            title: "CHAMPS-ÉLYSÉES → CASA",
-            mapLink: "https://maps.app.goo.gl/SA1t9d2R1KwJmbvj8",
+            title: "NOTRE DAME → CASA",
+            mapLink: "https://maps.app.goo.gl/S3z3fGq2S3wJvJ8e7",
             timeline: [
                 {
-                    time: "20:02", icon: "fa-route", title: "Percurso: Champs-Élysées → Casa", description: "Duração total: ~36 min. Clica para ver os detalhes.",
+                    time: "21:30", icon: "fa-route", title: "Percurso de Metro para Casa", description: "Duração total: ~30 min. Clica para ver os detalhes.",
                     accordion: [
-                        { text: "20:05: Apanhar Metro <span class='metro-line' style='background-color: #ffcd00; color: black;'>1</span>", subText: "Da estação <strong>Charles de Gaulle-Etoile</strong>, direção Château de Vincennes." },
-                        { text: "20:12: Trocar em Palais Royal - Musée du Louvre", subText: "Sair do metro e seguir para a Linha 7." },
-                        { text: "20:14: Apanhar Metro <span class='metro-line' style='background-color: #fa9aaa;'>7</span>", subText: "Direção La Courneuve-8-Mai-1945." },
-                        { text: "20:36: Sair em Fort d'Aubervilliers", subText: "Caminhar ~2 min até casa." }
+                        { text: "21:30: Apanhar Metro <span class='metro-line' style='background-color: #cf009e;'>4</span>", subText: "Da estação <strong>Cité</strong>, direção Porte de Clignancourt." },
+                        { text: "21:33: Trocar em Châtelet", subText: "Sair do metro e seguir para a Linha 7." },
+                        { text: "21:38: Apanhar Metro <span class='metro-line' style='background-color: #fa9aaa;'>7</span>", subText: "Da estação <strong>Châtelet</strong>, direção La Courneuve-8-Mai-1945." },
+                        { text: "21:58: Sair em Fort d'Aubervilliers", subText: "Caminhar ~2 min até casa." }
                     ]
                 },
-                { time: "20:38", icon: "fa-bed", title: "Regresso a Casa" },
-                { time: "21:00", icon: "fa-utensils", title: "Jantar em Casa", 
-                    mealSuggestion: {
-                        suggestion: "Refeição em casa para poupar.",
-                    }
-                }
+                { time: "22:00", icon: "fa-bed", title: "Regresso a Casa e Jantar" }
             ]
         }
     ],
