@@ -26,7 +26,7 @@ export const day4Data = {
                         { text: "08:42: Sair em Palais Royal - Musée du Louvre", subText: "Caminhar ~2 min até à entrada." }
                     ]
                 },
-                { time: "09:00", icon: "fa-landmark-dome", title: "Museu do Louvre", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1zgpLvPJtgUGnMsOFsIbfg3tGwhPSse0w/view?usp=sharing", guideLink: "visita_louvre.html", description: "O museu tem várias casas de banho no interior." },
+                { time: "09:00", icon: "fa-landmark-dome", title: "Museu do Louvre", requiresTicket: true, ticketLink: "https://drive.google.com/file/d/1zgpLvPJtgUGnMsOFsIbfg3tGwhPSse0w/view?usp=sharing", guideLink: "visita_louvre.html", description: "O museu tem várias casas de banho no interior.", isHighlight: true  },
                 { time: "11:00", icon: "fa-cookie-bite", title: "Lanche da Manhã",
                     mealSuggestion: {
                         suggestion: "Pausa rápida durante a visita ao Louvre para comer uma barrinha de cereais ou outro snack levado na mochila.",
@@ -55,13 +55,13 @@ export const day4Data = {
                 ]
             },
             timeline: [
-                { time: "13:30", icon: "fa-chess-board", title: "Palais Royal (Jardins e Colunas de Buren)", description: "Passeio e fotos: ~30 min. Saída: 14:00" },
+                { time: "13:30", icon: "fa-chess-board", title: "Palais Royal (Jardins e Colunas de Buren)", description: "Passeio e fotos: ~30 min. Saída: 14:00", isHighlight: true  },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé desde Palais Royal." },
-                { time: "14:00", icon: "fa-archway", title: "Galerie Vivienne", description: "Passeio rápido, fotos (~20 min). Saída: 14:20" },
+                { time: "14:00", icon: "fa-archway", title: "Galerie Vivienne", description: "Passeio rápido, fotos (~20 min). Saída: 14:20", isHighlight: true  },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~7 min a pé desde Galerie Vivienne." },
                 { time: "14:20", icon: "fa-gem", title: "Place Vendôme", description: "Breve visita, fotos (~20 min). Saída: 14:40" },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~5 min a pé desde Place Vendôme." },
-                { time: "15:00", icon: "fa-masks-theater", title: "Ópera Garnier", description: "Visita interior: ~1h. Saída: 16:00", requiresTicket: true, ticketLink: "https://drive.google.com/drive/folders/1LzpXOo9CjPe37kIHkBRFG0Xy4sy5Kwg7?usp=sharing", guideLink: "visita_opera-garnier.html" },
+                { time: "15:00", icon: "fa-masks-theater", title: "Ópera Garnier", description: "Visita interior: ~1h. Saída: 16:00", requiresTicket: true, ticketLink: "https://drive.google.com/drive/folders/1LzpXOo9CjPe37kIHkBRFG0Xy4sy5Kwg7?usp=sharing", guideLink: "visita_opera-garnier.html", isHighlight: true  },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~7 min a pé desde Opéra Garnier." },
                 { time: "16:00", icon: "fa-store", title: "Galeries Lafayette", description: "Visita ao terraço para vista panorâmica e fotos: ~45 min. Saída: 16:45", guideLink: "visita_galeries-lafayette.html" },
                 {
@@ -86,15 +86,15 @@ export const day4Data = {
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~23 min a pé." },
                 { time: "17:55", icon: "fa-road", title: "23 Rue des Petits Carreaux", description: "Passagem e fotos rápidas (~10 min)." },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~7 min a pé." },
-                { time: "18:15", icon: "fa-church", title: "Igreja de Santo Eustáquio", description: "Vista exterior e fotos (~15 min)." },
+                { time: "18:15", icon: "fa-church", title: "Igreja de Santo Eustáquio", description: "Vista exterior e fotos (~15 min).", isHighlight: true  },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~14 min a pé." },
-                { time: "18:45", icon: "fa-building-columns", title: "Centro Georges Pompidou", description: "Vista exterior e fotos da praça (~15 min)." },
+                { time: "18:45", icon: "fa-building-columns", title: "Centro Georges Pompidou", description: "Vista exterior e fotos da praça (~15 min).", isHighlight: true  },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~15 min a pé." },
                 { time: "19:15", icon: "fa-road", title: "Rue Vieille-du-Temple", description: "Passeio e fotos (~10 min)." },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~6 min a pé." },
-                { time: "19:30", icon: "fa-road", title: "Rue des Rosiers", description: "Rua típica judaica, lojas, padarias (~15 min)." },
+                { time: "19:30", icon: "fa-road", title: "Rue des Rosiers", description: "Rua típica judaica, lojas, padarias (~15 min).", isHighlight: true  },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~8 min a pé." },
-                { time: "19:55", icon: "fa-square-full", title: "Praça des Vosges", description: "Chegada final, passeio pela praça (~15 min)." }
+                { time: "19:55", icon: "fa-square-full", title: "Praça des Vosges", description: "Chegada final, passeio pela praça (~15 min).", isHighlight: true  }
             ]
         },
         {
