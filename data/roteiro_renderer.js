@@ -295,7 +295,36 @@ async function renderPage() {
             htmlContent += `</div></div>`;
         });
         
-        if (dayData.shoppingInfo) { /* Lógica de compras, mantida inalterada */ }
+        // --- NOVO BLOCO PARA RENDERIZAR SHOPPING INFO ---
+        if (dayData.shoppingInfo) {
+            let shoppingHtml = `<div class="shopping-info-container">`;
+            shoppingHtml += `<h3 class="shopping-info-title"><i class="fa-solid fa-shopping-cart mr-3"></i>${dayData.shoppingInfo.title}</h3>`;
+
+            if (dayData.shoppingInfo.generalTips) {
+                shoppingHtml += `<ul>${dayData.shoppingInfo.generalTips.map(tip => `<li>${tip}</li>`).join('')}</ul>`;
+            }
+            if (dayData.shoppingInfo.shopping) {
+                const { title, list, where } = dayData.shoppingInfo.shopping;
+                shoppingHtml += `<div class="shopping-info-section"><h4>${title}</h4>`;
+                if (list) {
+                    shoppingHtml += `<ul class="shopping-list">${list.map(item => `<li>${item}</li>`).join('')}</ul>`;
+                }
+                if (where) {
+                    if (typeof where === 'string') {
+                        shoppingHtml += `<p>${where}</p>`;
+                    } else {
+                        shoppingHtml += `<p>${where.description}</p>`;
+                        if (where.locations) {
+                            shoppingHtml += `<div class="location-links">${where.locations.map(loc => `<a href="${loc.link}" target="_blank">${loc.name}</a>`).join('')}</div>`;
+                        }
+                    }
+                }
+                shoppingHtml += `</div>`;
+            }
+            shoppingHtml += `</div>`;
+            htmlContent += shoppingHtml;
+        }
+        // --- FIM DO NOVO BLOCO ---
 
         section.innerHTML = htmlContent;
         targetNode.parentNode.insertBefore(section, targetNode.nextSibling);
@@ -385,4 +414,3 @@ async function renderPage() {
 }
 
 document.addEventListener('DOMContentLoaded', renderPage);
-
