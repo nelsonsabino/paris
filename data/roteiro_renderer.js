@@ -251,10 +251,10 @@ async function renderPage() {
                     }
                 }
 
-                let ticketIconHTML = '';
+                  let ticketIconHTML = '';
                 if (item.requiresTicket) {
                     const icon = `<i class='fa-solid fa-ticket ml-2 text-blue-600' title='Necessita de Bilhete'></i>`;
-                    if (item.ticketLink) { ticketIconHTML = `<a href="${item.ticketLink}" target="_blank" onclick="event.stopPropagation()" class="inline-block" title="Comprar/Ver Bilhetes">${icon}</a>`; } 
+                    if (item.ticketLink) { ticketIconHTML = `<a href="${item.ticketLink}" onclick="event.stopPropagation()" class="inline-block" title="Comprar/Ver Bilhetes">${icon}</a>`; } 
                     else { ticketIconHTML = icon; }
                 }
                 
