@@ -17,8 +17,8 @@ export const day1Data = {
             title: "ALENQUER → TERMINAL 2",
             mapLink: "https://maps.app.goo.gl/UDWRJ6vJieWfL2G19",
             timeline: [
-                { time: "7:00", icon: "fa-car", title: "Saída de Casa" },
-                { time: "7:45", icon: "fa-plane", title: "Chegada ao Aeroporto" },
+                { time: "6:35", icon: "fa-car", title: "Saída de Casa" },
+                { time: "7:15", icon: "fa-plane", title: "Chegada ao Aeroporto" },
                 { time: "8:55", icon: "fa-ticket", title: "Embarque T2" },
                  { 
                     time: "9:40", 
