@@ -266,7 +266,7 @@ async function renderPage() {
 
                 let itemBody = '';
                 
-const iconClass = item.isLogistics ? 'timeline-icon timeline-icon-logistics' : (item.mealSuggestion ? 'timeline-icon timeline-icon-meal' : 'timeline-icon');
+const iconClass = item.isHighlight ? 'timeline-icon timeline-icon-highlight' : (item.isLogistics ? 'timeline-icon timeline-icon-logistics' : (item.mealSuggestion ? 'timeline-icon timeline-icon-meal' : 'timeline-icon'));
                 
                 if (item.mealSuggestion) {
                     itemBody = `<h3 class="font-semibold text-lg">${titleHTML}${ticketIconHTML}</h3>
