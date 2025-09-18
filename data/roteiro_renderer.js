@@ -265,8 +265,9 @@ async function renderPage() {
                 let titleHTML = `${weatherIconHtml} ${titleContent}`;
 
                 let itemBody = '';
-                const iconClass = item.mealSuggestion ? 'timeline-icon timeline-icon-meal' : 'timeline-icon';
-
+                
+const iconClass = item.isLogistics ? 'timeline-icon timeline-icon-logistics' : (item.mealSuggestion ? 'timeline-icon timeline-icon-meal' : 'timeline-icon');
+                
                 if (item.mealSuggestion) {
                     itemBody = `<h3 class="font-semibold text-lg">${titleHTML}${ticketIconHTML}</h3>
                         ${item.description ? `<p class="text-gray-600 mt-1">${item.description}</p>` : ''}
@@ -286,7 +287,8 @@ async function renderPage() {
                     if (item.description) { itemBody += `<p class="text-gray-600 mt-1">${item.description}</p>`; }
                 }
 
-                htmlContent += `<div class="timeline-item timeline-item-hidden" ${timeDataAttr}>
+                  const logisticsClass = item.isLogistics ? 'timeline-item-logistics' : '';
+            htmlContent += `<div class="timeline-item timeline-item-hidden ${logisticsClass}" ${timeDataAttr}>
                         ${hasTime}
                         <div class="${iconClass}"><i class="fa-solid ${item.icon} text-xs"></i></div>
                         ${itemBody}
