@@ -25,6 +25,13 @@ export const day3Data = {
                 ]
             },
             timeline: [
+{ 
+                 /*   time: "19:10",*/ 
+                    icon: "fa-basket-shopping", 
+                    title: "Monop’ Versailles Château", 
+                    description: "Compra de sandes e bebidas. <a href='https://maps.app.goo.gl/H1Ec7BPVa21HWWHV8' target='_blank' class='text-blue-600 hover:underline font-semibold'>(Ver no Mapa)</a>",
+                    isLogistics: true // <-- Campo especial para o destaque
+                },
                 { time: "07:00", icon: "fa-mug-hot", title: "Pequeno-almoço em casa",
                     mealSuggestion: {
                         suggestion: "Refeição reforçada em casa, antes da longa viagem de RER para Versalhes.",
