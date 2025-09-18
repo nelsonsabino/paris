@@ -20,10 +20,12 @@ export const day1Data = {
                 { time: "7:00", icon: "fa-car", title: "Saída de Casa" },
                 { time: "7:45", icon: "fa-plane", title: "Chegada ao Aeroporto" },
                 { time: "9:00", icon: "fa-ticket", title: "Fecho do Embarque T2" },
-                { 
+                 { 
                     time: "9:40", 
                     icon: "fa-plane-departure", 
                     title: "Voo de Partida (TO 7641)",
+                    requiresTicket: true,
+                    ticketLink: "essencial.html#voos",
                     description: `
                         <ul class='list-disc list-inside text-sm mt-1'>
                             <li><strong>Nº Confirmação:</strong> B7UQNI</li>
