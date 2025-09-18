@@ -76,42 +76,25 @@ export const day4Data = {
                 }
             ]
         },
-        {
-            id: "viagem-marais",
-            navTitle: "Ida Marais",
-            title: "GALERIES LAFAYETTE → FILLES DU CALVAIRE",
-            mapLink: "https://maps.app.goo.gl/cpviY5jbzmUnDDVt7",
+              {
+            id: "marais", // ID combinado, pois agora é um único percurso
+            navTitle: "Marais a Pé",
+            title: "GALERIES LAFAYETTE → PRAÇA DES VOSGES (A PÉ)",
+            mapLink: "https://maps.app.goo.gl/Vep9EADrdBbw3Q8q6", // Novo link do mapa
             timeline: [
-                { icon: "fa-store", title: "Saída das Galeries Lafayette" },
-                {
-                    time: "18:30", icon: "fa-route", title: "Percurso: Opéra → Filles du Calvaire", description: "Duração total: ~8 min. Clica para ver os detalhes.",
-                    accordion: [
-                        { text: "18:30: Apanhar Metro <span class='metro-line' style='background-color: #ceadd2; color: black;'>8</span>", subText: "Da estação <strong>Opéra</strong>, direção Créteil-Pointe du Lac." },
-                        { text: "18:38: Sair em Filles du Calvaire", subText: "" }
-                    ]
-                }
-            ]
-        },
-        {
-            id: "marais",
-            navTitle: "Marais",
-            title: "FILLES DU CALVAIRE → PRAÇA DES VOSGES",
-            mapLink: "https://maps.app.goo.gl/M9mUnPSePrvmsEKX8", // <-- LINK ATUALIZADO
-            timeline: [ // <-- TIMELINE ATUALIZADA
-                { time: "18:45", icon: "fa-utensils", title: "Marché des Enfants Rouges",
-                    description: "Visitar e jantar numa das bancas de street food (~45 min). Saída: 19:30",
-                    mealSuggestion: {
-                        suggestion: "Explorar a variedade de cozinhas do mundo (italiana, marroquina, etc.) para um jantar informal e saboroso.",
-                    }
-                },
-                { icon: "fa-person-walking", title: "Percurso a pé", description: "~2 min a pé." },
-                { time: "19:30", icon: "fa-road", title: "Rue de Bretagne & Rue Charlot", description: "Passeio por ruas típicas do Marais (~15 min). Saída: 19:45" },
-                { icon: "fa-person-walking", title: "Percurso a pé", description: "~3 min a pé." },
-                { time: "19:45", icon: "fa-road", title: "Rue Vieille-du-Temple", description: "Passeio e fotos (~10 min). Saída: 19:55" },
-                { icon: "fa-person-walking", title: "Percurso a pé", description: "~2 min a pé." },
-                { time: "19:55", icon: "fa-road", title: "Rue des Rosiers", description: "Rua típica judaica (~15 min). Saída: 20:10" },
-                { icon: "fa-person-walking", title: "Percurso a pé", description: "~2 min a pé." },
-                { time: "20:10", icon: "fa-square-full", title: "Place des Vosges", description: "Passeio pela praça e fotos (~15 min). Saída: 20:25" },
+                { time: "17:30", icon: "fa-store", title: "Saída das Galeries Lafayette" },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~23 min a pé." },
+                { time: "17:55", icon: "fa-road", title: "23 Rue des Petits Carreaux", description: "Passagem e fotos rápidas (~10 min)." },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~7 min a pé." },
+                { time: "18:15", icon: "fa-church", title: "Igreja de Santo Eustáquio", description: "Vista exterior e fotos (~15 min)." },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~14 min a pé." },
+                { time: "18:45", icon: "fa-building-columns", title: "Centro Georges Pompidou", description: "Vista exterior e fotos da praça (~15 min)." },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~15 min a pé." },
+                { time: "19:15", icon: "fa-road", title: "Rue Vieille-du-Temple", description: "Passeio e fotos (~10 min)." },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~6 min a pé." },
+                { time: "19:30", icon: "fa-road", title: "Rue des Rosiers", description: "Rua típica judaica, lojas, padarias (~15 min)." },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~8 min a pé." },
+                { time: "19:55", icon: "fa-square-full", title: "Praça des Vosges", description: "Chegada final, passeio pela praça (~15 min)." }
             ]
         },
         {
