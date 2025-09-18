@@ -80,40 +80,42 @@ export const day2Data = {
                 { time: "18:30", icon: "fa-archway", title: "Arco do Triunfo", guideLink: "visita_arco-do-triunfo.html" }
             ]
         },
-        {
-            id: "ida-notre-dame-noite", // NOVA SECÇÃO
+               {
+            id: "ida-notre-dame-noite",
             navTitle: "Ida Notre-Dame",
             title: "ARCO DO TRIUNFO → NOTRE DAME",
-            mapLink: "https://maps.app.goo.gl/94ZvMCRg8pcUY4MS8",
+            mapLink: "https://maps.app.goo.gl/5jNbJpCh5qt8GJP28", // <-- LINK ATUALIZADO
             timeline: [
                 {
-                    time: "19:45", icon: "fa-route", title: "Percurso de Metro", description: "Duração total: ~30 min. Clica para ver os detalhes.",
-                    accordion: [
-                        { text: "19:45: Apanhar Metro <span class='metro-line' style='background-color: #ffcd00; color: black;'>1</span>", subText: "Da estação <strong>Charles de Gaulle – Étoile</strong>, direção Château de Vincennes." },
-                        { text: "19:55: Trocar em Châtelet", subText: "Sair do metro e seguir para a Linha 4." },
-                        { text: "20:00: Apanhar Metro <span class='metro-line' style='background-color: #cf009e;'>4</span>", subText: "Da estação <strong>Châtelet</strong>, direção Bagneux - Lucie Aubrac." },
-                        { text: "20:02: Sair em Cité", subText: "Caminhar ~5 min até à catedral." }
+                    time: "19:35", // <-- HORA ATUALIZADA
+                    icon: "fa-route", 
+                    title: "Percurso de Metro", 
+                    description: "Duração total: ~20 min. Clica para ver os detalhes.", // <-- DURAÇÃO ATUALIZADA
+                    accordion: [ // <-- PERCURSO ATUALIZADO
+                        { text: "19:35: Apanhar Metro <span class='metro-line' style='background-color: #ffcd00; color: black;'>1</span>", subText: "Da estação <strong>Charles de Gaulle – Étoile</strong>, direção Château de Vincennes." },
+                        { text: "19:46: Sair em Hôtel de Ville", subText: "Caminhar ~8 min até à catedral." }
                     ]
                 },
                 { time: "20:30", icon: "fa-church", title: "Visita Noturna a Notre-Dame", requiresTicket: true, ticketLink: "https://resa.notredamedeparis.fr/en/reservationindividuelle/tickets", guideLink: "visita_notre-dame.html" }
             ]
         },
         {
-            id: "regresso-d2", // SECÇÃO DE REGRESSO ATUALIZADA
+            id: "regresso-d2",
             navTitle: "Regresso",
             title: "NOTRE DAME → CASA",
-            mapLink: "https://maps.app.goo.gl/MV9jF8i7hp164RHb9",
+            mapLink: "https://maps.app.goo.gl/S3z3fGq2S3wJvJ8e7", // Link pode ser ajustado se necessário, mantive o anterior
             timeline: [
                 {
-                    time: "21:30", icon: "fa-route", title: "Percurso de Metro para Casa", description: "Duração total: ~30 min. Clica para ver os detalhes.",
-                    accordion: [
-                        { text: "21:30: Apanhar Metro <span class='metro-line' style='background-color: #cf009e;'>4</span>", subText: "Da estação <strong>Cité</strong>, direção Porte de Clignancourt." },
-                        { text: "21:33: Trocar em Châtelet", subText: "Sair do metro e seguir para a Linha 7." },
-                        { text: "21:38: Apanhar Metro <span class='metro-line' style='background-color: #fa9aaa;'>7</span>", subText: "Da estação <strong>Châtelet</strong>, direção La Courneuve-8-Mai-1945." },
-                        { text: "21:58: Sair em Fort d'Aubervilliers", subText: "Caminhar ~2 min até casa." }
+                    time: "21:11", // <-- HORA ATUALIZADA
+                    icon: "fa-route", 
+                    title: "Percurso de Metro para Casa", 
+                    description: "Duração total: ~27 min. Clica para ver os detalhes.", // <-- DURAÇÃO ATUALIZADA
+                    accordion: [ // <-- PERCURSO ATUALIZADO
+                        { text: "21:11: Apanhar Metro <span class='metro-line' style='background-color: #fa9aaa;'>7</span>", subText: "Da estação <strong>Châtelet</strong>, direção La Courneuve-8-Mai-1945." },
+                        { text: "21:36: Sair em Fort d'Aubervilliers", subText: "Caminhar ~2 min até casa." }
                     ]
                 },
-                { time: "22:00", icon: "fa-bed", title: "Regresso a Casa e Jantar" }
+                { time: "21:38", icon: "fa-bed", title: "Regresso a Casa e Jantar" } // <-- HORA ATUALIZADA
             ]
         }
     ],
