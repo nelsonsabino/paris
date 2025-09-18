@@ -127,6 +127,8 @@ export const day5Data = {
                     time: "20:50", 
                     icon: "fa-plane-up", 
                     title: "Voo de Regresso (TO 7664)",
+                    requiresTicket: true,
+                    ticketLink: "essencial.html#voos",
                     description: `
                         <ul class='list-disc list-inside text-sm mt-1'>
                             <li><strong>Nº Confirmação:</strong> CD9VUW</li>
