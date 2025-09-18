@@ -520,3 +520,16 @@ html.dark .timeline-item-logistics {
 html.dark .timeline-icon-logistics {
     background-color: #d97706; /* amber-600 */
 }
+
+
+/* --- ESTILOS PARA ÍCONE DE DESTAQUE NA TIMELINE (NOVO) --- */
+.timeline-icon-highlight {
+    background-color: #facc15; /* yellow-400 */
+    color: #713f12; /* amber-800, para um bom contraste */
+}
+
+/* Modo Escuro */
+html.dark .timeline-icon-highlight {
+    background-color: #fde047; /* yellow-300 */
+    color: #422006; /* amber-900 */
+}
