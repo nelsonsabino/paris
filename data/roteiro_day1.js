@@ -97,7 +97,15 @@ export const day1Data = {
             mapLink: "https://maps.app.goo.gl/hsKbjghfZveBbgGw8",
             timeline: [
                 { time: "19:00", icon: "fa-landmark", title: "Opéra Garnier", description: "Chegada, vista exterior e fotos rápidas." },
-                { icon: "fa-person-walking", title: "Percurso a pé", description: "~20 min a pé desde Opéra Garnier" },
+                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~10 min a pé desde Opéra Garnier" },
+                { 
+                    time: "19:10", 
+                    icon: "fa-basket-shopping", 
+                    title: "Abastecimento em MONOP'", 
+                    description: "Paragem rápida para comprar sandes, snacks e bebidas para a caminhada.",
+                    isLogistics: true // <-- Campo especial para o destaque
+                },
+                { icon: "fa-person-walking", title: "Percurso a pé", description: "~10 min a pé desde o MONOP'" },
                 { time: "19:30", icon: "fa-landmark-dome", title: "Hôtel des Invalides", description: "Vista exterior, paragem rápida (~10 min)." },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~10 min a pé desde Hôtel des Invalides." },
                 { time: "19:45", icon: "fa-bridge", title: "Ponte Alexandre III", description: "<strong>Pôr-do-sol às 19:53.</strong> Chegar 10-15 min antes para garantir boa posição." },
