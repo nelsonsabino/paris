@@ -76,7 +76,7 @@ export const day1Data = {
         {
             id: "ida-eiffel",
             navTitle: "Eiffel",
-            title: "CASA → INVALIDES",
+            title: "CASA → ÓPERA",
             mapLink: "https://maps.app.goo.gl/q5okVHgdTgK4mSdn7",
             timeline: [
                 { time: "18:30", icon: "fa-house-chimney", title: "Saída de Casa" },
@@ -94,7 +94,7 @@ export const day1Data = {
             id: "zona-eiffel",
             navTitle: "Zona Eiffel",
             title: "ÓPERA - TOUR EIFFEL",
-            mapLink: "https://maps.app.goo.gl/6E5Nvw35RZtfxwYUA",
+            mapLink: "https://maps.app.goo.gl/hsKbjghfZveBbgGw8",
             timeline: [
                 { time: "19:00", icon: "fa-landmark", title: "Opéra Garnier", description: "Chegada, vista exterior e fotos rápidas." },
                 { icon: "fa-person-walking", title: "Percurso a pé", description: "~20 min a pé desde Opéra Garnier" },
