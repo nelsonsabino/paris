@@ -103,7 +103,7 @@ export const day2Data = {
             id: "regresso-d2",
             navTitle: "Regresso",
             title: "NOTRE DAME → CASA",
-            mapLink: "https://maps.app.goo.gl/S3z3fGq2S3wJvJ8e7", // Link pode ser ajustado se necessário, mantive o anterior
+            mapLink: "https://maps.app.goo.gl/WavwKebKkpT9cbcu8", // Link pode ser ajustado se necessário, mantive o anterior
             timeline: [
                 {
                     time: "21:11", // <-- HORA ATUALIZADA
