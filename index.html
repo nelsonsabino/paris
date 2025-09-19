@@ -38,6 +38,12 @@
 </head>
 <body class="text-gray-800">
 
+    <script>
+        // Remove a opacidade para evitar "piscar" e redireciona imediatamente
+        document.getElementById('content').classList.remove('opacity-0');
+        window.location.href = 'roteiro.html';
+    </script>
+
     <!-- Loader -->
     <div id="loader" class="fixed inset-0 flex items-center justify-center bg-white z-50">
       <div id="lottie" class="h-40 w-40"></div>
